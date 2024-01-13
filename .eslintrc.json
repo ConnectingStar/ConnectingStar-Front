@@ -1,0 +1,80 @@
+{
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint","import"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "import/order":[
+        "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              ["sibling", "parent", "index"],
+              "type",
+              "unknown"
+            ],
+            "pathGroups": [
+              {
+                "pattern": "{react*,react*/*}",
+                "group": "external",
+                "position": "before"
+              },
+              {
+                "pattern": "{axios*,axios*/*}",
+                "group": "external",
+                "position": "before"
+              },
+              {
+                "pattern": "{@emotion*,@emotion*/*}",
+                "group": "external",
+                "position": "before"
+              },
+              {
+                "pattern": "@/pages/**/*.style",
+                "group": "unknown"
+              },
+              {
+                "pattern": "@/components/**/*.styles",
+                "group": "unknown"
+              },
+              {
+                "pattern": "@/components/*.styles",
+                "group": "unknown"
+              },
+              {
+                "pattern": "../**/*.style",
+                "group": "unknown"
+              },
+              {
+                "pattern": "./**/*.style",
+                "group": "unknown"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["react", "unknown"],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "newlines-between": "always"
+          }
+        ]
+    },
+    "settings": { 
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx", ".js"] 
+      }, 
+      "import/resolver": { 
+        "typescript": "./tsconfig.json" 
+      }
+    }
+  }
