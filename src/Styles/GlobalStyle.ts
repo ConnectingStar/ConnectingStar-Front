@@ -18,6 +18,8 @@ export const GlobalStyle = css`
 		-webkit-text-size-adjust: 100%; /* 모바일에서도 원래 폰트 사이즈로 출력(사파리) */
 		text-size-adjust: 100%; /* 모바일에서도 원래 폰트 사이즈로 출력 */
 		overflow-wrap: break-word;
+		max-width: 500px;
+		margin: 0 auto;
 	}
 
 	html,
