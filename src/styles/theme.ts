@@ -1,54 +1,54 @@
 export const theme = {
 	size: {
-		HEAD_A: {
+		head_a: {
 			fontSize: "1.5rem",
 			fontWeight: "500",
 		},
-		HEAD_B: {
+		head_b: {
 			fontSize: "1rem",
 			fontWeight: "500",
 		},
-		HEAD_C: {
+		head_c: {
 			fontSize: "0.875rem",
 			fontWeight: "700",
 		},
-		BODY_A: {
+		body_a: {
 			fontSize: "1rem",
 			fontWeight: "400",
 		},
-		BODY_A_EM: {
+		body_a_bold: {
 			fontSize: "1rem",
 			fontWeight: "700",
 		},
-		BODY_B: {
+		body_b: {
 			fontSize: "0.875rem",
 			fontWeight: "400",
 		},
-		BODY_B_EM: {
+		body_b_bold: {
 			fontSize: "0.875rem",
 			fontWeight: "700",
 		},
-		BODY_C: {
+		body_c: {
 			fontSize: "0.75rem",
 			fontWeight: "400",
 		},
-		BODY_C_EM: {
+		body_c_bold: {
 			fontSize: "0.75rem",
 			fontWeight: "500",
 		},
-		BODY_XS: {
+		body_xs: {
 			fontSize: "0.6875rem",
 			fontWeight: "400",
 		},
-		TIME: {
+		time: {
 			fontSize: "1.75rem",
 			fontWeight: "500",
 		},
-		HEAD: {
+		header: {
 			fontSize: "1.25rem",
 			fontWeight: "500",
 		},
-		BUTTON_LARGE: {
+		button_big: {
 			fontSize: "1rem",
 			fontWeight: "500",
 		},
