@@ -2,14 +2,15 @@ import { css } from "@emotion/react";
 
 export const GlobalStyle = css`
 	@font-face {
-		font-family: "Noto Sans KR";
-		src: url("/NotoSansKR.ttf");
+		font-family: "Noto Sans KR", sans-serif;
+		src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 	}
 
 	* {
 		margin: 0; /* margin 초기화 */
 		padding: 0; /* padding 초기화 */
-		font: inherit; /* font 상속을 못하는 요소(button, input)에게 폰트 적용을 위해 작성 */
+		font-family: "Noto Sans KR", sans-serif;
+		// font: inherit; /* font 상속을 못하는 요소(button, input)에게 폰트 적용을 위해 작성 */
 		color: inherit; /* a, input, textarea에도 동일한 글자색 적용을 위해 작성 */
 	}
 
