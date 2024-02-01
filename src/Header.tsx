@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import ArrowLeftIcon from "@/arrow-left.svg?react";
 import CloseIcon from "@/close.svg?react";
@@ -10,7 +10,7 @@ interface HeaderTitleProps {
 	children: React.ReactNode;
 }
 
-export default function Header({ children }: ComponentPropsWithoutRef<"div">) {
+export default function Header({ children }: { children: ReactNode }) {
 	return <div css={headerStyle.container}>{children}</div>;
 }
 
