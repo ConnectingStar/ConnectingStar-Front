@@ -67,7 +67,7 @@ export const theme = {
 
 		// 줄, 배경
 		line: "#F0F0F6",
-		BG: "#F7F7FB",
+		bg: "#F7F7FB",
 
 		// 버튼
 		button_disabled: "#E5E5EC",
