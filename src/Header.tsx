@@ -7,7 +7,7 @@ import { headerStyle } from "@/Header.style";
 // NOTE: 이 부분 props 이름을 어떻게 지어야 할지 모르겠음. size는 명확하지 않은듯
 interface HeaderTitleProps {
 	size?: "default" | "large";
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 export default function Header({ children }: { children: ReactNode }) {
