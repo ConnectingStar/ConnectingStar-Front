@@ -48,7 +48,7 @@ export const theme = {
 			fontSize: "1.25rem",
 			fontWeight: "500",
 		},
-		button_large: {
+		button_big: {
 			fontSize: "1rem",
 			fontWeight: "500",
 		},
