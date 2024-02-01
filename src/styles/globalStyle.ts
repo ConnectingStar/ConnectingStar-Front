@@ -1,11 +1,6 @@
 import { css } from "@emotion/react";
 
 export const GlobalStyle = css`
-	@font-face {
-		font-family: "Noto Sans KR", sans-serif;
-		src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
-	}
-
 	* {
 		margin: 0; /* margin 초기화 */
 		padding: 0; /* padding 초기화 */
