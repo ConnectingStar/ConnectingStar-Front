@@ -1,9 +1,8 @@
 import { ComponentPropsWithoutRef } from "react";
 
-import ArrowLeftIcon from "./arrow-left.svg?react";
-import CloseIcon from "./close.svg?react";
-
-import { headerStyle } from "./Header.style";
+import ArrowLeftIcon from "@/arrow-left.svg?react";
+import CloseIcon from "@/close.svg?react";
+import { headerStyle } from "@/Header.style";
 
 export default function Header({ children, ...props }: ComponentPropsWithoutRef<"div">) {
 	return (
