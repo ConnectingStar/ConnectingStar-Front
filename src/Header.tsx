@@ -4,6 +4,12 @@ import ArrowLeftIcon from "@/arrow-left.svg?react";
 import CloseIcon from "@/close.svg?react";
 import { headerStyle } from "@/Header.style";
 
+// NOTE: 이 부분 props 이름을 어떻게 지어야 할지 모르겠음. size는 명확하지 않은듯
+interface HeaderTitleProps {
+	size?: "default" | "large";
+	children: React.ReactNode;
+}
+
 export default function Header({ children }: ComponentPropsWithoutRef<"div">) {
 	return <div css={headerStyle.container}>{children}</div>;
 }
@@ -32,12 +38,6 @@ Header.CloseButton = function HeaderCloseButton() {
 		</button>
 	);
 };
-
-// NOTE: 이 부분 props 이름을 어떻게 지어야 할지 모르겠음. size는 명확하지 않은듯
-interface HeaderTitleProps {
-	size?: "default" | "large";
-	children: React.ReactNode;
-}
 
 Header.Title = function HeaderTitle({ size = "default", children }: HeaderTitleProps) {
 	return <h1 css={size === "large" ? headerStyle.titleLarge : headerStyle.title}>{children}</h1>;
