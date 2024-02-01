@@ -4,12 +4,8 @@ import ArrowLeftIcon from "@/arrow-left.svg?react";
 import CloseIcon from "@/close.svg?react";
 import { headerStyle } from "@/Header.style";
 
-export default function Header({ children, ...props }: ComponentPropsWithoutRef<"div">) {
-	return (
-		<div css={headerStyle.container} {...props}>
-			{children}
-		</div>
-	);
+export default function Header({ children }: ComponentPropsWithoutRef<"div">) {
+	return <div css={headerStyle.container}>{children}</div>;
 }
 
 Header.PrevButton = function HeaderPrevButton() {
