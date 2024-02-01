@@ -1,5 +1,5 @@
 export const theme = {
-	size: {
+	font: {
 		head_a: {
 			fontSize: "1.5rem",
 			fontWeight: "500",
