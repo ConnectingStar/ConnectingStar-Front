@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import ArrowLeftIcon from "@/assets/icon/arrow-left.svg?react";
 import CloseIcon from "@/assets/icon/close.svg?react";
-import { headerStyle } from "@/Header.style";
+import { headerStyle } from "@/components/common/Header.style";
 
 // NOTE: 이 부분 props 이름을 어떻게 지어야 할지 모르겠음. size는 명확하지 않은듯
 interface HeaderTitleProps {
