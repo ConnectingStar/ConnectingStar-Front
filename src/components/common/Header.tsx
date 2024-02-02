@@ -16,11 +16,7 @@ export default function Header({ children }: { children: ReactNode }) {
 
 Header.PrevButton = function HeaderPrevButton() {
 	return (
-		<button
-			type="button"
-			css={headerStyle.leftIconButton}
-			onClick={(e) => console.log("prev icon click: ", e)}
-		>
+		<button type="button" onClick={(e) => console.log("prev icon click: ", e)}>
 			<ArrowLeftIcon />
 		</button>
 	);
@@ -29,11 +25,7 @@ Header.PrevButton = function HeaderPrevButton() {
 // NOTE: 닫기 버튼 기능 구현은 어떻게 할지..
 Header.CloseButton = function HeaderCloseButton() {
 	return (
-		<button
-			type="button"
-			css={headerStyle.leftIconButton}
-			onClick={(e) => console.log("close icon click: ", e)}
-		>
+		<button type="button" onClick={(e) => console.log("close icon click: ", e)}>
 			<CloseIcon />
 		</button>
 	);
