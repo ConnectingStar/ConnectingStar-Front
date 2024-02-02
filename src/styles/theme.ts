@@ -14,7 +14,6 @@ export const theme = {
 		},
 		body_a: {
 			fontSize: "1rem",
-			fontWeight: "400",
 		},
 		body_a_bold: {
 			fontSize: "1rem",
@@ -22,7 +21,6 @@ export const theme = {
 		},
 		body_b: {
 			fontSize: "0.875rem",
-			fontWeight: "400",
 		},
 		body_b_bold: {
 			fontSize: "0.875rem",
@@ -30,7 +28,6 @@ export const theme = {
 		},
 		body_c: {
 			fontSize: "0.75rem",
-			fontWeight: "400",
 		},
 		body_c_bold: {
 			fontSize: "0.75rem",
@@ -38,7 +35,6 @@ export const theme = {
 		},
 		body_xs: {
 			fontSize: "0.6875rem",
-			fontWeight: "400",
 		},
 		time: {
 			fontSize: "1.75rem",
