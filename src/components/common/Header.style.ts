@@ -21,7 +21,7 @@ export const headerStyle = {
 		position: absolute;
 		left: 1.5rem;
 	`,
-	actionButton: css`
+	textButton: css`
 		position: absolute;
 		right: 1.5rem;
 		font-weight: 500;

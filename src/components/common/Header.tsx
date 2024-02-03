@@ -43,13 +43,12 @@ Header.Title = function HeaderTitle({ size = "default", children }: HeaderTitleP
 	return <h1 css={size === "large" ? headerStyle.titleLarge : headerStyle.title}>{children}</h1>;
 };
 
-// NOTE: ActionButton이라는 이름보다 더 괜찮은 이름 없는지
-Header.ActionButton = function HeaderActionButton({
+Header.TextButton = function HeaderTextButton({
 	children,
 	...props
 }: ComponentPropsWithoutRef<"button">) {
 	return (
-		<button css={headerStyle.actionButton} {...props}>
+		<button css={headerStyle.textButton} {...props}>
 			{children}
 		</button>
 	);
