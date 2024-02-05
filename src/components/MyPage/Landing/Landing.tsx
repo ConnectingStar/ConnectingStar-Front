@@ -39,7 +39,7 @@ const Landing = () => {
 							key={buttonData.text}
 							text={buttonData.text}
 							subText={buttonData.subText}
-							hasArrowIcon
+							hasArrowIcon={buttonData.text !== "현재 버전"}
 							isSubText={true}
 						/>
 					))}
