@@ -1,16 +1,15 @@
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
-import Button from "@/components/MyPage/Button";
-import { buttonData, buttonDataWithIcon } from "@/constants/myPageConstants";
-
+import Button from "@/components/MyPage/Button/Button";
 import {
 	layoutStyle,
 	headingStyle,
 	profileBoxStyle,
 	profileImgStyle,
 	buttonBoxStyle,
-} from "@/pages/MyPage/Mypage.style";
+} from "@/components/MyPage/Landing/Landing.style";
+import { buttonData, buttonDataWithIcon } from "@/constants/myPageConstants";
 
-const Mypage = () => {
+const Landing = () => {
 	return (
 		<div css={layoutStyle}>
 			<h2 css={headingStyle}>마이 페이지</h2>
@@ -54,4 +53,4 @@ const Mypage = () => {
 	);
 };
 
-export default Mypage;
+export default Landing;
