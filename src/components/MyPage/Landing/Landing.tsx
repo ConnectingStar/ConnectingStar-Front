@@ -26,13 +26,7 @@ const Landing = () => {
 				<div css={buttonBoxStyle} key={data.id}>
 					{data.id === "프로필" ? "" : <h3>{data.id}</h3>}
 					{data.button.map((buttonData) => (
-						<Button
-							key={buttonData.text}
-							icon={buttonData.icon}
-							text={buttonData.text}
-							hasArrowIcon={false}
-							isVersion={false}
-						/>
+						<Button key={buttonData.text} icon={buttonData.icon} text={buttonData.text} />
 					))}
 				</div>
 			))}
@@ -44,8 +38,9 @@ const Landing = () => {
 						<Button
 							key={buttonData.text}
 							text={buttonData.text}
-							hasArrowIcon={buttonData.text !== "현재 버전"}
-							isVersion={buttonData.text === "현재 버전"}
+							subText={buttonData.subText}
+							hasArrowIcon
+							isSubText={true}
 						/>
 					))}
 				</div>
