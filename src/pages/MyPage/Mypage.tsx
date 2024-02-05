@@ -30,7 +30,7 @@ const Mypage = () => {
 							key={buttonData.text}
 							icon={buttonData.icon}
 							text={buttonData.text}
-							arrowIcon={false}
+							hasArrowIcon={false}
 							isVersion={false}
 						/>
 					))}
@@ -44,7 +44,7 @@ const Mypage = () => {
 						<Button
 							key={buttonData.text}
 							text={buttonData.text}
-							arrowIcon={buttonData.text !== "현재 버전"}
+							hasArrowIcon={buttonData.text !== "현재 버전"}
 							isVersion={buttonData.text === "현재 버전"}
 						/>
 					))}
