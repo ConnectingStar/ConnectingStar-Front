@@ -6,7 +6,7 @@ import { headerStyle } from "@/components/common/Header.style";
 
 // NOTE: 이 부분 props 이름을 어떻게 지어야 할지 모르겠음. size는 명확하지 않은듯
 interface HeaderTitleProps {
-	size?: "default" | "large";
+	hasButton?: boolean;
 	children: ReactNode;
 }
 
@@ -39,8 +39,8 @@ Header.CloseButton = function HeaderCloseButton() {
 	);
 };
 
-Header.Title = function HeaderTitle({ size = "default", children }: HeaderTitleProps) {
-	return <h1 css={size === "large" ? headerStyle.titleLarge : headerStyle.title}>{children}</h1>;
+Header.Title = function HeaderTitle({ hasButton = true, children }: HeaderTitleProps) {
+	return <h1 css={hasButton ? headerStyle.title : headerStyle.titleLarge}>{children}</h1>;
 };
 
 Header.TextButton = function HeaderTextButton({
