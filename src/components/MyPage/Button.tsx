@@ -4,11 +4,11 @@ import { layoutStyle, textStyle, versionTextStyle } from "@/components/MyPage/Bu
 interface buttonProps {
 	icon?: JSX.Element;
 	text: string;
-	arrowIcon: boolean;
+	hasArrowIcon: boolean;
 	isVersion: boolean;
 }
 
-const Button = ({ icon, text, arrowIcon, isVersion }: buttonProps) => {
+const Button = ({ icon, text, hasArrowIcon, isVersion }: buttonProps) => {
 	return (
 		<div css={layoutStyle}>
 			{icon}
@@ -17,7 +17,7 @@ const Button = ({ icon, text, arrowIcon, isVersion }: buttonProps) => {
 				{isVersion && " 1.01.2"}
 				{isVersion && <p css={versionTextStyle}>최신 버전 사용 중</p>}
 			</p>
-			{arrowIcon && <RightArrowIcon />}
+			{hasArrowIcon && <RightArrowIcon />}
 		</div>
 	);
 };
