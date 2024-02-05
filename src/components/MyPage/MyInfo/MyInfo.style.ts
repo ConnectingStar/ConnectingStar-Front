@@ -3,12 +3,19 @@ import { css } from "@emotion/react";
 export const layoutStyle = css`
 	width: 360px;
 	margin: 0 auto;
-	padding: 1.25rem 1.5rem 0;
 	font-family: "Noto Sans KR";
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+`;
+
+export const mainBoxStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 40px;
 	align-items: center;
+	width: 100%;
+	padding: 1.25rem 1.5rem 0;
 `;
 
 export const characterBoxStyle = css`
@@ -45,5 +52,28 @@ export const buttonBoxStyle = css`
 		color: #767676;
 		font-size: 0.875rem;
 		font-weight: 700;
+	}
+`;
+
+export const dividerStyle = css`
+	width: 360px;
+	height: 8px;
+	background-color: #f0f0f6;
+	margin-top: 40px;
+`;
+
+export const authListStyle = css`
+	width: 100%;
+
+	& > li {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 58px;
+		color: #111;
+
+		&:last-of-type {
+			color: #dc0000;
+		}
 	}
 `;
