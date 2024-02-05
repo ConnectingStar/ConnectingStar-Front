@@ -1,5 +1,7 @@
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 import Button from "@/components/MyPage/Button/Button";
+import { buttonData, buttonDataWithIcon } from "@/constants/myPageConstants";
+
 import {
 	layoutStyle,
 	headingStyle,
@@ -7,7 +9,6 @@ import {
 	profileImgStyle,
 	buttonBoxStyle,
 } from "@/components/MyPage/Landing/Landing.style";
-import { buttonData, buttonDataWithIcon } from "@/constants/myPageConstants";
 
 const Landing = () => {
 	return (
