@@ -17,7 +17,7 @@ const Button = ({ icon, text, arrowIcon, isVersion }: buttonProps) => {
 				{isVersion && " 1.01.2"}
 				{isVersion && <p css={versionTextStyle}>최신 버전 사용 중</p>}
 			</p>
-			<div>{arrowIcon && <RightArrowIcon />}</div>
+			{arrowIcon && <RightArrowIcon />}
 		</div>
 	);
 };
