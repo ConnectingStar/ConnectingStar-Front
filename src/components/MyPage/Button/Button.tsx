@@ -18,7 +18,7 @@ const Button = ({ icon, text, subText, hasArrowIcon, isSubText }: buttonProps) =
 			<p css={textStyle}>
 				{text}
 				{text === "현재 버전" && " 1.01.2"}
-				{isSubText && <p css={getSubTextStyle(text === "간편로그인")}>{subText}</p>}
+				{isSubText && <span css={getSubTextStyle(text === "간편로그인")}>{subText}</span>}
 			</p>
 			{hasArrowIcon && <RightArrowIcon />}
 		</div>
