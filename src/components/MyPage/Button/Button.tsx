@@ -1,4 +1,5 @@
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
+
 import { layoutStyle, textStyle, versionTextStyle } from "@/components/MyPage/Button/Button.style";
 
 interface buttonProps {
