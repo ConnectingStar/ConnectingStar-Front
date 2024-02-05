@@ -7,7 +7,7 @@ export const layoutStyle = css`
 	width: 312px;
 	border-radius: 15px;
 	background-color: #f7f7fb;
-	padding: 16px;
+	padding: 1rem;
 	position: relative;
 
 	& > div {
