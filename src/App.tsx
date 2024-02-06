@@ -5,7 +5,8 @@ import HomePage from "@/pages/HomePage";
 import MyPage from "@/pages/MyPage";
 import StarPage from "@/pages/StarPage";
 
-import SignUp from "./components/SignUp/SignUp";
+import OauthSignUp from "./pages/SignUp/OauthSignUp";
+import SignUp from "./pages/SignUp/SignUp";
 
 const App = () => {
 	return (
@@ -16,6 +17,7 @@ const App = () => {
 				<Route path="/chart" element={<ChartPage />} />
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/signup" element={<SignUp />} />
+				<Route path="/oauthsignup" element={<OauthSignUp />} />
 			</Routes>
 		</BrowserRouter>
 	);
