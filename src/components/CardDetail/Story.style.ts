@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 
+// TODO: theme으로 교체 예정
 export const storyStyle = css`
 	display: flex;
 	flex-direction: column;
