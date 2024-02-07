@@ -1,15 +1,15 @@
 import { css } from "@emotion/react";
 
+import { theme } from "@/styles/theme";
+
 export const layoutStyle = css`
 	width: 360px;
 	margin: 0 auto;
 	padding: 0.625rem 1.5rem 3rem;
-	font-family: "Noto Sans KR";
 `;
 
 export const headingStyle = css`
-	font-size: 1.5rem;
-	font-weight: 500;
+	${theme.font.head_a};
 `;
 
 export const profileBoxStyle = css`
@@ -23,8 +23,7 @@ export const profileBoxStyle = css`
 		display: flex;
 
 		& > p {
-			font-size: 1.25rem;
-			font-weight: 500;
+			${theme.font.header};
 		}
 	}
 `;
@@ -42,9 +41,8 @@ export const buttonBoxStyle = css`
 	gap: 12px;
 
 	& > h3 {
-		color: #767676;
-		font-size: 0.875rem;
-		font-weight: 700;
+		color: ${theme.color.font_gray};
+		${theme.font.body_b_bold};
 		margin-top: 2.5rem;
 	}
 `;
