@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 export const buttonStyle = css`
 	width: 100%;
 	padding: 1rem 0;
-	border-radius: 0.9375rem;
+	border-radius: 15px;
 	font-weight: 500;
 	color: #fff;
 	background-color: #0176f9;

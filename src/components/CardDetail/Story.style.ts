@@ -15,7 +15,7 @@ export const titleStyle = css`
 export const descriptionStyle = css`
 	height: 11.9375rem;
 	padding: 1rem;
-	border-radius: 0.9375rem;
+	border-radius: 15px;
 	color: #111111;
 	background-color: #f7f7fb;
 `;
