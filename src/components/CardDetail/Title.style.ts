@@ -1,14 +1,15 @@
 import { css } from "@emotion/react";
 
+import { theme } from "@/styles/theme";
+
 export const titleStyle = {
 	h1: css`
 		margin-bottom: 0.5625rem;
-		font-size: 1.5rem;
-		font-weight: 500;
-		color: #111;
+		${theme.font.head_a}
+		color: ${theme.color.font_black};
 	`,
 	h2: css`
-		font-weight: 500;
-		color: #0176f9;
+		${theme.font.head_b}
+		color: ${theme.color.main_Blue};
 	`,
 };
