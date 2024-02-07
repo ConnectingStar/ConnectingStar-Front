@@ -6,6 +6,8 @@ export const flexStyle = css`
 	overflow: hidden;
 	white-space: nowrap;
 	padding: 0.5rem 1.5rem 0;
+	max-width: 360px;
+	margin: 0 auto;
 `;
 
 export const scrollBoxStyle = css`
