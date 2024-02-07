@@ -7,6 +7,8 @@ export const layoutStyle = css`
 	align-items: center;
 	gap: 6px;
 	padding: 0.4375rem 1.5rem 0;
+	max-width: 360px;
+	margin: 0 auto;
 `;
 
 export const sortButtonStyle = css`
