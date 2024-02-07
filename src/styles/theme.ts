@@ -52,13 +52,13 @@ export const theme = {
 	color: {
 		// 폰트 색상
 		font_black: "#111111",
-		font_deepgray: "#505050",
+		font_deep_gray: "#505050",
 		font_gray: "#767676",
 
 		// 색상
-		main_deepblue: "#385678",
+		main_deep_blue: "#385678",
 		main_blue: "#0176F9",
-		main_lightblue: "#E6F1FE",
+		main_light_blue: "#E6F1FE",
 		main_yellow: "#FFE276",
 
 		// 줄, 배경
