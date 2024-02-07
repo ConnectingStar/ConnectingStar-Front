@@ -23,7 +23,7 @@ export default function Img() {
 		<div css={imgStyle} className={data.state === "selected" ? "selected" : ""}>
 			<img src={data.image} alt={data.name} />
 			{data.state === "possession" && <PossessionLabel />}
-			<Star>{data.star}</Star>
+			<Star starNumber={data.star} />
 		</div>
 	);
 }
