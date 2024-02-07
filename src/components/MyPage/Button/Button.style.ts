@@ -1,12 +1,14 @@
 import { css } from "@emotion/react";
 
+import { theme } from "@/styles/theme";
+
 export const layoutStyle = css`
 	display: flex;
 	align-items: center;
 	gap: 8px;
 	width: 312px;
 	border-radius: 15px;
-	background-color: #f7f7fb;
+	background-color: ${theme.color.bg};
 	padding: 1rem;
 	position: relative;
 
@@ -25,14 +27,9 @@ export const textStyle = css`
 	width: 100%;
 `;
 
-export const versionTextStyle = css`
-	color: #0176f9;
-	font-weight: 400;
-`;
-
 export const getSubTextStyle = (isLogin: boolean) => {
 	return css`
-		color: ${isLogin === true ? "#999" : "#0176f9"};
+		color: ${isLogin === true ? theme.color.button_deactivated : theme.color.main_Blue};
 		font-weight: 400;
 	`;
 };
