@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 export const imgStyle = css`
 	height: 312px;
 	border-radius: 15px;
+	margin-bottom: 1.25rem;
 	position: relative;
 	background-color: #d9d9d9;
 	overflow: hidden;

@@ -7,6 +7,7 @@ export const storyStyle = css`
 `;
 
 export const titleStyle = css`
+	margin-bottom: 0.75rem;
 	color: #767676;
 	font-size: 0.875rem;
 	font-weight: 700;
