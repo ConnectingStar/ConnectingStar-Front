@@ -15,6 +15,6 @@ export const imgStyle = css`
 	}
 
 	&.selected {
-		border: 5px solid #0176f9;
+		box-shadow: 0 0 0 5px #0176f9 inset;
 	}
 `;
