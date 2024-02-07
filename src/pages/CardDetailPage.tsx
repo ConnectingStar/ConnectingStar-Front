@@ -38,4 +38,3 @@ export default function CardDetailPage() {
 		</>
 	);
 }
-// 별자리 선택 상태에 따라서 버튼, 이미지 상태도 함께 바뀌어야 함!
