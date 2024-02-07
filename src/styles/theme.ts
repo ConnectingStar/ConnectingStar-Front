@@ -57,7 +57,7 @@ export const theme = {
 
 		// 색상
 		main_deepBlue: "#385678",
-		main_Blue: "#0176F9",
+		main_blue: "#0176F9",
 		main_lightBlue: "#E6F1FE",
 		main_yellow: "#FFE276",
 
