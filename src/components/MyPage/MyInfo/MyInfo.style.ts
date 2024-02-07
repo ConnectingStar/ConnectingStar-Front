@@ -1,9 +1,10 @@
 import { css } from "@emotion/react";
 
+import { theme } from "@/styles/theme";
+
 export const layoutStyle = css`
 	width: 360px;
 	margin: 0 auto;
-	font-family: "Noto Sans KR";
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -29,14 +30,14 @@ export const characterBoxStyle = css`
 		width: 124px;
 		height: 55px;
 		border-radius: 15px;
-		border: 2px solid #0176f9;
+		border: 2px solid ${theme.color.main_Blue};
 		background-color: #fff;
 		position: absolute;
 		left: 5.875rem;
 		bottom: 1.125rem;
 
 		& > p {
-			color: #0176f9;
+			color: ${theme.color.main_Blue};
 			font-weight: 500;
 			line-height: 24px;
 		}
@@ -49,17 +50,16 @@ export const buttonBoxStyle = css`
 	gap: 12px;
 
 	& > h3 {
-		color: #767676;
-		font-size: 0.875rem;
-		font-weight: 700;
+		color: ${theme.color.font_gray};
+		${theme.font.body_b_bold};
 	}
 `;
 
 export const dividerStyle = css`
 	width: 360px;
 	height: 8px;
-	background-color: #f0f0f6;
-	margin-top: 40px;
+	background-color: ${theme.color.line};
+	margin-top: 2.5rem;
 `;
 
 export const authListStyle = css`
@@ -70,10 +70,10 @@ export const authListStyle = css`
 		align-items: center;
 		justify-content: center;
 		height: 58px;
-		color: #111;
+		color: ${theme.color.font_black};
 
 		&:last-of-type {
-			color: #dc0000;
+			color: ${theme.color.error};
 		}
 	}
 `;
