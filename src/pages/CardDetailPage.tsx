@@ -5,7 +5,7 @@ import {
 	buttonContainerStyle,
 } from "@/components/CardDetail/CardDetailPage.style";
 import CategoryLabel from "@/components/CardDetail/CategoryLabel";
-import Img from "@/components/CardDetail/Img";
+import Img from "@/components/CardDetail/Img/Img";
 import Story from "@/components/CardDetail/Story";
 import Title from "@/components/CardDetail/Title";
 

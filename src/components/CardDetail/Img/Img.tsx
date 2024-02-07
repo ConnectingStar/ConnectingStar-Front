@@ -1,6 +1,6 @@
-import { imgStyle } from "@/components/CardDetail/Img.style";
-import PossessionLabel from "@/components/CardDetail/PossessionLabel";
-import Star from "@/components/CardDetail/Star";
+import { imgStyle } from "@/components/CardDetail/Img/Img.style";
+import PossessionLabel from "@/components/CardDetail/Img/PossessionLabel";
+import Star from "@/components/CardDetail/Img/Star";
 
 // TODO: API 연결 후 삭제 예정
 interface dataType {

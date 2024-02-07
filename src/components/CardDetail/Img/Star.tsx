@@ -1,5 +1,5 @@
 import starImg from "@/assets/image/card-detail-star.png";
-import { starImgStyle } from "@/components/CardDetail/Star.style";
+import { starImgStyle } from "@/components/CardDetail/Img/Star.style";
 
 export default function Star({ children }: { children: React.ReactNode }) {
 	return (
