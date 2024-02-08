@@ -6,7 +6,7 @@ export const layoutStyle = css`
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	width: 312px;
+	width: 19.5rem;
 	border-radius: 15px;
 	background-color: ${theme.color.bg};
 	padding: 1rem;
@@ -20,11 +20,11 @@ export const layoutStyle = css`
 
 export const textStyle = css`
 	color: #111;
-	font-weight: 700;
 	position: relative;
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
+	${theme.font.body_a_bold};
 `;
 
 export const getSubTextStyle = (isLogin: boolean) => {

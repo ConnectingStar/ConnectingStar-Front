@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 export const layoutStyle = css`
-	width: 360px;
+	width: 22.5rem;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -20,15 +20,15 @@ export const mainBoxStyle = css`
 `;
 
 export const characterBoxStyle = css`
-	width: 312px;
-	height: 312px;
+	width: 19.5rem;
+	height: 19.5rem;
 	border-radius: 15px;
 	background-color: #d9d9d9;
 	position: relative;
 
 	& > button {
-		width: 124px;
-		height: 55px;
+		width: 7.75rem;
+		height: 3.4375rem;
 		border-radius: 15px;
 		border: 2px solid ${theme.color.main_blue};
 		background-color: #fff;
@@ -38,7 +38,7 @@ export const characterBoxStyle = css`
 
 		& > p {
 			color: ${theme.color.main_blue};
-			font-weight: 500;
+			${theme.font.button_big};
 			line-height: 24px;
 		}
 	}
@@ -56,8 +56,8 @@ export const buttonBoxStyle = css`
 `;
 
 export const dividerStyle = css`
-	width: 360px;
-	height: 8px;
+	width: 22.5rem;
+	height: 0.5rem;
 	background-color: ${theme.color.line};
 	margin-top: 2.5rem;
 `;
@@ -69,7 +69,7 @@ export const authListStyle = css`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 58px;
+		height: 3.625rem;
 		color: ${theme.color.font_black};
 
 		&:last-of-type {
