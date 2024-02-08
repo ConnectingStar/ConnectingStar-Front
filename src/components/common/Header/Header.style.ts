@@ -31,5 +31,6 @@ export const headerStyle = {
 	titleLarge: css`
 		margin-right: auto;
 		font-size: 1.5rem;
+		font-weight: 500;
 	`,
 };

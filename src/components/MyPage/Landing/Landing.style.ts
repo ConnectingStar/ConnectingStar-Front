@@ -5,11 +5,7 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 0.625rem 1.5rem 3rem;
-`;
-
-export const headingStyle = css`
-	${theme.font.head_a};
+	padding: 0 1.5rem 3rem;
 `;
 
 export const profileBoxStyle = css`

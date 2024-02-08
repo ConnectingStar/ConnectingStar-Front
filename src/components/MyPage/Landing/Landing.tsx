@@ -4,7 +4,6 @@ import { buttonData, buttonDataWithIcon } from "@/constants/myPageConstants";
 
 import {
 	layoutStyle,
-	headingStyle,
 	profileBoxStyle,
 	profileImgStyle,
 	buttonBoxStyle,
@@ -13,7 +12,6 @@ import {
 const Landing = () => {
 	return (
 		<div css={layoutStyle}>
-			<h2 css={headingStyle}>마이 페이지</h2>
 			<div css={profileBoxStyle}>
 				<div css={profileImgStyle} />
 				<a href="#">
