@@ -48,7 +48,16 @@ export const OauthSignUpStyle = {
 		position: fixed;
 		bottom: 1.25rem;
 		color: ${theme.color.button_deactivated};
-		text-align: center;
-		${theme.font.body_xs}
+		${theme.font.body_xs};
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		& > div {
+			display: flex;
+		}
+		.line::after {
+			content: "ㅣ";
+			float: right;
+		}
 	`,
 };
