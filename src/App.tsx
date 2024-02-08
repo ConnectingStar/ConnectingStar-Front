@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
+import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
@@ -21,6 +22,7 @@ const App = () => {
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
+				<Route path="/habit-history" element={<MyHabitPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
