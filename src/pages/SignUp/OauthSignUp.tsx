@@ -6,7 +6,7 @@ function OauthSignUp() {
 	return (
 		<div css={OauthSignUpStyle.container}>
 			<div css={OauthSignUpStyle.logo}>
-				<img src="" alt="" />
+				<img src="" alt="logo" />
 				<p>로고</p>
 			</div>
 			<div css={OauthSignUpStyle.oauth}>
