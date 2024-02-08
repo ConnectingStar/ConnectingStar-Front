@@ -1,5 +1,5 @@
 import { categoryLabelStyle } from "@/components/StarCardDetail/CategoryLabel/CategoryLabel.style";
-import Label from "@/components/StarCardDetail/CategoryLabel/Label";
+import Label from "@/components/StarCardDetail/Label";
 
 // TODO: API 연결 후 삭제 예정
 const data = [
@@ -11,7 +11,9 @@ export default function CategoryLabel() {
 	return (
 		<div css={categoryLabelStyle}>
 			{data.map((item) => (
-				<Label key={item.id}>{item.category}</Label>
+				<Label key={item.id} type="category">
+					{item.category}
+				</Label>
 			))}
 		</div>
 	);
