@@ -1,5 +1,5 @@
 import Button from "@/components/StarCardDetail/Button";
-import CategoryLabel from "@/components/StarCardDetail/CategoryLabel/CategoryLabel";
+import CategoryLabel from "@/components/StarCardDetail/CategoryLabel";
 import Img from "@/components/StarCardDetail/Img/Img";
 import Story from "@/components/StarCardDetail/Story";
 import Title from "@/components/StarCardDetail/Title";

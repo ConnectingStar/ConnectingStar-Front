@@ -1,4 +1,4 @@
-import { categoryLabelStyle } from "@/components/StarCardDetail/CategoryLabel/CategoryLabel.style";
+import { categoryLabelStyle } from "@/components/StarCardDetail/CategoryLabel.style";
 import Label from "@/components/StarCardDetail/Label";
 
 // TODO: API 연결 후 삭제 예정
