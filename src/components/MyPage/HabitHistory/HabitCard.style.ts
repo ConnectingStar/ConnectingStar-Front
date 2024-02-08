@@ -3,20 +3,34 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 export const layoutStyle = css`
-	height: 6.25rem;
 	border-radius: 15px;
 	background-color: ${theme.color.bg};
 	padding: 1rem;
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
+	position: relative;
+
+	& > svg {
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+	}
 
 	& > h1 {
 		${theme.font.body_a_bold};
 		max-width: 15rem;
+		margin-bottom: 0.375rem;
 	}
+`;
 
-	& > p > span {
+export const textBoxStyle = css`
+	display: flex;
+	flex-direction: column;
+`;
+
+export const textStyle = css`
+	height: 1.0625rem;
+	line-height: 1.0625rem;
+
+	& > span {
 		position: relative;
 		margin-right: 1rem;
 		color: ${theme.color.button_deactivated};
