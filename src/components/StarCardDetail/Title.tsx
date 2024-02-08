@@ -1,4 +1,4 @@
-import { titleStyle } from "@/components/CardDetail/Title.style";
+import { titleStyle } from "@/components/StarCardDetail/Title.style";
 
 interface TitleProps {
 	as: "h1" | "h2";

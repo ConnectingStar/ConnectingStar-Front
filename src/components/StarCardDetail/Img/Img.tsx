@@ -1,6 +1,6 @@
-import { imgStyle } from "@/components/CardDetail/Img/Img.style";
-import PossessionLabel from "@/components/CardDetail/Img/PossessionLabel";
-import Star from "@/components/CardDetail/Img/Star";
+import { imgStyle } from "@/components/StarCardDetail/Img/Img.style";
+import PossessionLabel from "@/components/StarCardDetail/Img/PossessionLabel";
+import Star from "@/components/StarCardDetail/Img/Star";
 
 interface ImgProps {
 	state: "default" | "selected" | "possession";

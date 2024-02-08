@@ -1,9 +1,9 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-import CardDetailPage from "@/pages/CardDetailPage";
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyPage from "@/pages/MyPage";
+import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarPage from "@/pages/StarPage";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
 				<Route path="/star" element={<StarPage />} />
 				<Route path="/chart" element={<ChartPage />} />
 				<Route path="/mypage" element={<MyPage />} />
-				<Route path="/star/:id" element={<CardDetailPage />} />
+				<Route path="/star/:id" element={<StarCardDetailPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
