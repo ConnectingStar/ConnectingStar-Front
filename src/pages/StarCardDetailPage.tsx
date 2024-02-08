@@ -28,10 +28,10 @@ export default function StarCardDetailPage() {
 				<Title as="h1">캐릭터 이름</Title>
 				<CategoryLabel />
 				<Story />
+				<div css={buttonContainerStyle}>
+					<Button>{buttonState[data.state]}</Button>
+				</div>
 			</section>
-			<div css={buttonContainerStyle}>
-				<Button>{buttonState[data.state]}</Button>
-			</div>
 		</>
 	);
 }
