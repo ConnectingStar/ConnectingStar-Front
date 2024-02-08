@@ -24,8 +24,8 @@ export default function StarCardDetailPage() {
 			<header css={headerStyle}></header>
 			<section css={sectionStyle}>
 				<Img state={data.state} />
-				<Title as="h2">캐릭터에 대한 설명</Title>
-				<Title as="h1">캐릭터 이름</Title>
+				<Title tag="h2">캐릭터에 대한 설명</Title>
+				<Title tag="h1">캐릭터 이름</Title>
 				<CategoryLabel />
 				<Story />
 				<div css={buttonContainerStyle}>
