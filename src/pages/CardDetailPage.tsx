@@ -1,14 +1,11 @@
 import Button from "@/components/CardDetail/Button";
-import {
-	sectionStyle,
-	headerStyle,
-	buttonContainerStyle,
-} from "@/components/CardDetail/CardDetailPage.style";
 import CategoryLabel from "@/components/CardDetail/CategoryLabel/CategoryLabel";
 import Img from "@/components/CardDetail/Img/Img";
 import Story from "@/components/CardDetail/Story";
 import Title from "@/components/CardDetail/Title";
 import { buttonState } from "@/constants/cardDetailConstants";
+
+import { sectionStyle, headerStyle, buttonContainerStyle } from "@/pages/CardDetailPage.style";
 
 // TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
 interface dataType {
