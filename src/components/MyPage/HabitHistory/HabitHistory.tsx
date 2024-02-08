@@ -19,7 +19,7 @@ const notEndHabitData = [
 	},
 	{
 		isEnd: false,
-		title: "오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지",
+		title: "오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지2",
 		startDate: "2023. 12. 11.",
 		successCount: 53,
 		failCount: 13,
@@ -38,7 +38,7 @@ const endHabitData = [
 	},
 	{
 		isEnd: true,
-		title: "오후 123시에 우리 집 안 내 책상 위에서 책 읽기 123 페이지",
+		title: "오후 123시에 우리 집 안 내 책상 위에서 책 읽기 123 페이지2",
 		startDate: "2023. 12. 11.",
 		endDate: "2024. 01. 03",
 		successCount: 53,
