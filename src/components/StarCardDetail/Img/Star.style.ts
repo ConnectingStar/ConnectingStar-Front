@@ -1,5 +1,7 @@
 import { css } from "@emotion/react";
 
+import { theme } from "@/styles/theme";
+
 export const starImgStyle = css`
 	width: 3.75rem;
 	height: 3.75rem;
@@ -18,6 +20,6 @@ export const starImgStyle = css`
 		left: 1.125rem;
 		font-size: 1.25rem;
 		font-weight: 700;
-		color: #111;
+		color: ${theme.color.font_black};
 	}
 `;
