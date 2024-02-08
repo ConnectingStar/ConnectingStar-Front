@@ -35,14 +35,12 @@ export const OauthSignUpStyle = {
 			justify-content: center;
 			border-radius: 15rem;
 			gap: 5px;
-		}
-		& :nth-child(1) {
-			background-color: #fae100;
-		}
-		& :nth-child(2) {
-			border: 2px solid ${theme.color.line};
-			& > img {
-				background-color: white; // 안 넣으면 구글 배경 노란색
+
+			&:first-of-type {
+				background-color: ${theme.color.main_yellow};
+			}
+			&:last-of-type {
+				border: 2px solid ${theme.color.line};
 			}
 		}
 	`,
