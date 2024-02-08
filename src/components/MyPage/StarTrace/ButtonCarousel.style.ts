@@ -6,7 +6,7 @@ export const flexStyle = css`
 	overflow: hidden;
 	white-space: nowrap;
 	padding: 0.5rem 1.5rem 0;
-	max-width: 360px;
+	max-width: 22.5rem;
 	margin: 0 auto;
 `;
 
@@ -22,11 +22,10 @@ export const scrollBoxStyle = css`
 export const getButtonStyle = (isActive: boolean) => {
 	return css`
 		padding: 1rem;
-		border-radius: 0.9375rem;
-		background-color: ${theme.color.main_Blue};
-		background-color: ${isActive ? theme.color.main_Blue : theme.color.button_disabled};
+		border-radius: 15px;
+		background-color: ${isActive ? theme.color.main_blue : theme.color.button_disabled};
 		${theme.font.body_a_bold};
 		color: ${isActive ? "#fff" : theme.color.button_deactivated};
-		margin-right: 6px;
+		margin-right: 0.375rem;
 	`;
 };
