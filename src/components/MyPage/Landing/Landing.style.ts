@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 export const layoutStyle = css`
-	width: 360px;
+	width: 22.5rem;
 	margin: 0 auto;
 	padding: 0.625rem 1.5rem 3rem;
 `;
@@ -29,8 +29,8 @@ export const profileBoxStyle = css`
 `;
 
 export const profileImgStyle = css`
-	width: 100px;
-	height: 100px;
+	width: 6.25rem;
+	height: 6.25rem;
 	border-radius: 16px;
 	background-color: #d9d9d9;
 `;

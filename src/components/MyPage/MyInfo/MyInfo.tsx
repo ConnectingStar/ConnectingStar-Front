@@ -28,7 +28,7 @@ const MyInfo = () => {
 								key={buttonData.text}
 								text={buttonData.text}
 								subText={buttonData.subText}
-								isSubText={true}
+								isSubText
 							/>
 						))}
 					</div>
