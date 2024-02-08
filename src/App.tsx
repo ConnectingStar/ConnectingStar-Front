@@ -3,10 +3,9 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyPage from "@/pages/MyPage";
+import OauthSignUp from "@/pages/SignUp/OauthSignUp";
+import SignUp from "@/pages/SignUp/SignUp";
 import StarPage from "@/pages/StarPage";
-
-import OauthSignUp from "./pages/SignUp/OauthSignUp";
-import SignUp from "./pages/SignUp/SignUp";
 
 const App = () => {
 	return (
