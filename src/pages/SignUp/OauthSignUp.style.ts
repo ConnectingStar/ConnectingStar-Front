@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const OauthSignUpStyle = {
+export const oauthSignUpStyle = {
 	container: css`
 		display: flex;
 		flex-direction: column;
