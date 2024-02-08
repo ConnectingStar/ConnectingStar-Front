@@ -9,12 +9,12 @@ import { sectionStyle, headerStyle, buttonContainerStyle } from "@/pages/StarCar
 
 // TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
 interface dataType {
-	state: "default" | "selected" | "possession";
+	state: "default" | "selected" | "have";
 }
 
 // TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
 const data: dataType = {
-	state: "default",
+	state: "have",
 };
 
 // TODO: Header, Button 공통 컴포넌트 머지되면 교체 예정

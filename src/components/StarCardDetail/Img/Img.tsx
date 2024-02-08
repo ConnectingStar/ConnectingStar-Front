@@ -3,14 +3,14 @@ import PossessionLabel from "@/components/StarCardDetail/Img/PossessionLabel";
 import Star from "@/components/StarCardDetail/Img/Star";
 
 interface ImgProps {
-	state: "default" | "selected" | "possession";
+	state: "default" | "selected" | "have";
 }
 
 export default function Img({ state }: ImgProps) {
 	return (
 		<div css={imgStyle} className={state === "selected" ? "selected" : ""}>
 			<img src="" alt="별자리" />
-			{state === "possession" && <PossessionLabel />}
+			{state === "have" && <PossessionLabel />}
 			<Star starNumber={10} />
 		</div>
 	);
