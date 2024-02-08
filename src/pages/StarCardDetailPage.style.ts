@@ -16,5 +16,4 @@ export const buttonContainerStyle = css`
 	width: 360px;
 	padding: 1rem 1.5rem;
 	margin: 0 auto;
-	background-color: #fff;
 `;
