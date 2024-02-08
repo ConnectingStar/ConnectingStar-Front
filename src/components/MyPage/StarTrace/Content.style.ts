@@ -23,7 +23,7 @@ export const textBoxStyle = css`
 	padding: 1rem;
 	border-radius: 15px;
 	background-color: ${theme.color.bg};
-	max-width: 248px;
+	max-width: 15.5rem;
 
 	& > p {
 		${theme.font.body_b};

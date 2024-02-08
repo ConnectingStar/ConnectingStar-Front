@@ -7,7 +7,7 @@ export const layoutStyle = css`
 	align-items: center;
 	gap: 6px;
 	padding: 0.4375rem 1.5rem 0;
-	max-width: 360px;
+	max-width: 22.5rem;
 	margin: 0 auto;
 `;
 
@@ -25,14 +25,14 @@ export const sortButtonStyle = css`
 	}
 
 	& > svg {
-		margin-top: 1px;
+		margin-top: 0.0625rem;
 	}
 `;
 
 export const buttonStyle = css`
 	padding: 0.5rem 1rem;
 	border-radius: 20px;
-	background-color: ${theme.color.main_deepBlue};
+	background-color: ${theme.color.main_deep_blue};
 	color: #fff;
 	${theme.font.body_b};
 `;
