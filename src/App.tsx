@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import CreateAccountPage from "./pages/CreateAccountPage";
-import DiscoveryRoutePage from "./pages/VisitTrackPage";
-
 import ChartPage from "@/pages/ChartPage";
+import CreateAccountPage from "@/pages/CreateAccountPage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
@@ -36,7 +34,6 @@ const App = () => {
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
 				<Route path="/rest-record" element={<RestRecordPage />} />
-				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
 			</Routes>
 		</BrowserRouter>
 	);
