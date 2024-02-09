@@ -1,7 +1,8 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
-import { layoutStyle } from "@/components/common/Gnb/Gnb.style";
 import { gnbData } from "@/constants/gnbConstants";
+
+import { layoutStyle } from "@/components/common/Gnb/Gnb.style";
 
 const Gnb = () => {
 	const navigate = useNavigate();

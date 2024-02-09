@@ -2,6 +2,7 @@ import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import ArrowLeftIcon from "@/assets/icon/arrow-left.svg?react";
 import CloseIcon from "@/assets/icon/close.svg?react";
+
 import { headerStyle } from "@/components/common/Header.style";
 
 interface HeaderTitleProps {
