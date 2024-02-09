@@ -10,6 +10,6 @@ export const titleStyle = {
 	`,
 	h2: css`
 		${theme.font.head_b}
-		color: ${theme.color.main_Blue};
+		color: ${theme.color.main_blue};
 	`,
 };

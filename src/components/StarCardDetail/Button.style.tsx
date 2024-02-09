@@ -10,5 +10,5 @@ export const buttonStyle = css`
 	border-radius: 15px;
 	${theme.font.button_big}
 	color: #fff;
-	background-color: ${theme.color.main_Blue};
+	background-color: ${theme.color.main_blue};
 `;

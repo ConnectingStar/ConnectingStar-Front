@@ -9,8 +9,8 @@ export const labelStyle = {
 		border-radius: 0.9375rem;
 		${theme.font.body_c_bold};
 		text-align: center;
-		color: ${theme.color.main_Blue};
-		background-color: ${theme.color.main_lightBlue};
+		color: ${theme.color.main_blue};
+		background-color: ${theme.color.main_light_blue};
 	`,
 	have: css`
 		width: 6.25rem;
@@ -21,6 +21,6 @@ export const labelStyle = {
 		${theme.font.body_a_bold}
 		text-align: center;
 		color: #fff;
-		background-color: ${theme.color.main_deepBlue};
+		background-color: ${theme.color.main_deep_blue};
 	`,
 };

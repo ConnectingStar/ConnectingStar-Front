@@ -1,5 +1,7 @@
 import { css } from "@emotion/react";
 
+import { theme } from "@/styles/theme";
+
 export const imgStyle = css`
 	height: 312px;
 	border-radius: 15px;
@@ -15,6 +17,6 @@ export const imgStyle = css`
 	}
 
 	&.selected {
-		box-shadow: 0 0 0 5px #0176f9 inset;
+		box-shadow: 0 0 0 5px ${theme.color.main_blue} inset;
 	}
 `;
