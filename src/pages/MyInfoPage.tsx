@@ -8,7 +8,7 @@ const MyInfoPage = () => {
 				<Header.PrevButton />
 				<Header.Title>내 정보</Header.Title>
 			</Header>
-			<MyInfo />;
+			<MyInfo />
 		</>
 	);
 };
