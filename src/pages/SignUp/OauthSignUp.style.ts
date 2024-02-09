@@ -4,6 +4,9 @@ import { theme } from "@/styles/theme";
 
 export const oauthSignUpStyle = {
 	container: css`
+		width: 22.5rem;
+		margin: 0 auto;
+		padding: 1.25rem 1.5rem 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -23,8 +26,7 @@ export const oauthSignUpStyle = {
 		}
 	`,
 	oauth: css`
-		max-width: 500px;
-		width: 100%;
+		width: 312px;
 		display: flex;
 		flex-direction: column;
 		gap: 6px;
