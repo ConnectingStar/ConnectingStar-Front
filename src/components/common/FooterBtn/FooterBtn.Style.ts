@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-const CommonButtonStyle = {
+const FooterBtnStyle = {
 	container: css`
 		max-width: 500px;
 		width: 100%;
@@ -56,4 +56,4 @@ const CommonButtonStyle = {
 	`,
 };
 
-export default CommonButtonStyle;
+export default FooterBtnStyle;

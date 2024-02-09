@@ -1,10 +1,10 @@
-import CommonButtonStyle from "@/components/common/CommonButton/CommonButton.style";
+import FooterBtnStyle from "@/components/common/FooterBtn/FooterBtn.Style";
 
-export default function CommonButton({ children }: { children: React.ReactNode }) {
-	return <div css={CommonButtonStyle.container}>{children}</div>;
+export default function FooterBtn({ children }: { children: React.ReactNode }) {
+	return <div css={FooterBtnStyle.container}>{children}</div>;
 }
 
-CommonButton.Round = function CommonButtonRound({
+FooterBtn.Round = function FooterBtnRound({
 	children,
 	cancle,
 	blur,
@@ -14,7 +14,7 @@ CommonButton.Round = function CommonButtonRound({
 	blur?: boolean;
 }) {
 	return (
-		<div css={CommonButtonStyle.round}>
+		<div css={FooterBtnStyle.round}>
 			{cancle ? (
 				<button type="button" className="canclebutton">
 					취소
@@ -27,7 +27,7 @@ CommonButton.Round = function CommonButtonRound({
 	);
 };
 
-CommonButton.Square = function CommonButtonSquare({
+FooterBtn.Square = function FooterBtnSquare({
 	children,
 	cancle,
 	blur,
@@ -37,7 +37,7 @@ CommonButton.Square = function CommonButtonSquare({
 	blur?: boolean;
 }) {
 	return (
-		<div css={CommonButtonStyle.square}>
+		<div css={FooterBtnStyle.square}>
 			{cancle ? (
 				<button type="button" className="canclebutton">
 					취소
