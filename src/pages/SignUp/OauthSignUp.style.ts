@@ -26,17 +26,17 @@ export const oauthSignUpStyle = {
 		}
 	`,
 	oauth: css`
-		width: 312px;
+		width: 19.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
+		gap: 0.375rem;
 		& > button {
 			height: 3.438rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			border-radius: 15rem;
-			gap: 5px;
+			gap: 0.313rem;
 
 			&:first-of-type {
 				background-color: ${theme.color.main_yellow};
