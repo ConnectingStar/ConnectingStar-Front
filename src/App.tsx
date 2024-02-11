@@ -10,6 +10,7 @@ import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
 import StarPage from "@/pages/StarPage";
+import WithdrawalPage from "@/pages/WithdrawalPage";
 
 const App = () => {
 	return (
@@ -25,6 +26,7 @@ const App = () => {
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
+				<Route path="/withdrawal" element={<WithdrawalPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
