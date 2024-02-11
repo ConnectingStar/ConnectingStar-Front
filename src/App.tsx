@@ -6,6 +6,7 @@ import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
+import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import StarPage from "@/pages/StarPage";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
 				<Route path="/myinfo" element={<MyInfoPage />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
+				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
