@@ -130,3 +130,24 @@ export const habitIconData = [
 		icon: <VeryGoodIcon />,
 	},
 ];
+
+export const leaveResonData = [
+	{
+		title: "자주 사용하지 않아요",
+	},
+	{
+		title: "사용 방법이 어려워요",
+	},
+	{
+		title: "필요한 기능이 없어요",
+	},
+	{
+		title: "오류 때문에 불편해요",
+	},
+	{
+		title: "새 계정을 만들고 싶어요",
+	},
+	{
+		title: "직접 입력",
+	},
+];

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type modalType = "auth" | null;
+type modalType = "leaveReason" | null;
 
 interface initialStateType {
 	modal: modalType;
