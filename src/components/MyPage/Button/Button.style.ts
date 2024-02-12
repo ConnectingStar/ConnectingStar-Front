@@ -17,7 +17,7 @@ export const layoutStyle = css`
 `;
 
 export const textStyle = css`
-	color: #111;
+	color: ${theme.color.font_black};
 	position: relative;
 	display: flex;
 	justify-content: space-between;
