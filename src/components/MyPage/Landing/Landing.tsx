@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 
 import Button from "@/components/MyPage/Button/Button";
@@ -16,17 +18,22 @@ const Landing = () => {
 		<div css={layoutStyle}>
 			<div css={profileBoxStyle}>
 				<div css={profileImgStyle} />
-				<a href="#">
+				<Link to="/myinfo">
 					<p>사용자 닉네임</p>
 					<RightArrowIcon />
-				</a>
+				</Link>
 			</div>
 
 			{buttonDataWithIcon.map((data) => (
 				<div css={buttonBoxStyle} key={data.id}>
 					{data.id === "프로필" ? "" : <h3>{data.id}</h3>}
 					{data.button.map((buttonData) => (
-						<Button key={buttonData.text} icon={buttonData.icon} text={buttonData.text} />
+						<Button
+							key={buttonData.text}
+							icon={buttonData.icon}
+							text={buttonData.text}
+							link={buttonData.link}
+						/>
 					))}
 				</div>
 			))}
@@ -34,6 +41,7 @@ const Landing = () => {
 			{buttonData.map((data) => (
 				<div css={buttonBoxStyle} key={data.id}>
 					{data.id === "프로필" ? "" : <h3>{data.id}</h3>}
+
 					{data.button.map((buttonData) => (
 						<Button
 							key={buttonData.text}
@@ -41,6 +49,7 @@ const Landing = () => {
 							subText={buttonData.subText}
 							hasArrowIcon={buttonData.text !== "현재 버전"}
 							isSubText={true}
+							link={buttonData.link}
 						/>
 					))}
 				</div>
