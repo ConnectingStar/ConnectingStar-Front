@@ -30,14 +30,14 @@ export const characterBoxStyle = css`
 		width: 124px;
 		height: 55px;
 		border-radius: 15px;
-		border: 2px solid ${theme.color.main_Blue};
+		border: 2px solid ${theme.color.main_blue};
 		background-color: #fff;
 		position: absolute;
 		left: 5.875rem;
 		bottom: 1.125rem;
 
 		& > p {
-			color: ${theme.color.main_Blue};
+			color: ${theme.color.main_blue};
 			font-weight: 500;
 			line-height: 24px;
 		}
