@@ -29,7 +29,7 @@ export const textStyle = css`
 
 export const getSubTextStyle = (isLogin: boolean) => {
 	return css`
-		color: ${isLogin === true ? theme.color.button_deactivated : theme.color.main_Blue};
+		color: ${isLogin === true ? theme.color.button_deactivated : theme.color.main_blue};
 		font-weight: 400;
 	`;
 };
