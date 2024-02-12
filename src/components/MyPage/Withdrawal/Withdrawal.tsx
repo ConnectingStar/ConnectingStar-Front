@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 import LeaveReasonModal from "@/components/MyPage/Withdrawal/LeaveResonModal/LeaveReasonModal";
+import { modalType } from "@/constants/modalConstants";
 import { leaveResonData } from "@/constants/myPageConstants";
 
 import {
@@ -26,7 +27,7 @@ const Withdrawal = () => {
 			<h1>어떤 이유로 탈퇴하시나요?</h1>
 			<div
 				css={getReasonBoxStyle(reason !== "탈퇴 이유를 선택해 주세요")}
-				onClick={() => dispatch(openModal("leaveReason"))}
+				onClick={() => dispatch(openModal(modalType.LEAVE_REASON))}
 			>
 				<p>{reason}</p>
 				<DownArrowIcon />
@@ -50,7 +51,7 @@ const Withdrawal = () => {
 
 			<button type="button">작별하기</button>
 
-			{modal === "leaveReason" && <LeaveReasonModal changeReason={setReason} />}
+			{modal === modalType.LEAVE_REASON && <LeaveReasonModal changeReason={setReason} />}
 		</div>
 	);
 };
