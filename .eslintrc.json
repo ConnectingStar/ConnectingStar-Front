@@ -44,11 +44,11 @@
                 "group": "unknown"
               },
               {
-                "pattern": "@/components/**/*.styles",
+                "pattern": "@/components/**/*.style",
                 "group": "unknown"
               },
               {
-                "pattern": "@/components/*.styles",
+                "pattern": "@/components/*.style",
                 "group": "unknown"
               },
               {
