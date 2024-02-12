@@ -23,6 +23,11 @@ export const textStyle = css`
 	justify-content: space-between;
 	width: 100%;
 	${theme.font.body_a_bold};
+
+	& .sub::before {
+		content: "ㅣ";
+		color: ${theme.color.main_blue};
+	}
 `;
 
 export const getSubTextStyle = (isLogin: boolean) => {

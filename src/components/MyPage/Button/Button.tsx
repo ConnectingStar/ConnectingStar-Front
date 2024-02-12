@@ -5,21 +5,24 @@ import { layoutStyle, textStyle, getSubTextStyle } from "@/components/MyPage/But
 interface buttonProps {
 	icon?: JSX.Element;
 	text: string;
+	text2?: string;
 	subText?: string;
 	hasArrowIcon?: boolean;
-	isVersion?: boolean;
 	isSubText?: boolean;
 	link: string | undefined;
 }
 
-const Button = ({ icon, text, subText, hasArrowIcon, isSubText, link }: buttonProps) => {
+const Button = ({ icon, text, text2, subText, hasArrowIcon, isSubText, link }: buttonProps) => {
 	return (
 		<div css={layoutStyle}>
 			<a href={link}>
 				{icon}
 				<p css={textStyle}>
-					{text}
-					{text === "현재 버전" && " 1.01.2"}
+					<span>
+						{text}
+						{text2 && <span className="sub">{text2}</span>}
+						{text === "현재 버전" && " 1.01.2"}
+					</span>
 					{isSubText && <span css={getSubTextStyle(text === "간편로그인")}>{subText}</span>}
 				</p>
 				{hasArrowIcon && <RightArrowIcon />}
