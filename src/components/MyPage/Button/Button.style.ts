@@ -3,18 +3,16 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 export const layoutStyle = css`
-	display: flex;
-	align-items: center;
-	gap: 8px;
 	width: 19.5rem;
 	border-radius: 15px;
 	background-color: ${theme.color.bg};
-	padding: 1rem;
 	position: relative;
 
-	& > div {
-		position: absolute;
-		right: 18px;
+	& > a {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 1rem;
 	}
 `;
 

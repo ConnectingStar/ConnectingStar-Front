@@ -17,6 +17,7 @@ export const profileBoxStyle = css`
 
 	& > a {
 		display: flex;
+		align-items: center;
 
 		& > p {
 			${theme.font.header};

@@ -13,10 +13,12 @@ export const buttonDataWithIcon = [
 			{
 				icon: <StarIcon />,
 				text: "나의 별자취",
+				link: "/star-trace",
 			},
 			{
 				icon: <BookIcon />,
 				text: "습관 현황",
+				link: "/habit-history",
 			},
 		],
 	},
@@ -28,6 +30,7 @@ export const buttonData = [
 		button: [
 			{
 				text: "알림 설정",
+				link: "/notification-setting",
 			},
 		],
 	},
@@ -45,6 +48,7 @@ export const buttonData = [
 			},
 			{
 				text: "이용약관",
+				link: "#",
 			},
 			{
 				text: "개인정보 처리방침",
