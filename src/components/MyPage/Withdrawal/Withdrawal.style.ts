@@ -27,23 +27,59 @@ export const layoutStyle = css`
 	}
 `;
 
-export const reasonBoxStyle = css`
+export const getReasonBoxStyle = (isSelected: boolean) => {
+	return css`
+		display: flex;
+		align-items: center;
+		margin-top: 2.5rem;
+		position: relative;
+		width: 19.5rem;
+		height: 3.4375rem;
+		padding-left: 1rem;
+		background-color: ${theme.color.bg};
+		border-radius: 15px;
+
+		& > p {
+			color: ${isSelected ? theme.color.font_black : theme.color.button_deactivated};
+		}
+
+		& > svg {
+			position: absolute;
+			right: 1rem;
+		}
+	`;
+};
+
+export const middleBoxStyle = css`
+	margin-top: 0.375rem;
+`;
+
+export const textBoxStyle = css`
+	& > textarea {
+		all: unset;
+		box-sizing: border-box;
+		display: block;
+		width: 19.5rem;
+		height: 11.9375rem;
+		border-radius: 15px;
+		padding: 1rem;
+		background-color: ${theme.color.bg};
+		color: ${theme.color.font_black};
+
+		&::placeholder {
+			color: ${theme.color.button_deactivated};
+		}
+	}
+`;
+
+export const subTextBoxStyle = css`
+	height: calc(100vh - 29.8875rem);
 	display: flex;
+	justify-content: center;
 	align-items: center;
-	margin-top: 2.5rem;
-	position: relative;
-	width: 19.5rem;
-	height: 3.4375rem;
-	padding-left: 1rem;
-	background-color: ${theme.color.bg};
-	border-radius: 15px;
 
 	& > p {
-		color: ${theme.color.button_deactivated};
-	}
-
-	& > svg {
-		position: absolute;
-		right: 1rem;
+		white-space: pre-wrap;
+		text-align: center;
 	}
 `;
