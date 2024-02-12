@@ -8,7 +8,7 @@ const MyStarTracePage = () => {
 				<Header.PrevButton />
 				<Header.Title>나의 별자취</Header.Title>
 			</Header>
-			<StarTrace />;
+			<StarTrace />
 		</>
 	);
 };
