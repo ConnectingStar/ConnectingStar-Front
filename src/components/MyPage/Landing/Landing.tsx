@@ -26,12 +26,14 @@ const Landing = () => {
 
 			{buttonDataWithIcon.map((data) => (
 				<div css={buttonBoxStyle} key={data.id}>
-					{data.id === "프로필" ? "" : <h3>{data.id}</h3>}
+					{data.id !== "프로필" && <h3>{data.id}</h3>}
+
 					{data.button.map((buttonData) => (
 						<Button
 							key={buttonData.text}
 							icon={buttonData.icon}
 							text={buttonData.text}
+							text2={buttonData.text2}
 							link={buttonData.link}
 						/>
 					))}
@@ -40,7 +42,7 @@ const Landing = () => {
 
 			{buttonData.map((data) => (
 				<div css={buttonBoxStyle} key={data.id}>
-					{data.id === "프로필" ? "" : <h3>{data.id}</h3>}
+					<h3>{data.id}</h3>
 
 					{data.button.map((buttonData) => (
 						<Button

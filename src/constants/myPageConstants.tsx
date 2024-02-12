@@ -18,6 +18,7 @@ export const buttonDataWithIcon = [
 			{
 				icon: <BookIcon />,
 				text: "습관 현황",
+				text2: "히스토리",
 				link: "/habit-history",
 			},
 		],
