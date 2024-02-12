@@ -12,9 +12,11 @@ export const layoutStyle = css`
 `;
 
 export const sortButtonStyle = css`
-	padding: 0.5rem 1rem;
+	width: 6.0625rem;
+	height: 2.25rem;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 4px;
 	border-radius: 20px;
 	border: 2px solid ${theme.color.button_disabled};
@@ -30,7 +32,8 @@ export const sortButtonStyle = css`
 `;
 
 export const buttonStyle = css`
-	padding: 0.5rem 1rem;
+	width: 3.625rem;
+	height: 2.25rem;
 	border-radius: 20px;
 	background-color: ${theme.color.main_deep_blue};
 	color: #fff;
