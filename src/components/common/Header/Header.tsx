@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ArrowLeftIcon from "@/assets/icon/arrow-left.svg?react";
 import CloseIcon from "@/assets/icon/close.svg?react";
@@ -15,12 +16,10 @@ export default function Header({ children }: { children: ReactNode }) {
 }
 
 Header.PrevButton = function HeaderPrevButton() {
+	const navigate = useNavigate();
+
 	return (
-		<button
-			type="button"
-			css={headerStyle.iconButton}
-			onClick={(e) => console.log("prev icon click: ", e)}
-		>
+		<button type="button" css={headerStyle.iconButton} onClick={() => navigate(-1)}>
 			<ArrowLeftIcon />
 		</button>
 	);
