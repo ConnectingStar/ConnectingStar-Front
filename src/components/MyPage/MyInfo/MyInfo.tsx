@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Button from "@/components/MyPage/Button/Button";
 import ChangeNicknameModal from "@/components/MyPage/MyInfo/ChangeNicknameModal/ChangeNicknameModal";
+import SelectAgeModal from "@/components/MyPage/MyInfo/SelectAgeModal";
 import SelectCharacterModal from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal";
 import SelectGenderModal from "@/components/MyPage/MyInfo/SelectGenderModal/SelectGenderModal";
 
@@ -28,7 +29,7 @@ const MyInfo = () => {
 	const [gender, setGender] = useState("");
 	const [identity] = useState("");
 	const [nickname, setNickname] = useState("");
-	const [age] = useState("");
+	const [age, setAge] = useState("");
 
 	const handleSubTextProp = (text: string) => {
 		if (text === "정체성") {
@@ -77,9 +78,11 @@ const MyInfo = () => {
 					<p>회원탈퇴</p>
 				</li>
 			</ul>
+
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
 			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
+			{modal === modalType.SELECT_AGE && <SelectAgeModal changeAge={setAge} />}
 		</div>
 	);
 };
