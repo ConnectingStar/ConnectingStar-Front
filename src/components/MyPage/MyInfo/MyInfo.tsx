@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Button from "@/components/MyPage/Button/Button";
+import ChangeNicknameModal from "@/components/MyPage/MyInfo/ChangeNicknameModal/ChangeNicknameModal";
 import SelectCharacterModal from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal";
 import SelectGenderModal from "@/components/MyPage/MyInfo/SelectGenderModal/SelectGenderModal";
 
@@ -26,7 +27,7 @@ const MyInfo = () => {
 
 	const [gender, setGender] = useState("");
 	const [identity] = useState("");
-	const [nickname] = useState("");
+	const [nickname, setNickname] = useState("");
 	const [age] = useState("");
 
 	const handleSubTextProp = (text: string) => {
@@ -78,6 +79,7 @@ const MyInfo = () => {
 			</ul>
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
 			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}
+			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
 		</div>
 	);
 };
