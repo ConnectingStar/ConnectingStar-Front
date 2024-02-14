@@ -74,7 +74,7 @@ export const myInfoButtonData = [
 			{
 				text: "닉네임",
 				subText: "사용자 닉네임",
-				modalName: "SELECT_NICKNAME",
+				modalName: "CHANGE_NICKNAME",
 			},
 			{
 				text: "성별",

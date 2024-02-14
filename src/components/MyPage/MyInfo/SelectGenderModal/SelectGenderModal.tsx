@@ -15,11 +15,11 @@ import {
 	getCheckBoxLabelStyle,
 } from "@/components/MyPage/MyInfo/SelectGenderModal/SelectGenderModal.style";
 
-interface selectGenderModalType {
+const SelectGenderModal = ({
+	changeGender,
+}: {
 	changeGender: Dispatch<SetStateAction<string>>;
-}
-
-const SelectGenderModal = ({ changeGender }: selectGenderModalType) => {
+}) => {
 	const dispatch = useAppDispatch();
 
 	const [checkItem, setCheckItem] = useState("");
