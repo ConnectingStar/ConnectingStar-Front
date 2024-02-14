@@ -180,15 +180,42 @@ export const leaveReasonData = [
 
 export const selectGenderData = [
 	{
-		id: "male",
 		text: "남",
 	},
 	{
-		id: "female",
 		text: "여",
 	},
 	{
-		id: "none",
 		text: "선택 안 함",
+	},
+];
+
+export const selectAgeData = [
+	{
+		text: "15-19",
+	},
+	{
+		text: "20-24",
+	},
+	{
+		text: "25-29",
+	},
+	{
+		text: "30-34",
+	},
+	{
+		text: "35-39",
+	},
+	{
+		text: "40-44",
+	},
+	{
+		text: "45-49",
+	},
+	{
+		text: "50-54",
+	},
+	{
+		text: "55 이상",
 	},
 ];

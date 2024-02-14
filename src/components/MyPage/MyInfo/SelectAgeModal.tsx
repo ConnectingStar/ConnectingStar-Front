@@ -1,13 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
-import CheckIcon from "@/assets/icon/ic-check.svg?react";
-
-import Modal from "@/components/common/Modal/Modal";
-
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-
-import { selectGenderData } from "@/constants/myPageConstants";
+import CheckIcon from "@/assets/icon/ic-check.svg?react";
+import Modal from "@/components/common/Modal/Modal";
+import { selectAgeData } from "@/constants/myPageConstants";
 
 import { buttonBoxStyle } from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal.style";
 import {
@@ -15,26 +12,22 @@ import {
 	getCheckBoxLabelStyle,
 } from "@/components/MyPage/MyInfo/SelectGenderModal/SelectGenderModal.style";
 
-const SelectGenderModal = ({
-	changeGender,
-}: {
-	changeGender: Dispatch<SetStateAction<string>>;
-}) => {
+const SelectAgeModal = ({ changeAge }: { changeAge: Dispatch<SetStateAction<string>> }) => {
 	const dispatch = useAppDispatch();
 
 	const [checkItem, setCheckItem] = useState("");
 
 	const handleCheckClick = () => {
-		changeGender(checkItem);
+		changeAge(checkItem);
 		dispatch(closeModal());
 	};
 
 	return (
 		<Modal>
 			<div css={layoutStyle}>
-				<h1>성별을 선택해 주세요</h1>
+				<h1>나이대를 선택해 주세요</h1>
 				<ul>
-					{selectGenderData.map((data) => (
+					{selectAgeData.map((data) => (
 						<li key={data.text}>
 							<input type="checkbox" id={data.text} onChange={() => setCheckItem(data.text)} />
 							<label htmlFor={data.text} css={getCheckBoxLabelStyle(checkItem === data.text)}>
@@ -56,4 +49,4 @@ const SelectGenderModal = ({
 	);
 };
 
-export default SelectGenderModal;
+export default SelectAgeModal;
