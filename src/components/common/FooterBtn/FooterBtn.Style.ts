@@ -8,6 +8,11 @@ export const footerBtnStyle = (
 	isPositionStatic?: boolean,
 ) => {
 	return css`
+		position: fixed;
+		bottom: 0;
+		width: 22.5rem;
+		height: 5.5rem;
+		padding: 1.063rem 1.5rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
