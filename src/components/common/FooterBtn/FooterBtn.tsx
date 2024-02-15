@@ -1,51 +1,23 @@
-import FooterBtnStyle from "@/components/common/FooterBtn/FooterBtn.Style";
+import { FooterBtnRound, FooterBtnSquare } from "@/components/common/FooterBtn/FooterBtn.Style";
 
-export default function FooterBtn({ children }: { children: React.ReactNode }) {
-	return <div css={FooterBtnStyle.container}>{children}</div>;
+interface FooterBtnType {
+	text: string;
+	shape: string;
+	blur?: boolean;
+	cancleBtn?: boolean;
 }
 
-FooterBtn.Round = function FooterBtnRound({
-	children,
-	cancle,
-	blur,
-}: {
-	children: React.ReactNode;
-	cancle?: boolean;
-	blur?: boolean;
-}) {
+// text, blur, cancleBtn, shape = "square" or "round"
+// backgroundcolor 투명, deep한 색깔
+export default function FooterBtn({ text, shape, blur, cancleBtn }: FooterBtnType) {
 	return (
-		<div css={FooterBtnStyle.round}>
-			{cancle ? (
-				<button type="button" className="canclebutton">
+		<div css={shape === "round" ? FooterBtnRound(blur === true) : FooterBtnSquare(blur === true)}>
+			{cancleBtn ? (
+				<button type="button" className="cancle">
 					취소
 				</button>
 			) : null}
-			<button type="button" css={blur ? { opacity: "40%" } : null}>
-				{children}
-			</button>
+			<button type="button">{text}</button>
 		</div>
 	);
-};
-
-FooterBtn.Square = function FooterBtnSquare({
-	children,
-	cancle,
-	blur,
-}: {
-	children: React.ReactNode;
-	cancle?: boolean;
-	blur?: boolean;
-}) {
-	return (
-		<div css={FooterBtnStyle.square}>
-			{cancle ? (
-				<button type="button" className="canclebutton">
-					취소
-				</button>
-			) : null}
-			<button type="button" css={blur ? { opacity: "40%" } : null}>
-				{children}
-			</button>
-		</div>
-	);
-};
+}
