@@ -78,6 +78,6 @@ export const CalenderStyle = {
 		aspect-ratio: 1/1;
 		border-radius: 50%;
 		color: white;
-		background-color: ${theme.color.main_Blue};
+		background-color: ${theme.color.main_blue};
 	`,
 };
