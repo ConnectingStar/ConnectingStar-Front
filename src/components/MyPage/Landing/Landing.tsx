@@ -4,7 +4,6 @@ import { buttonData, buttonDataWithIcon } from "@/constants/myPageConstants";
 
 import {
 	layoutStyle,
-	headingStyle,
 	profileBoxStyle,
 	profileImgStyle,
 	buttonBoxStyle,
@@ -13,7 +12,6 @@ import {
 const Landing = () => {
 	return (
 		<div css={layoutStyle}>
-			<h2 css={headingStyle}>마이 페이지</h2>
 			<div css={profileBoxStyle}>
 				<div css={profileImgStyle} />
 				<a href="#">
@@ -26,13 +24,7 @@ const Landing = () => {
 				<div css={buttonBoxStyle} key={data.id}>
 					{data.id === "프로필" ? "" : <h3>{data.id}</h3>}
 					{data.button.map((buttonData) => (
-						<Button
-							key={buttonData.text}
-							icon={buttonData.icon}
-							text={buttonData.text}
-							hasArrowIcon={false}
-							isVersion={false}
-						/>
+						<Button key={buttonData.text} icon={buttonData.icon} text={buttonData.text} />
 					))}
 				</div>
 			))}
@@ -44,8 +36,9 @@ const Landing = () => {
 						<Button
 							key={buttonData.text}
 							text={buttonData.text}
+							subText={buttonData.subText}
 							hasArrowIcon={buttonData.text !== "현재 버전"}
-							isVersion={buttonData.text === "현재 버전"}
+							isSubText={true}
 						/>
 					))}
 				</div>
