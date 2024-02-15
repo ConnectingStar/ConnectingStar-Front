@@ -1,5 +1,6 @@
-import { categoryLabelStyle } from "@/components/StarCardDetail/CategoryLabel.style";
 import Label from "@/components/StarCardDetail/Label";
+
+import { categoryLabelStyle } from "@/components/StarCardDetail/CategoryLabel.style";
 
 // TODO: API 연결 후 삭제 예정
 const data = [

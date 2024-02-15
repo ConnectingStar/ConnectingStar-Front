@@ -1,4 +1,5 @@
 import starImg from "@/assets/image/card-detail-star.png";
+
 import { starImgStyle } from "@/components/StarCardDetail/Img/Star.style";
 
 export default function Star({ starNumber }: { starNumber: number }) {

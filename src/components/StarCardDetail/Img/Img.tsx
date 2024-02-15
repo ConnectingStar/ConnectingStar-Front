@@ -1,6 +1,7 @@
-import { imgStyle } from "@/components/StarCardDetail/Img/Img.style";
 import Star from "@/components/StarCardDetail/Img/Star";
 import Label from "@/components/StarCardDetail/Label";
+
+import { imgStyle } from "@/components/StarCardDetail/Img/Img.style";
 
 interface ImgProps {
 	state: "default" | "selected" | "have";
