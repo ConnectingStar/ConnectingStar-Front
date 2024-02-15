@@ -1,3 +1,8 @@
+import BadIcon from "@/assets/icon/ic-emoticon-bad.svg?react";
+import GoodIcon from "@/assets/icon/ic-emoticon-good.svg?react";
+import NormalIcon from "@/assets/icon/ic-emoticon-normal.svg?react";
+import VeryBadIcon from "@/assets/icon/ic-emoticon-very-bad.svg?react";
+import VeryGoodIcon from "@/assets/icon/ic-emoticon-very-good.svg?react";
 import BookIcon from "@/assets/icon/ic-mypage-book.svg?react";
 import StarIcon from "@/assets/icon/ic-mypage-star.svg?react";
 
@@ -82,5 +87,46 @@ export const myInfoButtonData = [
 				subText: "카카오톡",
 			},
 		],
+	},
+];
+
+export const starTraceButtonData = [
+	{
+		text: "책 읽기",
+	},
+	{
+		text: "러닝 하기",
+	},
+	{
+		text: "감사일기 작성하기",
+	},
+	{
+		text: "감사일기 작성하기2",
+	},
+	{
+		text: "감사일기 작성하기3",
+	},
+];
+
+export const habitIconData = [
+	{
+		id: 1,
+		icon: <VeryBadIcon />,
+	},
+	{
+		id: 2,
+		icon: <BadIcon />,
+	},
+	{
+		id: 3,
+		icon: <NormalIcon />,
+	},
+	{
+		id: 4,
+		icon: <GoodIcon />,
+	},
+	{
+		id: 5,
+		icon: <VeryGoodIcon />,
 	},
 ];

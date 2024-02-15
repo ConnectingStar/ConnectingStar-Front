@@ -4,6 +4,7 @@ import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
+import MyStarTracePage from "@/pages/MyStarTracePage";
 import StarPage from "@/pages/StarPage";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
 				<Route path="/chart" element={<ChartPage />} />
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/myinfo" element={<MyInfoPage />} />
+				<Route path="/star-trace" element={<MyStarTracePage />} />
 			</Routes>
 		</BrowserRouter>
 	);
