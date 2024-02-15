@@ -6,19 +6,19 @@ export const FooterBtnRound = (blur: boolean) => {
 	return css`
 		position: fixed;
 		bottom: 0;
-		width: 360px;
-		height: 88px;
-		padding: 17px 24px;
+		width: 22.5rem;
+		height: 5.5rem;
+		padding: 1.063rem 1.5rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 8px;
+		gap: 0.5rem;
 		left: 50%;
 		transform: translateX(-50%);
 
 		& > button {
 			width: 100%;
-			height: 55px;
+			height: 3.438rem;
 			border-radius: 15px;
 			${theme.font.button_big};
 			opacity: ${blur ? "40%" : "100%"};
