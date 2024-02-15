@@ -55,11 +55,6 @@
               "position": "before"
             },
             {
-              "pattern": "@/components/**/*",
-              "group": "type",
-              "position": "before"
-            },
-            {
               "pattern": "@/hooks/**/*",
               "group": "type",
               "position": "before"
@@ -78,6 +73,26 @@
               "pattern": "@/utils/**/*",
               "group": "type",
               "position": "before"
+            },
+            {
+              "pattern": "@/pages/**/*.style",
+              "group": "unknown"
+            },
+            {
+              "pattern": "@/components/**/*.style",
+              "group": "unknown"
+            },
+            {
+              "pattern": "@/components/*.style",
+              "group": "unknown"
+            },
+            {
+              "pattern": "../**/*.style",
+              "group": "unknown"
+            },
+            {
+              "pattern": "./**/*.style",
+              "group": "unknown"
             }
           ],
           "pathGroupsExcludedImportTypes": ["react", "unknown"],
