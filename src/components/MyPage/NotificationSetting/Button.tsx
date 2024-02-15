@@ -10,8 +10,8 @@ interface buttonType {
 	title: string;
 	subTitle: string;
 	isToggle?: boolean;
-	isDateText?: boolean | undefined;
-	isHabit?: boolean | undefined;
+	isDateText?: boolean;
+	isHabit?: boolean;
 }
 
 const Button = ({ title, subTitle, isToggle, isDateText, isHabit }: buttonType) => {
