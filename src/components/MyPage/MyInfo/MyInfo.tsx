@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "@/components/MyPage/Button/Button";
 import ChangeNicknameModal from "@/components/MyPage/MyInfo/ChangeNicknameModal/ChangeNicknameModal";
@@ -18,7 +19,7 @@ import {
 	characterBoxStyle,
 	buttonBoxStyle,
 	dividerStyle,
-	authListStyle,
+	authButtonBoxStyle,
 	mainBoxStyle,
 } from "@/components/MyPage/MyInfo/MyInfo.style";
 
@@ -26,6 +27,8 @@ const MyInfo = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
+
+	const navigate = useNavigate();
 
 	const [gender, setGender] = useState("");
 	const [identity, setIdentity] = useState("");
@@ -71,14 +74,10 @@ const MyInfo = () => {
 
 			<div css={dividerStyle} />
 
-			<ul css={authListStyle}>
-				<li>
-					<p>로그아웃</p>
-				</li>
-				<li>
-					<p>회원탈퇴</p>
-				</li>
-			</ul>
+			<div css={authButtonBoxStyle}>
+				<button>로그아웃</button>
+				<button onClick={() => navigate("/withdrawal")}>회원탈퇴</button>
+			</div>
 
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
 			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}
