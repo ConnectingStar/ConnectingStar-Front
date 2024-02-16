@@ -14,6 +14,8 @@ import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 
+import CreateAccountPage from "./pages/CreateAccountPage";
+
 const App = () => {
 	return (
 		<BrowserRouter>
@@ -25,6 +27,7 @@ const App = () => {
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/myinfo" element={<MyInfoPage />} />
 				<Route path="/signup" element={<SignUp />} />
+				<Route path="/createAccount" element={<CreateAccountPage />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
