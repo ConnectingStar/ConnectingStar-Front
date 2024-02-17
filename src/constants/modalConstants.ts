@@ -6,4 +6,5 @@ export const modalType = {
 	SELECT_AGE: "SELECT_AGE",
 	SELECT_IDENTITY: "SELECT_IDENTITY",
 	LOGOUT: "LOGOUT",
+	SORT: "SORT",
 };
