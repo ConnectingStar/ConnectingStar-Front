@@ -4,13 +4,14 @@ import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 import Portal from "@/components/common/Modal/Portal";
 
-import { modalBackdropStyle, modalLayoutStyle } from "@/components/common/Modal/Modal.style";
+import { modalBackdropStyle, getModalLayoutStyle } from "@/components/common/Modal/Modal.style";
 
 interface modalType {
 	children: React.ReactNode;
+	isBottomSheet?: boolean;
 }
 
-const Modal = ({ children }: modalType) => {
+const Modal = ({ children, isBottomSheet }: modalType) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
@@ -24,7 +25,7 @@ const Modal = ({ children }: modalType) => {
 	return (
 		<Portal elementId="modal">
 			<div css={modalBackdropStyle} onClick={() => dispatch(closeModal())} />
-			<div css={modalLayoutStyle}>{children}</div>
+			<div css={getModalLayoutStyle(isBottomSheet)}>{children}</div>
 		</Portal>
 	);
 };

@@ -20,7 +20,7 @@ const LeaveReasonModal = ({ changeReason }: test) => {
 	};
 
 	return (
-		<Modal>
+		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>탈퇴 이유를 선택해 주세요</h1>
 				<ul>

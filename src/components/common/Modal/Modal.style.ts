@@ -20,15 +20,17 @@ export const modalBackdropStyle = css`
 	background-color: rgba(0, 0, 0, 0.8);
 `;
 
-export const modalLayoutStyle = css`
-	position: fixed;
-	display: block;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	z-index: 50;
-	overflow: auto;
-	border: none;
-	outline: none;
-	animation: ${modalShow} 0.3s;
-`;
+export const getModalLayoutStyle = (isBottomSheet: boolean | undefined) => {
+	return css`
+		position: fixed;
+		display: block;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: 50;
+		overflow: auto;
+		border: none;
+		outline: none;
+		animation: ${isBottomSheet ? `${modalShow} 0.3s` : "none"};
+	`;
+};
