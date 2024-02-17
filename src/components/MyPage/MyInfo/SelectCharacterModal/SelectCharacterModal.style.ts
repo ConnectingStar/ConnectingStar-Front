@@ -20,7 +20,7 @@ export const characterWrapperStyle = css`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	row-gap: 1rem;
+	row-gap: 0.375rem;
 `;
 
 export const getCharacterBoxStyle = (isSelect: boolean) => {
