@@ -31,6 +31,9 @@ export const getModalLayoutStyle = (isBottomSheet: boolean | undefined) => {
 		overflow: auto;
 		border: none;
 		outline: none;
-		animation: ${isBottomSheet ? `${modalShow} 0.3s` : "none"};
+		animation: ${isBottomSheet &&
+		css`
+			${modalShow} 0.3s
+		`};
 	`;
 };
