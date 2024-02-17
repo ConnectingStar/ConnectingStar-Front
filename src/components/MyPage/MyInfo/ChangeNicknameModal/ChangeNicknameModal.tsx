@@ -25,7 +25,7 @@ const ChangeNicknameModal = ({
 	};
 
 	return (
-		<Modal>
+		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>닉네임 수정</h1>
 				<input
