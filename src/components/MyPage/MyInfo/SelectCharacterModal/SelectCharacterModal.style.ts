@@ -4,7 +4,6 @@ import { theme } from "@/styles/theme";
 
 export const layoutStyle = css`
 	width: 100%;
-	height: 41.875rem;
 	padding: 1.125rem 1.5rem;
 	border-radius: 15px 15px 0 0;
 	color: ${theme.color.font_black};
@@ -20,9 +19,8 @@ export const characterWrapperStyle = css`
 	margin-top: 0.6875rem;
 	display: flex;
 	flex-wrap: wrap;
-	height: 32.875rem;
 	justify-content: space-between;
-	align-content: space-between;
+	row-gap: 1rem;
 `;
 
 export const getCharacterBoxStyle = (isSelect: boolean) => {
