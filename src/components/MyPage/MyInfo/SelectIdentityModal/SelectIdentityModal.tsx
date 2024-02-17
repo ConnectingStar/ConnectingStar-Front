@@ -38,7 +38,7 @@ const SelectIdentityModal = ({
 	};
 
 	return (
-		<Modal>
+		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>정체성을 선택해 주세요</h1>
 				<div css={flexBoxStyle}>

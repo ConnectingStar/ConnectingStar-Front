@@ -26,7 +26,7 @@ const SelectAgeModal = ({ changeAge }: { changeAge: Dispatch<SetStateAction<stri
 	};
 
 	return (
-		<Modal>
+		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>나이대를 선택해 주세요</h1>
 				<ul>
