@@ -35,12 +35,12 @@ const SortModal = ({
 	};
 
 	return (
-		<Modal>
+		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>정렬기준</h1>
 				<ul>
 					{sortData.map((data) => (
-						<li>
+						<li key={data.text}>
 							<input type="checkbox" id={data.text} onChange={() => setCheckItem(data.text)} />
 							<label htmlFor={data.text} css={getCheckBoxLabelStyle(checkItem === data.text)}>
 								{checkItem === data.text && <CheckIcon />}

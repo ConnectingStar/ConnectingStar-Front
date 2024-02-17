@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
-import SortModal from "@/components/MyPage/StarTrace/SortModal/SortModal";
+import SortModal from "@/components/MyPage/StarTrace/SortModal";
 import { modalType } from "@/constants/modalConstants";
 
 import {
