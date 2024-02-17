@@ -24,8 +24,10 @@ export const getModalLayoutStyle = (isBottomSheet: boolean | undefined) => {
 	return css`
 		position: fixed;
 		display: block;
-		left: 0;
-		bottom: 0;
+		left: ${isBottomSheet ? 0 : "50%"};
+		top: ${!isBottomSheet && "50%"};
+		transform: ${!isBottomSheet && "translate(-50%, -50%)"};
+		bottom: ${isBottomSheet && 0};
 		right: 0;
 		z-index: 50;
 		overflow: auto;
