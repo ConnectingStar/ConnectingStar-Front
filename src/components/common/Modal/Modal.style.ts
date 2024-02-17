@@ -28,7 +28,7 @@ export const getModalLayoutStyle = (isBottomSheet: boolean | undefined) => {
 		top: ${!isBottomSheet && "50%"};
 		transform: ${!isBottomSheet && "translate(-50%, -50%)"};
 		bottom: ${isBottomSheet && 0};
-		right: 0;
+		right: ${isBottomSheet && 0};
 		z-index: 50;
 		overflow: auto;
 		border: none;
