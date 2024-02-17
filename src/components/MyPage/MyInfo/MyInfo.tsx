@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "@/components/MyPage/Button/Button";
 import ChangeNicknameModal from "@/components/MyPage/MyInfo/ChangeNicknameModal/ChangeNicknameModal";
+import LogoutModal from "@/components/MyPage/MyInfo/LogoutModal/LogoutModal";
 import SelectAgeModal from "@/components/MyPage/MyInfo/SelectAgeModal";
 import SelectCharacterModal from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal";
 import SelectGenderModal from "@/components/MyPage/MyInfo/SelectGenderModal/SelectGenderModal";
@@ -75,7 +76,7 @@ const MyInfo = () => {
 			<div css={dividerStyle} />
 
 			<div css={authButtonBoxStyle}>
-				<button>로그아웃</button>
+				<button onClick={() => dispatch(openModal(modalType.LOGOUT))}>로그아웃</button>
 				<button onClick={() => navigate("/withdrawal")}>회원탈퇴</button>
 			</div>
 
@@ -84,6 +85,7 @@ const MyInfo = () => {
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
 			{modal === modalType.SELECT_AGE && <SelectAgeModal changeAge={setAge} />}
 			{modal === modalType.SELECT_IDENTITY && <SelectIdentityModal changeIdentity={setIdentity} />}
+			{modal === modalType.LOGOUT && <LogoutModal />}
 		</div>
 	);
 };
