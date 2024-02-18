@@ -2,10 +2,9 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const FooterBtnRound = (blur: boolean, transparent: boolean) => {
+export const FooterBtnRound = (blur: boolean, transparent: boolean, positionStatic: boolean) => {
 	return css`
-		position: fixed;
-		bottom: 0;
+		${positionStatic ? null : "position: fixed;bottom: 0;left: 50%;	transform: translateX(-50%);"}
 		width: 22.5rem;
 		height: 5.5rem;
 		padding: 1.063rem 1.5rem;
@@ -13,8 +12,6 @@ export const FooterBtnRound = (blur: boolean, transparent: boolean) => {
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
-		left: 50%;
-		transform: translateX(-50%);
 		background-color: ${transparent ? "transparent" : "white"};
 
 		& > button {
