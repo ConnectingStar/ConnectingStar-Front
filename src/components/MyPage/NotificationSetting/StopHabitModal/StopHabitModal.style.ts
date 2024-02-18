@@ -13,3 +13,24 @@ export const layoutStyle = css`
 		${theme.font.header};
 	}
 `;
+
+export const buttonBoxStyle = css`
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 1rem;
+
+	& > button {
+		width: 50%;
+		height: 3.4375rem;
+		border-radius: 15px;
+		color: #fff;
+		background-color: ${theme.color.main_blue};
+		${theme.font.button_big};
+
+		&.cancel {
+			background-color: ${theme.color.button_disabled};
+			color: ${theme.color.button_deactivated};
+		}
+	}
+`;
