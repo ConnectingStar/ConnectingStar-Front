@@ -29,8 +29,8 @@ export const headerBoxStyle = css`
 export const dateBoxStyle = css`
 	display: flex;
 	flex-wrap: wrap;
-	width: 308px;
-	margin: 20px auto 0;
+	width: 19.25rem;
+	margin: 1.25rem auto;
 	row-gap: 20px;
 `;
 
@@ -39,8 +39,8 @@ export const dayStyle = (inMonthDay?: boolean) => {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 44px;
-		height: 44px;
+		width: 2.75rem;
+		height: 2.75rem;
 		color: ${inMonthDay ? theme.color.font_black : theme.color.button_deactivated};
 		${theme.font.body_a_bold};
 	`;
