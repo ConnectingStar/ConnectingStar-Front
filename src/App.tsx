@@ -8,6 +8,7 @@ import SignUp from "@/pages/SignUp/SignUp";
 import StarPage from "@/pages/StarPage";
 
 import CreateAccountPage from "./pages/CreateAccountPage";
+import DiscoveryRoutePage from "./pages/DiscoveryRoutePage";
 
 const App = () => {
 	return (
@@ -18,8 +19,9 @@ const App = () => {
 				<Route path="/chart" element={<ChartPage />} />
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/signup" element={<SignUp />} />
-				<Route path="/createAccount" element={<CreateAccountPage />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
+				<Route path="/createAccount" element={<CreateAccountPage />} />
+				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
 			</Routes>
 		</BrowserRouter>
 	);
