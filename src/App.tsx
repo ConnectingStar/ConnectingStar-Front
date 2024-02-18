@@ -26,6 +26,7 @@ const App = () => {
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/myinfo" element={<MyInfoPage />} />
 				<Route path="/signup" element={<SignUp />} />
+				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/createAccount" element={<CreateAccountPage />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
