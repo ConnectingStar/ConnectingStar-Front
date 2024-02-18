@@ -14,8 +14,10 @@ export const createAccountStyle = {
 		}
 	`,
 	input: css`
-		margin-bottom: 20px;
 		width: 100%;
+		li {
+			margin-bottom: 20px;
+		}
 		h2 {
 			${theme.font.head_c}
 			color: ${theme.color.font_gray};
