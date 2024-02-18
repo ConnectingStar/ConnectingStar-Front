@@ -34,7 +34,7 @@ export const dateBoxStyle = css`
 	row-gap: 20px;
 `;
 
-export const dayStyle = (inMonthDay?: boolean) => {
+export const dayStyle = (inMonthDay?: boolean, isWeek?: boolean) => {
 	return css`
 		display: flex;
 		align-items: center;
@@ -42,6 +42,6 @@ export const dayStyle = (inMonthDay?: boolean) => {
 		width: 2.75rem;
 		height: 2.75rem;
 		color: ${inMonthDay ? theme.color.font_black : theme.color.button_deactivated};
-		${theme.font.body_a_bold};
+		${isWeek ? theme.font.body_b : theme.font.body_b_bold}
 	`;
 };
