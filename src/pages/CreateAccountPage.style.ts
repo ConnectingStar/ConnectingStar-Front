@@ -6,31 +6,28 @@ export const createAccountStyle = {
 	container: css`
 		width: 22.5rem;
 		margin: 0 auto;
-		padding: 20px 24px;
+		padding: 1.25rem 1.5rem;
 
 		& > h1 {
 			${theme.font.head_a}
-			margin-bottom: 40px;
+			margin-bottom: 2.5rem;
 		}
 	`,
 	wrap: css`
-		width: 100%;
 		& > li {
-			width: 100%;
-			height: 87px;
-			margin-bottom: 20px;
+			margin-bottom: 1.25rem;
 			& > h2 {
 				${theme.font.head_c}
 				color: ${theme.color.font_gray};
-				margin-bottom: 12px;
+				margin-bottom: 0.75rem;
 			}
 			& > div {
 				display: flex;
 				justify-content: space-between;
-				width: 100%;
-				height: 55px;
+				height: 3.438rem;
 				background-color: ${theme.color.bg};
 				color: ${theme.color.button_deactivated};
+				align-items: center;
 				${theme.font.body_a};
 				border-radius: 15px;
 				padding: 1rem;
