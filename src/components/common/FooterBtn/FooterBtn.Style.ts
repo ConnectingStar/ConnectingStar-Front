@@ -20,7 +20,7 @@ export const FooterBtnRound = (transparent: boolean, positionStatic: boolean) =>
 			border-radius: 15px;
 			${theme.font.button_big};
 			color: white;
-			background-color: ${theme.color.main_Blue};
+			background-color: ${theme.color.main_blue};
 
 			&:disabled {
 				opacity: 40%;
@@ -48,7 +48,7 @@ export const FooterBtnSquare = () => {
 
 		& > button {
 			height: 100%;
-			background-color: ${theme.color.main_Blue};
+			background-color: ${theme.color.main_blue};
 			color: white;
 			flex-grow: 1;
 
