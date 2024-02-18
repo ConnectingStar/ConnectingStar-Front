@@ -7,6 +7,8 @@ interface FooterBtnType {
 	disabled?: boolean;
 	transparent?: boolean;
 	positionStatic?: boolean;
+	rightOnclick?: () => void;
+	leftOnclick?: () => void;
 }
 
 // text: 기본 버튼 텍스트
@@ -19,9 +21,11 @@ export default function FooterBtn({
 	text,
 	leftText,
 	isSquare,
+	disabled,
 	transparent,
 	positionStatic,
-	disabled,
+	rightOnclick,
+	leftOnclick,
 }: FooterBtnType) {
 	return (
 		<div
@@ -30,11 +34,11 @@ export default function FooterBtn({
 			}
 		>
 			{leftText && (
-				<button type="button" className="cancle" disabled>
+				<button type="button" className="cancle" onClick={leftOnclick}>
 					{leftText}
 				</button>
 			)}
-			<button type="button" disabled={disabled}>
+			<button type="button" disabled={disabled} onClick={rightOnclick}>
 				{text}
 			</button>
 		</div>
