@@ -2,7 +2,7 @@ import { FooterBtnRound, FooterBtnSquare } from "@/components/common/FooterBtn/F
 
 interface FooterBtnType {
 	text: string;
-	cancleText?: string;
+	sideBtnText?: string;
 	shape: string;
 	blur?: boolean;
 	transparent?: boolean;
@@ -10,7 +10,7 @@ interface FooterBtnType {
 
 // text, cancleText blur, cancleBtn, shape = "square" or "round"
 // backgournd-color: transparent
-export default function FooterBtn({ text, cancleText, shape, blur, transparent }: FooterBtnType) {
+export default function FooterBtn({ text, sideBtnText, shape, blur, transparent }: FooterBtnType) {
 	return (
 		<div
 			css={
@@ -19,11 +19,11 @@ export default function FooterBtn({ text, cancleText, shape, blur, transparent }
 					: FooterBtnSquare(blur === true)
 			}
 		>
-			{cancleText ? (
+			{sideBtnText && (
 				<button type="button" className="cancle">
-					{cancleText}
+					{sideBtnText}
 				</button>
-			) : null}
+			)}
 			<button type="button">{text}</button>
 		</div>
 	);
