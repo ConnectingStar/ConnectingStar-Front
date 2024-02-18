@@ -1,5 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import CreateAccountPage from "./pages/CreateAccountPage";
+import DiscoveryRoutePage from "./pages/DiscoveryRoutePage";
+
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
@@ -13,8 +16,6 @@ import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarPage from "@/pages/StarPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 
-import CreateAccountPage from "./pages/CreateAccountPage";
-
 const App = () => {
 	return (
 		<BrowserRouter>
@@ -25,6 +26,7 @@ const App = () => {
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/myinfo" element={<MyInfoPage />} />
 				<Route path="/signup" element={<SignUp />} />
+				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/createAccount" element={<CreateAccountPage />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star/:id" element={<StarCardDetailPage />} />
@@ -32,6 +34,7 @@ const App = () => {
 				<Route path="/habit-history" element={<MyHabitPage />} />
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
+				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
 			</Routes>
 		</BrowserRouter>
 	);
