@@ -1,4 +1,8 @@
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
 import CloseIcon from "@/assets/icon/ic-close.svg?react";
+import DeleteHistoryModal from "@/components/MyPage/HabitHistory/DeleteHistoryModal";
+import { modalType } from "@/constants/modalConstants";
 
 import {
 	layoutStyle,
@@ -7,6 +11,7 @@ import {
 } from "@/components/MyPage/HabitHistory/HabitCard.style";
 
 interface habitCardDataType {
+	id: number;
 	isEnd: boolean;
 	title: string;
 	startDate: string;
@@ -17,6 +22,7 @@ interface habitCardDataType {
 }
 
 const HabitCard = ({
+	id,
 	isEnd,
 	title,
 	startDate,
@@ -25,9 +31,13 @@ const HabitCard = ({
 	failCount,
 	endReason,
 }: habitCardDataType) => {
+	const dispatch = useAppDispatch();
+
+	const { modal } = useAppSelector((state) => state.modal);
+
 	return (
 		<div css={layoutStyle}>
-			{isEnd && <CloseIcon />}
+			{isEnd && <CloseIcon onClick={() => dispatch(openModal(modalType.DELETE_HISTORY(id)))} />}
 			<h1>{title}</h1>
 
 			{isEnd ? (
@@ -51,6 +61,7 @@ const HabitCard = ({
 					<span>휴식 : {failCount}</span>
 				</p>
 			)}
+			{modal === modalType.DELETE_HISTORY(id) && <DeleteHistoryModal />}
 		</div>
 	);
 };

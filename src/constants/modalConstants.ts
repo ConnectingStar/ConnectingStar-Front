@@ -7,4 +7,5 @@ export const modalType = {
 	SELECT_IDENTITY: "SELECT_IDENTITY",
 	LOGOUT: "LOGOUT",
 	SORT: "SORT",
+	DELETE_HISTORY: (id: number) => `DELETE_HISTORY_${id}`,
 };
