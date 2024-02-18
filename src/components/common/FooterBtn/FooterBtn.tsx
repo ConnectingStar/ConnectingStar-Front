@@ -3,7 +3,7 @@ import { FooterBtnRound, FooterBtnSquare } from "@/components/common/FooterBtn/F
 interface FooterBtnType {
 	text: string;
 	leftText?: string;
-	shape?: string;
+	isSquare?: boolean;
 	disabled?: boolean;
 	transparent?: boolean;
 	positionStatic?: boolean;
@@ -19,7 +19,7 @@ interface FooterBtnType {
 export default function FooterBtn({
 	text,
 	leftText,
-	shape = "round",
+	isSquare,
 	transparent,
 	positionStatic,
 	disabled,
@@ -27,9 +27,7 @@ export default function FooterBtn({
 	return (
 		<div
 			css={
-				shape === "round"
-					? FooterBtnRound(transparent === true, positionStatic === true)
-					: FooterBtnSquare
+				isSquare ? FooterBtnRound(transparent === true, positionStatic === true) : FooterBtnSquare
 			}
 		>
 			{leftText && (
