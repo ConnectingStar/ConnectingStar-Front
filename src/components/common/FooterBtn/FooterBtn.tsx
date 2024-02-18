@@ -2,42 +2,44 @@ import { FooterBtnRound, FooterBtnSquare } from "@/components/common/FooterBtn/F
 
 interface FooterBtnType {
 	text: string;
-	sideBtnText?: string;
-	shape: string;
-	blur?: boolean;
+	leftText?: string;
+	shape?: string;
+	disabled?: boolean;
 	transparent?: boolean;
 	positionStatic?: boolean;
 }
 
 // text: 기본 버튼 텍스트
-// sideBtnText: 사이드 버튼 텍스트
+// LeftText: 사이드 버튼 텍스트
 // shape: 버튼 모양 "round" or "square"
 // blur: 버튼 흐리게
 // transparent : 배경 투명하게 (default: white)
 // positionStatic : position: fixed 제거
-
+// disabled
 export default function FooterBtn({
 	text,
-	sideBtnText,
-	shape,
-	blur,
+	leftText,
+	shape = "round",
 	transparent,
 	positionStatic,
+	disabled,
 }: FooterBtnType) {
 	return (
 		<div
 			css={
 				shape === "round"
-					? FooterBtnRound(blur === true, transparent === true, positionStatic === true)
-					: FooterBtnSquare(blur === true)
+					? FooterBtnRound(transparent === true, positionStatic === true)
+					: FooterBtnSquare
 			}
 		>
-			{sideBtnText && (
-				<button type="button" className="cancle">
-					{sideBtnText}
+			{leftText && (
+				<button type="button" className="cancle" disabled>
+					{leftText}
 				</button>
 			)}
-			<button type="button">{text}</button>
+			<button type="button" disabled={disabled}>
+				{text}
+			</button>
 		</div>
 	);
 }
