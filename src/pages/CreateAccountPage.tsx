@@ -6,17 +6,17 @@ import { createAccountStyle } from "@/pages/CreateAccountPage.style";
 const accountInputData = [
 	{
 		title: "닉네임",
-		inputText: "닉네임을 입력해 주세요",
+		content: "닉네임을 입력해 주세요",
 		isPopUpModal: false,
 	},
 	{
 		title: "성별",
-		inputText: "성별을 선택해 주세요",
+		content: "성별을 선택해 주세요",
 		isPopUpModal: true,
 	},
 	{
 		title: "나이대",
-		inputText: "나이대를 선택해 주세요",
+		content: "나이대를 선택해 주세요",
 		isPopUpModal: true,
 	},
 ];
@@ -33,15 +33,19 @@ export default function CreateAccountPage() {
 					return (
 						<ul css={createAccountStyle.input} key={index}>
 							<li>
-								<p>{item.title}</p>
-								<div>
-									<input placeholder={item.inputText}></input>
-									{item.isPopUpModal ? (
+								<h2>{item.title}</h2>
+								{item.isPopUpModal ? (
+									<div>
+										<p>{item.content}</p>
 										<button>
 											<img src={arrowDown} alt="arrow-down" />
 										</button>
-									) : null}
-								</div>
+									</div>
+								) : (
+									<div>
+										<input placeholder={item.content}></input>
+									</div>
+								)}
 							</li>
 						</ul>
 					);
