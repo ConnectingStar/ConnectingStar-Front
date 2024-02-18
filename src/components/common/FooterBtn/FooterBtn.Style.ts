@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const FooterBtnRound = (blur: boolean, transparent: boolean, positionStatic: boolean) => {
+export const FooterBtnRound = (transparent: boolean, positionStatic: boolean) => {
 	return css`
 		${positionStatic ? null : "position: fixed;bottom: 0;left: 50%;	transform: translateX(-50%);"}
 		width: 22.5rem;
@@ -19,9 +19,12 @@ export const FooterBtnRound = (blur: boolean, transparent: boolean, positionStat
 			height: 3.438rem;
 			border-radius: 15px;
 			${theme.font.button_big};
-			opacity: ${blur ? "40%" : "100%"};
 			color: white;
 			background-color: ${theme.color.main_Blue};
+
+			&:disabled {
+				opacity: 40%;
+			}
 
 			&.cancle {
 				color: ${theme.color.button_deactivated};
@@ -32,7 +35,7 @@ export const FooterBtnRound = (blur: boolean, transparent: boolean, positionStat
 	`;
 };
 
-export const FooterBtnSquare = (blur: boolean) => {
+export const FooterBtnSquare = () => {
 	return css`
 		width: 100%;
 		height: 3.44rem;
@@ -47,8 +50,11 @@ export const FooterBtnSquare = (blur: boolean) => {
 			height: 100%;
 			background-color: ${theme.color.main_Blue};
 			color: white;
-			opacity: ${blur ? "40%" : "100%"};
 			flex-grow: 1;
+
+			&:disabled {
+				opacity: 40%;
+			}
 
 			&.cancle {
 				color: ${theme.color.button_deactivated};
