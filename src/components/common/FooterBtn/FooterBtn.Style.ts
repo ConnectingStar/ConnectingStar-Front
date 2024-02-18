@@ -8,8 +8,7 @@ export const footerBtnStyle = (
 	isPositionStatic?: boolean,
 ) => {
 	return css`
-		position: fixed;
-		bottom: 0;
+		${isPositionStatic ? null : "position: fixed;bottom: 0;left: 50%;	transform: translateX(-50%);"}
 		width: 22.5rem;
 		height: 5.5rem;
 		padding: 1.063rem 1.5rem;
