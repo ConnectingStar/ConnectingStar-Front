@@ -48,7 +48,7 @@ const Calender = () => {
 
 			<div css={dateBoxStyle}>
 				{week.map((week) => (
-					<div key={week} css={dayStyle()}>
+					<div key={week} css={dayStyle(true, true)}>
 						{week}
 					</div>
 				))}
