@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ChartPage from "@/pages/ChartPage";
 import CreateAccountPage from "@/pages/CreateAccountPage";
+import CreateAccountPage from "@/pages/CreateAccountPage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
@@ -14,8 +15,6 @@ import SignUp from "@/pages/SignUp/SignUp";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
-
-import CreateAccountPage from "./pages/CreateAccountPage";
 
 const App = () => {
 	return (
