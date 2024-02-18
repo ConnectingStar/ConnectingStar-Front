@@ -8,7 +8,7 @@ import SignUp from "@/pages/SignUp/SignUp";
 import StarPage from "@/pages/StarPage";
 
 import CreateAccountPage from "./pages/CreateAccountPage";
-import DiscoveryRoutePage from "./pages/DiscoveryRoutePage";
+import DiscoveryRoutePage from "./pages/VisitTrackPage";
 
 const App = () => {
 	return (
