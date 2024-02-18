@@ -1,41 +1,45 @@
-import { css } from "@emotion/react";
+import { footerBtnStyle } from "@/components/common/FooterBtn/FooterBtn.Style";
 
-import { theme } from "@/styles/theme";
+interface FooterBtnType {
+	text: string;
+	leftText?: string;
+	isSquare?: boolean;
+	disabled?: boolean;
+	isTransparent?: boolean;
+	isPositionStatic?: boolean;
+	handleBtnClick?: () => void;
+	handleLeftBtnClick?: () => void;
+}
 
-export const footerBtnStyle = (
-	transparent?: boolean,
-	isSquare?: boolean,
-	isPositionStatic?: boolean,
-) => {
-	return css`
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: ${isPositionStatic || isSquare ? "100%" : "22.5rem"};
-		padding: ${!isSquare && !isPositionStatic && "1rem 1.5rem"};
-		gap: ${!isSquare && "0.5rem"};
-		position: ${!isPositionStatic && "fixed"};
-		bottom: ${!isPositionStatic && 0};
-		background-color: ${!transparent && "white"};
-		left: ${!isPositionStatic && "50%"};
-		transform: ${!isPositionStatic && "translateX(-50%)"};
+// text: 기본 버튼 텍스트
+// leftText: 사이드 버튼 텍스트
+// isSquare: 버튼 모양 (default : round)
+// disabled: 버튼 비활성화(blur)
+// isTransparent : 배경 투명하게 (default: white)
+// isPositionStatic : position: fixed 제거
+// handleBtnClick : 우측버튼 onclick
+// handleLeftBtnClick : 좌측버튼 onclick
+export default function FooterBtn({
+	text,
+	leftText,
+	isSquare,
+	disabled,
+	isTransparent,
+	isPositionStatic,
+	handleBtnClick,
+	handleLeftBtnClick,
+}: FooterBtnType) {
+	return (
+		<div css={footerBtnStyle(isTransparent, isSquare, isPositionStatic)}>
+			{leftText && (
+				<button type="button" className="cancel" onClick={handleLeftBtnClick}>
+					{leftText}
+				</button>
+			)}
 
-		& > button {
-			width: 100%;
-			height: 3.438rem;
-			border-radius: ${!isSquare && "15px"};
-			${theme.font.button_big};
-			color: white;
-			background-color: ${theme.color.main_blue};
-
-			&:disabled {
-				opacity: 40%;
-			}
-
-			&.cancel {
-				color: ${theme.color.button_deactivated};
-				background-color: ${theme.color.button_disabled};
-			}
-		}
-	`;
-};
+			<button type="button" disabled={disabled} onClick={handleBtnClick}>
+				{text}
+			</button>
+		</div>
+	);
+}
