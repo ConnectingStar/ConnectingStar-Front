@@ -1,8 +1,15 @@
 import { useMemo, useState } from "react";
 
-import { addMonths, subMonths, startOfMonth, startOfWeek, addDays, isSameMonth } from "date-fns";
+import {
+	format,
+	addMonths,
+	subMonths,
+	startOfMonth,
+	startOfWeek,
+	addDays,
+	isSameMonth,
+} from "date-fns";
 
-import CalendarDay from "@/components/MyPage/NotificationSetting/StopHabitModal/Calendar/CalendarDay";
 import CalendarHeader from "@/components/MyPage/NotificationSetting/StopHabitModal/Calendar/CalendarHeader";
 
 import {
@@ -29,11 +36,9 @@ const Calender = () => {
 	const handleDayText = useMemo(() => {
 		return dayList.map((dayData) => {
 			return (
-				<CalendarDay
-					key={dayData.toString()}
-					day={dayData}
-					isSameMonth={isSameMonth(monthStart, dayData)}
-				/>
+				<div key={dayData.toString()} css={dayStyle(isSameMonth(monthStart, dayData), false)}>
+					{format(dayData, "d")}
+				</div>
 			);
 		});
 	}, [currentMonth]);
