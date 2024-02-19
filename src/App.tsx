@@ -6,6 +6,7 @@ import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
+import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
 import StarPage from "@/pages/StarPage";
@@ -23,6 +24,7 @@ const App = () => {
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
+				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
