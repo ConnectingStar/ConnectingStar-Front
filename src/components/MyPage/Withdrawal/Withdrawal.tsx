@@ -8,7 +8,7 @@ import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
-import { leaveResonData } from "@/constants/myPageConstants";
+import { leaveReasonData } from "@/constants/myPageConstants";
 
 import {
 	layoutStyle,
@@ -36,7 +36,7 @@ const Withdrawal = () => {
 				<DownArrowIcon />
 			</div>
 
-			{leaveResonData.map((data) => (
+			{leaveReasonData.map((data) => (
 				<div key={data.title} css={middleBoxStyle}>
 					{data.placeholder && data.title === reason && (
 						<div css={textBoxStyle}>
