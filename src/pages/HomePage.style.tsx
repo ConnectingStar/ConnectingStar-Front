@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 // TODO: 추후 theme font & color로 변경
-export const HomePageStyle = {
+export const homePageStyle = {
 	container: css`
 		display: flex;
 		flex-direction: column;
@@ -15,6 +15,7 @@ export const HomePageStyle = {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		padding: 24px;
+		padding: 1.5rem;
+		gap: 1.25rem;
 	`,
 };
