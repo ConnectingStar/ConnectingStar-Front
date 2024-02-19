@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 
 import Header from "@/components/common/Header/Header";
 import HabitHistory from "@/components/MyPage/HabitHistory/HabitHistory";
+
 import { theme } from "@/styles/theme";
 
 const MyHabitPage = () => {
