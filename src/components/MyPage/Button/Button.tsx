@@ -1,22 +1,24 @@
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 
-import { layoutStyle, textStyle, versionTextStyle } from "@/components/MyPage/Button/Button.style";
+import { layoutStyle, textStyle, getSubTextStyle } from "@/components/MyPage/Button/Button.style";
 
 interface buttonProps {
 	icon?: JSX.Element;
 	text: string;
-	hasArrowIcon: boolean;
-	isVersion: boolean;
+	subText?: string;
+	hasArrowIcon?: boolean;
+	isVersion?: boolean;
+	isSubText?: boolean;
 }
 
-const Button = ({ icon, text, hasArrowIcon, isVersion }: buttonProps) => {
+const Button = ({ icon, text, subText, hasArrowIcon, isSubText }: buttonProps) => {
 	return (
 		<div css={layoutStyle}>
 			{icon}
 			<p css={textStyle}>
 				{text}
-				{isVersion && " 1.01.2"}
-				{isVersion && <p css={versionTextStyle}>최신 버전 사용 중</p>}
+				{text === "현재 버전" && " 1.01.2"}
+				{isSubText && <p css={getSubTextStyle(text === "간편로그인")}>{subText}</p>}
 			</p>
 			{hasArrowIcon && <RightArrowIcon />}
 		</div>
