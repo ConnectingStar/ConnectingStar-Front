@@ -31,5 +31,10 @@ export const headerStyle = {
 	titleLarge: css`
 		${theme.font.head_a}
 		margin-right: auto;
+<<<<<<< HEAD
+=======
+		font-size: 1.5rem;
+		font-weight: 500;
+>>>>>>> 7a117e7 ([TS-241] Refactor: mypage landing header component add)
 	`,
 };
