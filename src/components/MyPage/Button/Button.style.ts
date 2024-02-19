@@ -29,3 +29,10 @@ export const versionTextStyle = css`
 	color: #0176f9;
 	font-weight: 400;
 `;
+
+export const getSubTextStyle = (isLogin: boolean) => {
+	return css`
+		color: ${isLogin === true ? "#999" : "#0176f9"};
+		font-weight: 400;
+	`;
+};

@@ -46,6 +46,40 @@ export const buttonData = [
 			},
 			{
 				text: "현재 버전",
+				subText: "최신 버전 사용중",
+			},
+		],
+	},
+];
+
+export const myInfoButtonData = [
+	{
+		id: "내 정보",
+		button: [
+			{
+				text: "정체성",
+				subText: "매일 성장하는",
+			},
+			{
+				text: "닉네임",
+				subText: "사용자 닉네임",
+			},
+			{
+				text: "성별",
+				subText: "여",
+			},
+			{
+				text: "나이대",
+				subText: "20-24",
+			},
+		],
+	},
+	{
+		id: "로그인 계정",
+		button: [
+			{
+				text: "간편로그인",
+				subText: "카카오톡",
 			},
 		],
 	},
