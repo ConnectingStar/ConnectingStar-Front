@@ -10,11 +10,21 @@ interface buttonProps {
 	hasArrowIcon?: boolean;
 	isSubText?: boolean;
 	link?: string;
+	onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const Button = ({ icon, text, text2, subText, hasArrowIcon, isSubText, link }: buttonProps) => {
+const Button = ({
+	icon,
+	text,
+	text2,
+	subText,
+	hasArrowIcon,
+	isSubText,
+	link,
+	onClick,
+}: buttonProps) => {
 	return (
-		<div css={layoutStyle}>
+		<div css={layoutStyle} onClick={onClick}>
 			<a href={link}>
 				{icon}
 				<p css={textStyle}>
