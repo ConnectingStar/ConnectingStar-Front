@@ -7,6 +7,8 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import { selectGenderData } from "@/constants/myPageConstants";
+
 import { buttonBoxStyle } from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal.style";
 import {
 	layoutStyle,
@@ -16,21 +18,6 @@ import {
 interface selectGenderModalType {
 	changeGender: Dispatch<SetStateAction<string>>;
 }
-
-const data = [
-	{
-		id: "male",
-		text: "남",
-	},
-	{
-		id: "female",
-		text: "여자",
-	},
-	{
-		id: "none",
-		text: "선택 안 함",
-	},
-];
 
 const SelectGenderModal = ({ changeGender }: selectGenderModalType) => {
 	const dispatch = useAppDispatch();
@@ -47,7 +34,7 @@ const SelectGenderModal = ({ changeGender }: selectGenderModalType) => {
 			<div css={layoutStyle}>
 				<h1>성별을 선택해 주세요</h1>
 				<ul>
-					{data.map((data) => (
+					{selectGenderData.map((data) => (
 						<li key={data.id}>
 							<input type="checkbox" id={data.id} onChange={() => setCheckItem(data.text)} />
 							<label htmlFor={data.id} css={getCheckBoxLabelStyle(checkItem === data.text)}>

@@ -24,7 +24,22 @@ const MyInfo = () => {
 
 	const { modal } = useAppSelector((state) => state.modal);
 
-	const [, setGender] = useState("");
+	const [gender, setGender] = useState("");
+	const [identity] = useState("");
+	const [nickname] = useState("");
+	const [age] = useState("");
+
+	const handleSubTextProp = (text: string) => {
+		if (text === "정체성") {
+			return identity;
+		} else if (text === "닉네임") {
+			return nickname;
+		} else if (text === "성별") {
+			return gender;
+		} else if (text === "나이대") {
+			return age;
+		}
+	};
 
 	return (
 		<div css={layoutStyle}>
@@ -42,7 +57,7 @@ const MyInfo = () => {
 							<Button
 								key={buttonData.text}
 								text={buttonData.text}
-								subText={buttonData.subText}
+								subText={handleSubTextProp(buttonData.text)}
 								isSubText
 								onClick={() => dispatch(openModal(buttonData.modalName))}
 							/>

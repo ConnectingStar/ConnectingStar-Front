@@ -69,12 +69,12 @@ export const myInfoButtonData = [
 			{
 				text: "정체성",
 				subText: "매일 성장하는",
-				modalName: "SELECT_GENDER",
+				modalName: "SELECT_IDENTITY",
 			},
 			{
 				text: "닉네임",
 				subText: "사용자 닉네임",
-				modalName: "SELECT_GENDER",
+				modalName: "SELECT_NICKNAME",
 			},
 			{
 				text: "성별",
@@ -84,7 +84,7 @@ export const myInfoButtonData = [
 			{
 				text: "나이대",
 				subText: "20-24",
-				modalName: "SELECT_GENDER",
+				modalName: "SELECT_AGE",
 			},
 		],
 	},
@@ -175,5 +175,20 @@ export const leaveReasonData = [
 		placeholder: "탈퇴를 결심한 이유는 무엇인가요?",
 		subText:
 			"조금 더 발전해서 다음 만남에는\n더욱 매력적인 Tars가 되어 볼게요!\n\n만나서 반가웠어요 :)\n앞으로의 행보도 응원합니다!",
+	},
+];
+
+export const selectGenderData = [
+	{
+		id: "male",
+		text: "남",
+	},
+	{
+		id: "female",
+		text: "여",
+	},
+	{
+		id: "none",
+		text: "선택 안 함",
 	},
 ];
