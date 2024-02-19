@@ -131,7 +131,7 @@ export const habitIconData = [
 	},
 ];
 
-export const leaveResonData = [
+export const leaveReasonData = [
 	{
 		title: "자주 사용하지 않아요",
 		placeholder: "어떤 점 때문에 자주 사용하지 않게 되었나요?",
