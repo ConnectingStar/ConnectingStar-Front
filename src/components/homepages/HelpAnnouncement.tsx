@@ -1,37 +1,29 @@
-import { ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
 import HelpAnnouncementIcon from "@/assets/icon/ic-homepage-help-anouncement.svg?react";
 
-import { HelpAnnouncementStyle } from "./HelpAnnouncement.style";
+import { helpAnnouncementStyle } from "@/components/homepages/HelpAnnouncement.style";
 
-function HelpAnnouncement(): ReactNode {
+function HelpAnnouncement() {
+	const navigate = useNavigate();
 	return (
 		<section
-			css={css`
-				${HelpAnnouncementStyle.container}
-			`}
+			css={helpAnnouncementStyle.container}
+			onClick={() => {
+				navigate("/help");
+			}}
 		>
-			<div
-				css={css`
-					${HelpAnnouncementStyle.iconWrapper}
-				`}
-			>
+			<div css={helpAnnouncementStyle.iconWrapper}>
 				<HelpAnnouncementIcon
 					css={css`
-						width: 50%;
-						height: 50%;
+						width: 100%;
+						height: 100%;
 					`}
 				/>
 			</div>
-			<div
-				css={css`
-					${HelpAnnouncementStyle.lineWrapper}
-				`}
-			>
-				습관 도움말
-			</div>
+			<div css={helpAnnouncementStyle.lineWrapper}>습관 도움말</div>
 		</section>
 	);
 }
