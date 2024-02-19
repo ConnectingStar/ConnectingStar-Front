@@ -69,18 +69,22 @@ export const myInfoButtonData = [
 			{
 				text: "정체성",
 				subText: "매일 성장하는",
+				modalName: "SELECT_GENDER",
 			},
 			{
 				text: "닉네임",
 				subText: "사용자 닉네임",
+				modalName: "SELECT_GENDER",
 			},
 			{
 				text: "성별",
 				subText: "여",
+				modalName: "SELECT_GENDER",
 			},
 			{
 				text: "나이대",
 				subText: "20-24",
+				modalName: "SELECT_GENDER",
 			},
 		],
 	},
@@ -90,6 +94,7 @@ export const myInfoButtonData = [
 			{
 				text: "간편로그인",
 				subText: "카카오톡",
+				modalName: "",
 			},
 		],
 	},

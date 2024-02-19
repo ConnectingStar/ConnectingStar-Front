@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 import Button from "@/components/MyPage/Button/Button";
 import SelectCharacterModal from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal";
+import SelectGenderModal from "@/components/MyPage/MyInfo/SelectGenderModal/SelectGenderModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -21,6 +24,8 @@ const MyInfo = () => {
 
 	const { modal } = useAppSelector((state) => state.modal);
 
+	const [, setGender] = useState("");
+
 	return (
 		<div css={layoutStyle}>
 			<div css={mainBoxStyle}>
@@ -39,6 +44,7 @@ const MyInfo = () => {
 								text={buttonData.text}
 								subText={buttonData.subText}
 								isSubText
+								onClick={() => dispatch(openModal(buttonData.modalName))}
 							/>
 						))}
 					</div>
@@ -56,6 +62,7 @@ const MyInfo = () => {
 				</li>
 			</ul>
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
+			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}
 		</div>
 	);
 };
