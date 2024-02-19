@@ -1,8 +1,9 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
+import Modal from "@/components/common/Modal/Modal";
+
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import Modal from "@/components/common/Modal/Modal";
 
 import {
 	layoutStyle,

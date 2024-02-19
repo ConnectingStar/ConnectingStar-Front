@@ -5,6 +5,7 @@ import ChangeNicknameModal from "@/components/MyPage/MyInfo/ChangeNicknameModal/
 import SelectAgeModal from "@/components/MyPage/MyInfo/SelectAgeModal";
 import SelectCharacterModal from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal";
 import SelectGenderModal from "@/components/MyPage/MyInfo/SelectGenderModal/SelectGenderModal";
+import SelectIdentityModal from "@/components/MyPage/MyInfo/SelectIdentityModal/SelectIdentityModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -27,7 +28,7 @@ const MyInfo = () => {
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const [gender, setGender] = useState("");
-	const [identity] = useState("");
+	const [identity, setIdentity] = useState("");
 	const [nickname, setNickname] = useState("");
 	const [age, setAge] = useState("");
 
@@ -83,6 +84,7 @@ const MyInfo = () => {
 			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
 			{modal === modalType.SELECT_AGE && <SelectAgeModal changeAge={setAge} />}
+			{modal === modalType.SELECT_IDENTITY && <SelectIdentityModal changeIdentity={setIdentity} />}
 		</div>
 	);
 };
