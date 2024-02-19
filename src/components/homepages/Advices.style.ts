@@ -1,13 +1,32 @@
 import { css } from "@emotion/react";
 
-export const AdvicesStyle = {
+export const advicesStyle = {
 	container: css`
-		display: flex;
+		position: relative;
+		overflow: scroll;
 		width: 100%;
-		height: 120px;
-		background-color: #d9d9d9;
-		overflow-x: hidden;
-		border-radius: 20px;
-		margin-bottom: 20px;
+		height: 7.5rem;
+		background-color: white;
+		border-radius: 15px;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		-ms-overflow-style: none; /* 인터넷 익스플로러 */
+		scrollbar-width: none; /* 파이어폭스 */
+	`,
+	advicesCarousel: css`
+		display: flex;
+		background-color: white;
+		min-width: 100%;
+		height: 100%;
+	`,
+	adviceWrapper: css`
+		flex: 0 0 100%;
+		display: flex;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 	`,
 };
