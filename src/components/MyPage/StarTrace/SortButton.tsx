@@ -39,7 +39,9 @@ const SortButton = () => {
 				휴식
 			</button>
 
-			{modal === modalType.SORT && <SortModal changeSortOption={setSortOption} />}
+			{modal === modalType.SORT && (
+				<SortModal sortOption={sortOption} changeSortOption={setSortOption} />
+			)}
 		</div>
 	);
 };
