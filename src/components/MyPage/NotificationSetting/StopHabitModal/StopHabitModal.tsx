@@ -1,7 +1,8 @@
-import { useAppDispatch } from "@/api/hooks";
-import { closeModal } from "@/api/modal/modalSlice";
 import Modal from "@/components/common/Modal/Modal";
 import Calender from "@/components/MyPage/NotificationSetting/StopHabitModal/Calendar/Calender";
+
+import { useAppDispatch } from "@/api/hooks";
+import { closeModal } from "@/api/modal/modalSlice";
 
 import {
 	layoutStyle,
