@@ -9,7 +9,7 @@ interface buttonProps {
 	subText?: string;
 	hasArrowIcon?: boolean;
 	isSubText?: boolean;
-	link: string | undefined;
+	link?: string;
 }
 
 const Button = ({ icon, text, text2, subText, hasArrowIcon, isSubText, link }: buttonProps) => {
