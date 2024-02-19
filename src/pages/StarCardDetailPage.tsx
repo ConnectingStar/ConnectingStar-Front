@@ -1,11 +1,13 @@
+import Header from "@/components/common/Header/Header";
 import Button from "@/components/StarCardDetail/Button";
 import CategoryLabel from "@/components/StarCardDetail/CategoryLabel";
 import Img from "@/components/StarCardDetail/Img/Img";
 import Story from "@/components/StarCardDetail/Story";
 import Title from "@/components/StarCardDetail/Title";
+
 import { buttonState } from "@/constants/starCardDetailConstants";
 
-import { sectionStyle, headerStyle, buttonContainerStyle } from "@/pages/StarCardDetailPage.style";
+import { sectionStyle, buttonContainerStyle } from "@/pages/StarCardDetailPage.style";
 
 // TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
 interface dataType {
@@ -17,11 +19,13 @@ const data: dataType = {
 	state: "have",
 };
 
-// TODO: Header, Button 공통 컴포넌트 머지되면 교체 예정
+// TODO: Button 공통 컴포넌트 머지되면 교체 예정
 export default function StarCardDetailPage() {
 	return (
 		<>
-			<header css={headerStyle}></header>
+			<Header>
+				<Header.PrevButton />
+			</Header>
 			<section css={sectionStyle}>
 				<Img state={data.state} />
 				<Title tag="h2">캐릭터 설명 문구</Title>
