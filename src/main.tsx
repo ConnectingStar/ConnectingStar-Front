@@ -4,8 +4,9 @@ import { Provider } from "react-redux";
 
 import { Global, ThemeProvider } from "@emotion/react";
 
-import { store } from "@/api/store";
 import App from "@/App";
+
+import { store } from "@/api/store";
 
 import { GlobalStyle } from "@/styles/globalStyle";
 import { theme } from "@/styles/theme";

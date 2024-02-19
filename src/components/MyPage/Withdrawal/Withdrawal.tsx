@@ -1,9 +1,12 @@
 import { useState } from "react";
 
+import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
+
+import LeaveReasonModal from "@/components/MyPage/Withdrawal/LeaveResonModal/LeaveReasonModal";
+
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
-import LeaveReasonModal from "@/components/MyPage/Withdrawal/LeaveResonModal/LeaveReasonModal";
+
 import { modalType } from "@/constants/modalConstants";
 import { leaveResonData } from "@/constants/myPageConstants";
 
