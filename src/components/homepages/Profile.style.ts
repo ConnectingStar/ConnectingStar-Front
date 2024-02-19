@@ -2,14 +2,13 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const ProfileStyle = {
+export const profileStyle = {
 	container: css`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		height: 3.5rem; // C: 56px
-		margin-bottom: 20px;
+		height: 3.5rem;
 	`,
 	imageWrapper: css`
 		display: flex;
