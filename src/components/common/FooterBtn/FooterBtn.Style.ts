@@ -2,64 +2,40 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const FooterBtnRound = (transparent: boolean, positionStatic: boolean) => {
+export const footerBtnStyle = (
+	transparent?: boolean,
+	isSquare?: boolean,
+	isPositionStatic?: boolean,
+) => {
 	return css`
-		${!positionStatic && "position: fixed;bottom: 0;left: 50%;	transform: translateX(-50%);"};
-		width: 100%;
-		height: 5.5rem;
-		padding: 1.063rem 1.5rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.5rem;
+		width: 100%;
+		height: ${isSquare ? "3.44rem" : "5.5rem"};
+		padding: ${!isSquare && "0 1.5rem"};
+		gap: ${!isSquare && "0.5rem"};
+		position: ${!isPositionStatic && "fixed"};
+		bottom: ${!isPositionStatic && 0};
 		background-color: ${transparent ? "transparent" : "white"};
+		left: ${!isPositionStatic && "50%"};
+		transform: ${!isPositionStatic && "translateX(-50%)"};
 
 		& > button {
 			width: 100%;
 			height: 3.438rem;
-			border-radius: 15px;
+			border-radius: ${!isSquare && "15px"};
 			${theme.font.button_big};
 			color: white;
-			background-color: ${theme.color.main_blue};
+			background-color: ${theme.color.main_Blue};
 
 			&:disabled {
 				opacity: 40%;
 			}
 
-			&.cancle {
+			&.cancel {
 				color: ${theme.color.button_deactivated};
 				background-color: ${theme.color.button_disabled};
-				opacity: 100%;
-			}
-		}
-	`;
-};
-
-export const FooterBtnSquare = () => {
-	return css`
-		width: 100%;
-		height: 3.44rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: fixed;
-		left: 0;
-		bottom: 0;
-
-		& > button {
-			height: 100%;
-			background-color: ${theme.color.main_blue};
-			color: white;
-			flex-grow: 1;
-
-			&:disabled {
-				opacity: 40%;
-			}
-
-			&.cancle {
-				color: ${theme.color.button_deactivated};
-				background-color: ${theme.color.button_disabled};
-				opacity: 100%;
 			}
 		}
 	`;
