@@ -16,7 +16,7 @@ export const layoutStyle = css`
 	& > input {
 		all: unset;
 		box-sizing: border-box;
-		width: 19.5rem;
+		width: 100%;
 		height: 3.4375rem;
 		border-radius: 15px;
 		margin-top: 1.6875rem;
