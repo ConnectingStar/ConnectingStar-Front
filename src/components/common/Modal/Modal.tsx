@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 
+import Portal from "@/components/common/Modal/Portal";
+
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import Portal from "@/components/common/Modal/Portal";
 
 import { modalBackdropStyle, getModalLayoutStyle } from "@/components/common/Modal/Modal.style";
 
