@@ -10,11 +10,11 @@ import {
 	characterWrapperStyle,
 	getCharacterBoxStyle,
 	buttonBoxStyle,
-} from "@/components/MyPage/MyInfo/CharacterSelectModal/CharacterSelectModal.style";
+} from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal.style";
 
 const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
-const CharacterSelectModal = () => {
+const SelectCharacterModal = () => {
 	const dispatch = useAppDispatch();
 
 	const [isSelect, setIsSelect] = useState(1);
@@ -45,4 +45,4 @@ const CharacterSelectModal = () => {
 	);
 };
 
-export default CharacterSelectModal;
+export default SelectCharacterModal;
