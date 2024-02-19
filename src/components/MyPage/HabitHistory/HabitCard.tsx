@@ -1,7 +1,10 @@
+import CloseIcon from "@/assets/icon/ic-close.svg?react";
+
+import DeleteHistoryModal from "@/components/MyPage/HabitHistory/DeleteHistoryModal";
+
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import CloseIcon from "@/assets/icon/ic-close.svg?react";
-import DeleteHistoryModal from "@/components/MyPage/HabitHistory/DeleteHistoryModal";
+
 import { modalType } from "@/constants/modalConstants";
 
 import {
