@@ -13,15 +13,9 @@ export const layoutStyle = css`
 		height: 56px;
 
 		align-items: center;
+		gap: 54px;
 		& > li {
-			flex: 1;
-			display: flex;
-			width: 100%;
-			height: 100%;
-			// 임시 배경색
-			background-color: white;
-			justify-content: center;
-			align-items: center;
+			cursor: pointer;
 		}
 	}
 `;
