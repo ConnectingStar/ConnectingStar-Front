@@ -1,3 +1,4 @@
 export const modalType = {
 	LEAVE_REASON: "LEAVE_REASON",
+	CHARACTER_SELECT: "CHARACTER_SELECT",
 };
