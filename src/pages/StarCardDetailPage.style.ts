@@ -6,11 +6,6 @@ export const sectionStyle = css`
 	margin: 0 auto;
 `;
 
-// TODO: Header 컴포넌트 머지 되면 교체 예정
-export const headerStyle = css`
-	height: 56px;
-`;
-
 // TODO: 공통 버튼 컴포넌트 추가되면 교체 예정
 export const buttonContainerStyle = css`
 	margin-top: 1rem;
