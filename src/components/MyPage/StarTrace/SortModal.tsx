@@ -1,9 +1,11 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
+import CheckIcon from "@/assets/icon/ic-check.svg?react";
+
+import Modal from "@/components/common/Modal/Modal";
+
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import CheckIcon from "@/assets/icon/ic-check.svg?react";
-import Modal from "@/components/common/Modal/Modal";
 
 import { buttonBoxStyle } from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal.style";
 import {
