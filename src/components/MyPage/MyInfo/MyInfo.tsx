@@ -1,5 +1,5 @@
 import Button from "@/components/MyPage/Button/Button";
-import CharacterSelectModal from "@/components/MyPage/MyInfo/CharacterSelectModal/CharacterSelectModal";
+import SelectCharacterModal from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -25,7 +25,7 @@ const MyInfo = () => {
 		<div css={layoutStyle}>
 			<div css={mainBoxStyle}>
 				<div css={characterBoxStyle}>
-					<button onClick={() => dispatch(openModal(modalType.CHARACTER_SELECT))}>
+					<button onClick={() => dispatch(openModal(modalType.SELECT_CHARACTER))}>
 						<p>캐릭터 변경</p>
 					</button>
 				</div>
@@ -55,7 +55,7 @@ const MyInfo = () => {
 					<p>회원탈퇴</p>
 				</li>
 			</ul>
-			{modal === modalType.CHARACTER_SELECT && <CharacterSelectModal />}
+			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
 		</div>
 	);
 };
