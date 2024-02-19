@@ -1,8 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 
+import Modal from "@/components/common/Modal/Modal";
+
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import Modal from "@/components/common/Modal/Modal";
+
 import { leaveResonData } from "@/constants/myPageConstants";
 
 import { layoutStyle } from "@/components/MyPage/Withdrawal/LeaveResonModal/LeaveReasonModal.style";
