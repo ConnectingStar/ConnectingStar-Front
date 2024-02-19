@@ -1,12 +1,12 @@
-import { FooterBtnRound, FooterBtnSquare } from "@/components/common/FooterBtn/FooterBtn.Style";
+import { footerBtnStyle } from "@/components/common/FooterBtn/FooterBtn.Style";
 
 interface FooterBtnType {
 	text: string;
 	leftText?: string;
 	isSquare?: boolean;
 	disabled?: boolean;
-	transparent?: boolean;
-	positionStatic?: boolean;
+	isTransparent?: boolean;
+	isPositionStatic?: boolean;
 	rightOnclick?: () => void;
 	leftOnclick?: () => void;
 }
@@ -15,29 +15,28 @@ interface FooterBtnType {
 // leftText: 사이드 버튼 텍스트
 // isSquare: 버튼 모양 (default : round)
 // disabled: 버튼 비활성화(blur)
-// transparent : 배경 투명하게 (default: white)
-// positionStatic : position: fixed 제거
+// isTransparent : 배경 투명하게 (default: white)
+// isPositionStatic : position: fixed 제거
+// rightOnclick : 우측버튼 onclick
+// leftOnclick : 좌측버튼 onclick
 export default function FooterBtn({
 	text,
 	leftText,
 	isSquare,
 	disabled,
-	transparent,
-	positionStatic,
+	isTransparent,
+	isPositionStatic,
 	rightOnclick,
 	leftOnclick,
 }: FooterBtnType) {
 	return (
-		<div
-			css={
-				isSquare ? FooterBtnSquare : FooterBtnRound(transparent === true, positionStatic === true)
-			}
-		>
+		<div css={footerBtnStyle(isTransparent, isSquare, isPositionStatic)}>
 			{leftText && (
-				<button type="button" className="cancle" onClick={leftOnclick}>
+				<button type="button" className="cancel" onClick={leftOnclick}>
 					{leftText}
 				</button>
 			)}
+
 			<button type="button" disabled={disabled} onClick={rightOnclick}>
 				{text}
 			</button>
