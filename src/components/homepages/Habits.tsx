@@ -18,8 +18,8 @@ interface HabitsProps {
 	targetDate: {
 		year: number;
 		month: number;
-		day: number;
-		DOTW: string;
+		date: number;
+		day: string;
 		isPlanned: boolean;
 	};
 }
@@ -47,7 +47,7 @@ function Habits({ targetDate }: HabitsProps) {
 
 	// targetDate가 변하면 해당하는 날짜의 habits들을 가져와서 setTargetHabits에 표시
 	useEffect(() => {
-		const url = `http://localhost:3000/habits?id=${targetDate.year}.${targetDate.month}.${targetDate.day}`;
+		const url = `http://localhost:3000/habits?id=${targetDate.year}.${targetDate.month}.${targetDate.date}`;
 		axios
 			.get(url)
 			.then((res) => {
