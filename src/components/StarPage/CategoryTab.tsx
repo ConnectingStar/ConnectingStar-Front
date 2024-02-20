@@ -10,7 +10,7 @@ export default function CategoryTab() {
 	const [select, setSelect] = useState("전체");
 
 	return (
-		<div css={container}>
+		<div css={containerStyle}>
 			{categoryData.map((item) => (
 				<button
 					key={item.id}
@@ -25,7 +25,7 @@ export default function CategoryTab() {
 	);
 }
 
-const container = css`
+const containerStyle = css`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
