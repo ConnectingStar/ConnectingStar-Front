@@ -4,18 +4,27 @@ import starImg from "@/assets/image/card-detail-star.png";
 
 import { theme } from "@/styles/theme";
 
-export default function StarCard() {
+interface StarCardProps {
+	title: string;
+	subTitle: string;
+	starNumber: number;
+}
+
+export default function StarCard({ title, subTitle, starNumber }: StarCardProps) {
 	return (
-		<div css={containerStyle}>
+		<li css={containerStyle}>
 			<div css={imgStyle}>
 				<img src="" alt="별자리" />
-				<img src={starImg} alt="노란색 별" css={starImgStyle} />
+				<div css={starImgStyle}>
+					<img src={starImg} alt="노란색 별" />
+					<strong>{starNumber}</strong>
+				</div>
 			</div>
 			<div css={titleStyle}>
-				<strong>육체 활동</strong>
-				<h3>캐릭터 이름</h3>
+				<strong>{subTitle}</strong>
+				<h3>{title}</h3>
 			</div>
-		</div>
+		</li>
 	);
 }
 
@@ -34,11 +43,22 @@ const imgStyle = css`
 `;
 
 const starImgStyle = css`
-	width: 40px;
-	height: 36.32px;
 	position: absolute;
 	right: 6px;
 	bottom: 6px;
+
+	img {
+		width: 40px;
+		height: 36.32px;
+	}
+
+	strong {
+		position: absolute;
+		left: 0.6875rem;
+		top: 0.5625rem;
+		color: ${theme.color.font_black};
+		${theme.font.body_b_bold}
+	}
 `;
 
 const titleStyle = css`
