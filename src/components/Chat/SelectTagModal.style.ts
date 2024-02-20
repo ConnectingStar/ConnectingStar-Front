@@ -6,7 +6,6 @@ export const selectTagModalStyle = {
 	container: css`
 		position: fixed;
 		top: 0;
-		top: 0;
 		height: 100vh;
 		background-color: white;
 	`,
