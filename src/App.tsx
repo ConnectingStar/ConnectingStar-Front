@@ -1,5 +1,7 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
+import ChatPage from "./pages/ChatPage";
+
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyPage from "@/pages/MyPage";
@@ -19,6 +21,7 @@ const App = () => {
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star/:id" element={<StarCardDetailPage />} />
+				<Route path="/chat" element={<ChatPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
