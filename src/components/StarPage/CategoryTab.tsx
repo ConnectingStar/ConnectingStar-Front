@@ -3,6 +3,7 @@ import { useState } from "react";
 import { css } from "@emotion/react";
 
 import { categoryData } from "@/constants/categoryConstants";
+
 import { theme } from "@/styles/theme";
 
 export default function CategoryTab() {
