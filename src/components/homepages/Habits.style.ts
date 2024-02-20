@@ -8,7 +8,6 @@ export const habitsStyle = {
 		flex-direction: column;
 		width: 100%;
 		gap: 0.75rem;
-		margin-bottom: 56px;
 	`,
 	habitWrapper: (props: { status: string }) => css`
 		display: flex;
