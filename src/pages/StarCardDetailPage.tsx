@@ -3,6 +3,7 @@ import CategoryLabel from "@/components/StarCardDetail/CategoryLabel";
 import Img from "@/components/StarCardDetail/Img/Img";
 import Story from "@/components/StarCardDetail/Story";
 import Title from "@/components/StarCardDetail/Title";
+
 import { buttonState } from "@/constants/starCardDetailConstants";
 
 import { sectionStyle, headerStyle, buttonContainerStyle } from "@/pages/StarCardDetailPage.style";
