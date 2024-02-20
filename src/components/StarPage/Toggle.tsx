@@ -23,6 +23,7 @@ const containerStyle = css`
 	justify-content: flex-end;
 	align-items: center;
 	gap: 12px;
+	margin: 1.25rem 0;
 	${theme.font.body_b_bold}
 `;
 
