@@ -1,5 +1,5 @@
 import Gnb from "@/components/common/Gnb/Gnb";
-import Header from "@/components/common/Header";
+import Header from "@/components/common/Header/Header";
 import CategoryTab from "@/components/StarPage/CategoryTab";
 
 const StarPage = () => {
