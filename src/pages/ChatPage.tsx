@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import SelectTagModal from "@/components/Chat/SelectTagModal";
 import Header from "@/components/common/Header/Header";
 
 import { chatStyle } from "@/pages/ChatPage.style";
@@ -20,20 +21,20 @@ const ChatData = {
 	],
 };
 
-// const habitTags = [
-// 	"러닝하기",
-// 	"헬스하기",
-// 	"산책하기",
-// 	"명상하기",
-// 	"기도하기",
-// 	"자기확언",
-// 	"책 읽기",
-// 	"신문보기",
-// 	"공부하기",
-// 	"블로깅",
-// 	"일기작성",
-// 	"소비기록",
-// ];
+const habitTags = [
+	"러닝하기",
+	"헬스하기",
+	"산책하기",
+	"명상하기",
+	"기도하기",
+	"자기확언",
+	"책 읽기",
+	"신문보기",
+	"공부하기",
+	"블로깅",
+	"일기작성",
+	"소비기록",
+];
 
 function ChatPage() {
 	const [percentage, setPercentage] = useState(100 / 12);
@@ -65,6 +66,7 @@ function ChatPage() {
 				</div>
 				<div css={chatStyle.user}>자격증 공부하기</div>
 			</div>
+			<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={habitTags} />
 		</div>
 	);
 }
