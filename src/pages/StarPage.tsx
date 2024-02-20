@@ -11,21 +11,25 @@ const starCardData = [
 		id: 0,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
+		starNumber: 10,
 	},
 	{
 		id: 1,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
+		starNumber: 10,
 	},
 	{
 		id: 2,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
+		starNumber: 10,
 	},
 	{
 		id: 3,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
+		starNumber: 10,
 	},
 ];
 
@@ -41,7 +45,12 @@ const StarPage = () => {
 				<Toggle />
 				<ul css={cardSectionStyle}>
 					{starCardData.map((card) => (
-						<StarCard key={card.id} title={card.title} subTitle={card.subTitle} starNumber={10} />
+						<StarCard
+							key={card.id}
+							title={card.title}
+							subTitle={card.subTitle}
+							starNumber={card.starNumber}
+						/>
 					))}
 				</ul>
 			</section>
