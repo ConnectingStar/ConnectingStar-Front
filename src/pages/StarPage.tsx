@@ -28,21 +28,21 @@ const starCardData: starCardDataType[] = [
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
 		starNumber: 10,
-		state: "selected",
+		state: "have",
 	},
 	{
 		id: 2,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
 		starNumber: 10,
-		state: "default",
+		state: "selected",
 	},
 	{
 		id: 3,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
 		starNumber: 10,
-		state: "have",
+		state: "default",
 	},
 ];
 
