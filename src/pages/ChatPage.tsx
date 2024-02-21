@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
+import Chat from "@/components/Chat/Chat";
 import Progressbar from "@/components/Chat/Progressbar";
-import SelectTagModal from "@/components/Chat/SelectTagModal";
+// import SelectTagModal from "@/components/Chat/SelectTagModal";
 import Header from "@/components/common/Header/Header";
 
 import { chatData } from "@/constants/chatData";
-import { habitTags } from "@/constants/habitTags";
+// import { habitTags } from "@/constants/habitTags";
 
 import { chatStyle } from "@/pages/ChatPage.style";
 
@@ -23,29 +24,16 @@ export const userDataFrame = {
 
 function ChatPage() {
 	const [percentage, setPercentage] = useState(100 / 12);
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [userData, setUserData] = useState(userDataFrame);
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [isModal, setIsModal] = useState(false);
-	const [messageIndex, setMessageIndex] = useState(0);
+	const [isReply, setIsReply] = useState(false);
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			if (chatData[0].text.length > messageIndex) {
-				setMessageIndex((prevIndex) => prevIndex + 1);
-			}
-		}, 1000);
-
-		return () => clearInterval(timer);
-	}, [messageIndex]);
-
-	console.log(messageIndex);
-
-	// progress 퍼센티지 향상을 위한 함수
-	const handleProgress = () => {
-		if (percentage < 99) setPercentage(percentage + 100 / 12);
-		// setIsModal(true);
-	};
+	const percentageProps: [number, React.Dispatch<React.SetStateAction<number>>] = [
+		percentage,
+		setPercentage,
+	];
+	const isReplyProps: [boolean, React.Dispatch<React.SetStateAction<boolean>>] = [
+		isReply,
+		setIsReply,
+	];
 
 	return (
 		<div css={chatStyle.container}>
@@ -53,30 +41,21 @@ function ChatPage() {
 				<Header.PrevButton></Header.PrevButton>
 			</Header>
 			<Progressbar percentage={percentage} />
-			<button onClick={handleProgress}>진행버튼</button>
-			<div css={chatStyle.chat}>
-				<div css={chatStyle.dev}>
-					<div>
-						<img src="" alt="profile" />
-					</div>
-					<ul>
-						{chatData[0].text.slice(0, messageIndex + 1).map((i, index) => (
-							<li key={index}>{i}</li>
-						))}
-						{chatData[0].text.length === messageIndex && (
-							<button onClick={handleProgress}>습관 선택</button>
-						)}
-					</ul>
-				</div>
-				<div css={chatStyle.user}>자격증 공부하기</div>
-			</div>
-			{isModal && (
+
+			<Chat
+				message={chatData.firstMeet}
+				reply={userDataFrame.habit}
+				percentageProps={percentageProps}
+				isReplyProps={isReplyProps}
+			/>
+
+			{/* {isReply && (
 				<SelectTagModal
 					title="어떤 습관을 만들어 볼까요?"
 					tags={habitTags}
 					setUserData={setUserData}
 				/>
-			)}
+			)} */}
 		</div>
 	);
 }
