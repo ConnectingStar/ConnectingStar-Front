@@ -37,10 +37,6 @@ export const selectTagModalStyle = {
 				padding: 1rem;
 				margin: 0 6px 6px 0;
 			}
-			.selected {
-				background-color: ${theme.color.main_blue};
-				color: white;
-			}
 		}
 
 		& > input {
