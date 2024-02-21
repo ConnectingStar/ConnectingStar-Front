@@ -6,6 +6,7 @@ import {
 	starImgStyle,
 	haveLabelStyle,
 	titleStyle,
+	selectedStyle,
 } from "@/components/StarPage/StarCard.style";
 
 // TODO: API 연결 후 삭제 or 수정 예정
@@ -18,7 +19,7 @@ interface StarCardProps {
 
 export default function StarCard({ title, subTitle, starNumber, state }: StarCardProps) {
 	return (
-		<li css={containerStyle} className={state === "selected" ? "selected" : ""}>
+		<li css={containerStyle}>
 			<div css={imgStyle}>
 				<img src="" alt="별자리" />
 				<div css={starImgStyle}>
@@ -31,6 +32,7 @@ export default function StarCard({ title, subTitle, starNumber, state }: StarCar
 				<strong>{subTitle}</strong>
 				<h3>{title}</h3>
 			</div>
+			{state === "selected" && <div css={selectedStyle}></div>}
 		</li>
 	);
 }
