@@ -54,8 +54,9 @@ const starImgStyle = css`
 
 	strong {
 		position: absolute;
-		left: 0.6875rem;
-		top: 0.5625rem;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 		color: ${theme.color.font_black};
 		${theme.font.body_b_bold}
 	}
