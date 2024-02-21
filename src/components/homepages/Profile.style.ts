@@ -8,12 +8,12 @@ export const profileStyle = {
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-		height: 3.5rem;
+		padding: 0.625rem 0 0.625rem 0;
 	`,
 	imageWrapper: css`
 		display: flex;
 		overflow: hidden;
-		height: 100%;
+		height: 2.5rem;
 		width: auto;
 		aspect-ratio: 1/1;
 		border-radius: 4px;
@@ -33,7 +33,7 @@ export const profileStyle = {
 		justify-content: center;
 		align-items: center;
 		width: auto;
-		height: 100%;
+		height: 1.75rem;
 		aspect-ratio: 1/1;
 		border-radius: 4px;
 	`,

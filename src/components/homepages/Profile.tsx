@@ -11,21 +11,16 @@ import { profileStyle } from "@/components/homepages/Profile.style";
 function Profile() {
 	const navigate = useNavigate();
 	return (
-		<section css={profileStyle.container}>
-			<div
-				css={profileStyle.imageWrapper}
-				onClick={() => {
-					navigate("/myinfo");
-				}}
-			>
+		<section
+			css={profileStyle.container}
+			onClick={() => {
+				navigate("/myinfo");
+			}}
+		>
+			<div css={profileStyle.imageWrapper}>
 				<img src="" alt="" />
 			</div>
-			<div
-				css={profileStyle.names}
-				onClick={() => {
-					navigate("/myinfo");
-				}}
-			>
+			<div css={profileStyle.names}>
 				<span
 					css={css`
 						${theme.font.body_c};
