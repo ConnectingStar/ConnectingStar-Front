@@ -1,60 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import Progressbar from "@/components/Chat/Progressbar";
 import SelectTagModal from "@/components/Chat/SelectTagModal";
 import Header from "@/components/common/Header/Header";
 
+import { chatData } from "@/constants/chatData";
+import { habitTags } from "@/constants/habitTags";
+
 import { chatStyle } from "@/pages/ChatPage.style";
 
-const userData = { profile: "picture", nickName: "피자냠냠", habit: "자격증 공부하기" };
-
-const ChatData = {
-	firstMeet: [
-		`반가워요 ${userData.profile}님! 저는 습관 형성 도우미 Tars에요 :)`,
-		"어떤 습관을 함께 만들어 볼까요?",
-		"매일 해도 무리 없는 쉬운 것부터 시작하기를 추천해요 😊",
-	],
-	habit: [
-		"그렇군요!",
-		"이번엔 정체성을 정해 볼게요",
-		`${userData.habit}를(을) 통해서 ${userData.nickName}님은 어떤 사람이 되고 싶으세요?
-		`,
-	],
-};
-
-const habitTags = [
-	"러닝하기",
-	"헬스하기",
-	"산책하기",
-	"명상하기",
-	"기도하기",
-	"자기확언",
-	"책 읽기",
-	"신문보기",
-	"공부하기",
-	"블로깅",
-	"일기작성",
-	"소비기록",
-];
-
+// TODO: 나중에 초기화
 export const userDataFrame = {
-	nickName: "",
-	habit: "",
-	identity: "",
-	time: "",
-	location: "",
-	action: "",
-	alert1: "",
-	alert2: "",
+	nickName: "닉네임",
+	habit: "습관",
+	identity: "정체성",
+	time: "오후 10:00",
+	location: "집 앞 산책로",
+	action: "5장",
+	alert1: "오후 09:50",
+	alert2: "오후 10:10",
 };
 
 function ChatPage() {
 	const [percentage, setPercentage] = useState(100 / 12);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [userData, setUserData] = useState(userDataFrame);
-	console.log(userData);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [isModal, setIsModal] = useState(false);
+	const [messageIndex, setMessageIndex] = useState(0);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			if (chatData[0].text.length > messageIndex) {
+				setMessageIndex((prevIndex) => prevIndex + 1);
+			}
+		}, 1000);
+
+		return () => clearInterval(timer);
+	}, [messageIndex]);
+
+	console.log(messageIndex);
 
 	// progress 퍼센티지 향상을 위한 함수
 	const handleProgress = () => {
 		if (percentage < 99) setPercentage(percentage + 100 / 12);
+		// setIsModal(true);
 	};
 
 	return (
@@ -62,28 +52,31 @@ function ChatPage() {
 			<Header>
 				<Header.PrevButton></Header.PrevButton>
 			</Header>
-			<div css={chatStyle.progress(percentage)}>
-				<div></div>
-			</div>
+			<Progressbar percentage={percentage} />
+			<button onClick={handleProgress}>진행버튼</button>
 			<div css={chatStyle.chat}>
 				<div css={chatStyle.dev}>
 					<div>
 						<img src="" alt="profile" />
 					</div>
 					<ul>
-						{ChatData.firstMeet.map((i) => (
-							<li>{i}</li>
+						{chatData[0].text.slice(0, messageIndex + 1).map((i, index) => (
+							<li key={index}>{i}</li>
 						))}
-						<button onClick={handleProgress}>습관 선택</button>
+						{chatData[0].text.length === messageIndex && (
+							<button onClick={handleProgress}>습관 선택</button>
+						)}
 					</ul>
 				</div>
 				<div css={chatStyle.user}>자격증 공부하기</div>
 			</div>
-			<SelectTagModal
-				title="어떤 습관을 만들어 볼까요?"
-				tags={habitTags}
-				setUserData={setUserData}
-			/>
+			{isModal && (
+				<SelectTagModal
+					title="어떤 습관을 만들어 볼까요?"
+					tags={habitTags}
+					setUserData={setUserData}
+				/>
+			)}
 		</div>
 	);
 }
