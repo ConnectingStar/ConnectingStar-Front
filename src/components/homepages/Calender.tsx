@@ -23,7 +23,6 @@ interface DateListEl {
 
 function Calender({ setTargetDate, targetDate, timeGap }: CalendarProps) {
 	const containerRef = useRef<HTMLDivElement | null>(null);
-	const centeredRef = useRef<HTMLSpanElement | null>(null);
 	const [dateList, setDateList] = useState<DateListEl[]>([]);
 
 	// 처음 렌더링될 때 오늘 시간을 기준으로 이전 14일과 오늘, 이후 14일을 계산 dateList에 세팅
@@ -38,7 +37,7 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalendarProps) {
 		};
 		const prevDates = Array.from({ length: 14 })
 			.map((_, idx) => {
-				const prevDate = new Date(+year, +month - 1, +date - (idx + 1));
+				const prevDate = new Date(+year, +month, +date - (idx + 1));
 				return {
 					year: prevDate.getFullYear(),
 					month: prevDate.getMonth() + 1,
@@ -49,7 +48,7 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalendarProps) {
 			})
 			.reverse();
 		const nextDates = Array.from({ length: 14 }).map((_, idx) => {
-			const nextDate = new Date(+year, +month - 1, +date + (idx + 1));
+			const nextDate = new Date(+year, +month, +date + (idx + 1));
 			return {
 				year: nextDate.getFullYear(),
 				month: nextDate.getMonth() + 1,
@@ -70,8 +69,8 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalendarProps) {
 
 	return (
 		<div>
-			<div css={calenderStyle.date}>
-				<div css={calenderStyle.targetDate}>
+			<div css={calenderStyle.dateWrapper}>
+				<div>
 					<span
 						css={css`
 							${theme.font.head_a}
@@ -85,7 +84,7 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalendarProps) {
 							margin-left: 0.5rem;
 						`}
 					>
-						{`${targetDate.year}`}
+						{targetDate.year}
 					</span>
 				</div>
 				<div
@@ -140,29 +139,19 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalendarProps) {
 			>
 				<div css={calenderStyle.carousel}>
 					{dateList.map((el: DateListEl) => {
-						let isCentered = false;
-						let isTarget = false;
+						let isSelected = false;
 						const { year, month, date, day, isPlanned } = el;
-						if (
-							currentDate.year === year &&
-							currentDate.month === month - 1 &&
-							currentDate.date === date
-						) {
-							isCentered = true;
-						}
 						if (
 							targetDate.year === year &&
 							targetDate.month === month &&
 							targetDate.date === date
 						) {
-							isTarget = true;
+							isSelected = true;
 						}
 						return (
 							<span
 								key={`${year}.${month}.${date}`}
-								id={isCentered ? "center" : ""}
-								ref={isCentered ? centeredRef : null}
-								css={isTarget ? calenderStyle.targeted : calenderStyle.carouselEl}
+								css={calenderStyle.carouselEl({ isSelected })}
 								onClick={() => {
 									setTargetDate({
 										year,
@@ -175,7 +164,7 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalendarProps) {
 							>
 								<section css={calenderStyle.dayPart}>{el.day}</section>
 								<section css={calenderStyle.datePart}>
-									<label css={isPlanned ? calenderStyle.planned : calenderStyle.dateInner}>
+									<label css={calenderStyle.dateInner({ isPlanned })}>
 										{el.month}/{el.date}
 									</label>
 								</section>

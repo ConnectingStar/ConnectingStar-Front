@@ -3,21 +3,11 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 export const calenderStyle = {
-	date: css`
+	dateWrapper: css`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 4rem;
-	`,
-	targetDate: css`
-		display: flex;
-		align-items: center;
-		height: 100%;
-	`,
-	timeDiff: css`
-		display: flex;
-		align-items: center;
-		height: 100%;
+		margin-bottom: 1.625rem;
 	`,
 	carouselWrapper: css`
 		position: relative;
@@ -31,14 +21,15 @@ export const calenderStyle = {
 		height: 100%;
 		gap: 0.25rem;
 	`,
-	carouselEl: css`
+	carouselEl: (props: { isSelected: boolean }) => css`
 		display: flex;
 		flex-direction: column;
 		min-width: 2.5rem;
 		border-radius: 8px;
 		height: 100%;
+		background-color: ${props.isSelected ? "rgba(1, 118, 249, 0.1)" : "none"};
 	`,
-	targeted: css`
+	selected: css`
 		display: flex;
 		flex-direction: column;
 		min-width: 2.5rem;
@@ -62,7 +53,7 @@ export const calenderStyle = {
 		height: 60%;
 		${theme.font.body_b_bold};
 	`,
-	dateInner: css`
+	dateInner: (props: { isPlanned: boolean }) => css`
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -71,16 +62,7 @@ export const calenderStyle = {
 		aspect-ratio: 1/1;
 		color: black;
 		border-radius: 50%;
-	`,
-	planned: css`
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 90%;
-		border-radius: 50%;
-		height: auto;
-		aspect-ratio: 1/1;
-		color: white;
-		background-color: ${theme.color.main_blue};
+		color: ${props.isPlanned ? "white" : "black"};
+		background-color: ${props.isPlanned ? `${theme.color.main_blue}` : "none"};
 	`,
 };
