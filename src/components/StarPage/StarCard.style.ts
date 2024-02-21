@@ -14,7 +14,7 @@ export const containerStyle = css`
 		position: relative;
 	}
 
-	&.selected::after {
+	&.selected:after {
 		content: "";
 		display: block;
 		width: 9.5625rem;
