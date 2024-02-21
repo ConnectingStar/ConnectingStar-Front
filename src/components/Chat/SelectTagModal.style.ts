@@ -5,18 +5,19 @@ import { theme } from "@/styles/theme";
 export const selectTagModalStyle = {
 	container: css`
 		position: fixed;
-		top: 55px;
+		top: 0;
 		height: 100vh;
 		background-color: white;
-		padding: 20px 1.5rem 1rem 1.5rem;
+	`,
+	wrap: css`
 		width: 360px;
-
+		padding: 1.25rem 1.5rem 1rem 1.5rem;
 		& > h1 {
 			${theme.font.head_a}
 			margin-bottom: 40px;
 		}
 	`,
-	tags: css`
+	tags: (isInputFocus: boolean) => css`
 		${theme.font.body_a};
 		& > ul {
 			display: flex;
@@ -42,7 +43,8 @@ export const selectTagModalStyle = {
 		}
 
 		& > input {
-			width: 100%;
+			${isInputFocus && "position: fixed; bottom: 75px;"}
+			width: 312px;
 			height: 55px;
 			margin-top: 14px;
 			padding: 1rem;
