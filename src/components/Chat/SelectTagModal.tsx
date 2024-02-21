@@ -3,10 +3,9 @@ import { useState } from "react";
 import FooterBtn from "../common/FooterBtn/FooterBtn";
 import Header from "../common/Header/Header";
 
-import { userDataFrame } from "@/pages/ChattingPage";
+import { userDataFrame } from "@/pages/ChatPage";
 
-import { selectTagModalStyle } from "@/components/Chat/SelectTagModal.style";
-
+import { selectTagModalStyle } from "./SelectTagModal.style";
 interface selectTagModal {
 	title: string;
 	tags: string[];
