@@ -6,24 +6,9 @@ export const containerStyle = css`
 	width: 9.5625rem;
 	height: 14.1875rem;
 	border-radius: 15px;
+	position: relative;
 	overflow: hidden;
 	box-shadow: 0 0 0 1px ${theme.color.button_disabled} inset;
-
-	&.selected {
-		border: none;
-		position: relative;
-	}
-
-	&.selected:after {
-		content: "";
-		display: block;
-		width: 9.5625rem;
-		height: 14.1875rem;
-		border-radius: 15px;
-		position: absolute;
-		top: 0;
-		box-shadow: 0 0 0 4px ${theme.color.main_blue} inset;
-	}
 `;
 
 export const imgStyle = css`
@@ -77,4 +62,13 @@ export const titleStyle = css`
 	h3 {
 		${theme.font.head_b}
 	}
+`;
+
+export const selectedStyle = css`
+	width: 9.5625rem;
+	height: 14.1875rem;
+	border-radius: 15px;
+	position: absolute;
+	top: 0;
+	box-shadow: 0 0 0 4px ${theme.color.main_blue} inset;
 `;
