@@ -57,7 +57,7 @@ export const getToggleButtonStyle = (isActive: boolean) => {
 			border-radius: 100%;
 			position: absolute;
 			background-color: #fff;
-			left: ${isActive ? "calc(100% - 23px)" : "3px"};
+			left: ${isActive ? "calc(100% - 22px)" : "2px"};
 			transition: left 0.5s ease;
 		}
 	`;
