@@ -29,17 +29,17 @@ export default function StarCard({ title, subTitle, starNumber }: StarCardProps)
 }
 
 const containerStyle = css`
-	border: 1px solid ${theme.color.button_disabled};
-	border-radius: 15px;
 	width: 9.5625rem;
 	height: 14.1875rem;
+	border: 1px solid ${theme.color.button_disabled};
+	border-radius: 15px;
 	overflow: hidden;
 `;
 
 const imgStyle = css`
-	background-color: #d9d9d9;
 	height: 8.6875rem;
 	position: relative;
+	background-color: #d9d9d9;
 `;
 
 const starImgStyle = css`
@@ -67,9 +67,9 @@ const titleStyle = css`
 	text-align: center;
 
 	strong {
-		color: ${theme.color.main_blue};
-		${theme.font.body_c}
 		margin-bottom: 0.125rem;
+		${theme.font.body_c}
+		color: ${theme.color.main_blue};
 	}
 
 	h3 {
