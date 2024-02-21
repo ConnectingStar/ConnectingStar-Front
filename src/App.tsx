@@ -3,6 +3,9 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyPage from "@/pages/MyPage";
+import OauthSignUp from "@/pages/SignUp/OauthSignUp";
+import SignUp from "@/pages/SignUp/SignUp";
+import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarPage from "@/pages/StarPage";
 
 const App = () => {
@@ -13,6 +16,9 @@ const App = () => {
 				<Route path="/star" element={<StarPage />} />
 				<Route path="/chart" element={<ChartPage />} />
 				<Route path="/mypage" element={<MyPage />} />
+				<Route path="/signup" element={<SignUp />} />
+				<Route path="/oauthsignup" element={<OauthSignUp />} />
+				<Route path="/star/:id" element={<StarCardDetailPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
