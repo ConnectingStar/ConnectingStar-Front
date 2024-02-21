@@ -10,11 +10,11 @@ export const selectTagModalStyle = {
 		background-color: white;
 	`,
 	wrap: css`
-		width: 360px;
+		width: 22.5rem;
 		padding: 1.25rem 1.5rem 1rem 1.5rem;
 		& > h1 {
 			${theme.font.head_a}
-			margin-bottom: 40px;
+			margin-bottom: 2.5rem;
 		}
 	`,
 	tags: (isInputFocus: boolean) => css`
@@ -32,9 +32,9 @@ export const selectTagModalStyle = {
 				white-space: nowrap;
 				background-color: ${theme.color.bg};
 				border-radius: 20px;
-				height: 55px;
+				height: 3.438rem;
 				padding: 1rem;
-				margin: 0 6px 6px 0; // margin 대신 넣을게 없나
+				margin: 0 6px 6px 0;
 			}
 			.selected {
 				background-color: ${theme.color.main_blue};
@@ -44,8 +44,8 @@ export const selectTagModalStyle = {
 
 		& > input {
 			${isInputFocus && "position: fixed; bottom: 75px;"}
-			width: 312px;
-			height: 55px;
+			width: 19.5rem;
+			height: 3.438rem;
 			margin-top: 14px;
 			padding: 1rem;
 			background-color: ${theme.color.bg};
