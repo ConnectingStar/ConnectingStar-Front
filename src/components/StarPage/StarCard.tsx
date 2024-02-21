@@ -14,7 +14,7 @@ interface StarCardProps {
 
 export default function StarCard({ title, subTitle, starNumber, state }: StarCardProps) {
 	return (
-		<li css={containerStyle}>
+		<li css={containerStyle} className={state === "selected" ? "selected" : ""}>
 			<div css={imgStyle}>
 				<img src="" alt="별자리" />
 				<div css={starImgStyle}>
@@ -37,6 +37,22 @@ const containerStyle = css`
 	border: 1px solid ${theme.color.button_disabled};
 	border-radius: 15px;
 	overflow: hidden;
+
+	&.selected {
+		border: none;
+		position: relative;
+	}
+
+	&.selected::after {
+		content: "";
+		display: block;
+		width: 9.5625rem;
+		height: 14.1875rem;
+		border-radius: 15px;
+		position: absolute;
+		top: 0;
+		box-shadow: 0 0 0 4px ${theme.color.main_blue} inset;
+	}
 `;
 
 const imgStyle = css`
