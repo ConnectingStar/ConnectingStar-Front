@@ -36,8 +36,21 @@ const habitTags = [
 	"소비기록",
 ];
 
+export const userDataFrame = {
+	nickName: "",
+	habit: "",
+	identity: "",
+	time: "",
+	location: "",
+	action: "",
+	alert1: "",
+	alert2: "",
+};
+
 function ChatPage() {
 	const [percentage, setPercentage] = useState(100 / 12);
+	const [userData, setUserData] = useState(userDataFrame);
+	console.log(userData);
 
 	// progress 퍼센티지 향상을 위한 함수
 	const handleProgress = () => {
@@ -66,7 +79,11 @@ function ChatPage() {
 				</div>
 				<div css={chatStyle.user}>자격증 공부하기</div>
 			</div>
-			<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={habitTags} />
+			<SelectTagModal
+				title="어떤 습관을 만들어 볼까요?"
+				tags={habitTags}
+				setUserData={setUserData}
+			/>
 		</div>
 	);
 }
