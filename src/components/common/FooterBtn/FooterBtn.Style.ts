@@ -11,9 +11,8 @@ export const footerBtnStyle = (
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
-		height: ${isSquare ? "3.44rem" : "5.5rem"};
-		padding: ${!isSquare && "0 1.5rem"};
+		width: ${isPositionStatic || isSquare ? "100%" : "22.5rem"};
+		padding: ${!isSquare && "1rem 1.5rem"};
 		gap: ${!isSquare && "0.5rem"};
 		position: ${!isPositionStatic && "fixed"};
 		bottom: ${!isPositionStatic && 0};
