@@ -4,13 +4,15 @@ import starImg from "@/assets/image/card-detail-star.png";
 
 import { theme } from "@/styles/theme";
 
+// TODO: API 연결 후 삭제 or 수정 예정
 interface StarCardProps {
 	title: string;
 	subTitle: string;
 	starNumber: number;
+	state: "default" | "selected" | "have";
 }
 
-export default function StarCard({ title, subTitle, starNumber }: StarCardProps) {
+export default function StarCard({ title, subTitle, starNumber, state }: StarCardProps) {
 	return (
 		<li css={containerStyle}>
 			<div css={imgStyle}>
@@ -19,6 +21,7 @@ export default function StarCard({ title, subTitle, starNumber }: StarCardProps)
 					<img src={starImg} alt="노란색 별" />
 					<strong>{starNumber}</strong>
 				</div>
+				{state === "have" && <div css={haveLabelStyle}>보유</div>}
 			</div>
 			<div css={titleStyle}>
 				<strong>{subTitle}</strong>
@@ -75,4 +78,16 @@ const titleStyle = css`
 	h3 {
 		${theme.font.head_b}
 	}
+`;
+
+const haveLabelStyle = css`
+	width: 3.75rem;
+	padding: 0.25rem 0;
+	border-radius: 0 0 15px 0;
+	position: absolute;
+	top: 0;
+	${theme.font.head_c};
+	text-align: center;
+	color: #fff;
+	background-color: ${theme.color.main_deep_blue};
 `;

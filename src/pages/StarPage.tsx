@@ -5,31 +5,44 @@ import CategoryTab from "@/components/StarPage/CategoryTab";
 import StarCard from "@/components/StarPage/StarCard";
 import Toggle from "@/components/StarPage/Toggle";
 
-// TODO: API 연결 후 삭제 예정
-const starCardData = [
+// TODO: API 연결 후 삭제 예정(UI 확인용)
+interface starCardDataType {
+	id: number;
+	subTitle: string;
+	title: string;
+	starNumber: number;
+	state: "default" | "selected" | "have";
+}
+
+// TODO: API 연결 후 삭제 예정(UI 확인용)
+const starCardData: starCardDataType[] = [
 	{
 		id: 0,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
 		starNumber: 10,
+		state: "default",
 	},
 	{
 		id: 1,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
 		starNumber: 10,
+		state: "selected",
 	},
 	{
 		id: 2,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
 		starNumber: 10,
+		state: "default",
 	},
 	{
 		id: 3,
 		subTitle: "육체 활동",
 		title: "캐릭터 이름",
 		starNumber: 10,
+		state: "have",
 	},
 ];
 
@@ -50,6 +63,7 @@ const StarPage = () => {
 							title={card.title}
 							subTitle={card.subTitle}
 							starNumber={card.starNumber}
+							state={card.state}
 						/>
 					))}
 				</ul>
