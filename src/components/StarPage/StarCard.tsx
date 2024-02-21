@@ -34,9 +34,9 @@ export default function StarCard({ title, subTitle, starNumber, state }: StarCar
 const containerStyle = css`
 	width: 9.5625rem;
 	height: 14.1875rem;
-	border: 1px solid ${theme.color.button_disabled};
 	border-radius: 15px;
 	overflow: hidden;
+	box-shadow: 0 0 0 1px ${theme.color.button_disabled} inset;
 
 	&.selected {
 		border: none;
