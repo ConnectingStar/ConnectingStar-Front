@@ -1,14 +1,15 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
+import CreateAccountPage from "./pages/CreateAccountPage";
+import DiscoveryRoutePage from "./pages/VisitTrackPage";
+
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyPage from "@/pages/MyPage";
 import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
+import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarPage from "@/pages/StarPage";
-
-import CreateAccountPage from "./pages/CreateAccountPage";
-import DiscoveryRoutePage from "./pages/VisitTrackPage";
 
 const App = () => {
 	return (
@@ -20,6 +21,7 @@ const App = () => {
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
+				<Route path="/star/:id" element={<StarCardDetailPage />} />
 				<Route path="/createAccount" element={<CreateAccountPage />} />
 				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
 			</Routes>

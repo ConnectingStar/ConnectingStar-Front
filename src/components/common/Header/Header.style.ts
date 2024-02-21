@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 
-// TODO: 추후 theme font & color로 변경
+import { theme } from "@/styles/theme";
+
 export const headerStyle = {
 	container: css`
 		display: flex;
@@ -14,8 +15,7 @@ export const headerStyle = {
 		background-color: #fff;
 	`,
 	title: css`
-		font-size: 1.25rem;
-		font-weight: 500;
+		${theme.font.header}
 	`,
 	iconButton: css`
 		position: absolute;
@@ -24,12 +24,12 @@ export const headerStyle = {
 	textButton: css`
 		position: absolute;
 		right: 1.5rem;
-		font-weight: 500;
-		color: #505050;
+		${theme.font.button_big}
+		color: ${theme.color.font_deep_gray};
 		background-color: transparent;
 	`,
 	titleLarge: css`
+		${theme.font.head_a}
 		margin-right: auto;
-		font-size: 1.5rem;
 	`,
 };
