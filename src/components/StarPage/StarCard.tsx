@@ -31,14 +31,14 @@ export default function StarCard({ title, subTitle, starNumber }: StarCardProps)
 const containerStyle = css`
 	border: 1px solid ${theme.color.button_disabled};
 	border-radius: 15px;
-	width: 153px;
-	height: 227px;
+	width: 9.5625rem;
+	height: 14.1875rem;
 	overflow: hidden;
 `;
 
 const imgStyle = css`
 	background-color: #d9d9d9;
-	height: 140px; // 소수점 -> 세림님께 말하기
+	height: 8.6875rem;
 	position: relative;
 `;
 
@@ -48,8 +48,8 @@ const starImgStyle = css`
 	bottom: 6px;
 
 	img {
-		width: 40px;
-		height: 36.32px;
+		width: 2.5rem;
+		height: 2.27rem;
 	}
 
 	strong {
@@ -69,7 +69,7 @@ const titleStyle = css`
 	strong {
 		color: ${theme.color.main_blue};
 		${theme.font.body_c}
-		margin-bottom: 2px;
+		margin-bottom: 0.125rem;
 	}
 
 	h3 {
