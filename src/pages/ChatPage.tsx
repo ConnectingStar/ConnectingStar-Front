@@ -23,6 +23,7 @@ export const userDataFrame = {
 };
 
 function ChatPage() {
+	// 프로그래스 퍼센티지
 	const [percentage, setPercentage] = useState(100 / 12);
 	const [isReply, setIsReply] = useState(false);
 
@@ -42,12 +43,20 @@ function ChatPage() {
 			</Header>
 			<Progressbar percentage={percentage} />
 
-			<Chat
-				message={chatData.firstMeet}
+			{/* <Chat
+				message={chatData[0].message}
 				reply={userDataFrame.habit}
 				percentageProps={percentageProps}
 				isReplyProps={isReplyProps}
-			/>
+			></Chat> */}
+			<Chat>
+				<Chat.Message
+					message={chatData[0].message}
+					reply={userDataFrame.habit}
+					percentageProps={percentageProps}
+					isReplyProps={isReplyProps}
+				></Chat.Message>
+			</Chat>
 
 			{/* {isReply && (
 				<SelectTagModal
