@@ -39,7 +39,7 @@ export const getCheckBoxLabelStyle = (isCheck: boolean) => {
 	return css`
 		width: 24px;
 		height: 24px;
-		border: 1px solid ${theme.color.button_disabled};
+		border: 1px solid ${isCheck ? theme.color.main_blue : theme.color.button_disabled};
 		border-radius: 4px;
 		display: flex;
 		align-items: center;
