@@ -13,12 +13,12 @@ export default function CategoryTab() {
 		<div css={containerStyle}>
 			{categoryData.map((item) => (
 				<button
-					key={item.id}
-					className={select === item.content ? "active" : ""}
+					key={item}
+					className={select === item ? "active" : ""}
 					css={tabStyle}
-					onClick={() => setSelect(item.content)}
+					onClick={() => setSelect(item)}
 				>
-					{item.content}
+					{item}
 				</button>
 			))}
 		</div>
