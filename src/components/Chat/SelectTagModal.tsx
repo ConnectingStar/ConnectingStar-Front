@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import FooterBtn from "../common/FooterBtn/FooterBtn";
-import Header from "../common/Header/Header";
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import Header from "@/components/common/Header/Header";
 
 import { userDataFrame } from "@/pages/ChatPage";
 
