@@ -41,20 +41,6 @@ export const container = css`
 			background-color: ${theme.color.main_deep_blue};
 		}
 	}
-	@keyframes slideInFromBottom {
-		0% {
-			transform: translateY(100%);
-			opacity: 0;
-		}
-		100% {
-			transform: translateY(0);
-			opacity: 1;
-		}
-	}
-
-	.message-item {
-		animation: slideInFromBottom 0.5s ease-out; /* 애니메이션 적용 */
-	}
 `;
 export const replyStyle = css`
 	position: absolute;
