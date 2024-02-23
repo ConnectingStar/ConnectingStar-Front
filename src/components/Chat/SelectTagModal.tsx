@@ -18,22 +18,9 @@ function SelectTagModal({ title, tags, setUserData }: selectTagModal) {
 	const [isInputFocus, setIsInputFocus] = useState(false);
 	const [inputText, setInputText] = useState("");
 
-	// 태그 선택 함수
-	const handleTagClick = (tag: string) => {
-		setSelectedTag((prevTag) => (prevTag === tag ? null : tag));
-	};
-
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setInputText(e.target.value);
-	};
-
 	const handleInputOnFocus = () => {
 		setSelectedTag(null);
 		setIsInputFocus(true);
-	};
-
-	const handleInputOnBlur = () => {
-		setIsInputFocus(false);
 	};
 
 	const confirmSelectedTag = () => {
@@ -59,7 +46,7 @@ function SelectTagModal({ title, tags, setUserData }: selectTagModal) {
 						{tags.map((item) => (
 							<li
 								key={item}
-								onClick={() => handleTagClick(item)}
+								onClick={() => setSelectedTag((prevTag) => (prevTag === item ? null : item))}
 								className={selectedTag === item ? "selected" : ""}
 							>
 								{item}
@@ -71,8 +58,8 @@ function SelectTagModal({ title, tags, setUserData }: selectTagModal) {
 						placeholder="직접입력"
 						className={!selectedTag && inputText !== "" ? "selected" : ""}
 						onFocus={handleInputOnFocus}
-						onChange={handleInputChange}
-						onBlur={handleInputOnBlur}
+						onChange={(e) => setInputText(e.target.value)}
+						onBlur={() => setIsInputFocus(false)}
 					/>
 				</div>
 			</div>
