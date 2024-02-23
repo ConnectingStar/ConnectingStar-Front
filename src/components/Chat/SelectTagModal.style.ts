@@ -21,9 +21,9 @@ export const selectTagModalStyle = {
 		${theme.font.body_a};
 		& > ul {
 			display: flex;
-			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: center;
+			gap: 6px;
 			& > li {
 				max-width: 8.125rem;
 				display: flex;
@@ -34,15 +34,14 @@ export const selectTagModalStyle = {
 				border-radius: 20px;
 				height: 3.438rem;
 				padding: 1rem;
-				margin: 0 6px 6px 0;
 			}
 		}
 
 		& > input {
-			${isInputFocus && "position: fixed; bottom: 75px;"}
+			${isInputFocus && "position: fixed; bottom: 4.688rem;"}
 			width: 19.5rem;
 			height: 3.438rem;
-			margin-top: 14px;
+			margin-top: 1.25rem;
 			padding: 1rem;
 			background-color: ${theme.color.bg};
 			border: none;
