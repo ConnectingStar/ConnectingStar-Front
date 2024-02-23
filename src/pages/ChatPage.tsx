@@ -37,7 +37,7 @@ function ChatPage() {
 	];
 
 	return (
-		<div css={chatStyle.container}>
+		<div css={chatStyle}>
 			<Header>
 				<Header.PrevButton></Header.PrevButton>
 			</Header>
