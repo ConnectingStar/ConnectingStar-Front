@@ -1,8 +1,7 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-import ChatPage from "./pages/ChatPage";
-
 import ChartPage from "@/pages/ChartPage";
+import ChatPage from "@/pages/ChatPage";
 import HomePage from "@/pages/HomePage";
 import MyPage from "@/pages/MyPage";
 import OauthSignUp from "@/pages/SignUp/OauthSignUp";
