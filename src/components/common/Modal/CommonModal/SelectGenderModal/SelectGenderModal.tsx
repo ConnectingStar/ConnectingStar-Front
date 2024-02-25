@@ -31,7 +31,7 @@ const SelectGenderModal = ({
 
 	return (
 		<Modal isBottomSheet>
-			<div css={layoutStyle}>
+			<div css={layoutStyle()}>
 				<h1>성별을 선택해 주세요</h1>
 				<ul>
 					{selectGenderData.map((data) => (
