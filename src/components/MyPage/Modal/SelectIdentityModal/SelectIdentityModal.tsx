@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import { buttonBoxStyle } from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal.style";
 import {
 	layoutStyle,
 	flexBoxStyle,
-} from "@/components/MyPage/MyInfo/SelectIdentityModal/SelectIdentityModal.style";
+} from "@/components/MyPage/Modal/SelectIdentityModal/SelectIdentityModal.style";
 
 const identityButtonData = [
 	{
@@ -53,14 +53,12 @@ const SelectIdentityModal = ({
 					))}
 				</div>
 
-				<div css={buttonBoxStyle}>
-					<button type="button" className="cancel" onClick={() => dispatch(closeModal())}>
-						취소
-					</button>
-					<button type="button" onClick={handleCheckClick}>
-						확인
-					</button>
-				</div>
+				<FooterBtn
+					text="확인"
+					leftText="취소"
+					handleBtnClick={handleCheckClick}
+					handleLeftBtnClick={() => dispatch(closeModal())}
+				/>
 			</div>
 		</Modal>
 	);
