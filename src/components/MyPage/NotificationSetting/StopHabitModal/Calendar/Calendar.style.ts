@@ -8,6 +8,11 @@ export const headerLayoutStyle = css`
 	justify-content: center;
 	gap: 20px;
 	margin-top: 2rem;
+
+	& > svg {
+		width: 20px;
+		height: 20px;
+	}
 `;
 
 export const headerBoxStyle = css`
