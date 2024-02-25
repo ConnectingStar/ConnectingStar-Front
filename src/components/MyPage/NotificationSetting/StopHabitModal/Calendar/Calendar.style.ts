@@ -39,7 +39,12 @@ export const dateBoxStyle = css`
 	row-gap: 20px;
 `;
 
-export const dayStyle = (inMonthDay?: boolean, isWeek?: boolean, startDate?: boolean) => {
+export const dayStyle = (
+	inMonthDay?: boolean,
+	isWeek?: boolean,
+	startDate?: boolean,
+	endDate?: boolean,
+) => {
 	return css`
 		display: flex;
 		align-items: center;
@@ -49,7 +54,15 @@ export const dayStyle = (inMonthDay?: boolean, isWeek?: boolean, startDate?: boo
 		color: ${inMonthDay ? theme.color.font_black : theme.color.button_deactivated};
 		${isWeek ? theme.font.body_b : theme.font.body_b_bold}
 
-		border-radius: ${startDate && "50%"};
-		background-color: ${startDate && theme.color.main_blue};
+		& > p {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 1.875rem;
+			height: 1.875rem;
+			border-radius: ${(startDate || endDate) && "50%"};
+			background-color: ${(startDate || endDate) && theme.color.main_blue};
+			color: ${(startDate || endDate) && "#fff"};
+		}
 	`;
 };

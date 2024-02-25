@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import {
 	format,
@@ -8,6 +8,7 @@ import {
 	startOfWeek,
 	addDays,
 	isSameMonth,
+	isSameDay,
 } from "date-fns";
 
 import CalendarHeader from "@/components/MyPage/NotificationSetting/StopHabitModal/Calendar/CalendarHeader";
@@ -19,8 +20,21 @@ import {
 
 const week = ["일", "월", "화", "수", "목", "금", "토"];
 
-const Calender = () => {
+const Calender = ({
+	startDay,
+	setStartDay,
+	endDay,
+	setEndDay,
+}: {
+	startDay: Date;
+	setStartDay: React.Dispatch<React.SetStateAction<Date>>;
+	endDay: Date;
+	setEndDay: React.Dispatch<React.SetStateAction<Date>>;
+}) => {
 	const [currentMonth, setCurrentMonth] = useState(new Date());
+
+	const [firstClick, setFirstClick] = useState(true);
+
 	const monthStart = startOfMonth(currentMonth);
 	const startDate = startOfWeek(monthStart);
 	const dayList = Array.from({ length: 35 }, (_, index) => addDays(startDate, index));
@@ -38,15 +52,34 @@ const Calender = () => {
 		setCurrentMonth(addMonths(currentMonth, 1));
 	};
 
-	const handleDayText = useMemo(() => {
+	const handleSelectRange = (dayData: Date) => {
+		if (firstClick) {
+			setStartDay(dayData);
+			setFirstClick(false);
+		} else {
+			setEndDay(dayData);
+			setFirstClick(true);
+		}
+	};
+
+	const handleDayText = () => {
 		return dayList.map((dayData) => {
 			return (
-				<div key={dayData.toString()} css={dayStyle(isSameMonth(monthStart, dayData), false)}>
-					{format(dayData, "d")}
+				<div
+					key={dayData.toString()}
+					css={dayStyle(
+						isSameMonth(monthStart, dayData),
+						false,
+						isSameDay(startDay, dayData),
+						isSameDay(endDay, dayData),
+					)}
+					onClick={() => handleSelectRange(dayData)}
+				>
+					<p>{format(dayData, "d")}</p>
 				</div>
 			);
 		});
-	}, [currentMonth]);
+	};
 
 	return (
 		<>
@@ -64,7 +97,7 @@ const Calender = () => {
 					</div>
 				))}
 
-				{handleDayText}
+				{handleDayText()}
 			</div>
 		</>
 	);
