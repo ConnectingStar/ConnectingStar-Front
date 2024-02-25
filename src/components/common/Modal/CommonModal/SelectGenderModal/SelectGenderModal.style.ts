@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 export const layoutStyle = css`
-	padding: 1.125rem 1.5rem;
+	padding: 1.125rem 1.5rem 6.4375rem;
 	border-radius: 15px 15px 0 0;
 	color: ${theme.color.font_black};
 	background-color: #fff;
@@ -14,7 +14,7 @@ export const layoutStyle = css`
 	}
 
 	& > ul {
-		margin: 1.875rem 0 2.0625rem;
+		margin-top: 1.875rem;
 		display: flex;
 		flex-direction: column;
 		gap: 2.25rem;

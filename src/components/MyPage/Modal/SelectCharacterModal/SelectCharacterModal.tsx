@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
@@ -9,8 +10,7 @@ import {
 	layoutStyle,
 	characterWrapperStyle,
 	getCharacterBoxStyle,
-	buttonBoxStyle,
-} from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal.style";
+} from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal.style";
 
 const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -32,14 +32,13 @@ const SelectCharacterModal = () => {
 						/>
 					))}
 				</div>
-				<div css={buttonBoxStyle}>
-					<button type="button" className="cancel" onClick={() => dispatch(closeModal())}>
-						취소
-					</button>
-					<button type="button" onClick={() => dispatch(closeModal())}>
-						선택 완료
-					</button>
-				</div>
+				<FooterBtn
+					text="선택 완료"
+					leftText="취소"
+					isTransparent
+					handleLeftBtnClick={() => dispatch(closeModal())}
+					handleBtnClick={() => dispatch(closeModal())}
+				/>
 			</div>
 		</Modal>
 	);

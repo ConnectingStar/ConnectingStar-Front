@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
+import SelectAgeModal from "@/components/common/Modal/CommonModal/SelectAgeModal";
+import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal";
 import Button from "@/components/MyPage/Button/Button";
-import ChangeNicknameModal from "@/components/MyPage/MyInfo/ChangeNicknameModal/ChangeNicknameModal";
-import LogoutModal from "@/components/MyPage/MyInfo/LogoutModal/LogoutModal";
-import SelectAgeModal from "@/components/MyPage/MyInfo/SelectAgeModal";
-import SelectCharacterModal from "@/components/MyPage/MyInfo/SelectCharacterModal/SelectCharacterModal";
-import SelectGenderModal from "@/components/MyPage/MyInfo/SelectGenderModal/SelectGenderModal";
-import SelectIdentityModal from "@/components/MyPage/MyInfo/SelectIdentityModal/SelectIdentityModal";
+import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
+import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
+import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/SelectIdentityModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
