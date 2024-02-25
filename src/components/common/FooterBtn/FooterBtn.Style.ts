@@ -12,11 +12,11 @@ export const footerBtnStyle = (
 		align-items: center;
 		justify-content: center;
 		width: ${isPositionStatic || isSquare ? "100%" : "22.5rem"};
-		padding: ${!isSquare && "1rem 1.5rem"};
+		padding: ${!isSquare && !isPositionStatic && "1rem 1.5rem"};
 		gap: ${!isSquare && "0.5rem"};
 		position: ${!isPositionStatic && "fixed"};
 		bottom: ${!isPositionStatic && 0};
-		background-color: ${transparent ? "transparent" : "white"};
+		background-color: ${!transparent && "white"};
 		left: ${!isPositionStatic && "50%"};
 		transform: ${!isPositionStatic && "translateX(-50%)"};
 
