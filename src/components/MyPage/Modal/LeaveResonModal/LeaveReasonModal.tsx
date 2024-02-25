@@ -7,7 +7,7 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { leaveReasonData } from "@/constants/myPageConstants";
 
-import { layoutStyle } from "@/components/MyPage/Withdrawal/LeaveResonModal/LeaveReasonModal.style";
+import { layoutStyle } from "@/components/MyPage/Modal/LeaveResonModal/LeaveReasonModal.style";
 
 const LeaveReasonModal = ({ changeReason }: { changeReason: Dispatch<SetStateAction<string>> }) => {
 	const dispatch = useAppDispatch();

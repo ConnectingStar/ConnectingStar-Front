@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
+import { css } from "@emotion/react";
+
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import {
-	layoutStyle,
-	buttonBoxStyle,
-} from "@/components/MyPage/MyInfo/ChangeNicknameModal/ChangeNicknameModal.style";
+import { theme } from "@/styles/theme";
 
 const ChangeNicknameModal = ({
 	changeNickname,
@@ -35,14 +35,39 @@ const ChangeNicknameModal = ({
 				/>
 			</div>
 
-			<div css={buttonBoxStyle}>
-				<button className="cancel" onClick={() => dispatch(closeModal())}>
-					취소
-				</button>
-				<button onClick={handleChangeInput}>확인</button>
-			</div>
+			<FooterBtn
+				text="확인"
+				leftText="취소"
+				handleBtnClick={handleChangeInput}
+				handleLeftBtnClick={() => dispatch(closeModal())}
+				isSquare
+			/>
 		</Modal>
 	);
 };
 
 export default ChangeNicknameModal;
+
+const layoutStyle = css`
+	padding: 1.125rem 1.5rem 4.4375rem;
+	border-radius: 15px 15px 0 0;
+	color: ${theme.color.font_black};
+	background-color: #fff;
+
+	& > h1 {
+		color: ${theme.color.font_black};
+		${theme.font.header};
+	}
+
+	& > input {
+		all: unset;
+		box-sizing: border-box;
+		width: 100%;
+		height: 3.4375rem;
+		border-radius: 15px;
+		margin-top: 1.6875rem;
+		background-color: ${theme.color.bg};
+		color: ${theme.color.font_black};
+		padding: 1rem;
+	}
+`;

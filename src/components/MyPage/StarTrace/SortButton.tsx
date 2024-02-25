@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
-import SortModal from "@/components/MyPage/StarTrace/SortModal";
+import SortModal from "@/components/MyPage/Modal/SortModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";

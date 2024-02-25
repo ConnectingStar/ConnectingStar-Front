@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
-import LeaveReasonModal from "@/components/MyPage/Withdrawal/LeaveResonModal/LeaveReasonModal";
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import LeaveReasonModal from "@/components/MyPage/Modal/LeaveResonModal/LeaveReasonModal";
 
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -52,7 +53,7 @@ const Withdrawal = () => {
 				</div>
 			))}
 
-			<button type="button">작별하기</button>
+			<FooterBtn text="작별하기" isTransparent disabled={reason === "탈퇴 이유를 선택해 주세요"} />
 
 			{modal === modalType.LEAVE_REASON && <LeaveReasonModal changeReason={setReason} />}
 		</div>

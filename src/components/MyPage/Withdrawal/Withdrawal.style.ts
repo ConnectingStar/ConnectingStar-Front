@@ -7,23 +7,10 @@ export const layoutStyle = css`
 	height: calc(100vh - 4.4375rem);
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem 0;
-	position: relative;
 
 	& > h1 {
 		color: #000;
 		${theme.font.head_a};
-	}
-
-	& > button {
-		width: 19.5rem;
-		height: 3.4375rem;
-		border-radius: 15px;
-		background-color: ${theme.color.main_blue};
-		opacity: 0.4;
-		color: #fff;
-		${theme.font.button_big};
-		position: absolute;
-		bottom: 0;
 	}
 `;
 
