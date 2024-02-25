@@ -1,5 +1,8 @@
-<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Group 35412">
-<path id="Path 13013" d="M13.5713 4.07031L7.14272 10.4989L13.5713 16.9275" stroke="#E5E5EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 35414">
+<g id="Path 13013">
+<path d="M13.5713 3.57031L7.14272 9.99888L13.5713 16.4275" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.5713 3.57031L7.14272 9.99888L13.5713 16.4275" stroke="black" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
 </g>
 </svg>
