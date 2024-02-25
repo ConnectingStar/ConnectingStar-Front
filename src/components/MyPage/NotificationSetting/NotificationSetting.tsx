@@ -24,6 +24,8 @@ const NotificationSetting = () => {
 	const [startDay, setStartDay] = useState(new Date());
 	const [endDay, setEndDay] = useState(new Date());
 
+	const [toggleCancel, setToggleCancel] = useState(false);
+
 	return (
 		<div css={layoutStyle}>
 			<div css={topBoxStyle}>
@@ -36,6 +38,7 @@ const NotificationSetting = () => {
 					title="약속 전체 일시 정지"
 					subTitle={`${dateFormat(startDay)} - ${dateFormat(endDay)}`}
 					isToggle
+					toggleCancel={toggleCancel}
 					isDateText
 					isTextVisible
 					onClick={() => dispatch(openModal(modalType.STOP_HABIT))}
@@ -71,6 +74,7 @@ const NotificationSetting = () => {
 					setStartDay={setStartDay}
 					endDay={endDay}
 					setEndDay={setEndDay}
+					setToggleCancel={setToggleCancel}
 				/>
 			)}
 		</div>

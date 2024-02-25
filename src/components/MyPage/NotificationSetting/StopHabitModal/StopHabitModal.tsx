@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
@@ -9,18 +11,28 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
+interface StopHabitModalPropsType {
+	startDay: Date;
+	setStartDay: React.Dispatch<React.SetStateAction<Date>>;
+	endDay: Date;
+	setEndDay: React.Dispatch<React.SetStateAction<Date>>;
+	setToggleCancel: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 const StopHabitModal = ({
 	startDay,
 	setStartDay,
 	endDay,
 	setEndDay,
-}: {
-	startDay: Date;
-	setStartDay: React.Dispatch<React.SetStateAction<Date>>;
-	endDay: Date;
-	setEndDay: React.Dispatch<React.SetStateAction<Date>>;
-}) => {
+	setToggleCancel,
+}: StopHabitModalPropsType) => {
 	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		return () => {
+			setToggleCancel(false);
+		};
+	}, []);
 
 	return (
 		<Modal isBottomSheet>
@@ -36,8 +48,14 @@ const StopHabitModal = ({
 				<FooterBtn
 					text="선택 완료"
 					leftText="취소"
-					handleBtnClick={() => dispatch(closeModal())}
-					handleLeftBtnClick={() => dispatch(closeModal())}
+					disabled={!startDay && !endDay}
+					handleBtnClick={() => {
+						dispatch(closeModal());
+					}}
+					handleLeftBtnClick={() => {
+						setToggleCancel(true);
+						dispatch(closeModal());
+					}}
 				/>
 			</div>
 		</Modal>
