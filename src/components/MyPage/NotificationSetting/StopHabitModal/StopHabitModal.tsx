@@ -48,6 +48,7 @@ const StopHabitModal = ({
 				<FooterBtn
 					text="선택 완료"
 					leftText="취소"
+					isPositionStatic
 					disabled={!startDay && !endDay}
 					handleBtnClick={() => {
 						dispatch(closeModal());

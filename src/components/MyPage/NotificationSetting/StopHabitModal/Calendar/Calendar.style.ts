@@ -35,7 +35,7 @@ export const dateBoxStyle = css`
 	display: flex;
 	flex-wrap: wrap;
 	width: 19.25rem;
-	margin: 1.25rem auto 5rem;
+	margin: 1.25rem auto 2.25rem;
 	row-gap: 20px;
 `;
 
