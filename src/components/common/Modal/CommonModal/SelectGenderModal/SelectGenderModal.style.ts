@@ -2,38 +2,40 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const layoutStyle = css`
-	padding: 1.125rem 1.5rem 6.4375rem;
-	border-radius: 15px 15px 0 0;
-	color: ${theme.color.font_black};
-	background-color: #fff;
-
-	& > h1 {
+export const layoutStyle = (isSort?: boolean) => {
+	return css`
+		padding: 1.125rem 1.5rem ${isSort ? "2rem" : "6.4375rem"};
+		border-radius: 15px 15px 0 0;
 		color: ${theme.color.font_black};
-		${theme.font.header};
-	}
+		background-color: #fff;
 
-	& > ul {
-		margin-top: 1.875rem;
-		display: flex;
-		flex-direction: column;
-		gap: 2.25rem;
+		& > h1 {
+			color: ${theme.color.font_black};
+			${theme.font.header};
+		}
 
-		& > li {
+		& > ul {
+			margin-top: 1.875rem;
 			display: flex;
-			align-items: center;
-			gap: 20px;
+			flex-direction: column;
+			gap: 2.25rem;
 
-			& > p {
-				color: ${theme.color.font_black};
-			}
+			& > li {
+				display: flex;
+				align-items: center;
+				gap: 20px;
 
-			& > input {
-				display: none;
+				& > p {
+					color: ${theme.color.font_black};
+				}
+
+				& > input {
+					display: none;
+				}
 			}
 		}
-	}
-`;
+	`;
+};
 
 export const getCheckBoxLabelStyle = (isCheck: boolean) => {
 	return css`
