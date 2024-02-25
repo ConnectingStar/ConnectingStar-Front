@@ -9,14 +9,29 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
-const StopHabitModal = () => {
+const StopHabitModal = ({
+	startDay,
+	setStartDay,
+	endDay,
+	setEndDay,
+}: {
+	startDay: Date;
+	setStartDay: React.Dispatch<React.SetStateAction<Date>>;
+	endDay: Date;
+	setEndDay: React.Dispatch<React.SetStateAction<Date>>;
+}) => {
 	const dispatch = useAppDispatch();
 
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>일시 정지 기간을 선택해주세요</h1>
-				<Calender />
+				<Calender
+					startDay={startDay}
+					setStartDay={setStartDay}
+					endDay={endDay}
+					setEndDay={setEndDay}
+				/>
 
 				<FooterBtn
 					text="선택 완료"
