@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
 	getLayoutStyle,
@@ -10,6 +10,7 @@ interface buttonType {
 	title: string;
 	subTitle: string;
 	isToggle?: boolean;
+	toggleCancel?: boolean;
 	isDateText?: boolean;
 	isHabit?: boolean;
 	isTextVisible?: boolean;
@@ -20,6 +21,7 @@ const Button = ({
 	title,
 	subTitle,
 	isToggle,
+	toggleCancel,
 	isDateText,
 	isHabit,
 	isTextVisible,
@@ -31,6 +33,12 @@ const Button = ({
 		setToggleActive((prev) => !prev);
 		onClick && !toggleActive && onClick();
 	};
+
+	useEffect(() => {
+		if (toggleCancel) {
+			setToggleActive(false);
+		}
+	}, [toggleCancel]);
 
 	return (
 		<div css={getLayoutStyle(isDateText, isHabit)}>
