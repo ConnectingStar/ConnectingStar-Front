@@ -46,6 +46,7 @@ const SelectAgeModal = ({ changeAge }: { changeAge: Dispatch<SetStateAction<stri
 					leftText="취소"
 					handleBtnClick={handleCheckClick}
 					handleLeftBtnClick={() => dispatch(closeModal())}
+					isPositionStatic
 				/>
 			</div>
 		</Modal>

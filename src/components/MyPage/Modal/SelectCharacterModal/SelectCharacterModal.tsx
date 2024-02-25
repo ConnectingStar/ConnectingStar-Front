@@ -35,7 +35,7 @@ const SelectCharacterModal = () => {
 				<FooterBtn
 					text="선택 완료"
 					leftText="취소"
-					isTransparent
+					isPositionStatic
 					handleLeftBtnClick={() => dispatch(closeModal())}
 					handleBtnClick={() => dispatch(closeModal())}
 				/>

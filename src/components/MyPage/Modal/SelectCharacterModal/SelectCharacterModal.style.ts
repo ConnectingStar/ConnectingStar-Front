@@ -4,7 +4,7 @@ import { theme } from "@/styles/theme";
 
 export const layoutStyle = css`
 	width: 100%;
-	padding: 1.125rem 1.5rem 5.4375rem;
+	padding: 1.125rem 1.5rem;
 	border-radius: 15px 15px 0 0;
 	color: ${theme.color.font_black};
 	background-color: #fff;
@@ -16,7 +16,7 @@ export const layoutStyle = css`
 `;
 
 export const characterWrapperStyle = css`
-	margin-top: 0.6875rem;
+	margin: 0.6875rem 0 1rem;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;

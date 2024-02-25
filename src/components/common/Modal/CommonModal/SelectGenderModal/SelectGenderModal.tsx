@@ -48,6 +48,7 @@ const SelectGenderModal = ({
 				<FooterBtn
 					text="확인"
 					leftText="취소"
+					isPositionStatic
 					handleBtnClick={handleCheckClick}
 					handleLeftBtnClick={() => dispatch(closeModal())}
 				/>

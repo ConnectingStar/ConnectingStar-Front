@@ -4,7 +4,7 @@ import { theme } from "@/styles/theme";
 
 export const layoutStyle = (isSort?: boolean) => {
 	return css`
-		padding: 1.125rem 1.5rem ${isSort ? "2rem" : "6.4375rem"};
+		padding: 1.125rem 1.5rem ${!isSort && "1.125rem"};
 		border-radius: 15px 15px 0 0;
 		color: ${theme.color.font_black};
 		background-color: #fff;
@@ -15,7 +15,7 @@ export const layoutStyle = (isSort?: boolean) => {
 		}
 
 		& > ul {
-			margin-top: 1.875rem;
+			margin: 1.875rem 0 2rem;
 			display: flex;
 			flex-direction: column;
 			gap: 2.25rem;
