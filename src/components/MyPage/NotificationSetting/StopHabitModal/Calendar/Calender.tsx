@@ -24,9 +24,14 @@ const Calender = () => {
 	const monthStart = startOfMonth(currentMonth);
 	const startDate = startOfWeek(monthStart);
 	const dayList = Array.from({ length: 35 }, (_, index) => addDays(startDate, index));
+	const nowMonth = new Date();
 
 	const handlePrevMonth = () => {
-		setCurrentMonth(subMonths(currentMonth, 1));
+		if (currentMonth <= nowMonth) {
+			setCurrentMonth(nowMonth);
+		} else {
+			setCurrentMonth(subMonths(currentMonth, 1));
+		}
 	};
 
 	const handleNextMonth = () => {
@@ -49,6 +54,7 @@ const Calender = () => {
 				currentMonth={currentMonth}
 				onClickNextMonth={handleNextMonth}
 				onClickPrevMonth={handlePrevMonth}
+				disabledPrevMonth={currentMonth <= nowMonth}
 			/>
 
 			<div css={dateBoxStyle}>
@@ -57,6 +63,7 @@ const Calender = () => {
 						{week}
 					</div>
 				))}
+
 				{handleDayText}
 			</div>
 		</>
