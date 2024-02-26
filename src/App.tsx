@@ -34,6 +34,7 @@ const App = () => {
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
 				<Route path="/habit-record" element={<HabitRecordPage />} />
 				<Route path="/rest-record" element={<RestRecordPage />} />
+				<Route path="habitrecord" element={<HabitRecordPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
