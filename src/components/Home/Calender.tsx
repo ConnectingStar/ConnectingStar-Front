@@ -31,6 +31,13 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalenderProps) {
 		setDateList([...prevDates, targetDate, ...nextDates]);
 	}, []);
 
+	useEffect(() => {
+		containerRef.current?.scrollTo({
+			left: (containerRef.current?.scrollWidth - containerRef.current?.offsetWidth) / 2,
+			behavior: "instant",
+		});
+	}, [dateList]);
+
 	const handleContainerScroll = () => {
 		if (containerRef.current?.scrollLeft === 0) {
 			const { year, month, date } = dateList[0];
@@ -48,12 +55,9 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalenderProps) {
 		}
 	};
 
-	useEffect(() => {
-		containerRef.current?.scrollTo({
-			left: (containerRef.current?.scrollWidth - containerRef.current?.offsetWidth) / 2,
-			behavior: "instant",
-		});
-	}, [dateList]);
+	const handleTargetDate = (dateEl: DateInfo) => {
+		setTargetDate(dateEl);
+	};
 
 	return (
 		<div>
@@ -89,9 +93,9 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalenderProps) {
 				onScroll={() => handleContainerScroll()}
 			>
 				<div css={calenderStyle.carousel}>
-					{dateList.map((el: DateInfo) => {
+					{dateList.map((dateEl: DateInfo) => {
 						let isSelected = false;
-						const { year, month, date, day, isPlanned } = el;
+						const { year, month, date, isPlanned } = dateEl;
 						if (
 							targetDate.year === year &&
 							targetDate.month === month &&
@@ -104,19 +108,13 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalenderProps) {
 								key={`${year}.${month}.${date}`}
 								css={calenderStyle.carouselEl({ isSelected })}
 								onClick={() => {
-									setTargetDate({
-										year,
-										month,
-										date,
-										day,
-										isPlanned,
-									});
+									handleTargetDate(dateEl);
 								}}
 							>
-								<section css={calenderStyle.dayPart}>{el.day}</section>
+								<section css={calenderStyle.dayPart}>{dateEl.day}</section>
 								<section css={calenderStyle.datePart}>
 									<label css={calenderStyle.dateInner({ isPlanned })}>
-										{el.month}/{el.date}
+										{dateEl.month}/{dateEl.date}
 									</label>
 								</section>
 							</span>
