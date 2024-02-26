@@ -34,7 +34,7 @@ function Profile() {
 					</span>
 				</div>
 			</div>
-			<div css={profileStyle.buttonWrapper} onClick={() => navigate("/generatehabit")}>
+			<div css={profileStyle.buttonWrapper} onClick={() => navigate("/habitgenerate")}>
 				<ProfileButtonIcon />
 			</div>
 		</section>
