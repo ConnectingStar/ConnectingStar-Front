@@ -3,16 +3,19 @@ import { useEffect, useState } from "react";
 
 import { css } from "@emotion/react";
 
-// import { useAppSelector, useAppDispatch } from "@/api/hooks";
-// import { openModal } from "@/api/modal/modalSlice";
 import BlueCheckIcon from "@/assets/icon/ic-homepage-habit-blue-check.svg?react";
 import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
 
 import CheckHabitModal from "@/components/Home/CheckHabitModal/CheckHabitModal";
-// import HabitModifyModal from "@/components/homepages/ModifyModal/HabitModifyModal";
-// import { modalType } from "@/constants/modalConstants";
+import TestModal from "@/components/Home/ModifyModal/TestModal";
 import { HabitsElement, DateInfo, HabitStatus } from "@/types/homeTypes";
+
+import { useAppSelector, useAppDispatch } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
+
+// import HabitModifyModal from "@/components/homepages/ModifyModal/HabitModifyModal";
+import { modalType } from "@/constants/modalConstants";
 
 import { habitsStyle } from "@/components/Home/Habits.style";
 
@@ -22,8 +25,8 @@ interface HabitsProps {
 
 function Habits({ targetDate }: HabitsProps) {
 	// const navigate = useNavigate();
-	// const dispatch = useAppDispatch();
-	// const { modal } = useAppSelector((state) => state.modal);
+	const dispatch = useAppDispatch();
+	const { modal } = useAppSelector((state) => state.modal);
 	// CheckModal이 display여부를 표시하는 state
 	const [isCheckModal, setIsCheckModal] = useState<boolean>(false);
 	// 현재 CheckModal에서 상태를 변경시킬 habit을 targetHabits에서 key를 통해 찾아서 state로 배치
@@ -66,6 +69,7 @@ function Habits({ targetDate }: HabitsProps) {
 	// 임시 targetHabits 관측용
 	return (
 		<>
+			{modal === modalType.TEST && <TestModal />}
 			<CheckHabitModal
 				isCheckModal={isCheckModal}
 				setIsCheckModal={setIsCheckModal}
@@ -97,7 +101,7 @@ function Habits({ targetDate }: HabitsProps) {
 										? targetHabit.article.slice(0, 80) + "..."
 										: targetHabit.article}
 								</span>
-								<span>
+								<span onClick={() => dispatch(openModal(modalType.TEST))}>
 									<TabIcon />
 								</span>
 							</div>
