@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
 import { info, lines } from "@/constants/restRecordConstants";
 
 import { restRecordStyle } from "@/components/RestRecord/RestRecord.style";
 
 function RestRecord() {
+	const navigate = useNavigate();
 	const [value, setValue] = useState("");
 
 	return (
@@ -34,6 +38,7 @@ function RestRecord() {
 					<div css={restRecordStyle.typeLength}>
 						<span>{`${value.length}/1,000자`}</span>
 					</div>
+					<FooterBtn text="완료" handleBtnClick={() => navigate("/home")} />
 				</section>
 			</main>
 		</div>
