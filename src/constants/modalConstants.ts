@@ -10,4 +10,5 @@ export const modalType = {
 	SORT: "SORT",
 	DELETE_HISTORY: (id: number) => `DELETE_HISTORY_${id}`,
 	HABIT_MODIFY_MODAL: "HABIT_MODIFY_MODAL",
+	HABIT_CHECK_MODAL: "HABIT_CHECK_MODAL",
 };

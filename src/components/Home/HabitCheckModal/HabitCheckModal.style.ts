@@ -2,35 +2,19 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const checkHabitModalStyle = {
-	container: css`
-		z-index: 5;
-		position: fixed;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		top: 0;
-		left: 0;
-		padding: 1.5rem;
-		background-color: rgba(0, 0, 0, 0.8);
-		width: 100%;
-		height: 100%;
-	`,
+export const habitCheckModalStyle = {
 	modalWrapper: css`
-		position: absolute;
 		display: flex;
-		justify-content: space-between;
-		padding: 1rem;
-		flex-direction: column;
-		gap: 4px;
-		z-index: 6;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: calc(100% - 4rem);
 		border-radius: 15px;
-		height: 13.75rem;
+		padding: 0.9375rem;
+		gap: 15px;
+		flex-direction: column;
+		width: 18rem;
+		height: 13.5rem;
 		background-color: white;
+	`,
+	modalTitle: css`
+		${theme.font.body_a_bold}
 	`,
 	articleWrapper: css`
 		width: 100%;

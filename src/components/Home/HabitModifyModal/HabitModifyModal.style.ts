@@ -4,18 +4,13 @@ import { theme } from "@/styles/theme";
 
 export const habitModifyModalStyle = {
 	modalWrapper: css`
-		position: absolute;
 		display: flex;
-		flex-direction: column;
-		gap: 20px;
-		z-index: 6;
-		bottom: 0;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 100%;
-		height: 7.25rem;
-		padding: 15px 15px 0px 15px;
 		border-radius: 15px 15px 0px 0px;
+		padding: 0.9375rem 0.9375rem 0 0.9375rem;
+		gap: 15px;
+		flex-direction: column;
+		width: 22.5rem;
+		height: 7.25rem;
 		background-color: white;
 	`,
 	modalTitle: css`
