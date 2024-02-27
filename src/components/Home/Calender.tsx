@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-import { css } from "@emotion/react";
-
 import { DateInfo, CalenderProps } from "@/types/homeTypes";
 
 import { daysOfTheWeek, currentDate } from "@/constants/homeConstants";
-
-import { theme } from "@/styles/theme";
 
 import { renderDates } from "@/utils/homeUtils";
 
@@ -63,29 +59,10 @@ function Calender({ setTargetDate, targetDate, timeGap }: CalenderProps) {
 		<div>
 			<div css={calenderStyle.dateWrapper}>
 				<div>
-					<span
-						css={css`
-							${theme.font.head_a}
-						`}
-					>
-						{`${targetDate.month}월 ${targetDate.date}일`}
-					</span>
-					<span
-						css={css`
-							${theme.font.body_c}
-							margin-left: 0.5rem;
-						`}
-					>
-						{targetDate.year}
-					</span>
+					<span className="currentDate">{`${targetDate.month}월 ${targetDate.date}일`}</span>
+					<span className="currentYear">{targetDate.year}</span>
 				</div>
-				<div
-					css={css`
-						${theme.font.button_big}
-					`}
-				>
-					{timeGap}
-				</div>
+				<div className="timeGap">{timeGap}</div>
 			</div>
 			<div
 				css={calenderStyle.carouselWrapper}

@@ -30,6 +30,13 @@ export const profileStyle = {
 		height: 100%;
 		border-radius: 4px;
 		margin: 0 1.25rem 0 1.25rem;
+		.identity {
+			${theme.font.body_c};
+			color: ${theme.color.main_blue};
+		}
+		.nickname {
+			${theme.font.head_c}
+		}
 	`,
 	buttonWrapper: css`
 		display: flex;
