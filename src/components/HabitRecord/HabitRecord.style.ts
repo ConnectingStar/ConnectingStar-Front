@@ -51,6 +51,9 @@ export const habitRecordStyle = {
 		.textarea::placeholder {
 			${theme.color.button_deactivated}
 		}
+		.unit {
+			width: 4.875rem;
+		}
 		.tail {
 			${theme.font.head_c};
 			color: ${theme.color.font_gray};
@@ -63,6 +66,22 @@ export const habitRecordStyle = {
 		color: ${theme.color.font_gray};
 		span {
 			margin: 0 0.125rem 0.125rem 0;
+		}
+	`,
+	unitWrapper: css`
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	`,
+	iconWrapper: css`
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		${theme.font.head_c};
+		color: ${theme.color.font_gray};
+		.icons {
+			display: flex;
+			justify-content: space-between;
 		}
 	`,
 };
