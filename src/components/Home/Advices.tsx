@@ -25,13 +25,11 @@ function Advices() {
 	return (
 		<section css={advicesStyle.container} ref={containerRef}>
 			<ul css={advicesStyle.advicesCarousel}>
-				{adviceImages.map((image) => {
-					return (
-						<li key={image.src}>
-							<img src={image.src} alt={image.alt} />
-						</li>
-					);
-				})}
+				{adviceImages.map((image) => (
+					<li key={image.src}>
+						<img src={image.src} alt={image.alt} />
+					</li>
+				))}
 			</ul>
 		</section>
 	);
