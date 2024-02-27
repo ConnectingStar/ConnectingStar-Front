@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
+import { css } from "@emotion/react";
+
 import Advices from "@/components/Home/Advices";
 import Calender from "@/components/Home/Calender";
+import HabitHelp from "@/components/Home/HabitHelp";
 import Habits from "@/components/Home/Habits";
-import HelpAnnouncement from "@/components/Home/HelpAnnouncement";
 import Profile from "@/components/Home/Profile";
 import { DateInfo } from "@/types/homeTypes";
 
 import { daysOfTheWeek, currentDate, msPerDay } from "@/constants/homeConstants";
 
 import { convertTimeGap } from "@/utils/homeUtils";
-
-import { homeStyle } from "@/components/Home/Home.style";
 
 function Home() {
 	const { year, month, date, day } = currentDate;
@@ -32,9 +32,9 @@ function Home() {
 	}, [targetDate]);
 
 	return (
-		<main css={homeStyle.innerWrapper}>
+		<main css={homeStyle}>
 			<Profile />
-			<HelpAnnouncement />
+			<HabitHelp />
 			<Advices />
 			<Calender setTargetDate={setTargetDate} targetDate={targetDate} timeGap={timeGap} />
 			<Habits targetDate={targetDate} />
@@ -43,3 +43,9 @@ function Home() {
 }
 
 export default Home;
+
+const homeStyle = css`
+	width: 22.5rem;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+`;
