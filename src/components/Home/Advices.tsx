@@ -27,7 +27,7 @@ function Advices() {
 			<ul css={advicesStyle.advicesCarousel}>
 				{adviceImages.map((image) => {
 					return (
-						<li css={advicesStyle.adviceWrapper} key={image.src}>
+						<li key={image.src}>
 							<img src={image.src} alt={image.alt} />
 						</li>
 					);

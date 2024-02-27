@@ -8,6 +8,16 @@ export const calenderStyle = {
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 1.625rem;
+		.currentDate {
+			${theme.font.head_a}
+		}
+		.currentYear {
+			${theme.font.body_c}
+			margin-left: 0.5rem;
+		}
+		.timeGap {
+			${theme.font.button_big}
+		}
 	`,
 	carouselWrapper: css`
 		position: relative;
