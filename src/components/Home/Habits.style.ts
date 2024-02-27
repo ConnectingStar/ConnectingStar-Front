@@ -2,14 +2,16 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
+interface habitStyleStatus {
+	status: string;
+}
 export const habitsStyle = {
 	container: css`
 		display: flex;
 		flex-direction: column;
-		width: 100%;
 		gap: 0.75rem;
 	`,
-	habitWrapper: (props: { status: string }) => css`
+	habitWrapper: ({ status }: habitStyleStatus) => css`
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -18,7 +20,7 @@ export const habitsStyle = {
 		height: 4.875rem;
 		border-radius: 20px;
 		overflow: hidden;
-		background-color: ${props.status === "rest" ? `${theme.color.button_disabled}` : "transparent"};
+		background-color: ${status === "rest" && `${theme.color.button_disabled}`};
 		border: 2px solid ${theme.color.line};
 		.targetHabit {
 			display: flex;
@@ -27,19 +29,15 @@ export const habitsStyle = {
 			align-items: center;
 			width: 100%;
 			height: 100%;
-			.status {
-				width: 2rem;
-			}
 		}
 	`,
-	habitInner: css``,
 	habitRest: css`
 		display: block;
 		${theme.font.body_xs}
 		color: ${theme.color.main_blue};
 	`,
-	habitArticle: (props: { status: string }) => css`
-		text-decoration: ${props.status !== "none" ? "line-through" : "none"};
+	habitArticle: ({ status }: habitStyleStatus) => css`
+		text-decoration: ${status !== "none" && "line-through"};
 		margin: 0.5rem 0.75rem 0.5rem 0.75rem;
 		width: 100%;
 		height: 100%;

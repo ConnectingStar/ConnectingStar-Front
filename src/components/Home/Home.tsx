@@ -35,15 +35,13 @@ function Home() {
 	}, [targetDate]);
 
 	return (
-		<div css={homeStyle.container}>
-			<main css={homeStyle.innerWrapper}>
-				<Profile />
-				<HelpAnnouncement />
-				<Advices />
-				<Calender setTargetDate={setTargetDate} targetDate={targetDate} timeGap={timeGap} />
-				<Habits targetDate={targetDate} />
-			</main>
-		</div>
+		<main css={homeStyle.innerWrapper}>
+			<Profile />
+			<HelpAnnouncement />
+			<Advices />
+			<Calender setTargetDate={setTargetDate} targetDate={targetDate} timeGap={timeGap} />
+			<Habits targetDate={targetDate} />
+		</main>
 	);
 }
 

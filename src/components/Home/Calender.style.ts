@@ -2,6 +2,11 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
+interface CalenderStyleBoolean {
+	isSelected?: boolean;
+	isPlanned?: boolean;
+}
+
 export const calenderStyle = {
 	dateWrapper: css`
 		display: flex;
@@ -31,13 +36,13 @@ export const calenderStyle = {
 		height: 100%;
 		gap: 0.25rem;
 	`,
-	carouselEl: (props: { isSelected: boolean }) => css`
+	carouselEl: ({ isSelected }: CalenderStyleBoolean) => css`
 		display: flex;
 		flex-direction: column;
 		min-width: 2.5rem;
 		border-radius: 8px;
 		height: 100%;
-		background-color: ${props.isSelected ? "rgba(1, 118, 249, 0.1)" : "none"};
+		background-color: ${isSelected && "rgba(1, 118, 249, 0.1)"};
 	`,
 	selected: css`
 		display: flex;
@@ -63,7 +68,7 @@ export const calenderStyle = {
 		height: 60%;
 		${theme.font.body_b_bold};
 	`,
-	dateInner: (props: { isPlanned: boolean }) => css`
+	dateInner: ({ isPlanned }: CalenderStyleBoolean) => css`
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -72,7 +77,7 @@ export const calenderStyle = {
 		aspect-ratio: 1/1;
 		color: black;
 		border-radius: 50%;
-		color: ${props.isPlanned ? "white" : "black"};
-		background-color: ${props.isPlanned ? `${theme.color.main_blue}` : "none"};
+		color: ${isPlanned ? "white" : "black"};
+		background-color: ${isPlanned && `${theme.color.main_blue}`};
 	`,
 };

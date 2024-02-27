@@ -7,10 +7,10 @@ export const helpAnnouncementStyle = {
 		display: flex;
 		align-items: center;
 		width: 100%;
-		height: 3.5rem; // 56px
+		height: 3.5rem;
 		background-color: ${theme.color.line};
 		border-radius: 15px;
-		padding: 0 0.875rem 0 0.875rem; // 0 14px 0 14px
+		padding: 0 0.875rem 0 0.875rem;
 	`,
 	iconWrapper: css`
 		display: flex;
@@ -22,6 +22,6 @@ export const helpAnnouncementStyle = {
 	`,
 	lineWrapper: css`
 		${theme.font.head_b}
-		margin: 0 0.875rem 0 0.875rem; // 0 14px 0 14px
+		margin: 0 0.875rem 0 0.875rem;
 	`,
 };

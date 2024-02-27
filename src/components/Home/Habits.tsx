@@ -21,15 +21,12 @@ interface HabitsProps {
 
 function Habits({ targetDate }: HabitsProps) {
 	const { HABIT_CHECK_MODAL, HABIT_MODIFY_MODAL } = modalType;
-	// const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
-	// 현재 CheckModal에서 상태를 변경시킬 habit을 targetHabits에서 key를 통해 찾아서 state로 배치
 	const [targetHabits, setTargetHabits] = useState<HabitsElement[]>([]);
 	const [modalTarget, setModalTarget] = useState<HabitsElement | null>(null);
 
 	useEffect(() => {
-		// 가져오면 표기될 것들
 		setTargetHabits([
 			{
 				key: 1,
@@ -40,28 +37,25 @@ function Habits({ targetDate }: HabitsProps) {
 	}, [targetDate]);
 
 	const handleHabit = (key: number, currentModalType: string) => {
-		console.log(currentModalType);
 		const target = targetHabits.find((habit) => key === habit.key);
 		if (target) {
 			dispatch(openModal(currentModalType));
 			setModalTarget(target);
 		}
 	};
+
 	return (
 		<>
 			{modal === modalType.HABIT_MODIFY_MODAL && <HabitModifyModal modalTarget={modalTarget} />}
 			{modal === modalType.HABIT_CHECK_MODAL && <HabitCheckModal modalTarget={modalTarget} />}
 			<div css={habitsStyle.container}>
-				{targetHabits.map((targetHabit) => (
+				{targetHabits.map((targetHabit: HabitsElement) => (
 					<article
 						key={targetHabit.key}
 						css={habitsStyle.habitWrapper({ status: targetHabit.status })}
 					>
 						<div className="targetHabit">
-							<span
-								className="status"
-								onClick={() => handleHabit(targetHabit.key, HABIT_CHECK_MODAL)}
-							>
+							<span onClick={() => handleHabit(targetHabit.key, HABIT_CHECK_MODAL)}>
 								{targetHabit.status === HabitStatus.None && <CheckIcon />}
 								{targetHabit.status === HabitStatus.Rest && (
 									<span css={habitsStyle.habitRest}>휴식</span>
