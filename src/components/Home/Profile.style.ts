@@ -2,41 +2,37 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const profileStyle = {
-	container: css`
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 0.625rem 0 0.625rem 0;
-	`,
-	imageWrapper: css`
-		overflow: hidden;
+export const layoutStyle = css`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 3.5rem;
+`;
+
+export const profileBoxStyle = css`
+	display: flex;
+	gap: 12px;
+
+	& > img {
+		width: 2.5rem;
 		height: 2.5rem;
-		width: auto;
-		aspect-ratio: 1/1;
+		object-fit: cover;
 		border-radius: 4px;
-		background-color: ${theme.color.button_deactivated};
-		& > img {
-			object-fit: cover;
-		}
-	`,
-	names: css`
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		margin: 0 1.25rem 0 1.25rem;
-		.identity {
-			${theme.font.body_c};
+	}
+`;
+
+export const profileTextBoxStyle = css`
+	display: flex;
+	flex-direction: column;
+
+	& > span {
+		&:first-of-type {
+			${theme.font.body_c_bold};
 			color: ${theme.color.main_blue};
 		}
-		.nickname {
-			${theme.font.head_c}
+
+		&:last-of-type {
+			${theme.font.body_b_bold}
 		}
-	`,
-	buttonWrapper: css`
-		width: auto;
-		height: 1.75rem;
-		aspect-ratio: 1/1;
-		border-radius: 4px;
-	`,
-};
+	}
+`;
