@@ -20,15 +20,19 @@ export const habitsStyle = {
 		overflow: hidden;
 		background-color: ${props.status === "rest" ? `${theme.color.button_disabled}` : "transparent"};
 		border: 2px solid ${theme.color.line};
+		.targetHabit {
+			display: flex;
+			${theme.font.body_a}
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			.status {
+				width: 2rem;
+			}
+		}
 	`,
-	habitInner: css`
-		display: flex;
-		${theme.font.body_a}
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		height: 100%;
-	`,
+	habitInner: css``,
 	habitRest: css`
 		display: block;
 		${theme.font.body_xs}

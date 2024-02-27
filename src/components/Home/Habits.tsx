@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { css } from "@emotion/react";
-
 import BlueCheckIcon from "@/assets/icon/ic-homepage-habit-blue-check.svg?react";
 import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
@@ -60,12 +58,10 @@ function Habits({ targetDate }: HabitsProps) {
 							key={targetHabit.key}
 							css={habitsStyle.habitWrapper({ status: targetHabit.status })}
 						>
-							<div css={habitsStyle.habitInner}>
+							<div className="targetHabit">
 								<span
+									className="status"
 									onClick={() => handleHabit(targetHabit.key, HABIT_CHECK_MODAL)}
-									css={css`
-										width: 2rem;
-									`}
 								>
 									{targetHabit.status === HabitStatus.None && <CheckIcon />}
 									{targetHabit.status === HabitStatus.Rest && (

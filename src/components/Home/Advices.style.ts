@@ -19,14 +19,14 @@ export const advicesStyle = {
 		background-color: white;
 		min-width: 100%;
 		height: 100%;
-	`,
-	adviceWrapper: css`
-		flex: 0 0 100%;
-		display: flex;
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
+		li {
+			flex: 0 0 100%;
+			display: flex;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
 		}
 	`,
 };
