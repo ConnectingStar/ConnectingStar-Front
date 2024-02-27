@@ -24,12 +24,9 @@ function Home() {
 	});
 	const [timeGap, setTimeGap] = useState<string>("오늘");
 	useEffect(() => {
-		// 오늘 시간, 시분 제외
 		const From: Date = new Date(year, month, date);
-		// targetDate 시분 제외
 		const To: Date = new Date(`${targetDate.year}.${targetDate.month}.${targetDate.date}`);
 		const timeGapInMs: number = From.getTime() - To.getTime();
-		// 하루 단위의 시간차 계산
 		const dateGap = Math.floor(timeGapInMs / msPerDay);
 		setTimeGap(convertTimeGap(dateGap));
 	}, [targetDate]);

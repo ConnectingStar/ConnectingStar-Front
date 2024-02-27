@@ -6,7 +6,6 @@ export const helpAnnouncementStyle = {
 	container: css`
 		display: flex;
 		align-items: center;
-		width: 100%;
 		height: 3.5rem;
 		background-color: ${theme.color.line};
 		border-radius: 15px;

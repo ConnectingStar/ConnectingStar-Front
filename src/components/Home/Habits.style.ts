@@ -50,7 +50,6 @@ export const habitsStyle = {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
 		height: 4.875rem;
 		border-radius: 20px;
 		border: 2px solid ${theme.color.line};
