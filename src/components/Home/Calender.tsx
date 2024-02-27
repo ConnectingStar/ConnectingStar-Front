@@ -10,40 +10,40 @@ import { calenderStyle } from "@/components/Home/Calender.style";
 
 function Calender({ setTargetDate, targetDate, timeGap }: CalenderProps) {
 	const containerRef = useRef<HTMLDivElement | null>(null);
-	const [dateList, setDateList] = useState<DateInfo[]>([]);
-
-	// 처음 렌더링될 때 오늘 시간을 기준으로 이전 14일과 오늘, 이후 14일을 계산 dateList에 세팅
-	useEffect(() => {
-		const { year, month, date, day } = currentDate;
-		const targetDate = {
-			year: year,
-			month: month + 1,
-			date: date,
-			day: daysOfTheWeek[day],
-			isPlanned: false,
-		};
-		const prevDates = renderDates(year, month, date, 14, false);
-		const nextDates = renderDates(year, month, date, 14, true);
-		setDateList([...prevDates, targetDate, ...nextDates]);
-	}, []);
+	const { year, month, date, day } = currentDate;
+	const centerDate = {
+		year: year,
+		month: month + 1,
+		date: date,
+		day: daysOfTheWeek[day],
+		isPlanned: false,
+	};
+	const prevDates = renderDates(year, month, date, 14, false);
+	const nextDates = renderDates(year, month, date, 14, true);
+	const [dateList, setDateList] = useState<DateInfo[]>([...prevDates, centerDate, ...nextDates]);
 
 	useEffect(() => {
-		containerRef.current?.scrollTo({
-			left: (containerRef.current?.scrollWidth - containerRef.current?.offsetWidth) / 2,
+		if (!containerRef.current) {
+			return;
+		}
+		containerRef.current.scrollTo({
+			left: (containerRef.current.scrollWidth - containerRef.current.offsetWidth) / 2,
 			behavior: "instant",
 		});
 	}, [dateList]);
 
 	const handleContainerScroll = () => {
-		if (containerRef.current?.scrollLeft === 0) {
+		if (!containerRef.current) {
+			return;
+		}
+		if (containerRef.current.scrollLeft === 0) {
 			const { year, month, date } = dateList[0];
 			const prev = renderDates(year, month - 1, date, 14, false);
 			setDateList([...prev, ...dateList.slice(0, 15)]);
 		}
 		if (
-			containerRef.current &&
-			containerRef.current?.scrollLeft ===
-				containerRef.current?.scrollWidth - containerRef.current?.offsetWidth
+			containerRef.current.scrollLeft ===
+			containerRef.current.scrollWidth - containerRef.current.offsetWidth
 		) {
 			const { year, month, date } = dateList[dateList.length - 1];
 			const next = renderDates(year, month - 1, date, 14, true);

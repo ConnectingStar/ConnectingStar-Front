@@ -9,10 +9,13 @@ function Advices() {
 	const [currentIndex, setCurrentIndex] = useState<number>(0);
 
 	useEffect(() => {
+		if (!containerRef.current) {
+			return;
+		}
 		const intervalImages = setInterval(() => {
 			setCurrentIndex((currentIndex + 1) % 5);
 		}, 4000);
-		containerRef.current?.scrollTo({
+		containerRef.current.scrollTo({
 			left:
 				(containerRef.current?.scrollWidth - containerRef.current?.offsetWidth) *
 				(currentIndex / 4),
