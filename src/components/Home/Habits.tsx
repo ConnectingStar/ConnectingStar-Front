@@ -52,38 +52,36 @@ function Habits({ targetDate }: HabitsProps) {
 			{modal === modalType.HABIT_MODIFY_MODAL && <HabitModifyModal modalTarget={modalTarget} />}
 			{modal === modalType.HABIT_CHECK_MODAL && <HabitCheckModal modalTarget={modalTarget} />}
 			<div css={habitsStyle.container}>
-				{targetHabits.map((targetHabit) => {
-					return (
-						<article
-							key={targetHabit.key}
-							css={habitsStyle.habitWrapper({ status: targetHabit.status })}
-						>
-							<div className="targetHabit">
-								<span
-									className="status"
-									onClick={() => handleHabit(targetHabit.key, HABIT_CHECK_MODAL)}
-								>
-									{targetHabit.status === HabitStatus.None && <CheckIcon />}
-									{targetHabit.status === HabitStatus.Rest && (
-										<span css={habitsStyle.habitRest}>휴식</span>
-									)}
-									{targetHabit.status === HabitStatus.Checked && <BlueCheckIcon />}
-								</span>
-								<span
-									onClick={() => handleHabit(targetHabit.key, HABIT_CHECK_MODAL)}
-									css={habitsStyle.habitArticle({ status: targetHabit.status })}
-								>
-									{targetHabit.article.length > 80
-										? targetHabit.article.slice(0, 80) + "..."
-										: targetHabit.article}
-								</span>
-								<span onClick={() => handleHabit(targetHabit.key, HABIT_MODIFY_MODAL)}>
-									<TabIcon />
-								</span>
-							</div>
-						</article>
-					);
-				})}
+				{targetHabits.map((targetHabit) => (
+					<article
+						key={targetHabit.key}
+						css={habitsStyle.habitWrapper({ status: targetHabit.status })}
+					>
+						<div className="targetHabit">
+							<span
+								className="status"
+								onClick={() => handleHabit(targetHabit.key, HABIT_CHECK_MODAL)}
+							>
+								{targetHabit.status === HabitStatus.None && <CheckIcon />}
+								{targetHabit.status === HabitStatus.Rest && (
+									<span css={habitsStyle.habitRest}>휴식</span>
+								)}
+								{targetHabit.status === HabitStatus.Checked && <BlueCheckIcon />}
+							</span>
+							<span
+								onClick={() => handleHabit(targetHabit.key, HABIT_CHECK_MODAL)}
+								css={habitsStyle.habitArticle({ status: targetHabit.status })}
+							>
+								{targetHabit.article.length > 80
+									? targetHabit.article.slice(0, 80) + "..."
+									: targetHabit.article}
+							</span>
+							<span onClick={() => handleHabit(targetHabit.key, HABIT_MODIFY_MODAL)}>
+								<TabIcon />
+							</span>
+						</div>
+					</article>
+				))}
 				<div css={habitsStyle.addButton}>
 					<span>+</span>
 				</div>

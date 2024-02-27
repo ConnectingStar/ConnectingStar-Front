@@ -17,9 +17,9 @@ function RestRecord() {
 				<div css={restRecordStyle.innerTitle}>쉬는 날이셨군요?</div>
 				<section>
 					<div css={restRecordStyle.linesWrapper}>
-						{lines.split("mainBlueBold").map((line, idx) => {
-							return <span className={`${idx % 2 !== 0 && "mainBlueBold"}`}>{line}</span>;
-						})}
+						{lines.split("mainBlueBold").map((line, idx) => (
+							<span className={`${idx % 2 !== 0 && "mainBlueBold"}`}>{line}</span>
+						))}
 						<span>{`${info.identity} ${info.nickname}님을 응원할게요 😊`}</span>
 					</div>
 				</section>
