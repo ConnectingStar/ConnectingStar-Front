@@ -1,7 +1,21 @@
+import Tab from "@/components/ChartPage/Tab/Tab";
+import TotalInfo from "@/components/ChartPage/TotalInfo/TotalInfo";
+import ButtonCarousel from "@/components/common/ButtonCarousel/ButtonCarousel";
 import Gnb from "@/components/common/Gnb/Gnb";
+import Header from "@/components/common/Header/Header";
 
 const ChartPage = () => {
-	return <Gnb />;
+	return (
+		<>
+			<Header>
+				<Header.Title hasButton={false}>통계</Header.Title>
+			</Header>
+			<ButtonCarousel />
+			<TotalInfo />
+			<Tab />
+			<Gnb />
+		</>
+	);
 };
 
 export default ChartPage;

@@ -6,7 +6,7 @@ import {
 	flexStyle,
 	scrollBoxStyle,
 	getButtonStyle,
-} from "@/components/MyPage/StarTrace/ButtonCarousel.style";
+} from "@/components/common/ButtonCarousel/ButtonCarousel.style";
 
 const ButtonCarousel = () => {
 	const [buttonText, setButtonText] = useState("책 읽기");

@@ -1,4 +1,4 @@
-import ButtonCarousel from "@/components/MyPage/StarTrace/ButtonCarousel";
+import ButtonCarousel from "@/components/common/ButtonCarousel/ButtonCarousel";
 import Content from "@/components/MyPage/StarTrace/Content";
 import SortButton from "@/components/MyPage/StarTrace/SortButton";
 
