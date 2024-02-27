@@ -28,7 +28,6 @@ export const calenderStyle = {
 		position: relative;
 		overflow-x: scroll;
 		scrollbar-width: none;
-		width: 100%;
 		height: 5rem;
 	`,
 	carousel: css`
@@ -41,16 +40,7 @@ export const calenderStyle = {
 		flex-direction: column;
 		min-width: 2.5rem;
 		border-radius: 8px;
-		height: 100%;
 		background-color: ${isSelected && "rgba(1, 118, 249, 0.1)"};
-	`,
-	selected: css`
-		display: flex;
-		flex-direction: column;
-		min-width: 2.5rem;
-		border-radius: 8px;
-		height: 100%;
-		background-color: rgba(1, 118, 249, 0.1);
 	`,
 	dayPart: css`
 		display: flex;
@@ -64,7 +54,6 @@ export const calenderStyle = {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 100%;
 		height: 60%;
 		${theme.font.body_b_bold};
 	`,
