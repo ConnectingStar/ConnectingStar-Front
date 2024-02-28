@@ -1,4 +1,3 @@
-import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 import HabitRecord from "@/components/Home/HabitRecord/HabitRecord";
 
@@ -10,7 +9,6 @@ function HabitRecordPage() {
 				<Header.TextButton>관리</Header.TextButton>
 			</Header>
 			<HabitRecord />
-			<Gnb />
 		</>
 	);
 }

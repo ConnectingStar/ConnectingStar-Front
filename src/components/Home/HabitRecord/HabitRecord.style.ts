@@ -5,7 +5,6 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	display: flex;
 	flex-direction: column;
-	max-width: 360px;
 	padding: 1.5rem;
 	gap: 40px;
 	${theme.font.body_a};
@@ -14,44 +13,46 @@ export const layoutStyle = css`
 		${theme.font.head_c};
 		color: ${theme.color.font_gray};
 	}
+	& > * {
+		transition: 0.3s ease;
+	}
+	& > .title {
+		display: flex;
+		flex-direction: column;
+		${theme.font.head_a}
+	}
+	& > .identity {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
 `;
 
-export const titleStyle = css`
-	display: flex;
-	flex-direction: column;
-	${theme.font.head_a}
-`;
-
-export const identityStyle = css`
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-`;
-
-export const recordStyle = css`
+export const conditionStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
-	.header {
+	& > div {
 		display: flex;
 		align-items: center;
-		span {
-			margin: 0 0.125rem 0.125rem 0;
-		}
 	}
 	.unit {
-		display: flex;
-		align-items: center;
 		gap: 12px;
-		textarea {
+		& > textarea {
 			width: 4.875rem;
+		}
+		& > span {
+			& > p {
+				display: inline;
+				color: ${theme.color.main_blue};
+			}
 		}
 	}
 	& textarea {
+		border: none;
 		white-space: nowrap;
 		height: 3.4375rem;
 		background-color: ${theme.color.bg};
-		border: none;
 		border-radius: 15px;
 		padding: 15px;
 		resize: none;
@@ -61,12 +62,68 @@ export const recordStyle = css`
 	}
 `;
 
-export const iconsStyle = css`
+export const iconsStyle = (isActivated: boolean, selectedIcon: number | null) => css`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+	opacity: ${!isActivated && 0.5};
+	pointer-events: ${!isActivated && "none"};
 	& > div {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
+		gap: 18px;
+		& > span {
+			transition: 0.3s ease;
+		}
+		& > .selected {
+			opacity: 1;
+		}
+		& > :not(.selected) {
+			opacity: ${!selectedIcon ? 1 : 0.5};
+		}
 	}
+	& > h1 {
+		& > p {
+			display: inline;
+			color: ${theme.color.main_blue};
+		}
+	}
+`;
+
+export const inputBoxStyle = (isActivated: boolean) => css`
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	position: relative;
+	opacity: ${!isActivated && 0.5};
+	pointer-events: ${!isActivated && "none"};
+	& > label {
+		color: ${theme.color.font_gray};
+		${theme.font.head_c};
+	}
+	& > textarea {
+		all: unset;
+		padding: 1rem;
+		background-color: ${theme.color.bg};
+		border-radius: 15px;
+		height: 11.875rem;
+		-ms-overflow-style: none; /* 인터넷 익스플로러 */
+		scrollbar-width: none; /* 파이어폭스 */
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		&::placeholder {
+			color: ${theme.color.button_deactivated};
+		}
+	}
+	& > span {
+		${theme.font.body_c_bold};
+		color: ${theme.color.font_gray};
+		align-self: flex-end;
+	}
+`;
+
+export const footerBtnWrapper = (isActivated: boolean) => css`
+	opacity: ${!isActivated && 0.5};
+	pointer-events: ${!isActivated && "none"};
 `;
