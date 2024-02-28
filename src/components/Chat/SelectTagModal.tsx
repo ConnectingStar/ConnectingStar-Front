@@ -3,7 +3,7 @@ import { useState } from "react";
 import FooterBtn from "../common/FooterBtn/FooterBtn";
 import Header from "../common/Header/Header";
 
-import { userDataFrame } from "@/pages/ChatPage";
+import { userDataFrame } from "@/pages/ChattingPage";
 
 import { selectTagModalStyle } from "@/components/Chat/SelectTagModal.style";
 
