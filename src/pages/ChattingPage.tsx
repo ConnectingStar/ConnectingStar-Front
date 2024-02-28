@@ -4,13 +4,11 @@ import { css } from "@emotion/react";
 
 import ChattingMessage from "@/components/Chat/ChattingMessage";
 import Progressbar from "@/components/Chat/Progressbar";
-// import SelectTagModal from "@/components/Chat/SelectTagModal";
 import Header from "@/components/common/Header/Header";
 
 import { chatData } from "@/constants/chatData";
 
 import { theme } from "@/styles/theme";
-// import { habitTags } from "@/constants/habitTags";
 
 const chatStyle = css`
 	max-width: 360px;
@@ -64,13 +62,6 @@ function ChattingPage() {
 					></ChattingMessage>
 				))}
 			</div>
-			{/* {isReply && (
-				<SelectTagModal
-					title="어떤 습관을 만들어 볼까요?"
-					tags={habitTags}
-					setUserData={setUserData}
-				/>
-			)} */}
 		</div>
 	);
 }
