@@ -5,7 +5,8 @@ import Header from "../common/Header/Header";
 
 import { userDataFrame } from "@/pages/ChattingPage";
 
-import { selectTagModalStyle } from "./SelectTagModal.style";
+import { selectTagModalStyle } from "@/components/Chat/SelectTagModal.style";
+
 interface selectTagModal {
 	title: string;
 	tags: string[];
