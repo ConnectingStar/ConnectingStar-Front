@@ -40,6 +40,7 @@ function ChattingMessage({ userData, reply, progressProps }: chatType) {
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 	};
+	console.log(message);
 
 	return (
 		<div css={chattingStyle.container}>
@@ -49,9 +50,7 @@ function ChattingMessage({ userData, reply, progressProps }: chatType) {
 			<div css={chattingStyle.chatWrap} ref={endOfMessagesRef}>
 				<ul>
 					{message.slice(0, messageIndex + 1).map((i, index) => (
-						<li key={index} className="message-item">
-							{i}
-						</li>
+						<li key={index}>{i}</li>
 					))}
 					{message.length === messageIndex && (
 						<button onClick={handleReplyBtn}>{replyBtnMessage}</button>

@@ -18,6 +18,7 @@ export const chattingStyle = {
 			width: 100%;
 			padding-right: 1rem;
 			> li {
+				white-space: pre-wrap;
 				display: inline-block;
 				border: 2px solid ${theme.color.line};
 				border-radius: 15px;
