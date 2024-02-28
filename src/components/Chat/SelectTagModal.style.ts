@@ -28,7 +28,6 @@ export const selectTagModalStyle = {
 				display: flex;
 				justify-content: center;
 				flex-grow: 1;
-				white-space: nowrap;
 				background-color: ${theme.color.bg};
 				border-radius: 20px;
 				height: 3.438rem;
@@ -50,16 +49,6 @@ export const selectTagModalStyle = {
 				background-color: ${theme.color.bg};
 				color: black;
 			}
-		}
-
-		.selected {
-			background-color: ${theme.color.main_blue};
-			color: white;
-		}
-
-		.selected {
-			background-color: ${theme.color.main_blue};
-			color: white;
 		}
 
 		.selected {
