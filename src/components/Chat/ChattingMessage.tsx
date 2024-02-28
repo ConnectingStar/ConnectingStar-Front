@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { chattingStyle, replyStyle } from "./ChattingMessage.style";
 
@@ -10,10 +10,12 @@ interface chatType {
 
 function ChattingMessage({ userData, reply, progressProps }: chatType) {
 	const { message, replyBtnMessage } = userData;
-
 	const [, setProgress] = progressProps;
+
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isreply, setIsReply] = useState(false);
+
+	const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -23,6 +25,14 @@ function ChattingMessage({ userData, reply, progressProps }: chatType) {
 		}, 1000);
 
 		return () => clearInterval(timer);
+	}, [messageIndex]);
+
+	const scrollToBottom = () => {
+		endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
+	};
+
+	useEffect(() => {
+		scrollToBottom();
 	}, [messageIndex]);
 
 	const handleReplyBtn = () => {
@@ -36,7 +46,7 @@ function ChattingMessage({ userData, reply, progressProps }: chatType) {
 			<div css={chattingStyle.profile}>
 				<img src="" alt="profile" />
 			</div>
-			<div css={chattingStyle.chatWrap}>
+			<div css={chattingStyle.chatWrap} ref={endOfMessagesRef}>
 				<ul>
 					{message.slice(0, messageIndex + 1).map((i, index) => (
 						<li key={index} className="message-item">
