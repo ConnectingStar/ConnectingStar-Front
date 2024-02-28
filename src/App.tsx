@@ -1,6 +1,6 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-import ChatPage from "./pages/ChatPage";
+import ChattingPage from "./pages/ChattingPage";
 
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
@@ -21,7 +21,7 @@ const App = () => {
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star/:id" element={<StarCardDetailPage />} />
-				<Route path="/chat" element={<ChatPage />} />
+				<Route path="/chatting" element={<ChattingPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
