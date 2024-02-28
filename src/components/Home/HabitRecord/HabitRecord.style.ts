@@ -16,12 +16,12 @@ export const layoutStyle = css`
 	& > * {
 		transition: 0.3s ease;
 	}
-	& > .title {
+	& > :first-child {
 		display: flex;
 		flex-direction: column;
 		${theme.font.head_a}
 	}
-	& > .identity {
+	& > :nth-child(2) {
 		display: flex;
 		flex-direction: column;
 		gap: 12px;

@@ -65,16 +65,16 @@ function HabitRecord() {
 	return (
 		<>
 			<main css={layoutStyle}>
-				<section className="title">
+				<section>
 					<span>{`${today.getMonth() + 1}월 ${today.getDate()}일`}</span>
 					<span>영택님의 실천 기록</span>
 				</section>
-				<section className="identity">
+				<section>
 					<h1>정체성</h1>
 					<span>매일 성장하는 사람</span>
 				</section>
 				<section css={conditionStyle}>
-					<div className="header">
+					<div>
 						<h1>나는</h1> <ExclamationMark />
 					</div>
 					{habitConditions.map(({ condition, placeholder }: HabitCondition) => (
