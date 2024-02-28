@@ -22,10 +22,6 @@ export const userDataFrame = {
 
 function ChattingPage() {
 	const [progress, setProgress] = useState(0);
-	const progressProps: [number, React.Dispatch<React.SetStateAction<number>>] = [
-		progress,
-		setProgress,
-	];
 
 	//TODO: reply 변경하기
 	return (
@@ -42,7 +38,7 @@ function ChattingPage() {
 						key={userData.id}
 						userData={userData}
 						reply={userDataFrame.habit}
-						progressProps={progressProps}
+						setProgress={setProgress}
 					></ChattingMessage>
 				))}
 			</div>
