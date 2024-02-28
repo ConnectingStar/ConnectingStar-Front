@@ -7,7 +7,7 @@ import { HabitCondition } from "@/types/habitRecordTypes";
 import { habitConditions } from "@/constants/habitRecordConstants";
 import { habitIconData } from "@/constants/myPageConstants";
 
-import { habitRecordStyle } from "@/components/HabitRecord/HabitRecord.style";
+import { habitRecordStyle } from "@/components/Home/HabitRecord/HabitRecord.style";
 
 interface HabitRecordsState {
 	when: string;

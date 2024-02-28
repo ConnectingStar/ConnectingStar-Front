@@ -1,6 +1,6 @@
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
-import HabitRecord from "@/components/HabitRecord/HabitRecord";
+import HabitRecord from "@/components/Home/HabitRecord/HabitRecord";
 
 function HabitRecordPage() {
 	return (
