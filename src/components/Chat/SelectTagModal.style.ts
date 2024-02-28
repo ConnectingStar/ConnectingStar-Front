@@ -55,10 +55,5 @@ export const selectTagModalStyle = {
 			background-color: ${theme.color.main_blue};
 			color: white;
 		}
-
-		.selected {
-			background-color: ${theme.color.main_blue};
-			color: white;
-		}
 	`,
 };
