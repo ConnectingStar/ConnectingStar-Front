@@ -15,15 +15,16 @@ import { theme } from "@/styles/theme";
 const chatStyle = css`
 	max-width: 360px;
 	margin: 0 auto;
+	min-height: 100vh;
+	height: 100%;
+	background-color: ${theme.color.bg};
 `;
 
 const chattingContainer = css`
 	padding: 2rem 1.5rem 1rem 1.5rem;
 	margin: 0 auto;
-	background-color: ${theme.color.bg};
-	min-height: 100vh;
-	height: 100%;
 	${theme.font.body_b};
+	height: 100%;
 `;
 
 // TODO: 나중에 초기화
@@ -44,8 +45,6 @@ function ChattingPage() {
 		progress,
 		setProgress,
 	];
-
-	console.log(chatData);
 
 	//TODO: reply 변경하기
 	return (
