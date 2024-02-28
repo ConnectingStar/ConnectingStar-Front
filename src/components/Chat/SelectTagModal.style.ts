@@ -46,6 +46,11 @@ export const selectTagModalStyle = {
 			background-color: ${theme.color.bg};
 			border: none;
 			border-radius: 20px;
+			&:focus {
+				outline: none;
+				background-color: ${theme.color.bg};
+				color: black;
+			}
 		}
 
 		.selected {
