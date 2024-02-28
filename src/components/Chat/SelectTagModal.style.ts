@@ -23,7 +23,7 @@ export const selectTagModalStyle = {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
-			gap: 6px;
+			gap: 0.375rem;
 			& > li {
 				max-width: 8.125rem;
 				display: flex;

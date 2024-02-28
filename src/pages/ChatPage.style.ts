@@ -4,15 +4,15 @@ import { theme } from "@/styles/theme";
 
 export const chatStyle = {
 	container: css`
-		max-width: 360px;
+		max-width: 22.5rem;
 		margin: 0 auto;
 	`,
 	progress: (percentage?: number) => css`
 		width: 100%;
-		height: 4px;
+		height: 0.25rem;
 		background-color: ${theme.color.button_disabled};
 		& > div {
-			height: 4px;
+			height: 0.25rem;
 			width: ${percentage}%;
 			background-color: ${theme.color.main_blue};
 		}
@@ -67,6 +67,6 @@ export const chatStyle = {
 		padding: 1rem;
 		border-radius: 15px;
 		color: white;
-		margin: 12px 0;
+		margin: 0.75rem 0;
 	`,
 };
