@@ -1,36 +1,36 @@
-// import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 
 import ExclamationMark from "@/assets/icon/ic-exclamation-mark.svg?react";
 
+import { HabitCondition } from "@/types/habitRecordTypes";
+
+import { habitConditions } from "@/constants/habitRecordConstants";
 import { habitIconData } from "@/constants/myPageConstants";
 
 import { habitRecordStyle } from "@/components/HabitRecord/HabitRecord.style";
 
+interface HabitRecordsState {
+	when: string;
+	where: string;
+	what: string;
+}
+
 function HabitRecord() {
 	const today = new Date();
-	// const habitConditions = [
-	// 	{
-	// 		condition: "when",
-	// 		placeholder: "오후 8시에",
-	// 	},
-	// 	{
-	// 		condition: "where",
-	// 		placeholder: "우리 집 안 내 책상 위에서",
-	// 	},
-	// 	{
-	// 		condition: "what",
-	// 		placeholder: "책 읽기를",
-	// 	},
-	// ];
-	// const [habitRecord, setHabitRecord] = useState({
-	// 	when: "",
-	// 	where: "",
-	// 	what: "",
-	// });
 
-	// const handleConditionInput = (e) => {
-	// 	console.log(e.target.name);
-	// };
+	const [habitRecords, setHabitRecords] = useState<HabitRecordsState>({
+		when: "",
+		where: "",
+		what: "",
+	});
+
+	const handleConditionInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		const { name, value } = e.target;
+		setHabitRecords({
+			...habitRecords,
+			[name]: value,
+		});
+	};
 
 	return (
 		<div css={habitRecordStyle.container}>
@@ -47,30 +47,22 @@ function HabitRecord() {
 					<div css={habitRecordStyle.recordHeader}>
 						<span>나는</span> <ExclamationMark />
 					</div>
+					{habitConditions.map((el: HabitCondition) => {
+						const { condition, placeholder } = el;
+						return (
+							<textarea
+								className="textarea"
+								key={condition}
+								placeholder={placeholder}
+								name={condition}
+								onChange={handleConditionInput}
+								// value={habitRecords[condition]}
+							/>
+						);
+					})}
 
-					{/* <textarea
-						className="textarea"
-						placeholder="오후 8시에"
-						name="when"
-						onChange={handleConditionInput}
-						value={habitRecord.when}
-					/>
-					<textarea
-						className="textarea"
-						placeholder="우리 집 안 내 책상 위에서"
-						name="where"
-						onChange={handleConditionInput}
-						value={habitRecord.where}
-					/>
-					<textarea
-						className="textarea"
-						placeholder="책 읽기를"
-						name="what"
-						onChange={handleConditionInput}
-						value={habitRecord.what}
-					/> */}
 					<div css={habitRecordStyle.unitWrapper}>
-						<textarea className="textarea unit" />
+						<textarea className="textarea unit" maxLength={4} />
 						<span>단위*</span>
 					</div>
 					<div className="tail">했다.</div>
