@@ -1,29 +1,12 @@
 import { useState } from "react";
 
-import { css } from "@emotion/react";
-
 import ChattingMessage from "@/components/Chat/ChattingMessage";
 import Progressbar from "@/components/Chat/Progressbar";
 import Header from "@/components/common/Header/Header";
 
 import { chatData } from "@/constants/chatData";
 
-import { theme } from "@/styles/theme";
-
-const chatStyle = css`
-	max-width: 360px;
-	margin: 0 auto;
-	min-height: 100vh;
-	height: 100%;
-	background-color: ${theme.color.bg};
-`;
-
-const chattingContainer = css`
-	padding: 2rem 1.5rem 1rem 1.5rem;
-	margin: 0 auto;
-	${theme.font.body_b};
-	height: 100%;
-`;
+import { chattingPageStyle } from "@/pages/ChattingPage.style";
 
 // TODO: 나중에 초기화
 export const userDataFrame = {
@@ -46,13 +29,14 @@ function ChattingPage() {
 
 	//TODO: reply 변경하기
 	return (
-		<div css={chatStyle}>
-			<Header>
-				<Header.PrevButton></Header.PrevButton>
-			</Header>
-			<Progressbar currentClicks={progress} totalClicksNeeded={11} />
-
-			<div css={chattingContainer}>
+		<div css={chattingPageStyle.container}>
+			<div css={chattingPageStyle.header}>
+				<Header>
+					<Header.PrevButton></Header.PrevButton>
+				</Header>
+				<Progressbar currentClicks={progress} totalClicksNeeded={11} />
+			</div>
+			<div css={chattingPageStyle.chattingWrap}>
 				{chatData.slice(0, progress + 1).map((userData) => (
 					<ChattingMessage
 						key={userData.id}
