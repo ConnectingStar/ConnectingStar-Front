@@ -39,6 +39,7 @@ function ChattingMessage({ userData, reply, setProgress }: chatType) {
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 	};
+	console.log(message);
 
 	return (
 		<div css={chattingStyle.container}>
