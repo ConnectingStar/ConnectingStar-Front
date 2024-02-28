@@ -1,4 +1,3 @@
 export type HabitCondition = {
-	condition: string;
-	placeholder: string;
+	[condition: string]: string;
 };
