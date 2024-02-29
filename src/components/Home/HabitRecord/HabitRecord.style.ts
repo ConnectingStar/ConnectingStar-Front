@@ -124,6 +124,7 @@ export const inputBoxStyle = (isActivated: boolean) => css`
 `;
 
 export const footerBtnWrapper = (isActivated: boolean) => css`
+	transition: 0.3s ease;
 	opacity: ${!isActivated && 0.5};
 	pointer-events: ${!isActivated && "none"};
 `;
