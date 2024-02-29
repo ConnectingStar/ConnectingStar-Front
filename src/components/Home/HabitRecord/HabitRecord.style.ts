@@ -16,12 +16,12 @@ export const layoutStyle = css`
 	& > * {
 		transition: 0.3s ease;
 	}
-	& > :first-child {
+	& > .date {
 		display: flex;
 		flex-direction: column;
 		${theme.font.head_a}
 	}
-	& > :nth-child(2) {
+	& > .identity {
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -90,13 +90,13 @@ export const iconsStyle = (isActivated: boolean, selectedIcon: number | null) =>
 	}
 `;
 
-export const inputBoxStyle = (isActivated: boolean) => css`
+export const inputBoxStyle = (isActivated: boolean, selectedIcon: number | null) => css`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 	position: relative;
-	opacity: ${!isActivated && 0.5};
-	pointer-events: ${!isActivated && "none"};
+	opacity: ${(!isActivated || !selectedIcon) && 0.5};
+	pointer-events: ${(!isActivated || !selectedIcon) && "none"};
 	& > label {
 		color: ${theme.color.font_gray};
 		${theme.font.head_c};
@@ -123,8 +123,8 @@ export const inputBoxStyle = (isActivated: boolean) => css`
 	}
 `;
 
-export const footerBtnWrapper = (isActivated: boolean) => css`
+export const footerBtnWrapper = (isActivated: boolean, selectedIcon: number | null) => css`
 	transition: 0.3s ease;
-	opacity: ${!isActivated && 0.5};
-	pointer-events: ${!isActivated && "none"};
+	opacity: ${(!isActivated || !selectedIcon) && 0.5};
+	pointer-events: ${(!isActivated || !selectedIcon) && "none"};
 `;

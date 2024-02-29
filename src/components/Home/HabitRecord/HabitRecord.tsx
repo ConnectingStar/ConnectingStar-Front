@@ -3,8 +3,13 @@ import { useState, ChangeEvent, useEffect } from "react";
 import ExclamationMark from "@/assets/icon/ic-exclamation-mark.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import StarPrizeModal from "@/components/Home/HabitRecord/StarPrizeModal/StarPrizeModal";
+
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
 
 import { habitConditions } from "@/constants/habitRecordConstants";
+import { modalType } from "@/constants/modalConstants";
 import { habitIconData } from "@/constants/myPageConstants";
 
 import type { HabitCondition } from "@/types/habitRecordTypes";
@@ -27,6 +32,8 @@ interface HabitRecordsState {
 
 function HabitRecord() {
 	const today = new Date();
+	const dispatch = useAppDispatch();
+	const { modal } = useAppSelector((state) => state.modal);
 	const [habitRecords, setHabitRecords] = useState<HabitRecordsState>({
 		when: "",
 		where: "",
@@ -64,12 +71,13 @@ function HabitRecord() {
 
 	return (
 		<>
+			{modal === modalType.STAR_PRIZE && <StarPrizeModal />}
 			<main css={layoutStyle}>
-				<section>
+				<section className="date">
 					<span>{`${today.getMonth() + 1}월 ${today.getDate()}일`}</span>
 					<span>영택님의 실천 기록</span>
 				</section>
-				<section>
+				<section className="identity">
 					<h1>정체성</h1>
 					<span>매일 성장하는 사람</span>
 				</section>
@@ -116,7 +124,7 @@ function HabitRecord() {
 						))}
 					</div>
 				</section>
-				<div css={inputBoxStyle(isActivated)}>
+				<div css={inputBoxStyle(isActivated, selectedIcon)}>
 					<label htmlFor="traceText">별자취 남기기</label>
 					<textarea
 						placeholder="실천하며 느낀 점이나 다짐 등을 자유롭게 적어보세요!"
@@ -130,7 +138,10 @@ function HabitRecord() {
 					<span>{traceText.length}/1,000자</span>
 				</div>
 			</main>
-			<span css={footerBtnWrapper(isActivated)}>
+			<span
+				css={footerBtnWrapper(isActivated, selectedIcon)}
+				onClick={() => dispatch(openModal(modalType.STAR_PRIZE))}
+			>
 				<FooterBtn text="클릭하여 별 얻기" isPositionStatic isTransparent />
 			</span>
 		</>
