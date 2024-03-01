@@ -9,7 +9,7 @@ function Onboarding() {
 	console.log(step);
 
 	return (
-		<div>
+		<main>
 			{step === "Splash" && (
 				<Splash
 					onNext={() => {
@@ -25,7 +25,7 @@ function Onboarding() {
 				/>
 			)}
 			{step === "OauthSignUp" && <OauthSignUp />}
-		</div>
+		</main>
 	);
 }
 

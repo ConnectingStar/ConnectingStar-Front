@@ -6,12 +6,12 @@ export const oauthSignUpStyle = {
 	container: css`
 		width: 22.5rem;
 		margin: 0 auto;
-		padding: 1.25rem 1.5rem 0;
+		padding: 0 1.5rem;
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: space-evenly;
-		height: 100vh;
+		justify-content: center;
 	`,
 	logo: css`
 		display: flex;
@@ -20,10 +20,12 @@ export const oauthSignUpStyle = {
 		& > img {
 			width: 6.25rem;
 			height: 6.25rem;
+			background-color: grey;
 		}
 		& > p {
 			${theme.font.head_a}
 		}
+		margin: 8.75rem 0 10.625rem;
 	`,
 	oauth: css`
 		width: 19.5rem;
@@ -49,6 +51,8 @@ export const oauthSignUpStyle = {
 	footer: css`
 		position: fixed;
 		bottom: 1.25rem;
+		width: 100%;
+		margin: 0 auto;
 		color: ${theme.color.button_deactivated};
 		${theme.font.body_xs};
 		display: flex;
