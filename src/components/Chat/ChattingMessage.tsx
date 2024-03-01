@@ -5,11 +5,12 @@ import { chattingStyle, replyStyle } from "./ChattingMessage.style";
 interface chatType {
 	userData: { id: string; message: string[]; replyBtnMessage: string[] };
 	reply: string;
-	setProgress: React.Dispatch<React.SetStateAction<number>>;
+	progressProps: [number, React.Dispatch<React.SetStateAction<number>>];
 }
 
-function ChattingMessage({ userData, reply, setProgress }: chatType) {
+function ChattingMessage({ userData, reply, progressProps }: chatType) {
 	const { message, replyBtnMessage } = userData;
+	const [, setProgress] = progressProps;
 
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isreply, setIsReply] = useState(false);
@@ -39,6 +40,7 @@ function ChattingMessage({ userData, reply, setProgress }: chatType) {
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 	};
+	console.log(message);
 
 	return (
 		<div css={chattingStyle.container}>
