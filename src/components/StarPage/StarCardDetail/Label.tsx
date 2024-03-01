@@ -1,4 +1,4 @@
-import { labelStyle } from "@/components/StarCardDetail/Label.style";
+import { labelStyle } from "@/components/StarPage/StarCardDetail/Label.style";
 
 interface LabelProps {
 	children: string;

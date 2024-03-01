@@ -1,7 +1,7 @@
-import Star from "@/components/StarCardDetail/Img/Star";
-import Label from "@/components/StarCardDetail/Label";
+import Star from "@/components/StarPage/StarCardDetail/Img/Star";
+import Label from "@/components/StarPage/StarCardDetail/Label";
 
-import { imgStyle } from "@/components/StarCardDetail/Img/Img.style";
+import { imgStyle } from "@/components/StarPage/StarCardDetail/Img/Img.style";
 
 interface ImgProps {
 	state: "default" | "selected" | "have";
