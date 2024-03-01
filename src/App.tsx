@@ -35,6 +35,8 @@ const App = () => {
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
 				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
+				<Route path="/createAccount" element={<CreateAccountPage />} />
+				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
 			</Routes>
 		</BrowserRouter>
 	);

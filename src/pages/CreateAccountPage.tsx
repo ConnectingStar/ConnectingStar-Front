@@ -1,5 +1,6 @@
 import arrowDown from "@/assets/icon/arrow-down.svg";
-import Header from "@/components/common/Header";
+
+import Header from "@/components/common/Header/Header";
 
 import { createAccountStyle } from "@/pages/CreateAccountPage.style";
 
