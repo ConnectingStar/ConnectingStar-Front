@@ -16,7 +16,7 @@ export const profileBoxStyle = css`
 	& > img {
 		width: 2.5rem;
 		height: 2.5rem;
-		object-fit: cover;
+		object-fit: contain;
 		border-radius: 4px;
 	}
 `;

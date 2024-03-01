@@ -41,3 +41,8 @@ export const renderDates = (
 	});
 	return direction ? rendered : rendered.reverse();
 };
+
+const today = new Date();
+export const isNextDates = (year: number, month: number, date: number) => {
+	return today.getTime() < new Date(year, month - 1, date).getTime();
+};

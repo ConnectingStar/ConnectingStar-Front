@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { daysOfTheWeek, currentDate } from "@/constants/homeConstants";
 
-import { renderDates } from "@/utils/homeUtils";
+import { isNextDates, renderDates } from "@/utils/homeUtils";
 
 import type { DateInfo, CalenderProps } from "@/types/homeTypes";
 
@@ -75,8 +75,9 @@ function Calender({ selectedDate, setSelectedDate, timeGap }: CalenderProps) {
 			<div css={carouselBoxStyle} ref={containerRef} onScroll={handleContainerScroll}>
 				<div css={carouselInnerBoxStyle}>
 					{dateList.map((dateEl: DateInfo) => {
-						let isSelected = false;
 						const { year, month, date, isPlanned } = dateEl;
+						const isNextDate = isNextDates(year, month, date);
+						let isSelected = false;
 						if (
 							selectedDate.year === year &&
 							selectedDate.month === month &&
@@ -87,7 +88,7 @@ function Calender({ selectedDate, setSelectedDate, timeGap }: CalenderProps) {
 						return (
 							<div
 								key={`${year}.${month}.${date}`}
-								css={dayBoxStyle(isSelected, isPlanned)}
+								css={dayBoxStyle(isSelected, isPlanned, isNextDate)}
 								onClick={() => setSelectedDate(dateEl)}
 							>
 								<span>{dateEl.day}</span>
