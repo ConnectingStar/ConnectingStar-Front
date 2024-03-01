@@ -1,4 +1,4 @@
-import arrowDown from "@/assets/icon/arrow-down.svg";
+import ArrowDown from "@/assets/icon/arrow-down.svg?react";
 
 import Header from "@/components/common/Header/Header";
 
@@ -30,23 +30,15 @@ export default function CreateAccountPage() {
 			</Header>
 			<div css={createAccountStyle.container}>
 				<h1>내 정보 입력을 완료해 주세요</h1>
-				<ul css={createAccountStyle.input}>
-					{accountInputData.map((item, index) => {
+				<ul css={createAccountStyle.wrap}>
+					{accountInputData.map((item) => {
 						return (
-							<li key={index}>
+							<li>
 								<h2>{item.title}</h2>
-								{item.isPopUpModal ? (
-									<div>
-										<p>{item.content}</p>
-										<button>
-											<img src={arrowDown} alt="arrow-down" />
-										</button>
-									</div>
-								) : (
-									<div>
-										<input placeholder={item.content}></input>
-									</div>
-								)}
+								<div>
+									{item.content}
+									{item.isPopUpModal && <ArrowDown />}
+								</div>
 							</li>
 						);
 					})}

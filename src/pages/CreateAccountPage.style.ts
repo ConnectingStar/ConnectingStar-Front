@@ -13,30 +13,27 @@ export const createAccountStyle = {
 			margin-bottom: 40px;
 		}
 	`,
-	input: css`
+	wrap: css`
 		width: 100%;
-		li {
-			margin-bottom: 20px;
-		}
-		h2 {
-			${theme.font.head_c}
-			color: ${theme.color.font_gray};
-			margin-bottom: 12px;
-		}
-		div {
-			display: flex;
-			justify-content: space-between;
+		& > li {
 			width: 100%;
-			height: 55px;
-			background-color: ${theme.color.bg};
-			color: ${theme.color.button_deactivated};
-			${theme.font.body_a};
-			border-radius: 15px;
-			padding: 1rem;
-			& > input {
+			height: 87px;
+			margin-bottom: 20px;
+			& > h2 {
+				${theme.font.head_c}
+				color: ${theme.color.font_gray};
+				margin-bottom: 12px;
+			}
+			& > div {
+				display: flex;
+				justify-content: space-between;
 				width: 100%;
-				border: none;
+				height: 55px;
 				background-color: ${theme.color.bg};
+				color: ${theme.color.button_deactivated};
+				${theme.font.body_a};
+				border-radius: 15px;
+				padding: 1rem;
 			}
 		}
 	`,
