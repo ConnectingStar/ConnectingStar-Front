@@ -49,7 +49,7 @@ export const carouselInnerBoxStyle = css`
 	display: flex;
 `;
 
-export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean) => {
+export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean, isNextDate: boolean) => {
 	return css`
 		display: flex;
 		flex-direction: column;
@@ -58,6 +58,7 @@ export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean) => {
 		height: 80px;
 		border-radius: 8px;
 		background-color: ${isSelected && "rgba(1, 118, 249, 0.1)"};
+		color: ${isNextDate && `${theme.color.button_deactivated}`};
 
 		& > span {
 			display: flex;
