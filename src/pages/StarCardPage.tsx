@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 
 import Header from "@/components/common/Header/Header";
-import CategoryTab from "@/components/StarPage/CategoryTab";
-import StarCard from "@/components/StarPage/StarCard";
-import Toggle from "@/components/StarPage/Toggle";
+import CategoryTab from "@/components/StarCard/CategoryTab";
+import StarCard from "@/components/StarCard/StarCard";
+import Toggle from "@/components/StarCard/Toggle";
 
 // TODO: API 연결 후 삭제 예정(UI 확인용)
 interface starCardDataType {
@@ -46,7 +46,7 @@ const starCardData: starCardDataType[] = [
 	},
 ];
 
-const StarPage = () => {
+const StarCardPage = () => {
 	return (
 		<>
 			<Header>
@@ -72,7 +72,7 @@ const StarPage = () => {
 	);
 };
 
-export default StarPage;
+export default StarCardPage;
 
 const sectionStyle = css`
 	width: 22.5rem;
