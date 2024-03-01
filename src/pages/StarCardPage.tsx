@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 
 import Header from "@/components/common/Header/Header";
-import CategoryTab from "@/components/StarCard/CategoryTab";
-import StarCard from "@/components/StarCard/StarCard";
-import Toggle from "@/components/StarCard/Toggle";
+import CategoryTab from "@/components/StarPage/StarCard/CategoryTab";
+import StarCard from "@/components/StarPage/StarCard/StarCard";
+import Toggle from "@/components/StarPage/StarCard/Toggle";
 
 // TODO: API 연결 후 삭제 예정(UI 확인용)
 interface starCardDataType {

@@ -1,9 +1,9 @@
 import Header from "@/components/common/Header/Header";
-import Button from "@/components/StarCardDetail/Button";
-import CategoryLabel from "@/components/StarCardDetail/CategoryLabel";
-import Img from "@/components/StarCardDetail/Img/Img";
-import Story from "@/components/StarCardDetail/Story";
-import Title from "@/components/StarCardDetail/Title";
+import Button from "@/components/StarPage/StarCardDetail/Button";
+import CategoryLabel from "@/components/StarPage/StarCardDetail/CategoryLabel";
+import Img from "@/components/StarPage/StarCardDetail/Img/Img";
+import Story from "@/components/StarPage/StarCardDetail/Story";
+import Title from "@/components/StarPage/StarCardDetail/Title";
 
 import { buttonState } from "@/constants/starCardDetailConstants";
 
