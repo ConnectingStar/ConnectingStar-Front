@@ -30,27 +30,25 @@ export default function CreateAccountPage() {
 			</Header>
 			<div css={createAccountStyle.container}>
 				<h1>내 정보 입력을 완료해 주세요</h1>
-				<ul css={createAccountStyle.input}>
-					{accountInputData.map((item, index) => {
-						return (
-							<li key={index}>
-								<h2>{item.title}</h2>
+				{accountInputData.map((item, index) => {
+					return (
+						<ul css={createAccountStyle.input} key={index}>
+							<li>
+								<p>{item.title}</p>
+								<input placeholder={item.content}></input>
 								{item.isPopUpModal ? (
-									<div>
-										<p>{item.content}</p>
-										<button>
-											<img src={arrowDown} alt="arrow-down" />
-										</button>
-									</div>
+									<button>
+										<img src={arrowDown} alt="arrow-down" />
+									</button>
 								) : (
 									<div>
 										<input placeholder={item.content}></input>
 									</div>
 								)}
 							</li>
-						);
-					})}
-				</ul>
+						</ul>
+					);
+				})}
 			</div>
 		</>
 	);
