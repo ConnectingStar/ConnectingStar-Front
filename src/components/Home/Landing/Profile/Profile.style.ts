@@ -32,7 +32,7 @@ export const profileTextBoxStyle = css`
 		}
 
 		&:last-of-type {
-			${theme.font.body_b_bold}
+			${theme.font.head_c}
 		}
 	}
 `;

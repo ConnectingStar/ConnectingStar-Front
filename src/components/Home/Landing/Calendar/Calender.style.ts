@@ -54,8 +54,8 @@ export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean, isNextDate:
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		min-width: 47px;
-		height: 80px;
+		min-width: 2.9375rem;
+		height: 5rem;
 		border-radius: 8px;
 		background-color: ${isSelected && "rgba(1, 118, 249, 0.1)"};
 		color: ${isNextDate && `${theme.color.button_deactivated}`};
@@ -71,8 +71,8 @@ export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean, isNextDate:
 				${theme.font.body_b_bold};
 
 				& > label {
-					width: 24px;
-					height: 24px;
+					width: 1.5rem;
+					height: 1.5rem;
 					display: flex;
 					align-items: center;
 					justify-content: center;
