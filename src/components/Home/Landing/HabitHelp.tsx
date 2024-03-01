@@ -30,10 +30,7 @@ export const layoutStyle = css`
 	gap: 12px;
 	height: 3.25rem;
 	border-radius: 15px;
-	background-color: ${theme.color.line};
+	background-color: ${theme.color.bg};
 	padding: 1rem;
-
-	& > span {
-		${theme.font.body_b}
-	}
+	${theme.font.body_b}
 `;
