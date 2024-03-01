@@ -7,8 +7,7 @@ import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
-import OauthSignUp from "@/pages/SignUp/OauthSignUp";
-import SignUp from "@/pages/SignUp/SignUp";
+import Onboarding from "@/pages/Onboarding";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarPage from "@/pages/StarPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
@@ -22,8 +21,7 @@ const App = () => {
 				<Route path="/chart" element={<ChartPage />} />
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/myinfo" element={<MyInfoPage />} />
-				<Route path="/signup" element={<SignUp />} />
-				<Route path="/oauthsignup" element={<OauthSignUp />} />
+				<Route path="/onboarding" element={<Onboarding />} />
 				<Route path="/star/:id" element={<StarCardDetailPage />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
