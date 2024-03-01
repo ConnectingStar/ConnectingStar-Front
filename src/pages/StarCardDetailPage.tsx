@@ -41,7 +41,7 @@ export default function StarCardDetailPage() {
 }
 
 export const sectionStyle = css`
-	width: 360px;
+	width: 22.5rem;
 	padding: 1.25rem 1.5rem 1rem 1.5rem;
 	margin: 0 auto;
 `;
