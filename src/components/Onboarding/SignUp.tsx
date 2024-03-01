@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
@@ -9,11 +9,14 @@ import { SignUpStyle } from "@/components/Onboarding/SignUp.style";
 function SignUp({ onNext }: { onNext: () => void }) {
 	const [signUpNum, setSingUpNum] = useState(0);
 
-	useEffect(() => {}, [signUpNum]);
 	const handleSignUpBtn = () => {
 		setSingUpNum((prev) => prev + 1);
-		signUpNum === 3 && onNext();
 	};
+
+	if (signUpNum === 3) {
+		onNext();
+		return; // signUpNum이 3이면 함수를 여기서 종료
+	}
 
 	return (
 		<div css={SignUpStyle}>

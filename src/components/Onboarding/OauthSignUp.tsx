@@ -2,8 +2,7 @@ import google from "@/assets/icon/ic-signup.google.svg";
 import kakao from "@/assets/icon/ic-signup.kakao.svg";
 
 import { oauthSignUpStyle } from "@/components/Onboarding/OauthSignUp.style";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function OauthSignUp({ onNext }: { onNext: () => void }) {
+function OauthSignUp() {
 	return (
 		<div css={oauthSignUpStyle.container}>
 			<div css={oauthSignUpStyle.logo}>

@@ -24,13 +24,7 @@ function Onboarding() {
 					}}
 				/>
 			)}
-			{step === "OauthSignUp" && (
-				<OauthSignUp
-					onNext={() => {
-						setStep("OauthSignUp");
-					}}
-				/>
-			)}
+			{step === "OauthSignUp" && <OauthSignUp />}
 		</div>
 	);
 }
