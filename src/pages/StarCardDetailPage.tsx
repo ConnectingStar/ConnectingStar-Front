@@ -7,7 +7,7 @@ import Img from "@/components/StarPage/StarCardDetail/Img/Img";
 import Story from "@/components/StarPage/StarCardDetail/Story";
 import Title from "@/components/StarPage/StarCardDetail/Title";
 
-import { buttonState } from "@/constants/starCardDetailConstants";
+import { buttonState } from "@/constants/starPageConstants";
 
 // TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
 interface dataType {

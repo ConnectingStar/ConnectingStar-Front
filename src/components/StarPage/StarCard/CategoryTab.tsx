@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { css } from "@emotion/react";
 
-import { categoryData } from "@/constants/starCategoryConstants";
+import { categoryData } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
 
