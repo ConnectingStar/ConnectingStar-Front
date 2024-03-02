@@ -32,3 +32,26 @@ export const labelStyle = css`
 	color: #fff;
 	background-color: ${theme.color.main_deep_blue};
 `;
+
+export const starImgStyle = css`
+	width: 3.75rem;
+	height: 3.75rem;
+	position: absolute;
+	// 별 이미지 위치에 영향이 가서 px로 고정함
+	bottom: 16px;
+	right: 16px;
+
+	img {
+		width: 3.75rem;
+		height: 3.75rem;
+	}
+
+	strong {
+		position: absolute;
+		top: 1.125rem;
+		left: 1.125rem;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: ${theme.color.font_black};
+	}
+`;

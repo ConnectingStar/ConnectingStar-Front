@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 import CategoryLabel from "@/components/StarPage/StarCardDetail/CategoryLabel";
-import Img from "@/components/StarPage/StarCardDetail/Img/Img";
+import Img from "@/components/StarPage/StarCardDetail/Img";
 import Story from "@/components/StarPage/StarCardDetail/Story";
 import Title from "@/components/StarPage/StarCardDetail/Title";
 
