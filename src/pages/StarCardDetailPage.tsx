@@ -5,9 +5,10 @@ import Header from "@/components/common/Header/Header";
 import CategoryLabel from "@/components/StarPage/StarCardDetail/CategoryLabel";
 import Img from "@/components/StarPage/StarCardDetail/Img";
 import Story from "@/components/StarPage/StarCardDetail/Story";
-import Title from "@/components/StarPage/StarCardDetail/Title";
 
 import { buttonState } from "@/constants/starPageConstants";
+
+import { theme } from "@/styles/theme";
 
 // TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
 interface dataType {
@@ -27,8 +28,8 @@ export default function StarCardDetailPage() {
 			</Header>
 			<section css={sectionStyle}>
 				<Img state={data.state} />
-				<Title tag="h2">캐릭터 설명 문구</Title>
-				<Title tag="h1">캐릭터 이름</Title>
+				<h2 css={titleStyle.h2}>캐릭터 설명 문구</h2>
+				<h1 css={titleStyle.h1}>캐릭터 이름</h1>
 				<CategoryLabel />
 				<Story />
 			</section>
@@ -37,8 +38,20 @@ export default function StarCardDetailPage() {
 	);
 }
 
-export const sectionStyle = css`
+const sectionStyle = css`
 	width: 22.5rem;
 	padding: 1.25rem 1.5rem 5.4375rem 1.5rem;
 	margin: 0 auto;
 `;
+
+const titleStyle = {
+	h1: css`
+		margin-bottom: 0.5625rem;
+		${theme.font.head_a}
+		color: ${theme.color.font_black};
+	`,
+	h2: css`
+		${theme.font.head_b}
+		color: ${theme.color.main_blue};
+	`,
+};
