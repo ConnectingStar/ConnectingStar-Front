@@ -1,6 +1,7 @@
-import Label from "@/components/StarPage/StarCardDetail/Label";
-
-import { categoryLabelStyle } from "@/components/StarPage/StarCardDetail/CategoryLabel.style";
+import {
+	containerStyle,
+	categoryLabelStyle,
+} from "@/components/StarPage/StarCardDetail/CategoryLabel.style";
 
 // TODO: API 연결 후 삭제 예정
 const data = [
@@ -10,11 +11,11 @@ const data = [
 
 export default function CategoryLabel() {
 	return (
-		<div css={categoryLabelStyle}>
+		<div css={containerStyle}>
 			{data.map((item) => (
-				<Label key={item.id} type="category">
+				<div key={item.id} css={categoryLabelStyle}>
 					{item.category}
-				</Label>
+				</div>
 			))}
 		</div>
 	);
