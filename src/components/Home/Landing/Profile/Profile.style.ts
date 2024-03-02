@@ -17,7 +17,7 @@ export const profileBoxStyle = css`
 		width: 2.5rem;
 		height: 2.5rem;
 		object-fit: contain;
-		border-radius: 4px;
+		border-radius: 5px;
 	}
 `;
 

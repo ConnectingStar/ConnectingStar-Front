@@ -7,13 +7,9 @@ export const layoutStyle = css`
 
 	& > ul {
 		display: flex;
-
-		gap: 54px;
-		width: 100%;
-		height: 56px;
-
 		align-items: center;
 		gap: 54px;
+
 		& > li {
 			cursor: pointer;
 		}
