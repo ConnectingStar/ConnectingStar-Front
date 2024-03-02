@@ -13,7 +13,7 @@ export const habitArticleStyle = (status?: string) => {
 		position: relative;
 		padding: 1rem;
 		border: ${status === "rest" || status === "end" ? "none" : `2px solid ${theme.color.line}`};
-		border-radius: 20px;
+		border-radius: 15px;
 		height: 4.875rem;
 		background-color: ${status === "rest"
 			? theme.color.button_disabled
@@ -27,6 +27,7 @@ export const habitArticleStyle = (status?: string) => {
 			gap: 16px;
 
 			& > span {
+				${theme.font.body_xs}
 				color: ${theme.color.main_blue};
 				font-size: 0.6875rem;
 			}

@@ -56,8 +56,8 @@ export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean, isNextDate:
 		align-items: center;
 		min-width: 2.9375rem;
 		height: 5rem;
-		border-radius: 8px;
-		background-color: ${isSelected && "#E6F1FE"};
+		border-radius: 10px;
+		background-color: ${isSelected && `${theme.color.main_light_blue}`};
 		color: ${isNextDate && `${theme.color.button_deactivated}`};
 
 		& > span {
