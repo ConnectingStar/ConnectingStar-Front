@@ -15,6 +15,8 @@ import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarPage from "@/pages/StarPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 
+import RestCommentPage from "@/pages/RestCommentPage";
+
 const App = () => {
 	return (
 		<BrowserRouter>

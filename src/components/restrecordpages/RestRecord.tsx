@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { restCommentStyle } from "@/components/restcommentpages/RestComment.style";
+import { restRecordStyle } from "@/components/restrecordpages/RestRecord.style";
 
 function RestComment() {
 	const [value, setValue] = useState("");
@@ -15,23 +15,23 @@ function RestComment() {
 		"아예 하지 않는 것보다 아주 조금이라도 하는 것이 정체성을 뚜렷하게 만드는 열쇠랍니다 :)",
 	];
 	return (
-		<div css={restCommentStyle.container}>
-			<main css={restCommentStyle.innerWrapper}>
-				<div css={restCommentStyle.innerTitle}>쉬는 날이셨군요?</div>
+		<div css={restRecordStyle.container}>
+			<main css={restRecordStyle.innerWrapper}>
+				<div css={restRecordStyle.innerTitle}>쉬는 날이셨군요?</div>
 				<section>
-					<div css={restCommentStyle.lineWrapper}>
+					<div css={restRecordStyle.lineWrapper}>
 						{lines.map((line) => {
 							return <span>{line}</span>;
 						})}
 						<span
-							css={restCommentStyle.nickname}
+							css={restRecordStyle.nickname}
 						>{`${info.identity} ${info.nickname}님을 응원할게요 😊`}</span>
 					</div>
 				</section>
-				<section css={restCommentStyle.writerWrapper}>
-					<span css={restCommentStyle.writerTitle}>별자취 남기기</span>
+				<section css={restRecordStyle.writerWrapper}>
+					<span css={restRecordStyle.writerTitle}>별자취 남기기</span>
 					<textarea
-						css={restCommentStyle.writerTextarea}
+						css={restRecordStyle.writerTextarea}
 						placeholder="오늘 어떤 일로 쉬었는지 혹은 다짐 등을 자유롭게 적어보세요!"
 						onChange={(e) => {
 							setValue(e.target.value);

@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const restCommentStyle = {
+export const restRecordStyle = {
 	container: css`
 		display: flex;
 		flex-direction: column;

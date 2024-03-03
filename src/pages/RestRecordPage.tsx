@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 import Gnb from "@/components/common/Gnb/Gnb";
-import RestComment from "@/components/restcommentpages/RestComment";
-
-import Header from "@/components/common/Header";
+import Header from "@/components/common/Header/Header";
+import RestRecord from "@/components/restrecordpages/RestRecord";
 
 function RestCommentPage() {
 	const navigate = useNavigate();
@@ -13,7 +12,7 @@ function RestCommentPage() {
 				<Header.PrevButton />
 				<Header.TextButton onClick={() => navigate("/habitmanagement")}>관리</Header.TextButton>
 			</Header>
-			<RestComment />
+			<RestRecord />
 			<Gnb />
 		</>
 	);
