@@ -14,7 +14,6 @@ export const layoutStyle = css`
 export const topBoxStyle = css`
 	display: flex;
 	flex-direction: column;
-	gap: 6px;
 
 	& > p {
 		color: ${theme.color.font_black};
