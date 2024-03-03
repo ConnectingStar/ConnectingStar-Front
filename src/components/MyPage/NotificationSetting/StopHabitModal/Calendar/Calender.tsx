@@ -13,12 +13,12 @@ import {
 
 import CalendarHeader from "@/components/MyPage/NotificationSetting/StopHabitModal/Calendar/CalendarHeader";
 
+import { WEEK } from "@/constants/calendarConstants";
+
 import {
 	dateBoxStyle,
 	dayStyle,
 } from "@/components/MyPage/NotificationSetting/StopHabitModal/Calendar/Calendar.style";
-
-const week = ["일", "월", "화", "수", "목", "금", "토"];
 
 const Calender = ({
 	startDay,
@@ -91,7 +91,7 @@ const Calender = ({
 			/>
 
 			<div css={dateBoxStyle}>
-				{week.map((week) => (
+				{WEEK.map((week) => (
 					<div key={week} css={dayStyle(true, true)}>
 						{week}
 					</div>

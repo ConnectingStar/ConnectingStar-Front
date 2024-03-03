@@ -29,4 +29,28 @@ export const calendarBoxStyle = css`
 	border-radius: 15px;
 	border: 2px solid ${theme.color.line};
 	padding: 1rem 0.875rem;
+
+	& .divider {
+		width: 100%;
+		border-bottom: 1px solid ${theme.color.line};
+		margin: 1rem 0;
+	}
+`;
+
+export const iconListBoxStyle = css`
+	display: flex;
+	align-items: center;
+	gap: 30px;
+
+	& .iconBox {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+
+		& > p {
+			color: ${theme.color.font_black};
+			${theme.font.header};
+		}
+	}
 `;
