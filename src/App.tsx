@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import RestCommentPage from "./pages/RestCommentPage";
+
 import ChartPage from "@/pages/ChartPage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
 import HomePage from "@/pages/HomePage";

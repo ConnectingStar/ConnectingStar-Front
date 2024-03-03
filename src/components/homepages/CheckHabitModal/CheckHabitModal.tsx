@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 
 import { HabitsObj } from "@/components/homepages/Habits";
+
 import { theme } from "@/styles/theme";
 
 import { checkHabitModalStyle } from "@/components/homepages/CheckHabitModal/CheckHabitModal.style";
