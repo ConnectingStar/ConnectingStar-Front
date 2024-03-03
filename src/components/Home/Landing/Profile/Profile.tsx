@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import ProfileButtonIcon from "@/assets/icon/ic-homepage-to-mypage.svg?react";
 import StarImage from "@/assets/image/img-card-detail-star-button.png";
 
-import { layoutStyle, profileBoxStyle, profileTextBoxStyle } from "@/components/Home/Profile.style";
+import {
+	layoutStyle,
+	profileBoxStyle,
+	profileTextBoxStyle,
+} from "@/components/Home/Landing/Profile/Profile.style";
 
 function Profile() {
 	const navigate = useNavigate();

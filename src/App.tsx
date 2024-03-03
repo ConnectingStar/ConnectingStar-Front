@@ -30,10 +30,7 @@ const App = () => {
 				<Route path="/habit-history" element={<MyHabitPage />} />
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
-				<Route path="/star-trace" element={<MyStarTracePage />} />
-				<Route path="/habit-history" element={<MyHabitPage />} />
-				<Route path="/notification-setting" element={<NotificationSettingPage />} />
-				<Route path="/restrecord" element={<RestRecordPage />} />
+				<Route path="/rest-record" element={<RestRecordPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
