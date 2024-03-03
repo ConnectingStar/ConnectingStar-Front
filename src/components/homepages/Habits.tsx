@@ -8,6 +8,7 @@ import { css } from "@emotion/react";
 import BlueCheckIcon from "@/assets/icon/ic-homepage-habit-blue-check.svg?react";
 import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
+
 import CheckHabitModal from "@/components/homepages/CheckHabitModal/CheckHabitModal";
 import ModifyModal from "@/components/homepages/ModifyModal/ModifyModal";
 

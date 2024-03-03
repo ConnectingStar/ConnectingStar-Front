@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import RestCommentPage from "./pages/RestCommentPage";
+
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
@@ -29,6 +31,7 @@ const App = () => {
 				<Route path="/habit-history" element={<MyHabitPage />} />
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
+				<Route path="/restcomment" element={<RestCommentPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
