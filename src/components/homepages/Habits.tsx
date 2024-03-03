@@ -28,7 +28,7 @@ enum Status {
 	Rest = "rest",
 	Checked = "checked",
 }
-export interface HabitsObj {
+export interface HabitsElement {
 	key: number;
 	status: Status;
 	article: string;
@@ -39,11 +39,11 @@ function Habits({ targetDate }: HabitsProps) {
 	// CheckModal이 display여부를 표시하는 state
 	const [isCheckModal, setIsCheckModal] = useState<boolean>(false);
 	// 현재 CheckModal에서 상태를 변경시킬 habit을 targetHabits에서 key를 통해 찾아서 state로 배치
-	const [modalTarget, setModalTarget] = useState<HabitsObj | null>(null);
+	const [modalTarget, setModalTarget] = useState<HabitsElement | null>(null);
 	// habit의 오른쪽 tab을 클릭시에 습관 수정을 할 것인지 묻는 modal을 state로 표시
 	const [isModifyModal, setIsModifyModal] = useState<boolean>(false);
 	// 현재 Calender에서 클릭된 날짜에 해당하는 모든 habits을 가져온 후에 state로 표시
-	const [targetHabits, setTargetHabits] = useState<HabitsObj[]>([]);
+	const [targetHabits, setTargetHabits] = useState<HabitsElement[]>([]);
 
 	// targetDate가 변하면 해당하는 날짜의 habits들을 가져와서 setTargetHabits에 표시
 	useEffect(() => {
@@ -73,7 +73,7 @@ function Habits({ targetDate }: HabitsProps) {
 	// 해당 modalTarget의 상태가 변하면 targetHabits의 내용을 변경시킨 => POST를 통해 변경된 내용을 서버에 보낼 예정
 	const handleStatus = (status: Status) => {
 		if (modalTarget) {
-			const updatedHabit: HabitsObj = { ...modalTarget, status };
+			const updatedHabit: HabitsElement = { ...modalTarget, status };
 			const targetIdx = targetHabits.findIndex((habit) => updatedHabit.key === habit.key);
 			setTargetHabits([
 				...targetHabits.slice(0, targetIdx),
@@ -89,7 +89,7 @@ function Habits({ targetDate }: HabitsProps) {
 
 	return (
 		<>
-			<ModifyModal isModifyModal={isModifyModal} setIsModifyModal={setIsModifyModal}></ModifyModal>
+			<ModifyModal isModifyModal={isModifyModal} setIsModifyModal={setIsModifyModal} />
 			<CheckHabitModal
 				isCheckModal={isCheckModal}
 				setIsCheckModal={setIsCheckModal}
