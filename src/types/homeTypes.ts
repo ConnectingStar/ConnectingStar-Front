@@ -6,20 +6,8 @@ export type DateInfo = {
 	isPlanned: boolean;
 };
 
-export enum HabitStatus {
-	None = "none",
-	Rest = "rest",
-	Checked = "checked",
-}
-
-export type HabitsElement = {
-	key: number;
-	status: HabitStatus;
-	article: string;
-};
-
 export type CalenderProps = {
-	setTargetDate: React.Dispatch<React.SetStateAction<DateInfo>>;
-	targetDate: DateInfo;
+	setSelectedDate: React.Dispatch<React.SetStateAction<DateInfo>>;
+	selectedDate: DateInfo;
 	timeGap: string;
 };
