@@ -26,7 +26,7 @@ export const profileStyle = {
 		justify-content: center;
 		height: 100%;
 		border-radius: 4px;
-		margin: 0 1.25rem 0 1.25rem; // 0 20px 0 20px
+		margin: 0 1.25rem 0 1.25rem;
 	`,
 	buttonWrapper: css`
 		display: flex;
