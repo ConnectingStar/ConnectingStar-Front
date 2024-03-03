@@ -32,6 +32,7 @@ const App = () => {
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
 				<Route path="/restcomment" element={<RestCommentPage />} />
 				<Route path="/star/:id" element={<StarCardDetailPage />} />
+				<Route path="/star-trace" element={<MyStarTracePage />} />
 			</Routes>
 		</BrowserRouter>
 	);
