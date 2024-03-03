@@ -48,12 +48,7 @@ function Profile() {
 					navigate("/generatehabit");
 				}}
 			>
-				<ProfileButtonIcon
-					css={css`
-						width: 75%;
-						height: 75%;
-					`}
-				/>
+				<ProfileButtonIcon />
 			</div>
 		</section>
 	);
