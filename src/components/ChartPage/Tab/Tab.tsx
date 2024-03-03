@@ -1,20 +1,32 @@
-import { useState } from "react";
+import { SetURLSearchParams } from "react-router-dom";
+
+import { TAB_KEY, TAB_PARAM, TAB_TITLE } from "@/constants/tabConstants";
 
 import { layoutStyle, tabButtonStyle } from "@/components/ChartPage/Tab/Tab.style";
 
-const Tab = () => {
-	const [tab, setTab] = useState("주간");
-
+const Tab = ({
+	searchParams,
+	setSearchParams,
+}: {
+	searchParams: URLSearchParams;
+	setSearchParams: SetURLSearchParams;
+}) => {
 	return (
 		<ul css={layoutStyle}>
 			<li>
-				<button css={tabButtonStyle(tab === "주간")} onClick={() => setTab("주간")}>
-					주간
+				<button
+					css={tabButtonStyle(searchParams.get(TAB_KEY) === TAB_PARAM.WEEK)}
+					onClick={() => setSearchParams(`${TAB_KEY}=${TAB_PARAM.WEEK}`)}
+				>
+					{TAB_TITLE.WEEK}
 				</button>
 			</li>
 			<li>
-				<button css={tabButtonStyle(tab === "월간")} onClick={() => setTab("월간")}>
-					월간
+				<button
+					css={tabButtonStyle(searchParams.get(TAB_KEY) === TAB_PARAM.MONTH)}
+					onClick={() => setSearchParams(`${TAB_KEY}=${TAB_PARAM.MONTH}`)}
+				>
+					{TAB_TITLE.MONTH}
 				</button>
 			</li>
 		</ul>
