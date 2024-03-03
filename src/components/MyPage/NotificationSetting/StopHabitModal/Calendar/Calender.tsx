@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 import {
 	format,
@@ -40,17 +40,17 @@ const Calender = ({
 	const dayList = Array.from({ length: 35 }, (_, index) => addDays(startDate, index));
 	const nowMonth = new Date();
 
-	const handlePrevMonth = () => {
+	const handlePrevMonth = useCallback(() => {
 		if (currentMonth <= nowMonth) {
 			setCurrentMonth(nowMonth);
 		} else {
 			setCurrentMonth(subMonths(currentMonth, 1));
 		}
-	};
+	}, [currentMonth]);
 
-	const handleNextMonth = () => {
+	const handleNextMonth = useCallback(() => {
 		setCurrentMonth(addMonths(currentMonth, 1));
-	};
+	}, [currentMonth]);
 
 	const handleSelectRange = (dayData: Date) => {
 		if (firstClick) {
