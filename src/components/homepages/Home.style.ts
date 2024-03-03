@@ -12,7 +12,7 @@ export const homeStyle = {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		padding: 1.5rem;
+		padding: 0 1.5rem 0 1.5rem;
 		gap: 1.25rem;
 	`,
 };

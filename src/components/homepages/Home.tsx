@@ -6,7 +6,7 @@ import Habits from "@/components/homepages/Habits";
 import HelpAnnouncement from "@/components/homepages/HelpAnnouncement";
 import Profile from "@/components/homepages/Profile";
 
-import { daysOfTheWeek } from "@/constants/homeConstants";
+import { daysOfTheWeek, currentDate } from "@/constants/homeConstants";
 
 import { convertTimeGap } from "@/utils/homeUtils";
 
@@ -21,22 +21,21 @@ interface TargetDate {
 }
 
 function Home() {
-	const today = new Date();
+	const { year, month, date, day } = currentDate;
 	const [targetDate, setTargetDate] = useState<TargetDate>({
-		year: today.getFullYear(),
-		month: today.getMonth() + 1,
-		date: today.getDate(),
-		day: daysOfTheWeek[today.getDay()],
+		year,
+		month: month + 1,
+		date,
+		day: daysOfTheWeek[day],
 		isPlanned: false,
 	});
 	const [timeGap, setTimeGap] = useState<string>("오늘");
 	useEffect(() => {
-		const { year, month, date }: TargetDate = targetDate;
 		// 오늘 시간, 시분 제외
-		const currentDate: Date = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+		const From: Date = new Date(year, month, date);
 		// targetDate 시분 제외
-		const targetedDate: Date = new Date(`${year}.${month}.${date}`);
-		const timeGapInMs: number = currentDate.getTime() - targetedDate.getTime();
+		const To: Date = new Date(`${targetDate.year}.${targetDate.month}.${targetDate.date}`);
+		const timeGapInMs: number = From.getTime() - To.getTime();
 		// 하루 단위의 시간차 계산
 		const dateGap = Math.floor(timeGapInMs / (1000 * 60 * 60 * 24));
 		setTimeGap(convertTimeGap(dateGap));
