@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 import { adviceImages } from "@/constants/homeConstants";
 
-import { advicesStyle } from "@/components/homepages/Advices.style";
+import { advicesStyle } from "@/components/Home/Advices.style";
 
 function Advices() {
 	const containerRef = useRef<HTMLDivElement | null>(null);

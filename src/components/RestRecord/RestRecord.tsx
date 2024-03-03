@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { info, lines } from "@/constants/restRecordConstants";
 
-import { restRecordStyle } from "@/components/restrecordpages/RestRecord.style";
+import { restRecordStyle } from "@/components/RestRecord/RestRecord.style";
 
 function RestRecord() {
 	const [value, setValue] = useState("");

@@ -5,7 +5,7 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import { habitModifyModalStyle } from "@/components/homepages/ModifyModal/HabitModifyModal.style";
+import { habitModifyModalStyle } from "@/components/Home/ModifyModal/HabitModifyModal.style";
 
 function HabitModifyModal() {
 	const navigate = useNavigate();

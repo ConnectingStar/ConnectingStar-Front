@@ -9,31 +9,15 @@ import BlueCheckIcon from "@/assets/icon/ic-homepage-habit-blue-check.svg?react"
 import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
 
-import CheckHabitModal from "@/components/homepages/CheckHabitModal/CheckHabitModal";
+import CheckHabitModal from "@/components/Home/CheckHabitModal/CheckHabitModal";
 // import HabitModifyModal from "@/components/homepages/ModifyModal/HabitModifyModal";
 // import { modalType } from "@/constants/modalConstants";
+import { HabitsElement, DateInfo, HabitStatus } from "@/types/homeTypes";
 
-import { habitsStyle } from "@/components/homepages/Habits.style";
-// import ModifyModal from "@/components/homepages/ModifyModal/ModifyModal";
+import { habitsStyle } from "@/components/Home/Habits.style";
 
 interface HabitsProps {
-	targetDate: {
-		year: number;
-		month: number;
-		date: number;
-		day: string;
-		isPlanned: boolean;
-	};
-}
-enum Status {
-	None = "none",
-	Rest = "rest",
-	Checked = "checked",
-}
-export interface HabitsElement {
-	key: number;
-	status: Status;
-	article: string;
+	targetDate: DateInfo;
 }
 
 function Habits({ targetDate }: HabitsProps) {
@@ -53,7 +37,7 @@ function Habits({ targetDate }: HabitsProps) {
 		setTargetHabits([
 			{
 				key: 1,
-				status: Status.None,
+				status: HabitStatus.None,
 				article: "기본 설정",
 			},
 		]);
@@ -68,7 +52,7 @@ function Habits({ targetDate }: HabitsProps) {
 		}
 	};
 	// 해당 modalTarget의 상태가 변하면 targetHabits의 내용을 변경시킨 => POST를 통해 변경된 내용을 서버에 보낼 예정
-	const handleStatus = (status: Status) => {
+	const handleStatus = (status: HabitStatus) => {
 		if (modalTarget) {
 			const updatedHabit: HabitsElement = { ...modalTarget, status };
 			const targetIdx = targetHabits.findIndex((habit) => updatedHabit.key === habit.key);
@@ -102,9 +86,11 @@ function Habits({ targetDate }: HabitsProps) {
 										width: 2rem;
 									`}
 								>
-									{targetHabit.status === "none" && <CheckIcon />}
-									{targetHabit.status === "rest" && <span css={habitsStyle.habitRest}>휴식</span>}
-									{targetHabit.status === "checked" && <BlueCheckIcon />}
+									{targetHabit.status === HabitStatus.None && <CheckIcon />}
+									{targetHabit.status === HabitStatus.Rest && (
+										<span css={habitsStyle.habitRest}>휴식</span>
+									)}
+									{targetHabit.status === HabitStatus.Checked && <BlueCheckIcon />}
 								</span>
 								<span css={habitsStyle.habitArticle({ status: targetHabit.status })}>
 									{targetHabit.article.length > 80

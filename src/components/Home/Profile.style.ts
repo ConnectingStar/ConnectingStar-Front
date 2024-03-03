@@ -18,6 +18,9 @@ export const profileStyle = {
 		aspect-ratio: 1/1;
 		border-radius: 4px;
 		background-color: ${theme.color.button_deactivated};
+		& > img {
+			object-fit: cover;
+		}
 	`,
 	names: css`
 		flex: 1;
