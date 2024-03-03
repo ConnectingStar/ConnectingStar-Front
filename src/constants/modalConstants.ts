@@ -8,4 +8,5 @@ export const modalType = {
 	LOGOUT: "LOGOUT",
 	SORT: "SORT",
 	DELETE_HISTORY: (id: number) => `DELETE_HISTORY_${id}`,
+	HABIT_MODIFY_MODAL: "HABIT_MODIFY_MODAL",
 };

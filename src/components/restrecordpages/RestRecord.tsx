@@ -1,47 +1,43 @@
 import { useState } from "react";
 
+import { info, lines } from "@/constants/restRecordConstants";
+
 import { restRecordStyle } from "@/components/restrecordpages/RestRecord.style";
 
-function RestComment() {
+function RestRecord() {
 	const [value, setValue] = useState("");
-	const info = {
-		identity: "정체성",
-		nickname: "닉네임",
-	};
-	const lines = [
-		"괜찮습니다, 쉬는 날도 있는 거죠 :)",
-		"내일은 실천하고 별을 받아가시면 좋겠어요! 이틀 이상 쉬면 시스템화 하기 어려워지거든요.",
-		"일정이 있다면 약속 시간과 다른 때 하셔도 좋고 시간이 촉박하다면 목표량 보다 낮춰도 좋아요",
-		"아예 하지 않는 것보다 아주 조금이라도 하는 것이 정체성을 뚜렷하게 만드는 열쇠랍니다 :)",
-	];
+
 	return (
 		<div css={restRecordStyle.container}>
 			<main css={restRecordStyle.innerWrapper}>
 				<div css={restRecordStyle.innerTitle}>쉬는 날이셨군요?</div>
 				<section>
-					<div css={restRecordStyle.lineWrapper}>
-						{lines.map((line) => {
-							return <span>{line}</span>;
+					<div css={restRecordStyle.linesWrapper}>
+						{lines.split("mainBlueBold").map((line, idx) => {
+							return <span className={`${idx % 2 !== 0 && "mainBlueBold"}`}>{line}</span>;
 						})}
-						<span
-							css={restRecordStyle.nickname}
-						>{`${info.identity} ${info.nickname}님을 응원할게요 😊`}</span>
+						<span>{`${info.identity} ${info.nickname}님을 응원할게요 😊`}</span>
 					</div>
 				</section>
 				<section css={restRecordStyle.writerWrapper}>
 					<span css={restRecordStyle.writerTitle}>별자취 남기기</span>
 					<textarea
 						css={restRecordStyle.writerTextarea}
+						maxLength={1000}
 						placeholder="오늘 어떤 일로 쉬었는지 혹은 다짐 등을 자유롭게 적어보세요!"
 						onChange={(e) => {
 							setValue(e.target.value);
 						}}
 						value={value}
 					/>
+					{/* 입력버튼은 어떻게 할 것인가? */}
+					<div css={restRecordStyle.typeLength}>
+						<span>{`${value.length}/1,000자`}</span>
+					</div>
 				</section>
 			</main>
 		</div>
 	);
 }
 
-export default RestComment;
+export default RestRecord;
