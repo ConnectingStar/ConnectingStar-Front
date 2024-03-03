@@ -17,17 +17,17 @@ export const restRecordStyle = {
 		padding: 1.5rem;
 		gap: 2.5rem;
 	`,
-	lineWrapper: css`
-		display: flex;
-		flex-direction: column;
+	linesWrapper: css`
+		width: 100%;
 		${theme.font.body_a}
-		gap: 1rem;
+		white-space: pre-wrap;
+		& > .mainBlueBold {
+			${theme.font.body_a_bold}
+			color: ${theme.color.main_blue};
+		}
 	`,
 	innerTitle: css`
 		${theme.font.head_a}
-	`,
-	nickname: css`
-		${theme.font.body_a}
 	`,
 	writerWrapper: css`
 		display: flex;
@@ -45,5 +45,9 @@ export const restRecordStyle = {
 		border-radius: 15px;
 		padding: 15px;
 		border: none;
+	`,
+	typeLength: css`
+		display: flex;
+		flex-direction: row-reverse;
 	`,
 };

@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-import axios from "axios";
+// import { useNavigate } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
+// import { useAppSelector, useAppDispatch } from "@/api/hooks";
+// import { openModal } from "@/api/modal/modalSlice";
 import BlueCheckIcon from "@/assets/icon/ic-homepage-habit-blue-check.svg?react";
 import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
 
 import CheckHabitModal from "@/components/homepages/CheckHabitModal/CheckHabitModal";
+// import HabitModifyModal from "@/components/homepages/ModifyModal/HabitModifyModal";
+// import { modalType } from "@/constants/modalConstants";
 
 import { habitsStyle } from "@/components/homepages/Habits.style";
-import ModifyModal from "@/components/homepages/ModifyModal/ModifyModal";
+// import ModifyModal from "@/components/homepages/ModifyModal/ModifyModal";
 
 interface HabitsProps {
 	targetDate: {
@@ -35,31 +37,26 @@ export interface HabitsElement {
 }
 
 function Habits({ targetDate }: HabitsProps) {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
+	// const dispatch = useAppDispatch();
+	// const { modal } = useAppSelector((state) => state.modal);
 	// CheckModal이 display여부를 표시하는 state
 	const [isCheckModal, setIsCheckModal] = useState<boolean>(false);
 	// 현재 CheckModal에서 상태를 변경시킬 habit을 targetHabits에서 key를 통해 찾아서 state로 배치
 	const [modalTarget, setModalTarget] = useState<HabitsElement | null>(null);
 	// habit의 오른쪽 tab을 클릭시에 습관 수정을 할 것인지 묻는 modal을 state로 표시
-	const [isModifyModal, setIsModifyModal] = useState<boolean>(false);
 	// 현재 Calender에서 클릭된 날짜에 해당하는 모든 habits을 가져온 후에 state로 표시
 	const [targetHabits, setTargetHabits] = useState<HabitsElement[]>([]);
 
-	// targetDate가 변하면 해당하는 날짜의 habits들을 가져와서 setTargetHabits에 표시
 	useEffect(() => {
-		const url = `http://localhost:3000/habits?id=${targetDate.year}.${targetDate.month}.${targetDate.date}`;
-		axios
-			.get(url)
-			.then((res) => {
-				if (res.data[0]) {
-					setTargetHabits(res.data[0].articles);
-				} else {
-					setTargetHabits([]);
-				}
-			})
-			.catch((err) => {
-				console.error(err);
-			});
+		// 가져오면 표기될 것들
+		setTargetHabits([
+			{
+				key: 1,
+				status: Status.None,
+				article: "기본 설정",
+			},
+		]);
 	}, [targetDate]);
 
 	// habit 왼쪽 CheckIcon을 클릭하면 key를 기준으로 해당 habit을 찾아 modalTarget에 넣고 CheckModal을 표시
@@ -83,13 +80,8 @@ function Habits({ targetDate }: HabitsProps) {
 		}
 	};
 	// 임시 targetHabits 관측용
-	useEffect(() => {
-		console.log(targetHabits);
-	}, [targetHabits]);
-
 	return (
 		<>
-			<ModifyModal isModifyModal={isModifyModal} setIsModifyModal={setIsModifyModal} />
 			<CheckHabitModal
 				isCheckModal={isCheckModal}
 				setIsCheckModal={setIsCheckModal}
@@ -99,7 +91,10 @@ function Habits({ targetDate }: HabitsProps) {
 			<div css={habitsStyle.container}>
 				{targetHabits.map((targetHabit) => {
 					return (
-						<article css={habitsStyle.habitWrapper({ status: targetHabit.status })}>
+						<article
+							key={targetHabit.key}
+							css={habitsStyle.habitWrapper({ status: targetHabit.status })}
+						>
 							<div css={habitsStyle.habitInner}>
 								<span
 									onClick={() => handleCheck(targetHabit.key)}
@@ -116,20 +111,14 @@ function Habits({ targetDate }: HabitsProps) {
 										? targetHabit.article.slice(0, 80) + "..."
 										: targetHabit.article}
 								</span>
-								<span onClick={() => setIsModifyModal(true)}>
+								<span>
 									<TabIcon />
 								</span>
 							</div>
 						</article>
 					);
 				})}
-				<div
-					css={habitsStyle.addButton}
-					onClick={() => {
-						// 임시 주소
-						navigate("/generateHabit");
-					}}
-				>
+				<div css={habitsStyle.addButton}>
 					<span>+</span>
 				</div>
 			</div>
