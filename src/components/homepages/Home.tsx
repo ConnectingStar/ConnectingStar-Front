@@ -6,7 +6,7 @@ import Habits from "@/components/homepages/Habits";
 import HelpAnnouncement from "@/components/homepages/HelpAnnouncement";
 import Profile from "@/components/homepages/Profile";
 
-import { daysOfTheWeek, currentDate } from "@/constants/homeConstants";
+import { daysOfTheWeek, currentDate, msPerDay } from "@/constants/homeConstants";
 
 import { convertTimeGap } from "@/utils/homeUtils";
 
@@ -37,7 +37,7 @@ function Home() {
 		const To: Date = new Date(`${targetDate.year}.${targetDate.month}.${targetDate.date}`);
 		const timeGapInMs: number = From.getTime() - To.getTime();
 		// 하루 단위의 시간차 계산
-		const dateGap = Math.floor(timeGapInMs / (1000 * 60 * 60 * 24));
+		const dateGap = Math.floor(timeGapInMs / msPerDay);
 		setTimeGap(convertTimeGap(dateGap));
 	}, [targetDate]);
 

@@ -9,4 +9,5 @@ export const modalType = {
 	SORT: "SORT",
 	DELETE_HISTORY: (id: number) => `DELETE_HISTORY_${id}`,
 	STAR_PRIZE: "STAR_PRIZE",
+	HABIT_MODIFY_MODAL: "HABIT_MODIFY_MODAL",
 };

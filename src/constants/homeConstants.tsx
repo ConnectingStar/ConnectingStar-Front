@@ -28,7 +28,7 @@ export const adviceImages = [
 ];
 
 export const daysOfTheWeek = ["일", "월", "화", "수", "목", "금", "토"];
-
+export const msPerDay = 1000 * 60 * 60 * 24;
 export const today = new Date();
 
 export const currentDate = {
