@@ -33,6 +33,7 @@ const App = () => {
 				<Route path="/restcomment" element={<RestCommentPage />} />
 				<Route path="/star/:id" element={<StarCardDetailPage />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
+				<Route path="/habit-history" element={<MyHabitPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
