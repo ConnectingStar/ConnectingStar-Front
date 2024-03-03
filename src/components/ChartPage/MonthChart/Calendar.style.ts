@@ -36,7 +36,7 @@ export const dateBoxStyle = css`
 	flex-wrap: wrap;
 `;
 
-export const dayStyle = (inMonthDay?: boolean, isWeek?: boolean) => {
+export const dayStyle = (inMonthDay?: boolean, isWeek?: boolean, day?: number) => {
 	return css`
 		display: flex;
 		align-items: center;
@@ -53,6 +53,15 @@ export const dayStyle = (inMonthDay?: boolean, isWeek?: boolean) => {
 			width: 1.75rem;
 			height: 1.75rem;
 			border-radius: 50%;
+
+			// api 연결 후 데이터마다 변경 예정
+			// 해당 방식으로 사용할 예정은 아님 예시용
+			background-color: ${day === 1 && theme.color.very_bad};
+			background-color: ${day === 2 && theme.color.bad};
+			background-color: ${day === 3 && theme.color.normal};
+			background-color: ${day === 4 && theme.color.good};
+			background-color: ${day === 5 && theme.color.very_good};
+			background-color: ${day === 6 && theme.color.line};
 		}
 	`;
 };

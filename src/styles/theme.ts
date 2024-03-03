@@ -72,5 +72,12 @@ export const theme = {
 		// 시스템 색상
 		success: "#04B014",
 		error: "#DC0000",
+
+		// 실천 아이콘 색상
+		very_bad: "#a5aeff",
+		bad: "#8cf8ff",
+		normal: "#b7ff6e",
+		good: "#ffe276",
+		very_good: "#ffc1f9",
 	},
 };
