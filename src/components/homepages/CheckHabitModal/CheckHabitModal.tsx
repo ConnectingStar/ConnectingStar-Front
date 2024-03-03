@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import { HabitsObj } from "@/components/homepages/Habits";
+import { HabitsElement } from "@/components/homepages/Habits";
 
 import { theme } from "@/styles/theme";
 
@@ -15,7 +15,7 @@ enum Status {
 interface ModalProps {
 	isCheckModal: boolean;
 	setIsCheckModal: React.Dispatch<React.SetStateAction<boolean>>;
-	modalTarget: HabitsObj | null;
+	modalTarget: HabitsElement | null;
 	handleStatus: (status: Status) => void;
 }
 
