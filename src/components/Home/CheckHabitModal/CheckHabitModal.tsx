@@ -1,22 +1,16 @@
 import { css } from "@emotion/react";
 
-import { HabitsElement } from "@/components/homepages/Habits";
+import { HabitStatus, HabitsElement } from "@/types/homeTypes";
 
 import { theme } from "@/styles/theme";
 
-import { checkHabitModalStyle } from "@/components/homepages/CheckHabitModal/CheckHabitModal.style";
-
-enum Status {
-	None = "none",
-	Rest = "rest",
-	Checked = "checked",
-}
+import { checkHabitModalStyle } from "@/components/Home/CheckHabitModal/CheckHabitModal.style";
 
 interface ModalProps {
 	isCheckModal: boolean;
 	setIsCheckModal: React.Dispatch<React.SetStateAction<boolean>>;
 	modalTarget: HabitsElement | null;
-	handleStatus: (status: Status) => void;
+	handleStatus: (status: HabitStatus) => void;
 }
 
 function CheckHabitModalStyle({
@@ -44,21 +38,21 @@ function CheckHabitModalStyle({
 					<span
 						className="deactivated"
 						css={checkHabitModalStyle.button}
-						onClick={() => handleStatus(Status.None)}
+						onClick={() => handleStatus(HabitStatus.None)}
 					>
 						초기화
 					</span>
 					<span
 						className="deactivated"
 						css={checkHabitModalStyle.button}
-						onClick={() => handleStatus(Status.Rest)}
+						onClick={() => handleStatus(HabitStatus.Rest)}
 					>
 						쉬는 날
 					</span>
 					<span
 						className="activated"
 						css={checkHabitModalStyle.button}
-						onClick={() => handleStatus(Status.Checked)}
+						onClick={() => handleStatus(HabitStatus.Checked)}
 					>
 						실천 완료
 					</span>

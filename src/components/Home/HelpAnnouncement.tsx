@@ -1,10 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-import { css } from "@emotion/react";
-
 import HelpAnnouncementIcon from "@/assets/icon/ic-homepage-help-anouncement.svg?react";
 
-import { helpAnnouncementStyle } from "@/components/homepages/HelpAnnouncement.style";
+import { helpAnnouncementStyle } from "@/components/Home/HelpAnnouncement.style";
 
 function HelpAnnouncement() {
 	const navigate = useNavigate();
@@ -16,12 +14,7 @@ function HelpAnnouncement() {
 			}}
 		>
 			<div css={helpAnnouncementStyle.iconWrapper}>
-				<HelpAnnouncementIcon
-					css={css`
-						width: 100%;
-						height: 100%;
-					`}
-				/>
+				<HelpAnnouncementIcon />
 			</div>
 			<div css={helpAnnouncementStyle.lineWrapper}>습관 도움말</div>
 		</section>
