@@ -1,8 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import RestCommentPage from "./pages/RestCommentPage";
-
-import CardDetailPage from "@/pages/CardDetailPage";
 import ChartPage from "@/pages/ChartPage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
@@ -10,6 +7,7 @@ import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
+import RestCommentPage from "@/pages/RestCommentPage";
 import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
@@ -33,7 +31,7 @@ const App = () => {
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
 				<Route path="/restcomment" element={<RestCommentPage />} />
-				<Route path="/star/:id" element={<CardDetailPage />} />
+				<Route path="/star/:id" element={<StarCardDetailPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
