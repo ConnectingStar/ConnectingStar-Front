@@ -10,9 +10,9 @@ import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
 
 import CheckHabitModal from "@/components/homepages/CheckHabitModal/CheckHabitModal";
-import ModifyModal from "@/components/homepages/ModifyModal/ModifyModal";
 
 import { habitsStyle } from "@/components/homepages/Habits.style";
+import ModifyModal from "@/components/homepages/ModifyModal/ModifyModal";
 
 interface HabitsProps {
 	targetDate: {
