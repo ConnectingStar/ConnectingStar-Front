@@ -2,9 +2,14 @@ import { useState, useCallback } from "react";
 
 import { addMonths, subMonths } from "date-fns";
 
+import Calendar from "@/components/ChartPage/MonthChart/Calendar";
 import CalendarHeader from "@/components/ChartPage/MonthChart/CalendarHeader";
 
-import { layoutStyle, boxStyle } from "@/components/ChartPage/MonthChart/MonthChart.style";
+import {
+	layoutStyle,
+	boxStyle,
+	calendarBoxStyle,
+} from "@/components/ChartPage/MonthChart/MonthChart.style";
 
 const MonthChart = () => {
 	const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -31,6 +36,12 @@ const MonthChart = () => {
 					onClickPrevMonth={handlePrevMonth}
 					disabledNextMonth={currentMonth >= nowMonth}
 				/>
+				<h2>
+					<span>27일</span> 해냈어요!
+				</h2>
+				<div css={calendarBoxStyle}>
+					<Calendar currentMonth={currentMonth} />
+				</div>
 			</div>
 		</div>
 	);

@@ -62,7 +62,7 @@ const Calender = ({
 		}
 	};
 
-	const handleDayText = () => {
+	const handleDayText = useCallback(() => {
 		return dayList.map((dayData) => {
 			return (
 				<div
@@ -79,7 +79,7 @@ const Calender = ({
 				</div>
 			);
 		});
-	};
+	}, [currentMonth]);
 
 	return (
 		<>
