@@ -7,13 +7,12 @@ import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
+import RestCommentPage from "@/pages/RestRecordPage";
 import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarPage from "@/pages/StarPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
-
-import RestCommentPage from "@/pages/RestCommentPage";
 
 const App = () => {
 	return (
