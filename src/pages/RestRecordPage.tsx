@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
-import RestRecord from "@/components/restrecordpages/RestRecord";
+import RestRecord from "@/components/RestRecord/RestRecord";
 
 function RestCommentPage() {
 	const navigate = useNavigate();
