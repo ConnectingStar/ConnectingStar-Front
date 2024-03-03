@@ -34,6 +34,7 @@ const App = () => {
 				<Route path="/star/:id" element={<StarCardDetailPage />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
+				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
