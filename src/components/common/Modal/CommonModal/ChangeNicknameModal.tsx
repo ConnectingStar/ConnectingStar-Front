@@ -24,12 +24,14 @@ const ChangeNicknameModal = ({
 		dispatch(closeModal());
 	};
 
+	//TODO: 닉네임 필터 만들기
+
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>닉네임 수정</h1>
 				<input
-					placeholder="닉네임"
+					placeholder="닉네임을 입력해 주세요"
 					value={nickname}
 					onChange={(e) => setNickname(e.target.value)}
 				/>
