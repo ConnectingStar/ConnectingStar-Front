@@ -1,7 +1,11 @@
 import Gnb from "@/components/common/Gnb/Gnb";
+import Home from "@/components/Home/Landing/Home";
 
-const HomePage = () => {
-	return <Gnb />;
-};
-
-export default HomePage;
+export default function HomePage() {
+	return (
+		<>
+			<Home />
+			<Gnb />
+		</>
+	);
+}

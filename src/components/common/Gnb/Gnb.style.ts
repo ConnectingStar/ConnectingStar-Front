@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 
 export const layoutStyle = css`
-	width: 360px;
+	width: 22.5rem;
 	margin: 0 auto;
-	padding: 14px 43px;
+	padding: 0.875rem 2.6875rem;
 
 	& > ul {
 		display: flex;
