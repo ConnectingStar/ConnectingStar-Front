@@ -1,8 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import CreateAccountPage from "./pages/CreateAccountPage";
-import DiscoveryRoutePage from "./pages/VisitTrackPage";
-
 import ChartPage from "@/pages/ChartPage";
 import CreateAccountPage from "@/pages/CreateAccountPage";
 import HomePage from "@/pages/HomePage";
