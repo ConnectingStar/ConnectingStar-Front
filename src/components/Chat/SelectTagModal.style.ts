@@ -11,7 +11,7 @@ export const selectTagModalStyle = {
 	`,
 	wrap: css`
 		width: 22.5rem;
-		padding: 1.25rem 1.5rem 1rem 1.5rem;
+		padding: 1.25rem 1.5rem 1rem;
 		& > h1 {
 			${theme.font.head_a}
 			margin-bottom: 2.5rem;
@@ -25,7 +25,6 @@ export const selectTagModalStyle = {
 			justify-content: center;
 			gap: 0.375rem;
 			& > li {
-				max-width: 8.125rem;
 				display: flex;
 				justify-content: center;
 				flex-grow: 1;
