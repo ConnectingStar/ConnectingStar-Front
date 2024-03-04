@@ -5,20 +5,20 @@ import { theme } from "@/styles/theme";
 export const visitTrackStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 20px 24px;
+	padding: 1.25rem 1.5rem;
 	& > h1 {
 		${theme.font.head_a}
-		margin-bottom: 40px;
+		margin-bottom: 2.5rem;
 	}
 	ul {
 		width: 100%;
 	}
 	li {
 		width: 100%;
-		height: 55px;
+		height: 3.438rem;
 		border: 2px solid ${theme.color.line};
 		border-radius: 15px;
-		margin-bottom: 6px;
+		margin-bottom: 0.375rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
