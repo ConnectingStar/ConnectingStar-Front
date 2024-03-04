@@ -34,12 +34,14 @@ export default function CreateAccountPage() {
 					return (
 						<ul css={createAccountStyle.input} key={index}>
 							<li>
-								<p>{item.title}</p>
-								<input placeholder={item.content}></input>
+								<h2>{item.title}</h2>
 								{item.isPopUpModal ? (
-									<button>
-										<img src={arrowDown} alt="arrow-down" />
-									</button>
+									<div>
+										<p>{item.content}</p>
+										<button>
+											<img src={arrowDown} alt="arrow-down" />
+										</button>
+									</div>
 								) : (
 									<div>
 										<input placeholder={item.content}></input>
