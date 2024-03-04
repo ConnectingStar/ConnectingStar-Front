@@ -34,17 +34,10 @@ export const labelStyle = css`
 `;
 
 export const starImgStyle = css`
-	width: 3.75rem;
-	height: 3.75rem;
 	position: absolute;
 	// 별 이미지 위치에 영향이 가서 px로 고정함
 	bottom: 16px;
 	right: 16px;
-
-	img {
-		width: 3.75rem;
-		height: 3.75rem;
-	}
 
 	strong {
 		position: absolute;
