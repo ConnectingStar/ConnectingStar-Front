@@ -33,7 +33,7 @@ export default function StarCardDetailPage() {
 				<CategoryLabel />
 				<Story />
 			</section>
-			<FooterBtn text={buttonState[data.state]} />
+			<FooterBtn text={buttonState[data.state]} isTransparent />
 		</>
 	);
 }
