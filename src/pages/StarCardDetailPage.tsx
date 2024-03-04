@@ -28,8 +28,8 @@ export default function StarCardDetailPage() {
 			</Header>
 			<section css={sectionStyle}>
 				<Img state={data.state} />
-				<h2 css={subTitleStyle}>캐릭터 설명 문구</h2>
-				<h1 css={titleStyle}>캐릭터 이름</h1>
+				<h2>캐릭터 설명 문구</h2>
+				<h1>캐릭터 이름</h1>
 				<CategoryLabel />
 				<Story />
 			</section>
@@ -42,15 +42,15 @@ const sectionStyle = css`
 	width: 22.5rem;
 	padding: 1.25rem 1.5rem 5.4375rem;
 	margin: 0 auto;
-`;
 
-const titleStyle = css`
-	margin-bottom: 0.5625rem;
-	${theme.font.head_a}
-	color: ${theme.color.font_black};
-`;
+	& > h1 {
+		margin-bottom: 0.5625rem;
+		${theme.font.head_a}
+		color: ${theme.color.font_black};
+	}
 
-const subTitleStyle = css`
-	${theme.font.head_b}
-	color: ${theme.color.main_blue};
+	& > h2 {
+		${theme.font.head_b}
+		color: ${theme.color.main_blue};
+	}
 `;
