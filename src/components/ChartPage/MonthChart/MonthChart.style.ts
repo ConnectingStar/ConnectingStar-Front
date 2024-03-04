@@ -7,10 +7,13 @@ export const layoutStyle = css`
 	width: 100%;
 `;
 
-export const boxStyle = css`
+export const innerBoxStyle = css`
 	width: 22.5rem;
-	padding: 2.5rem 1.5rem 3.625rem;
+	padding: 2.5rem 1.5rem 4rem;
 	margin: 0 auto;
+`;
+
+export const calendarSectionStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -53,4 +56,24 @@ export const iconListBoxStyle = css`
 			${theme.font.header};
 		}
 	}
+`;
+
+export const chartSectionStyle = css`
+	margin-top: 2.5rem;
+
+	& > h1 {
+		${theme.font.head_a}
+
+		& > span {
+			color: ${theme.color.main_blue};
+		}
+	}
+`;
+
+export const chartBoxStyle = css`
+	margin-top: 1.25rem;
+	padding: 1rem;
+	border: 2px solid ${theme.color.line};
+	border-radius: 15px;
+	background-color: #fff;
 `;
