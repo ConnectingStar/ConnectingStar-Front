@@ -1,4 +1,10 @@
 import Button from "@/components/MyPage/NotificationSetting/Button";
+import StopHabitModal from "@/components/MyPage/NotificationSetting/StopHabitModal/StopHabitModal";
+
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
+
+import { modalType } from "@/constants/modalConstants";
 
 import {
 	layoutStyle,
@@ -7,6 +13,10 @@ import {
 } from "@/components/MyPage/NotificationSetting/NotificationSetting.style";
 
 const NotificationSetting = () => {
+	const dispatch = useAppDispatch();
+
+	const { modal } = useAppSelector((state) => state.modal);
+
 	return (
 		<div css={layoutStyle}>
 			<div css={topBoxStyle}>
@@ -20,6 +30,8 @@ const NotificationSetting = () => {
 					subTitle="2024.01.07 - 2024.01.13"
 					isToggle
 					isDateText
+					isTextVisible
+					onClick={() => dispatch(openModal(modalType.STOP_HABIT))}
 				/>
 			</div>
 
@@ -45,6 +57,8 @@ const NotificationSetting = () => {
 					isToggle
 				/>
 			</div>
+
+			{modal === modalType.STOP_HABIT && <StopHabitModal />}
 		</div>
 	);
 };
