@@ -76,4 +76,24 @@ export const chartBoxStyle = css`
 	border: 2px solid ${theme.color.line};
 	border-radius: 15px;
 	background-color: #fff;
+
+	& .recharts-label {
+		${theme.font.body_xs};
+		color: ${theme.color.font_black};
+		font-weight: 500;
+	}
+`;
+
+export const dividerStyle = css`
+	width: 15rem;
+	border-bottom: 1px solid ${theme.color.line};
+	margin-top: -0.875rem;
+`;
+
+export const chartTextStyle = css`
+	display: flex;
+	justify-content: space-between;
+	width: 15rem;
+	${theme.font.body_xs};
+	color: ${theme.color.font_gray};
 `;
