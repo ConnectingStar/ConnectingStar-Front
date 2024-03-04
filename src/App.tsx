@@ -28,14 +28,11 @@ const App = () => {
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/createAccount" element={<CreateAccountPage />} />
-				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star/:id" element={<StarCardDetailPage />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
-				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
-				<Route path="/createAccount" element={<CreateAccountPage />} />
 				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
 			</Routes>
 		</BrowserRouter>
