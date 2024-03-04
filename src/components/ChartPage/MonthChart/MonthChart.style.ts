@@ -81,6 +81,8 @@ export const chartBoxStyle = css`
 		${theme.font.body_xs};
 		color: ${theme.color.font_black};
 		font-weight: 500;
+		/* fill: #ffd32c; */
+		/* transform: translateX(140px); */
 	}
 `;
 

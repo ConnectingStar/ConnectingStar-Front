@@ -5,7 +5,6 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	background-color: ${theme.color.bg};
 	width: 100%;
-	height: 400px;
 `;
 
 export const boxStyle = css`
@@ -19,5 +18,39 @@ export const boxStyle = css`
 		& > span {
 			color: ${theme.color.main_blue};
 		}
+	}
+`;
+
+export const chartBoxStyle = css`
+	width: 100%;
+	padding: 1rem 1rem 0.5rem;
+	border-radius: 15px;
+	border: 2px solid ${theme.color.line};
+	margin-top: 1.25rem;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+`;
+
+export const dateBoxStyle = css`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	${theme.font.body_b};
+`;
+
+export const weekBoxStyle = css`
+	display: flex;
+	justify-content: space-between;
+	padding: 0 0.125rem;
+
+	& > p {
+		width: 2rem;
+		height: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		${theme.font.head_c};
+		color: ${theme.color.font_black};
 	}
 `;
