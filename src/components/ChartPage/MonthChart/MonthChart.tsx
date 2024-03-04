@@ -23,7 +23,7 @@ import {
 } from "@/components/ChartPage/MonthChart/MonthChart.style";
 
 const data = [
-	{ date: "12.31", value: 3 },
+	{ value: 3 },
 	{ value: 7 },
 	{ value: 16 },
 	{ value: 3 },
@@ -31,7 +31,7 @@ const data = [
 	{ value: 5 },
 	{ value: 9 },
 	{ value: 13 },
-	{ date: "12.1", value: 4 },
+	{ value: 4 },
 ];
 
 const MonthChart = () => {
