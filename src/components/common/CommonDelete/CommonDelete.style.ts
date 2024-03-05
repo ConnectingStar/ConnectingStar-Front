@@ -9,7 +9,6 @@ export const layoutStyle = css`
 	padding: 1.25rem 1.5rem 0;
 
 	& > h1 {
-		color: #000;
 		${theme.font.head_a};
 	}
 `;
