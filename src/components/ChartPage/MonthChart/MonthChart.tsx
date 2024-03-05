@@ -102,7 +102,7 @@ const MonthChart = () => {
 								dot={false}
 								strokeWidth={3}
 							/>
-							<ReferenceLine y={6.7} stroke="#ffd32c" strokeDasharray="2" label="평균" />
+							<ReferenceLine y={6.7} stroke="#ffd32c" strokeDasharray="2" />
 						</LineChart>
 						<div css={dividerStyle} />
 						<div css={chartTextStyle}>

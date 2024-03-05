@@ -39,10 +39,18 @@ export const dateBoxStyle = css`
 	${theme.font.body_b};
 `;
 
+export const chartStyle = css`
+	height: 8.75rem;
+	margin: 1.25rem 0 0.25rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	padding: 0 0.125rem;
+`;
+
 export const weekBoxStyle = css`
 	display: flex;
 	justify-content: space-between;
-	padding: 0 0.125rem;
 
 	& > p {
 		width: 2rem;

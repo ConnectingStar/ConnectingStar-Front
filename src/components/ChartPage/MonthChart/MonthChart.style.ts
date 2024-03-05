@@ -77,13 +77,12 @@ export const chartBoxStyle = css`
 	border-radius: 15px;
 	background-color: #fff;
 
-	& .recharts-label {
+	// 디자인 수정 시 삭제 예정
+	/* & .recharts-label {
 		${theme.font.body_xs};
 		color: ${theme.color.font_black};
 		font-weight: 500;
-		/* fill: #ffd32c; */
-		/* transform: translateX(140px); */
-	}
+	} */
 `;
 
 export const dividerStyle = css`
