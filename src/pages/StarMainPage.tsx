@@ -1,12 +1,14 @@
 import { css } from "@emotion/react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
+import StarButton from "@/components/StarPage/StarMain/StarButton";
 
 import { theme } from "@/styles/theme";
 
 export default function StarMainPage() {
 	return (
 		<div css={containerStyle}>
+			<StarButton />
 			<div css={starMainPageGnbStyle}>
 				<Gnb />
 			</div>
