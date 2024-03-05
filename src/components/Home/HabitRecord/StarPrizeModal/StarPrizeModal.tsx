@@ -9,10 +9,10 @@ import { closeModal } from "@/api/modal/modalSlice";
 import { prizeCommentsArray } from "@/constants/habitRecordConstants";
 
 import {
-	containerStyle,
 	layoutStyle,
 	imageWrapperStyle,
 	prizeCommentStyle,
+	containerStyle,
 } from "@/components/Home/HabitRecord/StarPrizeModal/StarPrizeModal.style";
 
 function StarPrizeModal() {
@@ -22,27 +22,25 @@ function StarPrizeModal() {
 	const target = prizeCommentsArray[Random];
 
 	return (
-		<>
-			<Modal>
-				<div css={containerStyle} onClick={() => dispatch(closeModal())}>
-					<div css={layoutStyle}>
-						<section css={imageWrapperStyle}>
-							<img src={StarImage} />
-						</section>
-						<article css={prizeCommentStyle}>
-							<div>
-								<span className="blue">{target.HABIT_RECORD_BLUE_TEXT}</span>
-								<span className="yellow">{target.HABIT_RECORD_YELLOW_TEXT}</span>
-							</div>
-							<div>
-								<span>{target.HABIT_RECORD_WHITE_TEXT}</span>
-							</div>
-						</article>
-					</div>
-					<FooterBtn leftText="홈으로" text="별자리 채우기" isTransparent />
+		<Modal>
+			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
+				<div css={layoutStyle}>
+					<span css={imageWrapperStyle}>
+						<img src={StarImage} alt="임시" />
+					</span>
+					<article css={prizeCommentStyle}>
+						<div>
+							<span className="blue">{target.HABIT_RECORD_BLUE_TEXT}</span>
+							<span className="yellow">{target.HABIT_RECORD_YELLOW_TEXT}</span>
+						</div>
+						<div>
+							<span>{target.HABIT_RECORD_WHITE_TEXT}</span>
+						</div>
+					</article>
 				</div>
-			</Modal>
-		</>
+				<FooterBtn leftText="홈으로" text="별자리 채우기" isTransparent />
+			</div>
+		</Modal>
 	);
 }
 

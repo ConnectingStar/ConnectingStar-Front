@@ -4,10 +4,10 @@ import { theme } from "@/styles/theme";
 
 export const containerStyle = css`
 	display: flex;
-	position: relative;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100vw;
+	width: 22.5rem;
 	height: 100vh;
 `;
 
@@ -21,9 +21,7 @@ export const layoutStyle = css`
 `;
 
 export const imageWrapperStyle = css`
-	display: flex;
 	border-radius: 15px;
-	background-color: transparent;
 	img {
 		width: 13rem;
 		height: 13rem;

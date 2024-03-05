@@ -5,22 +5,24 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	display: flex;
 	flex-direction: column;
+	width: 22.5rem;
+	margin: 0 auto;
 	padding: 1.5rem;
 	gap: 40px;
 	${theme.font.body_a};
 	color: ${theme.color.font_black};
+
 	& h1 {
 		${theme.font.head_c};
 		color: ${theme.color.font_gray};
 	}
-	& > * {
-		transition: 0.3s ease;
-	}
+
 	& > .date {
 		display: flex;
 		flex-direction: column;
 		${theme.font.head_a}
 	}
+
 	& > .identity {
 		display: flex;
 		flex-direction: column;
@@ -124,7 +126,7 @@ export const inputBoxStyle = (isActivated: boolean, selectedIcon: number | null)
 `;
 
 export const footerBtnWrapper = (isActivated: boolean, selectedIcon: number | null) => css`
-	transition: 0.3s ease;
+	/* transition: 0.3s ease;
 	opacity: ${(!isActivated || !selectedIcon) && 0.5};
-	pointer-events: ${(!isActivated || !selectedIcon) && "none"};
+	pointer-events: ${(!isActivated || !selectedIcon) && "none"}; */
 `;
