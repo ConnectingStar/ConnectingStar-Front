@@ -20,11 +20,6 @@ export default function StarMainPage() {
 	);
 }
 
-const starMainPageGnbStyle = css`
-	background-color: ${theme.color.font_black};
-	opacity: 0.5;
-`;
-
 const containerStyle = css`
 	height: 100vh;
 	background: linear-gradient(
@@ -41,4 +36,9 @@ const containerStyle = css`
 		justify-content: flex-end;
 		align-items: flex-end;
 	}
+`;
+
+const starMainPageGnbStyle = css`
+	background-color: ${theme.color.font_black};
+	opacity: 0.5;
 `;
