@@ -10,6 +10,7 @@ export function createChatData(userData: userDataType) {
 				`매일 해도 무리 없는 쉬운 것부터 시작하기를 추천해요. 😊`,
 			],
 			replyBtnMessage: ["습관 선택"],
+			reply: `${userData.habit}`,
 		},
 		{
 			id: "habit",
@@ -19,6 +20,7 @@ export function createChatData(userData: userDataType) {
 				`${userData.habit}를(을) 통해서 ${userData.nickName}님은 어떤 사람이 되고 싶으세요?`,
 			],
 			replyBtnMessage: ["정체성 선택"],
+			reply: `${userData.identity}`,
 		},
 		{
 			id: "identity",
@@ -27,6 +29,7 @@ export function createChatData(userData: userDataType) {
 				`지금 이 순간부터 ${userData.nickName}님은 ${userData.identity} 사람이에요.`,
 			],
 			replyBtnMessage: ["그런데 정체성을 왜 정하는 거야?"],
+			reply: "그런데 정체성을 왜 정하는 거야?",
 		},
 		{
 			id: "reasonIdentity",
@@ -36,6 +39,7 @@ export function createChatData(userData: userDataType) {
 				`오늘부터 진심으로 ${userData.nickName}님은 ${userData.identity} 사람이라고 믿어 주세요!`,
 			],
 			replyBtnMessage: ["알겠어!"],
+			reply: "알겠어!",
 		},
 		{
 			id: "time",
@@ -49,6 +53,7 @@ export function createChatData(userData: userDataType) {
 				`다른 일에 방해 받지 않는 시간 혹은 매일 지키기에 수월한 시간으로 설정해 주세요.`,
 			],
 			replyBtnMessage: ["시간 선택"],
+			reply: `${userData.time}`,
 		},
 		{
 			id: "location",
@@ -58,6 +63,7 @@ export function createChatData(userData: userDataType) {
 				`가는 것만으로 만족스럽거나 습관을 쉽게 할 수 있는 곳으로 명확하게 적어 주세요.`,
 			],
 			replyBtnMessage: ["장소 선택"],
+			reply: `${userData.location}`,
 		},
 
 		{
@@ -69,11 +75,13 @@ export function createChatData(userData: userDataType) {
 				`3장으로 시작했지만, 점차 자리 잡으면 30장도 쉬운 일이 되어 있을 거예요!`,
 			],
 			replyBtnMessage: ["행동 선택"],
+			reply: `${userData.behavior}`,
 		},
 		{
 			id: "alert",
 			message: [`약속을 기억하고 실천을 기록하실 수 있도록 하루 두 번, 알림을 보내드릴게요!`],
 			replyBtnMessage: ["1차 알림 변경", "2차 알림 변경"],
+			reply: `1차 알림 ${userData.time} 피그마보고 추가해야됨`,
 		},
 		{
 			id: "organize",
@@ -87,6 +95,7 @@ export function createChatData(userData: userDataType) {
 				"1차 알림 변경",
 				"2차 알림 변경",
 			],
+			reply: ` 피그마보고 엄청나게 추가해야됨 ㄷ`,
 		},
 		{
 			id: "inform",
@@ -95,6 +104,7 @@ export function createChatData(userData: userDataType) {
 				`무엇 때문에 쉬었는지 혹은 오늘 실천은 어땠는지 매일 제게 알려주세요!`,
 			],
 			replyBtnMessage: ["알겠어"],
+			reply: "알겠어",
 		},
 		{
 			id: "last",
@@ -109,6 +119,7 @@ export function createChatData(userData: userDataType) {
 				`${userData.nickName}를 꾸준히 하는 ${userData.nickName}님을 응원할게요XD`,
 			],
 			replyBtnMessage: ["나도 잘 부탁해"],
+			reply: "",
 		},
 	];
 }
