@@ -73,11 +73,8 @@ function HabitRecord() {
 
 	return (
 		<main css={layoutStyle}>
-			<div className="date">
-				<span>{`${today.getMonth() + 1}월 ${today.getDate()}일`}</span>
-				<span>영택님의 실천 기록</span>
-			</div>
-			<div className="identity">
+			<div>{`${today.getMonth() + 1}월 ${today.getDate()}일\n영택님의 실천 기록`}</div>
+			<div>
 				<h1>정체성</h1>
 				<span>매일 성장하는 사람</span>
 			</div>

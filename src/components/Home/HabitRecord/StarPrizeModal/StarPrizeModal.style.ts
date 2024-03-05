@@ -41,6 +41,7 @@ export const prizeCommentStyle = css`
 			color: ${theme.color.main_yellow};
 		}
 	}
+
 	& > :nth-of-type(2) {
 		${theme.font.body_a};
 		color: white;

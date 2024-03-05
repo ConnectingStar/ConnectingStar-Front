@@ -9,21 +9,34 @@ export const layoutStyle = css`
 	margin: 0 auto;
 	padding: 1.5rem;
 	gap: 40px;
+	white-space: pre-wrap;
 	${theme.font.body_a};
 	color: ${theme.color.font_black};
 
-	& h1 {
+	h1 {
 		${theme.font.head_c};
 		color: ${theme.color.font_gray};
 	}
 
-	& > .date {
-		display: flex;
-		flex-direction: column;
-		${theme.font.head_a}
+	textarea {
+		border: none;
+		white-space: nowrap;
+		height: 3.4375rem;
+		background-color: ${theme.color.bg};
+		border-radius: 15px;
+		white-space: pre-wrap;
+		padding: 15px;
+		resize: none;
+	}
+	textarea::placeholder {
+		${theme.color.button_deactivated}
 	}
 
-	& > .identity {
+	& > :first-of-type {
+		${theme.font.head_a};
+	}
+
+	& > :nth-of-type(2) {
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -37,6 +50,7 @@ export const conditionStyle = css`
 	& > div {
 		display: flex;
 		align-items: center;
+		gap: 6px;
 	}
 	.unit {
 		gap: 12px;
@@ -50,41 +64,23 @@ export const conditionStyle = css`
 			}
 		}
 	}
-	& textarea {
-		border: none;
-		white-space: nowrap;
-		height: 3.4375rem;
-		background-color: ${theme.color.bg};
-		border-radius: 15px;
-		padding: 15px;
-		resize: none;
-	}
-	& textarea::placeholder {
-		${theme.color.button_deactivated}
-	}
 `;
 
 export const iconsStyle = (isActivated: boolean, selectedIcon: number | null) => css`
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
 	opacity: ${!isActivated && 0.5};
 	pointer-events: ${!isActivated && "none"};
 	& > div {
 		display: flex;
-		justify-content: center;
 		gap: 18px;
 		& > span {
 			transition: 0.3s ease;
 		}
-		& > .selected {
-			opacity: 1;
-		}
 		& > :not(.selected) {
-			opacity: ${!selectedIcon ? 1 : 0.5};
+			opacity: ${selectedIcon && 0.5};
 		}
 	}
 	& > h1 {
+		margin-bottom: 0.75rem;
 		& > p {
 			display: inline;
 			color: ${theme.color.main_blue};
@@ -123,10 +119,4 @@ export const inputBoxStyle = (isActivated: boolean, selectedIcon: number | null)
 		color: ${theme.color.font_gray};
 		align-self: flex-end;
 	}
-`;
-
-export const footerBtnWrapper = (isActivated: boolean, selectedIcon: number | null) => css`
-	/* transition: 0.3s ease;
-	opacity: ${(!isActivated || !selectedIcon) && 0.5};
-	pointer-events: ${(!isActivated || !selectedIcon) && "none"}; */
 `;
