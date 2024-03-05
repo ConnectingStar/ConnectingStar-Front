@@ -2,13 +2,17 @@ import { css } from "@emotion/react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import StarButton from "@/components/StarPage/StarMain/StarButton";
+import StarCardLink from "@/components/StarPage/StarMain/StarCardLink";
 
 import { theme } from "@/styles/theme";
 
 export default function StarMainPage() {
 	return (
 		<div css={containerStyle}>
-			<StarButton />
+			<div className="wrapper">
+				<StarButton />
+				<StarCardLink />
+			</div>
 			<div css={starMainPageGnbStyle}>
 				<Gnb />
 			</div>
@@ -31,4 +35,10 @@ const containerStyle = css`
 		#6b8acb 84%,
 		#6d68d4 98%
 	);
+
+	.wrapper {
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
 `;
