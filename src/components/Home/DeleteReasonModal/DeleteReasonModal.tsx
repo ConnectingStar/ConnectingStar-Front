@@ -7,7 +7,7 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { deleteReasonData } from "@/constants/homeConstants";
 
-import { layoutStyle } from "@/components/Home/HabitDelete/DeleteReasonModal/DeleteReasonModal.style";
+import { layoutStyle } from "@/components/Home/DeleteReasonModal/DeleteReasonModal.style";
 
 const DeleteReasonModal = ({
 	changeReason,
