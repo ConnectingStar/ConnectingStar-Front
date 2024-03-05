@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ChartPage from "@/pages/ChartPage";
+import HabitDeletePage from "@/pages/HabitDeletePage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
@@ -31,6 +32,7 @@ const App = () => {
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
 				<Route path="/rest-record" element={<RestRecordPage />} />
+				<Route path="/habit-delete" element={<HabitDeletePage />} />
 			</Routes>
 		</BrowserRouter>
 	);
