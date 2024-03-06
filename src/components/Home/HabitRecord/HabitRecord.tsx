@@ -78,7 +78,7 @@ function HabitRecord() {
 				<h1>정체성</h1>
 				<span>매일 성장하는 사람</span>
 			</div>
-			<div css={conditionStyle}>
+			<section css={conditionStyle}>
 				<div>
 					<h1>나는</h1> <ExclamationMarkIcon />
 				</div>
@@ -104,7 +104,7 @@ function HabitRecord() {
 					</span>
 				</div>
 				<h1>했다.</h1>
-			</div>
+			</section>
 			<div css={iconsStyle(isActivated, selectedIcon)}>
 				<h1>
 					오늘의 습관 실천을 어떠셨나요? <p>*</p>
