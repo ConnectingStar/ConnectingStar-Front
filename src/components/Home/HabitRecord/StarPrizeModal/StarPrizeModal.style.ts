@@ -4,7 +4,6 @@ import { theme } from "@/styles/theme";
 
 export const containerStyle = css`
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 22.5rem;
@@ -14,9 +13,7 @@ export const containerStyle = css`
 export const layoutStyle = css`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	width: 15.375rem;
-	height: 22.5rem;
 	gap: 20px;
 `;
 
@@ -25,7 +22,7 @@ export const imageWrapperStyle = css`
 	img {
 		width: 13rem;
 		height: 13rem;
-		object-fit: cover;
+		object-fit: contain;
 	}
 `;
 
