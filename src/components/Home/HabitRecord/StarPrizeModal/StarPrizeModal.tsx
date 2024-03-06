@@ -9,7 +9,6 @@ import { closeModal } from "@/api/modal/modalSlice";
 import { prizeCommentsArray } from "@/constants/habitRecordConstants";
 
 import {
-	layoutStyle,
 	imageWrapperStyle,
 	prizeCommentStyle,
 	containerStyle,
@@ -24,20 +23,18 @@ function StarPrizeModal() {
 	return (
 		<Modal>
 			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
-				<div css={layoutStyle}>
-					<span css={imageWrapperStyle}>
-						<img src={StarImage} alt="임시" />
-					</span>
-					<article css={prizeCommentStyle}>
-						<div>
-							<span className="blue">{target.HABIT_RECORD_BLUE_TEXT}</span>
-							<span className="yellow">{target.HABIT_RECORD_YELLOW_TEXT}</span>
-						</div>
-						<div>
-							<span>{target.HABIT_RECORD_WHITE_TEXT}</span>
-						</div>
-					</article>
-				</div>
+				<span css={imageWrapperStyle}>
+					<img src={StarImage} alt="임시" />
+				</span>
+				<article css={prizeCommentStyle}>
+					<div>
+						<span className="blue">{target.HABIT_RECORD_BLUE_TEXT}</span>
+						<span className="yellow">{target.HABIT_RECORD_YELLOW_TEXT}</span>
+					</div>
+					<div>
+						<span>{target.HABIT_RECORD_WHITE_TEXT}</span>
+					</div>
+				</article>
 				<FooterBtn leftText="홈으로" text="별자리 채우기" isTransparent />
 			</div>
 		</Modal>

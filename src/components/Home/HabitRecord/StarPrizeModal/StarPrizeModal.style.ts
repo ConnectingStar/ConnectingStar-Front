@@ -4,17 +4,12 @@ import { theme } from "@/styles/theme";
 
 export const containerStyle = css`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 20px;
 	width: 22.5rem;
 	height: 100vh;
-`;
-
-export const layoutStyle = css`
-	display: flex;
-	flex-direction: column;
-	width: 15.375rem;
-	gap: 20px;
 `;
 
 export const imageWrapperStyle = css`
