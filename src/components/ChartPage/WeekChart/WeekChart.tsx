@@ -50,12 +50,15 @@ const WeekChart = () => {
 				<h3>
 					<span>5일</span> 해냈어요!
 				</h3>
+
 				<div css={chartBoxStyle}>
 					<div css={dateBoxStyle}>
 						<LeftArrowIcon onClick={handlePrevMonth} width={16} height={16} />
+
 						<h3>
 							{dateFormat(startDate)} - {dateFormat(endDate)}
 						</h3>
+
 						{endDate >= nowMonth ? (
 							<RightArrowDisabledIcon width={16} height={16} />
 						) : (
