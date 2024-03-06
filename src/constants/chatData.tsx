@@ -5,11 +5,20 @@ export function createChatData(userData: userDataType) {
 		{
 			id: "firstMeet",
 			message: [
-				`반가워요 ${userData.nickName}님! 저는 습관 형성 도우미 Tars에요. :)`,
+				`반가워요 ${userData.nickName}님!\n저는 습관 형성 도우미 Tars에요. :)`,
 				`어떤 습관을 함께 만들어 볼까요?`,
 				`매일 해도 무리 없는 쉬운 것부터 시작하기를 추천해요. 😊`,
 			],
-			replyBtnMessage: ["습관 선택"],
+			replyBtnMessage: [
+				"이 내용이 맞아",
+				"정체성 변경",
+				"시간 변경",
+				"장소 변경",
+				"습관 변경",
+				"행동 변경",
+				"1차 알림 변경",
+				"2차 알림 변경",
+			],
 			reply: `${userData.habit}`,
 		},
 		{
@@ -17,7 +26,7 @@ export function createChatData(userData: userDataType) {
 			message: [
 				`그렇군요!`,
 				`이번엔 정체성을 정해 볼게요.`,
-				`${userData.habit}를(을) 통해서 ${userData.nickName}님은 어떤 사람이 되고 싶으세요?`,
+				`${userData.habit}을(를) 통해서 ${userData.nickName}님은 어떤 사람이 되고 싶으세요?`,
 			],
 			replyBtnMessage: ["정체성 선택"],
 			reply: `${userData.identity}`,
@@ -80,13 +89,14 @@ export function createChatData(userData: userDataType) {
 		{
 			id: "alert",
 			message: [`약속을 기억하고 실천을 기록하실 수 있도록 하루 두 번, 알림을 보내드릴게요!`],
-			replyBtnMessage: ["1차 알림 변경", "2차 알림 변경"],
-			reply: `1차 알림 ${userData.time} 피그마보고 추가해야됨`,
+			replyBtnMessage: ["이대로 진행", "1차 알림 변경", "2차 알림 변경"],
+			reply: `${userData.alert1}, ${userData.time}, ${userData.alert2}`,
 		},
 		{
 			id: "organize",
 			message: [`지금까지 나눈 이야기를 정리해 보여드릴게요.`],
 			replyBtnMessage: [
+				"이 내용이 맞아",
 				"정체성 변경",
 				"시간 변경",
 				"장소 변경",
