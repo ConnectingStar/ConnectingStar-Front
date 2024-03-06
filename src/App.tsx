@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import CardDetailPage from "@/pages/CardDetailPage";
 import ChartPage from "@/pages/ChartPage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
 import HomePage from "@/pages/HomePage";
