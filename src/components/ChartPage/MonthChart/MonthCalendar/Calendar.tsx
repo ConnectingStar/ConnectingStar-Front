@@ -4,7 +4,10 @@ import { format, startOfMonth, startOfWeek, addDays, isSameMonth } from "date-fn
 
 import { WEEK } from "@/constants/calendarConstants";
 
-import { dateBoxStyle, dayStyle } from "@/components/ChartPage/MonthChart/Calendar.style";
+import {
+	dateBoxStyle,
+	dayStyle,
+} from "@/components/ChartPage/MonthChart/MonthCalendar/MonthCalendar.style";
 
 const Calendar = ({ currentMonth }: { currentMonth: Date }) => {
 	const monthStart = startOfMonth(currentMonth);

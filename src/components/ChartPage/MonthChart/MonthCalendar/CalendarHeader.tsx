@@ -7,7 +7,7 @@ import RightArrowIcon from "@/assets/icon/ic-calendar-right-arrow.svg?react";
 import {
 	headerLayoutStyle,
 	headerBoxStyle,
-} from "@/components/ChartPage/MonthChart/CalendarHeader.style";
+} from "@/components/ChartPage/MonthChart/MonthCalendar/MonthCalendar.style";
 
 interface calendarHeaderType {
 	currentMonth: Date;

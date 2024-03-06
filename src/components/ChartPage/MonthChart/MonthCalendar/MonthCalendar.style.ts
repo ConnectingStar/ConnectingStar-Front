@@ -5,9 +5,7 @@ import { theme } from "@/styles/theme";
 export const headerLayoutStyle = css`
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	gap: 20px;
-	margin-top: 2rem;
+	gap: 16px;
 
 	& > svg {
 		width: 20px;
@@ -18,16 +16,17 @@ export const headerLayoutStyle = css`
 export const headerBoxStyle = css`
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	gap: 16px;
-	width: 6.625rem;
+	text-align: center;
 
 	& > h1 {
 		${theme.font.head_a}
+		width: 56px;
 	}
 
 	& > p {
 		${theme.font.body_xs}
+		width: 46px;
+		text-align: center;
 	}
 `;
 
@@ -65,3 +64,48 @@ export const dayStyle = (inMonthDay?: boolean, isWeek?: boolean, day?: number) =
 		}
 	`;
 };
+
+export const calendarSectionStyle = css`
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	& > h2 {
+		${theme.font.head_a}
+
+		& > span {
+			color: ${theme.color.main_blue};
+		}
+	}
+`;
+
+export const calendarBoxStyle = css`
+	background-color: #fff;
+	border-radius: 15px;
+	border: 2px solid ${theme.color.line};
+	padding: 1rem 0.875rem;
+
+	& .divider {
+		width: 100%;
+		border-bottom: 1px solid ${theme.color.line};
+		margin: 1rem 0;
+	}
+`;
+
+export const iconListBoxStyle = css`
+	display: flex;
+	align-items: center;
+	gap: 30px;
+
+	& .iconBox {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+
+		& > p {
+			color: ${theme.color.font_black};
+			${theme.font.header};
+		}
+	}
+`;
