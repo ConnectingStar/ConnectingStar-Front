@@ -20,6 +20,7 @@ import {
 	chartBoxStyle,
 	dividerStyle,
 	chartTextStyle,
+	infoBoxStyle,
 } from "@/components/ChartPage/MonthChart/MonthChart.style";
 
 const data = [
@@ -94,7 +95,7 @@ const MonthChart = () => {
 						해냈어요!
 					</h1>
 					<div css={chartBoxStyle}>
-						<LineChart width={240} height={170} data={data}>
+						<LineChart width={280} height={170} data={data}>
 							<Line
 								type="monotone"
 								dataKey="value"
@@ -102,7 +103,7 @@ const MonthChart = () => {
 								dot={false}
 								strokeWidth={3}
 							/>
-							<ReferenceLine y={6.7} stroke="#ffd32c" strokeDasharray="2" />
+							<ReferenceLine y={6.7} stroke="#ffbb00" strokeDasharray="2" />
 						</LineChart>
 						<div css={dividerStyle} />
 						<div css={chartTextStyle}>
@@ -112,6 +113,10 @@ const MonthChart = () => {
 							<p>
 								{lastDate.getMonth() + 1}.{lastDate.getDate()}
 							</p>
+						</div>
+						<div css={infoBoxStyle}>
+							<div className="divider" />
+							<span>평균값</span>
 						</div>
 					</div>
 				</section>
