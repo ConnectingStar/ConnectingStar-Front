@@ -32,11 +32,11 @@ export const layoutStyle = css`
 		${theme.color.button_deactivated}
 	}
 
-	& > :first-of-type {
+	& > .date {
 		${theme.font.head_a};
 	}
 
-	& > :nth-of-type(2) {
+	& > .identity {
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -99,7 +99,7 @@ export const inputBoxStyle = (isActivated: boolean, selectedIcon: number | null)
 		color: ${theme.color.font_gray};
 		${theme.font.head_c};
 	}
-	& > textarea {
+	textarea {
 		all: unset;
 		padding: 1rem;
 		background-color: ${theme.color.bg};
