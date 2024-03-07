@@ -1,6 +1,8 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 
 import { css } from "@emotion/react";
+
+import InfoIcon from "@/assets/icon/infomation.svg"; // SVG 파일을 가져옵니다.
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
@@ -10,6 +12,9 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
+// 이모지 판별을 위한 정규식
+const emojiRegex = /\p{Extended_Pictographic}/u;
+
 const ChangeNicknameModal = ({
 	changeNickname,
 }: {
@@ -18,23 +23,61 @@ const ChangeNicknameModal = ({
 	const dispatch = useAppDispatch();
 
 	const [nickname, setNickname] = useState("");
+	const [informationMessage, setInformationMessage] =
+		useState("8자 제한, 띄어쓰기 불가, 이모티콘 불가");
+	const [isError, setIsError] = useState(false);
 
-	const handleChangeInput = () => {
-		changeNickname(nickname);
-		dispatch(closeModal());
+	const validateNickname = (input: string): boolean => {
+		if (input.length > 8 || emojiRegex.test(input) || input.includes(" ")) {
+			return false;
+		}
+		return true;
 	};
 
-	//TODO: 닉네임 필터 만들기
+	const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
+		let input = e.target.value;
+
+		// 띄어쓰기 작성 막기
+		input = input.replace(/\s+/g, "");
+
+		// 8자이상 입력 막기
+		setNickname(input.slice(0, 8));
+
+		if (!validateNickname(input)) {
+			setIsError(true);
+			if (emojiRegex.test(input)) {
+				setInformationMessage("이모티콘은 사용할 수 없어요!");
+			} else {
+				setInformationMessage("8자 제한, 띄어쓰기 불가, 이모티콘 불가");
+			}
+		} else {
+			setIsError(false);
+			setInformationMessage("8자 제한, 띄어쓰기 불가, 이모티콘 불가");
+		}
+	};
+
+	const handleChangeInput = () => {
+		if (validateNickname(nickname)) {
+			changeNickname(nickname);
+			dispatch(closeModal());
+		}
+	};
 
 	return (
 		<Modal isBottomSheet>
-			<div css={layoutStyle}>
-				<h1>닉네임 수정</h1>
+			<div css={layoutStyle(isError)}>
+				<h1>닉네임을 입력해 주세요</h1>
 				<input
 					placeholder="닉네임을 입력해 주세요"
 					value={nickname}
-					onChange={(e) => setNickname(e.target.value)}
+					onChange={(e) => handleNicknameChange(e)}
 				/>
+				<div css={infoStyle(isError)}>
+					{informationMessage === "8자 제한, 띄어쓰기 불가, 이모티콘 불가" && (
+						<img src={InfoIcon} alt="info icon" />
+					)}
+					<p>{informationMessage}</p>
+				</div>
 			</div>
 
 			<FooterBtn
@@ -43,6 +86,7 @@ const ChangeNicknameModal = ({
 				handleBtnClick={handleChangeInput}
 				handleLeftBtnClick={() => dispatch(closeModal())}
 				isSquare
+				disabled={isError || nickname.trim().length === 0}
 			/>
 		</Modal>
 	);
@@ -50,9 +94,9 @@ const ChangeNicknameModal = ({
 
 export default ChangeNicknameModal;
 
-const layoutStyle = css`
-	padding: 1.125rem 1.5rem 4.4375rem;
+const layoutStyle = (isError: boolean) => css`
 	border-radius: 15px 15px 0 0;
+	padding: 1.125rem 1.5rem 4.4375rem;
 	color: ${theme.color.font_black};
 	background-color: #fff;
 
@@ -63,13 +107,22 @@ const layoutStyle = css`
 
 	& > input {
 		all: unset;
+		border: 1px solid ${isError ? "red" : "none"};
 		box-sizing: border-box;
 		width: 100%;
 		height: 3.4375rem;
 		border-radius: 15px;
+		padding: 1rem;
 		margin-top: 1.6875rem;
 		background-color: ${theme.color.bg};
 		color: ${theme.color.font_black};
-		padding: 1rem;
 	}
+`;
+const infoStyle = (isError: boolean) => css`
+	display: flex;
+	align-items: center;
+	${theme.font.body_c}
+	margin-top: 8px;
+	color: ${isError ? "red" : `${theme.color.font_gray}`};
+	gap: 0.25rem;
 `;
