@@ -57,6 +57,7 @@ export default function CreateAccountPage() {
 						<li key={item.title}>
 							<h2>{item.title}</h2>
 							<div
+								style={{ color: item.state && "black" }}
 								onClick={() => {
 									dispatch(openModal(item.modalType));
 								}}
