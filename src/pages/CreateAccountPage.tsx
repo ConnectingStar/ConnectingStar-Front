@@ -15,24 +15,6 @@ import { modalType } from "@/constants/modalConstants";
 
 import { createAccountStyle } from "@/pages/CreateAccountPage.style";
 
-const accountInputData = [
-	{
-		title: "닉네임",
-		content: "닉네임을 입력해 주세요",
-		isPopUpModal: false,
-	},
-	{
-		title: "성별",
-		content: "성별을 선택해 주세요",
-		isPopUpModal: true,
-	},
-	{
-		title: "나이대",
-		content: "나이대를 선택해 주세요",
-		isPopUpModal: true,
-	},
-];
-
 export default function CreateAccountPage() {
 	const dispatch = useAppDispatch();
 
@@ -42,6 +24,27 @@ export default function CreateAccountPage() {
 	const [gender, setGender] = useState<string>("");
 	const [age, setAge] = useState<string>("");
 
+	const accountInputData = [
+		{
+			state: nickName,
+			title: "닉네임",
+			content: "닉네임을 입력해 주세요",
+			modalType: modalType.CHANGE_NICKNAME,
+		},
+		{
+			state: gender,
+			title: "성별",
+			content: "성별을 선택해 주세요",
+			modalType: modalType.SELECT_GENDER,
+		},
+		{
+			state: age,
+			title: "나이대",
+			content: "나이대를 선택해 주세요",
+			modalType: modalType.SELECT_AGE,
+		},
+	];
+
 	return (
 		<>
 			<Header>
@@ -50,28 +53,23 @@ export default function CreateAccountPage() {
 			<div css={createAccountStyle.container}>
 				<h1>내 정보 입력을 완료해 주세요</h1>
 				<ul css={createAccountStyle.wrap}>
-					{accountInputData.map((item, index) => {
-						return (
-							<li key={item.title}>
-								<h2>{item.title}</h2>
-								<div
-									onClick={() => {
-										index === 0 && dispatch(openModal(modalType.CHANGE_NICKNAME));
-										index === 1 && dispatch(openModal(modalType.SELECT_GENDER));
-										index === 2 && dispatch(openModal(modalType.SELECT_AGE));
-									}}
-								>
-									{index === 0 && (nickName ? nickName : item.content)}
-									{index === 1 && (gender ? gender : item.content)}
-									{index === 2 && (age ? age : item.content)}
-									{item.isPopUpModal && <ArrowDown />}
-								</div>
-							</li>
-						);
-					})}
+					{accountInputData.map((item) => (
+						<li key={item.title}>
+							<h2>{item.title}</h2>
+							<div
+								onClick={() => {
+									dispatch(openModal(item.modalType));
+								}}
+							>
+								{item.state === "" ? item.content : item.state}
+
+								{item.title !== "닉네임" && <ArrowDown />}
+							</div>
+						</li>
+					))}
 				</ul>
 			</div>
-			<FooterBtn text="다음" />
+			<FooterBtn text="다음" isTransparent />
 
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickName} />}
 			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}

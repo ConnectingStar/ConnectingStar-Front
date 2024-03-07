@@ -10,11 +10,7 @@ export const visitTrackStyle = css`
 		${theme.font.head_a}
 		margin-bottom: 2.5rem;
 	}
-	ul {
-		width: 100%;
-	}
 	li {
-		width: 100%;
 		height: 3.438rem;
 		border: 2px solid ${theme.color.line};
 		border-radius: 15px;

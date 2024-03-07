@@ -14,10 +14,7 @@ export const createAccountStyle = {
 		}
 	`,
 	wrap: css`
-		width: 100%;
 		& > li {
-			width: 100%;
-			height: 5.438rem;
 			margin-bottom: 1.25rem;
 			& > h2 {
 				${theme.font.head_c}
@@ -27,7 +24,6 @@ export const createAccountStyle = {
 			& > div {
 				display: flex;
 				justify-content: space-between;
-				width: 100%;
 				height: 3.438rem;
 				background-color: ${theme.color.bg};
 				color: ${theme.color.button_deactivated};
