@@ -195,3 +195,26 @@ export const prizeComments = [
 	// 	comment: `더욱 {정체성한} 사람이 되기 위한 한 걸음\n제가 {닉네임}님을 응원할게요 😊`,
 	// },
 ];
+// 임시로 쓰는 데이터 나중에는 지정된 데이터를 habitManage로 배치할 예정
+export const habitManageConditionArray = [
+	{
+		TITLE: "언제",
+		INPUT: "오후 8시",
+	},
+	{
+		TITLE: "어디서",
+		INPUT: "우리집 안 내 책상 위",
+	},
+	{
+		TITLE: "무엇을",
+		INPUT: "책 읽기",
+	},
+	{
+		TITLE: "얼마나",
+		INPUT: "5",
+	},
+	{
+		TITLE: "단위",
+		INPUT: "페이지",
+	},
+];
