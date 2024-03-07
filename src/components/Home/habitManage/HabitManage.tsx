@@ -30,7 +30,10 @@ function HabitManage() {
 
 	return (
 		<main css={layoutStyle}>
-			<div className="condition">안녕</div>
+			<div className="condition">
+				<span>정체성</span>
+				<span>성장하는</span>
+			</div>
 			<div className="tab">
 				<label>습관</label>
 				{habitManageConditionArray.map((texts) => (

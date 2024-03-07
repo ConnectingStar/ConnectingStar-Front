@@ -6,7 +6,7 @@ export const layoutStyle = css`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 1rem;
+	padding: 0.9375rem;
 	border-radius: 15px;
 	width: 18rem;
 	height: 18rem;
