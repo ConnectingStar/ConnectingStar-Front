@@ -8,6 +8,7 @@ import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitDetailPage from "@/pages/HabitDetailPage";
 import HabitGeneratePage from "@/pages/HabitGeneratePage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
+import HabitManagePage from "@/pages/HabitManagePage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
