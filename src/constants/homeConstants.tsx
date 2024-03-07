@@ -76,3 +76,44 @@ export const deleteReasonData = [
 		subText: "다음 약속으로 또 만나길 기다릴게요 :)",
 	},
 ];
+
+export const habitGenerateConditionsArray = [
+	{
+		LABEL_TEXT: "정체성",
+		SPAN_TEXT: "정체성을 선택해주세요.",
+		MODAL_NAME: "",
+	},
+	{
+		LABEL_TEXT: "언제",
+		SPAN_TEXT: "시간을 선택해주세요.",
+		MODAL_NAME: "",
+	},
+	{
+		LABEL_TEXT: "어디서",
+		SPAN_TEXT: "장소를 선택해주세요.",
+		MODAL_NAME: "",
+	},
+	{
+		LABEL_TEXT: "무엇을",
+		SPAN_TEXT: "습관을 선택해주세요.",
+		MODAL_NAME: "",
+	},
+	{
+		LABEL_TEXT: "얼마나",
+		SPAN_TEXT: "숫자 입력",
+		SPAN_TEXT_SECOND: "단위 입력 (예: 페이지)",
+		MODAL_NAME: "",
+	},
+	{
+		LABEL_TEXT: "1차 알림",
+		EXPLANATION: "약속을 상기시켜 드리는 알림이에요!",
+		SPAN_TEXT: "1차 알림 시간을 선택해주세요.",
+		MODAL_NAME: "",
+	},
+	{
+		LABEL_TEXT: "2차 알림",
+		EXPLANATION: "습관 기록을 독려하는 알림이에요!",
+		SPAN_TEXT: "2차 알림 시간을 선택해주세요.",
+		MODAL_NAME: "",
+	},
+];
