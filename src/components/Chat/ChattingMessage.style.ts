@@ -79,11 +79,50 @@ export const chattingStyle = {
 };
 
 export const replyStyle = css`
+	${theme.font.body_b}
 	float: right;
-	height: 3.125rem;
 	margin: 0.75rem 0;
 	padding: 1rem;
 	border-radius: 15px;
 	background-color: ${theme.color.main_blue};
 	color: white;
+	.alert {
+		display: flex;
+		gap: 26px;
+		& > div {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+		.bold {
+			${theme.font.body_b_bold}
+		}
+	}
+	.allUserData {
+		width: 13.125rem;
+		display: flex;
+		flex-direction: column;
+		& > div {
+			display: flex;
+			margin: 12px 0 6px 0;
+			ul {
+				width: 85px;
+			}
+		}
+		.bold {
+			${theme.font.body_b_bold}
+		}
+		::after {
+			width: 100%;
+			height: 1px;
+			content: "";
+			background-color: white;
+			margin: 12px 0;
+		}
+		&:last-of-type {
+			::after {
+				display: none;
+			}
+		}
+	}
 `;

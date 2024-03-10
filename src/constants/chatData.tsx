@@ -9,16 +9,7 @@ export function createChatData(userData: userDataType) {
 				`어떤 습관을 함께 만들어 볼까요?`,
 				`매일 해도 무리 없는 쉬운 것부터 시작하기를 추천해요. 😊`,
 			],
-			replyBtnMessage: [
-				"이 내용이 맞아",
-				"정체성 변경",
-				"시간 변경",
-				"장소 변경",
-				"습관 변경",
-				"행동 변경",
-				"1차 알림 변경",
-				"2차 알림 변경",
-			],
+			replyBtnMessage: ["습관선택"],
 			reply: `${userData.habit}`,
 		},
 		{
@@ -90,7 +81,20 @@ export function createChatData(userData: userDataType) {
 			id: "alert",
 			message: [`약속을 기억하고 실천을 기록하실 수 있도록 하루 두 번, 알림을 보내드릴게요!`],
 			replyBtnMessage: ["이대로 진행", "1차 알림 변경", "2차 알림 변경"],
-			reply: `${userData.alert1}, ${userData.time}, ${userData.alert2}`,
+			reply: `
+			<div class="alert">
+				<div>
+					<div>1차 알림(약속 인지)</div>
+					<div>약속 시간</div>
+					<div>2차 알림(기록 독려)</div>
+				</div>
+				<div class="bold">
+					<div>${userData.alert1}</div>
+					<div>${userData.time}</div>
+					<div>${userData.alert2}</div>
+				</div>
+			</div>
+		`,
 		},
 		{
 			id: "organize",
@@ -105,7 +109,48 @@ export function createChatData(userData: userDataType) {
 				"1차 알림 변경",
 				"2차 알림 변경",
 			],
-			reply: ` 피그마보고 엄청나게 추가해야됨 ㄷ`,
+			reply: `
+			<div>
+			<div class="allUserData">
+				<h2 class="bold">정체성</h2>
+				<div>
+					<ul>
+						<li>정체성</li>
+					</ul>
+					<ul class="bold">
+						<li>${userData.habit}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="allUserData">
+				<h2 class="bold">습관 내용</h2>
+				<div>
+					<ul>
+						<li>시간</li>
+						<li>장소</li>
+						<li>행동</li>
+					</ul>
+					<ul class="bold">
+						<li>${userData.time}</li>
+						<li>${userData.location}</li>
+						<li>${userData.behavior}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="allUserData">
+				<h2 class="bold">알림</h2>
+				<div>
+					<ul>
+						<li>1차 알림</li>
+						<li>2차 알림</li>
+					</ul>
+					<ul class="bold">
+						<li>${userData.alert1}</li>
+						<li>${userData.alert2}</li>
+					</ul>
+				</div>
+			</div>
+		`,
 		},
 		{
 			id: "inform",
@@ -126,7 +171,7 @@ export function createChatData(userData: userDataType) {
 				`매번 완벽할 필요 없습니다.`,
 				`약속의 단 10%만 지켜지더라도 "꾸준하게 하는 것”이 핵심이니까요.`,
 				`고생 많으셨습니다!`,
-				`${userData.nickName}를 꾸준히 하는 ${userData.nickName}님을 응원할게요XD`,
+				`${userData.nickName}를 꾸준히 하는 ${userData.nickName}님을 응원할게요. XD`,
 			],
 			replyBtnMessage: ["나도 잘 부탁해"],
 			reply: "",
