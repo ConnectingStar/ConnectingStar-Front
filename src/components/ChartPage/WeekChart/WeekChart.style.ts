@@ -5,6 +5,7 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	background-color: ${theme.color.bg};
 	width: 100%;
+	border-top: 1px solid ${theme.color.line};
 `;
 
 export const boxStyle = css`

@@ -22,7 +22,7 @@ export const tabButtonStyle = (isActive: boolean) => {
 	return css`
 		width: 3.75rem;
 		border-bottom: ${isActive ? `4px solid ${theme.color.main_blue}` : `4px solid transparent`};
-		padding: 0.625rem 0;
+		padding: 0.9rem 0;
 		color: ${isActive ? theme.color.main_blue : theme.color.button_deactivated};
 		${theme.font.body_a_bold};
 	`;
