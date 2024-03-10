@@ -3,11 +3,12 @@ import { useState } from "react";
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
-import DeleteReasonModal from "@/components/Home/DeleteReasonModal/DeleteReasonModal";
-import LeaveReasonModal from "@/components/MyPage/Modal/LeaveResonModal/LeaveReasonModal";
+import SelectReasonModal from "@/components/common/SelectReason/SelectReasonModal/SelectReasonModal";
 
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
+
+import { modalType } from "@/constants/modalConstants";
 
 import {
 	layoutStyle,
@@ -20,7 +21,6 @@ import {
 interface SelectReasonProps {
 	title: string;
 	reasonDefaultText: string;
-	modalType: string;
 	selectData: (
 		| {
 				title: string;
@@ -39,7 +39,6 @@ interface SelectReasonProps {
 const SelectReason = ({
 	title,
 	reasonDefaultText,
-	modalType,
 	selectData,
 	footerBtnText,
 }: SelectReasonProps) => {
@@ -57,7 +56,7 @@ const SelectReason = ({
 			<h1>{title}</h1>
 			<div
 				css={getReasonBoxStyle(reason !== reasonDefaultText)}
-				onClick={() => dispatch(openModal(modalType))}
+				onClick={() => dispatch(openModal(modalType.SELECT_REASON))}
 			>
 				<p>{reason}</p>
 				<DownArrowIcon />
@@ -98,8 +97,13 @@ const SelectReason = ({
 				<FooterBtn text={footerBtnText} isTransparent disabled={reason === reasonDefaultText} />
 			)}
 
-			{modal === "DELETE_REASON" && <DeleteReasonModal changeReason={setReason} />}
-			{modal === "LEAVE_REASON" && <LeaveReasonModal changeReason={setReason} />}
+			{modal === modalType.SELECT_REASON && (
+				<SelectReasonModal
+					changeReason={setReason}
+					reasonData={selectData}
+					reasonDefaultText={reasonDefaultText}
+				/>
+			)}
 		</div>
 	);
 };
