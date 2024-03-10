@@ -1,5 +1,5 @@
-import CommonDelete from "@/components/common/CommonDelete/CommonDelete";
 import Header from "@/components/common/Header/Header";
+import SelectReason from "@/components/common/SelectReason/SelectReason";
 
 import { deleteReasonData } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
@@ -10,7 +10,7 @@ const HabitDeletePage = () => {
 			<Header>
 				<Header.PrevButton />
 			</Header>
-			<CommonDelete
+			<SelectReason
 				title="어떤 이유로 그만두시나요?"
 				reasonDefaultText="그만두는 이유를 선택해 주세요"
 				modalType={modalType.DELETE_REASON}

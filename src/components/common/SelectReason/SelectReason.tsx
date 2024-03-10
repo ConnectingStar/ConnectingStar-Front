@@ -15,9 +15,9 @@ import {
 	middleBoxStyle,
 	textBoxStyle,
 	subTextBoxStyle,
-} from "@/components/common/CommonDelete/CommonDelete.style";
+} from "@/components/common/SelectReason/SelectReason.style";
 
-interface CommonDeleteProp {
+interface SelectReasonProps {
 	title: string;
 	reasonDefaultText: string;
 	modalType: string;
@@ -36,18 +36,21 @@ interface CommonDeleteProp {
 	footerBtnText: string;
 }
 
-const CommonDelete = ({
+const SelectReason = ({
 	title,
 	reasonDefaultText,
 	modalType,
 	selectData,
 	footerBtnText,
-}: CommonDeleteProp) => {
+}: SelectReasonProps) => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
 
+	const [isInputFocus, setIsInputFocus] = useState(false);
+
 	const [reason, setReason] = useState(reasonDefaultText);
+	const [inputText, setInputText] = useState("");
 
 	return (
 		<div css={layoutStyle}>
@@ -64,7 +67,12 @@ const CommonDelete = ({
 				<div key={data.title} css={middleBoxStyle}>
 					{data.placeholder && data.title === reason && (
 						<div css={textBoxStyle}>
-							<textarea placeholder={data.placeholder} />
+							<textarea
+								placeholder={data.placeholder}
+								onFocus={() => setIsInputFocus(true)}
+								value={inputText}
+								onChange={(e) => setInputText(e.target.value)}
+							/>
 						</div>
 					)}
 
@@ -76,7 +84,19 @@ const CommonDelete = ({
 				</div>
 			))}
 
-			<FooterBtn text={footerBtnText} isTransparent disabled={reason === reasonDefaultText} />
+			{isInputFocus ? (
+				<FooterBtn
+					text="확인"
+					isSquare
+					isTransparent
+					disabled={inputText === ""}
+					handleBtnClick={() => {
+						setIsInputFocus(false);
+					}}
+				/>
+			) : (
+				<FooterBtn text={footerBtnText} isTransparent disabled={reason === reasonDefaultText} />
+			)}
 
 			{modal === "DELETE_REASON" && <DeleteReasonModal changeReason={setReason} />}
 			{modal === "LEAVE_REASON" && <LeaveReasonModal changeReason={setReason} />}
@@ -84,4 +104,4 @@ const CommonDelete = ({
 	);
 };
 
-export default CommonDelete;
+export default SelectReason;
