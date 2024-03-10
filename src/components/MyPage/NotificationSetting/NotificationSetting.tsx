@@ -1,4 +1,14 @@
+import { useState } from "react";
+
 import Button from "@/components/MyPage/NotificationSetting/Button";
+import StopHabitModal from "@/components/MyPage/NotificationSetting/StopHabitModal/StopHabitModal";
+
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
+
+import { modalType } from "@/constants/modalConstants";
+
+import { dateFormat } from "@/utils/dateFormat";
 
 import {
 	layoutStyle,
@@ -7,6 +17,15 @@ import {
 } from "@/components/MyPage/NotificationSetting/NotificationSetting.style";
 
 const NotificationSetting = () => {
+	const dispatch = useAppDispatch();
+
+	const { modal } = useAppSelector((state) => state.modal);
+
+	const [startDay, setStartDay] = useState(new Date());
+	const [endDay, setEndDay] = useState(new Date());
+
+	const [toggleCancel, setToggleCancel] = useState(false);
+
 	return (
 		<div css={layoutStyle}>
 			<div css={topBoxStyle}>
@@ -17,9 +36,12 @@ const NotificationSetting = () => {
 				</p>
 				<Button
 					title="약속 전체 일시 정지"
-					subTitle="2024.01.07 - 2024.01.13"
+					subTitle={`${dateFormat(startDay)} - ${dateFormat(endDay)}`}
 					isToggle
+					toggleCancel={toggleCancel}
 					isDateText
+					isTextVisible
+					onClick={() => dispatch(openModal(modalType.STOP_HABIT))}
 				/>
 			</div>
 
@@ -45,6 +67,16 @@ const NotificationSetting = () => {
 					isToggle
 				/>
 			</div>
+
+			{modal === modalType.STOP_HABIT && (
+				<StopHabitModal
+					startDay={startDay}
+					setStartDay={setStartDay}
+					endDay={endDay}
+					setEndDay={setEndDay}
+					setToggleCancel={setToggleCancel}
+				/>
+			)}
 		</div>
 	);
 };

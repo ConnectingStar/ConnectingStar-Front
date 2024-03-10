@@ -12,7 +12,7 @@ import RestRecordPage from "@/pages/RestRecordPage";
 import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
-import StarPage from "@/pages/StarPage";
+import StarCardPage from "@/pages/StarCardPage";
 import DiscoveryRoutePage from "@/pages/VisitTrackPage";
 import VisitTrackPage from "@/pages/VisitTrackPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
@@ -22,7 +22,8 @@ const App = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/home" element={<HomePage />} />
-				<Route path="/star" element={<StarPage />} />
+				<Route path="/star-card" element={<StarCardPage />} />
+				<Route path="/star-card/:id" element={<StarCardDetailPage />} />
 				<Route path="/chart" element={<ChartPage />} />
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/myinfo" element={<MyInfoPage />} />
@@ -30,7 +31,6 @@ const App = () => {
 				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/createAccount" element={<CreateAccountPage />} />
 				<Route path="/visitTrackPage" element={<VisitTrackPage />} />
-				<Route path="/star/:id" element={<StarCardDetailPage />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />

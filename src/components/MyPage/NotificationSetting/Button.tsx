@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
 	getLayoutStyle,
@@ -10,27 +10,48 @@ interface buttonType {
 	title: string;
 	subTitle: string;
 	isToggle?: boolean;
+	toggleCancel?: boolean;
 	isDateText?: boolean;
 	isHabit?: boolean;
+	isTextVisible?: boolean;
+	onClick?: () => void;
 }
 
-const Button = ({ title, subTitle, isToggle, isDateText, isHabit }: buttonType) => {
+const Button = ({
+	title,
+	subTitle,
+	isToggle,
+	toggleCancel,
+	isDateText,
+	isHabit,
+	isTextVisible,
+	onClick,
+}: buttonType) => {
 	const [toggleActive, setToggleActive] = useState(false);
+
+	const handleToggleClick = () => {
+		setToggleActive((prev) => !prev);
+		onClick && !toggleActive && onClick();
+	};
+
+	useEffect(() => {
+		if (toggleCancel) {
+			setToggleActive(false);
+		}
+	}, [toggleCancel]);
 
 	return (
 		<div css={getLayoutStyle(isDateText, isHabit)}>
 			<div css={getFlexStyle(isHabit)}>
 				<h3>{title}</h3>
 				{isToggle && (
-					<div
-						css={getToggleButtonStyle(toggleActive)}
-						onClick={() => setToggleActive((prev) => !prev)}
-					>
+					<div css={getToggleButtonStyle(toggleActive)} onClick={handleToggleClick}>
 						<div />
 					</div>
 				)}
 			</div>
-			<h4>{subTitle}</h4>
+			{isTextVisible ? toggleActive && <h4>{subTitle}</h4> : <h4>{subTitle}</h4>}
+
 			{isHabit && <button type="button">홈으로</button>}
 		</div>
 	);

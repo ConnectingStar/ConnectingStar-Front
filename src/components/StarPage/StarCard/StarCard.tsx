@@ -7,7 +7,7 @@ import {
 	haveLabelStyle,
 	titleStyle,
 	selectedStyle,
-} from "@/components/StarPage/StarCard.style";
+} from "@/components/StarPage/StarCard/StarCard.style";
 
 // TODO: API 연결 후 삭제 or 수정 예정
 interface StarCardProps {
