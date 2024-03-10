@@ -27,6 +27,7 @@ export const createAccountStyle = {
 				height: 3.438rem;
 				background-color: ${theme.color.bg};
 				color: ${theme.color.button_deactivated};
+				align-items: center;
 				${theme.font.body_a};
 				border-radius: 15px;
 				padding: 1rem;

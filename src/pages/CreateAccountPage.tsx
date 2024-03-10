@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import ArrowDown from "@/assets/icon/arrow-down.svg?react";
+import ArrowDownIcon from "@/assets/icon/arrow-down.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
@@ -64,7 +64,7 @@ export default function CreateAccountPage() {
 							>
 								{item.state === "" ? item.content : item.state}
 
-								{item.title !== "닉네임" && <ArrowDown />}
+								{item.title !== "닉네임" && <ArrowDownIcon />}
 							</div>
 						</li>
 					))}

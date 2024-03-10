@@ -10,6 +10,8 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import { isValidateNickName } from "@/hooks/isValidateNickName";
+
 import { theme } from "@/styles/theme";
 
 // 이모지 판별을 위한 정규식
@@ -27,13 +29,6 @@ const ChangeNicknameModal = ({
 		useState("8자 제한, 띄어쓰기 불가, 이모티콘 불가");
 	const [isError, setIsError] = useState(false);
 
-	const validateNickname = (input: string): boolean => {
-		if (input.length > 8 || emojiRegex.test(input) || input.includes(" ")) {
-			return false;
-		}
-		return true;
-	};
-
 	const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
 		let input = e.target.value;
 
@@ -43,7 +38,7 @@ const ChangeNicknameModal = ({
 		// 8자이상 입력 막기
 		setNickname(input.slice(0, 8));
 
-		if (!validateNickname(input)) {
+		if (!isValidateNickName(input)) {
 			setIsError(true);
 			if (emojiRegex.test(input)) {
 				setInformationMessage("이모티콘은 사용할 수 없어요!");
@@ -57,7 +52,7 @@ const ChangeNicknameModal = ({
 	};
 
 	const handleChangeInput = () => {
-		if (validateNickname(nickname)) {
+		if (isValidateNickName(nickname)) {
 			changeNickname(nickname);
 			dispatch(closeModal());
 		}
