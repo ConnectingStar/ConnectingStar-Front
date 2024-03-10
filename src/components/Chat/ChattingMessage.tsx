@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
+import { theme } from "@/styles/theme";
+
 import { chattingStyle, replyStyle } from "@/components/Chat/ChattingMessage.style";
 
 interface chatType {
@@ -10,7 +12,7 @@ interface chatType {
 }
 
 function ChattingMessage({ chatData, setProgress }: chatType) {
-	const { message, replyBtnMessage, reply } = chatData;
+	const { id, message, replyBtnMessage, reply } = chatData;
 
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isreply, setIsReply] = useState(false);
@@ -49,6 +51,25 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 		return null;
 	};
 
+	// 특정 메시지의 단어 파란색으로 변경하는 함수
+	function processMessage(message: string, id: string) {
+		if (id === "time") {
+			const targetMessage1 = `그리고 그 약속은 \n1. 무엇을 할지 명확해야 하고\n2. 하고 싶도록 매력적이며\n3. 쉽게 할 수 있어야 하고\n4. 하고 난 뒤 만족스러워야 합니다.`;
+			if (message === targetMessage1) {
+				return message.replace(
+					/(명확|매력|쉽게|만족)/g,
+					(match) => `<span style="color: ${theme.color.main_blue};">${match}</span>`,
+				);
+			}
+		} else if (id === "last") {
+			return message.replace(
+				/(매일 실행|꾸준하게 하는 것)/g,
+				(match) => `<span style="color: ${theme.color.main_blue};">${match}</span>`,
+			);
+		}
+		return message;
+	}
+
 	return (
 		<div css={chattingStyle.container}>
 			<div css={chattingStyle.profile}>
@@ -56,16 +77,25 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 			</div>
 			<div css={chattingStyle.chatWrap} ref={endOfMessagesRef}>
 				<ul>
-					{message.slice(0, messageIndex + 1).map((i, index) => (
-						<li key={index}>{i}</li>
+					{message.slice(0, messageIndex + 1).map((msg, index) => (
+						<li
+							key={index}
+							dangerouslySetInnerHTML={{ __html: processMessage(msg, chatData.id) }}
+						></li>
 					))}
 				</ul>
-				{isreply && <div css={replyStyle}>{reply}</div>}
+
+				{isreply ? (
+					<div css={replyStyle} dangerouslySetInnerHTML={{ __html: reply }}></div>
+				) : (
+					(id === "alert" || id === "organize") && (
+						<div css={replyStyle} dangerouslySetInnerHTML={{ __html: reply }}></div>
+					)
+				)}
 			</div>
 
 			{message.length === messageIndex && (
 				<div>
-					{/* TODO: 버튼 배경 넣기 */}
 					<div css={sideBtnStyle}>
 						{replyBtnMessage.slice(1).map((item) => (
 							<button>{item}</button>
