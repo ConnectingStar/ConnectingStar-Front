@@ -21,12 +21,12 @@ const containerStyle = css`
 	display: block;
 	width: 4.25rem;
 	height: 4.375rem;
-	margin-left: -0.875rem;
-	position: relative;
+	position: absolute;
+	right: 1.5rem;
+	bottom: 1.25rem;
 
 	& > img {
 		width: 4.0625rem;
-		height: 4.0625rem;
 	}
 
 	& > span {
