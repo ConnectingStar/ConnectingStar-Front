@@ -10,10 +10,12 @@ import { theme } from "@/styles/theme";
 export default function StarMainPage() {
 	return (
 		<div css={containerStyle}>
-			<StarInfo starCount={114} starCardId={1} />
-			<div className="wrapper">
-				<StarButton />
-				<StarCardLink />
+			<div className="container">
+				<StarInfo starCount={114} starCardId={1} />
+				<div className="wrapper">
+					<StarButton />
+					<StarCardLink />
+				</div>
 			</div>
 			<div css={starMainPageGnbStyle}>
 				<Gnb />
@@ -32,6 +34,10 @@ const containerStyle = css`
 		#6b8acb 84%,
 		#6d68d4 98%
 	);
+
+	.container {
+		padding: 1.25rem 1.5rem;
+	}
 
 	.wrapper {
 		display: flex;
