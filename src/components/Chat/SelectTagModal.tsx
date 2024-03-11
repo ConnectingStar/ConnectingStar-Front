@@ -68,7 +68,7 @@ function SelectTagModal({ title, tags, setUserData }: selectTagModal) {
 					text="확인"
 					isSquare
 					isTransparent
-					disabled={inputText === "" ? true : false}
+					disabled={inputText === ""}
 					handleBtnClick={() => {
 						setIsInputFocus(false);
 					}}
@@ -76,7 +76,7 @@ function SelectTagModal({ title, tags, setUserData }: selectTagModal) {
 			) : (
 				<FooterBtn
 					text="선택"
-					disabled={selectedTag || inputText !== "" ? false : true}
+					disabled={(selectedTag || inputText) === ""}
 					handleBtnClick={confirmSelectedTag}
 					isTransparent
 				/>
