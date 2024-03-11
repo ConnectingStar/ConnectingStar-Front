@@ -12,8 +12,6 @@ import { habitConditions } from "@/constants/habitRecordConstants";
 import { modalType } from "@/constants/modalConstants";
 import { habitIconData } from "@/constants/myPageConstants";
 
-import type { HabitCondition } from "@/types/habitRecordTypes";
-
 import {
 	layoutStyle,
 	conditionStyle,
@@ -73,16 +71,16 @@ function HabitRecord() {
 
 	return (
 		<main css={layoutStyle}>
-			<div className="date">{`${today.getMonth() + 1}월 ${today.getDate()}일\n영택님의 실천 기록`}</div>
-			<div className="identity">
-				<h1>정체성</h1>
+			<h1>{`${today.getMonth() + 1}월 ${today.getDate()}일\n영택님의 실천 기록`}</h1>
+			<label>
+				<h2>정체성</h2>
 				<span>매일 성장하는 사람</span>
-			</div>
+			</label>
 			<section css={conditionStyle}>
 				<div>
-					<h1>나는</h1> <ExclamationMarkIcon />
+					<h3>나는</h3> <ExclamationMarkIcon />
 				</div>
-				{habitConditions.map(({ condition, placeholder }: HabitCondition) => (
+				{habitConditions.map(({ condition, placeholder }) => (
 					<textarea
 						key={condition}
 						placeholder={placeholder}
@@ -103,12 +101,12 @@ function HabitRecord() {
 						페이지 <p>*</p>
 					</span>
 				</div>
-				<h1>했다.</h1>
+				<h3>했다.</h3>
 			</section>
-			<div css={iconsStyle(isActivated, selectedIcon)}>
-				<h1>
+			<section css={iconsStyle(isActivated, selectedIcon)}>
+				<h2>
 					오늘의 습관 실천을 어떠셨나요? <p>*</p>
-				</h1>
+				</h2>
 				<div>
 					{habitIconData.map((habitIcon) => (
 						<span
@@ -120,8 +118,8 @@ function HabitRecord() {
 						</span>
 					))}
 				</div>
-			</div>
-			<div css={inputBoxStyle(isActivated, selectedIcon)}>
+			</section>
+			<section css={inputBoxStyle(isActivated, selectedIcon)}>
 				<label htmlFor="traceText">별자취 남기기</label>
 				<textarea
 					placeholder="실천하며 느낀 점이나 다짐 등을 자유롭게 적어보세요!"
@@ -131,7 +129,7 @@ function HabitRecord() {
 					onChange={(e) => setTraceText(e.target.value)}
 				/>
 				<span>{traceText.length}/1,000자</span>
-			</div>
+			</section>
 			<FooterBtn
 				handleBtnClick={() => dispatch(openModal(modalType.STAR_PRIZE))}
 				text="기록하여 별 얻기"
