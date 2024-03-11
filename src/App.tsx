@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
+import HabitShelfPage from "@/pages/HabitShelfPage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
@@ -21,6 +22,7 @@ const App = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/home" element={<HomePage />} />
+				<Route path="/home/:id" element={<HabitShelfPage />} />
 				<Route path="/star-card" element={<StarCardPage />} />
 				<Route path="/star-card/:id" element={<StarCardDetailPage />} />
 				<Route path="/chart" element={<ChartPage />} />
