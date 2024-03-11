@@ -10,7 +10,7 @@ import { theme } from "@/styles/theme";
 export default function StarMainPage() {
 	return (
 		<div css={containerStyle}>
-			<div className="container">
+			<div className="wrapper">
 				<StarInfo starCount={114} starCardId={1} />
 				<StarButton />
 				<StarCardLink />
@@ -33,7 +33,7 @@ const containerStyle = css`
 		#6d68d4 98%
 	);
 
-	.container {
+	.wrapper {
 		padding: 1.25rem 1.5rem;
 		position: relative;
 	}
