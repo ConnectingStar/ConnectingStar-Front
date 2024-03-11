@@ -20,7 +20,7 @@ export const getOutlineTextStyle = (outlineColor: string, font: FontType) => {
 			position: absolute;
 			top: 0;
 			z-index: -1;
-			-webkit-text-stroke: 3px ${outlineColor};
+			-webkit-text-stroke: 0.25rem ${outlineColor}; // 2px로 하면 디자인 시안과 조금 달라짐
 		}
 	`;
 };
