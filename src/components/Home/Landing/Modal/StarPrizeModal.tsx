@@ -53,6 +53,7 @@ export const containerStyle = css`
 
 export const imageWrapperStyle = css`
 	border-radius: 15px;
+
 	img {
 		width: 13rem;
 		height: 13rem;
@@ -65,10 +66,12 @@ export const prizeCommentStyle = css`
 	text-align: center;
 	& > :first-of-type {
 		${theme.font.head_a}
-		& > .blue {
+
+		& .blue {
 			color: ${theme.color.main_blue};
 		}
-		& > .yellow {
+
+		& .yellow {
 			color: ${theme.color.main_yellow};
 		}
 	}

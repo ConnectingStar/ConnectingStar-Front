@@ -1,4 +1,6 @@
-import type { HabitCondition } from "@/types/habitRecordTypes";
+type HabitCondition = {
+	[condition: string]: string;
+};
 
 export const habitConditions: HabitCondition[] = [
 	{
