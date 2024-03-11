@@ -2,11 +2,13 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const getOutlineTextStyle = (outlineColor: string) => {
+type FontType = keyof typeof theme.font;
+
+export const getOutlineTextStyle = (outlineColor: string, font: FontType) => {
 	return css`
 		position: relative;
 		z-index: 0;
-		${theme.font.head_c}
+		${theme.font[font]}
 		white-space: pre-wrap;
 		text-align: center;
 		color: #fff;
