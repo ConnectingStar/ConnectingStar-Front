@@ -88,11 +88,11 @@ export const replyStyle = css`
 	color: white;
 	.alert {
 		display: flex;
-		gap: 26px;
+		gap: 1.625rem;
 		& > div {
 			display: flex;
 			flex-direction: column;
-			gap: 12px;
+			gap: 0.75rem;
 		}
 		.bold {
 			${theme.font.body_b_bold}
@@ -104,9 +104,9 @@ export const replyStyle = css`
 		flex-direction: column;
 		& > div {
 			display: flex;
-			margin: 12px 0 6px 0;
+			margin: 0.75rem 0 0.375rem 0;
 			ul {
-				width: 85px;
+				width: 5.313rem;
 			}
 		}
 		.bold {
@@ -117,7 +117,7 @@ export const replyStyle = css`
 			height: 1px;
 			content: "";
 			background-color: white;
-			margin: 12px 0;
+			margin: 0.75rem 0;
 		}
 		&:last-of-type {
 			::after {

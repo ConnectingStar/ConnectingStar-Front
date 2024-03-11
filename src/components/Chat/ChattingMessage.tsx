@@ -47,20 +47,17 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 
 	const sideBtnStyle = () => {
 		if (replyBtnMessage.length === 3) return chattingStyle.sideButton;
-		if (replyBtnMessage.length === 8) return chattingStyle.scrollButton;
+		if (replyBtnMessage.length > 3) return chattingStyle.scrollButton;
 		return null;
 	};
 
 	// 특정 메시지의 단어 파란색으로 변경하는 함수
 	function processMessage(message: string, id: string) {
 		if (id === "time") {
-			const targetMessage1 = `그리고 그 약속은 \n1. 무엇을 할지 명확해야 하고\n2. 하고 싶도록 매력적이며\n3. 쉽게 할 수 있어야 하고\n4. 하고 난 뒤 만족스러워야 합니다.`;
-			if (message === targetMessage1) {
-				return message.replace(
-					/(명확|매력|쉽게|만족)/g,
-					(match) => `<span style="color: ${theme.color.main_blue};">${match}</span>`,
-				);
-			}
+			return message.replace(
+				/(명확|매력|쉽게|만족)/g,
+				(match) => `<span style="color: ${theme.color.main_blue};">${match}</span>`,
+			);
 		} else if (id === "last") {
 			return message.replace(
 				/(매일 실행|꾸준하게 하는 것)/g,

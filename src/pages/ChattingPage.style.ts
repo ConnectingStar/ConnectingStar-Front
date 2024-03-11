@@ -7,7 +7,6 @@ export const chattingPageStyle = {
 		max-width: 22.5rem;
 		margin: 0 auto;
 		min-height: 100vh;
-		height: 100%;
 		background-color: ${theme.color.bg};
 	`,
 	header: css`
@@ -18,6 +17,5 @@ export const chattingPageStyle = {
 		padding: 5.75rem 1.5rem ${isbuttonHeiger ? "8.5rem" : "5.438rem"} 1.5rem;
 		margin: 0 auto;
 		${theme.font.body_b};
-		height: 100%;
 	`,
 };
