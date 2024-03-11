@@ -13,10 +13,19 @@ import {
 	textBoxStyle,
 	selectBoxStyle,
 } from "@/components/Home/HabitGenerate/HabitGenerate.Style";
+import SelectTimeModal from "@/components/Home/Landing/Modal/SelectTimeModal";
+import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
+
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
 
 import { habitGenerateConditionsArray } from "@/constants/homeConstants";
+import { modalType } from "@/constants/modalConstants";
 
 function HabitGenerate() {
+	const dispatch = useAppDispatch();
+	const { modal } = useAppSelector((state) => state.modal);
+
 	const [isTip, setIsTip] = useState<boolean>(false);
 	return (
 		<main css={layoutStyle}>
@@ -49,7 +58,12 @@ function HabitGenerate() {
 			<ul css={selectBoxStyle}>
 				{habitGenerateConditionsArray.map((condition) => {
 					return (
-						<li key={condition.LABEL_TEXT}>
+						<li
+							key={condition.LABEL_TEXT}
+							onClick={() => {
+								dispatch(openModal(condition.MODAL_NAME));
+							}}
+						>
 							<label>
 								<span>{condition.LABEL_TEXT}</span>
 								{condition.EXPLANATION && (
@@ -73,6 +87,8 @@ function HabitGenerate() {
 				})}
 			</ul>
 			<FooterBtn text="좋아, 이대로 만들게" isPositionStatic />
+			{modal === modalType.SELECT_TIME && <SelectTimeModal />}
+			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
 		</main>
 	);
 }
