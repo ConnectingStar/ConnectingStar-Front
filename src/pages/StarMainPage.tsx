@@ -12,10 +12,8 @@ export default function StarMainPage() {
 		<div css={containerStyle}>
 			<div className="container">
 				<StarInfo starCount={114} starCardId={1} />
-				<div className="wrapper">
-					<StarButton />
-					<StarCardLink />
-				</div>
+				<StarButton />
+				<StarCardLink />
 			</div>
 			<div css={starMainPageGnbStyle}>
 				<Gnb />
@@ -37,12 +35,7 @@ const containerStyle = css`
 
 	.container {
 		padding: 1.25rem 1.5rem;
-	}
-
-	.wrapper {
-		display: flex;
-		justify-content: flex-end;
-		align-items: flex-end;
+		position: relative;
 	}
 `;
 
