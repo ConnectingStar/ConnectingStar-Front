@@ -10,7 +10,7 @@ export default function StarCardLink() {
 	return (
 		<Link to="/star-card" css={containerStyle}>
 			<img src={starCardBook} alt="" />
-			<span css={getOutlineTextStyle("#7400cf")} data-text="별자리 카드">
+			<span css={getOutlineTextStyle("#7400cf", "head_c")} data-text="별자리 카드">
 				별자리 카드
 			</span>
 		</Link>
