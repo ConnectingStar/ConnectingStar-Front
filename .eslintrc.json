@@ -40,6 +40,11 @@
               "position": "before"
             },
             {
+              "pattern": "{date-fns*,recharts*}",
+              "group": "internal",
+              "position": "before"
+            },
+            {
               "pattern": "@/assets/**/*",
               "group": "internal",
               "position": "before"
