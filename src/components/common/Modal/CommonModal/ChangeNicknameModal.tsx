@@ -2,7 +2,7 @@ import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 
 import { css } from "@emotion/react";
 
-import InfoIcon from "@/assets/icon/infomation.svg"; // SVG 파일을 가져옵니다.
+import InfoIcon from "@/assets/icon/infomation.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
@@ -10,12 +10,10 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import { isValidateNickName } from "@/hooks/isValidateNickName";
-
 import { theme } from "@/styles/theme";
 
 // 이모지 판별을 위한 정규식
-const emojiRegex = /\p{Extended_Pictographic}/u;
+const emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27FF]/g;
 
 const ChangeNicknameModal = ({
 	changeNickname,
@@ -25,8 +23,6 @@ const ChangeNicknameModal = ({
 	const dispatch = useAppDispatch();
 
 	const [nickname, setNickname] = useState("");
-	const [informationMessage, setInformationMessage] =
-		useState("8자 제한, 띄어쓰기 불가, 이모티콘 불가");
 	const [isError, setIsError] = useState(false);
 
 	const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,44 +30,37 @@ const ChangeNicknameModal = ({
 
 		// 띄어쓰기 작성 막기
 		input = input.replace(/\s+/g, "");
+		// 이모지 작성 막기
+		input = input.replace(emojiRegex, "");
 
-		// 8자이상 입력 막기
-		setNickname(input.slice(0, 8));
-
-		if (!isValidateNickName(input)) {
+		if (emojiRegex.test(input)) {
 			setIsError(true);
-			if (emojiRegex.test(input)) {
-				setInformationMessage("이모티콘은 사용할 수 없어요!");
-			} else {
-				setInformationMessage("8자 제한, 띄어쓰기 불가, 이모티콘 불가");
-			}
 		} else {
 			setIsError(false);
-			setInformationMessage("8자 제한, 띄어쓰기 불가, 이모티콘 불가");
 		}
+
+		// 8자이상 입력 막기
+		setNickname(input);
 	};
 
 	const handleChangeInput = () => {
-		if (isValidateNickName(nickname)) {
-			changeNickname(nickname);
-			dispatch(closeModal());
-		}
+		changeNickname(nickname);
+		dispatch(closeModal());
 	};
 
 	return (
 		<Modal isBottomSheet>
-			<div css={layoutStyle(isError)}>
+			<div css={layoutStyle}>
 				<h1>닉네임을 입력해 주세요</h1>
 				<input
 					placeholder="닉네임을 입력해 주세요"
 					value={nickname}
 					onChange={(e) => handleNicknameChange(e)}
+					maxLength={8}
 				/>
-				<div css={infoStyle(isError)}>
-					{informationMessage === "8자 제한, 띄어쓰기 불가, 이모티콘 불가" && (
-						<img src={InfoIcon} alt="info icon" />
-					)}
-					<p>{informationMessage}</p>
+				<div>
+					<InfoIcon />
+					<p>8자 제한, 띄어쓰기 불가, 이모티콘 불가</p>
 				</div>
 			</div>
 
@@ -89,7 +78,7 @@ const ChangeNicknameModal = ({
 
 export default ChangeNicknameModal;
 
-const layoutStyle = (isError: boolean) => css`
+const layoutStyle = css`
 	border-radius: 15px 15px 0 0;
 	padding: 1.125rem 1.5rem 4.4375rem;
 	color: ${theme.color.font_black};
@@ -102,22 +91,21 @@ const layoutStyle = (isError: boolean) => css`
 
 	& > input {
 		all: unset;
-		border: 1px solid ${isError ? "red" : "none"};
 		box-sizing: border-box;
 		width: 100%;
 		height: 3.4375rem;
 		border-radius: 15px;
 		padding: 1rem;
-		margin-top: 1.6875rem;
+		margin: 1.6875rem 0 0.5rem;
 		background-color: ${theme.color.bg};
 		color: ${theme.color.font_black};
 	}
-`;
-const infoStyle = (isError: boolean) => css`
-	display: flex;
-	align-items: center;
-	${theme.font.body_c}
-	margin-top: 8px;
-	color: ${isError ? "red" : `${theme.color.font_gray}`};
-	gap: 0.25rem;
+
+	& > div {
+		display: flex;
+		align-items: center;
+		gap: 2.5px;
+		${theme.font.body_c}
+		color: ${theme.color.font_gray}
+	}
 `;
