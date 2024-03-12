@@ -48,7 +48,7 @@ export default function CreateAccountPage() {
 	return (
 		<>
 			<Header>
-				<Header.PrevButton></Header.PrevButton>
+				<Header.PrevButton />
 			</Header>
 			<div css={createAccountStyle.container}>
 				<h1>내 정보 입력을 완료해 주세요</h1>

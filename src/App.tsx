@@ -13,7 +13,6 @@ import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
-import DiscoveryRoutePage from "@/pages/VisitTrackPage";
 import VisitTrackPage from "@/pages/VisitTrackPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 
@@ -36,7 +35,6 @@ const App = () => {
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
 				<Route path="/rest-record" element={<RestRecordPage />} />
-				<Route path="/discoveryRoute" element={<DiscoveryRoutePage />} />
 			</Routes>
 		</BrowserRouter>
 	);
