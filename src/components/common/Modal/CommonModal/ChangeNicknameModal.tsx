@@ -2,7 +2,7 @@ import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 
 import { css } from "@emotion/react";
 
-import InfoIcon from "@/assets/icon/infomation.svg?react";
+import InfoIcon from "@/assets/icon/ic-information.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
