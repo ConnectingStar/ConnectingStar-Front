@@ -23,7 +23,6 @@ const ChangeNicknameModal = ({
 	const dispatch = useAppDispatch();
 
 	const [nickname, setNickname] = useState("");
-	const [isError, setIsError] = useState(false);
 
 	const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
 		let input = e.target.value;
@@ -32,12 +31,6 @@ const ChangeNicknameModal = ({
 		input = input.replace(/\s+/g, "");
 		// 이모지 작성 막기
 		input = input.replace(emojiRegex, "");
-
-		if (emojiRegex.test(input)) {
-			setIsError(true);
-		} else {
-			setIsError(false);
-		}
 
 		// 8자이상 입력 막기
 		setNickname(input);
@@ -70,7 +63,6 @@ const ChangeNicknameModal = ({
 				handleBtnClick={handleChangeInput}
 				handleLeftBtnClick={() => dispatch(closeModal())}
 				isSquare
-				disabled={isError || nickname.trim().length === 0}
 			/>
 		</Modal>
 	);
