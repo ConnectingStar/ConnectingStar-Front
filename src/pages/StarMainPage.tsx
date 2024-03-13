@@ -35,7 +35,7 @@ const containerStyle = css`
 
 	.wrapper {
 		width: 22.5rem;
-		padding: 1.25rem 1.5rem;
+		padding: 1.25rem 1.5rem 4.75rem;
 		margin: 0 auto;
 		position: relative;
 	}
