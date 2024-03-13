@@ -10,8 +10,13 @@ export const selectTagModalStyle = {
 		background-color: white;
 	`,
 	wrap: css`
+<<<<<<< HEAD
 		width: 22.5rem;
 		padding: 1.25rem 1.5rem 1rem;
+=======
+		width: 360px;
+		padding: 1.25rem 1.5rem 1rem 1.5rem;
+>>>>>>> 03e43c2 ([TS-144] Feat: SelectTagModal)
 		& > h1 {
 			${theme.font.head_a}
 			margin-bottom: 2.5rem;
@@ -36,10 +41,18 @@ export const selectTagModalStyle = {
 		}
 
 		& > input {
+<<<<<<< HEAD
 			${isInputFocus && "position: fixed; bottom: 4.688rem;"}
 			width: 19.5rem;
 			height: 3.438rem;
 			margin-top: 1.25rem;
+=======
+			${isInputFocus && "position: fixed; bottom: 75px;"}
+			width: 312px;
+			height: 55px;
+			margin-top: 14px;
+			padding: 1rem;
+>>>>>>> 03e43c2 ([TS-144] Feat: SelectTagModal)
 			background-color: ${theme.color.bg};
 			border: none;
 			border-radius: 20px;
