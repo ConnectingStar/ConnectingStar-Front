@@ -40,15 +40,9 @@ export const selectTagModalStyle = {
 			width: 19.5rem;
 			height: 3.438rem;
 			margin-top: 1.25rem;
-			padding: 1rem;
 			background-color: ${theme.color.bg};
 			border: none;
 			border-radius: 20px;
-			&:focus {
-				outline: none;
-				background-color: ${theme.color.bg};
-				color: black;
-			}
 		}
 
 		.selected {
