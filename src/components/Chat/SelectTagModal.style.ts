@@ -11,10 +11,14 @@ export const selectTagModalStyle = {
 	`,
 	wrap: css`
 <<<<<<< HEAD
+<<<<<<< HEAD
 		width: 22.5rem;
 		padding: 1.25rem 1.5rem 1rem;
 =======
 		width: 360px;
+=======
+		width: 22.5rem;
+>>>>>>> a88c92f ([TS-144] Design: px -> rem)
 		padding: 1.25rem 1.5rem 1rem 1.5rem;
 >>>>>>> 03e43c2 ([TS-144] Feat: SelectTagModal)
 		& > h1 {
@@ -37,6 +41,14 @@ export const selectTagModalStyle = {
 				border-radius: 20px;
 				height: 3.438rem;
 				padding: 1rem;
+<<<<<<< HEAD
+=======
+				margin: 0 6px 6px 0;
+			}
+			.selected {
+				background-color: ${theme.color.main_blue};
+				color: white;
+>>>>>>> a88c92f ([TS-144] Design: px -> rem)
 			}
 		}
 
@@ -48,8 +60,8 @@ export const selectTagModalStyle = {
 			margin-top: 1.25rem;
 =======
 			${isInputFocus && "position: fixed; bottom: 75px;"}
-			width: 312px;
-			height: 55px;
+			width: 19.5rem;
+			height: 3.438rem;
 			margin-top: 14px;
 			padding: 1rem;
 >>>>>>> 03e43c2 ([TS-144] Feat: SelectTagModal)
