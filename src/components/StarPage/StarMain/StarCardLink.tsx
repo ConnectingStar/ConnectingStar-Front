@@ -23,7 +23,7 @@ const containerStyle = css`
 	height: 4.375rem;
 	position: absolute;
 	right: 1.5rem;
-	bottom: 1.25rem;
+	bottom: 4.75rem;
 
 	& > img {
 		width: 4.0625rem;

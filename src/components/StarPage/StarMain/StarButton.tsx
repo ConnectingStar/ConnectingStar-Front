@@ -26,6 +26,11 @@ const containerStyle = css`
 	flex-direction: column;
 	align-items: center;
 	gap: 12px;
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	bottom: 4.75rem;
+	transform: translateX(-50%);
 
 	& > button {
 		width: 5.625rem;
