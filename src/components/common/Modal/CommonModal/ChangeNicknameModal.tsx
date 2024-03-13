@@ -12,9 +12,9 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
-function isValidStringIncludingHangulJamo(s) {
+function isValidNickname(nickname: string) {
 	const regex = /^[가-힣\u3131-\u314E\u314F-\u3163a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+$/;
-	return regex.test(s);
+	return regex.test(nickname);
 }
 
 const ChangeNicknameModal = ({
@@ -29,9 +29,8 @@ const ChangeNicknameModal = ({
 	const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
 
-		if (isValidStringIncludingHangulJamo(input) || input === "") {
+		if (isValidNickname(input) || input === "") {
 			setNickname(input);
-			a;
 		}
 	};
 
