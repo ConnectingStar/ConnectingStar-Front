@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
+import StarBackground from "@/components/StarPage/StarMain/StarBackground";
 import StarButton from "@/components/StarPage/StarMain/StarButton";
 import StarCardLink from "@/components/StarPage/StarMain/StarCardLink";
 import StarInfo from "@/components/StarPage/StarMain/StarInfo";
@@ -10,6 +11,7 @@ import { theme } from "@/styles/theme";
 export default function StarMainPage() {
 	return (
 		<div css={containerStyle}>
+			<StarBackground />
 			<div className="wrapper">
 				<StarInfo starCount={114} starCardId={1} />
 				<StarButton />
