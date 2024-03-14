@@ -99,16 +99,12 @@ function HabitRecord() {
 						name="unit"
 						value={habitRecords.unit}
 					/>
-					<span>
-						페이지 <p>*</p>
-					</span>
+					<span>페이지</span>
 				</div>
 				<h3>했다</h3>
 			</section>
 			<section css={iconsStyle(isActivated, selectedIcon)}>
-				<h2>
-					오늘의 습관 실천을 어떠셨나요? <p>*</p>
-				</h2>
+				<h2>오늘의 습관 실천을 어떠셨나요?</h2>
 				<div>
 					{habitIconData.map((habitIcon) => (
 						<span

@@ -68,11 +68,10 @@ export const conditionStyle = css`
 		& > input {
 			width: 4.875rem;
 		}
-		& > span {
-			& > p {
-				display: inline;
-				color: ${theme.color.main_blue};
-			}
+
+		& > span:after {
+			content: "*";
+			color: ${theme.color.main_blue};
 		}
 	}
 `;
@@ -100,6 +99,11 @@ export const iconsStyle = (isActivated: boolean, selectedIcon: number | null) =>
 			display: inline;
 			color: ${theme.color.main_blue};
 		}
+	}
+
+	& > h2:after {
+		content: "*";
+		color: ${theme.color.main_blue};
 	}
 `;
 
