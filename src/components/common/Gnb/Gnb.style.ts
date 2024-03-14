@@ -5,14 +5,14 @@ export const layoutStyle = css`
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 22.5rem;
+	width: 100%;
 	padding: 0.875rem 2.6875rem;
 	background-color: #fff;
 
 	& > ul {
 		display: flex;
 		align-items: center;
-		gap: 54px;
+		justify-content: space-between;
 
 		& > li {
 			cursor: pointer;
