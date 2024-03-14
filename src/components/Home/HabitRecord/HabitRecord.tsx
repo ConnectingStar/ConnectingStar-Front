@@ -23,7 +23,7 @@ interface HabitRecordsState {
 	when: string;
 	where: string;
 	what: string;
-	unit: number;
+	unit: string | number;
 	[condition: string]: string | number;
 }
 
@@ -36,13 +36,13 @@ function HabitRecord() {
 		when: "",
 		where: "",
 		what: "",
-		unit: 0,
+		unit: "",
 	});
 	const [traceText, setTraceText] = useState<string>("");
 	const [isActivated, setIsActivated] = useState<boolean>(false);
 	const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
 
-	const handleConditionInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
+	const handleConditionInput = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		const numericValue = value.replace(/^0+|[^0-9]/g, "");
 
@@ -61,8 +61,8 @@ function HabitRecord() {
 	};
 
 	useEffect(() => {
-		const { when, where, what, unit } = habitRecords;
-		if (when.length > 0 && where.length > 0 && what.length > 0 && unit > 0) {
+		const { unit } = habitRecords;
+		if (+unit > 0 && (unit + "").length > 0) {
 			setIsActivated(true);
 		} else {
 			setIsActivated(false);
@@ -81,7 +81,7 @@ function HabitRecord() {
 					<h3>나는</h3> <ExclamationMarkIcon />
 				</div>
 				{habitConditions.map(({ condition, placeholder }) => (
-					<textarea
+					<input
 						key={condition}
 						placeholder={placeholder}
 						name={condition}
@@ -91,8 +91,10 @@ function HabitRecord() {
 				))}
 
 				<div className="unit">
-					<textarea
-						maxLength={4}
+					<input
+						type="tel"
+						pattern="\d*"
+						inputMode="numeric"
 						onChange={handleConditionInput}
 						name="unit"
 						value={habitRecords.unit}
@@ -101,7 +103,7 @@ function HabitRecord() {
 						페이지 <p>*</p>
 					</span>
 				</div>
-				<h3>했다.</h3>
+				<h3>했다</h3>
 			</section>
 			<section css={iconsStyle(isActivated, selectedIcon)}>
 				<h2>
@@ -112,7 +114,7 @@ function HabitRecord() {
 						<span
 							key={habitIcon.id}
 							onClick={() => handleIconClick(habitIcon.id)}
-							className={`${habitIcon.id === selectedIcon && "selected"}`}
+							className={habitIcon.id === selectedIcon ? "selected" : ""}
 						>
 							{habitIcon.icon}
 						</span>

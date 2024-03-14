@@ -26,7 +26,7 @@ function StarPrizeModal() {
 				</span>
 				<article css={prizeCommentStyle}>
 					<div>
-						<span className="blue">{target.HABIT_RECORD_BLUE_TEXT}</span>
+						<span>{target.HABIT_RECORD_BLUE_TEXT}</span>
 						<span className="yellow">{target.HABIT_RECORD_YELLOW_TEXT}</span>
 					</div>
 					<div>
@@ -53,7 +53,6 @@ export const containerStyle = css`
 
 export const imageWrapperStyle = css`
 	border-radius: 15px;
-
 	img {
 		width: 13rem;
 		height: 13rem;
@@ -64,14 +63,12 @@ export const imageWrapperStyle = css`
 export const prizeCommentStyle = css`
 	white-space: pre-wrap;
 	text-align: center;
+
 	& > :first-of-type {
-		${theme.font.head_a}
-
-		& .blue {
-			color: ${theme.color.main_blue};
-		}
-
-		& .yellow {
+		${theme.font.head_a};
+		margin-bottom: 0.5rem;
+		color: ${theme.color.main_blue};
+		.yellow {
 			color: ${theme.color.main_yellow};
 		}
 	}

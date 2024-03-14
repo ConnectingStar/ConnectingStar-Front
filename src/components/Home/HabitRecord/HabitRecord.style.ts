@@ -13,17 +13,17 @@ export const layoutStyle = css`
 	${theme.font.body_a};
 	color: ${theme.color.font_black};
 
-	textarea {
+	input {
 		border: none;
 		white-space: nowrap;
 		height: 3.4375rem;
 		background-color: ${theme.color.bg};
 		border-radius: 15px;
 		white-space: pre-wrap;
-		padding: 15px;
+		padding: 0.9375rem;
 		resize: none;
 	}
-	textarea::placeholder {
+	input::placeholder {
 		${theme.color.button_deactivated}
 	}
 
@@ -48,6 +48,13 @@ export const conditionStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
+	& > :first-child {
+		margin-bottom: 0.375rem;
+	}
+
+	& > :last-child {
+		margin-top: 0.375rem;
+	}
 
 	& > div {
 		display: flex;
@@ -58,7 +65,7 @@ export const conditionStyle = css`
 	.unit {
 		gap: 12px;
 
-		& > textarea {
+		& > input {
 			width: 4.875rem;
 		}
 		& > span {
