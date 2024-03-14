@@ -73,7 +73,6 @@ function HabitGenerate() {
 									</>
 								)}
 							</label>
-
 							<div className={condition.SPAN_TEXT_SECOND ? "divided" : "combined"}>
 								<span>{condition.SPAN_TEXT}</span>
 								{condition.SPAN_TEXT_SECOND ? (
