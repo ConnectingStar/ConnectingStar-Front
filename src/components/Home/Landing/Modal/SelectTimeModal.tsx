@@ -60,7 +60,7 @@ function SelectTimeModal() {
 export default SelectTimeModal;
 
 const Picker = ({ list, onSelectedChange }: ScrollPickerProps) => {
-	const SCROLL_DEBOUNCE_TIME = 200;
+	const SCROLL_DEBOUNCE_TIME = 100;
 	const newList = ["", ...list, ""];
 	const ref = useRef<HTMLUListElement>(null);
 	const [selected, setSelected] = useState(1);
