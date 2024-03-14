@@ -25,8 +25,8 @@ import { modalType } from "@/constants/modalConstants";
 function HabitGenerate() {
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
-
 	const [isTip, setIsTip] = useState<boolean>(false);
+
 	return (
 		<main css={layoutStyle}>
 			<section>
