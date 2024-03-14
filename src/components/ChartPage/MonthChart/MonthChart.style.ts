@@ -9,7 +9,7 @@ export const layoutStyle = css`
 
 export const innerBoxStyle = css`
 	width: 22.5rem;
-	padding: 2.5rem 1.5rem;
+	padding: 2.5rem 1.5rem 6rem;
 	margin: 0 auto;
 `;
 
