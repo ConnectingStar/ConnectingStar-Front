@@ -1,6 +1,8 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 
 import { css } from "@emotion/react";
+
+import InfoIcon from "@/assets/icon/ic-information.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
@@ -9,6 +11,11 @@ import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
+
+function isValidNickname(nickname: string) {
+	const regex = /^[가-힣\u3131-\u314E\u314F-\u3163a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+$/;
+	return regex.test(nickname);
+}
 
 const ChangeNicknameModal = ({
 	changeNickname,
@@ -19,6 +26,14 @@ const ChangeNicknameModal = ({
 
 	const [nickname, setNickname] = useState("");
 
+	const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const input = e.target.value;
+
+		if (isValidNickname(input) || input === "") {
+			setNickname(input);
+		}
+	};
+
 	const handleChangeInput = () => {
 		changeNickname(nickname);
 		dispatch(closeModal());
@@ -27,12 +42,17 @@ const ChangeNicknameModal = ({
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
-				<h1>닉네임 수정</h1>
+				<h1>닉네임을 입력해 주세요</h1>
 				<input
-					placeholder="닉네임"
+					placeholder="닉네임을 입력해 주세요"
 					value={nickname}
-					onChange={(e) => setNickname(e.target.value)}
+					onChange={(e) => handleNicknameChange(e)}
+					maxLength={8}
 				/>
+				<div>
+					<InfoIcon />
+					<p>8자 제한, 띄어쓰기 불가, 이모티콘 불가</p>
+				</div>
 			</div>
 
 			<FooterBtn
@@ -40,6 +60,7 @@ const ChangeNicknameModal = ({
 				leftText="취소"
 				handleBtnClick={handleChangeInput}
 				handleLeftBtnClick={() => dispatch(closeModal())}
+				disabled={nickname.trim().length === 0}
 				isSquare
 			/>
 		</Modal>
@@ -49,8 +70,8 @@ const ChangeNicknameModal = ({
 export default ChangeNicknameModal;
 
 const layoutStyle = css`
-	padding: 1.125rem 1.5rem 4.4375rem;
 	border-radius: 15px 15px 0 0;
+	padding: 1.125rem 1.5rem 4.4375rem;
 	color: ${theme.color.font_black};
 	background-color: #fff;
 
@@ -65,9 +86,17 @@ const layoutStyle = css`
 		width: 100%;
 		height: 3.4375rem;
 		border-radius: 15px;
-		margin-top: 1.6875rem;
+		padding: 1rem;
+		margin: 1.6875rem 0 0.5rem;
 		background-color: ${theme.color.bg};
 		color: ${theme.color.font_black};
-		padding: 1rem;
+	}
+
+	& > div {
+		display: flex;
+		align-items: center;
+		gap: 2.5px;
+		${theme.font.body_c}
+		color: ${theme.color.font_gray}
 	}
 `;
