@@ -36,7 +36,6 @@ const App = () => {
 				<Route path="/rest-record" element={<RestRecordPage />} />
 				<Route path="/chat" element={<ChatPage />} />
 				<Route path="/habit-delete" element={<HabitDeletePage />} />
-				<Route path="/chat" element={<ChatPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
