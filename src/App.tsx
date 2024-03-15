@@ -34,6 +34,7 @@ const App = () => {
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
 				<Route path="/withdrawal" element={<WithdrawalPage />} />
 				<Route path="/rest-record" element={<RestRecordPage />} />
+				<Route path="/chat" element={<ChatPage />} />
 				<Route path="/habit-delete" element={<HabitDeletePage />} />
 				<Route path="/chat" element={<ChatPage />} />
 			</Routes>
