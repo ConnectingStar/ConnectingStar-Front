@@ -9,6 +9,7 @@ import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
+import OnBoardingPage from "@/pages/OnBoardingPage";
 import RestRecordPage from "@/pages/RestRecordPage";
 import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
@@ -34,6 +35,7 @@ const App = () => {
 				<Route path="/rest-record" element={<RestRecordPage />} />
 				<Route path="/chatting" element={<ChattingPage />} />
 				<Route path="/habit-delete" element={<HabitDeletePage />} />
+				<Route path="/onboarding" element={<OnBoardingPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
