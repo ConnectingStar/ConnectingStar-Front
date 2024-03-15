@@ -2,14 +2,14 @@ import { useState } from "react";
 
 import CheckIcon from "@/assets/icon/ic-check-blue.svg?react";
 
-import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
-import Header from "@/components/common/Header/Header";
 import {
 	container,
 	wrap,
 	locationListStyle,
 	locationInputStyle,
-} from "@/components/OnBoarding/LocationModalStyle";
+} from "@/components/Chatting/LocationModalStyle";
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import Header from "@/components/common/Header/Header";
 
 import { locationModalData } from "@/constants/locationModalConstants";
 
