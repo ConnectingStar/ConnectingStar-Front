@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import ArrowDownIcon from "@/assets/icon/arrow-down.svg?react";
+import ArrowDownIcon from "@/assets/icon/ic-arrow-down.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
