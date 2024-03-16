@@ -12,10 +12,7 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
-function isValidNickname(nickname: string) {
-	const regex = /^[가-힣\u3131-\u314E\u314F-\u3163a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+$/;
-	return regex.test(nickname);
-}
+import isValidNickname from "@/utils/isValidNickname";
 
 const ChangeNicknameModal = ({
 	changeNickname,
