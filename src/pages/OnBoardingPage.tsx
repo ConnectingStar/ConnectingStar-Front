@@ -1,11 +1,11 @@
 // import CreateAccount from "@/components/OnBoarding/CreateAccount";
-// import VisitTraker from "@/components/OnBoarding/VisitTraker";
+// import VisitTracker from "@/components/OnBoarding/VisitTracker";
 
 function OnBoardingPage() {
 	return (
 		<>
 			{/* <CreateAccount /> */}
-			{/* <VisitTraker /> */}
+			{/* <VisitTracker /> */}
 		</>
 	);
 }

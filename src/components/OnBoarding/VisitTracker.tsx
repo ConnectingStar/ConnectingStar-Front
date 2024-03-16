@@ -4,7 +4,7 @@ import Header from "@/components/common/Header/Header";
 
 import { theme } from "@/styles/theme";
 
-function VisitTraker() {
+function VisitTracker() {
 	const discoveryRouteText = ["앱 스토어", "지인 추천", "SNS 광고", "검색", "기타"];
 
 	return (
@@ -12,7 +12,7 @@ function VisitTraker() {
 			<Header>
 				<Header.PrevButton />
 			</Header>
-			<div css={visitTrackStyle}>
+			<div css={visitTrackerStyle}>
 				<h1>어떤 경로를 통해 오셨나요?</h1>
 				<ul>
 					{discoveryRouteText.map((item) => (
@@ -26,9 +26,9 @@ function VisitTraker() {
 	);
 }
 
-export default VisitTraker;
+export default VisitTracker;
 
-export const visitTrackStyle = css`
+export const visitTrackerStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem;
