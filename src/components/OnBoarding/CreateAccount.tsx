@@ -70,7 +70,7 @@ export default function CreateAccount() {
 					))}
 				</ul>
 			</div>
-			<FooterBtn text="다음" isTransparent />
+			<FooterBtn text="다음" isTransparent disabled={!nickName || !gender || !age} />
 
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickName} />}
 			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}
