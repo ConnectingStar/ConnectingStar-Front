@@ -20,14 +20,14 @@ function LocationModal() {
 	return (
 		<div css={container}>
 			<Header>
-				<Header.CloseButton></Header.CloseButton>
+				<Header.CloseButton />
 			</Header>
 			<div css={wrap}>
 				<h1>장소를 입력해 주세요</h1>
 				<ul css={locationListStyle}>
 					<p>예시</p>
-					{locationModalData.map(({ id, text }) => (
-						<li key={id}>
+					{locationModalData.map((text) => (
+						<li key={text}>
 							<CheckIcon />
 							{text}
 						</li>
