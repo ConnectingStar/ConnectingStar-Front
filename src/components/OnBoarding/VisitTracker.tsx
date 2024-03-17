@@ -16,7 +16,7 @@ function VisitTracker() {
 				<h1>어떤 경로를 통해 오셨나요?</h1>
 				<ul>
 					{discoveryRouteText.map((item) => (
-						<li>
+						<li key={item}>
 							<button>{item}</button>
 						</li>
 					))}
