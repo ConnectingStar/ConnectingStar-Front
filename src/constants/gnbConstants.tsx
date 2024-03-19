@@ -10,7 +10,7 @@ import StarIcon from "@/assets/icon/ic-gnb-star.svg?react";
 export const gnbData = [
 	{
 		id: "home",
-		link: "/home",
+		link: "/",
 		icon: <HomeIcon />,
 		disabledIcon: <HomeDisabledIcon />,
 	},
