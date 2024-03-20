@@ -44,7 +44,7 @@ function ChattingPage() {
 					<Header>
 						<Header.PrevButton></Header.PrevButton>
 					</Header>
-					<Progressbar currentClicks={progress} totalClicksNeeded={11} />
+					<Progressbar currentClicks={progress} totalClicksNeeded={10} />
 				</div>
 				<div css={chattingPageStyle.chattingWrap(isbuttonHeiger)}>
 					{chatData.slice(0, progress + 1).map((chatData) => (
