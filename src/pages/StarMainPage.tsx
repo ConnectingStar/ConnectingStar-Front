@@ -45,6 +45,14 @@ const containerStyle = css`
 `;
 
 const starMainPageGnbStyle = css`
-	background-color: ${theme.color.font_black};
 	opacity: 0.5;
+
+	& > div {
+		width: 500px;
+		background-color: ${theme.color.font_black};
+
+		ul {
+			justify-content: center;
+		}
+	}
 `;
