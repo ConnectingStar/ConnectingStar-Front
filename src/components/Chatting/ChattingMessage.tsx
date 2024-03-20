@@ -45,6 +45,7 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 		setIsReply(true);
 	};
 
+	// 하단 버튼이 3개일 때 3개보다 높을 때 디자인을 달리해주는 함수
 	const sideBtnStyle = () => {
 		if (replyBtnMessage.length === 3) return chattingStyle.sideButton;
 		if (replyBtnMessage.length > 3) return chattingStyle.scrollButton;
@@ -72,11 +73,12 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 			<div css={chattingStyle.profile}>
 				<img src="" alt="profile" />
 			</div>
+
 			<div css={chattingStyle.chatWrap} ref={endOfMessagesRef}>
 				<ul>
-					{message.slice(0, messageIndex + 1).map((msg, index) => (
+					{message.slice(0, messageIndex + 1).map((msg) => (
 						<li
-							key={index}
+							key={msg}
 							dangerouslySetInnerHTML={{ __html: processMessage(msg, chatData.id) }}
 						></li>
 					))}
@@ -95,7 +97,7 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 				<div>
 					<div css={sideBtnStyle}>
 						{replyBtnMessage.slice(1).map((item) => (
-							<button>{item}</button>
+							<button key={item}>{item}</button>
 						))}
 					</div>
 					<FooterBtn text={replyBtnMessage[0]} handleBtnClick={handleReplyBtn} isTransparent />
