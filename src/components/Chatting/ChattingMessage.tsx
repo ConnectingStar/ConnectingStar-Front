@@ -31,7 +31,8 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 
 	// 스크롤다운 함수
 	useEffect(() => {
-		endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
+		if (!endOfMessagesRef.current) return;
+		endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
 	}, [messageIndex]);
 
 	// 버튼 함수
