@@ -23,7 +23,7 @@ export const layoutStyle = css`
 		color: ${theme.color.font_gray};
 	}
 
-	& > .condition {
+	& > section {
 		ul {
 			display: flex;
 			flex-direction: column;
