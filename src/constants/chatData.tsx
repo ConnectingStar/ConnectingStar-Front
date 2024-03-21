@@ -1,6 +1,6 @@
-import { userDataType } from "@/types/userDataType";
+import { userType } from "@/types/userDataType";
 
-export function createChatData(userData: userDataType) {
+export function createChatData(userData: userType) {
 	return [
 		{
 			id: "firstMeet",
