@@ -25,7 +25,6 @@ export default function StarMainPage() {
 }
 
 const containerStyle = css`
-	height: 100dvh;
 	background: linear-gradient(
 		#0b0a0b 2%,
 		#192771 38%,
@@ -38,7 +37,7 @@ const containerStyle = css`
 	.wrapper {
 		width: 22.5rem;
 		height: 100dvh;
-		padding: 1.25rem 1.5rem 4.75rem;
+		padding: 1.75rem 1.5rem 4.75rem;
 		margin: 0 auto;
 		position: relative;
 	}
