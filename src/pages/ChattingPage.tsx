@@ -36,7 +36,7 @@ function ChattingPage() {
 
 	const userData = useSelector((state: RootState) => state.user);
 	const chatData = createChatData(userData);
-	const isbuttonHeiger = chatData[progress].replyBtnMessage.length > 1;
+	const extraBtnHeight = chatData[progress].replyBtnMessage.length > 1;
 	return (
 		<div>
 			<div css={chattingPageStyle.container}>
@@ -46,7 +46,7 @@ function ChattingPage() {
 					</Header>
 					<Progressbar currentClicks={progress} totalClicksNeeded={10} />
 				</div>
-				<div css={chattingPageStyle.chattingWrap(isbuttonHeiger)}>
+				<div css={chattingPageStyle.chattingWrap(extraBtnHeight)}>
 					{chatData.slice(0, progress + 1).map((chatData) => (
 						<ChattingMessage key={chatData.id} chatData={chatData} setProgress={setProgress} />
 					))}
