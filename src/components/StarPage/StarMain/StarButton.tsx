@@ -11,9 +11,7 @@ const description = `버튼을 클릭하여 별자리를 완성하면 \n 캐릭�
 export default function StarButton() {
 	return (
 		<div css={containerStyle}>
-			<p css={getOutlineTextStyle(theme.color.main_deep_blue, "head_c")} data-text={description}>
-				{description}
-			</p>
+			<p data-text={description}>{description}</p>
 			<button>
 				<img src={starButton} alt="" />
 			</button>
@@ -31,6 +29,12 @@ const containerStyle = css`
 	left: 50%;
 	bottom: 4.75rem;
 	transform: translateX(-50%);
+
+	& > p {
+		${getOutlineTextStyle(theme.color.main_deep_blue, "head_c")}
+		white-space: pre-wrap;
+		text-align: center;
+	}
 
 	& > button {
 		img {
