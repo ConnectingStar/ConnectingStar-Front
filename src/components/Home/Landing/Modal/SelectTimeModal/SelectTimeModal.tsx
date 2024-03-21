@@ -3,6 +3,8 @@ import { useState, useEffect, useRef, SetStateAction, Dispatch } from "react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
+import { TimeMapper } from "@/utils/TimeMapper";
+
 import {
 	layoutStyle,
 	listCenterStyle,
@@ -14,9 +16,13 @@ interface ScrollPickerProps {
 	list: (string | number)[];
 	setList?: Dispatch<SetStateAction<(string | number)[]>>; // 변경
 	onSelectedChange: (value: string | number) => void;
+	total?: number;
+}
+interface ModalOptions {
+	title?: string;
 }
 
-function SelectTimeModal() {
+function SelectTimeModal({ title = "1차 알림 시간을 설정해주세요" }: ModalOptions) {
 	const [selectedClock, setSelectedClock] = useState({ noon: "오전", time: "01", minute: "00" });
 	const isNoon = ["", "오전", "오후", ""];
 	const timeList = Array.from({ length: 12 }).map((_, idx) => {
@@ -25,7 +31,7 @@ function SelectTimeModal() {
 		}
 		return idx + 1 + "";
 	});
-	const [time, setTime] = useState<string[]>(timeList);
+	const [time, setTime] = useState<string[]>(timeList.concat(timeList));
 	const minuteList = Array.from({ length: 60 }).map((_, idx) => {
 		if (idx < 10) {
 			return "0" + idx;
@@ -44,18 +50,24 @@ function SelectTimeModal() {
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
-				<label>1차 알림 시간을 선택해 주세요.</label>
+				<label>{title}</label>
 				<section>
 					<div>
 						<Picker list={isNoon} onSelectedChange={onSelectedChange("noon")} />
 					</div>
 					<div className="clock">
-						<Picker list={time} setList={setTime} onSelectedChange={onSelectedChange("time")} />
+						<Picker
+							list={time}
+							setList={setTime}
+							onSelectedChange={onSelectedChange("time")}
+							total={12}
+						/>
 						<p>:</p>
 						<Picker
 							list={minute}
 							setList={setMinute}
 							onSelectedChange={onSelectedChange("minute")}
+							total={60}
 						/>
 					</div>
 				</section>
@@ -69,7 +81,7 @@ function SelectTimeModal() {
 
 export default SelectTimeModal;
 
-const Picker = ({ list, setList, onSelectedChange }: ScrollPickerProps) => {
+const Picker = ({ list, setList, onSelectedChange, total }: ScrollPickerProps) => {
 	const SCROLL_DEBOUNCE_TIME = 100;
 	const ref = useRef<HTMLUListElement>(null);
 	const [selected, setSelected] = useState(1);
@@ -77,50 +89,30 @@ const Picker = ({ list, setList, onSelectedChange }: ScrollPickerProps) => {
 	const timerRef = useRef(0);
 	const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 	const ITEM_HEIGHT = rootFontSize * 3.625;
-	const totalLength = list.length;
 
 	const handleScroll = () => {
 		if (ref.current) {
-			clearTimeout(timerRef.current!);
 			// setList가 있을 시에는 무한 캐러셀의 스타일을, 아닐 때는 기본적인 캐러셀 기능을 구현
 			if (setList) {
+				// 위로 스크롤
 				if (ref.current.scrollTop < ITEM_HEIGHT * 3) {
-					const arr = Array.from({ length: 6 })
-						.map((_, idx) => {
-							// 시, 분에 따라 업데이트되는 요소들 변경
-							const limit = totalLength < 24 ? 1 : 0;
-							if (+list[0] - (idx + 1) < limit) {
-								return `${totalLength + (+list[0] - (idx + 1)) < 10 ? "0" : ""}${totalLength + (+list[0] - (idx + 1))}`;
-							} else {
-								return `${+list[0] - (idx + 1) < 10 ? "0" : ""}${+list[0] - (idx + 1)}`;
-							}
-						})
-						.reverse();
-					setList([...arr, ...list.slice(0, list.length - arr.length)]);
-					ref.current.scrollTop = ITEM_HEIGHT * arr.length;
+					const upperArr = TimeMapper(list[0], total, 6, "upper");
+					setList([...upperArr, ...list.slice(0, list.length - upperArr.length)]);
+					ref.current.scrollTop = ITEM_HEIGHT * 9;
 				}
-
+				// 위로 스크롤시 아래로 스크롤
 				if (ref.current.scrollTop >= ref.current.scrollHeight - ITEM_HEIGHT * 3) {
-					const arr = Array.from({ length: 6 }).map((_, idx) => {
-						// 시, 분에 따라 업데이트되는 요소들 변경
-						const limit = totalLength < 24 ? totalLength - 1 : totalLength - 2;
-						if (+list[list.length - 2] + (idx + 1) > limit) {
-							return `${+list[list.length - 1] + (idx + 1) - totalLength < 10 ? "0" : ""}${+list[list.length - 1] + (idx + 1) - totalLength}`;
-						} else {
-							return `${+list[list.length - 1] + (idx + 1) < 10 ? "0" : ""}${+list[list.length - 1] + (idx + 1)}`;
-						}
-					});
-					setList([...list.slice(arr.length), ...arr]);
-					ref.current.scrollTop = ITEM_HEIGHT * (list.length - arr.length);
+					const lowerArr = TimeMapper(list[list.length - 1], total, 6, "lower");
+					setList([...list.slice(lowerArr.length), ...lowerArr]);
+					ref.current.scrollTop = ref.current.scrollHeight - ITEM_HEIGHT * 9;
 				}
+				// 스크롤 업데이트하지 않을시 무한 스크롤이 아닐때의 로직
 			} else {
 				if (ref.current.scrollTop < ITEM_HEIGHT) {
 					ref.current.scrollTop = ITEM_HEIGHT;
 				}
-				if (ref.current.scrollTop > ref.current.scrollHeight - ITEM_HEIGHT) {
-					ref.current.scrollTop = ref.current.scrollHeight - ITEM_HEIGHT;
-				}
 			}
+			clearTimeout(timerRef.current!);
 
 			timerRef.current = setTimeout(() => {
 				const index = Math.floor((ref.current!.scrollTop + ITEM_HEIGHT / 2) / ITEM_HEIGHT);
