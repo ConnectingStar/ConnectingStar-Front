@@ -12,7 +12,7 @@ import {
 	containerStyle,
 	imageWrapperStyle,
 	prizeCommentStyle,
-} from "@/components/Home/Landing/Modal/StarPrizeModal.style";
+} from "@/components/Home/Landing/Modal/StarPrizeModal/StarPrizeModal.style";
 
 function StarPrizeModal() {
 	const dispatch = useAppDispatch();
