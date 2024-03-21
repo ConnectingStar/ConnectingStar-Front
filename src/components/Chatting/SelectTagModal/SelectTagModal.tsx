@@ -3,7 +3,7 @@ import { useState } from "react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 
-import { selectTagModalStyle } from "@/components/Chatting/SelectTagModal.style";
+import { selectTagModalStyle } from "@/components/Chatting/SelectTagModal/SelectTagModal.style";
 
 interface selectTagModal {
 	title: string;
