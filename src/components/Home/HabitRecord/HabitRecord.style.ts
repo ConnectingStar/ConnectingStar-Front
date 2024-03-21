@@ -44,34 +44,36 @@ export const layoutStyle = css`
 	}
 `;
 
-export const conditionStyle = css`
-	display: flex;
-	flex-direction: column;
-	gap: 6px;
-	& > :first-child {
-		margin-bottom: 0.375rem;
-	}
-
-	& > :last-child {
-		margin-top: 0.375rem;
-	}
-
-	& > div {
+export const conditionWrapperStyle = css`
+	& > span:first-of-type {
 		display: flex;
 		align-items: center;
 		gap: 6px;
+		margin-bottom: 0.75rem;
 	}
 
-	.unit {
-		gap: 12px;
+	& > h3:first-of-type {
+		margin-top: 0.75rem;
+	}
 
-		& > input {
-			width: 4.875rem;
+	& > ul {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+
+		& > li > input {
+			width: 100%;
 		}
 
-		& > span:after {
-			content: "*";
-			color: ${theme.color.main_blue};
+		& > li:last-of-type {
+			input {
+				width: 4.875rem;
+				margin-right: 0.75rem;
+			}
+			span:after {
+				content: "*";
+				color: ${theme.color.main_blue};
+			}
 		}
 	}
 `;

@@ -14,7 +14,7 @@ import { habitIconData } from "@/constants/myPageConstants";
 
 import {
 	layoutStyle,
-	conditionStyle,
+	conditionWrapperStyle,
 	iconsStyle,
 	inputBoxStyle,
 } from "@/components/Home/HabitRecord/HabitRecord.style";
@@ -76,31 +76,25 @@ function HabitRecord() {
 				<h2>정체성</h2>
 				<span>매일 성장하는 사람</span>
 			</label>
-			<section css={conditionStyle}>
-				<div>
+			<section css={conditionWrapperStyle}>
+				<span>
 					<h3>나는</h3> <ExclamationMarkIcon />
-				</div>
-				{habitConditions.map(({ condition, placeholder }) => (
-					<input
-						key={condition}
-						placeholder={placeholder}
-						name={condition}
-						onChange={handleConditionInput}
-						value={habitRecords[condition]}
-					/>
-				))}
-
-				<div className="unit">
-					<input
-						type="tel"
-						pattern="\d*"
-						inputMode="numeric"
-						onChange={handleConditionInput}
-						name="unit"
-						value={habitRecords.unit}
-					/>
-					<span>페이지</span>
-				</div>
+				</span>
+				<ul>
+					{habitConditions.map(({ condition, placeholder }) => (
+						<li>
+							<input
+								key={condition}
+								inputMode={condition === "unit" ? "numeric" : "none"}
+								placeholder={placeholder}
+								name={condition}
+								onChange={handleConditionInput}
+								value={habitRecords[condition]}
+							/>
+							{condition === "unit" && <span>페이지</span>}
+						</li>
+					))}
+				</ul>
 				<h3>했다</h3>
 			</section>
 			<section css={iconsStyle(isActivated, selectedIcon)}>
