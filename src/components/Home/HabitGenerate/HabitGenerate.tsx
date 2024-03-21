@@ -13,8 +13,7 @@ import {
 	textBoxStyle,
 	selectBoxStyle,
 } from "@/components/Home/HabitGenerate/HabitGenerate.Style";
-import SelectTimeModal from "@/components/Home/Landing/Modal/SelectTimeModal";
-import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
+import SelectTimeModal from "@/components/Home/Landing/Modal/SelectTimeModal/SelectTimeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -87,7 +86,6 @@ function HabitGenerate() {
 			</ul>
 			<FooterBtn text="좋아, 이대로 만들게" isPositionStatic />
 			{modal === modalType.SELECT_TIME && <SelectTimeModal />}
-			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
 		</main>
 	);
 }
