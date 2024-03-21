@@ -12,10 +12,10 @@ interface chatType {
 }
 
 function ChattingMessage({ chatData, setProgress }: chatType) {
-	const { id, message, replyBtnMessage, reply } = chatData;
+	const { message, replyBtnMessage, reply } = chatData;
 
 	const [messageIndex, setMessageIndex] = useState(0);
-	const [isreply, setIsReply] = useState(false);
+	const [isReply, setIsReply] = useState(false);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
 	// 메시지 하나씩 내려오게하는 함수
@@ -30,12 +30,8 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 	}, [messageIndex]);
 
 	// 스크롤다운 함수
-	const scrollToBottom = () => {
-		endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
-	};
-
 	useEffect(() => {
-		scrollToBottom();
+		endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
 	}, [messageIndex]);
 
 	// 버튼 함수
@@ -57,12 +53,14 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 		if (id === "time") {
 			return message.replace(
 				/(명확|매력|쉽게|만족)/g,
-				(match) => `<span style="color: ${theme.color.main_blue};">${match}</span>`,
+				(match) =>
+					`<span style="color: ${theme.color.main_blue};font-weight: 700;">${match}</span>`,
 			);
 		} else if (id === "last") {
 			return message.replace(
 				/(매일 실행|꾸준하게 하는 것)/g,
-				(match) => `<span style="color: ${theme.color.main_blue};">${match}</span>`,
+				(match) =>
+					`<span style="color: ${theme.color.main_blue};font-weight: 700;">${match}</span>`,
 			);
 		}
 		return message;
@@ -77,20 +75,11 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 			<div css={chattingStyle.chatWrap} ref={endOfMessagesRef}>
 				<ul>
 					{message.slice(0, messageIndex + 1).map((msg) => (
-						<li
-							key={msg}
-							dangerouslySetInnerHTML={{ __html: processMessage(msg, chatData.id) }}
-						></li>
+						<li key={msg} dangerouslySetInnerHTML={{ __html: processMessage(msg, chatData.id) }} />
 					))}
 				</ul>
 
-				{isreply ? (
-					<div css={replyStyle} dangerouslySetInnerHTML={{ __html: reply }}></div>
-				) : (
-					(id === "alert" || id === "organize") && (
-						<div css={replyStyle} dangerouslySetInnerHTML={{ __html: reply }}></div>
-					)
-				)}
+				{isReply && <div css={replyStyle} dangerouslySetInnerHTML={{ __html: reply }} />}
 			</div>
 
 			{message.length === messageIndex && (
