@@ -9,7 +9,7 @@ import { getOutlineTextStyle } from "@/components/StarPage/StarMain/getOutlineTe
 export default function StarCardLink() {
 	return (
 		<Link to="/star-card" css={containerStyle}>
-			<img src={starCardBook} alt="" />
+			<img src={starCardBook} alt="별자리 카드" />
 			<span css={getOutlineTextStyle("#7400cf", "head_c")} data-text="별자리 카드">
 				별자리 카드
 			</span>
@@ -18,7 +18,6 @@ export default function StarCardLink() {
 }
 
 const containerStyle = css`
-	display: block;
 	width: 4.25rem;
 	height: 4.375rem;
 	position: absolute;
