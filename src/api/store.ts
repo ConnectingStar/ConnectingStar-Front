@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { modalReducer } from "@/api/modal/modalSlice";
-import userDataReducer from "@/api/userDataSlice";
+import userReducer from "@/api/user/userSlice";
 
 export const store = configureStore({
 	reducer: {
 		modal: modalReducer,
-		userData: userDataReducer,
+		user: userReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

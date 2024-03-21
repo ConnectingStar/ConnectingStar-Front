@@ -1,4 +1,4 @@
-export interface userDataType {
+export interface userType {
 	nickName: string;
 	gender: "남" | "여" | "";
 	age: "15-19" | "20-24" | "25-29" | "30-34" | "35-39" | "40-44" | "45-50" | "50-54" | "55이상";
