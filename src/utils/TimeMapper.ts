@@ -3,7 +3,7 @@ export const TimeMapper = (
 	total: number | undefined,
 	length: number,
 	type: "upper" | "lower",
-) => {
+): string[] => {
 	let answer = ["ERROR"];
 	if (!total) {
 		return answer;
