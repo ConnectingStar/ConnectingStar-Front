@@ -34,7 +34,7 @@ import { theme } from "@/styles/theme";
 function ChattingPage() {
 	const [progress, setProgress] = useState(0);
 
-	const userData = useSelector((state: RootState) => state.userData);
+	const userData = useSelector((state: RootState) => state.user);
 	const chatData = createChatData(userData);
 	const isbuttonHeiger = chatData[progress].replyBtnMessage.length > 1;
 	return (
@@ -42,17 +42,13 @@ function ChattingPage() {
 			<div css={chattingPageStyle.container}>
 				<div css={chattingPageStyle.header}>
 					<Header>
-						<Header.PrevButton></Header.PrevButton>
+						<Header.PrevButton />
 					</Header>
 					<Progressbar currentClicks={progress} totalClicksNeeded={10} />
 				</div>
 				<div css={chattingPageStyle.chattingWrap(isbuttonHeiger)}>
 					{chatData.slice(0, progress + 1).map((chatData) => (
-						<ChattingMessage
-							key={chatData.id}
-							chatData={chatData}
-							setProgress={setProgress}
-						></ChattingMessage>
+						<ChattingMessage key={chatData.id} chatData={chatData} setProgress={setProgress} />
 					))}
 				</div>
 				{/* <LocationModal /> */}
