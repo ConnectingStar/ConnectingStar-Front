@@ -33,7 +33,9 @@ const containerStyle = css`
 	transform: translateX(-50%);
 
 	& > button {
-		width: 5.625rem;
-		height: 5.0625rem;
+		img {
+			width: 5.625rem;
+			height: 5.075rem;
+		}
 	}
 `;
