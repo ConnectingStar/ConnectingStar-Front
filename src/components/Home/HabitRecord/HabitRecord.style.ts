@@ -45,14 +45,14 @@ export const layoutStyle = css`
 `;
 
 export const conditionWrapperStyle = css`
-	& > span:first-of-type {
+	& > h3:first-of-type {
 		display: flex;
 		align-items: center;
 		gap: 6px;
 		margin-bottom: 0.75rem;
 	}
 
-	& > h3:first-of-type {
+	& > h3:last-of-type {
 		margin-top: 0.75rem;
 	}
 
