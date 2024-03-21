@@ -13,8 +13,8 @@ import {
 } from "@/components/Home/Landing/Modal/SelectTimeModal/SelectTimeModal.style";
 
 interface ScrollPickerProps {
-	list: (string | number)[];
-	setList?: Dispatch<SetStateAction<(string | number)[]>>; // 변경
+	list: string[];
+	setList?: Dispatch<SetStateAction<string[]>>;
 	onSelectedChange: (value: string | number) => void;
 	total?: number;
 }
@@ -29,16 +29,16 @@ function SelectTimeModal({ title = "1차 알림 시간을 설정해주세요" }:
 		if (idx + 1 < 10) {
 			return "0" + (idx + 1);
 		}
-		return idx + 1 + "";
+		return "" + (idx + 1);
 	});
-	const [time, setTime] = useState<string[]>(timeList.concat(timeList));
+	const [time, setTime] = useState(timeList.concat(timeList));
 	const minuteList = Array.from({ length: 60 }).map((_, idx) => {
 		if (idx < 10) {
 			return "0" + idx;
 		}
-		return idx + "";
+		return "" + idx;
 	});
-	const [minute, setMinute] = useState<string[]>(minuteList);
+	const [minute, setMinute] = useState(minuteList);
 	const onSelectedChange = (type: string) => (target: string | number) => {
 		setSelectedClock({ ...selectedClock, [type]: target });
 	};
@@ -90,21 +90,23 @@ const Picker = ({ list, setList, onSelectedChange, total }: ScrollPickerProps) =
 	const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 	const ITEM_HEIGHT = rootFontSize * 3.625;
 
+	// handleScroll이 정상적으로 작동하기 위해서는 scrollTop이 반응할 때의 남은 갯수와 업데이트되는 갯수를 더한 값으로 scrollTop이 업데이트되어야한다.
+	// 주어지는 list.length - scrollTop이 반응할 때의 개수 > scrollTop이 반응할 때의 남은 갯수 + 업데이트되는 갯수를 더한 값이어야 한다.
 	const handleScroll = () => {
 		if (ref.current) {
 			// setList가 있을 시에는 무한 캐러셀의 스타일을, 아닐 때는 기본적인 캐러셀 기능을 구현
 			if (setList) {
 				// 위로 스크롤
 				if (ref.current.scrollTop < ITEM_HEIGHT * 3) {
-					const upperArr = TimeMapper(list[0], total, 6, "upper");
+					const upperArr = TimeMapper(list[0], total, 12, "upper");
 					setList([...upperArr, ...list.slice(0, list.length - upperArr.length)]);
-					ref.current.scrollTop = ITEM_HEIGHT * 9;
+					ref.current.scrollTop = ITEM_HEIGHT * 15;
 				}
 				// 위로 스크롤시 아래로 스크롤
 				if (ref.current.scrollTop >= ref.current.scrollHeight - ITEM_HEIGHT * 3) {
-					const lowerArr = TimeMapper(list[list.length - 1], total, 6, "lower");
+					const lowerArr = TimeMapper(list[list.length - 1], total, 12, "lower");
 					setList([...list.slice(lowerArr.length), ...lowerArr]);
-					ref.current.scrollTop = ref.current.scrollHeight - ITEM_HEIGHT * 9;
+					ref.current.scrollTop = ref.current.scrollHeight - ITEM_HEIGHT * 15;
 				}
 				// 스크롤 업데이트하지 않을시 무한 스크롤이 아닐때의 로직
 			} else {
