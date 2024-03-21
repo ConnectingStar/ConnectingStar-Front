@@ -21,7 +21,7 @@ export default function Star({ cx, cy, r }: StarProps) {
 
 	return (
 		<motion.circle
-			initial={{ cx, cy }} // cx, cy 초기값 고정
+			initial={{ cx, cy }} // cx, cy 초기값 고정(없으면 리렌더링 시 여기저기로 이동함)
 			cx={cx}
 			cy={cy}
 			r={r}
