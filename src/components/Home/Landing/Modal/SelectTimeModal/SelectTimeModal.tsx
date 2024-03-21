@@ -31,6 +31,7 @@ function SelectTimeModal({ title = "1차 알림 시간을 설정해주세요" }:
 		}
 		return "" + (idx + 1);
 	});
+
 	const [time, setTime] = useState(timeList.concat(timeList));
 	const minuteList = Array.from({ length: 60 }).map((_, idx) => {
 		if (idx < 10) {
@@ -89,12 +90,10 @@ const Picker = ({ list, setList, onSelectedChange, total }: ScrollPickerProps) =
 	const timerRef = useRef(0);
 	const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 	const ITEM_HEIGHT = rootFontSize * 3.625;
-
-	// handleScroll이 정상적으로 작동하기 위해서는 scrollTop이 반응할 때의 남은 갯수와 업데이트되는 갯수를 더한 값으로 scrollTop이 업데이트되어야한다.
-	// 주어지는 list.length - scrollTop이 반응할 때의 개수 > scrollTop이 반응할 때의 남은 갯수 + 업데이트되는 갯수를 더한 값이어야 한다.
 	const handleScroll = () => {
 		if (ref.current) {
 			// setList가 있을 시에는 무한 캐러셀의 스타일을, 아닐 때는 기본적인 캐러셀 기능을 구현
+			clearTimeout(timerRef.current!);
 			if (setList) {
 				// 위로 스크롤
 				if (ref.current.scrollTop < ITEM_HEIGHT * 3) {
@@ -114,8 +113,6 @@ const Picker = ({ list, setList, onSelectedChange, total }: ScrollPickerProps) =
 					ref.current.scrollTop = ITEM_HEIGHT;
 				}
 			}
-			clearTimeout(timerRef.current!);
-
 			timerRef.current = setTimeout(() => {
 				const index = Math.floor((ref.current!.scrollTop + ITEM_HEIGHT / 2) / ITEM_HEIGHT);
 				if (list[index] !== "") {
@@ -132,7 +129,7 @@ const Picker = ({ list, setList, onSelectedChange, total }: ScrollPickerProps) =
 
 	useEffect(() => {
 		if (ref.current) {
-			ref.current.scrollTop = selected * ITEM_HEIGHT;
+			ref.current.scrollTop = +selected * ITEM_HEIGHT;
 		}
 	}, []);
 
