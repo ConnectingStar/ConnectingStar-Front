@@ -15,7 +15,7 @@ function Progressbar({ totalClicksNeeded, currentClicks }: ProgressProps) {
 
 	return (
 		<div css={progressbarStyle(calculateProgress())}>
-			<div></div>
+			<div />
 		</div>
 	);
 }
