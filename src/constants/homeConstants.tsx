@@ -83,7 +83,7 @@ export const habitGenerateConditionsArray = [
 	{
 		LABEL_TEXT: "정체성",
 		SPAN_TEXT: "정체성을 선택해주세요.",
-		MODAL_NAME: modalType.SELECT_REASON,
+		MODAL_NAME: "",
 	},
 	{
 		LABEL_TEXT: "언제",
