@@ -15,6 +15,10 @@ export const habitConditions: HabitCondition[] = [
 		condition: "what",
 		placeholder: "책 읽기를",
 	},
+	{
+		condition: "unit",
+		placeholder: "",
+	},
 ];
 
 export const prizeCommentsArray = [
