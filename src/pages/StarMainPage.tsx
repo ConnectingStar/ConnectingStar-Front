@@ -48,11 +48,6 @@ const starMainPageGnbStyle = css`
 	opacity: 0.5;
 
 	& > div {
-		width: 500px;
 		background-color: ${theme.color.font_black};
-
-		ul {
-			justify-content: center;
-		}
 	}
 `;
