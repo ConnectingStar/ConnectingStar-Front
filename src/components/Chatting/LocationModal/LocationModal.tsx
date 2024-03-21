@@ -7,7 +7,7 @@ import {
 	wrap,
 	locationListStyle,
 	locationInputStyle,
-} from "@/components/Chatting/LocationModalStyle";
+} from "@/components/Chatting/LocationModal/LocationModalStyle";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 
