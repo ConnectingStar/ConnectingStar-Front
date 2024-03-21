@@ -41,13 +41,6 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 		setIsReply(true);
 	};
 
-	// 하단 버튼이 3개일 때 3개보다 높을 때 디자인을 달리해주는 함수
-	const sideBtnStyle = () => {
-		if (replyBtnMessage.length === 3) return chattingStyle.sideButton;
-		if (replyBtnMessage.length > 3) return chattingStyle.scrollButton;
-		return null;
-	};
-
 	// 특정 메시지의 단어 파란색으로 변경하는 함수
 	function processMessage(message: string, id: string) {
 		if (id === "time") {
@@ -84,7 +77,15 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 
 			{message.length === messageIndex && (
 				<div>
-					<div css={sideBtnStyle}>
+					<div
+						css={
+							replyBtnMessage.length === 3
+								? chattingStyle.sideButton
+								: replyBtnMessage.length > 3
+									? chattingStyle.scrollButton
+									: null
+						}
+					>
 						{replyBtnMessage.slice(1).map((item) => (
 							<button key={item}>{item}</button>
 						))}
