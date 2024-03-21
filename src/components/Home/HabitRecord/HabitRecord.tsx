@@ -77,14 +77,17 @@ function HabitRecord() {
 				<span>매일 성장하는 사람</span>
 			</label>
 			<section css={conditionWrapperStyle}>
-				<span>
-					<h3>나는</h3> <ExclamationMarkIcon />
-				</span>
+				<h3>
+					나는
+					<span>
+						<ExclamationMarkIcon />
+					</span>
+				</h3>
+
 				<ul>
 					{habitConditions.map(({ condition, placeholder }) => (
-						<li>
+						<li key={condition}>
 							<input
-								key={condition}
 								inputMode={condition === "unit" ? "numeric" : "none"}
 								placeholder={placeholder}
 								name={condition}
