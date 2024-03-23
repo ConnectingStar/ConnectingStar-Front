@@ -13,7 +13,7 @@ export default function StarButton() {
 		<div css={containerStyle}>
 			<p data-text={description}>{description}</p>
 			<button>
-				<img src={starButton} alt="" />
+				<img src={starButton} alt="별 모양 버튼" />
 			</button>
 		</div>
 	);
