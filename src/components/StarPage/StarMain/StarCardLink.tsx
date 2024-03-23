@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 
 import starCardBook from "@/assets/image/img-3d-star-card-book.png";
 
-import { getOutlineTextStyle } from "@/components/StarPage/StarMain/getOutlineText.style";
+import { getOutlineTextStyle } from "@/components/StarPage/StarMain/Star.style";
 
 export default function StarCardLink() {
 	return (

@@ -4,7 +4,7 @@ import starButton from "@/assets/image/img-3d-star-circle-button.png";
 
 import { theme } from "@/styles/theme";
 
-import { getOutlineTextStyle } from "@/components/StarPage/StarMain/getOutlineText.style";
+import { getOutlineTextStyle } from "@/components/StarPage/StarMain/Star.style";
 
 const description = `버튼을 클릭하여 별자리를 완성하면 \n 캐릭터를 획득할 수 있어요!`;
 
