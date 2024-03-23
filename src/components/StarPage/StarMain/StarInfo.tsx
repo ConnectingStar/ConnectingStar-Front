@@ -7,7 +7,7 @@ import star from "@/assets/image/img-3d-star.png";
 
 import { theme } from "@/styles/theme";
 
-import { getOutlineTextStyle } from "@/components/StarPage/StarMain/getOutlineText.style";
+import { getOutlineTextStyle } from "@/components/StarPage/StarMain/Star.style";
 
 // TODO: 별 개수(starCount)는 API 연결 후 수정 예정
 interface StarInfoProps {
