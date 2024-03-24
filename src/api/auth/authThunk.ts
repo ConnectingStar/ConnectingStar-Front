@@ -15,12 +15,19 @@ interface FCMTokenResponseType {
 	nickname: string;
 }
 
-export const postFCMToken = createAsyncThunk("auth/postFCMToken", async (_, thunkAPI) => {
-	try {
-		const data = axiosInstance.post<FCMTokenRequestType, FCMTokenResponseType>(END_POINTS.FCM);
+export const postFCMToken = createAsyncThunk(
+	"auth/postFCMToken",
+	async ({ token, nickname, password }: FCMTokenRequestType, thunkAPI) => {
+		try {
+			const data = axiosInstance.post<FCMTokenRequestType, FCMTokenResponseType>(END_POINTS.FCM, {
+				token,
+				nickname,
+				password,
+			});
 
-		return data;
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error);
-	}
-});
+			return data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error);
+		}
+	},
+);
