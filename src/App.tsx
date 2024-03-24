@@ -21,8 +21,8 @@ const App = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/home" element={<HomePage />} />
-				<Route path="/home/:id" element={<HabitShelfPage />} />
+				<Route path="/" element={<HomePage />} />
+				<Route path="/:id" element={<HabitShelfPage />} />
 				<Route path="/star-card" element={<StarCardPage />} />
 				<Route path="/star-card/:id" element={<StarCardDetailPage />} />
 				<Route path="/chart" element={<ChartPage />} />
