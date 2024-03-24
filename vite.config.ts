@@ -1,7 +1,6 @@
-import { VitePWA } from "vite-plugin-pwa";
-
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { VitePWA } from "vite-plugin-pwa";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 
@@ -17,6 +16,12 @@ export default defineConfig({
 				enabled: true,
 			},
 			manifest: {
+				name: "Tars",
+				short_name: "Tars",
+				start_url: "/",
+				display: "standalone",
+				background_color: "#ffffff",
+				theme_color: "#0176F9",
 				icons: [
 					{
 						src: "/icon-192.png",
