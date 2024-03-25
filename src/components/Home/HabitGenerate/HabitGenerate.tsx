@@ -49,6 +49,7 @@ function HabitGenerate() {
 		if (modalName === modalType.SELECT_TIME) {
 			setTimeModalTitle(placeText);
 		}
+
 		// 임시
 		if (modals[modalName] !== undefined) {
 			setModals({ ...modals, [modalName]: true });
