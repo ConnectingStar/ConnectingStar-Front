@@ -12,6 +12,7 @@ import { createChatData } from "@/constants/chatData";
 
 import { theme } from "@/styles/theme";
 
+// import BehaviorModal from "@/components/Chatting/BehaviorModal";
 // import LocationModal from "@/components/Chatting/LocationModal";
 // import SelectTagModal from "@/components/Chatting/SelectTagModal";
 
@@ -50,6 +51,7 @@ function ChattingPage() {
 						<ChattingMessage key={chatData.id} chatData={chatData} setProgress={setProgress} />
 					))}
 				</div>
+				{/* <BehaviorModal /> */}
 				{/* <LocationModal /> */}
 				{/* <SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={habitTags} /> */}
 			</div>
