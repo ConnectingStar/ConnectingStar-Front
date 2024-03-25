@@ -10,7 +10,7 @@ import {
 	listCenterStyle,
 	listItemStyle,
 	listStyle,
-} from "@/components/Home/Landing/Modal/SelectTimeModal/SelectTimeModal.style";
+} from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal.style";
 
 interface ScrollPickerProps {
 	list: string[];
