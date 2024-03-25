@@ -6,6 +6,7 @@ import RoundCloseButtonIcon from "@/assets/icon/ic-round-close-button.svg?react"
 import StarImage from "@/assets/image/img-card-detail-star-button.png";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import {
 	layoutStyle,
 	profileBoxStyle,
@@ -13,7 +14,6 @@ import {
 	textBoxStyle,
 	selectBoxStyle,
 } from "@/components/Home/HabitGenerate/HabitGenerate.Style";
-import SelectTimeModal from "@/components/Home/Landing/Modal/SelectTimeModal/SelectTimeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
