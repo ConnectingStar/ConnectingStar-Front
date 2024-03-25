@@ -39,7 +39,8 @@ export const profileBoxStyle = css`
 export const tipBoxStyle = css`
 	position: relative;
 	display: flex;
-	label {
+
+	& > div:first-of-type {
 		text-align: center;
 		padding: 0.625rem;
 		width: 6.875rem;
@@ -62,6 +63,7 @@ export const textBoxStyle = css`
 
 	& > div {
 		width: 14.75rem;
+
 		& > .bold {
 			${theme.font.head_c}
 			color: ${theme.color.main_blue}
@@ -85,12 +87,14 @@ export const selectBoxStyle = css`
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-		& > label {
+
+		& > div:first-of-type {
 			display: flex;
 			align-items: center;
 			${theme.font.head_c}
 			color: ${theme.color.font_gray};
 			gap: 6px;
+
 			& > span:nth-of-type(2) {
 				${theme.font.body_xs}
 				color:${theme.color.main_blue}
@@ -103,6 +107,7 @@ export const selectBoxStyle = css`
 			border-radius: 15px;
 			color: ${theme.color.button_deactivated};
 			background-color: ${theme.color.bg};
+
 			& > span {
 				flex: 1;
 			}
@@ -110,16 +115,19 @@ export const selectBoxStyle = css`
 
 		& > .divided {
 			display: flex;
+
 			& > span {
 				padding: 1.25rem 1rem;
 				border-radius: 15px;
 				color: ${theme.color.button_deactivated};
 				background-color: ${theme.color.bg};
 			}
+
 			& > span:first-of-type {
 				width: 40%;
 				margin-right: 0.375rem;
 			}
+
 			& > span:nth-of-type(2) {
 				width: 60%;
 			}
