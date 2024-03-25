@@ -38,7 +38,7 @@ function BehaviorModal() {
 							<input
 								ref={unitInputRef}
 								type="text"
-								placeholder="단위 입력(예: 페이지)"
+								placeholder="단위 입력 (예: 페이지)"
 								onChange={(e) => {
 									setUnit(e.target.value);
 								}}
@@ -78,7 +78,7 @@ const BehaviorModalStyle = {
 	container: css`
 		height: 19.375rem;
 		border-radius: 15px 15px 0 0;
-		padding: 1.125rem 1.5rem 3.438rem 1.5rem;
+		padding: 1.125rem 1.5rem 3.438rem;
 		${theme.font.body_a}
 		color: ${theme.color.font_black};
 		background-color: #fff;
@@ -91,7 +91,7 @@ const BehaviorModalStyle = {
 	wrap: css`
 		display: flex;
 		flex-direction: column;
-		gap: 1.25rem;
+		gap: 20px;
 		h3 {
 			${theme.font.head_c};
 			color: ${theme.color.font_gray};
@@ -109,6 +109,9 @@ const BehaviorModalStyle = {
 				background-color: ${theme.color.bg};
 				color: ${theme.color.font_black};
 				padding: 1rem;
+				::placeholder {
+					color: ${theme.color.button_deactivated};
+				}
 			}
 
 			& :first-of-type {
