@@ -79,43 +79,77 @@ export const deleteReasonData = [
 	},
 ];
 
-export const habitGenerateConditionsArray = [
+export const habitGenerateConditions = [
 	{
-		LABEL_TEXT: "정체성",
-		SPAN_TEXT: "정체성을 선택해주세요.",
-		MODAL_NAME: "",
+		SUBTITLE_TEXT: "정체성",
+		PLACE_TEXT: "정체성을 선택해주세요.",
+		MODAL_NAME: "selectIdentity",
 	},
 	{
-		LABEL_TEXT: "언제",
-		SPAN_TEXT: "시간을 선택해주세요.",
+		SUBTITLE_TEXT: "언제",
+		PLACE_TEXT: "시간을 선택해주세요.",
 		MODAL_NAME: modalType.SELECT_TIME,
 	},
 	{
-		LABEL_TEXT: "어디서",
-		SPAN_TEXT: "장소를 선택해주세요.",
-		MODAL_NAME: "",
+		SUBTITLE_TEXT: "어디서",
+		PLACE_TEXT: "장소를 선택해주세요.",
+		MODAL_NAME: "location",
 	},
 	{
-		LABEL_TEXT: "무엇을",
-		SPAN_TEXT: "습관을 선택해주세요.",
-		MODAL_NAME: modalType.SELECT_CHARACTER,
+		SUBTITLE_TEXT: "무엇을",
+		PLACE_TEXT: "습관을 선택해주세요.",
+		MODAL_NAME: "selectHabit",
 	},
 	{
-		LABEL_TEXT: "얼마나",
-		SPAN_TEXT: "숫자 입력",
-		SPAN_TEXT_SECOND: "단위 입력 (예: 페이지)",
+		SUBTITLE_TEXT: "얼마나",
+		PLACE_TEXT: "숫자 입력",
+		PLACE_TEXT_SECOND: "단위 입력 (예: 페이지)",
 		MODAL_NAME: modalType.SELECT_AGE,
 	},
 	{
-		LABEL_TEXT: "1차 알림",
+		SUBTITLE_TEXT: "1차 알림",
 		EXPLANATION: "약속을 상기시켜 드리는 알림이에요!",
-		SPAN_TEXT: "1차 알림 시간을 선택해주세요.",
-		MODAL_NAME: "",
+		PLACE_TEXT: "1차 알림 시간을 선택해주세요.",
+		MODAL_NAME: modalType.SELECT_TIME,
 	},
 	{
-		LABEL_TEXT: "2차 알림",
+		SUBTITLE_TEXT: "2차 알림",
 		EXPLANATION: "습관 기록을 독려하는 알림이에요!",
-		SPAN_TEXT: "2차 알림 시간을 선택해주세요.",
-		MODAL_NAME: "",
+		PLACE_TEXT: "2차 알림 시간을 선택해주세요.",
+		MODAL_NAME: modalType.SELECT_TIME,
 	},
 ];
+
+export const identity = {
+	title: "어떤 사람이 되고 싶으세요?",
+	tags: [
+		"건강한",
+		"박식한",
+		"생산적인",
+		"스스로를 믿는",
+		"매일 발전하는",
+		"지혜로운",
+		"유연한",
+		"너그러운",
+		"글로 성장하는",
+		"스스로를 통제하는",
+	],
+};
+
+export const habit = {
+	title: "어떤 습관을 만들어 볼까요?",
+	tags: [
+		"러닝하기",
+		"헬스하기",
+		"산책하기",
+		"명상하기",
+		"기도하기",
+		"자기확인",
+		"책 읽기",
+		"신문 보기",
+		"공부하기",
+		"블로깅",
+		"일기작성",
+		"소비 기록",
+	],
+};
