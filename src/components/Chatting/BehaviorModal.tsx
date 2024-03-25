@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import { css } from "@emotion/react";
 
@@ -8,8 +8,12 @@ import Modal from "../common/Modal/Modal";
 import { theme } from "@/styles/theme";
 
 function BehaviorModal() {
-	//TODO: "무엇을"에 해당하는 습관 가져오기
+	const [unitNumber, setUnitNumber] = useState<string>();
+	const [unit, setUnit] = useState<string>();
+	const [isNextBtn, setIsNextBtn] = useState(false);
+	//TODO: "무엇을"에 해당하는 "습관" 가져오기
 	const habit = "자격증 공부하기";
+	const unitInputRef = useRef<HTMLInputElement>(null); // "단위" 입력 필드를 위한 ref 생성
 
 	return (
 		<Modal isBottomSheet>
@@ -23,13 +27,47 @@ function BehaviorModal() {
 					<div>
 						<h3>얼마나</h3>
 						<form>
-							<input type="number" placeholder="숫자 입력" />
-							<input type="text" placeholder="단위 입력(예: 페이지)" />
+							<input
+								type="number"
+								placeholder="숫자 입력"
+								autoFocus
+								onChange={(e) => {
+									setUnitNumber(e.target.value);
+								}}
+							/>
+							<input
+								ref={unitInputRef}
+								type="text"
+								placeholder="단위 입력(예: 페이지)"
+								onChange={(e) => {
+									setUnit(e.target.value);
+								}}
+							/>
 						</form>
 					</div>
 				</div>
 			</div>
-			<FooterBtn text="다음" isSquare />
+			{isNextBtn ? (
+				<FooterBtn
+					text="확인"
+					isSquare
+					handleBtnClick={() => {
+						//TODO: behavior 전송
+						if (unit && unitNumber) alert(unitNumber + unit);
+					}}
+					disabled={!unitNumber || !unit}
+				/>
+			) : (
+				<FooterBtn
+					text="다음"
+					isSquare
+					handleBtnClick={() => {
+						unitInputRef.current?.focus(); // 확인버튼으로 자동으로 넘어감
+						setIsNextBtn(true);
+					}}
+					disabled={!unitNumber && !unit}
+				/>
+			)}
 		</Modal>
 	);
 }
