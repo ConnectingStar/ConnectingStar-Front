@@ -26,6 +26,7 @@ export const chattingStyle = {
 		display: flex;
 	`,
 	profile: css`
+		flex-shrink: 0;
 		width: 2.5rem;
 		height: 2.5rem;
 		border-radius: 50%;
