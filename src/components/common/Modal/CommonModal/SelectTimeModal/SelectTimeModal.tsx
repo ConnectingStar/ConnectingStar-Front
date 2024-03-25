@@ -22,7 +22,7 @@ interface ModalOptions {
 	title?: string;
 }
 
-function SelectTimeModal({ title = "1차 알림 시간을 설정해주세요" }: ModalOptions) {
+function SelectTimeModal({ title = "시간을 선택해 주세요." }: ModalOptions) {
 	const [selectedClock, setSelectedClock] = useState({ noon: "오전", time: "01", minute: "00" });
 	const isNoon = ["", "오전", "오후", ""];
 	const timeList = Array.from({ length: 12 }).map((_, idx) => {

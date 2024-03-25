@@ -5,6 +5,8 @@ import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 import RoundCloseButtonIcon from "@/assets/icon/ic-round-close-button.svg?react";
 import StarImage from "@/assets/image/img-card-detail-star-button.png";
 
+import LocationModal from "@/components/Chatting/LocationModal";
+import SelectTagModal from "@/components/Chatting/SelectTagModal";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import {
@@ -18,17 +20,47 @@ import {
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { habitGenerateConditionsArray } from "@/constants/homeConstants";
+import { habitGenerateConditions } from "@/constants/homeConstants";
+import { identity, habit } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
+
+interface Modals {
+	selectIdentity?: boolean;
+	location?: boolean;
+	selectHabit?: boolean;
+	[modalName: string]: boolean | undefined;
+}
 
 function HabitGenerate() {
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
+	const [timeModalTitle, setTimeModalTitle] = useState("시간을 선택해 주세요");
 	const [isTip, setIsTip] = useState<boolean>(false);
+
+	// 임시
+	const [modals, setModals] = useState<Modals>({
+		selectIdentity: false,
+		location: false,
+		selectHabit: false,
+	});
+
+	const handleClick = (modalName: string, placeText: string) => {
+		dispatch(openModal(modalName));
+		if (modalName === modalType.SELECT_TIME) {
+			setTimeModalTitle(placeText);
+		}
+		// 임시
+		if (modals[modalName] !== undefined) {
+			setModals({ ...modals, [modalName]: true });
+			setTimeout(() => {
+				setModals({ ...modals, [modalName]: false });
+			}, 8000);
+		}
+	};
 
 	return (
 		<main css={layoutStyle}>
-			<section>
+			<div>
 				<div css={profileBoxStyle}>
 					<img src={StarImage} alt="임시" />
 					<div>
@@ -38,7 +70,7 @@ function HabitGenerate() {
 				</div>
 
 				<div css={tipBoxStyle}>
-					<label onClick={() => setIsTip(!isTip)}>{`좋은 습관 Tip`}</label>
+					<div onClick={() => setIsTip(!isTip)}>{`좋은 습관 Tip`}</div>
 					{isTip && (
 						<div css={textBoxStyle}>
 							<div>
@@ -53,39 +85,35 @@ function HabitGenerate() {
 						</div>
 					)}
 				</div>
-			</section>
+			</div>
 			<ul css={selectBoxStyle}>
-				{habitGenerateConditionsArray.map((condition) => {
+				{habitGenerateConditions.map((condition) => {
+					const { SUBTITLE_TEXT, EXPLANATION, PLACE_TEXT, PLACE_TEXT_SECOND, MODAL_NAME } =
+						condition;
 					return (
-						<li
-							key={condition.LABEL_TEXT}
-							onClick={() => {
-								dispatch(openModal(condition.MODAL_NAME));
-							}}
-						>
-							<label>
-								<span>{condition.LABEL_TEXT}</span>
-								{condition.EXPLANATION && (
+						<li key={SUBTITLE_TEXT} onClick={() => handleClick(MODAL_NAME, PLACE_TEXT)}>
+							<div>
+								<span>{SUBTITLE_TEXT}</span>
+								{EXPLANATION && (
 									<>
 										<BlueExplanationMarkIcon />
-										<span>{condition.EXPLANATION}</span>
+										<span>{EXPLANATION}</span>
 									</>
 								)}
-							</label>
-							<div className={condition.SPAN_TEXT_SECOND ? "divided" : "combined"}>
-								<span>{condition.SPAN_TEXT}</span>
-								{condition.SPAN_TEXT_SECOND ? (
-									<span> {condition.SPAN_TEXT_SECOND}</span>
-								) : (
-									<DownArrowIcon />
-								)}
+							</div>
+							<div className={PLACE_TEXT_SECOND ? "divided" : "combined"}>
+								<span>{PLACE_TEXT}</span>
+								{PLACE_TEXT_SECOND ? <span> {PLACE_TEXT_SECOND}</span> : <DownArrowIcon />}
 							</div>
 						</li>
 					);
 				})}
 			</ul>
 			<FooterBtn text="좋아, 이대로 만들게" isPositionStatic />
-			{modal === modalType.SELECT_TIME && <SelectTimeModal />}
+			{modal === modalType.SELECT_TIME && <SelectTimeModal title={timeModalTitle} />}
+			{modals.selectIdentity && <SelectTagModal title={identity.title} tags={identity.tags} />}
+			{modals.selectHabit && <SelectTagModal title={habit.title} tags={habit.tags} />}
+			{modals.location && <LocationModal />}
 		</main>
 	);
 }
