@@ -78,19 +78,17 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 
 			{message.length === messageIndex && (
 				<div>
-					<div
-						css={
-							replyBtnMessage.length === 3
-								? chattingStyle.sideButton
-								: replyBtnMessage.length > 3
-									? chattingStyle.scrollButton
-									: null
-						}
-					>
-						{replyBtnMessage.slice(1).map((item) => (
-							<button key={item}>{item}</button>
-						))}
-					</div>
+					{replyBtnMessage.length > 1 && (
+						<div
+							css={
+								replyBtnMessage.length === 3 ? chattingStyle.sideButton : chattingStyle.scrollButton
+							}
+						>
+							{replyBtnMessage.slice(1).map((item) => (
+								<button key={item}>{item}</button>
+							))}
+						</div>
+					)}
 					<FooterBtn text={replyBtnMessage[0]} handleBtnClick={handleReplyBtn} isTransparent />
 				</div>
 			)}
