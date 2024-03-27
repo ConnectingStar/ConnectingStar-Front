@@ -44,6 +44,11 @@
               "group": "internal",
               "position": "before"
             },
+						{
+              "pattern": "{framer-motion*,framer-motion*/*}",
+              "group": "internal",
+              "position": "before"
+            },
             {
               "pattern": "@/assets/**/*",
               "group": "internal",

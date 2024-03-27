@@ -16,12 +16,14 @@ import OauthSignUp from "@/pages/SignUp/OauthSignUp";
 import SignUp from "@/pages/SignUp/SignUp";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
+import StarMainPage from "@/pages/StarMainPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 const App = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+				<Route path="/star" element={<StarMainPage />} />
 				<Route path="/star-card" element={<StarCardPage />} />
 				<Route path="/star-card/:id" element={<StarCardDetailPage />} />
 				<Route path="/chart" element={<ChartPage />} />
