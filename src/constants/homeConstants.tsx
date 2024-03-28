@@ -4,6 +4,8 @@ import banner03 from "@/assets/image/img-homepage-banner-03.png";
 import banner04 from "@/assets/image/img-homepage-banner-04.png";
 import banner05 from "@/assets/image/img-homepage-banner-05.png";
 
+import { modalType } from "@/constants/modalConstants";
+
 export const adviceImages = [
 	{
 		src: banner01,
@@ -76,3 +78,78 @@ export const deleteReasonData = [
 		subText: "다음 약속으로 또 만나길 기다릴게요 :)",
 	},
 ];
+
+export const habitGenerateConditions = [
+	{
+		SUBTITLE_TEXT: "정체성",
+		PLACE_TEXT: "정체성을 선택해주세요.",
+		MODAL_NAME: "selectIdentity",
+	},
+	{
+		SUBTITLE_TEXT: "언제",
+		PLACE_TEXT: "시간을 선택해주세요.",
+		MODAL_NAME: modalType.SELECT_TIME,
+	},
+	{
+		SUBTITLE_TEXT: "어디서",
+		PLACE_TEXT: "장소를 선택해주세요.",
+		MODAL_NAME: "location",
+	},
+	{
+		SUBTITLE_TEXT: "무엇을",
+		PLACE_TEXT: "습관을 선택해주세요.",
+		MODAL_NAME: "selectHabit",
+	},
+	{
+		SUBTITLE_TEXT: "얼마나",
+		PLACE_TEXT: "숫자 입력",
+		PLACE_TEXT_SECOND: "단위 입력 (예: 페이지)",
+		MODAL_NAME: modalType.SELECT_AGE,
+	},
+	{
+		SUBTITLE_TEXT: "1차 알림",
+		EXPLANATION: "약속을 상기시켜 드리는 알림이에요!",
+		PLACE_TEXT: "1차 알림 시간을 선택해주세요.",
+		MODAL_NAME: modalType.SELECT_TIME,
+	},
+	{
+		SUBTITLE_TEXT: "2차 알림",
+		EXPLANATION: "습관 기록을 독려하는 알림이에요!",
+		PLACE_TEXT: "2차 알림 시간을 선택해주세요.",
+		MODAL_NAME: modalType.SELECT_TIME,
+	},
+];
+
+export const identity = {
+	title: "어떤 사람이 되고 싶으세요?",
+	tags: [
+		"건강한",
+		"박식한",
+		"생산적인",
+		"스스로를 믿는",
+		"매일 발전하는",
+		"지혜로운",
+		"유연한",
+		"너그러운",
+		"글로 성장하는",
+		"스스로를 통제하는",
+	],
+};
+
+export const habit = {
+	title: "어떤 습관을 만들어 볼까요?",
+	tags: [
+		"러닝하기",
+		"헬스하기",
+		"산책하기",
+		"명상하기",
+		"기도하기",
+		"자기확인",
+		"책 읽기",
+		"신문 보기",
+		"공부하기",
+		"블로깅",
+		"일기작성",
+		"소비 기록",
+	],
+};
