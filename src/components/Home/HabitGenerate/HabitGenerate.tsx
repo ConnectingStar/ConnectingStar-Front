@@ -8,20 +8,21 @@ import StarImage from "@/assets/image/img-card-detail-star-button.png";
 import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
 import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
-import {
-	layoutStyle,
-	profileBoxStyle,
-	tipBoxStyle,
-	selectBoxStyle,
-} from "@/components/Home/HabitGenerate/HabitGenerate.Style";
-// import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 
+// import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import { useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { habitGenerateConditions } from "@/constants/homeConstants";
 import { identity, habit } from "@/constants/homeConstants";
 // import { modalType } from "@/constants/modalConstants";
+
+import {
+	layoutStyle,
+	profileBoxStyle,
+	tipBoxStyle,
+	selectBoxStyle,
+} from "@/components/Home/HabitGenerate/HabitGenerate.style";
 
 interface Modals {
 	selectIdentity?: boolean;
