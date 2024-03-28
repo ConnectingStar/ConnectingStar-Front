@@ -5,11 +5,11 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	display: flex;
 	flex-direction: column;
-	width: 22.5rem;
 	gap: 20px;
+	width: 22.5rem;
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem;
-	${theme.font.body_b};
+	${theme.font.body_b}
 `;
 
 export const profileBoxStyle = css`
