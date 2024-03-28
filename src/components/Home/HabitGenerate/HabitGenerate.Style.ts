@@ -5,11 +5,11 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
 	width: 22.5rem;
+	gap: 20px;
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem;
-	${theme.font.body_b}
+	${theme.font.body_b};
 `;
 
 export const profileBoxStyle = css`
@@ -49,36 +49,36 @@ export const tipBoxStyle = css`
 		color: white;
 		background-color: ${theme.color.main_deep_blue};
 	}
-`;
 
-export const textBoxStyle = css`
-	transform: translateY(calc(2.125rem + 12px));
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-	background-color: white;
-	white-space: pre-wrap;
-	padding: 1rem;
-	width: 19.375rem;
-	height: 9.25rem;
-	border: 1px solid ${theme.color.main_blue};
-	border-radius: 5px;
-	gap: 20px;
-
-	& > div {
-		width: 14.75rem;
-
-		& > span:first-of-type {
-			${theme.font.head_c}
-			color: ${theme.color.main_blue}
-		}
-	}
-
-	& > svg {
+	& > div:nth-of-type(2) {
+		transform: translateY(calc(2.125rem + 12px));
 		position: absolute;
-		transform: translate(-1rem, 1rem);
-		top: 0;
-		right: 0;
+		display: flex;
+		flex-direction: column;
+		background-color: white;
+		white-space: pre-wrap;
+		padding: 1rem;
+		width: 19.375rem;
+		height: 9.25rem;
+		border: 1px solid ${theme.color.main_blue};
+		border-radius: 5px;
+		gap: 20px;
+
+		& > div {
+			width: 14.75rem;
+
+			& > span:first-of-type {
+				${theme.font.head_c}
+				color: ${theme.color.main_blue}
+			}
+		}
+
+		& > svg {
+			position: absolute;
+			transform: translate(-1rem, 1rem);
+			top: 0;
+			right: 0;
+		}
 	}
 `;
 
