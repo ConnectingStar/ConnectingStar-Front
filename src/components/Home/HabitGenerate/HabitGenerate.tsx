@@ -5,8 +5,8 @@ import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 import RoundCloseButtonIcon from "@/assets/icon/ic-round-close-button.svg?react";
 import StarImage from "@/assets/image/img-card-detail-star-button.png";
 
-import LocationModal from "@/components/Chatting/LocationModal";
-import SelectTagModal from "@/components/Chatting/SelectTagModal";
+import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
+import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import {
 	layoutStyle,
