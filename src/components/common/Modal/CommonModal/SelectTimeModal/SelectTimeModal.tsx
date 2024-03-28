@@ -22,7 +22,7 @@ interface ModalOptions {
 	title?: string;
 }
 
-function SelectTimeModal({ title = "시간을 선택해 주세요." }: ModalOptions) {
+function SelectTimeModal({ title = "시간을 선택해 주세요" }: ModalOptions) {
 	const [selectedClock, setSelectedClock] = useState({ noon: "오전", time: "01", minute: "00" });
 	const isNoon = ["", "오전", "오후", ""];
 	const timeList = Array.from({ length: 12 }).map((_, idx) => {
@@ -51,12 +51,12 @@ function SelectTimeModal({ title = "시간을 선택해 주세요." }: ModalOpti
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
-				<label>{title}</label>
-				<section>
+				<div>{title}</div>
+				<div>
 					<div>
 						<Picker list={isNoon} onSelectedChange={onSelectedChange("noon")} />
 					</div>
-					<div className="clock">
+					<div>
 						<Picker
 							list={time}
 							setList={setTime}
@@ -71,8 +71,8 @@ function SelectTimeModal({ title = "시간을 선택해 주세요." }: ModalOpti
 							total={60}
 						/>
 					</div>
-				</section>
-				<span className="buttonWrapper">
+				</div>
+				<span>
 					<FooterBtn leftText="취소" text="선택" isPositionStatic />
 				</span>
 			</div>
