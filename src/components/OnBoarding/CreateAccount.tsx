@@ -13,7 +13,7 @@ import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
 
-import { createAccountStyle } from "@/components/OnBoarding/CreateAccount.style";
+import { createAccountStyle } from "@/components/Onboarding/CreateAccount.style";
 
 export default function CreateAccount() {
 	const dispatch = useAppDispatch();
