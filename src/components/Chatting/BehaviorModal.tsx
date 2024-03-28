@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { css } from "@emotion/react";
 
-import FooterBtn from "../common/FooterBtn/FooterBtn";
-import Modal from "../common/Modal/Modal";
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import Modal from "@/components/common/Modal/Modal";
 
 import { theme } from "@/styles/theme";
 
