@@ -22,11 +22,11 @@ function AlarmCheckModal({ target, alarm, setAlarm }: Alarms) {
 	return (
 		<Modal>
 			<div css={layoutStyle}>
-				<article>
+				<div>
 					<p>{`알림을 off 하면 저와의 약속을 잊으실까 걱정돼요 😥`}</p>
 					<p>{`괜찮으시다면 제가 계속 도움이 되어드리고 싶어요`}</p>
 					<h1>{`알림을 유지하시겠어요?`}</h1>
-				</article>
+				</div>
 				<FooterBtn
 					leftText="알림 끄기"
 					text="알림 유지"

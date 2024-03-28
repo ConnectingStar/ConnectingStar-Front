@@ -16,7 +16,7 @@ export const layoutStyle = css`
 	h1 {
 		${theme.font.body_a_bold};
 	}
-	& > article {
+	& > div:first-of-type {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
