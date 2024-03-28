@@ -5,7 +5,7 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 40px;
 	width: 22.5rem;
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem 0;
@@ -13,9 +13,9 @@ export const layoutStyle = css`
 	.tab {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 6px;
 
-		& > label {
+		& > span:first-of-type {
 			${theme.font.head_c}
 			color: ${theme.color.font_gray}
 		}
@@ -28,13 +28,19 @@ export const layoutStyle = css`
 		padding: 1rem;
 		height: 3.4375rem;
 		background-color: ${theme.color.bg};
+
 		& > span:first-of-type {
 			${theme.font.body_a_bold}
 		}
+
 		& > span:nth-of-type(2) {
 			${theme.font.body_a};
 			color: ${theme.color.main_blue};
 		}
+	}
+
+	& > div:nth-of-type(3) {
+		gap: 12px;
 	}
 `;
 
@@ -46,6 +52,7 @@ export const alarmBoxStyle = (isToggled: boolean) => css`
 	border-radius: 15px;
 	background-color: ${theme.color.bg};
 	padding: 1rem;
+
 	& > span {
 		display: flex;
 		align-items: center;
@@ -61,13 +68,13 @@ export const alarmBoxStyle = (isToggled: boolean) => css`
 		}
 	}
 
-	& > article {
+	& > div:first-of-type {
 		width: 13.625rem;
 		${theme.font.body_c};
 		color: ${theme.color.button_deactivated};
 	}
 
-	& > .toggle {
+	& > div:nth-of-type(2) {
 		position: absolute;
 		width: 2.875rem;
 		height: 1.5rem;
