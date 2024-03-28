@@ -30,6 +30,7 @@ export const profileBoxStyle = css`
 
 	& > div {
 		white-space: pre-wrap;
+
 		& > span:first-of-type {
 			${theme.font.head_b}
 		}
@@ -53,6 +54,8 @@ export const tipBoxStyle = css`
 export const textBoxStyle = css`
 	transform: translateY(calc(2.125rem + 12px));
 	position: absolute;
+	display: flex;
+	flex-direction: column;
 	background-color: white;
 	white-space: pre-wrap;
 	padding: 1rem;
@@ -60,17 +63,18 @@ export const textBoxStyle = css`
 	height: 9.25rem;
 	border: 1px solid ${theme.color.main_blue};
 	border-radius: 5px;
+	gap: 20px;
 
 	& > div {
 		width: 14.75rem;
 
-		& > .bold {
+		& > span:first-of-type {
 			${theme.font.head_c}
 			color: ${theme.color.main_blue}
 		}
 	}
 
-	& > button {
+	& > svg {
 		position: absolute;
 		transform: translate(-1rem, 1rem);
 		top: 0;
@@ -124,12 +128,12 @@ export const selectBoxStyle = css`
 			}
 
 			& > span:first-of-type {
-				width: 40%;
+				width: 6.25rem;
 				margin-right: 0.375rem;
 			}
 
 			& > span:nth-of-type(2) {
-				width: 60%;
+				width: 12.875rem;
 			}
 		}
 	}
