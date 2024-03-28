@@ -36,7 +36,7 @@ export const layoutStyle = css`
 	}
 
 	& > div:last-of-type {
-		& > div {
+		& > p {
 			padding: 1rem;
 			background-color: ${theme.color.bg};
 			border-radius: 15px;
