@@ -8,6 +8,12 @@ import StarImage from "@/assets/image/img-card-detail-star-button.png";
 import LocationModal from "@/components/Chatting/LocationModal";
 import SelectTagModal from "@/components/Chatting/SelectTagModal";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import {
+	layoutStyle,
+	profileBoxStyle,
+	tipBoxStyle,
+	selectBoxStyle,
+} from "@/components/Home/HabitGenerate/HabitGenerate.Style";
 // import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 
 import { useAppDispatch } from "@/api/hooks";
@@ -16,14 +22,6 @@ import { openModal } from "@/api/modal/modalSlice";
 import { habitGenerateConditions } from "@/constants/homeConstants";
 import { identity, habit } from "@/constants/homeConstants";
 // import { modalType } from "@/constants/modalConstants";
-
-import {
-	layoutStyle,
-	profileBoxStyle,
-	tipBoxStyle,
-	textBoxStyle,
-	selectBoxStyle,
-} from "@/components/Home/HabitGenerate/HabitGenerate.style";
 
 interface Modals {
 	selectIdentity?: boolean;
@@ -75,7 +73,7 @@ function HabitGenerate() {
 				<div css={tipBoxStyle}>
 					<div onClick={() => setIsTip(!isTip)}>{`좋은 습관 Tip`}</div>
 					{isTip && (
-						<div css={textBoxStyle}>
+						<div>
 							<div>
 								<span>{`1. 일단 쉬워야 해요.\n`}</span>
 								<span>{`쉬워야 반복할 수 있기 때문이에요.`}</span>
