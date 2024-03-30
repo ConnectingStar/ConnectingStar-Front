@@ -7,9 +7,9 @@ export const headerStyle = {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 360px; // TODO: 세림님과 상의 필요
+		width: 22.5rem;
 		height: 3.5rem;
-		padding: 0 24px;
+		padding: 0 1.5rem;
 		margin: 0 auto;
 		position: relative;
 		background-color: #fff;
