@@ -1,6 +1,6 @@
 import { userType } from "@/types/userDataType";
 
-import { modalType } from "./modalConstants";
+import { modalType } from "@/constants/modalConstants";
 
 export function createChatData(userData: userType) {
 	return [
@@ -13,8 +13,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["습관선택"],
 			reply: `${userData.habit}`,
-			// modalType: modalType.SELECT_HABIT,
-			modalType: modalType.SELECT_TIME,
+			modalType: modalType.SELECT_HABIT,
 		},
 		{
 			id: "habit",
