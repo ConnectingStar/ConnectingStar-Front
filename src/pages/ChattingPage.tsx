@@ -47,7 +47,11 @@ function ChattingPage() {
 				{modal === modalType.SELECT_IDENTITY && (
 					<SelectTagModal title="어떤 사람이 되고 싶으세요?" tags={TagsData.identityTags} />
 				)}
+				{/* {modal === modalType.SELECT_TIME && <SelectTimeModal />} */}
 				{modal === modalType.SELECT_LOCATION && <LocationModal />}
+				{/* {modal === modalType.SELECT_BEHAVIOR && <behaverModal />} */}
+				{/* {modal === modalType.SELECT_ALERT1 && <SelectTimeModal />} */}
+				{/* {modal === modalType.SELECT_ALERT2 && <SelectTimeModal />} */}
 			</div>
 		</div>
 	);
