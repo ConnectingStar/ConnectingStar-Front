@@ -8,6 +8,7 @@ import ChattingMessage from "@/components/Chatting/ChattingMessage";
 // import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
 // import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
 import Header from "@/components/common/Header/Header";
+import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 
 import { useAppSelector } from "@/api/hooks";
@@ -46,6 +47,7 @@ function ChattingPage() {
 				{modal === modalType.SELECT_IDENTITY && (
 					<SelectTagModal title="어떤 사람이 되고 싶으세요?" tags={TagsData.identityTags} />
 				)}
+				{modal === modalType.SELECT_LOCATION && <LocationModal />}
 			</div>
 		</div>
 	);
