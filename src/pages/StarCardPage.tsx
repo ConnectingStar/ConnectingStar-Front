@@ -76,7 +76,7 @@ export default StarCardPage;
 
 const sectionStyle = css`
 	width: 22.5rem;
-	padding: 1.25rem 1.5rem 2.5rem 1.5rem;
+	padding: 4.75rem 1.5rem 2.5rem 1.5rem;
 	margin: 0 auto;
 `;
 
