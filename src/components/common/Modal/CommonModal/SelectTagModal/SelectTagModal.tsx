@@ -1,42 +1,40 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 
-import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { updataHabitUserData } from "@/api/user/userSlice";
 
-import { selectTagModalStyle } from "@/components/Chatting/SelectTagModal/SelectTagModal.style";
-
+import { selectTagModalStyle } from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal.style";
 interface selectTagModal {
 	title: string;
 	tags: string[];
 }
 
 function SelectTagModal({ title, tags }: selectTagModal) {
-	const dispatch = useAppDispatch();
 	const [selectedTag, setSelectedTag] = useState<string | null>(null);
 	const [isInputFocus, setIsInputFocus] = useState(false);
 	const [inputText, setInputText] = useState("");
-
+	const dispatch = useDispatch();
 	const handleInputOnFocus = () => {
 		setSelectedTag(null);
 		setIsInputFocus(true);
 	};
 
 	const confirmSelectedTag = () => {
-		// 선택된 태그 또는 입력된 텍스트 중 하나를 선택
 		const updatedHabit = selectedTag || inputText;
 
-		if (updatedHabit) {
-			//TODO: reduxToolkit사용해서 데이터 보내기
-		}
+		if (updatedHabit) dispatch(updataHabitUserData({ habit: updatedHabit }));
+		dispatch(closeModal());
 	};
 
 	return (
 		<div css={selectTagModalStyle.container}>
+			{/* TODO: 닫기누르면 모달 닫기 */}
 			<Header>
-				<Header.CloseButton onClick={() => dispatch(closeModal())} />
+				<Header.CloseButton />
 			</Header>
 			<div css={selectTagModalStyle.wrap}>
 				<h1>{title}</h1>

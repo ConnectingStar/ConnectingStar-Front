@@ -8,36 +8,37 @@ import ChattingMessage from "@/components/Chatting/ChattingMessage";
 // import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
 // import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
 import Header from "@/components/common/Header/Header";
-import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
+import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 
+import { useAppSelector } from "@/api/hooks";
 import { RootState } from "@/api/store";
 
 import { createChatData } from "@/constants/chatData";
+import { modalType } from "@/constants/modalConstants";
 
 import { theme } from "@/styles/theme";
-// const habitTags = [
-// 	"러닝하기",
-// 	"헬스하기",
-// 	"산책하기",
-// 	"명상하기",
-// 	"기도하기",
-// 	"자기확언",
-// 	"책 읽기",
-// 	"신문보기",
-// 	"공부하기",
-// 	"블로깅",
-// 	"일기작성",
-// 	"소비기록",
-// ];
+
+const habitTags = [
+	"러닝하기",
+	"헬스하기",
+	"산책하기",
+	"명상하기",
+	"기도하기",
+	"자기확언",
+	"책 읽기",
+	"신문보기",
+	"공부하기",
+	"블로깅",
+	"일기작성",
+	"소비기록",
+];
 
 function ChattingPage() {
 	const [progress, setProgress] = useState(0);
-
+	const { modal } = useAppSelector((state) => state.modal);
 	const userData = useSelector((state: RootState) => state.user);
 	const chatData = createChatData(userData);
 	const extraBtnHeight = chatData[progress].replyBtnMessage.length > 1;
-
-	console.log(userData);
 
 	return (
 		<div>
@@ -53,8 +54,9 @@ function ChattingPage() {
 				</div>
 				{/* <BehaviorModal /> */}
 				{/* <LocationModal /> */}
-				{/* <SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={habitTags} /> */}
-				<SelectTimeModal title="시간을 선택해 주세요"></SelectTimeModal>
+				{modal === modalType.SELECT_HABIT && (
+					<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={habitTags} />
+				)}
 			</div>
 		</div>
 	);

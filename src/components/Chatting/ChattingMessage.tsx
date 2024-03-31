@@ -2,12 +2,21 @@ import { useEffect, useRef, useState } from "react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
+import { useAppDispatch } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
+
 import { theme } from "@/styles/theme";
 
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
 
 interface chatType {
-	chatData: { id: string; message: string[]; replyBtnMessage: string[]; reply: string };
+	chatData: {
+		id: string;
+		message: string[];
+		replyBtnMessage: string[];
+		reply: string;
+		modalType?: string;
+	};
 	setProgress: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -17,6 +26,7 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isReply, setIsReply] = useState(false);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
+	const dispatch = useAppDispatch();
 
 	// 메시지 하나씩 내려오게하는 함수
 	useEffect(() => {
@@ -36,7 +46,8 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 	}, [messageIndex]);
 
 	// 버튼 함수
-	const handleReplyBtn = () => {
+	const handleReplyBtn = async () => {
+		if (chatData.modalType !== undefined) await dispatch(openModal(chatData.modalType));
 		setProgress((prev) => prev + 1);
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
