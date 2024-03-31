@@ -68,6 +68,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["장소 선택"],
 			reply: `${userData.location}`,
+			modalType: modalType.SELECT_LOCATION,
 		},
 
 		{

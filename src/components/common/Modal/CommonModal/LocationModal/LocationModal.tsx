@@ -1,15 +1,19 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import CheckIcon from "@/assets/icon/ic-check-blue.svg?react";
 
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import Header from "@/components/common/Header/Header";
 import {
 	container,
 	wrap,
 	locationListStyle,
 	locationInputStyle,
-} from "@/components/Chatting/LocationModal/LocationModalStyle";
-import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
-import Header from "@/components/common/Header/Header";
+} from "@/components/common/Modal/CommonModal/LocationModal/LocationModalStyle";
+
+import { closeModal } from "@/api/modal/modalSlice";
+import { updataHabitUserData } from "@/api/user/userSlice";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
@@ -20,6 +24,11 @@ function LocationModal() {
 	const dispatch = useAppDispatch();
 	const [location, setLocation] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
+	const dispatch = useDispatch();
+	const confirmSelectedTag = () => {
+		dispatch(updataHabitUserData({ location }));
+		dispatch(closeModal());
+	};
 
 	return (
 		<div css={container}>
@@ -45,7 +54,6 @@ function LocationModal() {
 					onBlur={() => setIsFocus(false)}
 					onChange={(e) => setLocation(e.target.value)}
 				/>
-				{/* TODO: handleBtnClick로 데이터 전달 */}
 				{isFocus ? (
 					<FooterBtn
 						text="확인"
@@ -57,7 +65,12 @@ function LocationModal() {
 						}}
 					/>
 				) : (
-					<FooterBtn text="확인" disabled={!location} isTransparent />
+					<FooterBtn
+						text="확인"
+						disabled={!location}
+						isTransparent
+						handleBtnClick={confirmSelectedTag}
+					/>
 				)}
 			</div>
 		</div>
