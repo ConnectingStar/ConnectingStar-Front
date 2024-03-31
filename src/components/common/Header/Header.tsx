@@ -4,22 +4,32 @@ import { useNavigate } from "react-router-dom";
 import ArrowLeftIcon from "@/assets/icon/arrow-left.svg?react";
 import CloseIcon from "@/assets/icon/close.svg?react";
 
-import { headerStyle } from "@/components/common/Header/Header.style";
+import {
+	getContainerStyle,
+	getTitleStyle,
+	iconButtonStyle,
+	textButtonStyle,
+} from "@/components/common/Header/Header.style";
 
 interface HeaderTitleProps {
-	hasButton?: boolean;
 	children: ReactNode;
+	hasButton?: boolean;
 }
 
-export default function Header({ children }: { children: ReactNode }) {
-	return <div css={headerStyle.container}>{children}</div>;
+interface HeaderProps {
+	children: ReactNode;
+	isFixed?: boolean;
+}
+
+export default function Header({ children, isFixed = true }: HeaderProps) {
+	return <div css={getContainerStyle(isFixed)}>{children}</div>;
 }
 
 Header.PrevButton = function HeaderPrevButton() {
 	const navigate = useNavigate();
 
 	return (
-		<button type="button" css={headerStyle.iconButton} onClick={() => navigate(-1)}>
+		<button type="button" css={iconButtonStyle} onClick={() => navigate(-1)}>
 			<ArrowLeftIcon />
 		</button>
 	);
@@ -30,7 +40,7 @@ Header.CloseButton = function HeaderCloseButton() {
 	return (
 		<button
 			type="button"
-			css={headerStyle.iconButton}
+			css={iconButtonStyle}
 			onClick={(e) => console.log("close icon click: ", e)}
 		>
 			<CloseIcon />
@@ -38,8 +48,8 @@ Header.CloseButton = function HeaderCloseButton() {
 	);
 };
 
-Header.Title = function HeaderTitle({ hasButton = true, children }: HeaderTitleProps) {
-	return <h1 css={hasButton ? headerStyle.title : headerStyle.titleLarge}>{children}</h1>;
+Header.Title = function HeaderTitle({ children, hasButton = true }: HeaderTitleProps) {
+	return <h1 css={getTitleStyle(hasButton)}>{children}</h1>;
 };
 
 Header.TextButton = function HeaderTextButton({
@@ -47,7 +57,7 @@ Header.TextButton = function HeaderTextButton({
 	...props
 }: ComponentPropsWithoutRef<"button">) {
 	return (
-		<button css={headerStyle.textButton} {...props}>
+		<button css={textButtonStyle} {...props}>
 			{children}
 		</button>
 	);
