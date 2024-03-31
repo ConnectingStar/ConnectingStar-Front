@@ -2,34 +2,39 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const headerStyle = {
-	container: css`
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 22.5rem;
-		height: 3.5rem;
-		padding: 0 1.5rem;
-		margin: 0 auto;
-		position: relative;
-		background-color: #fff;
-	`,
-	title: css`
-		${theme.font.header}
-	`,
-	iconButton: css`
-		position: absolute;
-		left: 1.5rem;
-	`,
-	textButton: css`
-		position: absolute;
-		right: 1.5rem;
-		${theme.font.button_big}
-		color: ${theme.color.font_deep_gray};
-		background-color: transparent;
-	`,
-	titleLarge: css`
-		${theme.font.head_a}
-		margin-right: auto;
-	`,
-};
+export const getContainerStyle = (isFixed: boolean) => css`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 22.5rem;
+	height: 3.5rem;
+	padding: 0 1.5rem;
+	margin: 0 auto;
+	background-color: #fff;
+
+	${isFixed && fixedStyle}
+`;
+
+const fixedStyle = css`
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+`;
+
+export const getTitleStyle = (hasButton: boolean) => css`
+	${hasButton ? theme.font.header : theme.font.head_a}
+	margin-right: ${hasButton ? "0" : "auto"};
+`;
+
+export const iconButtonStyle = css`
+	position: absolute;
+	left: 1.5rem;
+`;
+
+export const textButtonStyle = css`
+	position: absolute;
+	right: 1.5rem;
+	${theme.font.button_big}
+	color: ${theme.color.font_deep_gray};
+	background-color: transparent;
+`;
