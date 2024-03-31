@@ -11,6 +11,7 @@ export const getContainerStyle = (isFixed: boolean) => css`
 	padding: 0 1.5rem;
 	margin: 0 auto;
 	background-color: #fff;
+	z-index: 49;
 
 	${isFixed && fixedStyle}
 `;
