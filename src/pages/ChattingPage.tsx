@@ -15,23 +15,9 @@ import { RootState } from "@/api/store";
 
 import { createChatData } from "@/constants/chatData";
 import { modalType } from "@/constants/modalConstants";
+import { TagsData } from "@/constants/selectTagConstants";
 
 import { theme } from "@/styles/theme";
-
-const habitTags = [
-	"러닝하기",
-	"헬스하기",
-	"산책하기",
-	"명상하기",
-	"기도하기",
-	"자기확언",
-	"책 읽기",
-	"신문보기",
-	"공부하기",
-	"블로깅",
-	"일기작성",
-	"소비기록",
-];
 
 function ChattingPage() {
 	const [progress, setProgress] = useState(0);
@@ -55,7 +41,10 @@ function ChattingPage() {
 				{/* <BehaviorModal /> */}
 				{/* <LocationModal /> */}
 				{modal === modalType.SELECT_HABIT && (
-					<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={habitTags} />
+					<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={TagsData.habitTags} />
+				)}
+				{modal === modalType.SELECT_IDENTITY && (
+					<SelectTagModal title="어떤 사람이 되고 싶으세요?" tags={TagsData.identityTags} />
 				)}
 			</div>
 		</div>

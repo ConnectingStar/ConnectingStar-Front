@@ -26,8 +26,14 @@ function SelectTagModal({ title, tags }: selectTagModal) {
 	const confirmSelectedTag = () => {
 		const updatedHabit = selectedTag || inputText;
 
-		if (updatedHabit) dispatch(updataHabitUserData({ habit: updatedHabit }));
-		dispatch(closeModal());
+		if (updatedHabit) {
+			if (title === "어떤 습관을 만들어 볼까요?") {
+				dispatch(updataHabitUserData({ habit: updatedHabit }));
+			} else if (title === "어떤 사람이 되고 싶으세요?") {
+				dispatch(updataHabitUserData({ identity: updatedHabit }));
+			}
+			dispatch(closeModal());
+		}
 	};
 
 	return (

@@ -24,6 +24,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["정체성 선택"],
 			reply: `${userData.identity}`,
+			modalType: modalType.SELECT_IDENTITY,
 		},
 		{
 			id: "identity",
