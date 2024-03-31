@@ -5,7 +5,7 @@ import Landing from "@/components/MyPage/Landing/Landing";
 const MyPage = () => {
 	return (
 		<>
-			<Header>
+			<Header isFixed={false}>
 				<Header.Title hasButton={false}>마이 페이지</Header.Title>
 			</Header>
 			<Landing />

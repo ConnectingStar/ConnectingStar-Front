@@ -26,7 +26,7 @@ const ChartPage = () => {
 
 	return (
 		<>
-			<Header>
+			<Header isFixed={false}>
 				<Header.Title hasButton={false}>통계</Header.Title>
 			</Header>
 			<ButtonCarousel />
