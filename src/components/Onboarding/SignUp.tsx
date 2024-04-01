@@ -1,8 +1,21 @@
 import { css } from "@emotion/react";
 
+import { signUpText } from "@/constants/signUpText";
+
 import { theme } from "@/styles/theme";
 
-export const SignUpStyle = css`
+function SignUp({ onNext }: { onNext: () => void }) {
+	return (
+		<div css={SignUpStyle} onClick={onNext}>
+			<img src="" alt="logo" />
+			<pre>{signUpText[0]}</pre>
+		</div>
+	);
+}
+
+export default SignUp;
+
+const SignUpStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem 0;
