@@ -82,6 +82,7 @@ export const alarmBoxStyle = (isToggled: boolean) => css`
 			${isToggled ? `${theme.color.main_blue}` : `${theme.color.button_deactivated}`};
 		top: 0;
 		right: 0;
+		transition: 0.3s ease;
 		background-color: ${isToggled
 			? `${theme.color.main_blue}`
 			: `${theme.color.button_deactivated}`};
@@ -91,7 +92,8 @@ export const alarmBoxStyle = (isToggled: boolean) => css`
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
-			left: ${isToggled && "calc(100% - 1.3rem)"};
+			transition: 0.3s ease;
+			left: ${isToggled ? "0" : "calc(100% - 1.3rem)"};
 			width: 1.3rem;
 			height: 1.3rem;
 			border-radius: 50%;
@@ -104,5 +106,4 @@ export const quitButtonStyle = css`
 	border-top: 0.5rem solid #f0f0f6;
 	color: ${theme.color.error};
 	height: 3.9375rem;
-	width: 100%;
 `;

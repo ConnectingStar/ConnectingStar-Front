@@ -5,7 +5,7 @@ import AlarmCheckModal from "@/components/Home/habitManage/AlarmCheckModal/Alarm
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { habitManageConditionArray } from "@/constants/homeConstants";
+import { habitManageCondition } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 
 import {
@@ -46,7 +46,7 @@ function HabitManage() {
 			</div>
 			<div className="tab">
 				<span>습관</span>
-				{habitManageConditionArray.map((texts) => (
+				{habitManageCondition.map((texts) => (
 					<div className="condition">
 						<span>{texts.TITLE}</span>
 						<span>{texts.INPUT}</span>
@@ -71,7 +71,7 @@ function HabitManage() {
 						<p>{`오후 8:30`}</p>
 					</span>
 					<div>{`오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!`}</div>
-					<div onClick={() => CheckAlarm("second")}>
+					<div className="toggle" onClick={() => CheckAlarm("second")}>
 						<span />
 					</div>
 				</div>
