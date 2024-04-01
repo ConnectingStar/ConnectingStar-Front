@@ -25,11 +25,15 @@ export default function Header({ children, isFixed = true }: HeaderProps) {
 	return <div css={getContainerStyle(isFixed)}>{children}</div>;
 }
 
-Header.PrevButton = function HeaderPrevButton() {
+interface PrevButtonProps {
+	onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+Header.PrevButton = function HeaderPrevButton({ onClick }: PrevButtonProps) {
 	const navigate = useNavigate();
 
 	return (
-		<button type="button" css={iconButtonStyle} onClick={() => navigate(-1)}>
+		<button type="button" css={iconButtonStyle} onClick={onClick || (() => navigate(-1))}>
 			<ArrowLeftIcon />
 		</button>
 	);
