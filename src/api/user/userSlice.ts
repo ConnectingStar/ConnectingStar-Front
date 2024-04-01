@@ -5,7 +5,7 @@ const initialState: userType = {
 	nickName: "",
 	gender: "",
 	age: "",
-	findRoute: "",
+	visitorRoute: "",
 	habit: "",
 	identity: "",
 	time: "",
@@ -19,13 +19,16 @@ const userSlice = createSlice({
 	name: "user",
 	initialState,
 	reducers: {
-		updataBasicUserData: (state, action: PayloadAction<basicUserDataType>) => {
+		updateBasicUserData: (state, action: PayloadAction<basicUserDataType>) => {
 			const { nickName, gender, age } = action.payload;
 			state.nickName = nickName;
 			state.gender = gender;
 			state.age = age;
 		},
-		updataHabitUserData: (state, action: PayloadAction<habitUserDataType>) => {
+		updateVisitorRoute: (state, action: PayloadAction<string>) => {
+			state.visitorRoute = action.payload;
+		},
+		updateHabitUserData: (state, action: PayloadAction<habitUserDataType>) => {
 			state.habit = action.payload.habit ?? state.habit;
 			state.identity = action.payload.identity ?? state.identity;
 			state.time = action.payload.time ?? state.time;
@@ -37,5 +40,5 @@ const userSlice = createSlice({
 	},
 });
 
-export const { updataBasicUserData, updataHabitUserData } = userSlice.actions;
+export const { updateBasicUserData, updateHabitUserData } = userSlice.actions;
 export default userSlice.reducer;

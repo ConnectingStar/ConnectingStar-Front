@@ -12,7 +12,7 @@ import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGende
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { updataBasicUserData } from "@/api/user/userSlice";
+import { updateBasicUserData } from "@/api/user/userSlice";
 
 import { modalType } from "@/constants/modalConstants";
 
@@ -50,7 +50,7 @@ export default function CreateAccount({ onNext }: { onNext: () => void }) {
 
 	const confirmBasicUserData = async () => {
 		if (nickName !== "" && gender !== "" && age !== "") {
-			await dispatch(updataBasicUserData({ nickName, gender, age }));
+			await dispatch(updateBasicUserData({ nickName, gender, age }));
 		}
 		onNext();
 	};

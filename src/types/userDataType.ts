@@ -2,7 +2,7 @@ export interface userType {
 	nickName: string;
 	gender: string;
 	age: string;
-	findRoute: string;
+	visitorRoute: string;
 	habit: string;
 	identity: string;
 	time: string;
@@ -16,10 +16,6 @@ export interface basicUserDataType {
 	nickName: string;
 	gender: string;
 	age: string;
-}
-
-export interface findRouteType {
-	findRoute: string;
 }
 
 export interface habitUserDataType {
