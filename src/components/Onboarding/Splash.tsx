@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
 
 import Charater from "@/assets/image/img-charater.png";
-import Logo from "@/assets/image/img-logo.png";
+import Logo from "@/assets/image/img-logo-white.png";
+
 function Splash({ onNext }: { onNext: () => void }) {
 	return (
 		<div css={container} onClick={onNext}>
