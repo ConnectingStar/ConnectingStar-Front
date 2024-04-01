@@ -39,14 +39,13 @@ Header.PrevButton = function HeaderPrevButton({ onClick }: PrevButtonProps) {
 	);
 };
 
-// NOTE: 닫기 버튼 기능 구현은 어떻게 할지..
-Header.CloseButton = function HeaderCloseButton() {
+interface CloseButtonProps {
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+Header.CloseButton = function HeaderCloseButton({ onClick }: CloseButtonProps) {
 	return (
-		<button
-			type="button"
-			css={iconButtonStyle}
-			onClick={(e) => console.log("close icon click: ", e)}
-		>
+		<button type="button" css={iconButtonStyle} onClick={onClick}>
 			<CloseIcon />
 		</button>
 	);
