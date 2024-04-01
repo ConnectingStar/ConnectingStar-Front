@@ -1,14 +1,32 @@
+import { useState } from "react";
+
 import { css } from "@emotion/react";
 
-import { signUpText } from "@/constants/signUpText";
+import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+
+import { signUpText } from "@/constants/signUpConstants";
 
 import { theme } from "@/styles/theme";
 
 function SignUp({ onNext }: { onNext: () => void }) {
+	const [signUpPage, setsignUpPage] = useState(0);
+
+	if (signUpPage === 3) onNext();
+
 	return (
-		<div css={SignUpStyle} onClick={onNext}>
-			<img src="" alt="logo" />
-			<pre>{signUpText[0]}</pre>
+		<div css={SignUpStyle}>
+			<img src={signUpText[signUpPage].img} alt="logo" />
+			<pre
+				dangerouslySetInnerHTML={{
+					__html: signUpText[signUpPage].text,
+				}}
+			/>
+			<FooterBtn
+				text="다음"
+				handleBtnClick={() => {
+					setsignUpPage((prev) => prev + 1);
+				}}
+			/>
 		</div>
 	);
 }
@@ -26,7 +44,6 @@ const SignUpStyle = css`
 	align-items: center;
 
 	& > img {
-		background-color: gray;
 		width: 12.5rem;
 		height: 12.5rem;
 		object-fit: cover;
