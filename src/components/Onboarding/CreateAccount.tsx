@@ -18,9 +18,8 @@ import { modalType } from "@/constants/modalConstants";
 
 import { theme } from "@/styles/theme";
 
-export default function CreateAccount({ onNext }: { onNext: () => void }) {
+function CreateAccount({ onNext }: { onNext: () => void }) {
 	const dispatch = useAppDispatch();
-
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const [nickName, setNickName] = useState<string>("");
@@ -48,10 +47,8 @@ export default function CreateAccount({ onNext }: { onNext: () => void }) {
 		},
 	];
 
-	const confirmBasicUserData = async () => {
-		if (nickName !== "" && gender !== "" && age !== "") {
-			await dispatch(updateBasicUserData({ nickName, gender, age }));
-		}
+	const confirmBasicUserData = () => {
+		dispatch(updateBasicUserData({ nickName, gender, age }));
 		onNext();
 	};
 
@@ -94,6 +91,8 @@ export default function CreateAccount({ onNext }: { onNext: () => void }) {
 		</>
 	);
 }
+
+export default CreateAccount;
 
 const container = css`
 	width: 22.5rem;
