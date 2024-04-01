@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import { theme } from "@/styles/theme";
+import { theme } from "@/styles/theme.ts";
 
 export const layoutStyle = css`
 	display: flex;
@@ -9,18 +9,18 @@ export const layoutStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem;
-	${theme.font.body_b}
 `;
 
 export const profileBoxStyle = css`
 	display: flex;
 	align-items: center;
 	gap: 16px;
-	padding: 0.46875rem;
+	padding: 1rem 0.75rem;
 	border-radius: 15px;
 	height: 5.9375rem;
 	background-color: ${theme.color.bg};
 	margin-bottom: 0.375rem;
+	${theme.font.body_b}
 
 	& > img {
 		width: 3.625rem;
@@ -31,7 +31,7 @@ export const profileBoxStyle = css`
 	& > div {
 		white-space: pre-wrap;
 
-		& > span:first-of-type {
+		& > div:first-of-type {
 			${theme.font.head_b}
 		}
 	}
@@ -40,11 +40,12 @@ export const profileBoxStyle = css`
 export const tipBoxStyle = css`
 	position: relative;
 	display: flex;
+	${theme.font.body_b};
 
 	& > div:first-of-type {
-		text-align: center;
-		padding: 0.625rem;
-		width: 6.875rem;
+		display: flex;
+		align-items: center;
+		padding: 0.5rem 1rem;
 		border-radius: 20px;
 		color: white;
 		background-color: ${theme.color.main_deep_blue};
@@ -57,9 +58,7 @@ export const tipBoxStyle = css`
 		flex-direction: column;
 		background-color: white;
 		white-space: pre-wrap;
-		padding: 1rem;
-		width: 19.375rem;
-		height: 9.25rem;
+		padding: 1rem 3.5rem 1rem 1rem;
 		border: 1px solid ${theme.color.main_blue};
 		border-radius: 5px;
 		gap: 20px;
@@ -67,7 +66,7 @@ export const tipBoxStyle = css`
 		& > div {
 			width: 14.75rem;
 
-			& > span:first-of-type {
+			& > div:first-of-type {
 				${theme.font.head_c}
 				color: ${theme.color.main_blue}
 			}
@@ -90,22 +89,26 @@ export const selectBoxStyle = css`
 	& > li {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: 12px;
+		${theme.font.body_a};
 
 		& > div:first-of-type {
 			display: flex;
 			align-items: center;
-			${theme.font.head_c}
+
 			color: ${theme.color.font_gray};
 			gap: 6px;
+			& > span:first-of-type {
+				${theme.font.head_c};
+			}
 
 			& > span:nth-of-type(2) {
-				${theme.font.body_xs}
-				color:${theme.color.main_blue}
+				${theme.font.body_xs};
+				color: ${theme.color.main_blue};
 			}
 		}
 
-		& > .combined {
+		& > .sticked {
 			display: flex;
 			padding: 1.25rem 1rem;
 			border-radius: 15px;
@@ -117,7 +120,7 @@ export const selectBoxStyle = css`
 			}
 		}
 
-		& > .divided {
+		& > .split {
 			display: flex;
 
 			& > span {
