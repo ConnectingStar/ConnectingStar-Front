@@ -14,7 +14,7 @@ function SignUp({ onNext }: { onNext: () => void }) {
 	if (signUpPage === 3) onNext();
 
 	return (
-		<div css={SignUpStyle}>
+		<div css={container}>
 			<img src={signUpData[signUpPage].img} alt="logo" />
 			<pre
 				dangerouslySetInnerHTML={{
@@ -33,7 +33,7 @@ function SignUp({ onNext }: { onNext: () => void }) {
 
 export default SignUp;
 
-const SignUpStyle = css`
+const container = css`
 	width: 22.5rem;
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem 0;
