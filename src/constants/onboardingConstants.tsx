@@ -4,7 +4,7 @@ import StarsImg from "@/assets/image/img-onboarding-stars.png";
 
 import { theme } from "@/styles/theme";
 
-export const signUpText = [
+export const signUpData = [
 	{
 		img: GearImg,
 		text: `목표를 세우지 말고 Tars와\n함께 <span style="color:${theme.color.main_blue}">시스템</span>을 만들어 가요 :)`,
@@ -18,3 +18,5 @@ export const signUpText = [
 		text: `실천을 기록할 때마다 <span style="color:${theme.color.main_blue}">별</span>을\n 받고 별자리를 채워 보세요!`,
 	},
 ];
+
+export const visitorRouteData = ["앱 스토어", "지인 추천", "SNS 광고", "검색", "기타"];

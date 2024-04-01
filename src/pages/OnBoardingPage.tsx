@@ -1,26 +1,28 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import CreateAccount from "@/components/Onboarding/CreateAccount";
 import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
 import SignUp from "@/components/Onboarding/SignUp";
-
-// import Splash from "@/components/Onboarding/Splash";
+import Splash from "@/components/Onboarding/Splash";
+import VisitorRoute from "@/components/Onboarding/VisitorRoute";
 
 function OnboardingPage() {
+	const navigate = useNavigate();
 	const [step, setStep] = useState<
-		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitTracker"
-	>("CreateAccount");
+		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute"
+	>("Splash");
 	console.log(step);
 
 	return (
 		<main>
-			{/* {step === "Splash" && (
+			{step === "Splash" && (
 				<Splash
 					onNext={() => {
 						setStep("SignUp");
 					}}
 				/>
-			)} */}
+			)}
 			{step === "SignUp" && (
 				<SignUp
 					onNext={() => {
@@ -38,12 +40,17 @@ function OnboardingPage() {
 			{step === "CreateAccount" && (
 				<CreateAccount
 					onNext={() => {
-						setStep("VisitTracker");
+						setStep("VisitorRoute");
 					}}
 				/>
 			)}
-			{/* <CreateAccount /> */}
-			{/* <VisitTracker /> */}
+			{step === "VisitorRoute" && (
+				<VisitorRoute
+					onNext={() => {
+						navigate("/chatting");
+					}}
+				/>
+			)}
 		</main>
 	);
 }

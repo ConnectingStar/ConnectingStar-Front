@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
-import { signUpText } from "@/constants/signUpConstants";
+import { signUpData } from "@/constants/onboardingConstants";
 
 import { theme } from "@/styles/theme";
 
@@ -15,10 +15,10 @@ function SignUp({ onNext }: { onNext: () => void }) {
 
 	return (
 		<div css={SignUpStyle}>
-			<img src={signUpText[signUpPage].img} alt="logo" />
+			<img src={signUpData[signUpPage].img} alt="logo" />
 			<pre
 				dangerouslySetInnerHTML={{
-					__html: signUpText[signUpPage].text,
+					__html: signUpData[signUpPage].text,
 				}}
 			/>
 			<FooterBtn
