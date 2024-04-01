@@ -40,5 +40,5 @@ const userSlice = createSlice({
 	},
 });
 
-export const { updateBasicUserData, updateHabitUserData } = userSlice.actions;
+export const { updateBasicUserData, updateVisitorRoute, updateHabitUserData } = userSlice.actions;
 export default userSlice.reducer;

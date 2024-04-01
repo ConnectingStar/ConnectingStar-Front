@@ -4,14 +4,16 @@ import { css } from "@emotion/react";
 
 import Header from "@/components/common/Header/Header";
 
+import { updateVisitorRoute } from "@/api/user/userSlice";
+
 import { visitorRouteData } from "@/constants/onboardingConstants";
 
 import { theme } from "@/styles/theme";
 
 function VisitorRoute({ onNext }: { onNext: () => void }) {
 	const dispatch = useDispatch();
-	const confirmVisitorRouteData = () => {
-		dispatch();
+	const confirmVisitorRouteData = (visitorRoute: string) => {
+		dispatch(updateVisitorRoute(visitorRoute));
 		onNext();
 	};
 	return (
@@ -24,7 +26,7 @@ function VisitorRoute({ onNext }: { onNext: () => void }) {
 				<ul>
 					{visitorRouteData.map((item) => (
 						<li key={item}>
-							<button onClick={confirmVisitorRouteData}>{item}</button>
+							<button onClick={() => confirmVisitorRouteData(item)}>{item}</button>
 						</li>
 					))}
 				</ul>
