@@ -1,17 +1,17 @@
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
-import HabitShelf from "@/components/Home/HabitShelf/HabitShelf";
+import HabitDetail from "@/components/Home/HabitDetail/HabitDetail";
 
-function HabitShelfPage() {
+function HabitDetailPage() {
 	return (
 		<>
 			<Header>
 				<Header.PrevButton />
 			</Header>
-			<HabitShelf />
+			<HabitDetail />
 			<FooterBtn text="확인" isTransparent />
 		</>
 	);
 }
 
-export default HabitShelfPage;
+export default HabitDetailPage;

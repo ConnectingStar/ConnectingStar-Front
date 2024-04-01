@@ -4,7 +4,7 @@ import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
-import HabitShelfPage from "@/pages/HabitShelfPage";
+import HabitDetailPage from "@/pages/HabitDetailPage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
@@ -24,7 +24,7 @@ const App = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-				<Route path="/:id" element={<HabitShelfPage />} />
+				<Route path="/:id" element={<HabitDetailPage />} />
 				<Route path="/star" element={<StarMainPage />} />
 				<Route path="/star-card" element={<StarCardPage />} />
 				<Route path="/star-card/:id" element={<StarCardDetailPage />} />

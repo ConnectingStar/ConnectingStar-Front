@@ -1,6 +1,6 @@
 import { habitIconData } from "@/constants/myPageConstants";
 
-function Condition() {
+function Action() {
 	const randomIndex = Math.floor(Math.random() * 10);
 	return (
 		<>
@@ -26,4 +26,4 @@ function Condition() {
 	);
 }
 
-export default Condition;
+export default Action;
