@@ -1,4 +1,4 @@
-import StarImage from "@/assets/image/card-detail-star.png";
+import StarImage from "@/assets/image/img-card-detail-star.png";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
