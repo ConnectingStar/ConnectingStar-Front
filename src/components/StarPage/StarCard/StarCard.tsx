@@ -1,4 +1,4 @@
-import starImg from "@/assets/image/card-detail-star.png";
+import starImg from "@/assets/image/img-card-detail-star.png";
 
 import {
 	containerStyle,
