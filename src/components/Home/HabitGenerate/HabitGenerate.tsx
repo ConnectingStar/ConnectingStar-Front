@@ -5,7 +5,7 @@ import CharacterExampleImage from "@/assets/image/img-profile-example.png";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 // import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
-import SubCondition from "@/components/Home/HabitGenerate/SubCondition";
+import Condition from "@/components/Home/HabitGenerate/Condition";
 
 import { habitGenerateConditions } from "@/constants/homeConstants";
 
@@ -64,7 +64,7 @@ function HabitGenerate() {
 				{habitGenerateConditions.map((condition) => {
 					const { subtitle, explanation, placeholder, placeholderSecond, modalName } = condition;
 					return (
-						<SubCondition
+						<Condition
 							subtitle={subtitle}
 							explanation={explanation}
 							placeholder={placeholder}

@@ -12,7 +12,7 @@ interface SubConditionProps {
 	placeholderSecond: string | undefined;
 }
 
-function SubCondition({
+function Condition({
 	subtitle,
 	explanation,
 	modalName,
@@ -48,4 +48,4 @@ function SubCondition({
 	);
 }
 
-export default SubCondition;
+export default Condition;
