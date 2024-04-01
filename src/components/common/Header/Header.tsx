@@ -1,8 +1,8 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ArrowLeftIcon from "@/assets/icon/arrow-left.svg?react";
-import CloseIcon from "@/assets/icon/close.svg?react";
+import ArrowLeftIcon from "@/assets/icon/ic-arrow-left.svg?react";
+import CloseIcon from "@/assets/icon/ic-header-close.svg?react";
 
 import {
 	getContainerStyle,
