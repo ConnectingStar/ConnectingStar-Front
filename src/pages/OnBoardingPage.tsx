@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import OauthSignUp from "@/components/Onboarding/OauthSignUp";
+import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
 import SignUp from "@/components/Onboarding/SignUp";
 
 // import Splash from "@/components/Onboarding/Splash";
@@ -25,7 +25,13 @@ function OnboardingPage() {
 					}}
 				/>
 			)}
-			{step === "OauthSignUp" && <OauthSignUp />}
+			{step === "OauthSignUp" && (
+				<OauthSignUp
+					onNext={() => {
+						setStep("SignUp");
+					}}
+				/>
+			)}
 			{/* <CreateAccount /> */}
 			{/* <VisitTracker /> */}
 		</main>
