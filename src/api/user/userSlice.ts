@@ -1,19 +1,18 @@
 import { userType, basicUserDataType, habitUserDataType } from "@/types/userDataType";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-//TODO: nickName, gender, age, findRoute 초기값 ""로 만들기
 const initialState: userType = {
-	nickName: "갓용주",
-	gender: "남",
-	age: "25-29",
-	findRoute: "지인 추천",
-	habit: "미정",
-	identity: "미정",
-	time: "오후 10:00",
-	location: "미정",
-	behavior: "미정",
-	alert1: "오후 09:50",
-	alert2: "오후 10:10",
+	nickName: "",
+	gender: "",
+	age: "",
+	findRoute: "",
+	habit: "",
+	identity: "",
+	time: "",
+	location: "",
+	behavior: "",
+	alert1: "",
+	alert2: "",
 };
 
 const userSlice = createSlice({
@@ -21,11 +20,10 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		updataBasicUserData: (state, action: PayloadAction<basicUserDataType>) => {
-			const { nickName, gender, age, findRoute } = action.payload;
+			const { nickName, gender, age } = action.payload;
 			state.nickName = nickName;
 			state.gender = gender;
 			state.age = age;
-			state.findRoute = findRoute;
 		},
 		updataHabitUserData: (state, action: PayloadAction<habitUserDataType>) => {
 			state.habit = action.payload.habit ?? state.habit;
