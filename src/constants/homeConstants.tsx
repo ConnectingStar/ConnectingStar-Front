@@ -196,7 +196,7 @@ export const prizeComments = [
 	// },
 ];
 // 임시로 쓰는 데이터 나중에는 지정된 데이터를 habitManage로 배치할 예정
-export const habitManageConditionArray = [
+export const habitManageCondition = [
 	{
 		TITLE: "언제",
 		INPUT: "오후 8시",
