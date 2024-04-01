@@ -12,10 +12,8 @@ import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
-import OnBoardingPage from "@/pages/OnBoardingPage";
+import OnboardingPage from "@/pages/OnboardingPage";
 import RestRecordPage from "@/pages/RestRecordPage";
-import OauthSignUp from "@/pages/SignUp/OauthSignUp";
-import SignUp from "@/pages/SignUp/SignUp";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
 import StarMainPage from "@/pages/StarMainPage";
@@ -32,8 +30,6 @@ const App = () => {
 				<Route path="/chart" element={<ChartPage />} />
 				<Route path="/mypage" element={<MyPage />} />
 				<Route path="/myinfo" element={<MyInfoPage />} />
-				<Route path="/signup" element={<SignUp />} />
-				<Route path="/oauthsignup" element={<OauthSignUp />} />
 				<Route path="/star-trace" element={<MyStarTracePage />} />
 				<Route path="/habit-history" element={<MyHabitPage />} />
 				<Route path="/notification-setting" element={<NotificationSettingPage />} />
@@ -41,7 +37,7 @@ const App = () => {
 				<Route path="/rest-record" element={<RestRecordPage />} />
 				<Route path="/chatting" element={<ChattingPage />} />
 				<Route path="/habit-delete" element={<HabitDeletePage />} />
-				<Route path="/onboarding" element={<OnBoardingPage />} />
+				<Route path="/onboarding" element={<OnboardingPage />} />
 				<Route path="/habit-record" element={<HabitRecordPage />} />
 				<Route path="/habit-generate" element={<HabitGeneratePage />} />
 			</Routes>

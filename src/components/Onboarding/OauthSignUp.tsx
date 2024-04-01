@@ -1,7 +1,7 @@
 import google from "@/assets/icon/ic-signup.google.svg";
 import kakao from "@/assets/icon/ic-signup.kakao.svg";
 
-import { oauthSignUpStyle } from "@/pages/SignUp/OauthSignUp.style";
+import { oauthSignUpStyle } from "@/components/Onboarding/OauthSignUp.style";
 function OauthSignUp() {
 	return (
 		<div css={oauthSignUpStyle.container}>
