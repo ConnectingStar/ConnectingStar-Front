@@ -12,7 +12,7 @@ export const containerStyle = css`
 `;
 
 export const imgStyle = css`
-	height: 8.6875rem;
+	height: 9.5625rem;
 	position: relative;
 	background-color: #d9d9d9;
 `;
