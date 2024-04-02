@@ -22,8 +22,10 @@ export default function StarMainPage() {
 	return (
 		<div css={containerStyle}>
 			<StarBackground />
-			<div className="wrapper">
+			<div className="wrapper-top">
 				<StarInfo starCount={114} starCardId={1} />
+			</div>
+			<div className="wrapper-bottom">
 				<StarButton onClick={() => dispatch(openModal(modalType.CHARACTER_UNLOCK))} />
 				<StarCardLink />
 			</div>
@@ -45,13 +47,22 @@ const containerStyle = css`
 		#6b8acb 84%,
 		#6d68d4 98%
 	);
+	height: 100dvh;
+	position: relative;
 
-	.wrapper {
+	.wrapper-top {
 		width: 22.5rem;
-		height: 100dvh;
-		padding: 1.75rem 1.5rem 4.75rem;
+		padding: 1.75rem 1.5rem 0;
 		margin: 0 auto;
-		position: relative;
+	}
+
+	.wrapper-bottom {
+		width: 22.5rem;
+		padding: 0 1.5rem 4.75rem;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 `;
 
