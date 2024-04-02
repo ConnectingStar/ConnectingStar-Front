@@ -48,7 +48,6 @@ const containerStyle = css`
 		#6d68d4 98%
 	);
 	height: 100dvh;
-	position: relative;
 
 	.wrapper-top {
 		width: 22.5rem;
