@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import { theme } from "@/styles/theme.ts";
+import { theme } from "@/styles/theme";
 
 export const layoutStyle = css`
 	display: flex;
@@ -20,7 +20,7 @@ export const profileBoxStyle = css`
 	height: 5.9375rem;
 	background-color: ${theme.color.bg};
 	margin-bottom: 0.375rem;
-	${theme.font.body_b}
+	${theme.font.body_b};
 
 	& > img {
 		width: 3.625rem;
