@@ -12,7 +12,7 @@ interface SubConditionProps {
 	placeholderSecond: string | undefined;
 }
 
-function Condition({
+function HabitGenerateConditions({
 	subtitle,
 	explanation,
 	modalName,
@@ -48,4 +48,4 @@ function Condition({
 	);
 }
 
-export default Condition;
+export default HabitGenerateConditions;
