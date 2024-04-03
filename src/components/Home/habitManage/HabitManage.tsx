@@ -41,15 +41,15 @@ function HabitManage() {
 	return (
 		<main css={layoutStyle}>
 			<div className="condition">
-				<span>정체성</span>
-				<span>성장하는</span>
+				<p>정체성</p>
+				<p>성장하는</p>
 			</div>
 			<div className="tab">
 				<span>습관</span>
 				{habitManageCondition.map((texts) => (
 					<div className="condition">
-						<span>{texts.TITLE}</span>
-						<span>{texts.INPUT}</span>
+						<p>{texts.TITLE}</p>
+						<p>{texts.INPUT}</p>
 					</div>
 				))}
 			</div>
