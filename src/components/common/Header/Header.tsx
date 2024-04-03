@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ArrowLeftIcon from "@/assets/icon/ic-arrow-left.svg?react";
 import CloseIcon from "@/assets/icon/ic-header-close.svg?react";
 
-import { HeaderProps, TitleProps, PrevButtonProps, CloseButtonProps } from "@/types/headerType";
+import { HeaderProps, TitleProps, IconButtonProps } from "@/types/headerType";
 
 import {
 	getContainerStyle,
@@ -21,7 +21,7 @@ Header.Title = function HeaderTitle({ children, hasButton = true }: TitleProps) 
 	return <h1 css={getTitleStyle(hasButton)}>{children}</h1>;
 };
 
-Header.PrevButton = function HeaderPrevButton({ onClick }: PrevButtonProps) {
+Header.PrevButton = function HeaderPrevButton({ onClick }: IconButtonProps) {
 	const navigate = useNavigate();
 
 	return (
@@ -31,7 +31,7 @@ Header.PrevButton = function HeaderPrevButton({ onClick }: PrevButtonProps) {
 	);
 };
 
-Header.CloseButton = function HeaderCloseButton({ onClick }: CloseButtonProps) {
+Header.CloseButton = function HeaderCloseButton({ onClick }: IconButtonProps) {
 	return (
 		<button type="button" css={iconButtonStyle} onClick={onClick}>
 			<CloseIcon />
