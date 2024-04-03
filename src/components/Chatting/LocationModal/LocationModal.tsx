@@ -20,7 +20,7 @@ function LocationModal() {
 	return (
 		<div css={container}>
 			<Header>
-				<Header.CloseButton onClick={() => console.log("click")} />
+				<Header.CloseButton />
 			</Header>
 			<div css={wrap}>
 				<h1>장소를 입력해 주세요</h1>
