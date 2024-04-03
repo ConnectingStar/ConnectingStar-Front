@@ -12,14 +12,9 @@ export const getContainerStyle = (isFixed: boolean) => css`
 	margin: 0 auto;
 	background-color: #fff;
 	z-index: 49;
-
-	${isFixed && fixedStyle}
-`;
-
-const fixedStyle = css`
-	position: fixed;
-	left: 50%;
-	transform: translateX(-50%);
+	position: ${isFixed ? "fixed" : "relative"};
+	left: ${isFixed && "50%"};
+	transform: ${isFixed && "translateX(-50%)"};
 `;
 
 export const getTitleStyle = (hasButton: boolean) => css`
