@@ -1,10 +1,12 @@
+import { css } from "@emotion/react";
+
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import { layoutStyle } from "@/components/Home/habitManage/AlarmCheckModal/AlarmCheckModal.style";
+import { theme } from "@/styles/theme";
 
 interface Alarms {
 	target: string;
@@ -41,3 +43,25 @@ function AlarmCheckModal({ target, alarm, setAlarm }: Alarms) {
 }
 
 export default AlarmCheckModal;
+
+const layoutStyle = css`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 0.9375rem;
+	border-radius: 15px;
+	width: 18rem;
+	height: 18rem;
+	background-color: white;
+	white-space: pre-wrap;
+	${theme.font.body_a};
+
+	h1 {
+		${theme.font.body_a_bold};
+	}
+	& > div:first-of-type {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+`;

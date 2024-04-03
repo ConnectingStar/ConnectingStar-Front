@@ -26,14 +26,13 @@ export const layoutStyle = css`
 		justify-content: space-between;
 		border-radius: 15px;
 		padding: 1rem;
-		height: 3.4375rem;
 		background-color: ${theme.color.bg};
 
-		& > span:first-of-type {
+		& > p:first-of-type {
 			${theme.font.body_a_bold}
 		}
 
-		& > span:nth-of-type(2) {
+		& > p:nth-of-type(2) {
 			${theme.font.body_a};
 			color: ${theme.color.main_blue};
 		}
