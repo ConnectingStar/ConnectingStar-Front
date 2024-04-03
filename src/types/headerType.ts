@@ -1,17 +1,13 @@
-export interface HeaderProps {
-	children: React.ReactNode;
+import { PropsWithChildren } from "react";
+
+export interface HeaderProps extends PropsWithChildren {
 	isFixed?: boolean;
 }
 
-export interface TitleProps {
-	children: React.ReactNode;
+export interface TitleProps extends PropsWithChildren {
 	hasButton?: boolean;
 }
 
-export interface PrevButtonProps {
+export interface IconButtonProps {
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
-
-export interface CloseButtonProps {
-	onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
