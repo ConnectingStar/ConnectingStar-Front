@@ -20,6 +20,7 @@ export const profileBoxStyle = css`
 	height: 5.9375rem;
 	background-color: ${theme.color.bg};
 	margin-bottom: 0.375rem;
+	${theme.font.body_b}
 
 	& > img {
 		width: 3.625rem;
@@ -30,11 +31,7 @@ export const profileBoxStyle = css`
 	& > div {
 		white-space: pre-wrap;
 
-		& > p {
-			${theme.font.body_b};
-		}
-
-		& > p:first-of-type {
+		& > div:first-of-type {
 			${theme.font.head_b}
 		}
 	}
@@ -42,9 +39,10 @@ export const profileBoxStyle = css`
 
 export const tipBoxStyle = css`
 	position: relative;
+	display: flex;
 	${theme.font.body_b};
 
-	& > button {
+	& > div:first-of-type {
 		display: flex;
 		align-items: center;
 		padding: 0.5rem 1rem;
@@ -53,8 +51,8 @@ export const tipBoxStyle = css`
 		background-color: ${theme.color.main_deep_blue};
 	}
 
-	& > div {
-		transform: translateY(6px);
+	& > div:nth-of-type(2) {
+		transform: translateY(calc(2.125rem + 12px));
 		position: absolute;
 		display: flex;
 		flex-direction: column;
@@ -68,7 +66,7 @@ export const tipBoxStyle = css`
 		& > div {
 			width: 14.75rem;
 
-			& > p:first-of-type {
+			& > div:first-of-type {
 				${theme.font.head_c}
 				color: ${theme.color.main_blue}
 			}
@@ -91,12 +89,13 @@ export const selectBoxStyle = css`
 	& > li {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 12px;
 		${theme.font.body_a};
 
 		& > div:first-of-type {
 			display: flex;
 			align-items: center;
+
 			color: ${theme.color.font_gray};
 			gap: 6px;
 			& > span:first-of-type {
