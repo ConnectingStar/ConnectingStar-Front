@@ -1,8 +1,10 @@
-import { ComponentPropsWithoutRef, ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ArrowLeftIcon from "@/assets/icon/ic-arrow-left.svg?react";
 import CloseIcon from "@/assets/icon/ic-header-close.svg?react";
+
+import { HeaderProps, TitleProps, PrevButtonProps, CloseButtonProps } from "@/types/headerType";
 
 import {
 	getContainerStyle,
@@ -10,24 +12,6 @@ import {
 	iconButtonStyle,
 	textButtonStyle,
 } from "@/components/common/Header/Header.style";
-
-interface HeaderProps {
-	children: ReactNode;
-	isFixed?: boolean;
-}
-
-interface TitleProps {
-	children: ReactNode;
-	hasButton?: boolean;
-}
-
-interface PrevButtonProps {
-	onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
-
-interface CloseButtonProps {
-	onClick: React.MouseEventHandler<HTMLButtonElement>;
-}
 
 export default function Header({ children, isFixed = true }: HeaderProps) {
 	return <div css={getContainerStyle(isFixed)}>{children}</div>;
