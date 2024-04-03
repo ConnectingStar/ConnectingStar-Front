@@ -32,7 +32,7 @@ function SelectTagModal({ title, tags }: selectTagModal) {
 	return (
 		<div css={selectTagModalStyle.container}>
 			<Header>
-				<Header.CloseButton onClick={() => console.log("click")} />
+				<Header.CloseButton />
 			</Header>
 			<div css={selectTagModalStyle.wrap}>
 				<h1>{title}</h1>
