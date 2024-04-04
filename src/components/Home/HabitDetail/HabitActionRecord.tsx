@@ -1,6 +1,6 @@
 import { habitIconData } from "@/constants/myPageConstants";
 
-function Action() {
+function HabitActionRecord() {
 	const randomIndex = Math.floor(Math.random() * 10);
 	return (
 		<>
@@ -26,4 +26,4 @@ function Action() {
 	);
 }
 
-export default Action;
+export default HabitActionRecord;
