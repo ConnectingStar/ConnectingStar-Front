@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 function FooterPrivacyPolicyLink() {
+	//TODO: 약관 추가
 	return (
 		<footer css={container}>
 			<p>서비스를 시작하시면 다음 항목에 동의하게 돼요</p>

@@ -4,8 +4,9 @@ import GoogleIcon from "@/assets/icon/ic-signup.google.svg";
 import KakaoIcon from "@/assets/icon/ic-signup.kakao.svg";
 import LogoImg from "@/assets/image/img-logo-black.png";
 
+import Header from "@/components/common/Header/Header";
+
 import FooterPrivacyPolicyLink from "./FooterPrivacyPolicyLink";
-import Header from "../../common/Header/Header";
 
 import { theme } from "@/styles/theme";
 
