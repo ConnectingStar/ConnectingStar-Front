@@ -2,10 +2,15 @@ import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
+import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
 import CategoryLabel from "@/components/StarPage/StarCardDetail/CategoryLabel";
 import Img from "@/components/StarPage/StarCardDetail/Img";
 import Story from "@/components/StarPage/StarCardDetail/Story";
 
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
+
+import { modalType } from "@/constants/modalConstants";
 import { buttonState } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
@@ -21,6 +26,10 @@ const data: dataType = {
 };
 
 export default function StarCardDetailPage() {
+	const dispatch = useAppDispatch();
+
+	const { modal } = useAppSelector((state) => state.modal);
+
 	return (
 		<>
 			<Header>
@@ -33,7 +42,13 @@ export default function StarCardDetailPage() {
 				<CategoryLabel />
 				<Story />
 			</section>
-			<FooterBtn text={buttonState[data.state]} isTransparent />
+			<FooterBtn
+				text={buttonState[data.state]}
+				handleBtnClick={() => dispatch(openModal(modalType.SELECT_STAR))}
+				isTransparent
+			/>
+
+			{modal === modalType.SELECT_STAR && <SelectStarModal />}
 		</>
 	);
 }
