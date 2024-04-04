@@ -25,7 +25,7 @@ export const prizeCommentStyle = css`
 	white-space: pre-wrap;
 	text-align: center;
 
-	& > :first-of-type {
+	& > div:first-of-type {
 		${theme.font.head_a};
 		margin-bottom: 0.5rem;
 		color: ${theme.color.main_blue};
@@ -35,7 +35,7 @@ export const prizeCommentStyle = css`
 		}
 	}
 
-	& > :nth-of-type(2) {
+	& > div:nth-of-type(2) {
 		${theme.font.body_a};
 		color: white;
 	}

@@ -37,4 +37,8 @@ export const prizeComments = [
 		yellowText: `별을 드립니다!`,
 		comment: `[정체성한] 사람에\n한걸음 더 다가갔군요 😊`,
 	},
+	// {
+	// 	blueText: `시작이 반!`,
+	// 	comment: `더욱 {정체성한} 사람이 되기 위한 한 걸음\n제가 {닉네임}님을 응원할게요 😊`,
+	// },
 ];
