@@ -25,7 +25,7 @@ function StarPrizeModal({ version, blueText, comment, yellowText }: StarPrizeMod
 		<Modal>
 			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
 				<span css={imageWrapperStyle}>
-					<img src={StarImage} alt="임시" />
+					<img src={StarImage} alt="prizeImage" />
 				</span>
 				<article css={prizeCommentStyle}>
 					<div>
