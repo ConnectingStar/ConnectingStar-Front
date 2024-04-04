@@ -196,25 +196,25 @@ export const prizeComments = [
 	// },
 ];
 // 임시로 쓰는 데이터 나중에는 지정된 데이터를 habitManage로 배치할 예정
-export const habitManageCondition = [
+export const habitManageConditions = [
 	{
-		TITLE: "언제",
-		INPUT: "오후 8시",
+		title: "언제",
+		input: "오후 8시",
 	},
 	{
-		TITLE: "어디서",
-		INPUT: "우리집 안 내 책상 위",
+		title: "어디서",
+		input: "우리집 안 내 책상 위",
 	},
 	{
-		TITLE: "무엇을",
-		INPUT: "책 읽기",
+		title: "무엇을",
+		input: "책 읽기",
 	},
 	{
-		TITLE: "얼마나",
-		INPUT: "5",
+		title: "얼마나",
+		input: "5",
 	},
 	{
-		TITLE: "단위",
-		INPUT: "페이지",
+		title: "단위",
+		input: "페이지",
 	},
 ];

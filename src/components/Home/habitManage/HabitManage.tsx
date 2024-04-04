@@ -5,7 +5,7 @@ import AlarmCheckModal from "@/components/Home/habitManage/AlarmCheckModal/Alarm
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { habitManageCondition } from "@/constants/homeConstants";
+import { habitManageConditions } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 
 import {
@@ -46,10 +46,10 @@ function HabitManage() {
 			</div>
 			<div className="tab">
 				<span>습관</span>
-				{habitManageCondition.map((texts) => (
+				{habitManageConditions.map((condition) => (
 					<div className="condition">
-						<p>{texts.TITLE}</p>
-						<p>{texts.INPUT}</p>
+						<p>{condition.title}</p>
+						<p>{condition.input}</p>
 					</div>
 				))}
 			</div>
