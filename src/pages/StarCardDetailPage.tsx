@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
+import SelectProfileCharacterModal from "@/components/StarPage/Modal/SelectProfileCharacterModal";
 import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
 import CategoryLabel from "@/components/StarPage/StarCardDetail/CategoryLabel";
 import Img from "@/components/StarPage/StarCardDetail/Img";
@@ -15,13 +16,15 @@ import { buttonState } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
 
+import { getModalType } from "@/utils/starCardDetailUtil";
+
 // TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
-interface dataType {
+interface DataType {
 	state: "default" | "selected" | "have";
 }
 
 // TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
-const data: dataType = {
+const data: DataType = {
 	state: "have",
 };
 
@@ -29,6 +32,14 @@ export default function StarCardDetailPage() {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
+
+	const handleModal = () => {
+		const modalType = getModalType(data.state);
+
+		if (modalType) {
+			dispatch(openModal(modalType));
+		}
+	};
 
 	return (
 		<>
@@ -42,13 +53,10 @@ export default function StarCardDetailPage() {
 				<CategoryLabel />
 				<Story />
 			</section>
-			<FooterBtn
-				text={buttonState[data.state]}
-				handleBtnClick={() => dispatch(openModal(modalType.SELECT_STAR))}
-				isTransparent
-			/>
+			<FooterBtn text={buttonState[data.state]} handleBtnClick={handleModal} isTransparent />
 
 			{modal === modalType.SELECT_STAR && <SelectStarModal />}
+			{modal === modalType.SELECT_PROFILE_CHARACTER && <SelectProfileCharacterModal />}
 		</>
 	);
 }
