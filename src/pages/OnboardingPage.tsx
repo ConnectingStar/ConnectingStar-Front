@@ -2,11 +2,11 @@ import { useState } from "react";
 // import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import CreateAccount from "@/components/Onboarding/CreateAccount";
+import CreateAccount from "@/components/Onboarding/CreateAccount/CreateAccount";
 import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
-import SignUp from "@/components/Onboarding/SignUp";
-import Splash from "@/components/Onboarding/Splash";
-import VisitorRoute from "@/components/Onboarding/VisitorRoute";
+import SignUp from "@/components/Onboarding/SignUp/SignUp";
+import Splash from "@/components/Onboarding/Splash/Splash";
+import VisitorRoute from "@/components/Onboarding/VisitorRoute/VisitorRoute";
 
 function OnboardingPage() {
 	const navigate = useNavigate();
