@@ -102,7 +102,7 @@ export const alarmBoxStyle = (isToggled: boolean) => css`
 `;
 
 export const quitButtonStyle = css`
-	border-top: 0.5rem solid #f0f0f6;
+	border-top: 0.5rem solid ${theme.color.line};
 	color: ${theme.color.error};
 	height: 3.9375rem;
 `;
