@@ -33,9 +33,9 @@ function HabitGenerate() {
 				<div css={profileBoxStyle}>
 					<img src={CharacterExampleImage} alt="profile" />
 					<div>
-						<p>{`반가워요 {닉네임}님!`}</p>
-						<p>{`이번엔 어떤 습관을 만들어볼까요?`}</p>
-						<p>{`그래서 어떤 사람이 되고 싶으신가요?`}</p>
+						<p>반가워요 닉네임님!</p>
+						<p>이번엔 어떤 습관을 만들어볼까요?</p>
+						<p>그래서 어떤 사람이 되고 싶으신가요?</p>
 					</div>
 				</div>
 
