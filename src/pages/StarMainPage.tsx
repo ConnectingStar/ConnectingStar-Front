@@ -1,25 +1,37 @@
 import { css } from "@emotion/react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
+import CharacterUnlockModal from "@/components/StarPage/Modal/CharacterUnlockModal";
 import StarBackground from "@/components/StarPage/StarMain/StarBackground";
 import StarButton from "@/components/StarPage/StarMain/StarButton";
 import StarCardLink from "@/components/StarPage/StarMain/StarCardLink";
 import StarInfo from "@/components/StarPage/StarMain/StarInfo";
 
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
+
+import { modalType } from "@/constants/modalConstants";
+
 import { theme } from "@/styles/theme";
 
 export default function StarMainPage() {
+	const dispatch = useAppDispatch();
+
+	const { modal } = useAppSelector((state) => state.modal);
+
 	return (
 		<div css={containerStyle}>
 			<StarBackground />
 			<div className="wrapper">
 				<StarInfo starCount={114} starCardId={1} />
-				<StarButton />
+				<StarButton onClick={() => dispatch(openModal(modalType.CHARACTER_UNLOCK))} />
 				<StarCardLink />
 			</div>
 			<div css={starMainPageGnbStyle}>
 				<Gnb />
 			</div>
+
+			{modal === modalType.CHARACTER_UNLOCK && <CharacterUnlockModal />}
 		</div>
 	);
 }

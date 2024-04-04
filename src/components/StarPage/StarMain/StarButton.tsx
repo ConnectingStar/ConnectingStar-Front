@@ -8,11 +8,15 @@ import { getOutlineTextStyle } from "@/components/StarPage/StarMain/Star.style";
 
 const description = `버튼을 클릭하여 별자리를 완성하면 \n 캐릭터를 획득할 수 있어요!`;
 
-export default function StarButton() {
+interface StarButtonProps {
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+export default function StarButton({ onClick }: StarButtonProps) {
 	return (
 		<div css={containerStyle}>
 			<p data-text={description}>{description}</p>
-			<button>
+			<button onClick={onClick}>
 				<img src={starButton} alt="별 모양 버튼" />
 			</button>
 		</div>
