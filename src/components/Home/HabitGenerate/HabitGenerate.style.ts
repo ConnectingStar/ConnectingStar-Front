@@ -41,8 +41,7 @@ export const tipBoxStyle = css`
 	position: relative;
 	display: flex;
 	${theme.font.body_b};
-
-	& > div:first-of-type {
+	& > button {
 		display: flex;
 		align-items: center;
 		padding: 0.5rem 1rem;
@@ -51,7 +50,7 @@ export const tipBoxStyle = css`
 		background-color: ${theme.color.main_deep_blue};
 	}
 
-	& > div:nth-of-type(2) {
+	& > div {
 		transform: translateY(calc(2.125rem + 12px));
 		position: absolute;
 		display: flex;
@@ -66,7 +65,7 @@ export const tipBoxStyle = css`
 		& > div {
 			width: 14.75rem;
 
-			& > div:first-of-type {
+			& > p:first-of-type {
 				${theme.font.head_c}
 				color: ${theme.color.main_blue}
 			}
@@ -98,6 +97,7 @@ export const selectBoxStyle = css`
 
 			color: ${theme.color.font_gray};
 			gap: 6px;
+
 			& > span:first-of-type {
 				${theme.font.head_c};
 			}
@@ -110,7 +110,9 @@ export const selectBoxStyle = css`
 
 		& > .sticked {
 			display: flex;
-			padding: 1.25rem 1rem;
+			align-items: center;
+			height: 3.4375rem;
+			padding: 1rem;
 			border-radius: 15px;
 			color: ${theme.color.button_deactivated};
 			background-color: ${theme.color.bg};
@@ -124,7 +126,9 @@ export const selectBoxStyle = css`
 			display: flex;
 
 			& > span {
-				padding: 1.25rem 1rem;
+				align-items: center;
+				height: 3.4375rem;
+				padding: 1rem;
 				border-radius: 15px;
 				color: ${theme.color.button_deactivated};
 				background-color: ${theme.color.bg};
@@ -136,7 +140,7 @@ export const selectBoxStyle = css`
 			}
 
 			& > span:nth-of-type(2) {
-				width: 12.875rem;
+				width: 13.625rem;
 			}
 		}
 	}
