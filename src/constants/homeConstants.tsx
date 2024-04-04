@@ -218,3 +218,18 @@ export const habitManageConditions = [
 		input: "페이지",
 	},
 ];
+
+export const habitManageAlarms = [
+	{
+		title: "1차 알림",
+		target: "first",
+		time: "오후 7:50",
+		comment: "곧 약속 시간이에요 :) 성장하는 세림님 화이팅!",
+	},
+	{
+		title: "2차 알림",
+		target: "second",
+		time: "오후 8:30",
+		comment: "오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!",
+	},
+];
