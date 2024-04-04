@@ -8,8 +8,8 @@ import StarPrizeModal from "@/components/Home/Landing/Modal/StarPrizeModal/StarP
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { habitConditions } from "@/constants/habitRecordConstants";
-import { prizeComments } from "@/constants/habitRecordConstants";
+import { habitRecordConditions } from "@/constants/homeConstants";
+import { prizeComments } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 import { habitIconData } from "@/constants/myPageConstants";
 
@@ -90,7 +90,7 @@ function HabitRecord() {
 				</h3>
 
 				<ul>
-					{habitConditions.map(({ condition, placeholder }) => (
+					{habitRecordConditions.map(({ condition, placeholder }) => (
 						<li key={condition}>
 							<input
 								inputMode={condition === "unit" ? "numeric" : "none"}
