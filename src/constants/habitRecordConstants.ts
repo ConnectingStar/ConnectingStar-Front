@@ -21,20 +21,20 @@ export const habitConditions: HabitCondition[] = [
 	},
 ];
 
-export const prizeCommentsArray = [
+export const prizeComments = [
 	{
-		HABIT_RECORD_BLUE_TEXT: `완벽의 강박을 덜어낸\n당신에게 `,
-		HABIT_RECORD_YELLOW_TEXT: `별을 드릴게요!`,
-		HABIT_RECORD_WHITE_TEXT: `[정체성한] 사람에\n한걸음 더 다가갔군요 😊`,
+		blueText: `완벽의 강박을 덜어낸\n당신에게 `,
+		yellowText: `별을 드릴게요!`,
+		comment: `[정체성한] 사람에\n한걸음 더 다가갔군요 😊`,
 	},
 	{
-		HABIT_RECORD_BLUE_TEXT: `생각한 대로 해내는\n당신에게 `,
-		HABIT_RECORD_YELLOW_TEXT: `별을 드려요!`,
-		HABIT_RECORD_WHITE_TEXT: `정체성 [정체성한]이\n한층 뚜렷해졌어요 😊`,
+		blueText: `생각한 대로 해내는\n당신에게 `,
+		yellowText: `별을 드려요!`,
+		comment: `정체성 [정체성한]이\n한층 뚜렷해졌어요 😊`,
 	},
 	{
-		HABIT_RECORD_BLUE_TEXT: `목표치를 초과 달성한\n당신에게 `,
-		HABIT_RECORD_YELLOW_TEXT: `별을 드립니다!`,
-		HABIT_RECORD_WHITE_TEXT: `[정체성한] 사람에\n한걸음 더 다가갔군요 😊`,
+		blueText: `목표치를 초과 달성한\n당신에게 `,
+		yellowText: `별을 드립니다!`,
+		comment: `[정체성한] 사람에\n한걸음 더 다가갔군요 😊`,
 	},
 ];

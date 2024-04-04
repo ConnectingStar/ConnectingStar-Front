@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { habitConditions } from "@/constants/habitRecordConstants";
+import { prizeComments } from "@/constants/habitRecordConstants";
 import { modalType } from "@/constants/modalConstants";
 import { habitIconData } from "@/constants/myPageConstants";
 
@@ -31,6 +32,10 @@ function HabitRecord() {
 	const today = new Date();
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
+
+	// 임시로 랜덤요소를 통해 멘트에 변화를 주고 있음. 나중에 api 추가되면 수정할 예정
+	const Random = Math.floor(Math.random() * 10) % prizeComments.length;
+	const { blueText, yellowText, comment } = prizeComments[Random];
 
 	const [habitRecords, setHabitRecords] = useState<HabitRecordsState>({
 		when: "",
@@ -131,7 +136,14 @@ function HabitRecord() {
 				isTransparent
 				disabled={!isActivated || !selectedIcon}
 			/>
-			{modal === modalType.STAR_PRIZE && <StarPrizeModal />}
+			{modal === modalType.STAR_PRIZE && (
+				<StarPrizeModal
+					version={"ver1"}
+					blueText={blueText}
+					yellowText={yellowText}
+					comment={comment}
+				/>
+			)}
 		</main>
 	);
 }
