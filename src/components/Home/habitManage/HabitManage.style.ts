@@ -8,7 +8,7 @@ export const layoutStyle = css`
 	gap: 40px;
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 1.25rem 1.5rem 0;
+	padding: 1.25rem 1.5rem 6.4375rem;
 
 	.tab {
 		display: flex;
@@ -102,6 +102,14 @@ export const alarmBoxStyle = (isToggled: boolean) => css`
 `;
 
 export const quitButtonStyle = css`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	background-color: white;
+	width: 100%;
+	left: 0;
+	bottom: 0;
 	border-top: 0.5rem solid ${theme.color.line};
 	color: ${theme.color.error};
 	height: 3.9375rem;
