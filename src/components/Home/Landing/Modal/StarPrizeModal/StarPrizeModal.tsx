@@ -6,20 +6,21 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import { prizeCommentsArray } from "@/constants/habitRecordConstants";
-
 import {
 	containerStyle,
 	imageWrapperStyle,
 	prizeCommentStyle,
 } from "@/components/Home/Landing/Modal/StarPrizeModal/StarPrizeModal.style";
 
-function StarPrizeModal() {
-	const dispatch = useAppDispatch();
-	// 임시로 랜덤요소를 통해 멘트에 변화를 주고 있음. 나중에 api 추가되면 수정할 예정
-	const Random = Math.floor(Math.random() * 10) % prizeCommentsArray.length;
-	const target = prizeCommentsArray[Random];
+interface StarPrizeModalProps {
+	version: "ver1" | "ver2";
+	blueText: string;
+	yellowText?: string;
+	comment: string;
+}
 
+function StarPrizeModal({ version, blueText, comment, yellowText }: StarPrizeModalProps) {
+	const dispatch = useAppDispatch();
 	return (
 		<Modal>
 			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
@@ -28,14 +29,18 @@ function StarPrizeModal() {
 				</span>
 				<article css={prizeCommentStyle}>
 					<div>
-						<span>{target.HABIT_RECORD_BLUE_TEXT}</span>
-						<span className="yellow">{target.HABIT_RECORD_YELLOW_TEXT}</span>
+						<span>{blueText}</span>
+						{version === "ver1" && <span className="yellow">{yellowText}</span>}
 					</div>
 					<div>
-						<span>{target.HABIT_RECORD_WHITE_TEXT}</span>
+						<span>{comment}</span>
 					</div>
 				</article>
-				<FooterBtn leftText="홈으로" text="별자리 채우기" isTransparent />
+				<FooterBtn
+					leftText={`${version === "ver1" ? "홈으로" : "홈 탐색하기"}`}
+					text={`${version === "ver1" ? "별자리 채우기" : "별자리로 가기"}`}
+					isTransparent
+				/>
 			</div>
 		</Modal>
 	);
