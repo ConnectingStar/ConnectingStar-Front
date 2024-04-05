@@ -13,6 +13,10 @@ import {
 	textButtonStyle,
 } from "@/components/common/Header/Header.style";
 
+/**
+ * @see https://www.notion.so/connecting-star/Header-9bf6a5c36d19428cac03aada13732d61
+ */
+
 export default function Header({ children, isFixed = true }: HeaderProps) {
 	return <div css={getContainerStyle(isFixed)}>{children}</div>;
 }
