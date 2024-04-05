@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { css } from "@emotion/react";
 
@@ -11,22 +11,19 @@ import { theme } from "@/styles/theme";
 function SignUp({ onNext }: { onNext: () => void }) {
 	const [signUpPage, setsignUpPage] = useState(0);
 
-	if (signUpPage === 3) onNext();
+	useEffect(() => {
+		if (signUpPage === 3) onNext();
+	}, [signUpPage]);
 
 	return (
 		<div css={container}>
-			<img src={signUpData[signUpPage].img} alt="logo" />
+			<img src={signUpData[signUpPage]?.img} alt="logo" />
 			<pre
 				dangerouslySetInnerHTML={{
-					__html: signUpData[signUpPage].text,
+					__html: signUpData[signUpPage]?.text,
 				}}
 			/>
-			<FooterBtn
-				text="다음"
-				handleBtnClick={() => {
-					setsignUpPage((prev) => prev + 1);
-				}}
-			/>
+			<FooterBtn text="다음" handleBtnClick={() => setsignUpPage((prev) => prev + 1)} />
 		</div>
 	);
 }
