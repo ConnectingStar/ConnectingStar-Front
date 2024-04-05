@@ -9,7 +9,7 @@ import HabitTip from "@/components/Home/HabitGenerate/HabitTip";
 
 import { habitGenerateConditions } from "@/constants/homeConstants";
 
-import useOutSideClick from "@/hooks/useOutsideClick";
+import useOutSideClick from "@/hooks/useOutSideClick";
 
 import {
 	layoutStyle,
