@@ -8,8 +8,10 @@ function FooterPrivacyPolicyLink() {
 		<footer css={container}>
 			<p>서비스를 시작하시면 다음 항목에 동의하게 돼요</p>
 			<div>
-				<a className="line">서비스 이용약관</a>
-				<a>개인정보 처리방침</a>
+				<a className="line" href="#">
+					서비스 이용약관
+				</a>
+				<a href="#">개인정보 처리방침</a>
 			</div>
 		</footer>
 	);
