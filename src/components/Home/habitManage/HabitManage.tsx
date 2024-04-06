@@ -20,7 +20,7 @@ interface Alarm {
 function HabitManage() {
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
-	const [target, setTarget] = useState<string>("first");
+	const [target, setTarget] = useState<string>("");
 	const [alarm, setAlarm] = useState<Alarm>({
 		first: false,
 		second: false,
@@ -28,10 +28,10 @@ function HabitManage() {
 
 	const CheckAlarm = (target: string) => {
 		setTarget(target);
-		if (alarm[target]) {
+		if (!alarm[target]) {
 			dispatch(openModal(modalType.ALARM_CHECK));
 		} else {
-			setAlarm({ ...alarm, [target]: true });
+			setAlarm({ ...alarm, [target]: false });
 		}
 	};
 
@@ -51,7 +51,7 @@ function HabitManage() {
 				))}
 			</div>
 			<div className="tab">
-				<span>알람</span>
+				<span>알림</span>
 				{habitManageAlarms.map((inputs) => (
 					<HabitAlarmBox inputs={inputs} alarm={alarm} CheckAlarm={CheckAlarm} />
 				))}

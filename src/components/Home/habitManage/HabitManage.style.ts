@@ -32,7 +32,7 @@ export const layoutStyle = css`
 			${theme.font.body_a_bold}
 		}
 
-		& > p:nth-of-type(2) {
+		& > p:last-of-type {
 			${theme.font.body_a};
 			color: ${theme.color.main_blue};
 		}
@@ -78,21 +78,21 @@ export const alarmBoxStyle = (isToggled: boolean) => css`
 		width: 2.875rem;
 		height: 1.5rem;
 		border: 0.1rem solid
-			${isToggled ? `${theme.color.main_blue}` : `${theme.color.button_deactivated}`};
+			${isToggled ? `${theme.color.button_deactivated}` : `${theme.color.main_blue}`};
 		top: 0;
 		right: 0;
 		transition: 0.3s ease;
 		background-color: ${isToggled
-			? `${theme.color.main_blue}`
-			: `${theme.color.button_deactivated}`};
-		border-radius: 0.75rem;
+			? `${theme.color.button_deactivated}`
+			: `${theme.color.main_blue}`};
+		border-radius: 12px;
 		transform: translate(-1rem, 1rem);
 		& > span {
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
 			transition: 0.3s ease;
-			left: ${isToggled ? "0" : "calc(100% - 1.3rem)"};
+			right: ${isToggled ? "calc(100% - 1.3rem)" : "0"};
 			width: 1.3rem;
 			height: 1.3rem;
 			border-radius: 50%;
