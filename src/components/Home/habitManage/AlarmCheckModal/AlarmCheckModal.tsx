@@ -25,17 +25,17 @@ function AlarmCheckModal({ target, alarm, setAlarm }: Alarms) {
 		<Modal>
 			<div css={layoutStyle}>
 				<div>
-					<p>{`알림을 off 하면 저와의 약속을 잊으실까 걱정돼요 😥`}</p>
-					<p>{`괜찮으시다면 제가 계속 도움이 되어드리고 싶어요`}</p>
-					<h1>{`알림을 유지하시겠어요?`}</h1>
+					<p>알림을 off 하면 저와의 약속을 잊으실까 걱정돼요 😥</p>
+					<p>괜찮으시다면 제가 계속 도움이 되어드리고 싶어요</p>
+					<p>알림을 유지하시겠어요?</p>
 				</div>
 				<FooterBtn
 					leftText="알림 끄기"
 					text="알림 유지"
 					isPositionStatic
 					isTransparent
-					handleLeftBtnClick={() => handleAlarmCheck(false)}
-					handleBtnClick={() => handleAlarmCheck(true)}
+					handleLeftBtnClick={() => handleAlarmCheck(true)}
+					handleBtnClick={() => handleAlarmCheck(false)}
 				/>
 			</div>
 		</Modal>
@@ -56,12 +56,13 @@ const layoutStyle = css`
 	white-space: pre-wrap;
 	${theme.font.body_a};
 
-	h1 {
-		${theme.font.body_a_bold};
-	}
 	& > div:first-of-type {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+
+		& > p:last-of-type {
+			${theme.font.body_a_bold};
+		}
 	}
 `;
