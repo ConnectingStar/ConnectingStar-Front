@@ -9,7 +9,11 @@ import { openModal } from "@/api/modal/modalSlice";
 import { habitManageConditions, habitManageAlarms } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 
-import { layoutStyle, quitButtonStyle } from "@/components/Home/habitManage/HabitManage.style";
+import {
+	layoutStyle,
+	conditionStyle,
+	quitButtonStyle,
+} from "@/components/Home/habitManage/HabitManage.style";
 
 interface Alarm {
 	first: boolean;
@@ -37,20 +41,20 @@ function HabitManage() {
 
 	return (
 		<main css={layoutStyle}>
-			<div className="condition">
+			<div css={conditionStyle}>
 				<p>정체성</p>
 				<p>성장하는</p>
 			</div>
-			<div className="tab">
+			<div>
 				<span>습관</span>
 				{habitManageConditions.map((condition) => (
-					<div className="condition">
+					<div css={conditionStyle}>
 						<p>{condition.title}</p>
 						<p>{condition.input}</p>
 					</div>
 				))}
 			</div>
-			<div className="tab">
+			<div>
 				<span>알림</span>
 				{habitManageAlarms.map((inputs) => (
 					<HabitAlarmBox inputs={inputs} alarm={alarm} CheckAlarm={CheckAlarm} />
