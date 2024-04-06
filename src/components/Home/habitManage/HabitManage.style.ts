@@ -10,7 +10,7 @@ export const layoutStyle = css`
 	margin: 0 auto;
 	padding: 1.25rem 1.5rem 6.4375rem;
 
-	.tab {
+	& > :not(div:first-of-type) {
 		display: flex;
 		flex-direction: column;
 		gap: 6px;
@@ -21,25 +21,25 @@ export const layoutStyle = css`
 		}
 	}
 
-	.condition {
-		display: flex;
-		justify-content: space-between;
-		border-radius: 15px;
-		padding: 1rem;
-		background-color: ${theme.color.bg};
-
-		& > p:first-of-type {
-			${theme.font.body_a_bold}
-		}
-
-		& > p:last-of-type {
-			${theme.font.body_a};
-			color: ${theme.color.main_blue};
-		}
-	}
-
 	& > div:nth-of-type(3) {
 		gap: 12px;
+	}
+`;
+
+export const conditionStyle = css`
+	display: flex;
+	justify-content: space-between;
+	border-radius: 15px;
+	padding: 1rem;
+	background-color: ${theme.color.bg};
+
+	& > p:first-of-type {
+		${theme.font.body_a_bold}
+	}
+
+	& > p:last-of-type {
+		${theme.font.body_a};
+		color: ${theme.color.main_blue};
 	}
 `;
 
