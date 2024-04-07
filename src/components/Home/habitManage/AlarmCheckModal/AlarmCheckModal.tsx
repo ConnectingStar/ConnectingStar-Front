@@ -8,19 +8,13 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
-interface Alarms {
-	target: string;
-	alarm: { first: boolean; second: boolean };
-	setAlarm: React.Dispatch<React.SetStateAction<{ first: boolean; second: boolean }>>;
+interface AlarmCheckModalProps {
+	targetKey: number;
+	alarmCheck: (key: number) => void;
 }
 
-function AlarmCheckModal({ target, alarm, setAlarm }: Alarms) {
+function AlarmCheckModal({ targetKey, alarmCheck }: AlarmCheckModalProps) {
 	const dispatch = useAppDispatch();
-	const handleAlarmCheck = (check: boolean) => {
-		setAlarm({ ...alarm, [target]: check });
-		dispatch(closeModal());
-	};
-
 	return (
 		<Modal>
 			<div css={layoutStyle}>
@@ -34,8 +28,13 @@ function AlarmCheckModal({ target, alarm, setAlarm }: Alarms) {
 					text="알림 유지"
 					isPositionStatic
 					isTransparent
-					handleLeftBtnClick={() => handleAlarmCheck(true)}
-					handleBtnClick={() => handleAlarmCheck(false)}
+					handleLeftBtnClick={() => {
+						alarmCheck(targetKey);
+						dispatch(closeModal());
+					}}
+					handleBtnClick={() => {
+						dispatch(closeModal());
+					}}
 				/>
 			</div>
 		</Modal>
