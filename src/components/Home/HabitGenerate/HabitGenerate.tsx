@@ -1,5 +1,3 @@
-import { useState, useRef } from "react";
-
 import CharacterExampleImage from "@/assets/image/img-profile-example.png";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
@@ -9,24 +7,15 @@ import HabitTip from "@/components/Home/HabitGenerate/HabitTip";
 
 import { habitGenerateConditions } from "@/constants/homeConstants";
 
-import useOutSideClick from "@/hooks/useOutSideClick";
-
 import {
 	layoutStyle,
 	profileBoxStyle,
-	tipBoxStyle,
 	selectBoxStyle,
 } from "@/components/Home/HabitGenerate/HabitGenerate.style";
 
 // import { modalType } from "@/constants/modalConstants";
 
 function HabitGenerate() {
-	const tipRef = useRef(null);
-	const [isOpenTip, setIsOpenTip] = useState<boolean>(false);
-	useOutSideClick(tipRef, () => setIsOpenTip(false));
-
-	// 임시
-
 	return (
 		<main css={layoutStyle}>
 			<div>
@@ -39,9 +28,7 @@ function HabitGenerate() {
 					</div>
 				</div>
 
-				<div ref={tipRef} css={tipBoxStyle}>
-					<HabitTip isOpenTip={isOpenTip} setIsOpenTip={setIsOpenTip} />
-				</div>
+				<HabitTip />
 			</div>
 
 			<ul css={selectBoxStyle}>
