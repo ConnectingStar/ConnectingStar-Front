@@ -48,6 +48,7 @@ export const getToggleButtonStyle = (isActive: boolean) => {
 			: `${theme.color.button_deactivated}`};
 		border-radius: 12px;
 		transform: translate(-1rem, 1rem);
+
 		& > span {
 			position: absolute;
 			top: 50%;

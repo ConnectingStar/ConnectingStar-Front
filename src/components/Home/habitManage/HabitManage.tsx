@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import AlarmCheckModal from "@/components/Home/habitManage/AlarmCheckModal/AlarmCheckModal";
 import Button from "@/components/Home/habitManage/Button/Button";
@@ -21,6 +21,7 @@ function HabitManage() {
 	const { modal } = useAppSelector((state) => state.modal);
 	const [alarmsData, setAlarmsData] = useState<AlarmData[]>(habitManageAlarms);
 	const [targetKey, setTargetKey] = useState<number>(0);
+
 	const alarmQuestion = (key: number) => {
 		setTargetKey(key);
 		dispatch(openModal(modalType.ALARM_CHECK));
@@ -39,9 +40,9 @@ function HabitManage() {
 		]);
 	};
 
-	useEffect(() => {
-		console.log(alarmsData);
-	}, [alarmsData]);
+	// useEffect(() => {
+	// 	console.log(alarmsData);
+	// }, [alarmsData]);
 
 	return (
 		<main css={layoutStyle}>
