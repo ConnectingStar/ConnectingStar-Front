@@ -138,7 +138,7 @@ function HabitRecord() {
 			/>
 			{modal === modalType.STAR_PRIZE && (
 				<StarPrizeModal
-					version={"ver1"}
+					isHabitStart={false}
 					blueText={blueText}
 					yellowText={yellowText}
 					comment={comment}

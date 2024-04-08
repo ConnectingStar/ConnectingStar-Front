@@ -30,7 +30,7 @@ export const prizeCommentStyle = css`
 		margin-bottom: 0.5rem;
 		color: ${theme.color.main_blue};
 
-		.yellow {
+		& > span:last-of-type {
 			color: ${theme.color.main_yellow};
 		}
 	}

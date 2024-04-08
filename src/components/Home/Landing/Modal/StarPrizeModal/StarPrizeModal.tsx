@@ -13,13 +13,13 @@ import {
 } from "@/components/Home/Landing/Modal/StarPrizeModal/StarPrizeModal.style";
 
 interface StarPrizeModalProps {
-	version: "ver1" | "ver2";
+	isHabitStart: boolean;
 	blueText: string;
 	yellowText?: string;
 	comment: string;
 }
 
-function StarPrizeModal({ version, blueText, comment, yellowText }: StarPrizeModalProps) {
+function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPrizeModalProps) {
 	const dispatch = useAppDispatch();
 	return (
 		<Modal>
@@ -30,15 +30,15 @@ function StarPrizeModal({ version, blueText, comment, yellowText }: StarPrizeMod
 				<div css={prizeCommentStyle}>
 					<div>
 						<span>{blueText}</span>
-						{version === "ver1" && <span className="yellow">{yellowText}</span>}
+						{!isHabitStart && <span className="yellow">{yellowText}</span>}
 					</div>
 					<div>
 						<span>{comment}</span>
 					</div>
 				</div>
 				<FooterBtn
-					leftText={`${version === "ver1" ? "홈으로" : "홈 탐색하기"}`}
-					text={`${version === "ver1" ? "별자리 채우기" : "별자리로 가기"}`}
+					leftText={`${!isHabitStart ? "홈으로" : "홈 탐색하기"}`}
+					text={`${!isHabitStart ? "별자리 채우기" : "별자리로 가기"}`}
 					isTransparent
 				/>
 			</div>
