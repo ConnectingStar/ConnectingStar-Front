@@ -24,7 +24,6 @@ function HabitGenerateConditions({
 	// const [timeModalTitle, setTimeModalTitle] = useState("시간을 선택해 주세요");
 	const handleClick = (modalName: string, placeText: string) => {
 		dispatch(openModal(modalName));
-
 		console.log(placeText);
 		// if (modalName === modalType.SELECT_TIME) {
 		// 	setTimeModalTitle(placeText);

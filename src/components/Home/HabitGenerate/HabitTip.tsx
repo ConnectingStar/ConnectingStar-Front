@@ -1,13 +1,18 @@
+import { useState, useRef } from "react";
+
 import RoundCloseButtonIcon from "@/assets/icon/ic-round-close-button.svg?react";
 
-interface HabitTipProps {
-	isOpenTip: boolean;
-	setIsOpenTip: (isOpenTip: boolean) => void;
-}
+import useOutSideClick from "@/hooks/useOutSideClick";
 
-function HabitTip({ isOpenTip, setIsOpenTip }: HabitTipProps) {
+import { tipBoxStyle } from "@/components/Home/HabitGenerate/HabitGenerate.style";
+
+function HabitTip() {
+	const tipRef = useRef(null);
+	const [isOpenTip, setIsOpenTip] = useState<boolean>(false);
+	useOutSideClick(tipRef, () => setIsOpenTip(false));
+
 	return (
-		<>
+		<div ref={tipRef} css={tipBoxStyle}>
 			<button onClick={() => setIsOpenTip(!isOpenTip)}>
 				<div>좋은 습관 Tip</div>
 			</button>
@@ -25,7 +30,7 @@ function HabitTip({ isOpenTip, setIsOpenTip }: HabitTipProps) {
 					<RoundCloseButtonIcon onClick={() => setIsOpenTip(false)} />
 				</div>
 			)}
-		</>
+		</div>
 	);
 }
 
