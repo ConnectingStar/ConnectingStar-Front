@@ -39,6 +39,7 @@ const Button = ({ inputs, isToggle, alarmCheck, alarmQuestion }: buttonType) => 
 				<p>{time}</p>
 			</span>
 			<div>{comment}</div>
+
 			{isToggle && (
 				<div css={getToggleButtonStyle(isActive)} onClick={handleToggleClick}>
 					<span />
