@@ -158,7 +158,7 @@ type HabitRecordCondition = {
 };
 
 // habit-record
-export const habitRecordConditions: HabitRecordCondition[] = [
+export const habitRecordConditions = [
 	{
 		condition: "when",
 		placeholder: "오후 8시에",
