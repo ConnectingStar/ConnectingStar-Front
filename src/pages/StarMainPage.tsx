@@ -23,14 +23,18 @@ export default function StarMainPage() {
 	return (
 		<div css={containerStyle}>
 			<StarBackground />
+
 			<div className="wrapper-top">
 				<StarInfo starCount={114} starCardId={1} />
 			</div>
-			<StarCharacter svgData={data} />
+			<div className="wrapper-middle">
+				<StarCharacter svgData={data} />
+			</div>
 			<div className="wrapper-bottom">
 				<StarButton onClick={() => dispatch(openModal(modalType.CHARACTER_UNLOCK))} />
 				<StarCardLink />
 			</div>
+
 			<div css={starMainPageGnbStyle}>
 				<Gnb />
 			</div>
@@ -41,6 +45,7 @@ export default function StarMainPage() {
 }
 
 const containerStyle = css`
+	height: 100dvh;
 	background: linear-gradient(
 		#0b0a0b 2%,
 		#192771 38%,
@@ -49,12 +54,18 @@ const containerStyle = css`
 		#6b8acb 84%,
 		#6d68d4 98%
 	);
-	height: 100dvh;
 
 	.wrapper-top {
 		width: 22.5rem;
 		padding: 1.75rem 1.5rem 0;
 		margin: 0 auto;
+	}
+
+	.wrapper-middle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: calc(100dvh - 20.825rem);
 	}
 
 	.wrapper-bottom {
