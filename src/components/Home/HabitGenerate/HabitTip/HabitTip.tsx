@@ -14,8 +14,8 @@ function HabitTip() {
 
 	return (
 		<div css={tipBoxStyle}>
-			<button onClick={() => setIsOpenTip((prev) => !prev)}>
-				<div>좋은 습관 Tip</div>
+			<button ref={tipRef} onClick={() => setIsOpenTip((prev) => !prev)}>
+				좋은 습관 Tip
 			</button>
 
 			{isOpenTip && (
