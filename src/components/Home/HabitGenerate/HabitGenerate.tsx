@@ -3,7 +3,7 @@ import CharacterExampleImage from "@/assets/image/img-profile-example.png";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 // import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import HabitGenerateConditions from "@/components/Home/HabitGenerate/habitGenerateConditions";
-import HabitTip from "@/components/Home/HabitGenerate/HabitTip";
+import HabitTip from "@/components/Home/HabitGenerate/HabitTip/HabitTip";
 
 import { habitGenerateConditions } from "@/constants/homeConstants";
 
