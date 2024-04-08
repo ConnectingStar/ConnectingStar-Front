@@ -9,15 +9,16 @@ import { tipBoxStyle } from "@/components/Home/HabitGenerate/HabitGenerate.style
 function HabitTip() {
 	const tipRef = useRef(null);
 	const [isOpenTip, setIsOpenTip] = useState<boolean>(false);
+
 	useOutSideClick(tipRef, () => setIsOpenTip(false));
 
 	return (
-		<div ref={tipRef} css={tipBoxStyle}>
-			<button onClick={() => setIsOpenTip(!isOpenTip)}>
+		<div css={tipBoxStyle}>
+			<button onClick={() => setIsOpenTip((prev) => !prev)}>
 				<div>좋은 습관 Tip</div>
 			</button>
 			{isOpenTip && (
-				<div>
+				<div ref={tipRef}>
 					<div>
 						<p>1. 일단 쉬워야 해요.</p>
 						<p>쉬워야 반복할 수 있기 때문이에요.</p>

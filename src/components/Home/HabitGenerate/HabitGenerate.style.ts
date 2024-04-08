@@ -8,7 +8,7 @@ export const layoutStyle = css`
 	gap: 20px;
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 1.25rem 1.5rem;
+	padding: 4.75rem 1.5rem 1.25rem;
 `;
 
 export const profileBoxStyle = css`
@@ -30,7 +30,8 @@ export const profileBoxStyle = css`
 
 	& > div {
 		white-space: pre-wrap;
-		& > div:first-of-type {
+
+		& > p:first-of-type {
 			${theme.font.head_b}
 		}
 	}
@@ -38,11 +39,9 @@ export const profileBoxStyle = css`
 
 export const tipBoxStyle = css`
 	position: relative;
-	display: flex;
 	${theme.font.body_b};
 
 	& > button {
-		display: flex;
 		align-items: center;
 		padding: 0.5rem 1rem;
 		border-radius: 20px;
@@ -51,7 +50,7 @@ export const tipBoxStyle = css`
 	}
 
 	& > div {
-		transform: translateY(calc(2.125rem + 12px));
+		transform: translateY(calc(12px));
 		position: absolute;
 		display: flex;
 		flex-direction: column;
@@ -64,6 +63,7 @@ export const tipBoxStyle = css`
 
 		& > div {
 			width: 14.75rem;
+
 			& > p:first-of-type {
 				${theme.font.head_c}
 				color: ${theme.color.main_blue}
