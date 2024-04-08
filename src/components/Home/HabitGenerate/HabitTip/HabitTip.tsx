@@ -4,7 +4,7 @@ import RoundCloseButtonIcon from "@/assets/icon/ic-round-close-button.svg?react"
 
 import useOutSideClick from "@/hooks/useOutSideClick";
 
-import { tipBoxStyle } from "@/components/Home/HabitGenerate/HabitGenerate.style";
+import { tipBoxStyle } from "@/components/Home/HabitGenerate/HabitTip/HabitTip.style";
 
 function HabitTip() {
 	const tipRef = useRef(null);
@@ -17,6 +17,7 @@ function HabitTip() {
 			<button onClick={() => setIsOpenTip((prev) => !prev)}>
 				<div>좋은 습관 Tip</div>
 			</button>
+
 			{isOpenTip && (
 				<div ref={tipRef}>
 					<div>
