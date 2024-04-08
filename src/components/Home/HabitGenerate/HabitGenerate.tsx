@@ -36,6 +36,7 @@ function HabitGenerate() {
 					const { subtitle, explanation, placeholder, placeholderSecond, modalName } = condition;
 					return (
 						<HabitGenerateConditions
+							key={subtitle}
 							subtitle={subtitle}
 							explanation={explanation}
 							placeholder={placeholder}
