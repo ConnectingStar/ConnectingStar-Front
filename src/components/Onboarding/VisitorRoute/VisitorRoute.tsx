@@ -39,7 +39,7 @@ export default VisitorRoute;
 
 const container = css`
 	width: 22.5rem;
-	padding: 1.25rem 1.5rem;
+	padding: 4.75rem 1.5rem;
 	margin: 0 auto;
 	& > h1 {
 		margin-bottom: 2.5rem;
