@@ -24,6 +24,10 @@ export const containerStyle = css`
 		justify-content: center;
 		align-items: center;
 		height: calc(100dvh - 20.825rem);
+
+		svg {
+			height: 100%;
+		}
 	}
 
 	.wrapper-bottom {
