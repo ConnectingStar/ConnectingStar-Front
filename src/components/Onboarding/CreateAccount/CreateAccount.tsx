@@ -97,7 +97,7 @@ export default CreateAccount;
 const container = css`
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 1.25rem 1.5rem;
+	padding: 4.75rem 1.5rem;
 
 	& > h1 {
 		${theme.font.head_a}
