@@ -16,7 +16,7 @@ import OnboardingPage from "@/pages/OnboardingPage";
 import RestRecordPage from "@/pages/RestRecordPage";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
-import StarMainPage from "@/pages/StarMainPage";
+import StarMainPage from "@/pages/StarMainPage/StarMainPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 const App = () => {
 	return (
