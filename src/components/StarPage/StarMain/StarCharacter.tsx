@@ -1,11 +1,11 @@
 // TODO: 테스트를 위한 임시 타입 지정(추후 삭제 예정)
-import { data } from "@/pages/StarMainPage";
+import { data } from "@/pages/StarMainPage/StarMainPage";
 
-interface Props {
+interface StarCharacterProps {
 	svgData: typeof data;
 }
 
-export default function StarCharacter({ svgData }: Props) {
+export default function StarCharacter({ svgData }: StarCharacterProps) {
 	const {
 		width,
 		height,
