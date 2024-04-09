@@ -15,11 +15,9 @@ function OauthSignUp({ onNext }: { onNext: () => void }) {
 	// TODO: header fixed 넣기
 	return (
 		<>
-			<div css={header}>
-				<Header>
-					<Header.CloseButton />
-				</Header>
-			</div>
+			<Header>
+				<Header.CloseButton />
+			</Header>
 			<div css={container}>
 				<div css={wrap}>
 					<img src={LogoImg} alt="logo" />
@@ -41,13 +39,6 @@ function OauthSignUp({ onNext }: { onNext: () => void }) {
 }
 
 export default OauthSignUp;
-
-const header = css`
-	position: fixed;
-	left: 50%;
-	transform: translateX(-50%);
-	top: 0;
-`;
 
 const container = css`
 	display: flex;
