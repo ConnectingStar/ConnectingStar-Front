@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 
 import { css } from "@emotion/react";
 
+import BehaviorModal from "@/components/Chatting/BehaviorModal";
 import ChattingMessage from "@/components/Chatting/ChattingMessage";
+// import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
+// import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
 import Header from "@/components/common/Header/Header";
 
 import { RootState } from "@/api/store";
@@ -11,10 +14,6 @@ import { RootState } from "@/api/store";
 import { createChatData } from "@/constants/chatData";
 
 import { theme } from "@/styles/theme";
-
-// import BehaviorModal from "@/components/Chatting/BehaviorModal";
-// import LocationModal from "@/components/Chatting/LocationModal";
-// import SelectTagModal from "@/components/Chatting/SelectTagModal";
 
 // const habitTags = [
 // 	"러닝하기",
@@ -49,7 +48,7 @@ function ChattingPage() {
 						<ChattingMessage key={chatData.id} chatData={chatData} setProgress={setProgress} />
 					))}
 				</div>
-				{/* <BehaviorModal /> */}
+				<BehaviorModal />
 				{/* <LocationModal /> */}
 				{/* <SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={habitTags} /> */}
 			</div>
