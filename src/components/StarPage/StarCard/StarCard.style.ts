@@ -50,7 +50,7 @@ export const haveLabelStyle = css`
 `;
 
 export const titleStyle = css`
-	padding-top: 1rem;
+	padding-top: 0.75rem;
 	text-align: center;
 
 	strong {
