@@ -10,10 +10,11 @@ export const selectTagModalStyle = {
 		width: 100%;
 		height: 100vh;
 		background-color: white;
+		z-index: 50;
 	`,
 	wrap: css`
 		width: 22.5rem;
-		padding: 1.25rem 1.5rem 1rem;
+		padding: 4.75rem 1.5rem 1rem;
 		margin: 0 auto;
 		& > h1 {
 			${theme.font.head_a}
