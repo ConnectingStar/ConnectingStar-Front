@@ -1,8 +1,23 @@
-// TODO: 테스트를 위한 임시 타입 지정(추후 삭제 예정)
-import { data } from "@/pages/StarMainPage/StarMainPage";
+interface Circle {
+	id: number;
+	cx: number;
+	cy: number;
+	r: number;
+	filled: boolean;
+}
 
 interface StarCharacterProps {
-	svgData: typeof data;
+	svgData: {
+		width: number;
+		height: number;
+		viewBox: string;
+		fill: string;
+		opacity: number;
+		stroke: string;
+		strokeWidth: number;
+		pathList: string[];
+		circleList: Circle[];
+	};
 }
 
 export default function StarCharacter({ svgData }: StarCharacterProps) {
