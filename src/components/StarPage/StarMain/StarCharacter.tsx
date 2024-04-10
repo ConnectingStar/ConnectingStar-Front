@@ -9,7 +9,6 @@ interface Circle {
 interface StarCharacterProps {
 	svgData: {
 		width: number;
-		height: number;
 		viewBox: string;
 		fill: string;
 		opacity: number;
@@ -23,7 +22,6 @@ interface StarCharacterProps {
 export default function StarCharacter({ svgData }: StarCharacterProps) {
 	const {
 		width,
-		height,
 		viewBox,
 		fill,
 		opacity,
@@ -36,7 +34,7 @@ export default function StarCharacter({ svgData }: StarCharacterProps) {
 	return (
 		<svg
 			width={width}
-			height={height}
+			height="100%"
 			viewBox={viewBox}
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
