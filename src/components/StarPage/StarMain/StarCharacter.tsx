@@ -44,8 +44,8 @@ export default function StarCharacter({ svgData }: StarCharacterProps) {
 			{path.map((path) => (
 				<path key={path} opacity={opacity} d={path} stroke={stroke} strokeWidth={strokeWidth} />
 			))}
-			{circle.map((circle, index) => (
-				<g filter={circle.filled ? "url(#shadow)" : ""} key={index}>
+			{circle.map((circle) => (
+				<g filter={circle.filled ? "url(#shadow)" : ""} key={circle.id}>
 					<circle
 						cx={circle.cx}
 						cy={circle.cy}
