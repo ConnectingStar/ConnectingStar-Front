@@ -39,13 +39,11 @@ function ChattingPage() {
 	const extraBtnHeight = chatData[progress].replyBtnMessage.length > 1;
 	return (
 		<div>
+			<Header>
+				<Header.PrevButton />
+			</Header>
+			<progress css={chattingPageStyle.progress} value={progress + 1} max={11} />
 			<div css={chattingPageStyle.container}>
-				<div css={chattingPageStyle.header}>
-					<Header>
-						<Header.PrevButton />
-					</Header>
-					<progress css={chattingPageStyle.progress} value={progress + 1} max={11} />
-				</div>
 				<div css={chattingPageStyle.chattingWrap(extraBtnHeight)}>
 					{chatData.slice(0, progress + 1).map((chatData) => (
 						<ChattingMessage key={chatData.id} chatData={chatData} setProgress={setProgress} />
@@ -69,11 +67,6 @@ const chattingPageStyle = {
 		background-color: ${theme.color.bg};
 	`,
 
-	header: css`
-		position: fixed;
-		top: 0;
-	`,
-
 	chattingWrap: (isbuttonHeiger: boolean) => css`
 		padding: 5.75rem 1.5rem ${isbuttonHeiger ? "8.5rem" : "5.438rem"} 1.5rem;
 		margin: 0 auto;
@@ -82,7 +75,10 @@ const chattingPageStyle = {
 
 	progress: css`
 		position: fixed;
-		width: 360px;
+		left: 50%;
+		transform: translate(-50%);
+		width: 22.5rem;
+		padding-top: 3.5rem;
 		appearance: none;
 		::-webkit-progress-bar {
 			background: white;
