@@ -34,44 +34,51 @@ function HabitList({ selectedDate }: { selectedDate: DateInfo }) {
 
 	return (
 		<div css={layoutStyle}>
-			<article css={habitArticleStyle()}>
+			<div css={habitArticleStyle()}>
 				<div onClick={() => dispatch(openModal(HABIT_CHECK_MODAL))}>
 					<CheckIcon />
 					<p>오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지</p>
 				</div>
 
-				<TabIcon className="menuIcon" onClick={() => dispatch(openModal(HABIT_MODIFY_MODAL))} />
-			</article>
+				<button onClick={() => dispatch(openModal(HABIT_MODIFY_MODAL))}>
+					<TabIcon />
+				</button>
+			</div>
 
-			<article css={habitArticleStyle("complete")}>
+			<div css={habitArticleStyle("complete")}>
 				<div onClick={() => dispatch(openModal(HABIT_CHECK_MODAL))}>
 					<BlueCheckIcon />
 					<p>오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지</p>
 				</div>
+				<button onClick={() => dispatch(openModal(HABIT_MODIFY_MODAL))}>
+					<TabIcon />
+				</button>
+			</div>
 
-				<TabIcon className="menuIcon" onClick={() => dispatch(openModal(HABIT_MODIFY_MODAL))} />
-			</article>
-
-			<article css={habitArticleStyle("rest")}>
+			<div css={habitArticleStyle("rest")}>
 				<div onClick={() => dispatch(openModal(HABIT_CHECK_MODAL))}>
 					<span>휴식</span>
 					<p>오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지</p>
 				</div>
 
-				<TabIcon className="menuIcon" onClick={() => dispatch(openModal(HABIT_MODIFY_MODAL))} />
-			</article>
+				<button onClick={() => dispatch(openModal(HABIT_MODIFY_MODAL))}>
+					<TabIcon />
+				</button>
+			</div>
 
-			<article css={habitArticleStyle("end")}>
+			<div css={habitArticleStyle("end")}>
 				<div onClick={() => dispatch(openModal(HABIT_CHECK_MODAL))}>
 					<p>오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지</p>
 				</div>
 
-				<TabIcon className="menuIcon" onClick={() => dispatch(openModal(HABIT_MODIFY_MODAL))} />
-			</article>
+				<button onClick={() => dispatch(openModal(HABIT_MODIFY_MODAL))}>
+					<TabIcon />
+				</button>
+			</div>
 
-			<article css={habitArticleStyle("add")}>
+			<div css={habitArticleStyle("add")}>
 				<HabitAddIcon />
-			</article>
+			</div>
 
 			{modal === modalType.HABIT_MODIFY_MODAL && <HabitModifyModal />}
 			{modal === modalType.HABIT_CHECK_MODAL && (

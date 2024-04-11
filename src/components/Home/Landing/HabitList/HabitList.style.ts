@@ -5,7 +5,7 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	display: flex;
 	flex-direction: column;
-	gap: 0.375rem;
+	gap: 6px;
 `;
 
 export const habitArticleStyle = (status?: string) => {
@@ -43,8 +43,10 @@ export const habitArticleStyle = (status?: string) => {
 			}
 		}
 
-		& .menuIcon {
+		& > button {
 			position: absolute;
+			width: 1rem;
+			height: 2rem;
 			right: 1rem;
 			top: 1rem;
 		}
