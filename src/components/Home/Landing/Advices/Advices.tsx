@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 import { adviceImages } from "@/constants/homeConstants";
 
-import { advicesStyle } from "@/components/Home/Landing/Advices/Advices.style";
+import { containerStyle, advicesStyle } from "@/components/Home/Landing/Advices/Advices.style";
 
 function Advices() {
 	const containerRef = useRef<HTMLDivElement | null>(null);
@@ -28,8 +28,8 @@ function Advices() {
 	}, [currentIndex]);
 
 	return (
-		<section css={advicesStyle.container} ref={containerRef}>
-			<ul css={advicesStyle.advicesCarousel}>
+		<section css={containerStyle} ref={containerRef}>
+			<ul css={advicesStyle}>
 				{adviceImages.map((image) => (
 					<li key={image.src}>
 						<img src={image.src} alt={image.alt} />

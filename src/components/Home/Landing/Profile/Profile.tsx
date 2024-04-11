@@ -13,7 +13,7 @@ function Profile() {
 	const navigate = useNavigate();
 
 	return (
-		<section css={layoutStyle}>
+		<div css={layoutStyle}>
 			<div css={profileBoxStyle} onClick={() => navigate("/mypage")}>
 				<img src={StarImage} alt="user 프로필 이미지" />
 				<div css={profileTextBoxStyle}>
@@ -22,7 +22,7 @@ function Profile() {
 				</div>
 			</div>
 			<ProfileButtonIcon onClick={() => navigate("/habitgenerate")} />
-		</section>
+		</div>
 	);
 }
 

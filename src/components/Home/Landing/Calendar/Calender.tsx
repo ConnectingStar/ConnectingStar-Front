@@ -10,7 +10,6 @@ import {
 	layoutStyle,
 	titleBoxStyle,
 	carouselBoxStyle,
-	carouselInnerBoxStyle,
 	dayBoxStyle,
 } from "@/components/Home/Landing/Calendar/Calender.style";
 
@@ -63,7 +62,7 @@ function Calender({ selectedDate, setSelectedDate, timeGap }: CalenderProps) {
 	return (
 		<div css={layoutStyle}>
 			<div css={titleBoxStyle}>
-				<p className="dateBox">
+				<p>
 					<span>
 						{selectedDate.month}월 {selectedDate.date}일
 					</span>
@@ -73,7 +72,7 @@ function Calender({ selectedDate, setSelectedDate, timeGap }: CalenderProps) {
 			</div>
 
 			<div css={carouselBoxStyle} ref={containerRef} onScroll={handleContainerScroll}>
-				<div css={carouselInnerBoxStyle}>
+				<div>
 					{dateList.map((dateEl: DateInfo) => {
 						const { year, month, date, isPlanned } = dateEl;
 						const isNextDate = isNextDates(year, month, date);
@@ -93,7 +92,7 @@ function Calender({ selectedDate, setSelectedDate, timeGap }: CalenderProps) {
 							>
 								<span>{dateEl.day}</span>
 								<span>
-									<label>{dateEl.date}</label>
+									<p>{dateEl.date}</p>
 								</span>
 							</div>
 						);

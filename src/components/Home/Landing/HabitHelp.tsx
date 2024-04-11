@@ -10,7 +10,7 @@ function HabitHelp() {
 	const navigate = useNavigate();
 
 	return (
-		<section
+		<div
 			css={layoutStyle}
 			onClick={() => {
 				navigate("/help");
@@ -18,7 +18,7 @@ function HabitHelp() {
 		>
 			<HabitHelpIcon />
 			<span>습관 도움말</span>
-		</section>
+		</div>
 	);
 }
 

@@ -13,7 +13,7 @@ export const titleBoxStyle = css`
 	justify-content: space-between;
 	align-items: center;
 
-	.dateBox {
+	& > p {
 		display: flex;
 		align-items: center;
 		gap: 8px;
@@ -21,7 +21,7 @@ export const titleBoxStyle = css`
 		& > span {
 			${theme.font.head_a}
 
-			&:last-of-type {
+			& > span:last-of-type {
 				${theme.font.body_c}
 			}
 		}
@@ -43,10 +43,10 @@ export const carouselBoxStyle = css`
 	&::-webkit-scrollbar {
 		display: none;
 	}
-`;
 
-export const carouselInnerBoxStyle = css`
-	display: flex;
+	& > div {
+		display: flex;
+	}
 `;
 
 export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean, isNextDate: boolean) => {
@@ -69,7 +69,7 @@ export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean, isNextDate:
 			&:last-of-type {
 				${theme.font.body_b_bold};
 
-				& > label {
+				& > p {
 					width: 1.5rem;
 					height: 1.5rem;
 					display: flex;

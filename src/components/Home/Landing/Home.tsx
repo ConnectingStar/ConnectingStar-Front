@@ -41,8 +41,8 @@ function Home() {
 	}, [selectedDate]);
 
 	return (
-		<main css={homeStyle.container}>
-			<div css={homeStyle.topBox}>
+		<main css={layoutStyle}>
+			<div css={topBoxStyle}>
 				<Profile />
 				<HabitHelp />
 				<Advices />
@@ -55,18 +55,17 @@ function Home() {
 
 export default Home;
 
-const homeStyle = {
-	container: css`
-		width: 22.5rem;
-		margin: 0 auto;
-		padding: 0 1.5rem;
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	`,
-	topBox: css`
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	`,
-};
+const layoutStyle = css`
+	width: 22.5rem;
+	margin: 0 auto;
+	padding: 0 1.5rem calc(1.75rem + 28px);
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+`;
+
+const topBoxStyle = css`
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+`;
