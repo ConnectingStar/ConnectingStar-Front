@@ -58,7 +58,7 @@ export default Home;
 const layoutStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 0 1.5rem calc(1.75rem + 28px);
+	padding: 0 1.5rem 3.5rem;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
