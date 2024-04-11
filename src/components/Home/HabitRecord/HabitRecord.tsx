@@ -128,7 +128,6 @@ function HabitRecord() {
 			<FooterBtn
 				handleBtnClick={() => dispatch(openModal(modalType.STAR_PRIZE))}
 				text="기록하여 별 얻기"
-				isPositionStatic
 				isTransparent
 				disabled={!isActivated || !selectedIcon}
 			/>
