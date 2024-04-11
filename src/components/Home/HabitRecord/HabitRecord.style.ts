@@ -7,7 +7,7 @@ export const layoutStyle = css`
 	flex-direction: column;
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 1.5rem;
+	padding: 4.75rem 1.5rem 5.438rem;
 	gap: 40px;
 	white-space: pre-wrap;
 	${theme.font.body_a};
@@ -23,6 +23,7 @@ export const layoutStyle = css`
 		padding: 0.9375rem;
 		resize: none;
 	}
+
 	input::placeholder {
 		${theme.color.button_deactivated}
 	}
