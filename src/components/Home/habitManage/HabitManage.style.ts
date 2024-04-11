@@ -8,7 +8,7 @@ export const layoutStyle = css`
 	gap: 40px;
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 1.25rem 1.5rem 0;
+	padding: 4.75rem 1.25rem 0;
 
 	& > :not(div:first-of-type) {
 		display: flex;
