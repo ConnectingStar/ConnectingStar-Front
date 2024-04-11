@@ -19,7 +19,7 @@ function HabitTip() {
 			</button>
 
 			{isOpenTip && (
-				<div ref={tipRef}>
+				<div>
 					<div>
 						<p>1. 일단 쉬워야 해요.</p>
 						<p>쉬워야 반복할 수 있기 때문이에요.</p>
