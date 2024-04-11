@@ -9,7 +9,7 @@ function HabitCheckModal({ text }: { text: string }) {
 			<div css={layoutStyle}>
 				<h1>아래의 습관을 실천하였나요?</h1>
 				<p>{text}</p>
-				<FooterBtn leftText="쉬는 날 🙂" text="실천 완료 😎" isPositionStatic />
+				<FooterBtn leftText="쉬는 날 🙂" text="실천 완료 😎" isPositionStatic isTransparent />
 			</div>
 		</Modal>
 	);
