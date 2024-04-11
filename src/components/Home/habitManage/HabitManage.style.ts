@@ -8,7 +8,7 @@ export const layoutStyle = css`
 	gap: 40px;
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 1.25rem 1.5rem 6.4375rem;
+	padding: 1.25rem 1.5rem 0;
 
 	& > :not(div:first-of-type) {
 		display: flex;
@@ -47,7 +47,6 @@ export const quitButtonStyle = css`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: fixed;
 	background-color: white;
 	width: 100%;
 	left: 0;
