@@ -1,5 +1,7 @@
 import { css, keyframes } from "@emotion/react";
 
+import { theme } from "@/styles/theme";
+
 const modalShow = keyframes`
   0% {
     transform: translateY(100%);
@@ -16,7 +18,7 @@ export const modalBackdropStyle = css`
 	left: 0;
 	bottom: 0;
 	right: 0;
-	z-index: 49;
+	z-index: ${theme.zIndex.overlayMiddle};
 	background-color: rgba(0, 0, 0, 0.8);
 `;
 
@@ -29,7 +31,7 @@ export const getModalLayoutStyle = (isBottomSheet: boolean | undefined) => {
 		transform: ${!isBottomSheet && "translate(-50%, -50%)"};
 		bottom: ${isBottomSheet && 0};
 		right: ${isBottomSheet && 0};
-		z-index: 50;
+		z-index: ${theme.zIndex.overlayTop};
 		overflow: auto;
 		border: none;
 		outline: none;
