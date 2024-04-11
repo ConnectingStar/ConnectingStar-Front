@@ -14,7 +14,6 @@ export const advicesWrapperStyle = css`
 		bottom: 0.5625rem;
 		left: 50%;
 		width: 8.6875rem;
-		height: 0.0625rem;
 	}
 `;
 
@@ -44,6 +43,7 @@ export const advicesStyle = css`
 
 export const listStyle = (isCurrentIndex: boolean) => css`
 	flex: 1;
+	height: ${isCurrentIndex ? "0.125rem" : "0.0625rem"};
 	transform: translateY(${isCurrentIndex ? "-2px" : "0px"});
 	background-color: ${isCurrentIndex ? theme.color.main_deep_blue : "white"};
 `;
