@@ -1,5 +1,7 @@
 import { css } from "@emotion/react";
 
+import { theme } from "@/styles/theme";
+
 export const layoutStyle = css`
 	position: fixed;
 	bottom: 0;
@@ -8,6 +10,7 @@ export const layoutStyle = css`
 	width: 100%;
 	padding: 0.875rem 2.6875rem;
 	background-color: #fff;
+	z-index: ${theme.zIndex.overlayBottom};
 
 	& > ul {
 		display: flex;
