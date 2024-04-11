@@ -18,12 +18,12 @@ export const titleBoxStyle = css`
 		align-items: center;
 		gap: 8px;
 
-		& > span {
+		& > span:first-of-type {
 			${theme.font.head_a}
+		}
 
-			& > span:last-of-type {
-				${theme.font.body_c}
-			}
+		& > span:last-of-type {
+			${theme.font.body_c}
 		}
 	}
 
