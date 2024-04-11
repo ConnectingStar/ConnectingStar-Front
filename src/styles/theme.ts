@@ -80,4 +80,10 @@ export const theme = {
 		good: "#ffe276",
 		very_good: "#ffc1f9",
 	},
+	zIndex: {
+		overlayBottom: 10,
+		overlayMiddle: 20,
+		overlayTop: 30,
+		overlayPeak: 40,
+	} as const,
 };
