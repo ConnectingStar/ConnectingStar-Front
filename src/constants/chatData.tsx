@@ -58,6 +58,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["시간 선택"],
 			reply: `${userData.time}`,
+			modalType: modalType.SELECT_TIME,
 		},
 		{
 			id: "location",
@@ -81,6 +82,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["행동 선택"],
 			reply: `${userData.behavior}`,
+			modalType: modalType.SELECT_BEHAVIOR,
 		},
 		{
 			id: "alert",
