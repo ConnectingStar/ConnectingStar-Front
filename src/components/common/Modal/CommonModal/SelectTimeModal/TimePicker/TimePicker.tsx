@@ -27,9 +27,9 @@ const TimePicker = ({ list, onSelectedChange }: ScrollPickerProps) => {
 
 		clearTimeout(timerRef.current);
 
-		const index = Math.floor((scrollRef.current.scrollTop + PICKER_HEIGHT / 2) / PICKER_HEIGHT);
-
 		timerRef.current = setTimeout(() => {
+			const index = Math.floor((scrollRef.current!.scrollTop + PICKER_HEIGHT / 2) / PICKER_HEIGHT);
+
 			if (list[index] !== "") {
 				setSelected(index);
 
@@ -38,7 +38,7 @@ const TimePicker = ({ list, onSelectedChange }: ScrollPickerProps) => {
 					block: "center",
 				});
 
-				onSelectedChange && onSelectedChange(list[index]);
+				onSelectedChange(list[index]);
 			}
 		}, SCROLL_DEBOUNCE_TIME);
 	};
@@ -48,7 +48,7 @@ const TimePicker = ({ list, onSelectedChange }: ScrollPickerProps) => {
 			<div css={listCenterStyle} />
 			{newList.map((item, index) => (
 				<li
-					key={index}
+					key={item}
 					css={listItemStyle(index === selected)}
 					ref={(element) => (itemRef.current[index] = element)}
 				>
