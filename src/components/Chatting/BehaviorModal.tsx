@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
-import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { RootState } from "@/api/store";
+import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { theme } from "@/styles/theme";
 
@@ -14,15 +16,21 @@ function BehaviorModal() {
 	const dispatch = useAppDispatch();
 	const [unitNumber, setUnitNumber] = useState<string>();
 	const [unit, setUnit] = useState<string>();
+	const dispatch = useDispatch();
+	const { habit } = useSelector((state: RootState) => state.user);
 
-	//TODO: "무엇을"에 해당하는 "습관" 가져오기
-	const habit = "자격증 공부하기";
-
+	const confirmSelectedTag = () => {
+		const behavior = `${unitNumber} ${unit}`;
+		if (unit && unitNumber) {
+			dispatch(updateHabitUserData({ behavior }));
+			dispatch(closeModal());
+		}
+	};
 	return (
 		<Modal isBottomSheet>
-			<div css={BehaviorModalStyle.container}>
+			<div css={container}>
 				<h1>행동을 입력해 주세요</h1>
-				<div css={BehaviorModalStyle.wrap}>
+				<div css={wrap}>
 					<div>
 						<h3>무엇을</h3>
 						<div>{habit}</div>
@@ -52,12 +60,8 @@ function BehaviorModal() {
 			<FooterBtn
 				text="확인"
 				isSquare
-				handleBtnClick={() => {
-					//TODO: behavior 전송
-					dispatch(closeModal());
-					if (unit && unitNumber) alert(unitNumber + unit);
-				}}
-				disabled={!unitNumber || !unit}
+				handleBtnClick={confirmSelectedTag}
+				disabled={!unit || !unitNumber}
 			/>
 		</Modal>
 	);
@@ -65,53 +69,52 @@ function BehaviorModal() {
 
 export default BehaviorModal;
 
-const BehaviorModalStyle = {
-	container: css`
-		height: 19.375rem;
-		border-radius: 15px 15px 0 0;
-		padding: 1.125rem 1.5rem 3.438rem;
-		${theme.font.body_a}
-		color: ${theme.color.font_black};
-		background-color: #fff;
-		h1 {
-			${theme.font.header}
-			height: 1.813rem;
-			margin-bottom: 1.688rem;
-		}
-	`,
-	wrap: css`
+const container = css`
+	height: 19.375rem;
+	border-radius: 15px 15px 0 0;
+	padding: 1.125rem 1.5rem 3.438rem;
+	${theme.font.body_a}
+	color: ${theme.color.font_black};
+	background-color: #fff;
+	h1 {
+		${theme.font.header}
+		height: 1.813rem;
+		margin-bottom: 1.688rem;
+	}
+`;
+
+const wrap = css`
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	h3 {
+		${theme.font.head_c};
+		color: ${theme.color.font_gray};
+		margin-bottom: 0.75rem;
+	}
+
+	form {
 		display: flex;
-		flex-direction: column;
-		gap: 20px;
-		h3 {
-			${theme.font.head_c};
-			color: ${theme.color.font_gray};
-			margin-bottom: 0.75rem;
-		}
+		gap: 6px;
+		height: 3.438rem;
 
-		form {
-			display: flex;
-			gap: 6px;
-			height: 3.438rem;
-
-			& > input {
-				all: unset;
-				border-radius: 15px;
-				background-color: ${theme.color.bg};
-				color: ${theme.color.font_black};
-				padding: 1rem;
-				::placeholder {
-					color: ${theme.color.button_deactivated};
-				}
-			}
-
-			& :first-of-type {
-				width: 6.25rem;
-			}
-
-			& :last-of-type {
-				width: 100%;
+		& > input {
+			all: unset;
+			border-radius: 15px;
+			background-color: ${theme.color.bg};
+			color: ${theme.color.font_black};
+			padding: 1rem;
+			::placeholder {
+				color: ${theme.color.button_deactivated};
 			}
 		}
-	`,
-};
+
+		& :first-of-type {
+			width: 6.25rem;
+		}
+
+		& :last-of-type {
+			width: 100%;
+		}
+	}
+`;
