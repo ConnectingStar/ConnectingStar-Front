@@ -5,7 +5,7 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 
 import { closeModal } from "@/api/modal/modalSlice";
-import { updataHabitUserData } from "@/api/user/userSlice";
+import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { selectTagModalStyle } from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal.style";
 interface selectTagModal {
@@ -28,9 +28,9 @@ function SelectTagModal({ title, tags }: selectTagModal) {
 
 		if (updatedHabit) {
 			if (title === "어떤 습관을 만들어 볼까요?") {
-				dispatch(updataHabitUserData({ habit: updatedHabit }));
+				dispatch(updateHabitUserData({ habit: updatedHabit }));
 			} else if (title === "어떤 사람이 되고 싶으세요?") {
-				dispatch(updataHabitUserData({ identity: updatedHabit }));
+				dispatch(updateHabitUserData({ identity: updatedHabit }));
 			}
 			dispatch(closeModal());
 		}

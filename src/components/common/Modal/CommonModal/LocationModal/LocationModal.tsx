@@ -13,7 +13,7 @@ import {
 } from "@/components/common/Modal/CommonModal/LocationModal/LocationModalStyle";
 
 import { closeModal } from "@/api/modal/modalSlice";
-import { updataHabitUserData } from "@/api/user/userSlice";
+import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
@@ -26,7 +26,7 @@ function LocationModal() {
 	const [isFocus, setIsFocus] = useState(false);
 	const dispatch = useDispatch();
 	const confirmSelectedTag = () => {
-		dispatch(updataHabitUserData({ location }));
+		dispatch(updateHabitUserData({ location }));
 		dispatch(closeModal());
 	};
 
