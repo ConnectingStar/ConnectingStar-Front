@@ -3,10 +3,8 @@ import { useSelector } from "react-redux";
 
 import { css } from "@emotion/react";
 
-// import BehaviorModal from "@/components/Chatting/BehaviorModal";
+import BehaviorModal from "@/components/Chatting/BehaviorModal";
 import ChattingMessage from "@/components/Chatting/ChattingMessage";
-// import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
-// import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
 import Header from "@/components/common/Header/Header";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
@@ -39,8 +37,6 @@ function ChattingPage() {
 						<ChattingMessage key={chatData.id} chatData={chatData} setProgress={setProgress} />
 					))}
 				</div>
-				{/* <BehaviorModal /> */}
-				{/* <LocationModal /> */}
 				{modal === modalType.SELECT_HABIT && (
 					<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={TagsData.habitTags} />
 				)}
@@ -49,7 +45,7 @@ function ChattingPage() {
 				)}
 				{/* {modal === modalType.SELECT_TIME && <SelectTimeModal />} */}
 				{modal === modalType.SELECT_LOCATION && <LocationModal />}
-				{/* {modal === modalType.SELECT_BEHAVIOR && <behaverModal />} */}
+				{modal === modalType.SELECT_BEHAVIOR && <BehaviorModal />}
 				{/* {modal === modalType.SELECT_ALERT1 && <SelectTimeModal />} */}
 				{/* {modal === modalType.SELECT_ALERT2 && <SelectTimeModal />} */}
 			</div>
