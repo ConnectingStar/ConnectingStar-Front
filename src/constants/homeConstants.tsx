@@ -153,9 +153,6 @@ export const habit = {
 		"소비 기록",
 	],
 };
-type HabitRecordCondition = {
-	[condition: string]: string;
-};
 
 // habit-record
 export const habitRecordConditions = [
