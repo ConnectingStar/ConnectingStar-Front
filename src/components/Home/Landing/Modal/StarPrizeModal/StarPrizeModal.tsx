@@ -30,7 +30,7 @@ function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPri
 				<div css={prizeCommentStyle}>
 					<div>
 						<span>{blueText}</span>
-						{!isHabitStart && <span className="yellow">{yellowText}</span>}
+						{!isHabitStart && <span>{yellowText}</span>}
 					</div>
 					<div>
 						<span>{comment}</span>
