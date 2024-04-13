@@ -49,10 +49,11 @@ export const buttonData = [
 			},
 			{
 				text: "이용약관",
-				link: "#",
+				link: "https://connecting-star.notion.site/4c168fc92ca54c66b2cd95cae28b1e6d?pvs=4",
 			},
 			{
 				text: "개인정보 처리방침",
+				link: "https://connecting-star.notion.site/24132eec53ad457b944742e551f522b2?pvs=4",
 			},
 			{
 				text: "현재 버전",
