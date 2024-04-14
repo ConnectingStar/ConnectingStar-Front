@@ -83,7 +83,7 @@ export const habitGenerateConditions = [
 	{
 		subtitle: "정체성",
 		placeholder: "정체성을 선택해주세요.",
-		modalName: "selectIdentity",
+		modalName: modalType.SELECT_IDENTITY,
 	},
 	{
 		subtitle: "언제",
@@ -93,18 +93,18 @@ export const habitGenerateConditions = [
 	{
 		subtitle: "어디서",
 		placeholder: "장소를 선택해주세요.",
-		modalName: "location",
+		modalName: modalType.SELECT_LOCATION,
 	},
 	{
 		subtitle: "무엇을",
 		placeholder: "습관을 선택해주세요.",
-		modalName: "selectHabit",
+		modalName: modalType.SELECT_REASON,
 	},
 	{
 		subtitle: "얼마나",
 		placeholder: "숫자 입력",
 		placeholderSecond: "단위 입력 (예: 페이지)",
-		modalName: modalType.SELECT_AGE,
+		modalName: modalType.SELECT_BEHAVIOR,
 	},
 	{
 		subtitle: "1차 알림",

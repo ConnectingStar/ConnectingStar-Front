@@ -3,6 +3,9 @@ import { useState } from "react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 
+import { useAppDispatch } from "@/api/hooks";
+import { closeModal } from "@/api/modal/modalSlice";
+
 import { selectTagModalStyle } from "@/components/Chatting/SelectTagModal/SelectTagModal.style";
 
 interface selectTagModal {
@@ -11,6 +14,7 @@ interface selectTagModal {
 }
 
 function SelectTagModal({ title, tags }: selectTagModal) {
+	const dispatch = useAppDispatch();
 	const [selectedTag, setSelectedTag] = useState<string | null>(null);
 	const [isInputFocus, setIsInputFocus] = useState(false);
 	const [inputText, setInputText] = useState("");
@@ -32,7 +36,7 @@ function SelectTagModal({ title, tags }: selectTagModal) {
 	return (
 		<div css={selectTagModalStyle.container}>
 			<Header>
-				<Header.CloseButton />
+				<Header.CloseButton onClick={() => dispatch(closeModal())} />
 			</Header>
 			<div css={selectTagModalStyle.wrap}>
 				<h1>{title}</h1>
