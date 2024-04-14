@@ -18,16 +18,16 @@ import {
 function SelectTimeModal() {
 	const dispatch = useAppDispatch();
 
-	const [selectedClock, setSelectedClock] = useState({ noon: "오전", time: "01", minute: "00" });
+	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: 0, minute: 0 });
 
-	const onSelectedChange = (type: string) => (target: string | number) => {
-		setSelectedClock({ ...selectedClock, [type]: target });
+	const handleChangeTime = (target: string, value: number | string) => {
+		setSelectTime({ ...selectTime, [target]: value });
 	};
 
 	const handleSelectClick = () => {
 		dispatch(closeModal());
 
-		console.log(selectedClock);
+		console.log(selectTime);
 	};
 
 	return (
@@ -37,13 +37,13 @@ function SelectTimeModal() {
 
 				<div css={timeBoxStyle}>
 					<div className="noonBox">
-						<TimePicker list={NOON_LIST} onSelectedChange={onSelectedChange("noon")} />
+						<TimePicker valueKey="noon" list={NOON_LIST} handleChangeTime={handleChangeTime} />
 					</div>
 
 					<div className="timeBox">
-						<TimePicker list={HOUR_LIST} onSelectedChange={onSelectedChange("time")} />
+						<TimePicker valueKey="hour" list={HOUR_LIST} handleChangeTime={handleChangeTime} />
 						<p>:</p>
-						<TimePicker list={MINUTE_LIST} onSelectedChange={onSelectedChange("minute")} />
+						<TimePicker valueKey="minute" list={MINUTE_LIST} handleChangeTime={handleChangeTime} />
 					</div>
 				</div>
 
