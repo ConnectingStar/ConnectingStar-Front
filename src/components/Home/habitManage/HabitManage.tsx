@@ -61,8 +61,14 @@ function HabitManage() {
 			</div>
 			<div>
 				<span>알림</span>
-				{alarmsData.map((inputs) => (
-					<Button inputs={inputs} isToggle alarmCheck={alarmCheck} alarmQuestion={alarmQuestion} />
+				{alarmsData.map((inputs, idx) => (
+					<Button
+						key={idx}
+						inputs={inputs}
+						isToggle
+						alarmCheck={alarmCheck}
+						alarmQuestion={alarmQuestion}
+					/>
 				))}
 			</div>
 			<button css={quitButtonStyle}>습관 그만두기</button>
