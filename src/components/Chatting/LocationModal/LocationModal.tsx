@@ -11,16 +11,20 @@ import {
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 
+import { useAppDispatch } from "@/api/hooks";
+import { closeModal } from "@/api/modal/modalSlice";
+
 import { locationModalData } from "@/constants/locationModalConstants";
 
 function LocationModal() {
+	const dispatch = useAppDispatch();
 	const [location, setLocation] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
 
 	return (
 		<div css={container}>
 			<Header>
-				<Header.CloseButton />
+				<Header.CloseButton onClick={() => dispatch(closeModal())} />
 			</Header>
 			<div css={wrap}>
 				<h1>장소를 입력해 주세요</h1>

@@ -1,11 +1,17 @@
 import CharacterExampleImage from "@/assets/image/img-profile-example.png";
 
+import BehaviorModal from "@/components/Chatting/BehaviorModal";
+import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
+import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 // import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import HabitGenerateConditions from "@/components/Home/HabitGenerate/habitGenerateConditions";
 import HabitTip from "@/components/Home/HabitGenerate/HabitTip/HabitTip";
 
-import { habitGenerateConditions } from "@/constants/homeConstants";
+import { useAppSelector } from "@/api/hooks";
+
+import { habitGenerateConditions, identity, habit } from "@/constants/homeConstants";
+import { modalType } from "@/constants/modalConstants";
 
 import {
 	layoutStyle,
@@ -13,9 +19,9 @@ import {
 	selectBoxStyle,
 } from "@/components/Home/HabitGenerate/HabitGenerate.style";
 
-// import { modalType } from "@/constants/modalConstants";
-
 function HabitGenerate() {
+	const { modal } = useAppSelector((state) => state.modal);
+
 	return (
 		<main css={layoutStyle}>
 			<div>
@@ -47,7 +53,15 @@ function HabitGenerate() {
 				})}
 			</ul>
 			<FooterBtn text="좋아, 이대로 만들게" isPositionStatic />
+			{modal === modalType.SELECT_IDENTITY && (
+				<SelectTagModal title={identity.title} tags={identity.tags} />
+			)}
 			{/* {modal === modalType.SELECT_TIME && <SelectTimeModal title={timeModalTitle} />} */}
+			{modal === modalType.SELECT_LOCATION && <LocationModal />}
+			{modal === modalType.SELECT_REASON && (
+				<SelectTagModal title={habit.title} tags={habit.tags} />
+			)}
+			{modal === modalType.SELECT_BEHAVIOR && <BehaviorModal />}
 		</main>
 	);
 }

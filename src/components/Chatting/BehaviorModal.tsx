@@ -5,9 +5,13 @@ import { css } from "@emotion/react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
+import { useAppDispatch } from "@/api/hooks";
+import { closeModal } from "@/api/modal/modalSlice";
+
 import { theme } from "@/styles/theme";
 
 function BehaviorModal() {
+	const dispatch = useAppDispatch();
 	const [unitNumber, setUnitNumber] = useState<string>();
 	const [unit, setUnit] = useState<string>();
 
@@ -50,6 +54,7 @@ function BehaviorModal() {
 				isSquare
 				handleBtnClick={() => {
 					//TODO: behavior 전송
+					dispatch(closeModal());
 					if (unit && unitNumber) alert(unitNumber + unit);
 				}}
 				disabled={!unitNumber || !unit}
