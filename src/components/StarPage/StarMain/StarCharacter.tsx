@@ -14,22 +14,13 @@ interface StarCharacterProps {
 		opacity: number;
 		stroke: string;
 		strokeWidth: number;
-		pathList: string[];
+		path: string;
 		circleList: Circle[];
 	};
 }
 
 export default function StarCharacter({ svgData }: StarCharacterProps) {
-	const {
-		width,
-		viewBox,
-		fill,
-		opacity,
-		stroke,
-		strokeWidth,
-		pathList: path,
-		circleList: circle,
-	} = svgData;
+	const { width, viewBox, fill, opacity, stroke, strokeWidth, path, circleList: circle } = svgData;
 
 	return (
 		<svg
@@ -39,9 +30,8 @@ export default function StarCharacter({ svgData }: StarCharacterProps) {
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
-			{path.map((path) => (
-				<path key={path} opacity={opacity} d={path} stroke={stroke} strokeWidth={strokeWidth} />
-			))}
+			<path opacity={opacity} d={path} stroke={stroke} strokeWidth={strokeWidth} />
+
 			{circle.map((circle) => (
 				<g filter={circle.filled ? "url(#shadow)" : ""} key={circle.id}>
 					<circle
