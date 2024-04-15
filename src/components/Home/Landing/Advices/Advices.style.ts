@@ -9,6 +9,7 @@ export const advicesWrapperStyle = css`
 	& > ul:last-of-type {
 		position: absolute;
 		display: flex;
+		align-items: flex-end;
 		gap: 2px;
 		transform: translate(-50%, -50%);
 		bottom: 0.5625rem;
@@ -44,6 +45,5 @@ export const advicesStyle = css`
 export const listStyle = (isCurrentIndex: boolean) => css`
 	flex: 1;
 	height: ${isCurrentIndex ? "0.125rem" : "0.0625rem"};
-	transform: translateY(${isCurrentIndex ? "-2px" : "0px"});
-	background-color: ${isCurrentIndex ? theme.color.main_deep_blue : "white"};
+	background-color: ${isCurrentIndex ? theme.color.main_deep_blue : theme.color.line};
 `;
