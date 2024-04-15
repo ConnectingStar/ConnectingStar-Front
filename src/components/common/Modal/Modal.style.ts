@@ -19,7 +19,7 @@ export const modalBackdropStyle = css`
 	bottom: 0;
 	right: 0;
 	z-index: ${theme.zIndex.overlayMiddle};
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.9);
 `;
 
 export const getModalLayoutStyle = (isBottomSheet: boolean | undefined) => {
