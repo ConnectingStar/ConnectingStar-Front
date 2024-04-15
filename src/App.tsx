@@ -16,7 +16,9 @@ import RestRecordPage from "@/pages/RestRecordPage";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
 import StarMainPage from "@/pages/StarMainPage";
+import TestPage from "@/pages/TestPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
+
 const App = () => {
 	return (
 		<BrowserRouter>
@@ -38,6 +40,7 @@ const App = () => {
 				<Route path="/habit-delete" element={<HabitDeletePage />} />
 				<Route path="/onboarding" element={<OnboardingPage />} />
 				<Route path="/habit-record" element={<HabitRecordPage />} />
+				<Route path="/test" element={<TestPage />} />
 			</Routes>
 		</BrowserRouter>
 	);
