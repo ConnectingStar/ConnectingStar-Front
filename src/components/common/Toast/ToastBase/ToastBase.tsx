@@ -14,6 +14,7 @@ const layoutStyle = css`
 	gap: 16px;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
 	z-index: ${theme.zIndex.overlayPeak};
 `;
