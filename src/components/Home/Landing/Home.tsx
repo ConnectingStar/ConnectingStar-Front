@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 import Advices from "@/components/Home/Landing/Advices/Advices";
 import Calender from "@/components/Home/Landing/Calendar/Calender";
 import HabitHelp from "@/components/Home/Landing/HabitHelp";
-import Habits from "@/components/Home/Landing/HabitList/HabitList";
+import HabitList from "@/components/Home/Landing/HabitList/HabitList";
 import Profile from "@/components/Home/Landing/Profile/Profile";
 import { DateInfo } from "@/types/homeTypes";
 
@@ -48,7 +48,7 @@ function Home() {
 				<Advices />
 			</div>
 			<Calender setSelectedDate={setSelectedDate} selectedDate={selectedDate} timeGap={timeGap} />
-			<Habits selectedDate={selectedDate} />
+			<HabitList selectedDate={selectedDate} />
 		</main>
 	);
 }

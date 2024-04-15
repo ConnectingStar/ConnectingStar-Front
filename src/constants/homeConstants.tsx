@@ -195,6 +195,7 @@ export const prizeComments = [
 	// 	comment: `더욱 {정체성한} 사람이 되기 위한 한 걸음\n제가 {닉네임}님을 응원할게요 😊`,
 	// },
 ];
+
 // 임시로 쓰는 데이터 나중에는 지정된 데이터를 habitManage로 배치할 예정
 export const habitManageConditions = [
 	{
@@ -241,5 +242,29 @@ export const habitManageAlarms: AlarmData[] = [
 		time: "오후 8:30",
 		comment: "오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!",
 		isActive: true,
+	},
+];
+
+type homeHabit = {
+	state: "" | "complete" | "rest" | "end";
+	text: string;
+};
+
+export const homeHabitList: homeHabit[] = [
+	{
+		state: "",
+		text: "안녕",
+	},
+	{
+		state: "complete",
+		text: "오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지",
+	},
+	{
+		state: "rest",
+		text: "안녕2",
+	},
+	{
+		state: "end",
+		text: "오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지",
 	},
 ];
