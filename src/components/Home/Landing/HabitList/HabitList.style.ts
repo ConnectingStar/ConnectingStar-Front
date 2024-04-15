@@ -11,6 +11,7 @@ export const layoutStyle = css`
 export const habitArticleStyle = (status?: string) => {
 	return css`
 		position: relative;
+		display: flex;
 		padding: 1rem;
 		border: ${status === "rest" || status === "end" ? "none" : `2px solid ${theme.color.line}`};
 		border-radius: 15px;
