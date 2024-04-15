@@ -13,7 +13,7 @@ import {
 } from "@/components/Home/Landing/Modal/StarPrizeModal/StarPrizeModal.style";
 
 interface StarPrizeModalProps {
-	isHabitStart: boolean;
+	isHabitStart?: boolean;
 	blueText: string;
 	yellowText?: string;
 	comment: string;
@@ -37,8 +37,8 @@ function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPri
 					</div>
 				</div>
 				<FooterBtn
-					leftText={`${!isHabitStart ? "홈으로" : "홈 탐색하기"}`}
-					text={`${!isHabitStart ? "별자리 채우기" : "별자리로 가기"}`}
+					leftText={!isHabitStart ? "홈으로" : "홈 탐색하기"}
+					text={!isHabitStart ? "별자리 채우기" : "별자리로 가기"}
 					isTransparent
 				/>
 			</div>
