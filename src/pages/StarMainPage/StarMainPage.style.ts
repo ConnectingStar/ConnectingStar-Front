@@ -13,20 +13,7 @@ export const containerStyle = css`
 		#6d68d4 98%
 	);
 
-	.wrapper-top {
-		width: 22.5rem;
-		padding: 1.75rem 1.5rem 0;
-		margin: 0 auto;
-	}
-
-	.wrapper-middle {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: calc(100dvh - 20.825rem);
-	}
-
-	.wrapper-bottom {
+	.wrapper {
 		width: 22.5rem;
 		padding: 0 1.5rem 4.75rem;
 		position: absolute;
