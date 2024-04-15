@@ -22,13 +22,9 @@ export default function StarMainPage() {
 		<div css={containerStyle}>
 			<StarBackground />
 
-			<div className="wrapper-top">
-				<StarInfo starCount={114} starCardId={1} />
-			</div>
-			<div className="wrapper-middle">
-				<StarCharacter svgData={data} />
-			</div>
-			<div className="wrapper-bottom">
+			<StarInfo starCount={114} starCardId={1} />
+			<StarCharacter svgData={data} />
+			<div className="wrapper">
 				<StarButton onClick={() => dispatch(openModal(modalType.CHARACTER_UNLOCK))} />
 				<StarCardLink />
 			</div>

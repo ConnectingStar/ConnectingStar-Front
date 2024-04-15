@@ -17,7 +17,7 @@ interface StarInfoProps {
 
 export default function StarInfo({ starCount, starCardId }: StarInfoProps) {
 	return (
-		<>
+		<div css={containerStyle}>
 			<div css={starCountStyle}>
 				<img src={star} alt="3D 별" />
 				<p>{starCount}</p>
@@ -28,9 +28,15 @@ export default function StarInfo({ starCount, starCardId }: StarInfoProps) {
 				</span>
 				<ArrowRightIcon />
 			</Link>
-		</>
+		</div>
 	);
 }
+
+const containerStyle = css`
+	width: 22.5rem;
+	padding: 1.75rem 1.5rem 0;
+	margin: 0 auto;
+`;
 
 const starCountStyle = css`
 	width: fit-content;
