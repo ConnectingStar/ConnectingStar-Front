@@ -16,5 +16,6 @@ const layoutStyle = css`
 	align-items: center;
 	max-width: 500px;
 	margin: 0 auto;
+	width: 100%;
 	z-index: ${theme.zIndex.overlayPeak};
 `;
