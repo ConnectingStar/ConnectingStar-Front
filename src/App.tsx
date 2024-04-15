@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContainer";
+
 import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
@@ -20,28 +22,31 @@ import StarMainPage from "@/pages/StarMainPage/StarMainPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 const App = () => {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/:id" element={<HabitDetailPage />} />
-				<Route path="/star" element={<StarMainPage />} />
-				<Route path="/star-card" element={<StarCardPage />} />
-				<Route path="/star-card/:id" element={<StarCardDetailPage />} />
-				<Route path="/chart" element={<ChartPage />} />
-				<Route path="/mypage" element={<MyPage />} />
-				<Route path="/myinfo" element={<MyInfoPage />} />
-				<Route path="/star-trace" element={<MyStarTracePage />} />
-				<Route path="/habit-history" element={<MyHabitPage />} />
-				<Route path="/notification-setting" element={<NotificationSettingPage />} />
-				<Route path="/withdrawal" element={<WithdrawalPage />} />
-				<Route path="/rest-record" element={<RestRecordPage />} />
-				<Route path="/chatting" element={<ChattingPage />} />
-				<Route path="/habit-delete" element={<HabitDeletePage />} />
-				<Route path="/onboarding" element={<OnboardingPage />} />
-				<Route path="/habit-record" element={<HabitRecordPage />} />
-				<Route path="/habit-generate" element={<HabitGeneratePage />} />
-			</Routes>
-		</BrowserRouter>
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<HomePage />} />
+					<Route path="/:id" element={<HabitDetailPage />} />
+					<Route path="/star" element={<StarMainPage />} />
+					<Route path="/star-card" element={<StarCardPage />} />
+					<Route path="/star-card/:id" element={<StarCardDetailPage />} />
+					<Route path="/chart" element={<ChartPage />} />
+					<Route path="/mypage" element={<MyPage />} />
+					<Route path="/myinfo" element={<MyInfoPage />} />
+					<Route path="/star-trace" element={<MyStarTracePage />} />
+					<Route path="/habit-history" element={<MyHabitPage />} />
+					<Route path="/notification-setting" element={<NotificationSettingPage />} />
+					<Route path="/withdrawal" element={<WithdrawalPage />} />
+					<Route path="/rest-record" element={<RestRecordPage />} />
+					<Route path="/chatting" element={<ChattingPage />} />
+					<Route path="/habit-delete" element={<HabitDeletePage />} />
+					<Route path="/onboarding" element={<OnboardingPage />} />
+					<Route path="/habit-record" element={<HabitRecordPage />} />
+					<Route path="/habit-generate" element={<HabitGeneratePage />} />
+				</Routes>
+			</BrowserRouter>
+			<ToastContainer />
+		</>
 	);
 };
 
