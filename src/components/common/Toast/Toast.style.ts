@@ -7,29 +7,29 @@ import type { ToastProps } from "@/components/common/Toast/Toast";
 export const toastVariantStyle = (variant: Required<ToastProps>["variant"]) => {
 	const style = {
 		default: css({
-			backgroundColor: "rgba(0,0,0,0.2)",
+			backgroundColor: "#828282",
 		}),
 		success: css({
-			backgroundColor: "rgba(0,0,0,0.2)",
+			backgroundColor: "#828282",
 		}),
 		error: css({
-			backgroundColor: "rgba(0,0,0,0.2)",
+			backgroundColor: "#828282",
 		}),
 	};
 
 	return style[variant];
 };
 
-export const toastStyle = (isVisible: boolean) => css`
-	bottom: 87px;
-	display: flex;
-	align-items: center;
-	width: 100%;
-	height: 60px;
-	padding: 0 16px;
-	border-radius: 15px;
-	color: #fff;
-	animation: ${isVisible
-		? `${fadeIn} 0.2s ease-in, ${moveUp} 0.2s ease-in`
-		: `${fadeOut} 0.2s ease-in forwards`};
-`;
+export const toastStyle = (isVisible: boolean) =>
+	css({
+		display: "flex",
+		alignItems: "center",
+		width: "22.5rem",
+		height: "3.75rem",
+		padding: "0 1rem",
+		borderRadius: "15px",
+		color: "#fff",
+		animation: isVisible
+			? `${fadeIn} 0.2s ease-in, ${moveUp} 0.2s ease-in`
+			: `${fadeOut} 0.2s ease-in forwards`,
+	});

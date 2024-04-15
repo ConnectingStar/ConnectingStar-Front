@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { ComponentPropsWithoutRef } from "react";
 import { createPortal } from "react-dom";
 
@@ -7,11 +7,13 @@ import { toastVariantStyle, toastStyle } from "@/components/common/Toast/Toast.s
 export interface ToastProps extends ComponentPropsWithoutRef<"div"> {
 	variant?: "default" | "success" | "error";
 	showDuration?: number;
+	onClose: () => void;
 }
 
 const Toast = ({
 	variant = "default",
-	showDuration = 600,
+	showDuration = 3000,
+	onClose,
 	children,
 	...attributes
 }: ToastProps) => {
@@ -21,16 +23,24 @@ const Toast = ({
 	const showAnimationRef = useRef<number>();
 	const hideAnimationRef = useRef<number>();
 
+	const handleClose = useCallback(() => {
+		hideAnimationRef.current = setTimeout(() => {
+			setIsAdded(false);
+			onClose?.();
+			clearTimeout(showAnimationRef.current);
+		}, 600);
+	}, [onClose]);
+
 	useEffect(() => {
 		showAnimationRef.current = setTimeout(() => {
 			setIsVisible(false);
+			handleClose();
 		}, showDuration);
 
 		return () => {
 			clearTimeout(hideAnimationRef.current);
-			setIsAdded(false);
 		};
-	}, [showDuration]);
+	}, [handleClose, showDuration]);
 
 	return isAdded
 		? createPortal(

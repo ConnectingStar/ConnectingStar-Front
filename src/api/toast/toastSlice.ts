@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface ToastType {
+export interface ToastType {
 	id: number;
 	variant?: "default" | "success" | "error";
 	message: string;
