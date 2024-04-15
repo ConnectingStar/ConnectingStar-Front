@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { Global, ThemeProvider } from "@emotion/react";
 
 import App from "@/App";
+import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContainer";
 
 import { store } from "@/api/store";
 
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 			<ThemeProvider theme={theme}>
 				<Global styles={GlobalStyle} />
 				<App />
+				<ToastContainer />
 			</ThemeProvider>
 		</Provider>
 	</React.StrictMode>,
