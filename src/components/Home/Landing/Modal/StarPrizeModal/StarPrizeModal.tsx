@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import StarImage from "@/assets/image/img-card-detail-star.png";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
@@ -20,6 +22,7 @@ interface StarPrizeModalProps {
 }
 
 function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPrizeModalProps) {
+	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	return (
 		<Modal>
@@ -39,6 +42,14 @@ function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPri
 				<FooterBtn
 					leftText={!isHabitStart ? "홈으로" : "홈 탐색하기"}
 					text={!isHabitStart ? "별자리 채우기" : "별자리로 가기"}
+					handleLeftBtnClick={() => {
+						navigate("/");
+						dispatch(closeModal());
+					}}
+					handleBtnClick={() => {
+						navigate("/star");
+						dispatch(closeModal());
+					}}
 					isTransparent
 				/>
 			</div>
