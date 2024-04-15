@@ -4,8 +4,6 @@ import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitDetailPage from "@/pages/HabitDetailPage";
-import HabitGeneratePage from "@/pages/HabitGeneratePage";
-import HabitGeneratePage from "@/pages/HabitGeneratePage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
 import HomePage from "@/pages/HomePage";
 import MyHabitPage from "@/pages/MyHabitPage";
@@ -40,7 +38,6 @@ const App = () => {
 				<Route path="/habit-delete" element={<HabitDeletePage />} />
 				<Route path="/onboarding" element={<OnboardingPage />} />
 				<Route path="/habit-record" element={<HabitRecordPage />} />
-				<Route path="/habit-generate" element={<HabitGeneratePage />} />
 			</Routes>
 		</BrowserRouter>
 	);
