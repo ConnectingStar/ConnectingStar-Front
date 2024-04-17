@@ -4,7 +4,7 @@ import BehaviorModal from "@/components/Chatting/BehaviorModal";
 import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
 import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
-// import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
+import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import HabitGenerateConditions from "@/components/Home/HabitGenerate/habitGenerateConditions";
 import HabitTip from "@/components/Home/HabitGenerate/HabitTip/HabitTip";
 
@@ -56,7 +56,7 @@ function HabitGenerate() {
 			{modal === modalType.SELECT_IDENTITY && (
 				<SelectTagModal title={identity.title} tags={identity.tags} />
 			)}
-			{/* {modal === modalType.SELECT_TIME && <SelectTimeModal title={timeModalTitle} />} */}
+			{modal === modalType.SELECT_TIME && <SelectTimeModal />}
 			{modal === modalType.SELECT_LOCATION && <LocationModal />}
 			{modal === modalType.SELECT_REASON && (
 				<SelectTagModal title={habit.title} tags={habit.tags} />
