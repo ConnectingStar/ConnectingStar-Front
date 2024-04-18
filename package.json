@@ -19,6 +19,7 @@
     "date-fns": "^3.3.1",
     "firebase": "^10.9.0",
     "framer-motion": "^10.18.0",
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
