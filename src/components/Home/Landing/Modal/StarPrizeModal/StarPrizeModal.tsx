@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-import StarImage from "@/assets/image/img-card-detail-star.png";
+import ClapAnimation from "@/assets/lottie/lottie-clap-animation.json";
+import StarCoinAnimation from "@/assets/lottie/lottie-star-coin-animation.json";
+import StarMedalAnimation from "@/assets/lottie/lottie-star-medal-animation.json";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
+import Lottie from "lottie-react";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
@@ -28,7 +31,10 @@ function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPri
 		<Modal>
 			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
 				<span css={imageWrapperStyle}>
-					<img src={StarImage} alt="prizeImage" />
+					<Lottie animationData={ClapAnimation} loop={false} />
+					{/* <Lottie animationData={FanfareAnimation} /> */}
+					<Lottie animationData={StarCoinAnimation} loop={false} />
+					<Lottie animationData={StarMedalAnimation} loop={false} />
 				</span>
 				<div css={prizeCommentStyle}>
 					<div>

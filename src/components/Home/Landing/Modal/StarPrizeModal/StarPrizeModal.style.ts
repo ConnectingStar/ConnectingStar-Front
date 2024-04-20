@@ -13,11 +13,22 @@ export const containerStyle = css`
 `;
 
 export const imageWrapperStyle = css`
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 13rem;
+	min-height: 13rem;
 	border-radius: 15px;
-	img {
-		width: 13rem;
-		height: 13rem;
+
+	& > div {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		object-fit: contain;
+		width: 22.5rem;
+		height: 22.5rem;
 	}
 `;
 
