@@ -8,7 +8,7 @@ export default ToastBase;
 
 const layoutStyle = css`
 	position: fixed;
-	bottom: 60px;
+	bottom: 5.5rem;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
