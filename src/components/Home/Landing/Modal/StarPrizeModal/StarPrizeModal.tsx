@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 import ClapAnimation from "@/assets/lottie/lottie-clap-animation.json";
-import StarCoinAnimation from "@/assets/lottie/lottie-star-coin-animation.json";
 import StarMedalAnimation from "@/assets/lottie/lottie-star-medal-animation.json";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
@@ -31,23 +30,24 @@ function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPri
 		<Modal>
 			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
 				<span css={imageWrapperStyle}>
-					<Lottie animationData={ClapAnimation} loop={false} />
-					{/* <Lottie animationData={FanfareAnimation} /> */}
-					<Lottie animationData={StarCoinAnimation} loop={false} />
-					<Lottie animationData={StarMedalAnimation} loop={false} />
+					{isHabitStart ? (
+						<Lottie animationData={StarMedalAnimation} loop={false} />
+					) : (
+						<Lottie animationData={ClapAnimation} loop={false} />
+					)}
 				</span>
 				<div css={prizeCommentStyle}>
 					<div>
 						<span>{blueText}</span>
-						{!isHabitStart && <span>{yellowText}</span>}
+						{isHabitStart && <span>{yellowText}</span>}
 					</div>
 					<div>
 						<span>{comment}</span>
 					</div>
 				</div>
 				<FooterBtn
-					leftText={!isHabitStart ? "홈으로" : "홈 탐색하기"}
-					text={!isHabitStart ? "별자리 채우기" : "별자리로 가기"}
+					leftText={isHabitStart ? "홈으로" : "홈 탐색하기"}
+					text={isHabitStart ? "별자리 채우기" : "별자리로 가기"}
 					handleLeftBtnClick={() => {
 						navigate("/");
 						dispatch(closeModal());
