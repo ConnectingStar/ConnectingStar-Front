@@ -7,8 +7,10 @@ import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import HabitGenerateConditions from "@/components/Home/HabitGenerate/habitGenerateConditions";
 import HabitTip from "@/components/Home/HabitGenerate/HabitTip/HabitTip";
+import StarPrizeModal from "@/components/Home/Landing/Modal/StarPrizeModal/StarPrizeModal";
 
-import { useAppSelector } from "@/api/hooks";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
 
 import { habitGenerateConditions, identity, habit } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
@@ -20,6 +22,7 @@ import {
 } from "@/components/Home/HabitGenerate/HabitGenerate.style";
 
 function HabitGenerate() {
+	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
 
 	return (
@@ -52,7 +55,13 @@ function HabitGenerate() {
 					);
 				})}
 			</ul>
-			<FooterBtn text="좋아, 이대로 만들게" isPositionStatic />
+
+			<FooterBtn
+				text="좋아, 이대로 만들게"
+				isPositionStatic
+				handleBtnClick={() => dispatch(openModal(modalType.HABIT_GENERATE))}
+			/>
+
 			{modal === modalType.SELECT_IDENTITY && (
 				<SelectTagModal title={identity.title} tags={identity.tags} />
 			)}
@@ -64,6 +73,13 @@ function HabitGenerate() {
 				<SelectTagModal title={habit.title} tags={habit.tags} />
 			)}
 			{modal === modalType.SELECT_BEHAVIOR && <BehaviorModal />}
+
+			{modal === modalType.HABIT_GENERATE && (
+				<StarPrizeModal
+					blueText="시작이 반!"
+					comment={`더욱 {정체성한} 사람이 되기 위한 한 걸음\n제가 {닉네임}님을 응원할게요 😊`}
+				/>
+			)}
 		</main>
 	);
 }

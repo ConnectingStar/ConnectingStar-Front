@@ -137,7 +137,12 @@ function HabitRecord() {
 				disabled={!isActivated || !selectedIcon}
 			/>
 			{modal === modalType.STAR_PRIZE && (
-				<StarPrizeModal blueText={blueText} yellowText={yellowText} comment={comment} />
+				<StarPrizeModal
+					isHabitStart
+					blueText={blueText}
+					yellowText={yellowText}
+					comment={comment}
+				/>
 			)}
 		</main>
 	);
