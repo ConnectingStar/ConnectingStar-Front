@@ -15,8 +15,6 @@ import { openModal } from "@/api/modal/modalSlice";
 import { modalType } from "@/constants/modalConstants";
 import { myInfoButtonData } from "@/constants/myPageConstants";
 
-import { useToast } from "@/hooks/useToast";
-
 import {
 	layoutStyle,
 	characterBoxStyle,
@@ -30,8 +28,6 @@ const MyInfo = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-
-	const { createToast } = useToast();
 
 	const navigate = useNavigate();
 
@@ -56,10 +52,7 @@ const MyInfo = () => {
 		<div css={layoutStyle}>
 			<div css={mainBoxStyle}>
 				<div css={characterBoxStyle}>
-					{/* <button onClick={() => dispatch(openModal(modalType.SELECT_CHARACTER))}>
-						<p>캐릭터 변경</p>
-					</button> */}
-					<button onClick={() => createToast("테스트 토스트")}>
+					<button onClick={() => dispatch(openModal(modalType.SELECT_CHARACTER))}>
 						<p>캐릭터 변경</p>
 					</button>
 				</div>
