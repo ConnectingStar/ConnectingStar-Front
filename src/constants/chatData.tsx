@@ -11,6 +11,8 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["습관선택"],
 			reply: `${userData.habit}`,
+			// modalType: modalType.SELECT_HABIT,
+			modalType: modalType.SELECT_TIME,
 		},
 		{
 			id: "habit",
