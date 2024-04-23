@@ -6,6 +6,7 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/time";
 
@@ -15,7 +16,7 @@ import {
 	timeBoxStyle,
 } from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal.style";
 
-function SelectTimeModal() {
+function SelectTimeModal({ title }: { title: string }) {
 	const dispatch = useAppDispatch();
 
 	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: 0, minute: 0 });
@@ -25,15 +26,22 @@ function SelectTimeModal() {
 	};
 
 	const handleSelectClick = () => {
-		dispatch(closeModal());
+		console.log(selectTime);
 
+		if (title === "시간을 선택해 주세요") dispatch(updateHabitUserData({ time: selectTime }));
+		if (title === "1차 알림시간을 선택해 주세요")
+			dispatch(updateHabitUserData({ alert1: selectTime }));
+		if (title === "2차 알림시간을 선택해 주세요")
+			dispatch(updateHabitUserData({ alert1: selectTime }));
+
+		dispatch(closeModal());
 		console.log(selectTime);
 	};
 
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
-				<h1>시간을 선택해 주세요</h1>
+				<h1>{title}</h1>
 
 				<div css={timeBoxStyle}>
 					<div className="noonBox">
