@@ -20,7 +20,7 @@ function Advices() {
 		<div css={advicesWrapperStyle}>
 			<Slider {...settings}>
 				{adviceImages.map((image) => (
-					<div>
+					<div key={image.src}>
 						<img src={image.src} alt={image.alt} />
 					</div>
 				))}
