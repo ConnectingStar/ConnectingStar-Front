@@ -13,7 +13,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["습관선택"],
 			reply: `${userData.habit}`,
-			modalType: modalType.SELECT_HABIT,
+			modalType: [modalType.SELECT_HABIT],
 		},
 		{
 			id: "habit",
@@ -24,7 +24,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["정체성 선택"],
 			reply: `${userData.identity}`,
-			modalType: modalType.SELECT_IDENTITY,
+			modalType: [modalType.SELECT_IDENTITY],
 		},
 		{
 			id: "identity",
@@ -58,7 +58,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["시간 선택"],
 			reply: `${userData.time.noon} ${userData.time.hour}:${userData.time.minute}`,
-			modalType: modalType.SELECT_TIME,
+			modalType: [modalType.SELECT_TIME],
 		},
 		{
 			id: "location",
@@ -69,7 +69,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["장소 선택"],
 			reply: `${userData.location}`,
-			modalType: modalType.SELECT_LOCATION,
+			modalType: [modalType.SELECT_LOCATION],
 		},
 
 		{
@@ -82,7 +82,7 @@ export function createChatData(userData: userType) {
 			],
 			replyBtnMessage: ["행동 선택"],
 			reply: `${userData.behavior}`,
-			modalType: modalType.SELECT_BEHAVIOR,
+			modalType: [modalType.SELECT_BEHAVIOR],
 		},
 		{
 			id: "alert",
@@ -102,6 +102,7 @@ export function createChatData(userData: userType) {
 				</div>
 			</div>
 		`,
+			modalType: [null, modalType.SELECT_ALERT1, modalType.SELECT_ALERT2],
 		},
 		{
 			id: "organize",
@@ -158,6 +159,16 @@ export function createChatData(userData: userType) {
 				</div>
 			</div>
 		`,
+			modalType: [
+				null,
+				modalType.SELECT_IDENTITY,
+				modalType.SELECT_TIME,
+				modalType.SELECT_LOCATION,
+				modalType.SELECT_HABIT,
+				modalType.SELECT_BEHAVIOR,
+				modalType.SELECT_ALERT1,
+				modalType.SELECT_ALERT2,
+			],
 		},
 		{
 			id: "inform",

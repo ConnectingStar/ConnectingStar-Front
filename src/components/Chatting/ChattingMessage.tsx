@@ -15,7 +15,7 @@ interface chatType {
 		message: string[];
 		replyBtnMessage: string[];
 		reply: string;
-		modalType?: string;
+		modalType?: (string | null)[];
 	};
 	setProgress: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -47,13 +47,18 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 
 	// 버튼 함수
 	const handleReplyBtn = async () => {
-		if (chatData.modalType !== undefined) await dispatch(openModal(chatData.modalType));
+		if (chatData.modalType !== undefined) await dispatch(openModal(chatData.modalType[0]));
 		setProgress((prev) => prev + 1);
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 		if (chatData.id === "last") {
 			localStorage.setItem("First visit", "false");
 		}
+	};
+
+	//사이드 버튼 함수
+	const handleSideReplyBtn = async (index: number) => {
+		if (chatData.modalType !== undefined) await dispatch(openModal(chatData.modalType[index + 1]));
 	};
 
 	// 특정 메시지의 단어 파란색으로 변경하는 함수
@@ -98,8 +103,10 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 								replyBtnMessage.length === 3 ? chattingStyle.sideButton : chattingStyle.scrollButton
 							}
 						>
-							{replyBtnMessage.slice(1).map((item) => (
-								<button key={item}>{item}</button>
+							{replyBtnMessage.slice(1).map((item, index) => (
+								<button key={item} onClick={() => handleSideReplyBtn(index)}>
+									{item}
+								</button>
 							))}
 						</div>
 					)}
