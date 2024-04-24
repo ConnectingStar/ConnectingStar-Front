@@ -10,6 +10,8 @@ import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/time";
 
+import { adjustTime } from "@/utils/adjustTime";
+
 import {
 	footerBtnBoxStyle,
 	layoutStyle,
@@ -39,14 +41,27 @@ function SelectTimeModal({ title, progress, addprogres }: selectTimeModalType) {
 	};
 
 	const handleSelectClick = () => {
+		// hour와 minute의 길이가 1이라면 앞에 0을 붙여줌
+		const addZeroTime = {
+			...selectTime,
+			hour: selectTime.hour.length < 2 ? `0${selectTime.hour}` : selectTime.hour,
+			minute: selectTime.minute.length < 2 ? `0${selectTime.minute}` : selectTime.minute,
+		};
+
 		if (title === "시간을 선택해 주세요") {
 			if (addprogres !== undefined && progress === 4) addprogres();
-			dispatch(updateHabitUserData({ time: updatedTime }));
+			dispatch(
+				updateHabitUserData({
+					time: addZeroTime,
+					alert1: adjustTime({ time: selectTime, change: -10 }),
+					alert2: adjustTime({ time: selectTime, change: 30 }),
+				}),
+			);
 		}
 		if (title === "1차 알림시간을 선택해 주세요")
-			dispatch(updateHabitUserData({ alert1: updatedTime }));
+			dispatch(updateHabitUserData({ alert1: addZeroTime }));
 		if (title === "2차 알림시간을 선택해 주세요")
-			dispatch(updateHabitUserData({ alert1: updatedTime }));
+			dispatch(updateHabitUserData({ alert2: addZeroTime }));
 
 		dispatch(closeModal());
 	};
