@@ -17,10 +17,10 @@ interface chatType {
 		reply: string;
 		modalType?: (string | null)[];
 	};
-	setProgress: React.Dispatch<React.SetStateAction<number>>;
+	addProgress: () => void;
 }
 
-function ChattingMessage({ chatData, setProgress }: chatType) {
+function ChattingMessage({ chatData, addProgress }: chatType) {
 	const { message, replyBtnMessage, reply } = chatData;
 
 	const [messageIndex, setMessageIndex] = useState(0);
@@ -48,7 +48,7 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 	// 버튼 함수
 	const handleReplyBtn = async () => {
 		if (chatData.modalType !== undefined) await dispatch(openModal(chatData.modalType[0]));
-		setProgress((prev) => prev + 1);
+		addProgress();
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 		if (chatData.id === "last") {
