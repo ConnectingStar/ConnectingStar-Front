@@ -40,7 +40,7 @@ function SelectTagModal({ title, tags }: selectTagModal) {
 		<div css={selectTagModalStyle.container}>
 			{/* TODO: 닫기누르면 모달 닫기 */}
 			<Header>
-				<Header.CloseButton />
+				<Header.CloseButton onClick={() => dispatch(closeModal())} />
 			</Header>
 			<div css={selectTagModalStyle.wrap}>
 				<h1>{title}</h1>
