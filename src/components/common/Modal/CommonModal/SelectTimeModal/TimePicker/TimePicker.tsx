@@ -10,19 +10,17 @@ import {
 interface ScrollPickerProps {
 	valueKey: string;
 	list: string[];
-	handleChangeTime: (target: string, value: number | string) => void;
+	handleChangeTime: (target: string, value: string) => void;
 }
 
 const TimePicker = ({ valueKey, list, handleChangeTime }: ScrollPickerProps) => {
 	const { onScroll, selectedIndex, selectNoon, ref } = useSelectScroller();
 
 	useEffect(() => {
-		const NewSelectedIndex = selectedIndex < 10 ? `0${selectedIndex}` : `${selectedIndex}`;
-
 		if (valueKey === "noon") {
 			handleChangeTime(valueKey, selectNoon);
 		} else {
-			handleChangeTime(valueKey, NewSelectedIndex);
+			handleChangeTime(valueKey, String(selectedIndex));
 		}
 	}, [selectedIndex, selectNoon]);
 
