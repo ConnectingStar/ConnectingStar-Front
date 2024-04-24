@@ -8,11 +8,11 @@ const initialState: userType = {
 	visitorRoute: "",
 	habit: "",
 	identity: "",
-	time: "",
+	time: { noon: "오전", hour: "10", minute: "00" },
 	location: "",
 	behavior: "",
-	alert1: "",
-	alert2: "",
+	alert1: { noon: "오전", hour: "09", minute: "50" },
+	alert2: { noon: "오전", hour: "10", minute: "10" },
 };
 
 const userSlice = createSlice({

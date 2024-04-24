@@ -5,11 +5,11 @@ export interface userType {
 	visitorRoute: string;
 	habit: string;
 	identity: string;
-	time: string;
+	time: { noon: string; hour: string; minute: string };
 	location: string;
 	behavior: string;
-	alert1: string;
-	alert2: string;
+	alert1: { noon: string; hour: string; minute: string };
+	alert2: { noon: string; hour: string; minute: string };
 }
 
 export interface basicUserDataType {
@@ -21,9 +21,9 @@ export interface basicUserDataType {
 export interface habitUserDataType {
 	habit?: string;
 	identity?: string;
-	time?: string;
+	time?: { noon: string; hour: string; minute: string };
 	location?: string;
 	behavior?: string;
-	alert1?: string;
-	alert2?: string;
+	alert1?: { noon: string; hour: string; minute: string };
+	alert2?: { noon: string; hour: string; minute: string };
 }
