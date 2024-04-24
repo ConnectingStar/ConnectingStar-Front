@@ -43,14 +43,50 @@ function ChattingPage() {
 				</div>
 
 				{modal === modalType.SELECT_HABIT && (
-					<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={TagsData.habitTags} />
+					<SelectTagModal
+						title="어떤 습관을 만들어 볼까요?"
+						tags={TagsData.habitTags}
+						progress={progress}
+						addprogres={() => {
+							setProgress((prev) => prev + 1);
+						}}
+					/>
 				)}
 				{modal === modalType.SELECT_IDENTITY && (
-					<SelectTagModal title="어떤 사람이 되고 싶으세요?" tags={TagsData.identityTags} />
+					<SelectTagModal
+						title="어떤 사람이 되고 싶으세요?"
+						tags={TagsData.identityTags}
+						progress={progress}
+						addprogres={() => {
+							setProgress((prev) => prev + 1);
+						}}
+					/>
 				)}
-				{/* {modal === modalType.SELECT_TIME && <SelectTimeModal />} */}
-				{modal === modalType.SELECT_LOCATION && <LocationModal />}
-				{modal === modalType.SELECT_BEHAVIOR && <BehaviorModal />}
+				{modal === modalType.SELECT_TIME && (
+					<SelectTimeModal
+						title="시간을 선택해 주세요"
+						progress={progress}
+						addprogres={() => {
+							setProgress((prev) => prev + 1);
+						}}
+					/>
+				)}
+				{modal === modalType.SELECT_LOCATION && (
+					<LocationModal
+						progress={progress}
+						addprogres={() => {
+							setProgress((prev) => prev + 1);
+						}}
+					/>
+				)}
+				{modal === modalType.SELECT_BEHAVIOR && (
+					<BehaviorModal
+						progress={progress}
+						addprogres={() => {
+							setProgress((prev) => prev + 1);
+						}}
+					/>
+				)}
 				{modal === modalType.SELECT_ALERT1 && (
 					<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
 				)}

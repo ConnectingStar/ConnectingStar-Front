@@ -50,9 +50,15 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 	}, [messageIndex]);
 
 	// 버튼 함수
-	const handleReplyBtn = async () => {
-		if (chatData.modalType !== undefined) await dispatch(openModal(chatData.modalType[0]));
-		addProgress();
+	const handleReplyBtn = () => {
+		if (chatData.modalType === undefined) addProgress();
+		if (chatData.modalType !== undefined) {
+			dispatch(openModal(chatData.modalType[0]));
+			if (chatData.modalType[0] === null) {
+				addProgress();
+			}
+		}
+
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 		if (chatData.id === "last") {

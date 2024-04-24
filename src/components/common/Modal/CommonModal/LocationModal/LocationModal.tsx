@@ -12,20 +12,26 @@ import {
 	locationInputStyle,
 } from "@/components/common/Modal/CommonModal/LocationModal/LocationModalStyle";
 
+import { useAppDispatch } from "@/api/hooks";
+import { closeModal } from "@/api/modal/modalSlice";
 import { closeModal } from "@/api/modal/modalSlice";
 import { updateHabitUserData } from "@/api/user/userSlice";
 
-import { useAppDispatch } from "@/api/hooks";
-import { closeModal } from "@/api/modal/modalSlice";
-
 import { locationModalData } from "@/constants/locationModalConstants";
 
-function LocationModal() {
-	const dispatch = useAppDispatch();
+interface locationModalType {
+	progress?: number;
+	addprogres?: () => void;
+}
+
+function LocationModal({ progress, addprogres }: locationModalType) {
 	const [location, setLocation] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
 	const dispatch = useDispatch();
 	const confirmSelectedTag = () => {
+		if (addprogres === undefined) return;
+		if (progress === 5) addprogres();
+
 		dispatch(updateHabitUserData({ location }));
 		dispatch(closeModal());
 	};
