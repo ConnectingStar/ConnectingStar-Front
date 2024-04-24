@@ -37,6 +37,12 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		return () => clearTimeout(timer);
 	}, [messageIndex]);
 
+	// 버튼여러개라면 답글 먼저보이게하기
+	useEffect(() => {
+		if (chatData.modalType === undefined) return;
+		if (chatData.modalType.length > 1) setIsReply(true);
+	}, []);
+
 	// 스크롤다운 함수
 	useEffect(() => {
 		if (!endOfMessagesRef.current) return;
@@ -64,7 +70,6 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 			<div css={chattingStyle.profile}>
 				<img src="" alt="profile" />
 			</div>
-
 			<div css={chattingStyle.chatWrap} ref={endOfMessagesRef}>
 				<ul>
 					{message.slice(0, messageIndex + 1).map((msg) => (
