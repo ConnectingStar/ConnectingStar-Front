@@ -19,23 +19,27 @@ import {
 function SelectTimeModal({ title }: { title: string }) {
 	const dispatch = useAppDispatch();
 
-	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: 0, minute: 0 });
+	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
 
-	const handleChangeTime = (target: string, value: number | string) => {
+	const handleChangeTime = (target: string, value: string) => {
 		setSelectTime({ ...selectTime, [target]: value });
 	};
 
-	const handleSelectClick = () => {
-		console.log(selectTime);
+	// hour와 minute의 길이가 1이라면 앞에 0을 붙여주는 함수
+	const updatedTime = {
+		...selectTime,
+		hour: selectTime.hour.length < 2 ? `0${selectTime.hour}` : selectTime.hour,
+		minute: selectTime.minute.length < 2 ? `0${selectTime.minute}` : selectTime.minute,
+	};
 
-		if (title === "시간을 선택해 주세요") dispatch(updateHabitUserData({ time: selectTime }));
+	const handleSelectClick = () => {
+		if (title === "시간을 선택해 주세요") dispatch(updateHabitUserData({ time: updatedTime }));
 		if (title === "1차 알림시간을 선택해 주세요")
-			dispatch(updateHabitUserData({ alert1: selectTime }));
+			dispatch(updateHabitUserData({ alert1: updatedTime }));
 		if (title === "2차 알림시간을 선택해 주세요")
-			dispatch(updateHabitUserData({ alert1: selectTime }));
+			dispatch(updateHabitUserData({ alert1: updatedTime }));
 
 		dispatch(closeModal());
-		console.log(selectTime);
 	};
 
 	return (
