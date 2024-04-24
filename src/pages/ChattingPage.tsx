@@ -34,7 +34,11 @@ function ChattingPage() {
 			<div css={chattingPageStyle.container}>
 				<div css={chattingPageStyle.chattingWrap(extraBtnHeight)}>
 					{chatData.slice(0, progress + 1).map((chatData) => (
-						<ChattingMessage key={chatData.id} chatData={chatData} setProgress={setProgress} />
+						<ChattingMessage
+							key={chatData.id}
+							chatData={chatData}
+							addProgress={() => setProgress((prev) => prev + 1)}
+						/>
 					))}
 				</div>
 
