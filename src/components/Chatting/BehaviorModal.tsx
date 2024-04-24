@@ -12,14 +12,21 @@ import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { theme } from "@/styles/theme";
 
-function BehaviorModal() {
-	const dispatch = useAppDispatch();
+interface behaviorModalType {
+	progress?: number;
+	addprogres?: () => void;
+}
+
+function BehaviorModal({ progress, addprogres }: behaviorModalType) {
 	const [unitNumber, setUnitNumber] = useState<string>();
 	const [unit, setUnit] = useState<string>();
 	const dispatch = useDispatch();
 	const { habit } = useSelector((state: RootState) => state.user);
 
 	const confirmSelectedTag = () => {
+		if (addprogres === undefined) return;
+		if (progress === 6) addprogres();
+
 		const behavior = `${unitNumber} ${unit}`;
 		if (unit && unitNumber) {
 			dispatch(updateHabitUserData({ behavior }));

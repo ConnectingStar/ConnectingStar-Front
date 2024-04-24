@@ -11,9 +11,11 @@ import { selectTagModalStyle } from "@/components/common/Modal/CommonModal/Selec
 interface selectTagModal {
 	title: string;
 	tags: string[];
+	progress?: number;
+	addprogres?: () => void;
 }
 
-function SelectTagModal({ title, tags }: selectTagModal) {
+function SelectTagModal({ title, tags, progress, addprogres }: selectTagModal) {
 	const [selectedTag, setSelectedTag] = useState<string | null>(null);
 	const [isInputFocus, setIsInputFocus] = useState(false);
 	const [inputText, setInputText] = useState("");
@@ -26,12 +28,15 @@ function SelectTagModal({ title, tags }: selectTagModal) {
 	const confirmSelectedTag = () => {
 		const updatedHabit = selectedTag || inputText;
 
-		if (updatedHabit) {
+		if (updatedHabit && addprogres !== undefined) {
 			if (title === "어떤 습관을 만들어 볼까요?") {
 				dispatch(updateHabitUserData({ habit: updatedHabit }));
+				if (progress === 0) addprogres();
 			} else if (title === "어떤 사람이 되고 싶으세요?") {
 				dispatch(updateHabitUserData({ identity: updatedHabit }));
+				if (progress === 1) addprogres();
 			}
+
 			dispatch(closeModal());
 		}
 	};

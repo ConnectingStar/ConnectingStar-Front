@@ -16,7 +16,13 @@ import {
 	timeBoxStyle,
 } from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal.style";
 
-function SelectTimeModal({ title }: { title: string }) {
+interface selectTimeModalType {
+	title: string;
+	progress?: number;
+	addprogres?: () => void;
+}
+
+function SelectTimeModal({ title, progress, addprogres }: selectTimeModalType) {
 	const dispatch = useAppDispatch();
 
 	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
@@ -33,7 +39,10 @@ function SelectTimeModal({ title }: { title: string }) {
 	};
 
 	const handleSelectClick = () => {
-		if (title === "시간을 선택해 주세요") dispatch(updateHabitUserData({ time: updatedTime }));
+		if (title === "시간을 선택해 주세요") {
+			if (addprogres !== undefined && progress === 4) addprogres();
+			dispatch(updateHabitUserData({ time: updatedTime }));
+		}
 		if (title === "1차 알림시간을 선택해 주세요")
 			dispatch(updateHabitUserData({ alert1: updatedTime }));
 		if (title === "2차 알림시간을 선택해 주세요")
