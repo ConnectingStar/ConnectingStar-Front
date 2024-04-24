@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
+import ProfileImg from "@/assets/image/img-profile-example.png";
+
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
 import { useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
-
 interface chatType {
 	chatData: {
 		id: string;
@@ -74,7 +75,7 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 	return (
 		<div css={chattingStyle.container}>
 			<div css={chattingStyle.profile}>
-				<img src="" alt="profile" />
+				<img src={ProfileImg} alt="profile" />
 			</div>
 			<div css={chattingStyle.chatWrap} ref={endOfMessagesRef}>
 				<ul>
