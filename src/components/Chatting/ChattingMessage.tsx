@@ -5,8 +5,6 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import { useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { theme } from "@/styles/theme";
-
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
 
 interface chatType {
@@ -61,24 +59,6 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		if (chatData.modalType !== undefined) await dispatch(openModal(chatData.modalType[index + 1]));
 	};
 
-	// 특정 메시지의 단어 파란색으로 변경하는 함수
-	function processMessage(message: string, id: string) {
-		if (id === "time") {
-			return message.replace(
-				/(명확|매력|쉽게|만족)/g,
-				(match) =>
-					`<span style="color: ${theme.color.main_blue};font-weight: 700;">${match}</span>`,
-			);
-		} else if (id === "last") {
-			return message.replace(
-				/(매일 실행|꾸준하게 하는 것)/g,
-				(match) =>
-					`<span style="color: ${theme.color.main_blue};font-weight: 700;">${match}</span>`,
-			);
-		}
-		return message;
-	}
-
 	return (
 		<div css={chattingStyle.container}>
 			<div css={chattingStyle.profile}>
@@ -88,7 +68,7 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 			<div css={chattingStyle.chatWrap} ref={endOfMessagesRef}>
 				<ul>
 					{message.slice(0, messageIndex + 1).map((msg) => (
-						<li key={msg} dangerouslySetInnerHTML={{ __html: processMessage(msg, chatData.id) }} />
+						<li key={msg} dangerouslySetInnerHTML={{ __html: msg }} />
 					))}
 				</ul>
 
