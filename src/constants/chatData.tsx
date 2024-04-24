@@ -57,7 +57,7 @@ export function createChatData(userData: userType) {
 				`다른 일에 방해 받지 않는 시간 혹은 매일 지키기에 수월한 시간으로 설정해 주세요.`,
 			],
 			replyBtnMessage: ["시간 선택"],
-			reply: `${userData.time}`,
+			reply: `${userData.time.noon} ${userData.time.hour}:${userData.time.minute}`,
 			modalType: modalType.SELECT_TIME,
 		},
 		{
@@ -96,9 +96,9 @@ export function createChatData(userData: userType) {
 					<div>2차 알림(기록 독려)</div>
 				</div>
 				<div class="bold">
-					<div>${userData.alert1}</div>
-					<div>${userData.time}</div>
-					<div>${userData.alert2}</div>
+					<div>${userData.alert1.noon} ${userData.alert1.hour}:${userData.alert1.minute}</div>
+					<div>${userData.time.noon} ${userData.time.hour}:${userData.time.minute}</div>
+					<div>${userData.alert2.noon} ${userData.alert2.hour}:${userData.alert2.minute}</div>
 				</div>
 			</div>
 		`,
@@ -138,7 +138,7 @@ export function createChatData(userData: userType) {
 						<li>행동</li>
 					</ul>
 					<ul class="bold">
-						<li>${userData.time}</li>
+						<li>${userData.time.noon} ${userData.time.hour}:${userData.time.minute}</li>
 						<li>${userData.location}</li>
 						<li>${userData.behavior}</li>
 					</ul>
@@ -152,8 +152,8 @@ export function createChatData(userData: userType) {
 						<li>2차 알림</li>
 					</ul>
 					<ul class="bold">
-						<li>${userData.alert1}</li>
-						<li>${userData.alert2}</li>
+						<li>${userData.alert1.noon} ${userData.alert1.hour}:${userData.alert1.minute}</li>
+						<li>${userData.alert2.noon} ${userData.alert2.hour}:${userData.alert2.minute}</li>
 					</ul>
 				</div>
 			</div>
