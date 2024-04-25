@@ -48,12 +48,12 @@ export default function StarCardDetailPage() {
 			</Header>
 			<section css={sectionStyle}>
 				<Img state={data.state} />
-				<h2>캐릭터 설명 문구</h2>
-				<h1>캐릭터 이름</h1>
 				<CategoryLabel />
+				<h1>캐릭터 이름</h1>
+				<h2>정체성</h2>
 				<Story />
 			</section>
-			<FooterBtn text={buttonState[data.state]} handleBtnClick={handleModal} isTransparent />
+			<FooterBtn text={buttonState[data.state]} handleBtnClick={handleModal} />
 
 			{modal === modalType.SELECT_STAR && <SelectStarModal />}
 			{modal === modalType.SELECT_PROFILE_CHARACTER && <SelectProfileCharacterModal />}
@@ -67,13 +67,14 @@ const sectionStyle = css`
 	margin: 0 auto;
 
 	& > h1 {
-		margin-bottom: 0.5625rem;
+		margin-top: 0.375rem;
 		${theme.font.head_a}
 		color: ${theme.color.font_black};
 	}
 
 	& > h2 {
-		${theme.font.head_b}
-		color: ${theme.color.main_blue};
+		margin-bottom: 2.5rem;
+		${theme.font.body_a}
+		color: ${theme.color.font_black};
 	}
 `;
