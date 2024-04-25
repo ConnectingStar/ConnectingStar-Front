@@ -1,5 +1,7 @@
 import { userType } from "@/types/userDataType";
 
+import { modalType } from "./modalConstants";
+
 export function createChatData(userData: userType) {
 	return [
 		{
