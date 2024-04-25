@@ -8,13 +8,13 @@ import ChattingMessage from "@/components/Chatting/ChattingMessage";
 // import SelectTagModal from "@/components/Chatting/SelectTagModal/SelectTagModal";
 // import LocationModal from "@/components/Chatting/LocationModal/LocationModal";
 import Header from "@/components/common/Header/Header";
+import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 
 import { RootState } from "@/api/store";
 
 import { createChatData } from "@/constants/chatData";
 
 import { theme } from "@/styles/theme";
-
 // const habitTags = [
 // 	"러닝하기",
 // 	"헬스하기",
@@ -36,6 +36,9 @@ function ChattingPage() {
 	const userData = useSelector((state: RootState) => state.user);
 	const chatData = createChatData(userData);
 	const extraBtnHeight = chatData[progress].replyBtnMessage.length > 1;
+
+	console.log(userData);
+
 	return (
 		<div>
 			<Header>
@@ -51,6 +54,7 @@ function ChattingPage() {
 				{/* <BehaviorModal /> */}
 				{/* <LocationModal /> */}
 				{/* <SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={habitTags} /> */}
+				<SelectTimeModal title="시간을 선택해 주세요"></SelectTimeModal>
 			</div>
 		</div>
 	);
