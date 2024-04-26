@@ -9,7 +9,7 @@ export default function Toggle() {
 
 	return (
 		<div css={containerStyle}>
-			<p>보유 캐릭터 모아보기</p>
+			<p>보유 카드 모아보기</p>
 			<div
 				css={getToggleStyle(isToggleActive)}
 				onClick={() => setIsToggleActive(!isToggleActive)}

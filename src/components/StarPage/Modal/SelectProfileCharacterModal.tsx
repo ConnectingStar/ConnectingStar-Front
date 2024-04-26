@@ -12,7 +12,7 @@ export default function SelectProfileCharacterModal() {
 	return (
 		<Modal>
 			<div css={layoutStyle}>
-				<h1>프로필 캐릭터로 설정할까요?</h1>
+				<h1>프로필 이미지로 설정할까요?</h1>
 
 				<FooterBtn
 					text="확인"
