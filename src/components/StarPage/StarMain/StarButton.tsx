@@ -6,7 +6,7 @@ import { theme } from "@/styles/theme";
 
 import { getOutlineTextStyle } from "@/components/StarPage/StarMain/Star.style";
 
-const description = `버튼을 클릭하여 별자리를 완성하면 \n 캐릭터를 획득할 수 있어요!`;
+const description = `버튼을 클릭하여 별자리를 완성하면 \n 버디를 획득할 수 있어요!`;
 
 interface StarButtonProps {
 	onClick: React.MouseEventHandler<HTMLButtonElement>;
