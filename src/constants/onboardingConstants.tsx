@@ -7,7 +7,7 @@ import { theme } from "@/styles/theme";
 export const signUpData = [
 	{
 		img: GearImg,
-		text: `목표를 세우지 말고 Tars와\n함께 <span style="color:${theme.color.main_blue}">시스템</span>을 만들어 가요 :)`,
+		text: `버디와 맺은 <span style="color:${theme.color.main_blue}">약속</span>을 실천하며\n <span style="color:${theme.color.main_blue}">탄탄한 습관</span>을 만들어 가요`,
 	},
 	{
 		img: BellImg,
