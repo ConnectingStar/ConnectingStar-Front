@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 import Advices from "@/components/Home/Landing/Advices/Advices";
 import Calender from "@/components/Home/Landing/Calendar/Calender";
 import HabitHelp from "@/components/Home/Landing/HabitHelp";
-import Habits from "@/components/Home/Landing/HabitList/HabitList";
+import HabitList from "@/components/Home/Landing/HabitList/HabitList";
 import Profile from "@/components/Home/Landing/Profile/Profile";
 import { DateInfo } from "@/types/homeTypes";
 
@@ -41,32 +41,31 @@ function Home() {
 	}, [selectedDate]);
 
 	return (
-		<main css={homeStyle.container}>
-			<div css={homeStyle.topBox}>
+		<main css={layoutStyle}>
+			<div css={topBoxStyle}>
 				<Profile />
 				<HabitHelp />
 				<Advices />
 			</div>
 			<Calender setSelectedDate={setSelectedDate} selectedDate={selectedDate} timeGap={timeGap} />
-			<Habits selectedDate={selectedDate} />
+			<HabitList selectedDate={selectedDate} />
 		</main>
 	);
 }
 
 export default Home;
 
-const homeStyle = {
-	container: css`
-		width: 22.5rem;
-		margin: 0 auto;
-		padding: 0 1.5rem;
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	`,
-	topBox: css`
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	`,
-};
+const layoutStyle = css`
+	width: 22.5rem;
+	margin: 0 auto;
+	padding: 0 1.5rem 3.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+`;
+
+const topBoxStyle = css`
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+`;

@@ -8,14 +8,8 @@ import { theme } from "@/styles/theme";
 
 function HabitHelp() {
 	const navigate = useNavigate();
-
 	return (
-		<section
-			css={layoutStyle}
-			onClick={() => {
-				navigate("/help");
-			}}
-		>
+		<section css={layoutStyle} onClick={() => navigate("/habit-guide")}>
 			<HabitHelpIcon />
 			<span>습관 도움말</span>
 		</section>
