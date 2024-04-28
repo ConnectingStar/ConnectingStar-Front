@@ -8,7 +8,7 @@ import { layoutStyle, listStyle, itemStyle } from "@/components/Home/HabitGuide/
 
 function HabitGuide() {
 	const [activatedIndex, setActivatedIndex] = useState<number | null>(null);
-	const listRef = useRef<HTMLElement>(null);
+	const listRef = useRef<HTMLUListElement>(null);
 	const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
 	const handleButton = (idx: number) => {
 		if (idx === activatedIndex) {
@@ -22,7 +22,7 @@ function HabitGuide() {
 	useEffect(() => {
 		// 항목이 선택되면 선택된 항목으로 스크롤
 		if (activatedIndex !== null && listRef.current) {
-			const selectedItem = listRef.current.children[activatedIndex] as HTMLElement;
+			const selectedItem = listRef.current.children[activatedIndex] as HTMLLIElement;
 			if (selectedItem) {
 				const scrollTop = selectedItem.offsetTop - 4.5 * rem;
 				console.log(scrollTop);
