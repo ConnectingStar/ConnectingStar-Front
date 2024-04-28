@@ -30,11 +30,7 @@ function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPri
 		<Modal>
 			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
 				<span css={imageWrapperStyle}>
-					{isHabitStart ? (
-						<Lottie animationData={StarMedalAnimation} loop={false} />
-					) : (
-						<Lottie animationData={ClapAnimation} loop={false} />
-					)}
+					<Lottie animationData={isHabitStart ? StarMedalAnimation : ClapAnimation} loop={false} />
 				</span>
 				<div css={prizeCommentStyle}>
 					<div>
