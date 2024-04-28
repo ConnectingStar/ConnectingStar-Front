@@ -67,9 +67,9 @@ export const itemStyle = (isActivated: boolean) => css`
 
 	& > div:nth-of-type(2) {
 		transition: 0.3s ease;
+		white-space: pre-wrap;
 		border-radius: 0 0 15px 15px;
 		margin-top: ${isActivated ? "-1.75rem" : "0"};
-		display: flex;
 		background-color: ${theme.color.bg};
 		height: ${isActivated ? "auto" : "0"};
 		overflow: hidden;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import ArrowIcon from "@/assets/icon/ic-arrow-left.svg?react";
 
@@ -8,6 +8,8 @@ import { layoutStyle, listStyle, itemStyle } from "@/components/Home/HabitGuide/
 
 function HabitGuide() {
 	const [activatedIndex, setActivatedIndex] = useState<number | null>(null);
+	const listRef = useRef<HTMLElement>(null);
+	const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
 	const handleButton = (idx: number) => {
 		if (idx === activatedIndex) {
 			setActivatedIndex(null);
@@ -17,9 +19,21 @@ function HabitGuide() {
 		setActivatedIndex(idx);
 	};
 
+	useEffect(() => {
+		// 항목이 선택되면 선택된 항목으로 스크롤
+		if (activatedIndex !== null && listRef.current) {
+			const selectedItem = listRef.current.children[activatedIndex] as HTMLElement;
+			if (selectedItem) {
+				const scrollTop = selectedItem.offsetTop - 4.5 * rem;
+				console.log(scrollTop);
+				window.scrollTo({ top: scrollTop, behavior: "smooth" });
+			}
+		}
+	}, [activatedIndex]);
+
 	return (
 		<div css={layoutStyle}>
-			<ul css={listStyle}>
+			<ul ref={listRef} css={listStyle}>
 				{habitGuideList.map(({ index, title, paragraph }, idx) => (
 					<li key={idx} css={itemStyle(activatedIndex === idx)}>
 						<div>
