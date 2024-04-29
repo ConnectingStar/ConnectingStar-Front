@@ -14,7 +14,7 @@ import { theme } from "@/styles/theme";
 
 function OauthSignUp({ onNext }: { onNext: () => void }) {
 	const kakaoLogin = () => {
-		window.location.href = `${BASE_URL}oauth/code/url?socialType=K`;
+		window.location.href = `${BASE_URL}/oauth/code/url?socialType=K`;
 	};
 
 	return (
