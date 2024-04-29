@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -11,13 +11,21 @@ import VisitorRoute from "@/components/Onboarding/VisitorRoute/VisitorRoute";
 function OnboardingPage() {
 	const navigate = useNavigate();
 	const [step, setStep] = useState<
-		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute"
+		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute" | string
 	>("Splash");
 
-	//TODO: 테스트용 merge후 제거 예정
-	// VisitorRoute 빼고는 확인가능
-	// const user = useSelector((state) => state.user);
-	// console.log(user);
+	useEffect(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		const urlStep = urlParams.get("step");
+		if (urlStep) setStep(urlStep);
+	}, []);
+
+	useEffect(() => {
+		const firstVisit = localStorage.getItem("First visit");
+		if (firstVisit === "false" && step === "CreateAccount") {
+			navigate("/");
+		}
+	}, [step]);
 
 	return (
 		<main>
