@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContainer";
 
+import KakaoLoginPage from "./pages/KakaoLoginPage";
+
 import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
@@ -19,8 +21,8 @@ import RestRecordPage from "@/pages/RestRecordPage";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
 import StarMainPage from "@/pages/StarMainPage/StarMainPage";
-import TestPage from "@/pages/TestPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
+
 const App = () => {
 	return (
 		<>
@@ -42,9 +44,9 @@ const App = () => {
 					<Route path="/chatting" element={<ChattingPage />} />
 					<Route path="/habit-delete" element={<HabitDeletePage />} />
 					<Route path="/onboarding" element={<OnboardingPage />} />
+					<Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
 					<Route path="/habit-record" element={<HabitRecordPage />} />
 					<Route path="/habit-generate" element={<HabitGeneratePage />} />
-					<Route path="/test" element={<TestPage />} />
 				</Routes>
 			</BrowserRouter>
 			<ToastContainer />
