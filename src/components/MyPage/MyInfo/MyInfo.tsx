@@ -57,7 +57,7 @@ const MyInfo = () => {
 			<div css={mainBoxStyle}>
 				<div css={characterBoxStyle}>
 					<button onClick={() => dispatch(openModal(modalType.SELECT_CHARACTER))}>
-						<p>캐릭터 변경</p>
+						<p>이미지 변경</p>
 					</button>
 				</div>
 
