@@ -22,7 +22,7 @@ const SelectCharacterModal = () => {
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
-				<h1>캐릭터를 선택해 주세요</h1>
+				<h1>버디를 선택해 주세요</h1>
 				<div css={characterWrapperStyle}>
 					{count.map((index) => (
 						<div

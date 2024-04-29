@@ -16,7 +16,7 @@ export const mainBoxStyle = css`
 	gap: 40px;
 	align-items: center;
 	width: 100%;
-	padding: 1.25rem 1.5rem 0;
+	padding: 4.75rem 1.5rem 0;
 `;
 
 export const characterBoxStyle = css`
