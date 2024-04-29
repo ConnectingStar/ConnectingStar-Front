@@ -40,6 +40,9 @@ function ChattingMessage({ chatData, setProgress }: chatType) {
 		setProgress((prev) => prev + 1);
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
+		if (chatData.id === "last") {
+			localStorage.setItem("First visit", "false");
+		}
 	};
 
 	// 특정 메시지의 단어 파란색으로 변경하는 함수
