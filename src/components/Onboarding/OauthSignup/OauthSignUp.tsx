@@ -8,11 +8,15 @@ import Header from "@/components/common/Header/Header";
 
 import FooterPrivacyPolicyLink from "./FooterPrivacyPolicyLink";
 
+import { BASE_URL } from "@/constants/api";
+
 import { theme } from "@/styles/theme";
 
 function OauthSignUp({ onNext }: { onNext: () => void }) {
-	// TODO: oauth로그인 성공 후 다음페이지로 넘어가기
-	// TODO: header fixed 넣기
+	const kakaoLogin = () => {
+		window.location.href = `${BASE_URL}oauth/code/url?socialType=K`;
+	};
+
 	return (
 		<>
 			<Header>
@@ -22,7 +26,7 @@ function OauthSignUp({ onNext }: { onNext: () => void }) {
 				<div css={wrap}>
 					<img src={LogoImg} alt="logo" />
 					<div>
-						<button type="button" onClick={onNext}>
+						<button type="button" onClick={kakaoLogin}>
 							<img src={KakaoIcon} alt="kakao-icon" />
 							카카오로 계속하기
 						</button>
