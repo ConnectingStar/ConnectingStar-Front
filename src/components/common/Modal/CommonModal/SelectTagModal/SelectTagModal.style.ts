@@ -10,7 +10,7 @@ export const selectTagModalStyle = {
 		width: 100%;
 		height: 100vh;
 		background-color: white;
-		z-index: 50;
+		z-index: ${theme.zIndex.overlayMiddle};
 	`,
 	wrap: css`
 		width: 22.5rem;

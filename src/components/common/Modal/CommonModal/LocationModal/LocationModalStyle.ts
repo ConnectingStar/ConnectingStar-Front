@@ -9,7 +9,7 @@ export const container = css`
 	width: 100%;
 	height: 100vh;
 	background-color: white;
-	z-index: 50;
+	z-index: ${theme.zIndex.overlayMiddle};
 `;
 export const wrap = css`
 	width: 22.5rem;
