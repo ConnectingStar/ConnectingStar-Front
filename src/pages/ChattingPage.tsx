@@ -8,6 +8,7 @@ import ChattingMessage from "@/components/Chatting/ChattingMessage";
 import Header from "@/components/common/Header/Header";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
+import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 
 import { useAppSelector } from "@/api/hooks";
 import { RootState } from "@/api/store";

@@ -12,8 +12,6 @@ import {
 	locationInputStyle,
 } from "@/components/common/Modal/CommonModal/LocationModal/LocationModalStyle";
 
-import { useAppDispatch } from "@/api/hooks";
-import { closeModal } from "@/api/modal/modalSlice";
 import { closeModal } from "@/api/modal/modalSlice";
 import { updateHabitUserData } from "@/api/user/userSlice";
 
