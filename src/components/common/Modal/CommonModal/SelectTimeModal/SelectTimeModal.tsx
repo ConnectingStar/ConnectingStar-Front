@@ -19,7 +19,7 @@ import {
 } from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal.style";
 
 interface selectTimeModalType {
-	title: string;
+	title?: string;
 	progress?: number;
 	addprogres?: () => void;
 }
@@ -31,13 +31,6 @@ function SelectTimeModal({ title, progress, addprogres }: selectTimeModalType) {
 
 	const handleChangeTime = (target: string, value: string) => {
 		setSelectTime({ ...selectTime, [target]: value });
-	};
-
-	// hour와 minute의 길이가 1이라면 앞에 0을 붙여주는 함수
-	const updatedTime = {
-		...selectTime,
-		hour: selectTime.hour.length < 2 ? `0${selectTime.hour}` : selectTime.hour,
-		minute: selectTime.minute.length < 2 ? `0${selectTime.minute}` : selectTime.minute,
 	};
 
 	const handleSelectClick = () => {
