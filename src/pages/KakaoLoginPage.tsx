@@ -34,11 +34,6 @@ function KakaoLoginPage() {
 
 				navigate("/onboarding?step=CreateAccount");
 			}
-
-			// 불필요 코드 url이 서버단이기 때문에 어차피 작동을 안합니다 확인하시면 지워주세요
-			// if (response.status === 403) {
-			// 	navigate("/");
-			// }
 		} catch (error) {
 			// 에러날 가능성이 없지만 에러시 소셜 로그인 버튼 페이지로 이동
 			navigate("/onboarding?step=OauthSignUp");
