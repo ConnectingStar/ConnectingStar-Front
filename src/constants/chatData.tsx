@@ -127,7 +127,7 @@ export function createChatData(userData: userType) {
 						<li>정체성</li>
 					</ul>
 					<ul class="bold">
-						<li>${userData.habit}</li>
+						<li>${userData.identity}</li>
 					</ul>
 				</div>
 			</div>
@@ -142,6 +142,7 @@ export function createChatData(userData: userType) {
 					<ul class="bold">
 						<li>${userData.time.noon} ${userData.time.hour}:${userData.time.minute}</li>
 						<li>${userData.location}</li>
+						<li>${userData.habit}</li>
 						<li>${userData.behavior}</li>
 					</ul>
 				</div>

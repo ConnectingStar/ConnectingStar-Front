@@ -108,6 +108,9 @@ export const replyStyle = css`
 			margin: 0.75rem 0 0.375rem 0;
 			ul {
 				width: 5.313rem;
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
 			}
 		}
 		.bold {
