@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import CreateAccount from "@/components/Onboarding/CreateAccount/CreateAccount";
@@ -22,56 +22,13 @@ function OnboardingPage() {
 		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute" | string
 	>("Splash");
 
-	useEffect(() => {
-		const urlParams = new URLSearchParams(window.location.search);
-		const urlStep = urlParams.get("step");
-		if (urlStep) setStep(urlStep);
-	}, []);
-
-	useEffect(() => {
-		const firstVisit = localStorage.getItem("First visit");
-		if (firstVisit === "false" && step === "CreateAccount") {
-			navigate("/");
-		}
-	}, [step]);
-
 	return (
 		<main>
-			{step === "Splash" && (
-				<Splash
-					onNext={() => {
-						setStep("SignUp");
-					}}
-				/>
-			)}
-			{step === "SignUp" && (
-				<SignUp
-					onNext={() => {
-						setStep("OauthSignUp");
-					}}
-				/>
-			)}
-			{step === "OauthSignUp" && (
-				<OauthSignUp
-					onNext={() => {
-						setStep("CreateAccount");
-					}}
-				/>
-			)}
-			{step === "CreateAccount" && (
-				<CreateAccount
-					onNext={() => {
-						setStep("VisitorRoute");
-					}}
-				/>
-			)}
-			{step === "VisitorRoute" && (
-				<VisitorRoute
-					onNext={() => {
-						navigate("/chatting");
-					}}
-				/>
-			)}
+			{step === "Splash" && <Splash onNext={() => setStep("SignUp")} />}
+			{step === "SignUp" && <SignUp onNext={() => setStep("OauthSignUp")} />}
+			{step === "OauthSignUp" && <OauthSignUp onNext={() => setStep("CreateAccount")} />}
+			{step === "CreateAccount" && <CreateAccount onNext={() => setStep("VisitorRoute")} />}
+			{step === "VisitorRoute" && <VisitorRoute onNext={() => navigate("/chatting")} />}
 		</main>
 	);
 }

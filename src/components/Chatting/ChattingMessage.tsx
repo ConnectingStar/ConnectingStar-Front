@@ -20,15 +20,19 @@ interface chatType {
 }
 
 function ChattingMessage({ chatData, addProgress }: chatType) {
-	const { message, replyBtnMessage, reply } = chatData;
+	const { message, replyBtnMessage, reply, modalType } = chatData;
 
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isReply, setIsReply] = useState(false);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
 	const dispatch = useAppDispatch();
 
-	// 메시지 하나씩 내려오게하는 함수
 	useEffect(() => {
+		// 자동 스크롤 다운
+		if (!endOfMessagesRef.current) return;
+		endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
+
+		// 메시지 하나씩 내려오게하는 코드
 		const timer = setTimeout(() => {
 			if (message.length > messageIndex) {
 				setMessageIndex((prevIndex) => prevIndex + 1);
@@ -40,22 +44,16 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 
 	// 버튼여러개라면 답글 먼저보이게하기
 	useEffect(() => {
-		if (chatData.modalType === undefined) return;
-		if (chatData.modalType.length > 1) setIsReply(true);
+		if (!modalType) return;
+		if (modalType.length > 1) setIsReply(true);
 	}, []);
-
-	// 스크롤다운 함수
-	useEffect(() => {
-		if (!endOfMessagesRef.current) return;
-		endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
-	}, [messageIndex]);
 
 	// 버튼 함수
 	const handleReplyBtn = () => {
-		if (chatData.modalType === undefined) addProgress();
-		if (chatData.modalType !== undefined) {
-			dispatch(openModal(chatData.modalType[0]));
-			if (chatData.modalType[0] === null) {
+		if (!modalType) addProgress();
+		if (modalType !== undefined) {
+			dispatch(openModal(modalType[0]));
+			if (modalType[0] === null) {
 				addProgress();
 			}
 		}
@@ -69,7 +67,7 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 
 	//사이드 버튼 함수
 	const handleSideReplyBtn = async (index: number) => {
-		if (chatData.modalType !== undefined) await dispatch(openModal(chatData.modalType[index + 1]));
+		if (modalType !== undefined) await dispatch(openModal(modalType[index + 1]));
 	};
 
 	return (
