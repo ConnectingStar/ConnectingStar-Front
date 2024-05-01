@@ -19,16 +19,16 @@ import { locationModalData } from "@/constants/locationModalConstants";
 
 interface locationModalType {
 	progress?: number;
-	addprogres?: () => void;
+	addprogress?: () => void;
 }
 
-function LocationModal({ progress, addprogres }: locationModalType) {
+function LocationModal({ progress, addprogress }: locationModalType) {
 	const [location, setLocation] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
 	const dispatch = useAppDispatch();
 	const confirmSelectedTag = () => {
-		if (addprogres === undefined) return;
-		if (progress === 5) addprogres();
+		if (addprogress === undefined) return;
+		if (progress === 5) addprogress();
 
 		dispatch(updateHabitUserData({ location }));
 		dispatch(closeModal());

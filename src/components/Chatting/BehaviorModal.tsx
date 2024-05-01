@@ -13,18 +13,18 @@ import { theme } from "@/styles/theme";
 
 interface behaviorModalType {
 	progress?: number;
-	addprogres?: () => void;
+	addprogress?: () => void;
 }
 
-function BehaviorModal({ progress, addprogres }: behaviorModalType) {
+function BehaviorModal({ progress, addprogress }: behaviorModalType) {
 	const [unitNumber, setUnitNumber] = useState<string>();
 	const [unit, setUnit] = useState<string>();
 	const dispatch = useAppDispatch();
 	const { habit } = useAppSelector((state) => state.user);
 
 	const confirmSelectedTag = () => {
-		if (addprogres === undefined) return;
-		if (progress === 6) addprogres();
+		if (addprogress === undefined) return;
+		if (progress === 6) addprogress();
 
 		const behavior = `${unitNumber} ${unit}`;
 		if (unit && unitNumber) {
