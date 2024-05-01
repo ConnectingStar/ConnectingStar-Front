@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 
 import CheckIcon from "@/assets/icon/ic-check-blue.svg?react";
 
@@ -12,6 +11,7 @@ import {
 	locationInputStyle,
 } from "@/components/common/Modal/CommonModal/LocationModal/LocationModalStyle";
 
+import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 import { updateHabitUserData } from "@/api/user/userSlice";
 
@@ -25,7 +25,7 @@ interface locationModalType {
 function LocationModal({ progress, addprogres }: locationModalType) {
 	const [location, setLocation] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const confirmSelectedTag = () => {
 		if (addprogres === undefined) return;
 		if (progress === 5) addprogres();

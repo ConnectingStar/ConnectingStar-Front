@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import { RootState } from "@/api/store";
 import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { theme } from "@/styles/theme";
@@ -20,8 +19,8 @@ interface behaviorModalType {
 function BehaviorModal({ progress, addprogres }: behaviorModalType) {
 	const [unitNumber, setUnitNumber] = useState<string>();
 	const [unit, setUnit] = useState<string>();
-	const dispatch = useDispatch();
-	const { habit } = useSelector((state: RootState) => state.user);
+	const dispatch = useAppDispatch();
+	const { habit } = useAppSelector((state) => state.user);
 
 	const confirmSelectedTag = () => {
 		if (addprogres === undefined) return;
