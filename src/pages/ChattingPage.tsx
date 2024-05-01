@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 import { css } from "@emotion/react";
 
@@ -11,7 +10,6 @@ import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 
 import { useAppSelector } from "@/api/hooks";
-import { RootState } from "@/api/store";
 
 import { createChatData } from "@/constants/chatData";
 import { modalType } from "@/constants/modalConstants";
@@ -22,7 +20,7 @@ import { theme } from "@/styles/theme";
 function ChattingPage() {
 	const [progress, setProgress] = useState(0);
 	const { modal } = useAppSelector((state) => state.modal);
-	const userData = useSelector((state: RootState) => state.user);
+	const userData = useAppSelector((state) => state.user);
 	const chatData = createChatData(userData);
 	const extraBtnHeight = chatData[progress].replyBtnMessage.length > 1;
 
@@ -48,9 +46,7 @@ function ChattingPage() {
 						title="어떤 습관을 만들어 볼까요?"
 						tags={TagsData.habitTags}
 						progress={progress}
-						addprogress={() => {
-							setProgress((prev) => prev + 1);
-						}}
+						addprogress={() => setProgress((prev) => prev + 1)}
 					/>
 				)}
 				{modal === modalType.SELECT_IDENTITY && (
@@ -58,35 +54,21 @@ function ChattingPage() {
 						title="어떤 사람이 되고 싶으세요?"
 						tags={TagsData.identityTags}
 						progress={progress}
-						addprogress={() => {
-							setProgress((prev) => prev + 1);
-						}}
+						addprogress={() => setProgress((prev) => prev + 1)}
 					/>
 				)}
 				{modal === modalType.SELECT_TIME && (
 					<SelectTimeModal
 						title="시간을 선택해 주세요"
 						progress={progress}
-						addprogress={() => {
-							setProgress((prev) => prev + 1);
-						}}
+						addprogress={() => setProgress((prev) => prev + 1)}
 					/>
 				)}
 				{modal === modalType.SELECT_LOCATION && (
-					<LocationModal
-						progress={progress}
-						addprogress={() => {
-							setProgress((prev) => prev + 1);
-						}}
-					/>
+					<LocationModal progress={progress} addprogress={() => setProgress((prev) => prev + 1)} />
 				)}
 				{modal === modalType.SELECT_BEHAVIOR && (
-					<BehaviorModal
-						progress={progress}
-						addprogress={() => {
-							setProgress((prev) => prev + 1);
-						}}
-					/>
+					<BehaviorModal progress={progress} addprogress={() => setProgress((prev) => prev + 1)} />
 				)}
 				{modal === modalType.SELECT_ALERT1 && (
 					<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
