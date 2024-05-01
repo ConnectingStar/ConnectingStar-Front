@@ -66,8 +66,8 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 	};
 
 	//사이드 버튼 함수
-	const handleSideReplyBtn = async (index: number) => {
-		if (modalType !== undefined) await dispatch(openModal(modalType[index + 1]));
+	const handleSideReplyBtn = (index: number) => {
+		if (modalType !== undefined) dispatch(openModal(modalType[index + 1]));
 	};
 
 	return (
