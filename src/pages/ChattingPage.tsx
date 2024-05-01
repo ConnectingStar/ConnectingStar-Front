@@ -48,7 +48,7 @@ function ChattingPage() {
 						title="어떤 습관을 만들어 볼까요?"
 						tags={TagsData.habitTags}
 						progress={progress}
-						addprogres={() => {
+						addprogress={() => {
 							setProgress((prev) => prev + 1);
 						}}
 					/>
@@ -58,7 +58,7 @@ function ChattingPage() {
 						title="어떤 사람이 되고 싶으세요?"
 						tags={TagsData.identityTags}
 						progress={progress}
-						addprogres={() => {
+						addprogress={() => {
 							setProgress((prev) => prev + 1);
 						}}
 					/>
@@ -67,7 +67,7 @@ function ChattingPage() {
 					<SelectTimeModal
 						title="시간을 선택해 주세요"
 						progress={progress}
-						addprogres={() => {
+						addprogress={() => {
 							setProgress((prev) => prev + 1);
 						}}
 					/>
@@ -75,7 +75,7 @@ function ChattingPage() {
 				{modal === modalType.SELECT_LOCATION && (
 					<LocationModal
 						progress={progress}
-						addprogres={() => {
+						addprogress={() => {
 							setProgress((prev) => prev + 1);
 						}}
 					/>
@@ -83,7 +83,7 @@ function ChattingPage() {
 				{modal === modalType.SELECT_BEHAVIOR && (
 					<BehaviorModal
 						progress={progress}
-						addprogres={() => {
+						addprogress={() => {
 							setProgress((prev) => prev + 1);
 						}}
 					/>

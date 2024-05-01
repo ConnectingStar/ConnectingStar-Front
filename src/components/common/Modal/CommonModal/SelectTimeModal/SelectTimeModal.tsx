@@ -21,10 +21,10 @@ import {
 interface selectTimeModalType {
 	title?: string;
 	progress?: number;
-	addprogres?: () => void;
+	addprogress?: () => void;
 }
 
-function SelectTimeModal({ title, progress, addprogres }: selectTimeModalType) {
+function SelectTimeModal({ title, progress, addprogress }: selectTimeModalType) {
 	const dispatch = useAppDispatch();
 
 	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
@@ -42,7 +42,7 @@ function SelectTimeModal({ title, progress, addprogres }: selectTimeModalType) {
 		};
 
 		if (title === "시간을 선택해 주세요") {
-			if (addprogres !== undefined && progress === 4) addprogres();
+			if (addprogress !== undefined && progress === 4) addprogress();
 			dispatch(
 				updateHabitUserData({
 					time: addZeroTime,
