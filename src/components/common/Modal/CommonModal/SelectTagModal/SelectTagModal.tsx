@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 
+import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 import { updateHabitUserData } from "@/api/user/userSlice";
 
@@ -19,7 +19,7 @@ function SelectTagModal({ title, tags, progress, addprogres }: selectTagModal) {
 	const [selectedTag, setSelectedTag] = useState<string | null>(null);
 	const [isInputFocus, setIsInputFocus] = useState(false);
 	const [inputText, setInputText] = useState("");
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const handleInputOnFocus = () => {
 		setSelectedTag(null);
 		setIsInputFocus(true);

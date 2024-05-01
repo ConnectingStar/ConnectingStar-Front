@@ -1,9 +1,8 @@
-import { useDispatch } from "react-redux";
-
 import { css } from "@emotion/react";
 
 import Header from "@/components/common/Header/Header";
 
+import { useAppDispatch } from "@/api/hooks";
 import { updateVisitorRoute } from "@/api/user/userSlice";
 
 import { visitorRouteData } from "@/constants/onboardingConstants";
@@ -11,7 +10,7 @@ import { visitorRouteData } from "@/constants/onboardingConstants";
 import { theme } from "@/styles/theme";
 
 function VisitorRoute({ onNext }: { onNext: () => void }) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const confirmVisitorRouteData = (visitorRoute: string) => {
 		dispatch(updateVisitorRoute(visitorRoute));
 		onNext();
