@@ -5,8 +5,7 @@ import KakaoIcon from "@/assets/icon/ic-signup.kakao.svg";
 import LogoImg from "@/assets/image/img-logo-black.png";
 
 import Header from "@/components/common/Header/Header";
-
-import FooterPrivacyPolicyLink from "./FooterPrivacyPolicyLink";
+import FooterPrivacyPolicyLink from "@/components/Onboarding/OauthSignup/FooterPrivacyPolicyLink";
 
 import { BASE_URL } from "@/constants/api";
 
