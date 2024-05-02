@@ -4,7 +4,12 @@ import ArrowIcon from "@/assets/icon/ic-arrow-left.svg?react";
 
 import { habitGuideList } from "@/constants/habitGuideConstants";
 
-import { layoutStyle, listStyle, itemStyle } from "@/components/Home/HabitGuide/HabitGuide.style";
+import {
+	layoutStyle,
+	listStyle,
+	titleStyle,
+	paragraphStyle,
+} from "@/components/Home/HabitGuide/HabitGuide.style";
 
 function HabitGuide() {
 	const [activatedIndex, setActivatedIndex] = useState<number | null>(null);
@@ -25,7 +30,6 @@ function HabitGuide() {
 			const selectedItem = listRef.current.children[activatedIndex] as HTMLLIElement;
 			if (selectedItem) {
 				const scrollTop = selectedItem.offsetTop - 4.5 * rem;
-				console.log(scrollTop);
 				window.scrollTo({ top: scrollTop, behavior: "smooth" });
 			}
 		}
@@ -34,17 +38,17 @@ function HabitGuide() {
 	return (
 		<div css={layoutStyle}>
 			<ul ref={listRef} css={listStyle}>
-				{habitGuideList.map(({ index, title, paragraph }, idx) => (
-					<li key={idx} css={itemStyle(activatedIndex === idx)}>
-						<div>
+				{habitGuideList.map(({ index, title, paragraph }) => (
+					<li key={title}>
+						<div css={titleStyle(activatedIndex === +index - 1)}>
 							<div>
 								<h1>{index}</h1>
 								<h2>{title}</h2>
 							</div>
 
-							<ArrowIcon onClick={() => handleButton(idx)} />
+							<ArrowIcon onClick={() => handleButton(+index - 1)} />
 						</div>
-						<div>
+						<div css={paragraphStyle(activatedIndex === +index - 1)}>
 							<p dangerouslySetInnerHTML={{ __html: paragraph }}></p>
 						</div>
 					</li>
