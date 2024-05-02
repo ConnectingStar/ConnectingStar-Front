@@ -49,7 +49,7 @@ function HabitGuide() {
 							<ArrowIcon onClick={() => handleButton(+index - 1)} />
 						</div>
 						<div css={paragraphStyle(activatedIndex === +index - 1)}>
-							<p dangerouslySetInnerHTML={{ __html: paragraph }}></p>
+							<p dangerouslySetInnerHTML={{ __html: paragraph }} />
 						</div>
 					</li>
 				))}
