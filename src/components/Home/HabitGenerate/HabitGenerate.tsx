@@ -56,7 +56,9 @@ function HabitGenerate() {
 			{modal === modalType.SELECT_IDENTITY && (
 				<SelectTagModal title={identity.title} tags={identity.tags} />
 			)}
-			{modal === modalType.SELECT_TIME && <SelectTimeModal title="시간을 선택해주세요." />}
+			{modal === modalType.SELECT_TIME && <SelectTimeModal title="시간을 선택해주세요" />}
+			{modal == modalType.SELECT_ALERT1 && <SelectTimeModal title="1차 알림시간을 선택해 주세요" />}
+			{modal == modalType.SELECT_ALERT2 && <SelectTimeModal title="2차 알림시간을 선택해 주세요" />}
 			{modal === modalType.SELECT_LOCATION && <LocationModal />}
 			{modal === modalType.SELECT_REASON && (
 				<SelectTagModal title={habit.title} tags={habit.tags} />
