@@ -1,7 +1,7 @@
 import { userType, basicUserDataType, habitUserDataType } from "@/types/userDataType";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { getIsOnboarding, postOnboarding } from "@/api/user/userThunk";
+import { getIsOnboarding, postOnboarding, getUserConstellationList } from "@/api/user/userThunk";
 
 const initialState: userType = {
 	userData: {
@@ -20,6 +20,7 @@ const initialState: userType = {
 	},
 	isLoading: false,
 	isOnboarding: false,
+	constellation: [],
 };
 
 const userSlice = createSlice({
@@ -65,6 +66,16 @@ const userSlice = createSlice({
 				state.isLoading = false;
 			})
 			.addCase(postOnboarding.rejected, (state) => {
+				state.isLoading = false;
+			})
+			.addCase(getUserConstellationList.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(getUserConstellationList.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.constellation = action.payload.list;
+			})
+			.addCase(getUserConstellationList.rejected, (state) => {
 				state.isLoading = false;
 			});
 	},

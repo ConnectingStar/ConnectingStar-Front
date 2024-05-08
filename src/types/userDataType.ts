@@ -1,7 +1,10 @@
+import type { ConstellationList } from "@/types/user";
+
 export interface userType {
 	userData: onboardingUserDataType;
 	isLoading: boolean;
 	isOnboarding: boolean;
+	constellation: ConstellationList[];
 }
 
 export interface onboardingUserDataType {
