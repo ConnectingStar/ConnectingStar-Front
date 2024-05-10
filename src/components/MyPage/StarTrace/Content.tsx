@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { habitIconData } from "@/constants/myPageConstants";
+import { habitIconData } from "@/constants/mypage";
 
 import {
 	layoutStyle,

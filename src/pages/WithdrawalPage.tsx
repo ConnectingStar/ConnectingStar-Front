@@ -1,7 +1,7 @@
 import Header from "@/components/common/Header/Header";
 import SelectReason from "@/components/common/SelectReason/SelectReason";
 
-import { leaveReasonData } from "@/constants/myPageConstants";
+import { leaveReasonData } from "@/constants/mypage";
 
 const WithdrawalPage = () => {
 	return (

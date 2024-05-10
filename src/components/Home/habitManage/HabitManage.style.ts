@@ -10,17 +10,6 @@ export const layoutStyle = css`
 	margin: 0 auto;
 	padding: 4.75rem 1.25rem 0;
 
-	& > :not(div:first-of-type) {
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
-
-		& > span:first-of-type {
-			${theme.font.head_c}
-			color: ${theme.color.font_gray}
-		}
-	}
-
 	& > div:nth-of-type(3) {
 		gap: 12px;
 	}
