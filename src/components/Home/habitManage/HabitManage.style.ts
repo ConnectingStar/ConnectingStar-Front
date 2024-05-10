@@ -9,10 +9,6 @@ export const layoutStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
 	padding: 4.75rem 1.25rem 0;
-
-	& > div:nth-of-type(3) {
-		gap: 12px;
-	}
 `;
 
 export const habitMenuBoxStyle = css`
@@ -24,6 +20,12 @@ export const habitMenuBoxStyle = css`
 		${theme.font.head_c}
 		color: ${theme.color.font_gray}
 	}
+`;
+
+export const notiMenuBoxStyle = css`
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 `;
 
 export const quitButtonStyle = css`

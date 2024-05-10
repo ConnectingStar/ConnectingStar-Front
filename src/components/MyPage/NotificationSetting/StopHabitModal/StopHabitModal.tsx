@@ -16,7 +16,7 @@ interface StopHabitModalPropsType {
 	setStartDay: React.Dispatch<React.SetStateAction<Date>>;
 	endDay: Date;
 	setEndDay: React.Dispatch<React.SetStateAction<Date>>;
-	setToggleCancel: React.Dispatch<React.SetStateAction<boolean>>;
+	handleToggle: (isToggle: boolean) => void;
 }
 
 const StopHabitModal = ({
@@ -24,13 +24,13 @@ const StopHabitModal = ({
 	setStartDay,
 	endDay,
 	setEndDay,
-	setToggleCancel,
+	handleToggle,
 }: StopHabitModalPropsType) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		return () => {
-			setToggleCancel(false);
+			handleToggle(false);
 		};
 	}, []);
 
@@ -54,7 +54,7 @@ const StopHabitModal = ({
 						dispatch(closeModal());
 					}}
 					handleLeftBtnClick={() => {
-						setToggleCancel(true);
+						handleToggle(true);
 						dispatch(closeModal());
 					}}
 				/>

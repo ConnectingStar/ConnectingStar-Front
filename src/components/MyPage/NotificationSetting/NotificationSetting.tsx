@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import Button from "@/components/MyPage/NotificationSetting/Button";
+import ToggleButton from "@/components/common/Button/ToggleButton/ToggleButton";
 import StopHabitModal from "@/components/MyPage/NotificationSetting/StopHabitModal/StopHabitModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
@@ -8,12 +9,15 @@ import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
 
+import { useToggleTrigger } from "@/hooks/useToggleTrigger";
+
 import { dateFormat } from "@/utils/dateFormat";
 
 import {
 	layoutStyle,
 	topBoxStyle,
 	notificationBoxStyle,
+	homeButtonBoxStyle,
 } from "@/components/MyPage/NotificationSetting/NotificationSetting.style";
 
 const NotificationSetting = () => {
@@ -21,10 +25,18 @@ const NotificationSetting = () => {
 
 	const { modal } = useAppSelector((state) => state.modal);
 
+	const navigate = useNavigate();
+
+	const {
+		isToggle: isStopHabitToggle,
+		handleToggle: handleStopHabitToggle,
+		handleTogglePrev: handleStopHabitTogglePrev,
+	} = useToggleTrigger();
+
+	const { isToggle: notiToggle, handleTogglePrev: handleNotiTogglePrev } = useToggleTrigger();
+
 	const [startDay, setStartDay] = useState(new Date());
 	const [endDay, setEndDay] = useState(new Date());
-
-	const [toggleCancel, setToggleCancel] = useState(false);
 
 	return (
 		<div css={layoutStyle}>
@@ -34,37 +46,40 @@ const NotificationSetting = () => {
 					<br />
 					종료 다음날부터 알림을 재시작합니다.
 				</p>
-				<Button
+				<ToggleButton
 					title="약속 전체 일시 정지"
 					subTitle={`${dateFormat(startDay)} - ${dateFormat(endDay)}`}
-					isToggle
-					toggleCancel={toggleCancel}
+					hasToggle
+					isToggle={isStopHabitToggle}
 					isDateText
 					isTextVisible
 					onClick={() => dispatch(openModal(modalType.STOP_HABIT))}
+					handleTogglePrev={handleStopHabitTogglePrev}
 				/>
 			</div>
 
 			<div css={notificationBoxStyle}>
 				<h3>1차 알림과 2차 알림</h3>
-				<Button title="1차 알림" subTitle="곧 약속 시간이에요 :) 성장하는 세림님 화이팅!" />
-				<Button
+				<ToggleButton title="1차 알림" subTitle="곧 약속 시간이에요 :) 성장하는 세림님 화이팅!" />
+				<ToggleButton
 					title="2차 알림"
 					subTitle="오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!"
 				/>
-				<Button
-					title="습관별로 관리하고 싶나요?"
-					subTitle="1차 알림과 2차 알림은 각 습관 관리에서 시간을 수정할 수 있어요."
-					isHabit
-				/>
+				<div css={homeButtonBoxStyle}>
+					<h3>습관별로 관리하고 싶나요?</h3>
+					<h4>1차 알림과 2차 알림은 각 습관 관리에서 시간을 수정할 수 있어요.</h4>
+					<button onClick={() => navigate("/")}>홈으로</button>
+				</div>
 			</div>
 
 			<div css={notificationBoxStyle}>
 				<h3>3차 알림</h3>
-				<Button
+				<ToggleButton
 					title="3차 알림"
 					subTitle="곧 기록 시간이 마감돼요. 어제 기록이 입력되지 않았어요. 기록을 남기고 별을 꼭 받아 가세요!"
-					isToggle
+					hasToggle
+					isToggle={notiToggle}
+					handleTogglePrev={handleNotiTogglePrev}
 				/>
 			</div>
 
@@ -74,7 +89,7 @@ const NotificationSetting = () => {
 					setStartDay={setStartDay}
 					endDay={endDay}
 					setEndDay={setEndDay}
-					setToggleCancel={setToggleCancel}
+					handleToggle={handleStopHabitToggle}
 				/>
 			)}
 		</div>

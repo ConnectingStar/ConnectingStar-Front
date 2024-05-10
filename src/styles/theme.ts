@@ -14,6 +14,7 @@ export const theme = {
 		},
 		body_a: {
 			fontSize: "1rem",
+			fontWeight: "400",
 		},
 		body_a_bold: {
 			fontSize: "1rem",
