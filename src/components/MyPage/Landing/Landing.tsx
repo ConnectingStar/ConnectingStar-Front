@@ -33,7 +33,6 @@ const Landing = () => {
 							key={buttonData.text}
 							icon={buttonData.icon}
 							text={buttonData.text}
-							text2={buttonData.text2}
 							link={buttonData.link}
 						/>
 					))}
@@ -50,7 +49,7 @@ const Landing = () => {
 							text={buttonData.text}
 							subText={buttonData.subText}
 							hasArrowIcon={buttonData.text !== "현재 버전"}
-							isSubText={true}
+							isSubText
 							link={buttonData.link}
 						/>
 					))}

@@ -1,18 +1,19 @@
 import { useState } from "react";
 
+import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 import AlarmCheckModal from "@/components/Home/habitManage/AlarmCheckModal/AlarmCheckModal";
 import Button from "@/components/Home/habitManage/Button/Button";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { habitManageConditions, habitManageAlarms } from "@/constants/homeConstants";
+import { HABIT_DATA, habitManageAlarms } from "@/constants/homeConstants";
 import type { AlarmData } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 
 import {
 	layoutStyle,
-	conditionStyle,
+	habitMenuBoxStyle,
 	quitButtonStyle,
 } from "@/components/Home/habitManage/HabitManage.style";
 
@@ -40,25 +41,17 @@ function HabitManage() {
 		]);
 	};
 
-	// useEffect(() => {
-	// 	console.log(alarmsData);
-	// }, [alarmsData]);
-
 	return (
 		<main css={layoutStyle}>
-			<div css={conditionStyle}>
-				<p>정체성</p>
-				<p>성장하는</p>
-			</div>
-			<div>
-				<span>습관</span>
-				{habitManageConditions.map((condition) => (
-					<div key={condition.title} css={conditionStyle}>
-						<p>{condition.title}</p>
-						<p>{condition.input}</p>
-					</div>
+			<MenuButton title="정체성" content="성장하는" />
+
+			<div css={habitMenuBoxStyle}>
+				<h3>습관</h3>
+				{HABIT_DATA.map((habitData) => (
+					<MenuButton title={habitData.title} content={habitData.content} />
 				))}
 			</div>
+
 			<div>
 				<span>알림</span>
 				{alarmsData.map((inputs, idx) => (

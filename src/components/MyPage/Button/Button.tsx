@@ -5,7 +5,6 @@ import { layoutStyle, textStyle, getSubTextStyle } from "@/components/MyPage/But
 interface buttonProps {
 	icon?: JSX.Element;
 	text: string;
-	text2?: string;
 	subText?: string;
 	hasArrowIcon?: boolean;
 	isSubText?: boolean;
@@ -13,16 +12,7 @@ interface buttonProps {
 	onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const Button = ({
-	icon,
-	text,
-	text2,
-	subText,
-	hasArrowIcon,
-	isSubText,
-	link,
-	onClick,
-}: buttonProps) => {
+const Button = ({ icon, text, subText, hasArrowIcon, isSubText, link, onClick }: buttonProps) => {
 	return (
 		<div css={layoutStyle} onClick={onClick}>
 			<a href={link}>
@@ -30,7 +20,8 @@ const Button = ({
 				<p css={textStyle}>
 					<span>
 						{text}
-						{text2 && <span className="sub">{text2}</span>}
+						{text === "습관 현황" && <span className="sub">히스토리</span>}
+
 						{text === "현재 버전" && " 1.01.2"}
 					</span>
 					{isSubText && <span css={getSubTextStyle(text === "간편로그인")}>{subText}</span>}
