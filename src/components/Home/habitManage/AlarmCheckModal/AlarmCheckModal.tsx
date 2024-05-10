@@ -9,12 +9,19 @@ import { closeModal } from "@/api/modal/modalSlice";
 import { theme } from "@/styles/theme";
 
 interface AlarmCheckModalProps {
-	targetKey: number;
-	alarmCheck: (key: number) => void;
+	alarmTarget: string;
 }
 
-function AlarmCheckModal({ targetKey, alarmCheck }: AlarmCheckModalProps) {
+function AlarmCheckModal({ alarmTarget }: AlarmCheckModalProps) {
 	const dispatch = useAppDispatch();
+
+	console.log(alarmTarget);
+
+	const handleAlarmOff = () => {
+		// alarm target -> first, second에 맞춰서 끄는 api 연결
+		dispatch(closeModal());
+	};
+
 	return (
 		<Modal>
 			<div css={layoutStyle}>
@@ -28,10 +35,7 @@ function AlarmCheckModal({ targetKey, alarmCheck }: AlarmCheckModalProps) {
 					text="알림 유지"
 					isPositionStatic
 					isTransparent
-					handleLeftBtnClick={() => {
-						alarmCheck(targetKey);
-						dispatch(closeModal());
-					}}
+					handleLeftBtnClick={handleAlarmOff}
 					handleBtnClick={() => {
 						dispatch(closeModal());
 					}}

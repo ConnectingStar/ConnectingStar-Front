@@ -7,8 +7,7 @@ import AlarmCheckModal from "@/components/Home/habitManage/AlarmCheckModal/Alarm
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { HABIT_DATA, habitManageAlarms } from "@/constants/homeConstants";
-import type { AlarmData } from "@/constants/homeConstants";
+import { HABIT_DATA } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 
 import { useToggleTrigger } from "@/hooks/useToggleTrigger";
@@ -22,32 +21,23 @@ import {
 
 function HabitManage() {
 	const dispatch = useAppDispatch();
+
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const [firstAlarmTime] = useState("오후 7:50");
 	const [secondAlarmTime] = useState("오후 8:30");
 
-	const [alarmsData, setAlarmsData] = useState<AlarmData[]>(habitManageAlarms);
-	const targetKey = 0;
+	// api로 알람 on,off 여부 받아와서 toggle trigger와 연결
+	// const [firstAlarmOn] = useState(true);
+	// const [secondAlarmOn] = useState(false);
+
+	const [alarmTarget, setAlarmTarget] = useState("");
 
 	const { isToggle: firstNotiToggle, handleTogglePrev: handleFirstNotiTogglePrev } =
 		useToggleTrigger();
 
 	const { isToggle: secondNotiToggle, handleTogglePrev: handleSecondNotiTogglePrev } =
 		useToggleTrigger();
-
-	const alarmCheck = (key: number) => {
-		const targetIdx = alarmsData.findIndex((alarm) => {
-			return alarm.key === key;
-		});
-		const targetData = alarmsData[targetIdx];
-		targetData.isActive = !targetData.isActive;
-		setAlarmsData([
-			...alarmsData.slice(0, targetIdx),
-			targetData,
-			...alarmsData.slice(targetIdx + 1),
-		]);
-	};
 
 	return (
 		<main css={layoutStyle}>
@@ -68,7 +58,10 @@ function HabitManage() {
 					alarmTime={firstAlarmTime}
 					hasToggle
 					isToggle={firstNotiToggle}
-					onClick={() => dispatch(openModal(modalType.ALARM_CHECK))}
+					onClick={() => {
+						setAlarmTarget("first");
+						dispatch(openModal(modalType.ALARM_CHECK));
+					}}
 					handleTogglePrev={handleFirstNotiTogglePrev}
 				/>
 				<ToggleButton
@@ -77,14 +70,15 @@ function HabitManage() {
 					alarmTime={secondAlarmTime}
 					hasToggle
 					isToggle={secondNotiToggle}
-					onClick={() => dispatch(openModal(modalType.ALARM_CHECK))}
+					onClick={() => {
+						setAlarmTarget("second");
+						dispatch(openModal(modalType.ALARM_CHECK));
+					}}
 					handleTogglePrev={handleSecondNotiTogglePrev}
 				/>
 			</div>
 			<button css={quitButtonStyle}>습관 그만두기</button>
-			{modal === modalType.ALARM_CHECK && (
-				<AlarmCheckModal targetKey={targetKey} alarmCheck={alarmCheck} />
-			)}
+			{modal === modalType.ALARM_CHECK && <AlarmCheckModal alarmTarget={alarmTarget} />}
 		</main>
 	);
 }
