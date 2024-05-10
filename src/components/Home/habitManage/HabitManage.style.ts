@@ -26,20 +26,14 @@ export const layoutStyle = css`
 	}
 `;
 
-export const conditionStyle = css`
+export const habitMenuBoxStyle = css`
 	display: flex;
-	justify-content: space-between;
-	border-radius: 15px;
-	padding: 1rem;
-	background-color: ${theme.color.bg};
+	flex-direction: column;
+	gap: 6px;
 
-	& > p:first-of-type {
-		${theme.font.body_a_bold}
-	}
-
-	& > p:last-of-type {
-		${theme.font.body_a};
-		color: ${theme.color.main_blue};
+	& > h3 {
+		${theme.font.head_c}
+		color: ${theme.color.font_gray}
 	}
 `;
 
