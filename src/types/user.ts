@@ -9,3 +9,8 @@ export interface ConstellationList {
 	constellationId: number;
 	imageUrl: string;
 }
+
+export interface UserInfoType {
+	nickname: string;
+	profileCharacter: string;
+}

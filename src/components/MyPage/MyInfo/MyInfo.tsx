@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
@@ -12,6 +12,7 @@ import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/S
 import { withdrawal } from "@/api/auth/authThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
+import { getUserConstellationList, getUserInfo, getUserInfoWithHabit } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { MY_INFO_BUTTON_DATA } from "@/constants/mypage";
@@ -29,6 +30,9 @@ const MyInfo = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
+	const { constellation } = useAppSelector((state) => state.user);
+
+	console.log(constellation);
 
 	// const navigate = useNavigate();
 
@@ -51,6 +55,12 @@ const MyInfo = () => {
 			return socialType;
 		}
 	};
+
+	useEffect(() => {
+		dispatch(getUserConstellationList());
+		dispatch(getUserInfo());
+		dispatch(getUserInfoWithHabit());
+	}, []);
 
 	return (
 		<div css={layoutStyle}>
