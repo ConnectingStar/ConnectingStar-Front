@@ -6,56 +6,56 @@ import VeryGoodIcon from "@/assets/icon/ic-emoticon-very-good.svg?react";
 import BookIcon from "@/assets/icon/ic-mypage-book.svg?react";
 import StarIcon from "@/assets/icon/ic-mypage-star.svg?react";
 
-export const buttonDataWithIcon = [
+export const PROFILE_BUTTON_DATA = [
 	{
 		id: "프로필",
-		button: [
+		buttonList: [
 			{
 				icon: <StarIcon />,
-				text: "나의 별자취",
+				title: "나의 별자취",
 				link: "/star-trace",
 			},
 			{
 				icon: <BookIcon />,
-				text: "습관 현황",
+				title: "습관 현황",
 				link: "/habit-history",
 			},
 		],
 	},
 ];
 
-export const buttonData = [
+export const MENU_BUTTON_DATA = [
 	{
 		id: "알림",
-		button: [
+		buttonList: [
 			{
-				text: "알림 설정",
+				title: "알림 설정",
 				link: "/notification-setting",
 			},
 		],
 	},
 	{
 		id: "서비스 안내",
-		button: [
+		buttonList: [
 			{
-				text: "친구에게 공유하기",
+				title: "친구에게 공유하기",
 			},
 			{
-				text: "의견 보내기",
+				title: "의견 보내기",
 			},
 			{
-				text: "스토어 평점",
+				title: "스토어 평점",
 			},
 			{
-				text: "이용약관",
+				title: "이용약관",
 				link: "https://connecting-star.notion.site/4c168fc92ca54c66b2cd95cae28b1e6d?pvs=4",
 			},
 			{
-				text: "개인정보 처리방침",
+				title: "개인정보 처리방침",
 				link: "https://connecting-star.notion.site/24132eec53ad457b944742e551f522b2?pvs=4",
 			},
 			{
-				text: "현재 버전",
+				title: "현재 버전",
 				subText: "최신 버전 사용중",
 			},
 		],

@@ -2,18 +2,21 @@ import { Link } from "react-router-dom";
 
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 
-import Button from "@/components/MyPage/Button/Button";
+import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 
-import { buttonData, buttonDataWithIcon } from "@/constants/myPageConstants";
+import { MENU_BUTTON_DATA, PROFILE_BUTTON_DATA } from "@/constants/myPageConstants";
 
 import {
 	layoutStyle,
 	profileBoxStyle,
 	profileImgStyle,
 	buttonBoxStyle,
+	buttonInnerBoxStyle,
 } from "@/components/MyPage/Landing/Landing.style";
 
 const Landing = () => {
+	const isLatestVersion = true;
+
 	return (
 		<div css={layoutStyle}>
 			<div css={profileBoxStyle}>
@@ -24,37 +27,38 @@ const Landing = () => {
 				</Link>
 			</div>
 
-			{buttonDataWithIcon.map((data) => (
-				<div css={buttonBoxStyle} key={data.id}>
-					{data.id !== "프로필" && <h3>{data.id}</h3>}
+			<div css={buttonBoxStyle}>
+				{PROFILE_BUTTON_DATA.map((buttonData) => (
+					<div css={buttonInnerBoxStyle} key={buttonData.id}>
+						<h3>{buttonData.id}</h3>
 
-					{data.button.map((buttonData) => (
-						<Button
-							key={buttonData.text}
-							icon={buttonData.icon}
-							text={buttonData.text}
-							link={buttonData.link}
-						/>
-					))}
-				</div>
-			))}
+						{buttonData.buttonList.map((buttonData) => (
+							<MenuButton
+								key={buttonData.title}
+								icon={buttonData.icon}
+								title={buttonData.title}
+								link={buttonData.link}
+							/>
+						))}
+					</div>
+				))}
 
-			{buttonData.map((data) => (
-				<div css={buttonBoxStyle} key={data.id}>
-					<h3>{data.id}</h3>
+				{MENU_BUTTON_DATA.map((buttonData) => (
+					<div css={buttonInnerBoxStyle} key={buttonData.id}>
+						<h3>{buttonData.id}</h3>
 
-					{data.button.map((buttonData) => (
-						<Button
-							key={buttonData.text}
-							text={buttonData.text}
-							subText={buttonData.subText}
-							hasArrowIcon={buttonData.text !== "현재 버전"}
-							isSubText
-							link={buttonData.link}
-						/>
-					))}
-				</div>
-			))}
+						{buttonData.buttonList.map((buttonData) => (
+							<MenuButton
+								key={buttonData.title}
+								title={buttonData.title}
+								link={buttonData.link}
+								hasArrowIcon={buttonData.title !== "현재 버전"}
+								isLatestVersion={buttonData.title === "현재 버전" && isLatestVersion}
+							/>
+						))}
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };
