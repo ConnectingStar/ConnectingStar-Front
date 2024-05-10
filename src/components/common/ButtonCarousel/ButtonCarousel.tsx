@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { starTraceButtonData } from "@/constants/myPageConstants";
+import { starTraceButtonData } from "@/constants/mypage";
 
 import {
 	flexStyle,

@@ -11,7 +11,7 @@ import { openModal } from "@/api/modal/modalSlice";
 import { habitRecordConditions } from "@/constants/homeConstants";
 import { prizeComments } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
-import { habitIconData } from "@/constants/myPageConstants";
+import { habitIconData } from "@/constants/mypage";
 
 import {
 	layoutStyle,

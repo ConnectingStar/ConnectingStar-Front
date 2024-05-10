@@ -62,18 +62,18 @@ export const MENU_BUTTON_DATA = [
 	},
 ];
 
-export const myInfoButtonData = [
+export const MY_INFO_BUTTON_DATA = [
 	{
 		id: "내 정보",
 		button: [
 			{
-				text: "정체성",
-				subText: "매일 성장하는",
+				title: "정체성",
+				content: "매일 성장하는",
 				modalName: "SELECT_IDENTITY",
 			},
 			{
-				text: "닉네임",
-				subText: "사용자 닉네임",
+				title: "닉네임",
+				content: "사용자 닉네임",
 				modalName: "CHANGE_NICKNAME",
 			},
 			{
@@ -92,8 +92,8 @@ export const myInfoButtonData = [
 		id: "로그인 계정",
 		button: [
 			{
-				text: "간편로그인",
-				subText: "카카오톡",
+				title: "간편로그인",
+				content: "카카오톡",
 				modalName: "",
 			},
 		],

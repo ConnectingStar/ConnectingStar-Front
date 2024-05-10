@@ -5,7 +5,7 @@ import { addMonths, subMonths } from "date-fns";
 import Calendar from "@/components/ChartPage/MonthChart/MonthCalendar/Calendar";
 import CalendarHeader from "@/components/ChartPage/MonthChart/MonthCalendar/CalendarHeader";
 
-import { habitIconData } from "@/constants/myPageConstants";
+import { habitIconData } from "@/constants/mypage";
 
 import {
 	calendarSectionStyle,

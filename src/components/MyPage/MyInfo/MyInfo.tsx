@@ -1,10 +1,10 @@
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
+import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
 import SelectAgeModal from "@/components/common/Modal/CommonModal/SelectAgeModal";
 import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal";
-import Button from "@/components/MyPage/Button/Button";
 import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
 import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
 import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/SelectIdentityModal";
@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
-import { myInfoButtonData } from "@/constants/myPageConstants";
+import { MY_INFO_BUTTON_DATA } from "@/constants/mypage";
 
 import {
 	layoutStyle,
@@ -36,6 +36,7 @@ const MyInfo = () => {
 	const [identity, setIdentity] = useState("");
 	const [nickname, setNickname] = useState("");
 	const [ageRangeType, setAge] = useState("");
+	const [socialType] = useState("카카오톡");
 
 	const handleSubTextProp = (text: string) => {
 		if (text === "정체성") {
@@ -46,6 +47,8 @@ const MyInfo = () => {
 			return gender;
 		} else if (text === "나이대") {
 			return ageRangeType;
+		} else if (text === "간편로그인") {
+			return socialType;
 		}
 	};
 
@@ -58,15 +61,14 @@ const MyInfo = () => {
 					</button>
 				</div>
 
-				{myInfoButtonData.map((data) => (
-					<div key={data.id} css={buttonBoxStyle}>
-						<h3>{data.id}</h3>
-						{data.button.map((buttonData) => (
-							<Button
-								key={buttonData.text}
-								text={buttonData.text}
-								subText={handleSubTextProp(buttonData.text)}
-								isSubText
+				{MY_INFO_BUTTON_DATA.map((buttonData) => (
+					<div key={buttonData.id} css={buttonBoxStyle}>
+						<h3>{buttonData.id}</h3>
+						{buttonData.button.map((buttonData) => (
+							<MenuButton
+								key={buttonData.title}
+								title={buttonData.title}
+								content={handleSubTextProp(buttonData.title)}
 								onClick={() => dispatch(openModal(buttonData.modalName))}
 							/>
 						))}

@@ -1,4 +1,4 @@
-import { habitIconData } from "@/constants/myPageConstants";
+import { habitIconData } from "@/constants/mypage";
 
 function HabitActionRecord() {
 	const randomIndex = Math.floor(Math.random() * 10);

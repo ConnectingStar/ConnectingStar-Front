@@ -4,7 +4,7 @@ import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 
-import { MENU_BUTTON_DATA, PROFILE_BUTTON_DATA } from "@/constants/myPageConstants";
+import { MENU_BUTTON_DATA, PROFILE_BUTTON_DATA } from "@/constants/mypage";
 
 import {
 	layoutStyle,
