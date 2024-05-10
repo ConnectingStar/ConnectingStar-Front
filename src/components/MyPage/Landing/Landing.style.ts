@@ -35,11 +35,16 @@ export const profileImgStyle = css`
 export const buttonBoxStyle = css`
 	display: flex;
 	flex-direction: column;
+	gap: 40px;
+`;
+
+export const buttonInnerBoxStyle = css`
+	display: flex;
+	flex-direction: column;
 	gap: 12px;
 
 	& > h3 {
 		color: ${theme.color.font_gray};
 		${theme.font.body_b_bold};
-		margin-top: 2.5rem;
 	}
 `;
