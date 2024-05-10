@@ -5,7 +5,33 @@ import { axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-import type { ConstellationListType } from "@/types/user";
+import type { UserInfoType, ConstellationListType } from "@/types/user";
+
+export const getUserInfoWithHabit = createAsyncThunk(
+	"user/getUserInfoWithHabit",
+	async (_, thunkOptions) => {
+		try {
+			const { data } = await axiosInstance.get(END_POINTS.USER_INFO_WITH_HABIT);
+
+			return { data };
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
+export const getUserInfo = createAsyncThunk<UserInfoType>(
+	"user/getUserInfo",
+	async (_, thunkOptions) => {
+		try {
+			const { data } = await axiosInstance.get(END_POINTS.USER_INFO);
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
 
 export const getIsOnboarding = createAsyncThunk("user/getIsOnboarding", async (_, thunkOptions) => {
 	try {
