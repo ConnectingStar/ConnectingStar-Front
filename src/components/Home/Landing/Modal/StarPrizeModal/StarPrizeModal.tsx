@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
+import Lottie from "lottie-react";
+
 import ClapAnimation from "@/assets/lottie/lottie-clap-animation.json";
 import StarMedalAnimation from "@/assets/lottie/lottie-star-medal-animation.json";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
-import Lottie from "lottie-react";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
