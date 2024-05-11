@@ -11,10 +11,11 @@ import { theme } from "@/styles/theme";
 
 function VisitorRoute({ onNext }: { onNext: () => void }) {
 	const dispatch = useAppDispatch();
-	const confirmVisitorRouteData = (visitorRoute: string) => {
-		dispatch(updateVisitorRoute(visitorRoute));
+	const confirmVisitorRouteData = (referrer: string) => {
+		dispatch(updateVisitorRoute(referrer));
 		onNext();
 	};
+
 	return (
 		<>
 			<Header>

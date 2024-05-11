@@ -30,7 +30,7 @@ function SelectTagModal({ title, tags, progress, addprogress }: selectTagModal) 
 
 		if (updatedHabit && addprogress !== undefined) {
 			if (title === "어떤 습관을 만들어 볼까요?") {
-				dispatch(updateHabitUserData({ habit: updatedHabit }));
+				dispatch(updateHabitUserData({ behavior: updatedHabit }));
 				if (progress === 0) addprogress();
 			} else if (title === "어떤 사람이 되고 싶으세요?") {
 				dispatch(updateHabitUserData({ identity: updatedHabit }));

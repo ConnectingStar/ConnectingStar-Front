@@ -45,16 +45,16 @@ function SelectTimeModal({ title, progress, addprogress }: selectTimeModalType) 
 			if (addprogress !== undefined && progress === 4) addprogress();
 			dispatch(
 				updateHabitUserData({
-					time: addZeroTime,
-					alert1: adjustTime({ time: selectTime, change: -10 }),
-					alert2: adjustTime({ time: selectTime, change: 30 }),
+					runTime: addZeroTime,
+					firstAlert: adjustTime({ time: selectTime, change: -10 }),
+					secondAlert: adjustTime({ time: selectTime, change: 30 }),
 				}),
 			);
 		}
 		if (title === "1차 알림시간을 선택해 주세요")
-			dispatch(updateHabitUserData({ alert1: addZeroTime }));
+			dispatch(updateHabitUserData({ firstAlert: addZeroTime }));
 		if (title === "2차 알림시간을 선택해 주세요")
-			dispatch(updateHabitUserData({ alert2: addZeroTime }));
+			dispatch(updateHabitUserData({ secondAlert: addZeroTime }));
 
 		dispatch(closeModal());
 	};

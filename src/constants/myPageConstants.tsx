@@ -80,12 +80,12 @@ export const myInfoButtonData = [
 			{
 				text: "성별",
 				subText: "여",
-				modalName: "SELECT_GENDER",
+				modalName: "SELECT_GENDERTYPE",
 			},
 			{
 				text: "나이대",
 				subText: "20-24",
-				modalName: "SELECT_AGE",
+				modalName: "SELECT_AGERANGETYPE",
 			},
 		],
 	},

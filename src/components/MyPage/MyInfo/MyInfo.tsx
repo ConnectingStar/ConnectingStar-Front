@@ -37,7 +37,7 @@ const MyInfo = () => {
 	const [gender, setGender] = useState("");
 	const [identity, setIdentity] = useState("");
 	const [nickname, setNickname] = useState("");
-	const [age, setAge] = useState("");
+	const [ageRangeType, setAge] = useState("");
 
 	const handleSubTextProp = (text: string) => {
 		if (text === "정체성") {
@@ -47,7 +47,7 @@ const MyInfo = () => {
 		} else if (text === "성별") {
 			return gender;
 		} else if (text === "나이대") {
-			return age;
+			return ageRangeType;
 		}
 	};
 
@@ -87,9 +87,9 @@ const MyInfo = () => {
 			</div>
 
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
-			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}
+			{modal === modalType.SELECT_GENDERTYPE && <SelectGenderModal changeGender={setGender} />}
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
-			{modal === modalType.SELECT_AGE && <SelectAgeModal changeAge={setAge} />}
+			{modal === modalType.SELECT_AGERANGETYPE && <SelectAgeModal changeAge={setAge} />}
 			{modal === modalType.SELECT_IDENTITY && <SelectIdentityModal changeIdentity={setIdentity} />}
 			{modal === modalType.LOGOUT && <LogoutModal />}
 		</div>
