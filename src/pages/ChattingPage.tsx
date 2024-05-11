@@ -22,7 +22,7 @@ function ChattingPage() {
 	const { modal } = useAppSelector((state) => state.modal);
 	const userData = useAppSelector((state) => state.user);
 	const chatData = createChatData(userData);
-	const extraBtnHeight = chatData[progress].replyBtnMessage.length > 1;
+	const extraBtnHeight = chatData[progress] ? chatData[progress].replyBtnMessage.length > 1 : false;
 
 	return (
 		<div>
