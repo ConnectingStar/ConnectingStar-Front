@@ -45,9 +45,9 @@ function HabitList({ selectedDate }: { selectedDate: DateInfo }) {
 
 	return (
 		<div css={layoutStyle}>
-			{homeHabitList.map(({ state, text }, idx) => (
+			{homeHabitList.map(({ state, text }) => (
 				<HabitBox
-					key={idx}
+					key={text}
 					habitState={state}
 					text={text}
 					handleHabitCheck={handelHabitCheck}

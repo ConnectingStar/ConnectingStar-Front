@@ -1,3 +1,5 @@
+// import { useState } from "react";
+
 import CharacterExampleImage from "@/assets/image/img-profile-example.png";
 
 import BehaviorModal from "@/components/Chatting/BehaviorModal";
@@ -25,6 +27,15 @@ function HabitGenerate() {
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
 
+	// const [modalTitle, setModalTitle] = useState("시간을 선택해 주세요");
+
+	// const handleClick = (modalName: string, placeholderText: string) => {
+	// 	dispatch(openModal(modalName));
+	// 	if (modalName === modalType.SELECT_TIME) {
+	// 		setModalTitle(placeholderText);
+	// 	}
+	// };
+
 	return (
 		<main css={layoutStyle}>
 			<div>
@@ -51,6 +62,7 @@ function HabitGenerate() {
 							placeholder={placeholder}
 							placeholderSecond={placeholderSecond}
 							modalName={modalName}
+							handleClick={() => {}}
 						/>
 					);
 				})}
