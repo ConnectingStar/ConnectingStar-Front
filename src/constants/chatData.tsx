@@ -81,8 +81,8 @@ export function createChatData(userData: userType) {
 				`예를들어 책을 읽는다면 30분보다 3장 처럼요. :D`,
 				`3장으로 시작했지만, 점차 자리 잡으면 30장도 쉬운 일이 되어 있을 거예요!`,
 			],
-			replyBtnMessage: ["실천 정도 선택"],
-			reply: `${userData.behavior}`,
+			replyBtnMessage: ["행동 선택"],
+			reply: `${userData.behaviorValue} ${userData.behaviorUnit}`,
 			modalType: [modalType.SELECT_BEHAVIORUNIT],
 		},
 		{
@@ -144,7 +144,7 @@ export function createChatData(userData: userType) {
 						<li>${userData.runTime.noon} ${userData.runTime.hour}:${userData.runTime.minute}</li>
 						<li>${userData.place}</li>
 						<li>${userData.behavior}</li>
-						<li>${userData.behaviorUnit} ${userData.behaviorValue}</li>
+						<li>${userData.behaviorValue} ${userData.behaviorUnit}</li>
 					</ul>
 				</div>
 			</div>
