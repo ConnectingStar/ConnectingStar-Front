@@ -97,7 +97,7 @@ export const habitGenerateConditions = [
 	},
 	{
 		subtitle: "무엇을",
-		placeholder: "습관을 선택해주세요.",
+		placeholder: "습관을 선택해 주세요",
 		modalName: modalType.SELECT_REASON,
 	},
 	{
@@ -265,6 +265,6 @@ export const homeHabitList: homeHabit[] = [
 	},
 	{
 		state: "end",
-		text: "오후 8시에 우리 집 안 내 책상 위에서 책 읽기 5 페이지",
+		text: "안녕3",
 	},
 ];
