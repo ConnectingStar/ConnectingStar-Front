@@ -4,4 +4,5 @@ export const END_POINTS = {
 	FCM: "/api/fcm/register",
 	LOGIN: (authCode: string | null) => `${BASE_URL}/oauth/login?socialType=K&authCode=${authCode}`,
 	LOGOUT: "/oauth/logout",
+	ONBOARDING: "/user/onboarding",
 };

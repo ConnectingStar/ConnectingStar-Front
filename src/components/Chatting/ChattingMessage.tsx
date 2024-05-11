@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ProfileImg from "@/assets/image/img-profile-example.png";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
-import { useAppDispatch } from "@/api/hooks";
+import { axiosInstance } from "@/api/axiosInstance";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { theme } from "@/styles/theme";
+import { END_POINTS } from "@/constants/api";
 
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
 interface chatType {
@@ -23,12 +25,12 @@ interface chatType {
 
 function ChattingMessage({ chatData, addProgress }: chatType) {
 	const { message, replyBtnMessage, reply, modalType } = chatData;
-
+	const userData = useAppSelector((state) => state.user);
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isReply, setIsReply] = useState(false);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
 	const dispatch = useAppDispatch();
-
+	const navigate = useNavigate();
 	useEffect(() => {
 		// 자동 스크롤 다운
 		if (!endOfMessagesRef.current) return;
@@ -50,6 +52,19 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		if (modalType.length > 1) setIsReply(true);
 	}, []);
 
+	// 온보딩 포스트 요청 함수
+	const postOnboarding = async () => {
+		try {
+			const response = await axiosInstance.post(END_POINTS.ONBOARDING, userData);
+			if (response.status === 200) {
+				navigate("/");
+			}
+			console.log(response);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	// 버튼 함수
 	const handleReplyBtn = () => {
 		if (!modalType) addProgress();
@@ -64,6 +79,7 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		setIsReply(true);
 		if (chatData.id === "last") {
 			localStorage.setItem("First visit", "false");
+			postOnboarding();
 		}
 	};
 
