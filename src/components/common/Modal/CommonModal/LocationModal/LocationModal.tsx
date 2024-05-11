@@ -23,14 +23,14 @@ interface locationModalType {
 }
 
 function LocationModal({ progress, addprogress }: locationModalType) {
-	const [location, setLocation] = useState("");
+	const [place, setPlace] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
 	const dispatch = useAppDispatch();
 	const confirmSelectedTag = () => {
 		if (addprogress === undefined) return;
 		if (progress === 5) addprogress();
 
-		dispatch(updateHabitUserData({ location }));
+		dispatch(updateHabitUserData({ place }));
 		dispatch(closeModal());
 	};
 
@@ -56,14 +56,14 @@ function LocationModal({ progress, addprogress }: locationModalType) {
 					placeholder="직접입력"
 					onFocus={() => setIsFocus(true)}
 					onBlur={() => setIsFocus(false)}
-					onChange={(e) => setLocation(e.target.value)}
+					onChange={(e) => setPlace(e.target.value)}
 				/>
 				{isFocus ? (
 					<FooterBtn
 						text="확인"
 						isSquare
 						isTransparent
-						disabled={!location}
+						disabled={!place}
 						handleBtnClick={() => {
 							setIsFocus(false);
 						}}
@@ -71,7 +71,7 @@ function LocationModal({ progress, addprogress }: locationModalType) {
 				) : (
 					<FooterBtn
 						text="확인"
-						disabled={!location}
+						disabled={!place}
 						isTransparent
 						handleBtnClick={confirmSelectedTag}
 					/>

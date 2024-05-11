@@ -41,7 +41,7 @@ function ChattingPage() {
 					))}
 				</div>
 
-				{modal === modalType.SELECT_HABIT && (
+				{modal === modalType.SELECT_BEHAVIOR && (
 					<SelectTagModal
 						title="어떤 습관을 만들어 볼까요?"
 						tags={TagsData.habitTags}
@@ -57,23 +57,23 @@ function ChattingPage() {
 						addprogress={() => setProgress((prev) => prev + 1)}
 					/>
 				)}
-				{modal === modalType.SELECT_TIME && (
+				{modal === modalType.SELECT_RUNTIME && (
 					<SelectTimeModal
 						title="시간을 선택해 주세요"
 						progress={progress}
 						addprogress={() => setProgress((prev) => prev + 1)}
 					/>
 				)}
-				{modal === modalType.SELECT_LOCATION && (
+				{modal === modalType.SELECT_PLACE && (
 					<LocationModal progress={progress} addprogress={() => setProgress((prev) => prev + 1)} />
 				)}
-				{modal === modalType.SELECT_BEHAVIOR && (
+				{modal === modalType.SELECT_BEHAVIORUNIT && (
 					<BehaviorModal progress={progress} addprogress={() => setProgress((prev) => prev + 1)} />
 				)}
-				{modal === modalType.SELECT_ALERT1 && (
+				{modal === modalType.SELECT_FIRSTALERT && (
 					<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
 				)}
-				{modal === modalType.SELECT_ALERT2 && (
+				{modal === modalType.SELECT_SECONDALERT && (
 					<SelectTimeModal title="2차 알림시간을 선택해 주세요" />
 				)}
 			</div>

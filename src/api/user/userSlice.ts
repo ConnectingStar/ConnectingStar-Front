@@ -2,17 +2,18 @@ import { userType, basicUserDataType, habitUserDataType } from "@/types/userData
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: userType = {
-	nickName: "",
-	gender: "",
-	age: "",
-	visitorRoute: "",
-	habit: "",
+	nickname: "",
+	genderType: "",
+	ageRangeType: "",
+	referrer: "",
 	identity: "",
-	time: { noon: "오전", hour: "10", minute: "00" },
-	location: "",
+	runTime: { noon: "오전", hour: "10", minute: "00" },
+	place: "",
 	behavior: "",
-	alert1: { noon: "오전", hour: "09", minute: "50" },
-	alert2: { noon: "오전", hour: "10", minute: "10" },
+	behaviorValue: 0,
+	behaviorUnit: "",
+	firstAlert: { noon: "오전", hour: "09", minute: "50" },
+	secondAlert: { noon: "오전", hour: "10", minute: "10" },
 };
 
 const userSlice = createSlice({
@@ -20,22 +21,23 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		updateBasicUserData: (state, action: PayloadAction<basicUserDataType>) => {
-			const { nickName, gender, age } = action.payload;
-			state.nickName = nickName;
-			state.gender = gender;
-			state.age = age;
+			const { nickname, genderType, ageRangeType } = action.payload;
+			state.nickname = nickname;
+			state.genderType = genderType;
+			state.ageRangeType = ageRangeType;
 		},
 		updateVisitorRoute: (state, action: PayloadAction<string>) => {
-			state.visitorRoute = action.payload;
+			state.referrer = action.payload;
 		},
 		updateHabitUserData: (state, action: PayloadAction<habitUserDataType>) => {
-			state.habit = action.payload.habit ?? state.habit;
 			state.identity = action.payload.identity ?? state.identity;
-			state.time = action.payload.time ?? state.time;
-			state.location = action.payload.location ?? state.location;
+			state.runTime = action.payload.runTime ?? state.runTime;
+			state.place = action.payload.place ?? state.place;
 			state.behavior = action.payload.behavior ?? state.behavior;
-			state.alert1 = action.payload.alert1 ?? state.alert1;
-			state.alert2 = action.payload.alert2 ?? state.alert2;
+			state.behaviorValue = action.payload.behaviorValue ?? state.behaviorValue;
+			state.behaviorUnit = action.payload.behaviorUnit ?? state.behaviorUnit;
+			state.firstAlert = action.payload.firstAlert ?? state.firstAlert;
+			state.secondAlert = action.payload.secondAlert ?? state.secondAlert;
 		},
 	},
 });

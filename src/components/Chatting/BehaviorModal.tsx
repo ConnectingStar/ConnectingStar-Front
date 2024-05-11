@@ -17,18 +17,17 @@ interface behaviorModalType {
 }
 
 function BehaviorModal({ progress, addprogress }: behaviorModalType) {
-	const [unitNumber, setUnitNumber] = useState<string>();
-	const [unit, setUnit] = useState<string>();
+	const [behaviorValue, setBehaviorValue] = useState<number>();
+	const [behaviorUnit, setBehaviorUnit] = useState<string>();
 	const dispatch = useAppDispatch();
-	const { habit } = useAppSelector((state) => state.user);
+	const { behavior } = useAppSelector((state) => state.user);
 
 	const confirmSelectedTag = () => {
 		if (addprogress === undefined) return;
 		if (progress === 6) addprogress();
 
-		const behavior = `${unitNumber} ${unit}`;
-		if (unit && unitNumber) {
-			dispatch(updateHabitUserData({ behavior }));
+		if (behaviorUnit && behaviorValue) {
+			dispatch(updateHabitUserData({ behaviorValue, behaviorUnit }));
 			dispatch(closeModal());
 		}
 	};
@@ -39,7 +38,7 @@ function BehaviorModal({ progress, addprogress }: behaviorModalType) {
 				<div css={wrap}>
 					<div>
 						<h3>무엇을</h3>
-						<div>{habit}</div>
+						<div>{behavior}</div>
 					</div>
 					<div>
 						<h3>얼마나</h3>
@@ -49,14 +48,14 @@ function BehaviorModal({ progress, addprogress }: behaviorModalType) {
 								placeholder="숫자 입력"
 								autoFocus
 								onChange={(e) => {
-									setUnitNumber(e.target.value);
+									setBehaviorValue(Number(e.target.value));
 								}}
 							/>
 							<input
 								type="text"
 								placeholder="단위 입력 (예: 페이지)"
 								onChange={(e) => {
-									setUnit(e.target.value);
+									setBehaviorUnit(e.target.value);
 								}}
 							/>
 						</form>
@@ -67,7 +66,7 @@ function BehaviorModal({ progress, addprogress }: behaviorModalType) {
 				text="확인"
 				isSquare
 				handleBtnClick={confirmSelectedTag}
-				disabled={!unit || !unitNumber}
+				disabled={!behaviorUnit || !behaviorValue}
 			/>
 		</Modal>
 	);

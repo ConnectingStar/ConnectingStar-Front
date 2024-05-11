@@ -22,33 +22,33 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
 
-	const [nickName, setNickName] = useState<string>("");
-	const [gender, setGender] = useState<string>("");
-	const [age, setAge] = useState<string>("");
+	const [nickname, setNickname] = useState<string>("");
+	const [genderType, setGenderType] = useState<string>("");
+	const [ageRangeType, setAgeRangeType] = useState<string>("");
 
 	const accountInputData = [
 		{
-			state: nickName,
+			state: nickname,
 			title: "닉네임",
 			content: "닉네임을 입력해 주세요",
 			modalType: modalType.CHANGE_NICKNAME,
 		},
 		{
-			state: gender,
+			state: genderType,
 			title: "성별",
 			content: "성별을 선택해 주세요",
-			modalType: modalType.SELECT_GENDER,
+			modalType: modalType.SELECT_GENDERTYPE,
 		},
 		{
-			state: age,
+			state: ageRangeType,
 			title: "나이대",
 			content: "나이대를 선택해 주세요",
-			modalType: modalType.SELECT_AGE,
+			modalType: modalType.SELECT_AGERANGETYPE,
 		},
 	];
 
 	const confirmBasicUserData = () => {
-		dispatch(updateBasicUserData({ nickName, gender, age }));
+		dispatch(updateBasicUserData({ nickname, genderType, ageRangeType }));
 		onNext();
 	};
 
@@ -81,13 +81,13 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 			<FooterBtn
 				text="다음"
 				isTransparent
-				disabled={!nickName || !gender || !age}
+				disabled={!nickname || !genderType || !ageRangeType}
 				handleBtnClick={confirmBasicUserData}
 			/>
 
-			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickName} />}
-			{modal === modalType.SELECT_GENDER && <SelectGenderModal changeGender={setGender} />}
-			{modal === modalType.SELECT_AGE && <SelectAgeModal changeAge={setAge} />}
+			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
+			{modal === modalType.SELECT_GENDERTYPE && <SelectGenderModal changeGender={setGenderType} />}
+			{modal === modalType.SELECT_AGERANGETYPE && <SelectAgeModal changeAge={setAgeRangeType} />}
 		</>
 	);
 }

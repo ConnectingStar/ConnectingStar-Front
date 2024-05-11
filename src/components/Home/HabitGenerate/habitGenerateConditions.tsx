@@ -25,7 +25,7 @@ function HabitGenerateConditions({
 	const handleClick = (modalName: string, placeText: string) => {
 		dispatch(openModal(modalName));
 		console.log(placeText);
-		// if (modalName === modalType.SELECT_TIME) {
+		// if (modalName === modalType.SELECT_RUNTIME) {
 		// 	setTimeModalTitle(placeText);
 		// }
 	};
