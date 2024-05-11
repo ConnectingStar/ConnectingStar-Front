@@ -49,6 +49,11 @@
               "group": "internal",
               "position": "before"
             },
+            	{
+              "pattern": "{lottie-react*,lottie-react*/*}",
+              "group": "internal",
+              "position": "before"
+            },
             {
               "pattern": "@/assets/**/*",
               "group": "internal",
