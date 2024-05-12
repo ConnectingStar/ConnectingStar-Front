@@ -1,42 +1,38 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
-
 import CreateAccount from "@/components/Onboarding/CreateAccount/CreateAccount";
 import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
 import SignUp from "@/components/Onboarding/SignUp/SignUp";
 import Splash from "@/components/Onboarding/Splash/Splash";
 import VisitorRoute from "@/components/Onboarding/VisitorRoute/VisitorRoute";
 
+import { axiosInstance } from "@/api/axiosInstance";
 import { useAppSelector } from "@/api/hooks";
 
 function OnboardingPage() {
-	const { isLogin } = useAppSelector((state) => state.auth);
-
-	console.log(isLogin);
-
-	// login 상태에서는 현재 페이지에 접근 시 home으로 리다이렉트해야합니다.
-
 	const navigate = useNavigate();
-
+	const { isLogin } = useAppSelector((state) => state.auth);
 	const [step, setStep] = useState<
-		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute" | string
+		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute"
 	>("Splash");
 
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
 		const urlStep = urlParams.get("step");
-		if (urlStep) setStep(urlStep);
+		if (urlStep)
+			setStep(urlStep as "Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute");
 	}, []);
 
 	useEffect(() => {
-		axios.get("/user/check-onboarding").then((response) => {
-			if (response.data.onboard === "false" && step === "CreateAccount") {
-				navigate("/");
-			}
-		});
-	}, [step]);
+		if (isLogin) {
+			axiosInstance.get("/user/check-onboarding").then((response) => {
+				if (response.data.data.onboard) {
+					navigate("/");
+				}
+			});
+		}
+	}, [isLogin, step]);
 
 	return (
 		<main>
