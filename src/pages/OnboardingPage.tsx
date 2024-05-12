@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 import CreateAccount from "@/components/Onboarding/CreateAccount/CreateAccount";
 import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
@@ -21,6 +23,20 @@ function OnboardingPage() {
 	const [step, setStep] = useState<
 		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute" | string
 	>("Splash");
+
+	useEffect(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		const urlStep = urlParams.get("step");
+		if (urlStep) setStep(urlStep);
+	}, []);
+
+	useEffect(() => {
+		axios.get("/user/check-onboarding").then((response) => {
+			if (response.data.onboard === "false" && step === "CreateAccount") {
+				navigate("/");
+			}
+		});
+	}, [step]);
 
 	return (
 		<main>
