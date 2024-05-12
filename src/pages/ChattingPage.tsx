@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
@@ -23,6 +24,14 @@ function ChattingPage() {
 	const userData = useAppSelector((state) => state.user);
 	const chatData = createChatData(userData);
 	const extraBtnHeight = chatData[progress] ? chatData[progress].replyBtnMessage.length > 1 : false;
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const { nickname, genderType, referrer } = userData;
+		if (!nickname || !genderType || !referrer) {
+			navigate("/onboarding?step=CreateAccount");
+		}
+	}, []);
 
 	return (
 		<div>
