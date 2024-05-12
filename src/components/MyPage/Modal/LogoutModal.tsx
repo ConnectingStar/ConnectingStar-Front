@@ -8,7 +8,7 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
-const LogoutModal = () => {
+const LogoutModal = ({ handleLogout }: { handleLogout: () => void }) => {
 	const dispatch = useAppDispatch();
 
 	return (
@@ -20,6 +20,7 @@ const LogoutModal = () => {
 					text="로그아웃"
 					leftText="취소"
 					handleLeftBtnClick={() => dispatch(closeModal())}
+					handleBtnClick={handleLogout}
 					isPositionStatic
 				/>
 			</div>

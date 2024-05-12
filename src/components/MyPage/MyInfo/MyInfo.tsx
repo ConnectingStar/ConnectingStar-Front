@@ -9,6 +9,7 @@ import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
 import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
 import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/SelectIdentityModal";
 
+import { logOut } from "@/api/auth/authThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
@@ -91,7 +92,7 @@ const MyInfo = () => {
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
 			{modal === modalType.SELECT_AGERANGETYPE && <SelectAgeModal changeAge={setAge} />}
 			{modal === modalType.SELECT_IDENTITY && <SelectIdentityModal changeIdentity={setIdentity} />}
-			{modal === modalType.LOGOUT && <LogoutModal />}
+			{modal === modalType.LOGOUT && <LogoutModal handleLogout={() => dispatch(logOut())} />}
 		</div>
 	);
 };
