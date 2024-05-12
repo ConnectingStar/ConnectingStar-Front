@@ -39,3 +39,13 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkOptions) =>
 		throw thunkOptions.rejectWithValue(error);
 	}
 });
+
+export const getIsOnboarding = createAsyncThunk("auth/getIsOnboarding", async (_, thunkOptions) => {
+	try {
+		const { data } = await axiosInstance.get(END_POINTS.IS_ONBOARDING);
+
+		return data;
+	} catch (error) {
+		throw thunkOptions.rejectWithValue(error);
+	}
+});

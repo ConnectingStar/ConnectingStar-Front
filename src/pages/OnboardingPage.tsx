@@ -7,12 +7,17 @@ import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
 import Splash from "@/components/Onboarding/Splash/Splash";
 import VisitorRoute from "@/components/Onboarding/VisitorRoute/VisitorRoute";
 
-import { axiosInstance } from "@/api/axiosInstance";
+import { getIsOnboarding } from "@/api/auth/authThunk";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
 import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
 import { PATH } from "@/constants/path";
 
 function OnboardingPage() {
+	const dispatch = useAppDispatch();
+
+	const { isOnboarding } = useAppSelector((state) => state.auth);
+
 	const navigate = useNavigate();
 
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -28,12 +33,12 @@ function OnboardingPage() {
 	}, [searchParams, step]);
 
 	useEffect(() => {
-		axiosInstance.get("/user/check-onboarding").then((response) => {
-			if (response.data.data.onboard) {
-				navigate("/");
-			}
-		});
-	}, [step]);
+		dispatch(getIsOnboarding());
+	}, []);
+
+	useEffect(() => {
+		isOnboarding && navigate("/");
+	}, [isOnboarding]);
 
 	return (
 		<main>
