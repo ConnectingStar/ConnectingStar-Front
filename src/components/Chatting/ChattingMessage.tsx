@@ -78,7 +78,6 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 		if (chatData.id === "last") {
-			localStorage.setItem("First visit", "false");
 			postOnboarding();
 		}
 	};
