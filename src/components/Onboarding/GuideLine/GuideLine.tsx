@@ -4,31 +4,37 @@ import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
-import { signUpData } from "@/constants/onboardingConstants";
+import { GUIDE_DATA } from "@/constants/onboarding";
 
 import { theme } from "@/styles/theme";
 
-function SignUp({ onNext }: { onNext: () => void }) {
-	const [signUpPage, setsignUpPage] = useState(0);
+function GuideLine({ onNext }: { onNext: () => void }) {
+	const [guideStep, setGuideStep] = useState(0);
 
 	useEffect(() => {
-		if (signUpPage === 3) onNext();
-	}, [signUpPage]);
+		if (guideStep === 3) onNext();
+	}, [guideStep]);
 
 	return (
-		<div css={container}>
-			<img src={signUpData[signUpPage]?.img} alt="logo" />
-			<pre
-				dangerouslySetInnerHTML={{
-					__html: signUpData[signUpPage]?.text,
-				}}
-			/>
-			<FooterBtn text="다음" handleBtnClick={() => setsignUpPage((prev) => prev + 1)} />
-		</div>
+		<>
+			{guideStep < 3 && (
+				<div css={container}>
+					<img src={GUIDE_DATA[guideStep].img} alt="logo" />
+
+					<pre
+						dangerouslySetInnerHTML={{
+							__html: GUIDE_DATA[guideStep].text,
+						}}
+					/>
+
+					<FooterBtn text="다음" handleBtnClick={() => setGuideStep((prev) => prev + 1)} />
+				</div>
+			)}
+		</>
 	);
 }
 
-export default SignUp;
+export default GuideLine;
 
 const container = css`
 	width: 22.5rem;

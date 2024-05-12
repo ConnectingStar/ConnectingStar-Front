@@ -9,8 +9,6 @@ import { useAppDispatch } from "@/api/hooks";
 
 import { END_POINTS } from "@/constants/api";
 
-// 해당 페이지에서 이미 회원가입이 된 유저면 서버단에서는 현재 보이는 에러 페이지가 아니라 리다이렉트를 home으로 시켜줘야합니다.
-
 function KakaoLoginPage() {
 	const dispatch = useAppDispatch();
 
@@ -22,7 +20,6 @@ function KakaoLoginPage() {
 
 	const fetchAccessToken = async (authCode: string) => {
 		try {
-			// api 주소 삭제 및 constants 처리
 			const response = await axios.post(
 				END_POINTS.LOGIN(authCode),
 				{},
@@ -32,11 +29,10 @@ function KakaoLoginPage() {
 			if (response.status === 200) {
 				dispatch(login());
 
-				navigate("/onboarding?step=CreateAccount");
+				navigate("/onboarding?step=create-account");
 			}
 		} catch (error) {
-			// 에러날 가능성이 없지만 에러시 소셜 로그인 버튼 페이지로 이동
-			navigate("/onboarding?step=OauthSignUp");
+			navigate("/onboarding?step=oauth-sign-up");
 
 			console.error(error);
 		}

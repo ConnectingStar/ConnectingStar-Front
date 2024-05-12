@@ -5,7 +5,7 @@ import Header from "@/components/common/Header/Header";
 import { useAppDispatch } from "@/api/hooks";
 import { updateVisitorRoute } from "@/api/user/userSlice";
 
-import { visitorRouteData } from "@/constants/onboardingConstants";
+import { visitorRouteData } from "@/constants/onboarding";
 
 import { theme } from "@/styles/theme";
 

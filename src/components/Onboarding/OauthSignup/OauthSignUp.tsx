@@ -7,15 +7,11 @@ import LogoImg from "@/assets/image/img-logo-black.png";
 import Header from "@/components/common/Header/Header";
 import FooterPrivacyPolicyLink from "@/components/Onboarding/OauthSignup/FooterPrivacyPolicyLink";
 
-import { BASE_URL } from "@/constants/api";
+import { OAUTH_KAKAO_URL } from "@/constants/api";
 
 import { theme } from "@/styles/theme";
 
 function OauthSignUp({ onNext }: { onNext: () => void }) {
-	const kakaoLogin = () => {
-		window.location.href = `${BASE_URL}/oauth/code/url?socialType=K`;
-	};
-
 	return (
 		<>
 			<Header>
@@ -25,7 +21,7 @@ function OauthSignUp({ onNext }: { onNext: () => void }) {
 				<div css={wrap}>
 					<img src={LogoImg} alt="logo" />
 					<div>
-						<button type="button" onClick={kakaoLogin}>
+						<button type="button" onClick={() => window.location.assign(OAUTH_KAKAO_URL)}>
 							<img src={KakaoIcon} alt="kakao-icon" />
 							카카오로 계속하기
 						</button>
