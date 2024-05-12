@@ -2,8 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContainer";
 
-import KakaoLoginPage from "./pages/KakaoLoginPage";
-
 import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
@@ -11,6 +9,7 @@ import HabitDetailPage from "@/pages/HabitDetailPage";
 import HabitGeneratePage from "@/pages/HabitGeneratePage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
 import HomePage from "@/pages/HomePage";
+import KakaoLoginPage from "@/pages/KakaoLoginPage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage";
 import MyPage from "@/pages/MyPage";

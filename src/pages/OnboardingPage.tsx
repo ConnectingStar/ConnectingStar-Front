@@ -1,46 +1,65 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import CreateAccount from "@/components/Onboarding/CreateAccount/CreateAccount";
+import GuideLine from "@/components/Onboarding/GuideLine/GuideLine";
 import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
-import SignUp from "@/components/Onboarding/SignUp/SignUp";
 import Splash from "@/components/Onboarding/Splash/Splash";
 import VisitorRoute from "@/components/Onboarding/VisitorRoute/VisitorRoute";
 
 import { axiosInstance } from "@/api/axiosInstance";
-import { useAppSelector } from "@/api/hooks";
+
+import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
+import { PATH } from "@/constants/path";
 
 function OnboardingPage() {
 	const navigate = useNavigate();
-	const { isLogin } = useAppSelector((state) => state.auth);
-	const [step, setStep] = useState<
-		"Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute"
-	>("Splash");
+
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	const step = searchParams.get(STEP_KEY);
+
+	const validSteps = Object.values(ONBOARDING_STEP);
 
 	useEffect(() => {
-		const urlParams = new URLSearchParams(window.location.search);
-		const urlStep = urlParams.get("step");
-		if (urlStep)
-			setStep(urlStep as "Splash" | "SignUp" | "OauthSignUp" | "CreateAccount" | "VisitorRoute");
-	}, []);
-
-	useEffect(() => {
-		if (isLogin) {
-			axiosInstance.get("/user/check-onboarding").then((response) => {
-				if (response.data.data.onboard) {
-					navigate("/");
-				}
-			});
+		if (step === null || validSteps.includes(step) === false) {
+			setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.SPLASH}`);
 		}
-	}, [isLogin, step]);
+	}, [searchParams, step]);
+
+	useEffect(() => {
+		axiosInstance.get("/user/check-onboarding").then((response) => {
+			if (response.data.data.onboard) {
+				navigate("/");
+			}
+		});
+	}, [step]);
 
 	return (
 		<main>
-			{step === "Splash" && <Splash onNext={() => setStep("SignUp")} />}
-			{step === "SignUp" && <SignUp onNext={() => setStep("OauthSignUp")} />}
-			{step === "OauthSignUp" && <OauthSignUp onNext={() => setStep("CreateAccount")} />}
-			{step === "CreateAccount" && <CreateAccount onNext={() => setStep("VisitorRoute")} />}
-			{step === "VisitorRoute" && <VisitorRoute onNext={() => navigate("/chatting")} />}
+			{step === ONBOARDING_STEP.SPLASH && (
+				<Splash onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.GUIDE_LINE}`)} />
+			)}
+
+			{step === ONBOARDING_STEP.GUIDE_LINE && (
+				<GuideLine onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.OAUTH_SIGN_UP}`)} />
+			)}
+
+			{step === ONBOARDING_STEP.OAUTH_SIGN_UP && (
+				<OauthSignUp
+					onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.CREATE_ACCOUNT}`)}
+				/>
+			)}
+
+			{step === ONBOARDING_STEP.CREATE_ACCOUNT && (
+				<CreateAccount
+					onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.VISITOR_ROUTE}`)}
+				/>
+			)}
+
+			{step === ONBOARDING_STEP.VISITOR_ROUTE && (
+				<VisitorRoute onNext={() => navigate(PATH.CHATTING)} />
+			)}
 		</main>
 	);
 }

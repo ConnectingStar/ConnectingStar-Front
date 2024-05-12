@@ -6,3 +6,5 @@ export const END_POINTS = {
 	LOGOUT: "/oauth/logout",
 	ONBOARDING: "/user/onboarding",
 };
+
+export const OAUTH_KAKAO_URL = `${BASE_URL}/oauth/code/url?socialType=K`;
