@@ -5,6 +5,7 @@ export const END_POINTS = {
 	LOGIN: (authCode: string | null) => `${BASE_URL}/oauth/login?socialType=K&authCode=${authCode}`,
 	LOGOUT: "/oauth/logout",
 	ONBOARDING: "/user/onboarding",
+	IS_ONBOARDING: "/user/check-onboarding",
 };
 
 export const OAUTH_KAKAO_URL = `${BASE_URL}/oauth/code/url?socialType=K`;
