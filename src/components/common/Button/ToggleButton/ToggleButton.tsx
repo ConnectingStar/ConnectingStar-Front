@@ -29,7 +29,7 @@ const ToggleButton = ({
 	handleTogglePrev,
 }: buttonType) => {
 	return (
-		<div css={getLayoutStyle(isDateText)}>
+		<div css={getLayoutStyle(isDateText, hasToggle)}>
 			<div css={getFlexStyle}>
 				<h3>
 					{title}
