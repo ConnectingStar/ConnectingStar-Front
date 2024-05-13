@@ -81,7 +81,7 @@ export function createChatData(userData: userType) {
 				`예를들어 책을 읽는다면 30분보다 3장 처럼요. :D`,
 				`3장으로 시작했지만, 점차 자리 잡으면 30장도 쉬운 일이 되어 있을 거예요!`,
 			],
-			replyBtnMessage: ["행동 선택"],
+			replyBtnMessage: ["실천 정도 선택"],
 			reply: `${userData.behavior}`,
 			modalType: [modalType.SELECT_BEHAVIOR],
 		},
@@ -113,8 +113,8 @@ export function createChatData(userData: userType) {
 				"정체성 변경",
 				"시간 변경",
 				"장소 변경",
-				"습관 변경",
 				"행동 변경",
+				"실천 정도 변경",
 				"1차 알림 변경",
 				"2차 알림 변경",
 			],
@@ -138,6 +138,7 @@ export function createChatData(userData: userType) {
 						<li>시간</li>
 						<li>장소</li>
 						<li>행동</li>
+						<li>실천 정도</li>
 					</ul>
 					<ul class="bold">
 						<li>${userData.time.noon} ${userData.time.hour}:${userData.time.minute}</li>
