@@ -11,6 +11,8 @@ export interface userType {
 	behaviorUnit: string;
 	firstAlert: { noon: string; hour: string; minute: string };
 	secondAlert: { noon: string; hour: string; minute: string };
+	isLoading: boolean;
+	isOnboarding: boolean;
 }
 
 export interface basicUserDataType {
