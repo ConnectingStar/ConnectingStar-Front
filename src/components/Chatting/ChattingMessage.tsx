@@ -7,6 +7,8 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import { useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
+import { theme } from "@/styles/theme";
+
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
 interface chatType {
 	chatData: {
@@ -100,7 +102,12 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 							))}
 						</div>
 					)}
-					<FooterBtn text={replyBtnMessage[0]} handleBtnClick={handleReplyBtn} isTransparent />
+					<FooterBtn
+						text={replyBtnMessage[0]}
+						handleBtnClick={handleReplyBtn}
+						isTransparent
+						buttonColor={theme.color.main_deep_blue}
+					/>
 				</div>
 			)}
 		</div>

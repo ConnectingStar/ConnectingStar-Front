@@ -6,6 +6,7 @@ export const footerBtnStyle = (
 	transparent?: boolean,
 	isSquare?: boolean,
 	isPositionStatic?: boolean,
+	buttonColor?: string,
 ) => {
 	return css`
 		display: flex;
@@ -26,7 +27,7 @@ export const footerBtnStyle = (
 			border-radius: ${!isSquare && "15px"};
 			${theme.font.button_big};
 			color: white;
-			background-color: ${theme.color.main_blue};
+			background-color: ${buttonColor};
 
 			&:disabled {
 				opacity: 40%;

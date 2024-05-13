@@ -1,10 +1,13 @@
 import { footerBtnStyle } from "@/components/common/FooterBtn/FooterBtn.Style";
 
+import { theme } from "@/styles/theme";
+
 interface FooterBtnType {
 	text: string;
 	leftText?: string;
 	isSquare?: boolean;
 	disabled?: boolean;
+	buttonColor?: string;
 	isTransparent?: boolean;
 	isPositionStatic?: boolean;
 	handleBtnClick?: () => void;
@@ -24,13 +27,14 @@ export default function FooterBtn({
 	leftText,
 	isSquare,
 	disabled,
+	buttonColor = theme.color.main_blue,
 	isTransparent,
 	isPositionStatic,
 	handleBtnClick,
 	handleLeftBtnClick,
 }: FooterBtnType) {
 	return (
-		<div css={footerBtnStyle(isTransparent, isSquare, isPositionStatic)}>
+		<div css={footerBtnStyle(isTransparent, isSquare, isPositionStatic, buttonColor)}>
 			{leftText && (
 				<button type="button" className="cancel" onClick={handleLeftBtnClick}>
 					{leftText}
