@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getIsOnboarding } from "@/api/auth/authThunk";
+import { getIsOnboarding, postOnboarding } from "@/api/auth/authThunk";
 
 interface authStateType {
 	isLogin: boolean | null;
@@ -37,6 +37,12 @@ const authSlice = createSlice({
 			})
 			.addCase(getIsOnboarding.rejected, (state) => {
 				state.isLoading = false;
+			})
+			.addCase(postOnboarding.fulfilled, (state) => {
+				state.isOnboarding = true;
+			})
+			.addCase(postOnboarding.rejected, (_, action) => {
+				console.error("Onboarding failed:", action.payload);
 			});
 	},
 });
