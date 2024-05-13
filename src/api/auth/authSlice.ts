@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getIsOnboarding, postOnboarding } from "@/api/auth/authThunk";
-
 interface authStateType {
 	isLogin: boolean | null;
 	isOnboarding: boolean | null;
@@ -24,26 +22,6 @@ const authSlice = createSlice({
 		logout: (state) => {
 			state.isLogin = false;
 		},
-	},
-	extraReducers(builder) {
-		builder
-			.addCase(getIsOnboarding.pending, (state) => {
-				state.isLoading = true;
-			})
-			.addCase(getIsOnboarding.fulfilled, (state, action) => {
-				state.isLoading = false;
-				console.log(action.payload.data.onboard);
-				state.isOnboarding = action.payload.data.onboard;
-			})
-			.addCase(getIsOnboarding.rejected, (state) => {
-				state.isLoading = false;
-			})
-			.addCase(postOnboarding.fulfilled, (state) => {
-				state.isOnboarding = true;
-			})
-			.addCase(postOnboarding.rejected, (_, action) => {
-				console.error("Onboarding failed:", action.payload);
-			});
 	},
 });
 
