@@ -5,11 +5,9 @@ import ProfileImg from "@/assets/image/img-profile-example.png";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
-import { axiosInstance } from "@/api/axiosInstance";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-
-import { END_POINTS } from "@/constants/api";
+import { postOnboarding } from "@/api/user/userThunk";
 
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
 interface chatType {
@@ -31,6 +29,8 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	const isOnboarding = useAppSelector((state) => state.user.isOnboarding);
+
 	useEffect(() => {
 		// 자동 스크롤 다운
 		if (!endOfMessagesRef.current) return;
@@ -52,19 +52,6 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		if (modalType.length > 1) setIsReply(true);
 	}, []);
 
-	// 온보딩 포스트 요청 함수
-	const postOnboarding = async () => {
-		try {
-			const response = await axiosInstance.post(END_POINTS.ONBOARDING, userData);
-			if (response.status === 200) {
-				navigate("/");
-			}
-			console.log(response);
-		} catch (error) {
-			console.error(error);
-		}
-	};
-
 	// 버튼 함수
 	const handleReplyBtn = () => {
 		if (!modalType) addProgress();
@@ -78,7 +65,23 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 		if (chatData.id === "last") {
-			postOnboarding();
+			dispatch(
+				postOnboarding({
+					nickname: userData.nickname,
+					genderType: userData.genderType,
+					ageRangeType: userData.ageRangeType,
+					referrer: userData.referrer,
+					identity: userData.identity,
+					runTime: userData.runTime,
+					place: userData.place,
+					behavior: userData.behavior,
+					behaviorValue: userData.behaviorValue,
+					behaviorUnit: userData.behaviorUnit,
+					firstAlert: userData.firstAlert,
+					secondAlert: userData.secondAlert,
+				}),
+			);
+			isOnboarding && navigate("/");
 		}
 	};
 
