@@ -35,7 +35,7 @@ function BehaviorModal({ progress, addprogress }: behaviorModalType) {
 	return (
 		<Modal isBottomSheet>
 			<div css={container}>
-				<h1>행동을 입력해 주세요</h1>
+				<h1>얼마나 실천할지 입력해 주세요</h1>
 				<div css={wrap}>
 					<div>
 						<h3>무엇을</h3>
