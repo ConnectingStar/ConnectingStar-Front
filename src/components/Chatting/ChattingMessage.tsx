@@ -30,7 +30,7 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 	useEffect(() => {
 		// 자동 스크롤 다운
 		if (!endOfMessagesRef.current) return;
-		endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
+		endOfMessagesRef.current.scrollIntoView();
 
 		// 메시지 하나씩 내려오게하는 코드
 		const timer = setTimeout(() => {
