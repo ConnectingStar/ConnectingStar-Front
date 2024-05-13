@@ -7,23 +7,18 @@ import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
 import Splash from "@/components/Onboarding/Splash/Splash";
 import VisitorRoute from "@/components/Onboarding/VisitorRoute/VisitorRoute";
 
-import { getIsOnboarding } from "@/api/auth/authThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { getIsOnboarding } from "@/api/user/userThunk";
 
 import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
 import { PATH } from "@/constants/path";
 
 function OnboardingPage() {
 	const dispatch = useAppDispatch();
-
-	const { isOnboarding } = useAppSelector((state) => state.auth);
-
+	const { isOnboarding } = useAppSelector((state) => state.user);
 	const navigate = useNavigate();
-
 	const [searchParams, setSearchParams] = useSearchParams();
-
 	const step = searchParams.get(STEP_KEY);
-
 	const validSteps = Object.values(ONBOARDING_STEP);
 
 	useEffect(() => {
@@ -37,7 +32,7 @@ function OnboardingPage() {
 	}, []);
 
 	useEffect(() => {
-		isOnboarding && navigate("/");
+		!isOnboarding && navigate("/");
 	}, [isOnboarding]);
 
 	return (
