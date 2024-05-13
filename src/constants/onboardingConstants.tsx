@@ -1,12 +1,12 @@
 import BellImg from "@/assets/image/img-onboarding-bell.png";
-import GearImg from "@/assets/image/img-onboarding-gear.png";
+import PromiseImg from "@/assets/image/img-onboarding-promise.png";
 import StarsImg from "@/assets/image/img-onboarding-stars.png";
 
 import { theme } from "@/styles/theme";
 
 export const signUpData = [
 	{
-		img: GearImg,
+		img: PromiseImg,
 		text: `버디와 맺은 <span style="color:${theme.color.main_blue}">약속</span>을 실천하며\n <span style="color:${theme.color.main_blue}">탄탄한 습관</span>을 만들어 가요`,
 	},
 	{
