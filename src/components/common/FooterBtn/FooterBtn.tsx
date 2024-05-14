@@ -1,7 +1,5 @@
 import { footerBtnStyle } from "@/components/common/FooterBtn/FooterBtn.Style";
 
-import { theme } from "@/styles/theme";
-
 interface FooterBtnType {
 	text: string;
 	leftText?: string;
@@ -18,6 +16,7 @@ interface FooterBtnType {
 // leftText: 사이드 버튼 텍스트
 // isSquare: 버튼 모양 (default : round)
 // disabled: 버튼 비활성화(blur)
+// buttonColor: 버튼 색상 (default: main_blue)
 // isTransparent : 배경 투명하게 (default: white)
 // isPositionStatic : position: fixed 제거
 // handleBtnClick : 우측버튼 onclick
@@ -27,7 +26,7 @@ export default function FooterBtn({
 	leftText,
 	isSquare,
 	disabled,
-	buttonColor = theme.color.main_blue,
+	buttonColor,
 	isTransparent,
 	isPositionStatic,
 	handleBtnClick,

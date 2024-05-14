@@ -27,7 +27,7 @@ export const footerBtnStyle = (
 			border-radius: ${!isSquare && "15px"};
 			${theme.font.button_big};
 			color: white;
-			background-color: ${buttonColor};
+			background-color: ${buttonColor || theme.color.main_blue};
 
 			&:disabled {
 				opacity: 40%;
