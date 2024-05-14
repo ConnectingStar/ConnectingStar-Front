@@ -5,7 +5,7 @@ import { axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-export const getIsOnboarding = createAsyncThunk("auth/getIsOnboarding", async (_, thunkOptions) => {
+export const getIsOnboarding = createAsyncThunk("user/getIsOnboarding", async (_, thunkOptions) => {
 	try {
 		const { data } = await axiosInstance.get(END_POINTS.IS_ONBOARDING);
 
@@ -16,7 +16,7 @@ export const getIsOnboarding = createAsyncThunk("auth/getIsOnboarding", async (_
 });
 
 export const postOnboarding = createAsyncThunk(
-	"auth/postOnboarding",
+	"user/postOnboarding",
 	async (userData: onboardingUserDataType, thunkAPI) => {
 		try {
 			const { data } = await axiosInstance.post<userType>(END_POINTS.ONBOARDING, userData);
