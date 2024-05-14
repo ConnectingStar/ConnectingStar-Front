@@ -7,6 +7,7 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
+import { selectUserData } from "@/api/user/userSlice";
 import { postOnboarding } from "@/api/user/userThunk";
 
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
@@ -23,13 +24,13 @@ interface chatType {
 
 function ChattingMessage({ chatData, addProgress }: chatType) {
 	const { message, replyBtnMessage, reply, modalType } = chatData;
-	const userData = useAppSelector((state) => state.user);
+	const userData = useAppSelector(selectUserData);
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isReply, setIsReply] = useState(false);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const isOnboarding = useAppSelector((state) => state.user.isOnboarding);
+	const { isOnboarding } = useAppSelector((state) => state.user);
 
 	useEffect(() => {
 		// 자동 스크롤 다운
@@ -65,22 +66,7 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 		if (chatData.id === "last") {
-			dispatch(
-				postOnboarding({
-					nickname: userData.nickname,
-					genderType: userData.genderType,
-					ageRangeType: userData.ageRangeType,
-					referrer: userData.referrer,
-					identity: userData.identity,
-					runTime: userData.runTime,
-					place: userData.place,
-					behavior: userData.behavior,
-					behaviorValue: userData.behaviorValue,
-					behaviorUnit: userData.behaviorUnit,
-					firstAlert: userData.firstAlert,
-					secondAlert: userData.secondAlert,
-				}),
-			);
+			dispatch(postOnboarding(userData));
 			isOnboarding && navigate("/");
 		}
 	};
