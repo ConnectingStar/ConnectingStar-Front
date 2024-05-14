@@ -1,5 +1,5 @@
 import { userType, basicUserDataType, habitUserDataType } from "@/types/userDataType";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice, createSelector } from "@reduxjs/toolkit";
 
 import { getIsOnboarding, postOnboarding } from "@/api/user/userThunk";
 
@@ -51,7 +51,6 @@ const userSlice = createSlice({
 			})
 			.addCase(getIsOnboarding.fulfilled, (state, action) => {
 				state.isLoading = false;
-				console.log(action.payload.data.onboard);
 				state.isOnboarding = action.payload.data.onboard;
 			})
 			.addCase(getIsOnboarding.rejected, (state) => {
@@ -72,3 +71,21 @@ const userSlice = createSlice({
 
 export const { updateBasicUserData, updateVisitorRoute, updateHabitUserData } = userSlice.actions;
 export const userReducer = userSlice.reducer;
+
+export const selectUserData = createSelector(
+	(state) => state.user,
+	(user) => ({
+		nickname: user.nickname,
+		genderType: user.genderType,
+		ageRangeType: user.ageRangeType,
+		referrer: user.referrer,
+		identity: user.identity,
+		runTime: user.runTime,
+		place: user.place,
+		behavior: user.behavior,
+		behaviorValue: user.behaviorValue,
+		behaviorUnit: user.behaviorUnit,
+		firstAlert: user.firstAlert,
+		secondAlert: user.secondAlert,
+	}),
+);
