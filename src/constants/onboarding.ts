@@ -30,3 +30,57 @@ export const GUIDE_DATA = [
 ];
 
 export const visitorRouteData = ["앱 스토어", "지인 추천", "SNS 광고", "검색", "기타"];
+
+export const genderTypeList = [
+	{
+		text: "남",
+		code: "M",
+	},
+	{
+		text: "여",
+		code: "F",
+	},
+	{
+		text: "선택 안 함",
+		code: "N",
+	},
+];
+
+export const ageRangeTypeList = [
+	{
+		text: "15-19",
+		code: "A",
+	},
+	{
+		text: "20-24",
+		code: "B",
+	},
+	{
+		text: "25-29",
+		code: "C",
+	},
+	{
+		text: "30-34",
+		code: "D",
+	},
+	{
+		text: "35-39",
+		code: "E",
+	},
+	{
+		text: "40-44",
+		code: "F",
+	},
+	{
+		text: "45-49",
+		code: "G",
+	},
+	{
+		text: "50-54",
+		code: "H",
+	},
+	{
+		text: "55 이상",
+		code: "I",
+	},
+];
