@@ -15,6 +15,7 @@ import { openModal } from "@/api/modal/modalSlice";
 import { updateBasicUserData } from "@/api/user/userSlice";
 
 import { modalType } from "@/constants/modalConstants";
+import { ageRangeTypeList, genderTypeList } from "@/constants/onboarding";
 
 import { theme } from "@/styles/theme";
 
@@ -48,7 +49,13 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 	];
 
 	const confirmBasicUserData = () => {
-		dispatch(updateBasicUserData({ nickname, genderType, ageRangeType }));
+		dispatch(
+			updateBasicUserData({
+				nickname,
+				genderType: genderTypeList.find((item) => item.text === genderType)?.code || "",
+				ageRangeType: ageRangeTypeList.find((item) => item.text === ageRangeType)?.code || "",
+			}),
+		);
 		onNext();
 	};
 
