@@ -23,13 +23,12 @@ interface chatType {
 
 function ChattingMessage({ chatData, addProgress }: chatType) {
 	const { message, replyBtnMessage, reply, modalType } = chatData;
-	const userData = useAppSelector((state) => state.user.userData);
+	const { userData, isOnboarding } = useAppSelector((state) => state.user);
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isReply, setIsReply] = useState(false);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { isOnboarding } = useAppSelector((state) => state.user);
 
 	useEffect(() => {
 		// 자동 스크롤 다운

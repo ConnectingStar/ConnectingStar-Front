@@ -21,7 +21,7 @@ import { theme } from "@/styles/theme";
 function ChattingPage() {
 	const [progress, setProgress] = useState(0);
 	const { modal } = useAppSelector((state) => state.modal);
-	const userData = useAppSelector((state) => state.user);
+	const { userData } = useAppSelector((state) => state.user);
 	const chatData = createChatData(userData);
 	const extraBtnHeight = chatData[progress] ? chatData[progress].replyBtnMessage.length > 1 : false;
 	const navigate = useNavigate();
