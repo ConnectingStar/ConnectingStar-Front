@@ -7,7 +7,6 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { selectUserData } from "@/api/user/userSlice";
 import { postOnboarding } from "@/api/user/userThunk";
 
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
@@ -24,7 +23,7 @@ interface chatType {
 
 function ChattingMessage({ chatData, addProgress }: chatType) {
 	const { message, replyBtnMessage, reply, modalType } = chatData;
-	const userData = useAppSelector(selectUserData);
+	const userData = useAppSelector((state) => state.user.userData);
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isReply, setIsReply] = useState(false);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
