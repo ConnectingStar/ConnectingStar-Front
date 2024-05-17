@@ -1,10 +1,10 @@
-import { userType } from "@/types/userDataType";
+import { onboardingUserDataType } from "@/types/userDataType";
 
 import { modalType } from "@/constants/modalConstants";
 
 import { theme } from "@/styles/theme";
 
-export function createChatData(userData: userType) {
+export function createChatData(userData: onboardingUserDataType) {
 	return [
 		{
 			id: "firstMeet",
