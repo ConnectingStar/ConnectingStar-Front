@@ -1,4 +1,4 @@
-import { onboardingUserDataType, userType } from "@/types/userDataType";
+import { onboardingUserDataType } from "@/types/userDataType";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { axiosInstance } from "@/api/axiosInstance";
@@ -19,7 +19,10 @@ export const postOnboarding = createAsyncThunk(
 	"user/postOnboarding",
 	async (userData: onboardingUserDataType, thunkAPI) => {
 		try {
-			const { data } = await axiosInstance.post<userType>(END_POINTS.ONBOARDING, userData);
+			const { data } = await axiosInstance.post<onboardingUserDataType>(
+				END_POINTS.ONBOARDING,
+				userData,
+			);
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);

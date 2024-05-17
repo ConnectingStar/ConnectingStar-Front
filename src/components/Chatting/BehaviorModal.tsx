@@ -20,7 +20,7 @@ function BehaviorModal({ progress, addprogress }: behaviorModalType) {
 	const [behaviorValue, setBehaviorValue] = useState<number>();
 	const [behaviorUnit, setBehaviorUnit] = useState<string>();
 	const dispatch = useAppDispatch();
-	const { behavior } = useAppSelector((state) => state.user);
+	const { behavior } = useAppSelector((state) => state.user.userData);
 
 	const confirmSelectedTag = () => {
 		if (addprogress === undefined) return;
