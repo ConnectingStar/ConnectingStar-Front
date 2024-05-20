@@ -15,13 +15,8 @@ function HabitGuide() {
 	const [activatedIndex, setActivatedIndex] = useState<number | null>(null);
 	const listRef = useRef<HTMLUListElement>(null);
 	const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-	const handleButton = (idx: number) => {
-		if (idx === activatedIndex) {
-			setActivatedIndex(null);
-			return;
-		}
-
-		setActivatedIndex(idx);
+	const handleGuideButton = (idx: number) => {
+		idx === activatedIndex ? setActivatedIndex(null) : setActivatedIndex(idx);
 	};
 
 	useEffect(() => {
@@ -46,7 +41,7 @@ function HabitGuide() {
 								<h2>{title}</h2>
 							</div>
 
-							<ArrowIcon onClick={() => handleButton(+index - 1)} />
+							<ArrowIcon onClick={() => handleGuideButton(+index - 1)} />
 						</div>
 						<div css={paragraphStyle(activatedIndex === +index - 1)}>{paragraph}</div>
 					</li>
