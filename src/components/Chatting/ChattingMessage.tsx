@@ -7,7 +7,7 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { postOnboarding } from "@/api/user/userThunk";
+import { getIsOnboarding, postOnboarding } from "@/api/user/userThunk";
 
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
 interface chatType {
@@ -23,7 +23,7 @@ interface chatType {
 
 function ChattingMessage({ chatData, addProgress }: chatType) {
 	const { message, replyBtnMessage, reply, modalType } = chatData;
-	const { userData, isOnboarding } = useAppSelector((state) => state.user);
+	const { userData } = useAppSelector((state) => state.user);
 	const [messageIndex, setMessageIndex] = useState(0);
 	const [isReply, setIsReply] = useState(false);
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
@@ -64,8 +64,13 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 		setMessageIndex((prevIndex) => prevIndex + 1);
 		setIsReply(true);
 		if (chatData.id === "last") {
-			dispatch(postOnboarding(userData));
-			isOnboarding && navigate("/");
+			dispatch(postOnboarding(userData)).then(() => {
+				dispatch(getIsOnboarding()).then((res) => {
+					if (res.payload.data.onboard) {
+						navigate("/");
+					}
+				});
+			});
 		}
 	};
 
