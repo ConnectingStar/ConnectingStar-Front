@@ -19,7 +19,6 @@ const initialState: userType = {
 		secondAlert: { noon: "오전", hour: "10", minute: "10" },
 	},
 	isLoading: false,
-	isOnboarding: false,
 };
 
 const userSlice = createSlice({
@@ -51,9 +50,8 @@ const userSlice = createSlice({
 			.addCase(getIsOnboarding.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(getIsOnboarding.fulfilled, (state, action) => {
+			.addCase(getIsOnboarding.fulfilled, (state) => {
 				state.isLoading = false;
-				state.isOnboarding = action.payload.data.onboard;
 			})
 			.addCase(getIsOnboarding.rejected, (state) => {
 				state.isLoading = false;
@@ -63,7 +61,6 @@ const userSlice = createSlice({
 			})
 			.addCase(postOnboarding.fulfilled, (state) => {
 				state.isLoading = false;
-				state.isOnboarding = true;
 			})
 			.addCase(postOnboarding.rejected, (state) => {
 				state.isLoading = false;

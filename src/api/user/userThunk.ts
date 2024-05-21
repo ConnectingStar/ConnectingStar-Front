@@ -8,7 +8,6 @@ import { END_POINTS } from "@/constants/api";
 export const getIsOnboarding = createAsyncThunk("user/getIsOnboarding", async (_, thunkOptions) => {
 	try {
 		const { data } = await axiosInstance.get(END_POINTS.IS_ONBOARDING);
-
 		return data;
 	} catch (error) {
 		throw thunkOptions.rejectWithValue(error);
