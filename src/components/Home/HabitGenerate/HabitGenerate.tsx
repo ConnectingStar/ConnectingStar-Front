@@ -65,11 +65,13 @@ function HabitGenerate() {
 			{modal === modalType.SELECT_IDENTITY && (
 				<SelectTagModal title={identity.title} tags={identity.tags} />
 			)}
-			{modal === modalType.SELECT_RUNTIME && <SelectTimeModal title="시간을 선택해 주세요" />}
-			{modal == modalType.SELECT_FIRSTALERT && (
+			{modal === modalType.SELECT_TIME("RUNTIME") && (
+				<SelectTimeModal title="시간을 선택해 주세요" />
+			)}
+			{modal == modalType.SELECT_TIME("FIRSTALERT") && (
 				<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
 			)}
-			{modal == modalType.SELECT_SECONDALERT && (
+			{modal == modalType.SELECT_TIME("SECONDALERT") && (
 				<SelectTimeModal title="2차 알림시간을 선택해 주세요" />
 			)}
 			{modal === modalType.SELECT_PLACE && <LocationModal />}

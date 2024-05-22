@@ -88,7 +88,7 @@ export const habitGenerateConditions = [
 	{
 		subtitle: "언제",
 		placeholder: "시간을 선택해주세요.",
-		modalName: modalType.SELECT_RUNTIME,
+		modalName: modalType.SELECT_TIME("RUNTIME"),
 	},
 	{
 		subtitle: "어디서",
@@ -110,13 +110,13 @@ export const habitGenerateConditions = [
 		subtitle: "1차 알림",
 		explanation: "약속을 상기시켜 드리는 알림이에요!",
 		placeholder: "1차 알림 시간을 선택해주세요.",
-		modalName: modalType.SELECT_FIRSTALERT,
+		modalName: modalType.SELECT_TIME("FIRSTALERT"),
 	},
 	{
 		subtitle: "2차 알림",
 		explanation: "습관 기록을 독려하는 알림이에요!",
 		placeholder: "2차 알림 시간을 선택해주세요.",
-		modalName: modalType.SELECT_SECONDALERT,
+		modalName: modalType.SELECT_TIME("SECONDALERT"),
 	},
 ];
 
