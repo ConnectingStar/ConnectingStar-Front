@@ -66,7 +66,7 @@ function ChattingPage() {
 						addprogress={() => setProgress((prev) => prev + 1)}
 					/>
 				)}
-				{modal === modalType.SELECT_RUNTIME && (
+				{modal === modalType.SELECT_TIME("RUNTIME") && (
 					<SelectTimeModal
 						title="시간을 선택해 주세요"
 						progress={progress}
@@ -79,10 +79,10 @@ function ChattingPage() {
 				{modal === modalType.SELECT_BEHAVIORUNIT && (
 					<BehaviorModal progress={progress} addprogress={() => setProgress((prev) => prev + 1)} />
 				)}
-				{modal === modalType.SELECT_FIRSTALERT && (
+				{modal === modalType.SELECT_TIME("FIRSTALERT") && (
 					<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
 				)}
-				{modal === modalType.SELECT_SECONDALERT && (
+				{modal === modalType.SELECT_TIME("SECONDALERT") && (
 					<SelectTimeModal title="2차 알림시간을 선택해 주세요" />
 				)}
 			</div>

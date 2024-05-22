@@ -59,7 +59,7 @@ export function createChatData(userData: onboardingUserDataType) {
 			],
 			replyBtnMessage: ["시간 선택"],
 			reply: `${userData.runTime.noon} ${userData.runTime.hour}:${userData.runTime.minute}`,
-			modalType: [modalType.SELECT_RUNTIME],
+			modalType: [modalType.SELECT_TIME("RUNTIME")],
 		},
 		{
 			id: "place",
@@ -103,7 +103,7 @@ export function createChatData(userData: onboardingUserDataType) {
 				</div>
 			</div>
 		`,
-			modalType: [null, modalType.SELECT_FIRSTALERT, modalType.SELECT_SECONDALERT],
+			modalType: [null, modalType.SELECT_TIME("FIRSTALERT"), modalType.SELECT_TIME("SECONDALERT")],
 		},
 		{
 			id: "organize",
@@ -165,11 +165,11 @@ export function createChatData(userData: onboardingUserDataType) {
 			modalType: [
 				null,
 				modalType.SELECT_IDENTITY,
-				modalType.SELECT_RUNTIME,
+				modalType.SELECT_TIME("RUNTIME"),
 				modalType.SELECT_PLACE,
 				modalType.SELECT_BEHAVIOR,
-				modalType.SELECT_FIRSTALERT,
-				modalType.SELECT_SECONDALERT,
+				modalType.SELECT_TIME("FIRSTALERT"),
+				modalType.SELECT_TIME("SECONDALERT"),
 			],
 		},
 		{
