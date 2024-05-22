@@ -34,7 +34,7 @@ export const postFCMToken = createAsyncThunk(
 
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkOptions) => {
 	try {
-		return await axiosInstance.get(END_POINTS.LOGOUT);
+		return await axiosInstance.post(END_POINTS.LOGOUT);
 	} catch (error) {
 		throw thunkOptions.rejectWithValue(error);
 	}
