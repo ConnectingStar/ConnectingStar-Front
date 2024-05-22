@@ -1,6 +1,7 @@
 export interface userType {
 	userData: onboardingUserDataType;
 	isLoading: boolean;
+	isOnboarding: boolean;
 }
 
 export interface onboardingUserDataType {

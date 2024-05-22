@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
@@ -13,6 +14,7 @@ import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGende
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import { updateBasicUserData } from "@/api/user/userSlice";
+import { getIsOnboarding } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { ageRangeTypeList, genderTypeList } from "@/constants/onboarding";
@@ -21,7 +23,11 @@ import { theme } from "@/styles/theme";
 
 function CreateAccount({ onNext }: { onNext: () => void }) {
 	const dispatch = useAppDispatch();
+
 	const { modal } = useAppSelector((state) => state.modal);
+	const { isOnboarding } = useAppSelector((state) => state.user);
+
+	const navigate = useNavigate();
 
 	const [nickname, setNickname] = useState<string>("");
 	const [genderType, setGenderType] = useState<string>("");
@@ -58,6 +64,14 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 		);
 		onNext();
 	};
+
+	useEffect(() => {
+		dispatch(getIsOnboarding());
+	}, []);
+
+	useEffect(() => {
+		isOnboarding && navigate("/");
+	}, [isOnboarding]);
 
 	return (
 		<>

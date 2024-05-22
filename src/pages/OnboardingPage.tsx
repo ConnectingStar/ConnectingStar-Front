@@ -7,14 +7,10 @@ import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
 import Splash from "@/components/Onboarding/Splash/Splash";
 import VisitorRoute from "@/components/Onboarding/VisitorRoute/VisitorRoute";
 
-import { useAppDispatch } from "@/api/hooks";
-import { getIsOnboarding } from "@/api/user/userThunk";
-
 import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
 import { PATH } from "@/constants/path";
 
 function OnboardingPage() {
-	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
 	const step = searchParams.get(STEP_KEY);
@@ -25,12 +21,6 @@ function OnboardingPage() {
 			setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.SPLASH}`);
 		}
 	}, [searchParams, step]);
-
-	useEffect(() => {
-		dispatch(getIsOnboarding()).then((res) => {
-			res.payload.data.onboard && navigate("/");
-		});
-	}, []);
 
 	return (
 		<main>

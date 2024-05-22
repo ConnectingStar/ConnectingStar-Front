@@ -1,15 +1,30 @@
+import { useNavigate } from "react-router-dom";
+
 import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
+import { logOut } from "@/api/auth/authThunk";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
-const LogoutModal = ({ handleLogout }: { handleLogout: () => void }) => {
+const LogoutModal = () => {
 	const dispatch = useAppDispatch();
+
+	const navigate = useNavigate();
+
+	const handleLogout = async () => {
+		try {
+			await dispatch(logOut()).unwrap();
+			dispatch(closeModal());
+			navigate("/onboarding?step=oauth-sign-up");
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<Modal>
