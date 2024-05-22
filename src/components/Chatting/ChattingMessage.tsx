@@ -9,6 +9,8 @@ import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import { getIsOnboarding, postOnboarding } from "@/api/user/userThunk";
 
+import { theme } from "@/styles/theme";
+
 import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
 interface chatType {
 	chatData: {
