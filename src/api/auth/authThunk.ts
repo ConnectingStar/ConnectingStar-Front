@@ -39,3 +39,11 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkOptions) =>
 		throw thunkOptions.rejectWithValue(error);
 	}
 });
+
+export const withdrawal = createAsyncThunk("auth/withdrawal", async (_, thunkOptions) => {
+	try {
+		return await axiosInstance.delete(END_POINTS.WITHDRAWAL);
+	} catch (error) {
+		thunkOptions.rejectWithValue(error);
+	}
+});

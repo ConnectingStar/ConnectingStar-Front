@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
 import SelectAgeModal from "@/components/common/Modal/CommonModal/SelectAgeModal";
@@ -9,6 +9,7 @@ import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
 import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
 import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/SelectIdentityModal";
 
+import { withdrawal } from "@/api/auth/authThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
@@ -29,7 +30,7 @@ const MyInfo = () => {
 
 	const { modal } = useAppSelector((state) => state.modal);
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const [gender, setGender] = useState("");
 	const [identity, setIdentity] = useState("");
@@ -77,7 +78,8 @@ const MyInfo = () => {
 
 			<div css={authButtonBoxStyle}>
 				<button onClick={() => dispatch(openModal(modalType.LOGOUT))}>로그아웃</button>
-				<button onClick={() => navigate("/withdrawal")}>회원탈퇴</button>
+				{/* <button onClick={() => navigate("/withdrawal")}>회원탈퇴</button> */}
+				<button onClick={() => dispatch(withdrawal())}>회원탈퇴</button>
 			</div>
 
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
