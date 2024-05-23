@@ -8,6 +8,7 @@ import {
 	getUserInfo,
 	editNickName,
 	editGender,
+	editAge,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -96,6 +97,10 @@ const userSlice = createSlice({
 			.addCase(editGender.fulfilled, (state, aciton) => {
 				state.isLoading = false;
 				state.userData.genderType = aciton.meta.arg;
+			})
+			.addCase(editAge.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.userData.ageRangeType = action.meta.arg;
 			});
 	},
 });
