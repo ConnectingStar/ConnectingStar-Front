@@ -62,44 +62,6 @@ export const MENU_BUTTON_DATA = [
 	},
 ];
 
-export const MY_INFO_BUTTON_DATA = [
-	{
-		id: "내 정보",
-		button: [
-			{
-				title: "정체성",
-				content: "매일 성장하는",
-				modalName: "SELECT_IDENTITY",
-			},
-			{
-				title: "닉네임",
-				content: "사용자 닉네임",
-				modalName: "CHANGE_NICKNAME",
-			},
-			{
-				title: "성별",
-				subText: "여",
-				modalName: "SELECT_GENDERTYPE",
-			},
-			{
-				title: "나이대",
-				subText: "20-24",
-				modalName: "SELECT_AGERANGETYPE",
-			},
-		],
-	},
-	{
-		id: "로그인 계정",
-		button: [
-			{
-				title: "간편로그인",
-				content: "카카오톡",
-				modalName: "",
-			},
-		],
-	},
-];
-
 export const starTraceButtonData = [
 	{
 		text: "책 읽기",

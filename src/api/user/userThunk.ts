@@ -26,8 +26,6 @@ export const getUserInfo = createAsyncThunk<UserDataType>(
 		try {
 			const { data } = await axiosInstance.get(END_POINTS.USER_INFO);
 
-			console.log(data.data);
-
 			return data;
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
