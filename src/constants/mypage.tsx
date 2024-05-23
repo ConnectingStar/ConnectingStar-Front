@@ -77,12 +77,12 @@ export const MY_INFO_BUTTON_DATA = [
 				modalName: "CHANGE_NICKNAME",
 			},
 			{
-				text: "성별",
+				title: "성별",
 				subText: "여",
 				modalName: "SELECT_GENDERTYPE",
 			},
 			{
-				text: "나이대",
+				title: "나이대",
 				subText: "20-24",
 				modalName: "SELECT_AGERANGETYPE",
 			},
