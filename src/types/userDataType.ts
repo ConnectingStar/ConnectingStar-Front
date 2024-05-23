@@ -5,10 +5,10 @@ export interface userType {
 	isLoading: boolean;
 	isOnboarding: boolean;
 	constellation: ConstellationList[];
-	test: {
-		nickname: string;
-		profileCharacter: string;
-	};
+}
+
+export interface UserDataType {
+	userData: onboardingUserDataType;
 }
 
 export interface onboardingUserDataType {

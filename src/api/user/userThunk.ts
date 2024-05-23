@@ -1,11 +1,11 @@
-import { onboardingUserDataType } from "@/types/userDataType";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-import type { UserInfoType, ConstellationListType } from "@/types/user";
+import type { ConstellationListType } from "@/types/user";
+import type { UserDataType, onboardingUserDataType } from "@/types/userDataType";
 
 export const getUserInfoWithHabit = createAsyncThunk(
 	"user/getUserInfoWithHabit",
@@ -20,11 +20,13 @@ export const getUserInfoWithHabit = createAsyncThunk(
 	},
 );
 
-export const getUserInfo = createAsyncThunk<UserInfoType>(
+export const getUserInfo = createAsyncThunk<UserDataType>(
 	"user/getUserInfo",
 	async (_, thunkOptions) => {
 		try {
 			const { data } = await axiosInstance.get(END_POINTS.USER_INFO);
+
+			console.log(data.data);
 
 			return data;
 		} catch (error) {

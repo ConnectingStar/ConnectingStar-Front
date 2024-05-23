@@ -30,9 +30,10 @@ const MyInfo = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { constellation } = useAppSelector((state) => state.user);
+	const { constellation, userData } = useAppSelector((state) => state.user);
 
 	console.log(constellation);
+	console.log(userData);
 
 	// const navigate = useNavigate();
 
