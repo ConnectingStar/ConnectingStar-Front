@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
@@ -33,11 +33,6 @@ const MyInfo = () => {
 	const { userData } = useAppSelector((state) => state.user);
 
 	const navigate = useNavigate();
-
-	const [, setGender] = useState("");
-	const [, setIdentity] = useState("");
-	const [, setNickname] = useState("");
-	const [, setAge] = useState("");
 
 	useEffect(() => {
 		dispatch(getUserConstellationList());
@@ -91,12 +86,16 @@ const MyInfo = () => {
 			</div>
 
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
-			{modal === modalType.SELECT_GENDERTYPE && <SelectGenderModal changeGender={setGender} />}
-			{modal === modalType.CHANGE_NICKNAME && (
-				<ChangeNicknameModal prevNickname={userData.nickname} changeNickname={setNickname} />
+			{modal === modalType.SELECT_GENDERTYPE && (
+				<SelectGenderModal prevGender={generateGenderType(userData.genderType)} />
 			)}
-			{modal === modalType.SELECT_AGERANGETYPE && <SelectAgeModal changeAge={setAge} />}
-			{modal === modalType.SELECT_IDENTITY && <SelectIdentityModal changeIdentity={setIdentity} />}
+			{modal === modalType.CHANGE_NICKNAME && (
+				<ChangeNicknameModal prevNickname={userData.nickname} />
+			)}
+			{modal === modalType.SELECT_AGERANGETYPE && (
+				<SelectAgeModal prevAge={generateAgeType(userData.ageRangeType)} />
+			)}
+			{modal === modalType.SELECT_IDENTITY && <SelectIdentityModal />}
 			{modal === modalType.LOGOUT && <LogoutModal />}
 		</div>
 	);

@@ -17,7 +17,7 @@ import isValidNickname from "@/utils/isValidNickname";
 
 interface ChangeNicknameModalProps {
 	prevNickname?: string;
-	changeNickname: (nickname: string) => void;
+	changeNickname?: (nickname: string) => void;
 }
 
 const ChangeNicknameModal = ({ prevNickname, changeNickname }: ChangeNicknameModalProps) => {
@@ -39,7 +39,7 @@ const ChangeNicknameModal = ({ prevNickname, changeNickname }: ChangeNicknameMod
 	};
 
 	const handleChangeInput = () => {
-		changeNickname(nickname);
+		changeNickname && changeNickname(nickname);
 		dispatch(closeModal());
 	};
 

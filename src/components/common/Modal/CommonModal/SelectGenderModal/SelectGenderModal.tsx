@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 import CheckIcon from "@/assets/icon/ic-check.svg?react";
 
@@ -15,17 +15,18 @@ import {
 	getCheckBoxLabelStyle,
 } from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal.style";
 
-const SelectGenderModal = ({
-	changeGender,
-}: {
-	changeGender: Dispatch<SetStateAction<string>>;
-}) => {
+interface SelectGenderModalProps {
+	prevGender?: string;
+	changeGender?: (gender: string) => void;
+}
+
+const SelectGenderModal = ({ prevGender, changeGender }: SelectGenderModalProps) => {
 	const dispatch = useAppDispatch();
 
-	const [checkedItem, setCheckedItem] = useState("");
+	const [checkedItem, setCheckedItem] = useState(prevGender ?? "");
 
 	const handleCheckClick = () => {
-		changeGender(checkedItem);
+		changeGender && changeGender(checkedItem);
 		dispatch(closeModal());
 	};
 

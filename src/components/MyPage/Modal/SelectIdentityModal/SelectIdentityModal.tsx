@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
@@ -23,17 +23,12 @@ const identityButtonData = [
 	},
 ];
 
-const SelectIdentityModal = ({
-	changeIdentity,
-}: {
-	changeIdentity: Dispatch<SetStateAction<string>>;
-}) => {
+const SelectIdentityModal = () => {
 	const dispatch = useAppDispatch();
 
 	const [identityText, setIdentityText] = useState("매일 성장하는");
 
 	const handleCheckClick = () => {
-		changeIdentity(identityText);
 		dispatch(closeModal());
 	};
 
