@@ -26,7 +26,6 @@ const initialState: userType = {
 	isLoading: false,
 	isOnboarding: false,
 	constellation: [],
-	test: { nickname: "", profileCharacter: "" },
 };
 
 const userSlice = createSlice({
@@ -86,7 +85,7 @@ const userSlice = createSlice({
 			})
 			.addCase(getUserInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.test = action.payload;
+				state.userData = action.payload.userData;
 			});
 	},
 });
