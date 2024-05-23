@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
@@ -9,13 +9,13 @@ import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
 import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
 import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/SelectIdentityModal";
 
-import { withdrawal } from "@/api/auth/authThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getUserConstellationList, getUserInfo, getUserInfoWithHabit } from "@/api/user/userThunk";
+import { getUserConstellationList, getUserInfo } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
-import { MY_INFO_BUTTON_DATA } from "@/constants/mypage";
+
+import { generateGenderType, generateAgeType } from "@/utils/generateRangeType";
 
 import {
 	layoutStyle,
@@ -35,32 +35,16 @@ const MyInfo = () => {
 	console.log(constellation);
 	console.log(userData);
 
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
-	const [gender, setGender] = useState("");
-	const [identity, setIdentity] = useState("");
-	const [nickname, setNickname] = useState("");
-	const [ageRangeType, setAge] = useState("");
-	const [socialType] = useState("카카오톡");
-
-	const handleSubTextProp = (text: string) => {
-		if (text === "정체성") {
-			return identity;
-		} else if (text === "닉네임") {
-			return nickname;
-		} else if (text === "성별") {
-			return gender;
-		} else if (text === "나이대") {
-			return ageRangeType;
-		} else if (text === "간편로그인") {
-			return socialType;
-		}
-	};
+	const [, setGender] = useState("");
+	const [, setIdentity] = useState("");
+	const [, setNickname] = useState("");
+	const [, setAge] = useState("");
 
 	useEffect(() => {
 		dispatch(getUserConstellationList());
 		dispatch(getUserInfo());
-		dispatch(getUserInfoWithHabit());
 	}, []);
 
 	return (
@@ -72,27 +56,41 @@ const MyInfo = () => {
 					</button>
 				</div>
 
-				{MY_INFO_BUTTON_DATA.map((buttonData) => (
-					<div key={buttonData.id} css={buttonBoxStyle}>
-						<h3>{buttonData.id}</h3>
-						{buttonData.button.map((buttonData) => (
-							<MenuButton
-								key={buttonData.title}
-								title={buttonData.title}
-								content={handleSubTextProp(buttonData.title)}
-								onClick={() => dispatch(openModal(buttonData.modalName))}
-							/>
-						))}
-					</div>
-				))}
+				<div css={buttonBoxStyle}>
+					<h3>내 정보</h3>
+					<MenuButton
+						title="대표 정체성"
+						content={userData.identity}
+						onClick={() => dispatch(openModal(modalType.SELECT_IDENTITY))}
+					/>
+					<MenuButton
+						title="닉네임"
+						content={userData.nickname}
+						onClick={() => dispatch(openModal(modalType.CHANGE_NICKNAME))}
+					/>
+					<MenuButton
+						title="성별"
+						content={generateGenderType(userData.genderType)}
+						onClick={() => dispatch(openModal(modalType.SELECT_GENDERTYPE))}
+					/>
+					<MenuButton
+						title="나이대"
+						content={generateAgeType(userData.ageRangeType)}
+						onClick={() => dispatch(openModal(modalType.SELECT_AGERANGETYPE))}
+					/>
+				</div>
+
+				<div css={buttonBoxStyle}>
+					<h3>로그인 계정</h3>
+					<MenuButton title="간편로그인" content="카카오톡" />
+				</div>
 			</div>
 
 			<div css={dividerStyle} />
 
 			<div css={authButtonBoxStyle}>
 				<button onClick={() => dispatch(openModal(modalType.LOGOUT))}>로그아웃</button>
-				{/* <button onClick={() => navigate("/withdrawal")}>회원탈퇴</button> */}
-				<button onClick={() => dispatch(withdrawal())}>회원탈퇴</button>
+				<button onClick={() => navigate("/withdrawal")}>회원탈퇴</button>
 			</div>
 
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}

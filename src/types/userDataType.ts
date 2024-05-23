@@ -8,7 +8,7 @@ export interface userType {
 }
 
 export interface UserDataType {
-	userData: onboardingUserDataType;
+	data: onboardingUserDataType;
 }
 
 export interface onboardingUserDataType {

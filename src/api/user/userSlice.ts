@@ -85,7 +85,7 @@ const userSlice = createSlice({
 			})
 			.addCase(getUserInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.userData = action.payload.userData;
+				state.userData = action.payload.data;
 			});
 	},
 });
