@@ -7,8 +7,11 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { editGender } from "@/api/user/userThunk";
 
 import { genderTypeList } from "@/constants/onboarding";
+
+import { generateGender } from "@/utils/generateRangeType";
 
 import {
 	layoutStyle,
@@ -24,6 +27,13 @@ const SelectGenderModal = ({ prevGender, changeGender }: SelectGenderModalProps)
 	const dispatch = useAppDispatch();
 
 	const [checkedItem, setCheckedItem] = useState(prevGender ?? "");
+
+	console.log(generateGender(checkedItem));
+
+	const handleChangeGender = () => {
+		dispatch(editGender(generateGender(checkedItem)));
+		dispatch(closeModal());
+	};
 
 	const handleCheckClick = () => {
 		changeGender && changeGender(checkedItem);
@@ -50,7 +60,7 @@ const SelectGenderModal = ({ prevGender, changeGender }: SelectGenderModalProps)
 					text="확인"
 					leftText="취소"
 					isPositionStatic
-					handleBtnClick={handleCheckClick}
+					handleBtnClick={prevGender ? handleChangeGender : handleCheckClick}
 					handleLeftBtnClick={() => dispatch(closeModal())}
 				/>
 			</div>
