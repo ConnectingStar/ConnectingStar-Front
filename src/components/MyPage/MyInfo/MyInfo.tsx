@@ -30,10 +30,7 @@ const MyInfo = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { constellation, userData } = useAppSelector((state) => state.user);
-
-	console.log(constellation);
-	console.log(userData);
+	const { userData } = useAppSelector((state) => state.user);
 
 	const navigate = useNavigate();
 
@@ -95,7 +92,9 @@ const MyInfo = () => {
 
 			{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
 			{modal === modalType.SELECT_GENDERTYPE && <SelectGenderModal changeGender={setGender} />}
-			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
+			{modal === modalType.CHANGE_NICKNAME && (
+				<ChangeNicknameModal prevNickname={userData.nickname} changeNickname={setNickname} />
+			)}
 			{modal === modalType.SELECT_AGERANGETYPE && <SelectAgeModal changeAge={setAge} />}
 			{modal === modalType.SELECT_IDENTITY && <SelectIdentityModal changeIdentity={setIdentity} />}
 			{modal === modalType.LOGOUT && <LogoutModal />}

@@ -6,6 +6,7 @@ import {
 	postOnboarding,
 	getUserConstellationList,
 	getUserInfo,
+	editNickName,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -86,6 +87,10 @@ const userSlice = createSlice({
 			.addCase(getUserInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.userData = action.payload.data;
+			})
+			.addCase(editNickName.fulfilled, (state, action) => {
+				state.isLoading = false;
+				console.log(action.payload);
 			});
 	},
 });
