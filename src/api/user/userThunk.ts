@@ -7,11 +7,22 @@ import { END_POINTS } from "@/constants/api";
 import type { ConstellationListType } from "@/types/user";
 import type { UserDataType, onboardingUserDataType } from "@/types/userDataType";
 
+export const editGender = createAsyncThunk(
+	"user/edit/Gender",
+	async (genderType: string, thunkOptions) => {
+		try {
+			return await axiosInstance.put(END_POINTS.EDIT_GENDER, { genderType });
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
 export const editNickName = createAsyncThunk(
 	"user/editNickname",
 	async (nickname: string, thunkOptions) => {
 		try {
-			return await axiosInstance.put(END_POINTS.EDIT_NICKNAME, nickname);
+			return await axiosInstance.put(END_POINTS.EDIT_NICKNAME, { nickname });
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
 		}

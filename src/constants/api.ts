@@ -11,6 +11,7 @@ export const END_POINTS = {
 	USER_INFO: "/user/basic-info",
 	USER_INFO_WITH_HABIT: "/user/basic-info-habit",
 	EDIT_NICKNAME: "/user/nickname",
+	EDIT_GENDER: "/user/gender",
 };
 
 export const OAUTH_KAKAO_URL = `${BASE_URL}/oauth/code/url?socialType=K`;

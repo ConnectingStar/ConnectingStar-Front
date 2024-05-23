@@ -7,6 +7,7 @@ import {
 	getUserConstellationList,
 	getUserInfo,
 	editNickName,
+	editGender,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -90,7 +91,11 @@ const userSlice = createSlice({
 			})
 			.addCase(editNickName.fulfilled, (state, action) => {
 				state.isLoading = false;
-				console.log(action.payload);
+				state.userData.nickname = action.meta.arg;
+			})
+			.addCase(editGender.fulfilled, (state, aciton) => {
+				state.isLoading = false;
+				state.userData.genderType = aciton.meta.arg;
 			});
 	},
 });
