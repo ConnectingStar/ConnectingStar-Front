@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import { css } from "@emotion/react";
 
@@ -9,19 +9,21 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { editNickName } from "@/api/user/userThunk";
 
 import { theme } from "@/styles/theme";
 
 import isValidNickname from "@/utils/isValidNickname";
 
-const ChangeNicknameModal = ({
-	changeNickname,
-}: {
-	changeNickname: Dispatch<SetStateAction<string>>;
-}) => {
+interface ChangeNicknameModalProps {
+	prevNickname?: string;
+	changeNickname: (nickname: string) => void;
+}
+
+const ChangeNicknameModal = ({ prevNickname, changeNickname }: ChangeNicknameModalProps) => {
 	const dispatch = useAppDispatch();
 
-	const [nickname, setNickname] = useState("");
+	const [nickname, setNickname] = useState(prevNickname ?? "");
 
 	const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
@@ -29,6 +31,11 @@ const ChangeNicknameModal = ({
 		if (isValidNickname(input) || input === "") {
 			setNickname(input);
 		}
+	};
+
+	const handleChangeNickname = () => {
+		dispatch(editNickName(nickname));
+		dispatch(closeModal());
 	};
 
 	const handleChangeInput = () => {
@@ -55,7 +62,7 @@ const ChangeNicknameModal = ({
 			<FooterBtn
 				text="확인"
 				leftText="취소"
-				handleBtnClick={handleChangeInput}
+				handleBtnClick={prevNickname ? handleChangeNickname : handleChangeInput}
 				handleLeftBtnClick={() => dispatch(closeModal())}
 				disabled={nickname.trim().length === 0}
 				isSquare
