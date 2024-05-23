@@ -7,6 +7,7 @@ import ChattingPage from "@/pages/ChattingPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitDetailPage from "@/pages/HabitDetailPage";
 import HabitGeneratePage from "@/pages/HabitGeneratePage";
+import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
 import HabitPage from "@/pages/HabitPage/HabitPage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
 import KakaoLoginPage from "@/pages/KakaoLoginPage";
@@ -46,6 +47,7 @@ const App = () => {
 					<Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
 					<Route path="/habit-record" element={<HabitRecordPage />} />
 					<Route path="/habit-generate" element={<HabitGeneratePage />} />
+					<Route path="habit-guide" element={<HabitGuidePage />} />
 				</Routes>
 			</BrowserRouter>
 			<ToastContainer />
