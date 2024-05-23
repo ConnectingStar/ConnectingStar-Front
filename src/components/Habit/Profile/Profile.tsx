@@ -12,7 +12,7 @@ import {
 	profileBoxStyle,
 	identityTextStyle,
 	nicknameTextStyle,
-} from "@/components/Habit/Landing/Profile/Profile.style";
+} from "@/components/Habit/Profile/Profile.style";
 
 function Profile() {
 	const dispatch = useAppDispatch();

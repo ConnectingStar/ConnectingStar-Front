@@ -6,23 +6,23 @@ import HabitHelpIcon from "@/assets/icon/ic-homepage-help-anouncement.svg?react"
 
 import { theme } from "@/styles/theme";
 
-function HabitHelp() {
+const HabitGuideBanner = () => {
 	const navigate = useNavigate();
 
 	return (
 		<div
 			css={layoutStyle}
 			onClick={() => {
-				navigate("/help");
+				navigate("/habit-guide");
 			}}
 		>
 			<HabitHelpIcon />
 			<span>습관 도움말</span>
 		</div>
 	);
-}
+};
 
-export default HabitHelp;
+export default HabitGuideBanner;
 
 export const layoutStyle = css`
 	display: flex;
