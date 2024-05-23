@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 import CheckIcon from "@/assets/icon/ic-check.svg?react";
 
@@ -15,13 +15,18 @@ import {
 	getCheckBoxLabelStyle,
 } from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal.style";
 
-const SelectAgeModal = ({ changeAge }: { changeAge: Dispatch<SetStateAction<string>> }) => {
+interface SelectAgeModalProps {
+	prevAge?: string;
+	changeAge?: (age: string) => void;
+}
+
+const SelectAgeModal = ({ prevAge, changeAge }: SelectAgeModalProps) => {
 	const dispatch = useAppDispatch();
 
-	const [checkItem, setCheckItem] = useState("");
+	const [checkItem, setCheckItem] = useState(prevAge ?? "");
 
 	const handleCheckClick = () => {
-		changeAge(checkItem);
+		changeAge && changeAge(checkItem);
 		dispatch(closeModal());
 	};
 
