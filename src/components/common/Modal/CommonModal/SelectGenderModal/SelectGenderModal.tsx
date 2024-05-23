@@ -28,8 +28,6 @@ const SelectGenderModal = ({ prevGender, changeGender }: SelectGenderModalProps)
 
 	const [checkedItem, setCheckedItem] = useState(prevGender ?? "");
 
-	console.log(generateGender(checkedItem));
-
 	const handleChangeGender = () => {
 		dispatch(editGender(generateGender(checkedItem)));
 		dispatch(closeModal());

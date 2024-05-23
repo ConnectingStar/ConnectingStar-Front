@@ -7,8 +7,11 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { editAge } from "@/api/user/userThunk";
 
 import { ageRangeTypeList } from "@/constants/onboarding";
+
+import { generateAge } from "@/utils/generateRangeType";
 
 import {
 	layoutStyle,
@@ -27,6 +30,11 @@ const SelectAgeModal = ({ prevAge, changeAge }: SelectAgeModalProps) => {
 
 	const handleCheckClick = () => {
 		changeAge && changeAge(checkItem);
+		dispatch(closeModal());
+	};
+
+	const handleChangeAge = () => {
+		dispatch(editAge(generateAge(checkItem)));
 		dispatch(closeModal());
 	};
 
@@ -49,7 +57,7 @@ const SelectAgeModal = ({ prevAge, changeAge }: SelectAgeModalProps) => {
 				<FooterBtn
 					text="확인"
 					leftText="취소"
-					handleBtnClick={handleCheckClick}
+					handleBtnClick={prevAge ? handleChangeAge : handleCheckClick}
 					handleLeftBtnClick={() => dispatch(closeModal())}
 					isPositionStatic
 				/>
