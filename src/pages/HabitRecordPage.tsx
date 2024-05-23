@@ -1,5 +1,5 @@
 import Header from "@/components/common/Header/Header";
-import HabitRecord from "@/components/Home/HabitRecord/HabitRecord";
+import HabitRecord from "@/components/Habit/HabitRecord/HabitRecord";
 
 function HabitRecordPage() {
 	return (

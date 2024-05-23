@@ -1,5 +1,5 @@
 import Header from "@/components/common/Header/Header";
-import HabitManage from "@/components/Home/habitManage/HabitManage";
+import HabitManage from "@/components/Habit/habitManage/HabitManage";
 
 function HabitManagePage() {
 	return (

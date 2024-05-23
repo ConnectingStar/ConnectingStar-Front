@@ -7,7 +7,7 @@ import {
 	layoutStyle,
 	profileBoxStyle,
 	profileTextBoxStyle,
-} from "@/components/Home/Landing/Profile/Profile.style";
+} from "@/components/Habit/Landing/Profile/Profile.style";
 
 function Profile() {
 	const navigate = useNavigate();

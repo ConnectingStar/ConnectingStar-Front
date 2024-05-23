@@ -4,7 +4,7 @@ import RoundCloseButtonIcon from "@/assets/icon/ic-round-close-button.svg?react"
 
 import useOutSideClick from "@/hooks/useOutSideClick";
 
-import { tipBoxStyle } from "@/components/Home/HabitGenerate/HabitTip/HabitTip.style";
+import { tipBoxStyle } from "@/components/Habit/HabitGenerate/HabitTip/HabitTip.style";
 
 function HabitTip() {
 	const tipRef = useRef(null);

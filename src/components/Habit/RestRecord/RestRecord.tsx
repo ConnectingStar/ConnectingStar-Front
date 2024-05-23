@@ -4,7 +4,7 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
 import { REST_RECORD_TEXT, REST_RECORD_BLUE_TEXT } from "@/constants/homeConstants";
 
-import { inputBoxStyle, layoutStyle } from "@/components/Home/RestRecord/RestRecord.style";
+import { inputBoxStyle, layoutStyle } from "@/components/Habit/RestRecord/RestRecord.style";
 
 function RestRecord() {
 	const [traceText, setTraceText] = useState("");

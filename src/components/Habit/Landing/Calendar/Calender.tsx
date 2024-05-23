@@ -11,7 +11,7 @@ import {
 	titleBoxStyle,
 	carouselBoxStyle,
 	dayBoxStyle,
-} from "@/components/Home/Landing/Calendar/Calender.style";
+} from "@/components/Habit/Landing/Calendar/Calender.style";
 
 function Calender({ selectedDate, setSelectedDate, timeGap }: CalenderProps) {
 	const containerRef = useRef<HTMLDivElement | null>(null);
