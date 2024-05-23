@@ -1,6 +1,6 @@
-import HabitActionRecord from "@/components/Home/HabitDetail/HabitActionRecord";
+import HabitActionRecord from "@/components/Habit/HabitDetail/HabitActionRecord";
 
-import { layoutStyle } from "@/components/Home/HabitDetail/HabitDetail.style";
+import { layoutStyle } from "@/components/Habit/HabitDetail/HabitDetail.style";
 
 function HabitDetail() {
 	const mode = ["휴식", "실천"];

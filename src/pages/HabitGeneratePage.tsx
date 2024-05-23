@@ -1,5 +1,5 @@
 import Header from "@/components/common/Header/Header";
-import HabitGenerate from "@/components/Home/HabitGenerate/HabitGenerate";
+import HabitGenerate from "@/components/Habit/HabitGenerate/HabitGenerate";
 
 function HabitGeneratePage() {
 	return (

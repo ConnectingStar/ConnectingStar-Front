@@ -7,9 +7,9 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
-import HabitGenerateConditions from "@/components/Home/HabitGenerate/habitGenerateConditions";
-import HabitTip from "@/components/Home/HabitGenerate/HabitTip/HabitTip";
-import StarPrizeModal from "@/components/Home/Landing/Modal/StarPrizeModal/StarPrizeModal";
+import HabitGenerateConditions from "@/components/Habit/HabitGenerate/habitGenerateConditions";
+import HabitTip from "@/components/Habit/HabitGenerate/HabitTip/HabitTip";
+import StarPrizeModal from "@/components/Habit/Landing/Modal/StarPrizeModal/StarPrizeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -21,7 +21,7 @@ import {
 	layoutStyle,
 	profileBoxStyle,
 	selectBoxStyle,
-} from "@/components/Home/HabitGenerate/HabitGenerate.style";
+} from "@/components/Habit/HabitGenerate/HabitGenerate.style";
 
 function HabitGenerate() {
 	const dispatch = useAppDispatch();

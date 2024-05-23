@@ -94,6 +94,10 @@
               "group": "unknown"
             },
             {
+              "pattern": "@/pages/*.style",
+              "group": "unknown"
+            },
+            {
               "pattern": "@/components/**/*.style",
               "group": "unknown"
             },

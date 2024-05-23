@@ -2,7 +2,7 @@ import BlueCheckIcon from "@/assets/icon/ic-homepage-habit-blue-check.svg?react"
 import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
 
-import { habitArticleStyle } from "@/components/Home/Landing/HabitList/HabitList.style";
+import { habitArticleStyle } from "@/components/Habit/Landing/HabitList/HabitList.style";
 
 interface HabitBoxProps {
 	habitState?: "" | "complete" | "rest" | "end";

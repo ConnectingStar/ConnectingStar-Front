@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import HabitAddIcon from "@/assets/icon/ic-habit-add.svg?react";
 
-import HabitBox from "@/components/Home/Landing/HabitList/HabitBox";
-import HabitCheckModal from "@/components/Home/Landing/Modal/HabitCheckModal";
-import HabitModifyModal from "@/components/Home/Landing/Modal/HabitModifyModal";
+import HabitBox from "@/components/Habit/Landing/HabitList/HabitBox";
+import HabitCheckModal from "@/components/Habit/Landing/Modal/HabitCheckModal";
+import HabitModifyModal from "@/components/Habit/Landing/Modal/HabitModifyModal";
 
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -17,7 +17,7 @@ import type { DateInfo } from "@/types/homeTypes";
 import {
 	layoutStyle,
 	habitArticleStyle,
-} from "@/components/Home/Landing/HabitList/HabitList.style";
+} from "@/components/Habit/Landing/HabitList/HabitList.style";
 
 function HabitList({ selectedDate }: { selectedDate: DateInfo }) {
 	const dispatch = useAppDispatch();

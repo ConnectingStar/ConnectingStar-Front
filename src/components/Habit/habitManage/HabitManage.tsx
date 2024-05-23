@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 import ToggleButton from "@/components/common/Button/ToggleButton/ToggleButton";
-import AlarmCheckModal from "@/components/Home/habitManage/AlarmCheckModal/AlarmCheckModal";
+import AlarmCheckModal from "@/components/Habit/habitManage/AlarmCheckModal/AlarmCheckModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -17,7 +17,7 @@ import {
 	habitMenuBoxStyle,
 	notiMenuBoxStyle,
 	quitButtonStyle,
-} from "@/components/Home/habitManage/HabitManage.style";
+} from "@/components/Habit/habitManage/HabitManage.style";
 
 function HabitManage() {
 	const dispatch = useAppDispatch();
