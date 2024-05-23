@@ -6,13 +6,14 @@ import Calender from "@/components/Habit/Landing/Calendar/Calender";
 import HabitHelp from "@/components/Habit/Landing/HabitHelp";
 import Habits from "@/components/Habit/Landing/HabitList/HabitList";
 import Profile from "@/components/Habit/Landing/Profile/Profile";
-import { DateInfo } from "@/types/homeTypes";
 
 import { daysOfTheWeek, currentDate, msPerDay } from "@/constants/homeConstants";
 
+import { convertTimeGap } from "@/utils/homeUtils";
+
 import { mainBoxStyle, mainTopBoxStyle } from "@/pages/HabitPage/HabitPage.style";
 
-import { convertTimeGap } from "@/utils/homeUtils";
+import type { DateInfo } from "@/types/homeTypes";
 
 const HabitPage = () => {
 	const { year, month, date, day } = currentDate;

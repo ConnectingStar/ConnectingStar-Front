@@ -21,18 +21,11 @@ export const profileBoxStyle = css`
 	}
 `;
 
-export const profileTextBoxStyle = css`
-	display: flex;
-	flex-direction: column;
+export const identityTextStyle = css`
+	${theme.font.body_c_bold};
+	color: ${theme.color.main_blue};
+`;
 
-	& > span {
-		&:first-of-type {
-			${theme.font.body_c_bold};
-			color: ${theme.color.main_blue};
-		}
-
-		&:last-of-type {
-			${theme.font.head_c}
-		}
-	}
+export const nicknameTextStyle = css`
+	${theme.font.head_c}
 `;

@@ -74,11 +74,7 @@
               "group": "type",
               "position": "before"
             },
-            {
-              "pattern": "@/pages/**/*",
-              "group": "type",
-              "position": "before"
-            },
+            
             {
               "pattern": "@/styles/**/*",
               "group": "type",
@@ -86,6 +82,11 @@
             },
             {
               "pattern": "@/utils/**/*",
+              "group": "type",
+              "position": "before"
+            },
+            {
+              "pattern": "@/pages/**/*",
               "group": "type",
               "position": "before"
             },
