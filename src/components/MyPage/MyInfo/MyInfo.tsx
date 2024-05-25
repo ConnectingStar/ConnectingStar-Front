@@ -95,7 +95,9 @@ const MyInfo = () => {
 			{modal === modalType.SELECT_AGERANGETYPE && (
 				<SelectAgeModal prevAge={generateAgeType(userData.ageRangeType)} />
 			)}
-			{modal === modalType.SELECT_IDENTITY && <SelectIdentityModal />}
+			{modal === modalType.SELECT_IDENTITY && (
+				<SelectIdentityModal prevIdentity={userData.identity} />
+			)}
 			{modal === modalType.LOGOUT && <LogoutModal />}
 		</div>
 	);
