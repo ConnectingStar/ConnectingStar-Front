@@ -2,9 +2,9 @@ import Slider from "react-slick";
 
 import { adviceImages } from "@/constants/homeConstants";
 
-import { advicesWrapperStyle } from "@/components/Habit/Landing/Advices/Advices.style";
+import { advicesWrapperStyle } from "@/components/Habit/HabitAdviceBanner/HabitAdviceBanner.style";
 
-function Advices() {
+function HabitAdviceBanner() {
 	const settings = {
 		dots: true,
 		infinite: true,
@@ -29,4 +29,4 @@ function Advices() {
 	);
 }
 
-export default Advices;
+export default HabitAdviceBanner;

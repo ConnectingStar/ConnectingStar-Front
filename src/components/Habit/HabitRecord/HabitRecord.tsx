@@ -3,7 +3,7 @@ import { useState, ChangeEvent, useEffect } from "react";
 import ExclamationMarkIcon from "@/assets/icon/ic-exclamation-mark.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
-import StarPrizeModal from "@/components/Habit/Landing/Modal/StarPrizeModal/StarPrizeModal";
+import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";

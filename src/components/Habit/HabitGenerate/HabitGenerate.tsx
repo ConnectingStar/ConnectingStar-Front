@@ -9,7 +9,7 @@ import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import HabitGenerateConditions from "@/components/Habit/HabitGenerate/habitGenerateConditions";
 import HabitTip from "@/components/Habit/HabitGenerate/HabitTip/HabitTip";
-import StarPrizeModal from "@/components/Habit/Landing/Modal/StarPrizeModal/StarPrizeModal";
+import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";

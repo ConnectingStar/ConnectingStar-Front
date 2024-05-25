@@ -15,7 +15,7 @@ import {
 	containerStyle,
 	imageWrapperStyle,
 	prizeCommentStyle,
-} from "@/components/Habit/Landing/Modal/StarPrizeModal/StarPrizeModal.style";
+} from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal.style";
 
 interface StarPrizeModalProps {
 	isHabitStart?: boolean;
