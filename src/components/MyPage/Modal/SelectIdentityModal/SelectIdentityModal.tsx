@@ -13,20 +13,24 @@ import {
 
 const identityButtonData = [
 	{
+		text: "건강한",
+	},
+	{
 		text: "매일 성장하는",
 	},
 	{
 		text: "스스로를 믿는",
 	},
-	{
-		text: "건강한",
-	},
 ];
 
-const SelectIdentityModal = () => {
+interface SelectIdentityModalProps {
+	prevIdentity: string;
+}
+
+const SelectIdentityModal = ({ prevIdentity }: SelectIdentityModalProps) => {
 	const dispatch = useAppDispatch();
 
-	const [identityText, setIdentityText] = useState("매일 성장하는");
+	const [identityText, setIdentityText] = useState(prevIdentity);
 
 	const handleCheckClick = () => {
 		dispatch(closeModal());
