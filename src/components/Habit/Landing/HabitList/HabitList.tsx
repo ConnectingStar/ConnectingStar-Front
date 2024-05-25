@@ -3,8 +3,8 @@ import { useState } from "react";
 import HabitAddIcon from "@/assets/icon/ic-habit-add.svg?react";
 
 import HabitBox from "@/components/Habit/Landing/HabitList/HabitBox";
-import HabitCheckModal from "@/components/Habit/Landing/Modal/HabitCheckModal";
-import HabitModifyModal from "@/components/Habit/Landing/Modal/HabitModifyModal";
+import HabitCheckModal from "@/components/Habit/Modal/HabitCheckModal";
+import HabitModifyModal from "@/components/Habit/Modal/HabitModifyModal";
 
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
