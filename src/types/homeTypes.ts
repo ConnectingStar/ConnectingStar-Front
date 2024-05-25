@@ -5,9 +5,3 @@ export type DateInfo = {
 	day: string;
 	isPlanned: boolean;
 };
-
-export type CalenderProps = {
-	setSelectedDate: React.Dispatch<React.SetStateAction<DateInfo>>;
-	selectedDate: DateInfo;
-	timeGap: string;
-};

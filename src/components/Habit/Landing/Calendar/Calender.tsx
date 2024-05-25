@@ -4,7 +4,7 @@ import { daysOfTheWeek, currentDate } from "@/constants/homeConstants";
 
 import { isNextDates, renderDates } from "@/utils/homeUtils";
 
-import type { DateInfo, CalenderProps } from "@/types/homeTypes";
+import type { DateInfo } from "@/types/homeTypes";
 
 import {
 	layoutStyle,
@@ -13,10 +13,17 @@ import {
 	dayBoxStyle,
 } from "@/components/Habit/Landing/Calendar/Calender.style";
 
-function Calender({ selectedDate, setSelectedDate, timeGap }: CalenderProps) {
+interface CalenderProps {
+	selectedDate: DateInfo;
+	handleSelectedDate: (date: DateInfo) => void;
+	timeGap: string;
+}
+
+function Calender({ selectedDate, handleSelectedDate, timeGap }: CalenderProps) {
 	const containerRef = useRef<HTMLDivElement | null>(null);
 
 	const { year, month, date, day } = currentDate;
+
 	const centerDate = {
 		year: year,
 		month: month + 1,
@@ -88,7 +95,7 @@ function Calender({ selectedDate, setSelectedDate, timeGap }: CalenderProps) {
 							<div
 								key={`${year}.${month}.${date}`}
 								css={dayBoxStyle(isSelected, isPlanned, isNextDate)}
-								onClick={() => setSelectedDate(dateEl)}
+								onClick={() => handleSelectedDate(dateEl)}
 							>
 								<span>{dateEl.day}</span>
 								<span>
