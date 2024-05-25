@@ -28,10 +28,14 @@ const HabitPage = () => {
 
 	const [timeGap, setTimeGap] = useState<string>("오늘");
 
+	const handleSelectedDate = (date: DateInfo) => {
+		setSelectedDate(date);
+	};
+
 	useEffect(() => {
-		const From: Date = new Date(year, month, date);
-		const To: Date = new Date(`${selectedDate.year}.${selectedDate.month}.${selectedDate.date}`);
-		const timeGapInMs: number = From.getTime() - To.getTime();
+		const From = new Date(year, month, date);
+		const To = new Date(`${selectedDate.year}.${selectedDate.month}.${selectedDate.date}`);
+		const timeGapInMs = From.getTime() - To.getTime();
 		const dateGap = Math.floor(timeGapInMs / msPerDay);
 
 		setTimeGap(convertTimeGap(dateGap));
@@ -45,7 +49,11 @@ const HabitPage = () => {
 					<HabitGuideBanner />
 					<HabitAdviceBanner />
 				</div>
-				<Calender setSelectedDate={setSelectedDate} selectedDate={selectedDate} timeGap={timeGap} />
+				<Calender
+					handleSelectedDate={handleSelectedDate}
+					selectedDate={selectedDate}
+					timeGap={timeGap}
+				/>
 				<Habits selectedDate={selectedDate} />
 			</main>
 			<Gnb />
