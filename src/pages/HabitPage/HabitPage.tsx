@@ -7,6 +7,9 @@ import Calender from "@/components/Habit/Landing/Calendar/Calender";
 import Habits from "@/components/Habit/Landing/HabitList/HabitList";
 import Profile from "@/components/Habit/Profile/Profile";
 
+import { getProgressHabitList } from "@/api/habit/habitThunk";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+
 import { daysOfTheWeek, currentDate, msPerDay } from "@/constants/homeConstants";
 
 import { convertTimeGap } from "@/utils/homeUtils";
@@ -16,6 +19,12 @@ import { mainBoxStyle, mainTopBoxStyle } from "@/pages/HabitPage/HabitPage.style
 import type { DateInfo } from "@/types/homeTypes";
 
 const HabitPage = () => {
+	const dispatch = useAppDispatch();
+
+	const { progressHabitList } = useAppSelector((state) => state.habit);
+
+	console.log(progressHabitList);
+
 	const { year, month, date, day } = currentDate;
 
 	const [selectedDate, setSelectedDate] = useState<DateInfo>({
@@ -40,6 +49,10 @@ const HabitPage = () => {
 
 		setTimeGap(convertTimeGap(dateGap));
 	}, [selectedDate]);
+
+	useEffect(() => {
+		dispatch(getProgressHabitList());
+	}, []);
 
 	return (
 		<>

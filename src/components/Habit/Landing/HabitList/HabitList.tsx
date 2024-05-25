@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import HabitAddIcon from "@/assets/icon/ic-habit-add.svg?react";
 
@@ -26,6 +27,8 @@ function HabitList({ selectedDate }: { selectedDate: DateInfo }) {
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const { HABIT_CHECK_MODAL, HABIT_MODIFY_MODAL } = modalType;
+
+	const navigate = useNavigate();
 
 	// api 연결 후 해당 날짜로 api 호출
 	const handelHabitCheck = (text: string) => {
@@ -55,7 +58,7 @@ function HabitList({ selectedDate }: { selectedDate: DateInfo }) {
 				/>
 			))}
 
-			<div css={habitArticleStyle("add")}>
+			<div css={habitArticleStyle("add")} onClick={() => navigate("/habit-generate")}>
 				<HabitAddIcon />
 			</div>
 
