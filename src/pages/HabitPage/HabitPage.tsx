@@ -7,7 +7,7 @@ import Calender from "@/components/Habit/Landing/Calendar/Calender";
 import Habits from "@/components/Habit/Landing/HabitList/HabitList";
 import Profile from "@/components/Habit/Profile/Profile";
 
-import { getProgressHabitList } from "@/api/habit/habitThunk";
+import { getProgressHabitList, getHabitHistoryList } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
 import { daysOfTheWeek, currentDate, msPerDay } from "@/constants/homeConstants";
@@ -21,9 +21,10 @@ import type { DateInfo } from "@/types/homeTypes";
 const HabitPage = () => {
 	const dispatch = useAppDispatch();
 
-	const { progressHabitList } = useAppSelector((state) => state.habit);
+	const { progressHabitList, habitHistoryList } = useAppSelector((state) => state.habit);
 
 	console.log(progressHabitList);
+	console.log(habitHistoryList);
 
 	const { year, month, date, day } = currentDate;
 
@@ -52,6 +53,7 @@ const HabitPage = () => {
 
 	useEffect(() => {
 		dispatch(getProgressHabitList());
+		dispatch(getHabitHistoryList({ runHabitId: 38, increase: true, isRest: false }));
 	}, []);
 
 	return (
