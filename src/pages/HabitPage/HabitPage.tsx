@@ -57,8 +57,8 @@ const HabitPage = () => {
 	return (
 		<>
 			<main css={mainBoxStyle}>
+				<Profile />
 				<div css={mainTopBoxStyle}>
-					<Profile />
 					<HabitGuideBanner />
 					<HabitAdviceBanner />
 				</div>

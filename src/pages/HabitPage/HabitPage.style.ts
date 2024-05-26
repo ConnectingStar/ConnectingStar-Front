@@ -7,10 +7,12 @@ export const mainBoxStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	position: relative;
 `;
 
 export const mainTopBoxStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
+	padding-top: 3.25rem;
 `;

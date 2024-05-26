@@ -6,7 +6,10 @@ export const layoutStyle = css`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 19.5rem;
 	height: 3.5rem;
+	position: fixed;
+	background-color: ${theme.color.white};
 `;
 
 export const profileBoxStyle = css`
