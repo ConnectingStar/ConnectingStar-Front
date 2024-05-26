@@ -5,13 +5,13 @@ import type { HabitRequestType } from "@/types/habit";
 export const useHabitForm = () => {
 	const [habitRequest, setHabitRequest] = useState({
 		identity: "",
-		runTime: { noon: "오전", hour: "10", minute: "00" },
+		runTime: { noon: "", hour: "", minute: "" },
 		place: "",
 		behavior: "",
 		behaviorValue: 0,
 		behaviorUnit: "",
-		firstAlert: { noon: "오전", hour: "09", minute: "50" },
-		secondAlert: { noon: "오전", hour: "10", minute: "10" },
+		firstAlert: { noon: "", hour: "", minute: "" },
+		secondAlert: { noon: "", hour: "", minute: "" },
 	});
 
 	const updateInputValue = useCallback(

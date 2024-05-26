@@ -12,6 +12,8 @@ import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/time";
 
 import { adjustTime } from "@/utils/adjustTime";
 
+import type { HabitRequestType } from "@/types/habit";
+
 import {
 	footerBtnBoxStyle,
 	layoutStyle,
@@ -22,9 +24,13 @@ interface selectTimeModalType {
 	title?: string;
 	progress?: number;
 	addprogress?: () => void;
+	updateInputValue?: <Key extends keyof HabitRequestType>(
+		key: Key,
+		value: HabitRequestType[Key],
+	) => void;
 }
 
-function SelectTimeModal({ title, progress, addprogress }: selectTimeModalType) {
+function SelectTimeModal({ title, progress, addprogress, updateInputValue }: selectTimeModalType) {
 	const dispatch = useAppDispatch();
 
 	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
@@ -57,6 +63,8 @@ function SelectTimeModal({ title, progress, addprogress }: selectTimeModalType) 
 			dispatch(updateHabitUserData({ secondAlert: addZeroTime }));
 
 		dispatch(closeModal());
+
+		updateInputValue && updateInputValue("runTime", addZeroTime);
 	};
 
 	return (
