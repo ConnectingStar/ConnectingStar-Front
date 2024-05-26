@@ -1,16 +1,16 @@
 import Header from "@/components/common/Header/Header";
-import HabitGenerate from "@/components/Habit/HabitGenerate/HabitGenerate";
+import CreateHabit from "@/components/Habit/CreateHabit/CreateHabit";
 
-function HabitGeneratePage() {
+const CreateHabitPage = () => {
 	return (
 		<>
 			<Header>
 				<Header.PrevButton />
 				<Header.Title>습관 약속 만들기</Header.Title>
 			</Header>
-			<HabitGenerate />
+			<CreateHabit />
 		</>
 	);
-}
+};
 
-export default HabitGeneratePage;
+export default CreateHabitPage;
