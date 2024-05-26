@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getProgressHabitList } from "@/api/habit//habitThunk";
+import { getHabitHistoryList, getProgressHabitList } from "@/api/habit//habitThunk";
 
 const initialState = {
-	progressHabitList: "",
+	progressHabitList: [],
+	habitHistoryList: [],
 };
 
 const habitSlice = createSlice({
@@ -11,10 +12,13 @@ const habitSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers(builder) {
-		builder.addCase(getProgressHabitList.fulfilled, (state, action) => {
-			state.progressHabitList = action.payload.list;
-			console.log(action.payload);
-		});
+		builder
+			.addCase(getProgressHabitList.fulfilled, (state, action) => {
+				state.progressHabitList = action.payload.list;
+			})
+			.addCase(getHabitHistoryList.fulfilled, (state, action) => {
+				state.habitHistoryList = action.payload.list;
+			});
 	},
 });
 
