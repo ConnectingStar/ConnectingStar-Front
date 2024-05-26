@@ -4,11 +4,7 @@ import { axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-interface HabitHistoryListRequest {
-	runHabitId: number;
-	increase: boolean;
-	isRest: boolean;
-}
+import type { HabitHistoryListRequest } from "@/types/habit";
 
 export const getProgressHabitList = createAsyncThunk(
 	"habit/getProgressHabitList",
