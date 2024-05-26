@@ -10,6 +10,7 @@ export const layoutStyle = css`
 	height: 3.5rem;
 	position: fixed;
 	background-color: ${theme.color.white};
+	z-index: ${theme.zIndex.overlayBottom};
 `;
 
 export const profileBoxStyle = css`

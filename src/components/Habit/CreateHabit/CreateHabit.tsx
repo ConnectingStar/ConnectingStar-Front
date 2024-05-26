@@ -7,8 +7,8 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
-import HabitGenerateConditions from "@/components/Habit/HabitGenerate/habitGenerateConditions";
-import HabitTip from "@/components/Habit/HabitGenerate/HabitTip/HabitTip";
+import HabitGenerateConditions from "@/components/Habit/CreateHabit/habitGenerateConditions";
+import HabitTip from "@/components/Habit/CreateHabit/HabitTip/HabitTip";
 import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
@@ -21,9 +21,9 @@ import {
 	layoutStyle,
 	profileBoxStyle,
 	selectBoxStyle,
-} from "@/components/Habit/HabitGenerate/HabitGenerate.style";
+} from "@/components/Habit/CreateHabit/CreateHabit.style";
 
-function HabitGenerate() {
+const CreateHabit = () => {
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
 
@@ -100,6 +100,6 @@ function HabitGenerate() {
 			)}
 		</main>
 	);
-}
+};
 
-export default HabitGenerate;
+export default CreateHabit;

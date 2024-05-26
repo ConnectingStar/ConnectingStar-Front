@@ -2,11 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContainer";
 
+import { PATH } from "@/constants/path";
+
 import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
+import CreateHabitPage from "@/pages/CreateHabitPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitDetailPage from "@/pages/HabitDetailPage";
-import HabitGeneratePage from "@/pages/HabitGeneratePage";
 import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
 import HabitPage from "@/pages/HabitPage/HabitPage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
@@ -46,7 +48,7 @@ const App = () => {
 					<Route path="/onboarding" element={<OnboardingPage />} />
 					<Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
 					<Route path="/habit-record" element={<HabitRecordPage />} />
-					<Route path="/habit-generate" element={<HabitGeneratePage />} />
+					<Route path={PATH.CREATE_HABIT} element={<CreateHabitPage />} />
 					<Route path="habit-guide" element={<HabitGuidePage />} />
 				</Routes>
 			</BrowserRouter>

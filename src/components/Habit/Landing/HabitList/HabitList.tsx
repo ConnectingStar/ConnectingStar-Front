@@ -12,6 +12,7 @@ import { openModal } from "@/api/modal/modalSlice";
 
 import { homeHabitList } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
+import { PATH } from "@/constants/path";
 
 import type { DateInfo } from "@/types/homeTypes";
 
@@ -58,7 +59,7 @@ function HabitList({ selectedDate }: { selectedDate: DateInfo }) {
 				/>
 			))}
 
-			<div css={habitArticleStyle("add")} onClick={() => navigate("/habit-generate")}>
+			<div css={habitArticleStyle("add")} onClick={() => navigate(PATH.CREATE_HABIT)}>
 				<HabitAddIcon />
 			</div>
 
