@@ -32,5 +32,6 @@ export const layoutStyle = css`
 	border-radius: 15px;
 	background-color: ${theme.color.bg};
 	padding: 1rem;
+	margin-top: 0.5rem;
 	${theme.font.body_b}
 `;

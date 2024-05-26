@@ -61,6 +61,8 @@ export const theme = {
 		main_blue: "#0176F9",
 		main_light_blue: "#E6F1FE",
 		main_yellow: "#FFE276",
+		white: "#ffffff",
+		black: "#000000",
 
 		// 줄, 배경
 		line: "#F0F0F6",
