@@ -17,20 +17,30 @@ import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { locationModalData } from "@/constants/locationModalConstants";
 
-interface locationModalType {
+import type { HabitRequestType } from "@/types/habit";
+
+interface LocationModalType {
 	progress?: number;
 	addprogress?: () => void;
+	updateInputValue?: <Key extends keyof HabitRequestType>(
+		key: Key,
+		value: HabitRequestType[Key],
+	) => void;
 }
 
-function LocationModal({ progress, addprogress }: locationModalType) {
+function LocationModal({ progress, addprogress, updateInputValue }: LocationModalType) {
+	const dispatch = useAppDispatch();
+
 	const [place, setPlace] = useState("");
 	const [isFocus, setIsFocus] = useState(false);
-	const dispatch = useAppDispatch();
+
 	const confirmSelectedTag = () => {
-		if (addprogress === undefined) return;
-		if (progress === 5) addprogress();
+		if (progress === 5) addprogress && addprogress();
 
 		dispatch(updateHabitUserData({ place }));
+
+		updateInputValue && updateInputValue("place", place);
+
 		dispatch(closeModal());
 	};
 
