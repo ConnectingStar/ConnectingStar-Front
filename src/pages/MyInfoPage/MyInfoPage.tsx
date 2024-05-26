@@ -16,6 +16,8 @@ import { getUserConstellationList, getUserInfo } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 
+import { generateGenderType, generateAgeType } from "@/utils/generateRangeType";
+
 import {
 	layoutStyle,
 	characterBoxStyle,
@@ -24,8 +26,6 @@ import {
 	authButtonBoxStyle,
 	mainBoxStyle,
 } from "@/pages/MyInfoPage/MyInfoPage.style";
-
-import { generateGenderType, generateAgeType } from "@/utils/generateRangeType";
 
 const MyInfoPage = () => {
 	const dispatch = useAppDispatch();
