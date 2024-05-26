@@ -120,40 +120,6 @@ export const habitGenerateConditions = [
 	},
 ];
 
-export const identity = {
-	title: "어떤 사람이 되고 싶으세요?",
-	tags: [
-		"건강한",
-		"박식한",
-		"생산적인",
-		"스스로를 믿는",
-		"매일 발전하는",
-		"지혜로운",
-		"유연한",
-		"너그러운",
-		"글로 성장하는",
-		"스스로를 통제하는",
-	],
-};
-
-export const habit = {
-	title: "어떤 습관을 만들어 볼까요?",
-	tags: [
-		"러닝하기",
-		"헬스하기",
-		"산책하기",
-		"명상하기",
-		"기도하기",
-		"자기확인",
-		"책 읽기",
-		"신문 보기",
-		"공부하기",
-		"블로깅",
-		"일기작성",
-		"소비 기록",
-	],
-};
-
 // habit-record
 export const habitRecordConditions = [
 	{

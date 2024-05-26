@@ -59,7 +59,7 @@ const MyInfoPage = () => {
 						<MenuButton
 							title="대표 정체성"
 							content={userData.identity}
-							onClick={() => dispatch(openModal(modalType.SELECT_IDENTITY))}
+							onClick={() => dispatch(openModal(modalType.SELECT_MAIN_IDENTITY))}
 						/>
 						<MenuButton
 							title="닉네임"
@@ -101,7 +101,7 @@ const MyInfoPage = () => {
 				{modal === modalType.SELECT_AGERANGETYPE && (
 					<SelectAgeModal prevAge={generateAgeType(userData.ageRangeType)} />
 				)}
-				{modal === modalType.SELECT_IDENTITY && (
+				{modal === modalType.SELECT_MAIN_IDENTITY && (
 					<SelectIdentityModal prevIdentity={userData.identity} />
 				)}
 				{modal === modalType.LOGOUT && <LogoutModal />}

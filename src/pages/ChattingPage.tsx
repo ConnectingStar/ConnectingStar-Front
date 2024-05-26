@@ -14,7 +14,7 @@ import { useAppSelector } from "@/api/hooks";
 
 import { createChatData } from "@/constants/chatData";
 import { modalType } from "@/constants/modalConstants";
-import { TagsData } from "@/constants/selectTagConstants";
+import { SELECT_TAG_DATA } from "@/constants/modalConstants";
 
 import { theme } from "@/styles/theme";
 
@@ -53,7 +53,7 @@ function ChattingPage() {
 				{modal === modalType.SELECT_BEHAVIOR && (
 					<SelectTagModal
 						title="어떤 습관을 만들어 볼까요?"
-						tags={TagsData.habitTags}
+						tags={SELECT_TAG_DATA.habitTags}
 						progress={progress}
 						addprogress={() => setProgress((prev) => prev + 1)}
 					/>
@@ -61,7 +61,7 @@ function ChattingPage() {
 				{modal === modalType.SELECT_IDENTITY && (
 					<SelectTagModal
 						title="어떤 사람이 되고 싶으세요?"
-						tags={TagsData.identityTags}
+						tags={SELECT_TAG_DATA.identityTags}
 						progress={progress}
 						addprogress={() => setProgress((prev) => prev + 1)}
 					/>
