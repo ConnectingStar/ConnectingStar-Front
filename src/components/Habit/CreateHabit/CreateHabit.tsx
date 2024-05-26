@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 import CharacterExampleImage from "@/assets/image/img-profile-example.png";
 
 import BehaviorModal from "@/components/Chatting/BehaviorModal";
@@ -9,6 +8,8 @@ import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/L
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 // import HabitGenerateConditions from "@/components/Habit/CreateHabit/habitGenerateConditions";
+import TimeInput from "@/components/Habit/CreateHabit/HabitForm//TimeInput";
+import IdentityInput from "@/components/Habit/CreateHabit/HabitForm/IdentityInput";
 import HabitTip from "@/components/Habit/CreateHabit/HabitTip/HabitTip";
 import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
@@ -28,8 +29,6 @@ import {
 	// selectListBoxStyle,
 	// selectBoxStyle,
 	inputListStyle,
-	inputBoxStyle,
-	inputStyle,
 } from "@/components/Habit/CreateHabit/CreateHabit.style";
 
 const CreateHabit = () => {
@@ -40,7 +39,7 @@ const CreateHabit = () => {
 
 	const { habitRequest, updateInputValue } = useHabitForm();
 
-	console.log(habitRequest.identity);
+	console.log(habitRequest.runTime);
 
 	// const updateInputValue;
 
@@ -73,7 +72,15 @@ const CreateHabit = () => {
 			</div>
 
 			<div css={inputListStyle}>
-				<div css={inputBoxStyle}>
+				<IdentityInput
+					inputData={habitRequest.identity}
+					handleModalOpen={() => dispatch(openModal(modalType.SELECT_IDENTITY))}
+				/>
+				<TimeInput
+					inputData={habitRequest.runTime}
+					handleModalOpen={() => dispatch(openModal(modalType.SELECT_TIME("RUNTIME")))}
+				/>
+				{/* <div css={inputBoxStyle}>
 					<span>정체성</span>
 					<div css={inputStyle} onClick={() => dispatch(openModal(modalType.SELECT_IDENTITY))}>
 						<span>
@@ -81,7 +88,7 @@ const CreateHabit = () => {
 						</span>
 						<DownArrowIcon />
 					</div>
-				</div>
+				</div> */}
 			</div>
 
 			{/* <ul css={selectListBoxStyle}>
@@ -127,7 +134,7 @@ const CreateHabit = () => {
 				/>
 			)}
 			{modal === modalType.SELECT_TIME("RUNTIME") && (
-				<SelectTimeModal title="시간을 선택해 주세요" />
+				<SelectTimeModal title="시간을 선택해 주세요" updateInputValue={updateInputValue} />
 			)}
 			{modal == modalType.SELECT_TIME("FIRSTALERT") && (
 				<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
