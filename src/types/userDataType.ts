@@ -3,7 +3,7 @@ import type { ConstellationList } from "@/types/user";
 export interface userType {
 	userData: onboardingUserDataType;
 	isLoading: boolean;
-	isOnboarding: boolean;
+	isOnboarding: boolean | null;
 	constellation: ConstellationList[];
 	userIdentityList: { identity: string }[];
 }
