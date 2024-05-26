@@ -1,5 +1,6 @@
-// import { useState } from "react";
+import { useEffect } from "react";
 
+import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 import CharacterExampleImage from "@/assets/image/img-profile-example.png";
 
 import BehaviorModal from "@/components/Chatting/BehaviorModal";
@@ -7,25 +8,41 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
-import HabitGenerateConditions from "@/components/Habit/CreateHabit/habitGenerateConditions";
+// import HabitGenerateConditions from "@/components/Habit/CreateHabit/habitGenerateConditions";
 import HabitTip from "@/components/Habit/CreateHabit/HabitTip/HabitTip";
 import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
+import { getUserInfo } from "@/api/user/userThunk";
 
-import { habitGenerateConditions, identity, habit } from "@/constants/homeConstants";
+// import { habitGenerateConditions } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
+import { SELECT_TAG_DATA } from "@/constants/modalConstants";
+
+import { useHabitForm } from "@/hooks/useHabitForm";
 
 import {
 	layoutStyle,
 	profileBoxStyle,
-	selectBoxStyle,
+	// selectListBoxStyle,
+	// selectBoxStyle,
+	inputListStyle,
+	inputBoxStyle,
+	inputStyle,
 } from "@/components/Habit/CreateHabit/CreateHabit.style";
 
 const CreateHabit = () => {
 	const dispatch = useAppDispatch();
+
 	const { modal } = useAppSelector((state) => state.modal);
+	const { userData } = useAppSelector((state) => state.user);
+
+	const { habitRequest, updateInputValue } = useHabitForm();
+
+	console.log(habitRequest.identity);
+
+	// const updateInputValue;
 
 	// const [modalTitle, setModalTitle] = useState("시간을 선택해 주세요");
 
@@ -36,13 +53,17 @@ const CreateHabit = () => {
 	// 	}
 	// };
 
+	useEffect(() => {
+		dispatch(getUserInfo());
+	}, []);
+
 	return (
 		<main css={layoutStyle}>
 			<div>
 				<div css={profileBoxStyle}>
 					<img src={CharacterExampleImage} alt="profile" />
 					<div>
-						<p>반가워요 닉네임님!</p>
+						<p>반가워요 {userData.nickname}님!</p>
 						<p>이번엔 어떤 습관을 만들어볼까요?</p>
 						<p>그래서 어떤 사람이 되고 싶으신가요?</p>
 					</div>
@@ -51,7 +72,31 @@ const CreateHabit = () => {
 				<HabitTip />
 			</div>
 
-			<ul css={selectBoxStyle}>
+			<div css={inputListStyle}>
+				<div css={inputBoxStyle}>
+					<span>정체성</span>
+					<div css={inputStyle} onClick={() => dispatch(openModal(modalType.SELECT_IDENTITY))}>
+						<span>
+							{habitRequest.identity === "" ? "정체성을 선택해주세요." : habitRequest.identity}
+						</span>
+						<DownArrowIcon />
+					</div>
+				</div>
+			</div>
+
+			{/* <ul css={selectListBoxStyle}>
+				<li>
+					<div
+						onClick={() => handleClick(modalName, placeholder)}
+						className={placeholderSecond ? "split" : "sticked"}
+					>
+						<span>{placeholder}</span>
+						{placeholderSecond ? <span> {placeholderSecond}</span> : <DownArrowIcon />}
+					</div>
+				</li>
+			</ul> */}
+
+			{/* <ul css={selectBoxStyle}>
 				{habitGenerateConditions.map((condition) => {
 					const { subtitle, explanation, placeholder, placeholderSecond, modalName } = condition;
 					return (
@@ -66,7 +111,7 @@ const CreateHabit = () => {
 						/>
 					);
 				})}
-			</ul>
+			</ul> */}
 
 			<FooterBtn
 				text="좋아, 이대로 만들게"
@@ -75,7 +120,11 @@ const CreateHabit = () => {
 			/>
 
 			{modal === modalType.SELECT_IDENTITY && (
-				<SelectTagModal title={identity.title} tags={identity.tags} />
+				<SelectTagModal
+					title="어떤 사람이 되고 싶으세요?"
+					tags={SELECT_TAG_DATA.identityTags}
+					updateInputValue={updateInputValue}
+				/>
 			)}
 			{modal === modalType.SELECT_TIME("RUNTIME") && (
 				<SelectTimeModal title="시간을 선택해 주세요" />
@@ -88,7 +137,7 @@ const CreateHabit = () => {
 			)}
 			{modal === modalType.SELECT_PLACE && <LocationModal />}
 			{modal === modalType.SELECT_REASON && (
-				<SelectTagModal title={habit.title} tags={habit.tags} />
+				<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={SELECT_TAG_DATA.habitTags} />
 			)}
 			{modal === modalType.SELECT_BEHAVIOR && <BehaviorModal />}
 

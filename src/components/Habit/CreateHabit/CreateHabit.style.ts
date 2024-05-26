@@ -37,7 +37,44 @@ export const profileBoxStyle = css`
 	}
 `;
 
+export const inputListStyle = css`
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+`;
+
+export const inputBoxStyle = css`
+	${theme.font.body_a};
+
+	& > span {
+		${theme.font.head_c};
+		color: ${theme.color.font_gray};
+	}
+`;
+
+export const inputStyle = css`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 3.4375rem;
+	padding: 1rem;
+	border-radius: 15px;
+	color: ${theme.color.button_deactivated};
+	background-color: ${theme.color.bg};
+	margin-top: 0.75rem;
+`;
+
 export const selectBoxStyle = css`
+	display: flex;
+	align-items: center;
+	height: 3.4375rem;
+	padding: 1rem;
+	border-radius: 15px;
+	color: ${theme.color.button_deactivated};
+	background-color: ${theme.color.bg};
+`;
+
+export const selectListBoxStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
