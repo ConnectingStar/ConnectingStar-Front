@@ -11,7 +11,7 @@ import {
 	titleBoxStyle,
 	carouselBoxStyle,
 	dayBoxStyle,
-} from "@/components/Habit/Landing/Calendar/Calender.style";
+} from "@/components/Habit/Calendar/Calender.style";
 
 interface CalenderProps {
 	selectedDate: DateInfo;

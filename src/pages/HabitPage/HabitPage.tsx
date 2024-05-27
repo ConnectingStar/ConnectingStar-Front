@@ -1,20 +1,34 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import HabitAddIcon from "@/assets/icon/ic-habit-add.svg?react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
+import Calender from "@/components/Habit/Calendar/Calender";
 import HabitAdviceBanner from "@/components/Habit/HabitAdviceBanner/HabitAdviceBanner";
 import HabitGuideBanner from "@/components/Habit/HabitGuideBanner/HabitGuideBanner";
-import Calender from "@/components/Habit/Landing/Calendar/Calender";
-import Habits from "@/components/Habit/Landing/HabitList/HabitList";
+import HabitBox from "@/components/Habit/HabitList/HabitBox";
+import HabitCheckModal from "@/components/Habit/Modal/HabitCheckModal";
+import HabitModifyModal from "@/components/Habit/Modal/HabitModifyModal";
 import Profile from "@/components/Habit/Profile/Profile";
 
 import { getProgressHabitList, getHabitHistoryList } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
 
 import { daysOfTheWeek, currentDate, msPerDay } from "@/constants/homeConstants";
+import { modalType } from "@/constants/modalConstants";
+import { PATH } from "@/constants/path";
 
+import { generateHabitText } from "@/utils/generateHabitText";
 import { convertTimeGap } from "@/utils/homeUtils";
 
-import { mainBoxStyle, mainTopBoxStyle } from "@/pages/HabitPage/HabitPage.style";
+import {
+	mainBoxStyle,
+	mainTopBoxStyle,
+	habitListBoxStyle,
+} from "@/pages/HabitPage/HabitPage.style";
+import { habitArticleStyle } from "@/pages/HabitPage/HabitPage.style";
 
 import type { DateInfo } from "@/types/homeTypes";
 
@@ -22,6 +36,9 @@ const HabitPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { progressHabitList, habitHistoryList } = useAppSelector((state) => state.habit);
+	const { modal } = useAppSelector((state) => state.modal);
+
+	const navigate = useNavigate();
 
 	console.log(progressHabitList);
 	console.log(habitHistoryList);
@@ -69,7 +86,30 @@ const HabitPage = () => {
 					selectedDate={selectedDate}
 					timeGap={timeGap}
 				/>
-				<Habits selectedDate={selectedDate} />
+				<div css={habitListBoxStyle}>
+					{progressHabitList.map((habitData) => (
+						<HabitBox
+							key={habitData.runHabitId}
+							habitState="progress"
+							text={generateHabitText(
+								habitData.runTime,
+								habitData.place,
+								habitData.behavior,
+								habitData.behaviorValue,
+								habitData.behaviorUnit,
+							)}
+							handleHabitCheck={() => dispatch(openModal(modalType.HABIT_CHECK_MODAL))}
+							handleHabitModify={() => dispatch(openModal(modalType.HABIT_MODIFY_MODAL))}
+						/>
+					))}
+
+					<div css={habitArticleStyle("add")} onClick={() => navigate(PATH.CREATE_HABIT)}>
+						<HabitAddIcon />
+					</div>
+				</div>
+
+				{modal === modalType.HABIT_MODIFY_MODAL && <HabitModifyModal />}
+				{modal === modalType.HABIT_CHECK_MODAL && <HabitCheckModal text="test" />}
 			</main>
 			<Gnb />
 		</>

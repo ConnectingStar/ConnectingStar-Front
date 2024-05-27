@@ -1,3 +1,5 @@
+import type { CommonAlertType } from "@/types/common";
+
 export interface HabitHistoryListRequest {
 	runHabitId: number;
 	increase: boolean;
@@ -13,4 +15,23 @@ export interface HabitRequestType {
 	behaviorUnit: string;
 	firstAlert: { noon: string; hour: string; minute: string };
 	secondAlert: { noon: string; hour: string; minute: string };
+}
+
+export interface HabitInitialStateType {
+	progressHabitList: ProgressHabitListType[];
+	habitHistoryList: [];
+}
+
+interface ProgressHabitListType {
+	behavior: string;
+	behaviorUnit: string;
+	behaviorValue: number;
+	firstAlert: CommonAlertType;
+	identity: string;
+	place: string;
+	runHabitId: number;
+	runTime: CommonAlertType;
+	secondAlert: CommonAlertType;
+	userId: number;
+	userNickname: string;
 }

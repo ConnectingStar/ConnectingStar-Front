@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { getHabitHistoryList, getProgressHabitList } from "@/api/habit//habitThunk";
 
-const initialState = {
+import type { HabitInitialStateType } from "@/types/habit";
+
+const initialState: HabitInitialStateType = {
 	progressHabitList: [],
 	habitHistoryList: [],
 };

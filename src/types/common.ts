@@ -4,3 +4,9 @@ export interface CommonResponseType {
 }
 
 export type DateFormatType = "LINE" | "POINT";
+
+export interface CommonAlertType {
+	noon: string;
+	hour: string;
+	minute: string;
+}
