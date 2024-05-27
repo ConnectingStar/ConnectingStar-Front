@@ -1,4 +1,4 @@
-import { inputStyle, inputUnitBoxStyle } from "@/components/Habit/CreateHabit/CreateHabit.style";
+import { inputStyle, inputUnitBoxStyle } from "@/pages/CreateHabitPage/CreateHabitPage.style";
 
 interface BehaviorValueInputProps {
 	inputValueData: string;

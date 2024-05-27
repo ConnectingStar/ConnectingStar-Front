@@ -22,6 +22,22 @@ export const useHabitForm = () => {
 		secondAlert: { noon: "", hour: "", minute: "" },
 	});
 
+	const isEmpty =
+		habitRequest.identity === "" ||
+		habitRequest.runTime.noon === "" ||
+		habitRequest.runTime.hour === "" ||
+		habitRequest.runTime.minute === "" ||
+		habitRequest.place === "" ||
+		habitRequest.behavior === "" ||
+		habitRequest.behaviorValue === "" ||
+		habitRequest.behaviorUnit === "" ||
+		habitRequest.firstAlert.noon === "" ||
+		habitRequest.firstAlert.hour === "" ||
+		habitRequest.firstAlert.minute === "" ||
+		habitRequest.secondAlert.noon === "" ||
+		habitRequest.secondAlert.hour === "" ||
+		habitRequest.secondAlert.minute === "";
+
 	const updateInputValue = useCallback(
 		<Key extends keyof HabitRequestType>(key: Key, value: HabitRequestType[Key]) => {
 			setHabitRequest((prevHabitRequest) => {
@@ -45,5 +61,5 @@ export const useHabitForm = () => {
 		}
 	};
 
-	return { habitRequest, updateInputValue, handleSubmit };
+	return { habitRequest, isEmpty, updateInputValue, handleSubmit };
 };

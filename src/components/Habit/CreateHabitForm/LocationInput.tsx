@@ -1,6 +1,6 @@
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
-import { inputBoxStyle, inputStyle } from "@/components/Habit/CreateHabit/CreateHabit.style";
+import { inputBoxStyle, inputStyle } from "@/pages/CreateHabitPage/CreateHabitPage.style";
 
 interface LocationInputProps {
 	inputData: string;

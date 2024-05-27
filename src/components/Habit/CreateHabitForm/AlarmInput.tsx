@@ -5,7 +5,7 @@ import {
 	inputBoxStyle,
 	inputStyle,
 	inputTitleStyle,
-} from "@/components/Habit/CreateHabit/CreateHabit.style";
+} from "@/pages/CreateHabitPage/CreateHabitPage.style";
 
 interface AlarmInputProps {
 	inputData: { noon: string; hour: string; minute: string };
