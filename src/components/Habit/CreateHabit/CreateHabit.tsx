@@ -39,7 +39,7 @@ const CreateHabit = () => {
 	const { modal } = useAppSelector((state) => state.modal);
 	const { userData } = useAppSelector((state) => state.user);
 
-	const { habitRequest, updateInputValue } = useHabitForm();
+	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm();
 
 	const isEmpty =
 		habitRequest.identity === "" ||
@@ -118,7 +118,7 @@ const CreateHabit = () => {
 				text="좋아, 이대로 만들게"
 				disabled={isEmpty}
 				isPositionStatic
-				handleBtnClick={() => dispatch(openModal(modalType.HABIT_GENERATE))}
+				handleBtnClick={handleSubmit}
 			/>
 
 			{modal === modalType.SELECT_IDENTITY && (
@@ -153,7 +153,6 @@ const CreateHabit = () => {
 					updateInputValue={updateInputValue}
 				/>
 			)}
-
 			{modal === modalType.HABIT_GENERATE && (
 				<StarPrizeModal
 					blueText="시작이 반!"

@@ -1,8 +1,16 @@
 import { useCallback, useState } from "react";
 
+import { createHabit } from "@/api/habit/habitThunk";
+import { useAppDispatch } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
+
+import { modalType } from "@/constants/modalConstants";
+
 import type { HabitRequestType } from "@/types/habit";
 
 export const useHabitForm = () => {
+	const dispatch = useAppDispatch();
+
 	const [habitRequest, setHabitRequest] = useState({
 		identity: "",
 		runTime: { noon: "", hour: "", minute: "" },
@@ -28,5 +36,14 @@ export const useHabitForm = () => {
 		[],
 	);
 
-	return { habitRequest, updateInputValue };
+	const handleSubmit = async () => {
+		try {
+			await dispatch(createHabit(habitRequest)).unwrap();
+			dispatch(openModal(modalType.HABIT_GENERATE));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	return { habitRequest, updateInputValue, handleSubmit };
 };
