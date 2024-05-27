@@ -1,13 +1,8 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-import axios from "axios";
-
-import { login } from "@/api/auth/authSlice";
+import { logIn } from "@/api/auth/authThunk";
 import { useAppDispatch } from "@/api/hooks";
-
-import { END_POINTS } from "@/constants/api";
 
 function KakaoLoginPage() {
 	const dispatch = useAppDispatch();
@@ -18,29 +13,19 @@ function KakaoLoginPage() {
 
 	const authCode = searchParams.get("code");
 
-	const fetchAccessToken = async (authCode: string) => {
+	const handleLogin = async (authCode: string) => {
 		try {
-			const response = await axios.post(
-				END_POINTS.LOGIN(authCode),
-				{},
-				{ withCredentials: true, headers: { "Content-Type": "application/json" } },
-			);
-
-			if (response.status === 200) {
-				dispatch(login());
-
-				navigate("/onboarding?step=create-account");
-			}
+			await dispatch(logIn(authCode)).unwrap();
+			navigate("/onboarding?step=create-account");
 		} catch (error) {
+			console.log(error);
 			navigate("/onboarding?step=oauth-sign-up");
-
-			console.error(error);
 		}
 	};
 
 	useEffect(() => {
 		if (authCode !== null) {
-			fetchAccessToken(authCode);
+			handleLogin(authCode);
 		}
 	}, [authCode]);
 

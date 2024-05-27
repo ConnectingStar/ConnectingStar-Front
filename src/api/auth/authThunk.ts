@@ -32,6 +32,16 @@ export const postFCMToken = createAsyncThunk(
 	},
 );
 
+export const logIn = createAsyncThunk("auth/logIn", async (authCode: string, thunkOptions) => {
+	try {
+		const { data } = await axiosInstance.post(END_POINTS.LOGIN, { socialType: "K", authCode });
+
+		return data;
+	} catch (error) {
+		throw thunkOptions.rejectWithValue(error);
+	}
+});
+
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkOptions) => {
 	try {
 		return await axiosInstance.post(END_POINTS.LOGOUT);
