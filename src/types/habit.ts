@@ -9,7 +9,7 @@ export interface HabitRequestType {
 	runTime: { noon: string; hour: string; minute: string };
 	place: string;
 	behavior: string;
-	behaviorValue: number;
+	behaviorValue: string;
 	behaviorUnit: string;
 	firstAlert: { noon: string; hour: string; minute: string };
 	secondAlert: { noon: string; hour: string; minute: string };

@@ -15,6 +15,8 @@ import LocationInput from "@/components/Habit/CreateHabit/HabitForm/LocationInpu
 import HabitTip from "@/components/Habit/CreateHabit/HabitTip/HabitTip";
 import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
+import BehaviorValueInput from "./HabitForm/BehaviorValueInput";
+
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import { getUserInfo } from "@/api/user/userThunk";
@@ -28,9 +30,8 @@ import { useHabitForm } from "@/hooks/useHabitForm";
 import {
 	layoutStyle,
 	profileBoxStyle,
-	// selectListBoxStyle,
-	// selectBoxStyle,
 	inputListStyle,
+	inputBoxStyle,
 } from "@/components/Habit/CreateHabit/CreateHabit.style";
 
 const CreateHabit = () => {
@@ -41,18 +42,7 @@ const CreateHabit = () => {
 
 	const { habitRequest, updateInputValue } = useHabitForm();
 
-	console.log(habitRequest.behavior);
-
-	// const updateInputValue;
-
-	// const [modalTitle, setModalTitle] = useState("시간을 선택해 주세요");
-
-	// const handleClick = (modalName: string, placeholderText: string) => {
-	// 	dispatch(openModal(modalName));
-	// 	if (modalName === modalType.SELECT_TIME) {
-	// 		setModalTitle(placeholderText);
-	// 	}
-	// };
+	console.log(habitRequest);
 
 	useEffect(() => {
 		dispatch(getUserInfo());
@@ -90,15 +80,14 @@ const CreateHabit = () => {
 					inputData={habitRequest.behavior}
 					handleModalOpen={() => dispatch(openModal(modalType.SELECT_BEHAVIOR))}
 				/>
-				{/* <div css={inputBoxStyle}>
-					<span>정체성</span>
-					<div css={inputStyle} onClick={() => dispatch(openModal(modalType.SELECT_IDENTITY))}>
-						<span>
-							{habitRequest.identity === "" ? "정체성을 선택해주세요." : habitRequest.identity}
-						</span>
-						<DownArrowIcon />
-					</div>
-				</div> */}
+				<div css={inputBoxStyle}>
+					<span>얼마나</span>
+					<BehaviorValueInput
+						inputValueData={habitRequest.behaviorValue}
+						inputUnitData={habitRequest.behaviorUnit}
+						handleModalOpen={() => dispatch(openModal(modalType.SELECT_BEHAVIORUNIT))}
+					/>
+				</div>
 			</div>
 
 			{/* <ul css={selectListBoxStyle}>
@@ -160,7 +149,14 @@ const CreateHabit = () => {
 					updateInputValue={updateInputValue}
 				/>
 			)}
-			{modal === modalType.SELECT_BEHAVIORUNIT && <BehaviorModal />}
+			{modal === modalType.SELECT_BEHAVIORUNIT && (
+				<BehaviorModal
+					behavior={habitRequest.behavior}
+					prevValue={habitRequest.behaviorValue}
+					prevUnit={habitRequest.behaviorUnit}
+					updateInputValue={updateInputValue}
+				/>
+			)}
 
 			{modal === modalType.HABIT_GENERATE && (
 				<StarPrizeModal

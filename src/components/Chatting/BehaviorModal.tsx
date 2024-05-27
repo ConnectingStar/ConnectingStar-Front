@@ -5,29 +5,50 @@ import { css } from "@emotion/react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
-import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { theme } from "@/styles/theme";
 
-interface behaviorModalType {
+import type { HabitRequestType } from "@/types/habit";
+
+interface BehaviorModalProps {
+	behavior: string;
+	prevValue?: string;
+	prevUnit?: string;
 	progress?: number;
 	addprogress?: () => void;
+	updateInputValue?: <Key extends keyof HabitRequestType>(
+		key: Key,
+		value: HabitRequestType[Key],
+	) => void;
 }
 
-function BehaviorModal({ progress, addprogress }: behaviorModalType) {
-	const [behaviorValue, setBehaviorValue] = useState<number>();
-	const [behaviorUnit, setBehaviorUnit] = useState<string>();
+function BehaviorModal({
+	behavior,
+	prevValue,
+	prevUnit,
+	progress,
+	addprogress,
+	updateInputValue,
+}: BehaviorModalProps) {
 	const dispatch = useAppDispatch();
-	const { behavior } = useAppSelector((state) => state.user.userData);
+
+	const [behaviorValue, setBehaviorValue] = useState<string | undefined>(prevValue ?? undefined);
+	const [behaviorUnit, setBehaviorUnit] = useState<string>(prevUnit ?? "");
 
 	const confirmSelectedTag = () => {
-		if (addprogress === undefined) return;
-		if (progress === 6) addprogress();
+		if (progress === 6) addprogress && addprogress();
 
 		if (behaviorUnit && behaviorValue) {
 			dispatch(updateHabitUserData({ behaviorValue, behaviorUnit }));
+
+			if (updateInputValue) {
+				updateInputValue("behaviorValue", behaviorValue);
+				updateInputValue("behaviorUnit", behaviorUnit);
+			}
+
 			dispatch(closeModal());
 		}
 	};
@@ -47,16 +68,14 @@ function BehaviorModal({ progress, addprogress }: behaviorModalType) {
 								type="number"
 								placeholder="숫자 입력"
 								autoFocus
-								onChange={(e) => {
-									setBehaviorValue(Number(e.target.value));
-								}}
+								value={behaviorValue}
+								onChange={(e) => setBehaviorValue(e.target.value)}
 							/>
 							<input
 								type="text"
 								placeholder="단위 입력 (예: 페이지)"
-								onChange={(e) => {
-									setBehaviorUnit(e.target.value);
-								}}
+								value={behaviorUnit}
+								onChange={(e) => setBehaviorUnit(e.target.value)}
 							/>
 						</form>
 					</div>
