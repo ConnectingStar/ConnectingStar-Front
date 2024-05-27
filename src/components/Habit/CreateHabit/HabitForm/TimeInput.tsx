@@ -16,7 +16,7 @@ const TimeInput = ({ inputData, handleModalOpen }: TimeInputProps) => {
 			<div css={inputStyle} onClick={handleModalOpen}>
 				<span>
 					{isEmpty
-						? "시간을 선택해주세요."
+						? "시간을 선택해 주세요"
 						: `${inputData.noon} ${inputData.hour}:${inputData.minute}`}
 				</span>
 				<DownArrowIcon />

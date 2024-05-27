@@ -9,6 +9,7 @@ import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 // import HabitGenerateConditions from "@/components/Habit/CreateHabit/habitGenerateConditions";
 import TimeInput from "@/components/Habit/CreateHabit/HabitForm//TimeInput";
+import BehaviorInput from "@/components/Habit/CreateHabit/HabitForm/BehaviorInput";
 import IdentityInput from "@/components/Habit/CreateHabit/HabitForm/IdentityInput";
 import LocationInput from "@/components/Habit/CreateHabit/HabitForm/LocationInput";
 import HabitTip from "@/components/Habit/CreateHabit/HabitTip/HabitTip";
@@ -40,7 +41,7 @@ const CreateHabit = () => {
 
 	const { habitRequest, updateInputValue } = useHabitForm();
 
-	console.log(habitRequest);
+	console.log(habitRequest.behavior);
 
 	// const updateInputValue;
 
@@ -84,6 +85,10 @@ const CreateHabit = () => {
 				<LocationInput
 					inputData={habitRequest.place}
 					handleModalOpen={() => dispatch(openModal(modalType.SELECT_PLACE))}
+				/>
+				<BehaviorInput
+					inputData={habitRequest.behavior}
+					handleModalOpen={() => dispatch(openModal(modalType.SELECT_BEHAVIOR))}
 				/>
 				{/* <div css={inputBoxStyle}>
 					<span>정체성</span>
@@ -148,10 +153,14 @@ const CreateHabit = () => {
 				<SelectTimeModal title="2차 알림시간을 선택해 주세요" />
 			)}
 			{modal === modalType.SELECT_PLACE && <LocationModal updateInputValue={updateInputValue} />}
-			{modal === modalType.SELECT_REASON && (
-				<SelectTagModal title="어떤 습관을 만들어 볼까요?" tags={SELECT_TAG_DATA.habitTags} />
+			{modal === modalType.SELECT_BEHAVIOR && (
+				<SelectTagModal
+					title="어떤 습관을 만들어 볼까요?"
+					tags={SELECT_TAG_DATA.habitTags}
+					updateInputValue={updateInputValue}
+				/>
 			)}
-			{modal === modalType.SELECT_BEHAVIOR && <BehaviorModal />}
+			{modal === modalType.SELECT_BEHAVIORUNIT && <BehaviorModal />}
 
 			{modal === modalType.HABIT_GENERATE && (
 				<StarPrizeModal

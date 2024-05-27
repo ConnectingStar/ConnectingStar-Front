@@ -50,7 +50,12 @@ function SelectTagModal({ title, tags, progress, addprogress, updateInputValue }
 			dispatch(closeModal());
 		}
 
-		updateInputValue && updateInputValue("identity", updatedHabit);
+		if (title === "어떤 사람이 되고 싶으세요?") {
+			updateInputValue && updateInputValue("identity", updatedHabit);
+		} else if (title === "어떤 습관을 만들어 볼까요?") {
+			updateInputValue && updateInputValue("behavior", updatedHabit);
+		}
+
 		dispatch(closeModal());
 	};
 
