@@ -57,8 +57,6 @@ const CreateHabit = () => {
 		habitRequest.secondAlert.hour === "" ||
 		habitRequest.secondAlert.minute === "";
 
-	console.log(habitRequest);
-
 	useEffect(() => {
 		dispatch(getUserInfo());
 	}, []);
