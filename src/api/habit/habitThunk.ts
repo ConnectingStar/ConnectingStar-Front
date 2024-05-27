@@ -4,13 +4,26 @@ import { axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-import type { HabitHistoryListRequest } from "@/types/habit";
+import type { HabitHistoryListRequest, HabitRequestType } from "@/types/habit";
+
+export const createHabit = createAsyncThunk(
+	"habit/createHabit",
+	async (habitRequest: HabitRequestType, thunkOptions) => {
+		try {
+			console.log(habitRequest);
+
+			return await axiosInstance.post(END_POINTS.HABIT, habitRequest);
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
 
 export const getProgressHabitList = createAsyncThunk(
 	"habit/getProgressHabitList",
 	async (_, thunkOptions) => {
 		try {
-			const { data } = await axiosInstance.get(END_POINTS.PROGRESS_HABIT_LIST);
+			const { data } = await axiosInstance.get(END_POINTS.HABIT);
 
 			return data;
 		} catch (error) {

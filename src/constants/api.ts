@@ -16,6 +16,7 @@ export const END_POINTS = {
 	EDIT_AGE: "/user/age-range",
 	EDIT_IDENTITY: "/user/identity",
 	PROGRESS_HABIT_LIST: "/habit",
+	HABIT: "/habit",
 	HABIT_HISTORY_LIST: (runHabitId: number, increase: boolean, isRest: boolean) =>
 		`/habit/history?runHabitId=${runHabitId}&increase=${increase}&isRest=${isRest}`,
 };
