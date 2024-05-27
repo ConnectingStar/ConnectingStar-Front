@@ -58,6 +58,23 @@ export const inputUnitBoxStyle = css`
 	gap: 6px;
 `;
 
+export const inputTitleStyle = css`
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	& > span {
+		${theme.font.head_c};
+		color: ${theme.color.font_gray};
+
+		&.infoText {
+			color: ${theme.color.main_blue};
+			${theme.font.body_xs};
+			font-weight: 400;
+		}
+	}
+`;
+
 export const inputStyle = (width?: string) => css`
 	display: flex;
 	align-items: center;

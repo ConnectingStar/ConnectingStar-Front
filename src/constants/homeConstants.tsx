@@ -4,8 +4,6 @@ import banner03 from "@/assets/image/img-homepage-banner-03.png";
 import banner04 from "@/assets/image/img-homepage-banner-04.png";
 import banner05 from "@/assets/image/img-homepage-banner-05.png";
 
-import { modalType } from "@/constants/modalConstants";
-
 export const adviceImages = [
 	{
 		src: banner01,
@@ -76,47 +74,6 @@ export const deleteReasonData = [
 		title: "직접 입력",
 		placeholder: "삭제 이유를 입력해 주세요",
 		subText: "다음 약속으로 또 만나길 기다릴게요 :)",
-	},
-];
-
-export const habitGenerateConditions = [
-	{
-		subtitle: "정체성",
-		placeholder: "정체성을 선택해주세요.",
-		modalName: modalType.SELECT_IDENTITY,
-	},
-	{
-		subtitle: "언제",
-		placeholder: "시간을 선택해주세요.",
-		modalName: modalType.SELECT_TIME("RUNTIME"),
-	},
-	{
-		subtitle: "어디서",
-		placeholder: "장소를 선택해주세요.",
-		modalName: modalType.SELECT_PLACE,
-	},
-	{
-		subtitle: "무엇을",
-		placeholder: "습관을 선택해 주세요",
-		modalName: modalType.SELECT_REASON,
-	},
-	{
-		subtitle: "얼마나",
-		placeholder: "숫자 입력",
-		placeholderSecond: "단위 입력 (예: 페이지)",
-		modalName: modalType.SELECT_BEHAVIOR,
-	},
-	{
-		subtitle: "1차 알림",
-		explanation: "약속을 상기시켜 드리는 알림이에요!",
-		placeholder: "1차 알림 시간을 선택해주세요.",
-		modalName: modalType.SELECT_TIME("FIRSTALERT"),
-	},
-	{
-		subtitle: "2차 알림",
-		explanation: "습관 기록을 독려하는 알림이에요!",
-		placeholder: "2차 알림 시간을 선택해주세요.",
-		modalName: modalType.SELECT_TIME("SECONDALERT"),
 	},
 ];
 
