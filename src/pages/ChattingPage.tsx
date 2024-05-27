@@ -77,7 +77,11 @@ function ChattingPage() {
 					<LocationModal progress={progress} addprogress={() => setProgress((prev) => prev + 1)} />
 				)}
 				{modal === modalType.SELECT_BEHAVIORUNIT && (
-					<BehaviorModal progress={progress} addprogress={() => setProgress((prev) => prev + 1)} />
+					<BehaviorModal
+						behavior={userData.behavior}
+						progress={progress}
+						addprogress={() => setProgress((prev) => prev + 1)}
+					/>
 				)}
 				{modal === modalType.SELECT_TIME("FIRSTALERT") && (
 					<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
