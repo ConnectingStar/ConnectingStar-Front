@@ -11,7 +11,7 @@ const BehaviorInput = ({ inputData, handleModalOpen }: BehaviorInputProps) => {
 	return (
 		<div css={inputBoxStyle}>
 			<span>무엇을</span>
-			<div css={inputStyle} onClick={handleModalOpen}>
+			<div css={inputStyle()} onClick={handleModalOpen}>
 				<span>{inputData === "" ? "습관을 선택해 주세요" : inputData}</span>
 				<DownArrowIcon />
 			</div>

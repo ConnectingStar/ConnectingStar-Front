@@ -8,7 +8,7 @@ export const useHabitForm = () => {
 		runTime: { noon: "", hour: "", minute: "" },
 		place: "",
 		behavior: "",
-		behaviorValue: 0,
+		behaviorValue: "",
 		behaviorUnit: "",
 		firstAlert: { noon: "", hour: "", minute: "" },
 		secondAlert: { noon: "", hour: "", minute: "" },

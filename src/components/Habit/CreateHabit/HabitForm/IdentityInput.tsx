@@ -11,7 +11,7 @@ const IdentityInput = ({ inputData, handleModalOpen }: IdentityInputProps) => {
 	return (
 		<div css={inputBoxStyle}>
 			<span>정체성</span>
-			<div css={inputStyle} onClick={handleModalOpen}>
+			<div css={inputStyle()} onClick={handleModalOpen}>
 				<span>{inputData === "" ? "정체성을 선택해 주세요" : inputData}</span>
 				<DownArrowIcon />
 			</div>

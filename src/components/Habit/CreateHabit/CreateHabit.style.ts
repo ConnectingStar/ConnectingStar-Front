@@ -52,7 +52,13 @@ export const inputBoxStyle = css`
 	}
 `;
 
-export const inputStyle = css`
+export const inputUnitBoxStyle = css`
+	display: flex;
+	align-items: center;
+	gap: 6px;
+`;
+
+export const inputStyle = (width?: string) => css`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -62,6 +68,7 @@ export const inputStyle = css`
 	color: ${theme.color.button_deactivated};
 	background-color: ${theme.color.bg};
 	margin-top: 0.75rem;
+	width: ${width};
 `;
 
 export const selectBoxStyle = css`
@@ -72,68 +79,4 @@ export const selectBoxStyle = css`
 	border-radius: 15px;
 	color: ${theme.color.button_deactivated};
 	background-color: ${theme.color.bg};
-`;
-
-export const selectListBoxStyle = css`
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-
-	& > li {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		${theme.font.body_a};
-
-		& > div:first-of-type {
-			display: flex;
-			align-items: center;
-			color: ${theme.color.font_gray};
-			gap: 6px;
-
-			& > span:first-of-type {
-				${theme.font.head_c};
-			}
-
-			& > span:nth-of-type(2) {
-				${theme.font.body_xs};
-				color: ${theme.color.main_blue};
-			}
-		}
-
-		& > .sticked {
-			display: flex;
-			align-items: center;
-			height: 3.4375rem;
-			padding: 1rem;
-			border-radius: 15px;
-			color: ${theme.color.button_deactivated};
-			background-color: ${theme.color.bg};
-			& > span {
-				flex: 1;
-			}
-		}
-
-		& > .split {
-			display: flex;
-
-			& > span {
-				align-items: center;
-				height: 3.4375rem;
-				padding: 1rem;
-				border-radius: 15px;
-				color: ${theme.color.button_deactivated};
-				background-color: ${theme.color.bg};
-			}
-
-			& > span:first-of-type {
-				width: 6.25rem;
-				margin-right: 0.375rem;
-			}
-
-			& > span:nth-of-type(2) {
-				width: 13.625rem;
-			}
-		}
-	}
 `;
