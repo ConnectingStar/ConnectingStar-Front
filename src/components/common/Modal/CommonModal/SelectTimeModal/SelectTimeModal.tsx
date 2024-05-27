@@ -56,15 +56,22 @@ function SelectTimeModal({ title, progress, addprogress, updateInputValue }: sel
 					secondAlert: adjustTime({ time: selectTime, change: 30 }),
 				}),
 			);
+
+			updateInputValue && updateInputValue("runTime", addZeroTime);
 		}
-		if (title === "1차 알림시간을 선택해 주세요")
+		if (title === "1차 알림시간을 선택해 주세요") {
 			dispatch(updateHabitUserData({ firstAlert: addZeroTime }));
-		if (title === "2차 알림시간을 선택해 주세요")
+
+			updateInputValue && updateInputValue("firstAlert", addZeroTime);
+		}
+
+		if (title === "2차 알림시간을 선택해 주세요") {
 			dispatch(updateHabitUserData({ secondAlert: addZeroTime }));
 
-		dispatch(closeModal());
+			updateInputValue && updateInputValue("secondAlert", addZeroTime);
+		}
 
-		updateInputValue && updateInputValue("runTime", addZeroTime);
+		dispatch(closeModal());
 	};
 
 	return (

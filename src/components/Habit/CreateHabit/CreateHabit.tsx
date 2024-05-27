@@ -7,8 +7,8 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
-// import HabitGenerateConditions from "@/components/Habit/CreateHabit/habitGenerateConditions";
 import TimeInput from "@/components/Habit/CreateHabit/HabitForm//TimeInput";
+import AlarmInput from "@/components/Habit/CreateHabit/HabitForm/AlarmInput";
 import BehaviorInput from "@/components/Habit/CreateHabit/HabitForm/BehaviorInput";
 import IdentityInput from "@/components/Habit/CreateHabit/HabitForm/IdentityInput";
 import LocationInput from "@/components/Habit/CreateHabit/HabitForm/LocationInput";
@@ -21,7 +21,6 @@ import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import { getUserInfo } from "@/api/user/userThunk";
 
-// import { habitGenerateConditions } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 import { SELECT_TAG_DATA } from "@/constants/modalConstants";
 
@@ -41,6 +40,22 @@ const CreateHabit = () => {
 	const { userData } = useAppSelector((state) => state.user);
 
 	const { habitRequest, updateInputValue } = useHabitForm();
+
+	const isEmpty =
+		habitRequest.identity === "" ||
+		habitRequest.runTime.noon === "" ||
+		habitRequest.runTime.hour === "" ||
+		habitRequest.runTime.minute === "" ||
+		habitRequest.place === "" ||
+		habitRequest.behavior === "" ||
+		habitRequest.behaviorValue === "" ||
+		habitRequest.behaviorUnit === "" ||
+		habitRequest.firstAlert.noon === "" ||
+		habitRequest.firstAlert.hour === "" ||
+		habitRequest.firstAlert.minute === "" ||
+		habitRequest.secondAlert.noon === "" ||
+		habitRequest.secondAlert.hour === "" ||
+		habitRequest.secondAlert.minute === "";
 
 	console.log(habitRequest);
 
@@ -88,39 +103,20 @@ const CreateHabit = () => {
 						handleModalOpen={() => dispatch(openModal(modalType.SELECT_BEHAVIORUNIT))}
 					/>
 				</div>
+				<AlarmInput
+					inputData={habitRequest.firstAlert}
+					handleModalOpen={() => dispatch(openModal(modalType.SELECT_TIME("FIRSTALERT")))}
+				/>
+				<AlarmInput
+					inputData={habitRequest.secondAlert}
+					handleModalOpen={() => dispatch(openModal(modalType.SELECT_TIME("SECONDALERT")))}
+					isSecond
+				/>
 			</div>
-
-			{/* <ul css={selectListBoxStyle}>
-				<li>
-					<div
-						onClick={() => handleClick(modalName, placeholder)}
-						className={placeholderSecond ? "split" : "sticked"}
-					>
-						<span>{placeholder}</span>
-						{placeholderSecond ? <span> {placeholderSecond}</span> : <DownArrowIcon />}
-					</div>
-				</li>
-			</ul> */}
-
-			{/* <ul css={selectBoxStyle}>
-				{habitGenerateConditions.map((condition) => {
-					const { subtitle, explanation, placeholder, placeholderSecond, modalName } = condition;
-					return (
-						<HabitGenerateConditions
-							key={subtitle}
-							subtitle={subtitle}
-							explanation={explanation}
-							placeholder={placeholder}
-							placeholderSecond={placeholderSecond}
-							modalName={modalName}
-							handleClick={() => {}}
-						/>
-					);
-				})}
-			</ul> */}
 
 			<FooterBtn
 				text="좋아, 이대로 만들게"
+				disabled={isEmpty}
 				isPositionStatic
 				handleBtnClick={() => dispatch(openModal(modalType.HABIT_GENERATE))}
 			/>
@@ -136,10 +132,10 @@ const CreateHabit = () => {
 				<SelectTimeModal title="시간을 선택해 주세요" updateInputValue={updateInputValue} />
 			)}
 			{modal == modalType.SELECT_TIME("FIRSTALERT") && (
-				<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
+				<SelectTimeModal title="1차 알림시간을 선택해 주세요" updateInputValue={updateInputValue} />
 			)}
 			{modal == modalType.SELECT_TIME("SECONDALERT") && (
-				<SelectTimeModal title="2차 알림시간을 선택해 주세요" />
+				<SelectTimeModal title="2차 알림시간을 선택해 주세요" updateInputValue={updateInputValue} />
 			)}
 			{modal === modalType.SELECT_PLACE && <LocationModal updateInputValue={updateInputValue} />}
 			{modal === modalType.SELECT_BEHAVIOR && (
@@ -161,7 +157,7 @@ const CreateHabit = () => {
 			{modal === modalType.HABIT_GENERATE && (
 				<StarPrizeModal
 					blueText="시작이 반!"
-					comment={`더욱 {정체성한} 사람이 되기 위한 한 걸음\n제가 {닉네임}님을 응원할게요 😊`}
+					comment={`더욱 ${habitRequest.identity} 사람이 되기 위한 한 걸음\n제가 ${userData.nickname}님을 응원할게요 😊`}
 				/>
 			)}
 		</main>
