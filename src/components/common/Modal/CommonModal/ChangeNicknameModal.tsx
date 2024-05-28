@@ -9,7 +9,7 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import { editNickName } from "@/api/user/userThunk";
+import { editNickname } from "@/api/user/userThunk";
 
 import { theme } from "@/styles/theme";
 
@@ -34,7 +34,7 @@ const ChangeNicknameModal = ({ prevNickname, changeNickname }: ChangeNicknameMod
 	};
 
 	const handleChangeNickname = () => {
-		dispatch(editNickName(nickname));
+		dispatch(editNickname(nickname));
 		dispatch(closeModal());
 	};
 
