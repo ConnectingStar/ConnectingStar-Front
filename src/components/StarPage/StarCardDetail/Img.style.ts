@@ -7,7 +7,6 @@ export const imgStyle = css`
 	border-radius: 15px;
 	margin-bottom: 1.25rem;
 	position: relative;
-	background-color: #d9d9d9;
 	overflow: hidden;
 
 	> img {
@@ -41,8 +40,9 @@ export const starImgStyle = css`
 
 	strong {
 		position: absolute;
-		top: 1.125rem;
-		left: 1.125rem;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -45%);
 		font-size: 1.25rem;
 		font-weight: 700;
 		color: ${theme.color.font_black};
