@@ -29,7 +29,6 @@ const starSlice = createSlice({
 			})
 			.addCase(getStarCardDetail.fulfilled, (state, action) => {
 				state.isLoading = false;
-				console.log(action);
 				state.starCardDetail = action.payload.data;
 			})
 			.addCase(getStarCardDetail.rejected, (state) => {
