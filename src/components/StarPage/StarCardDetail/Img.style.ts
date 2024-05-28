@@ -15,7 +15,13 @@ export const imgStyle = css`
 		object-fit: cover;
 	}
 
-	&.selected {
+	&.selected::before {
+		content: "";
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 15px;
+		position: absolute;
 		box-shadow: 0 0 0 5px ${theme.color.main_blue} inset;
 	}
 `;
