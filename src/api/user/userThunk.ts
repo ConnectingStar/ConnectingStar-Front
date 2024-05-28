@@ -29,7 +29,7 @@ export const editGender = createAsyncThunk(
 	},
 );
 
-export const editNickName = createAsyncThunk(
+export const editNickname = createAsyncThunk(
 	"user/editNickname",
 	async (nickname: string, thunkOptions) => {
 		try {
