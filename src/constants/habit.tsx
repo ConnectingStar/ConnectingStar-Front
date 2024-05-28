@@ -189,7 +189,7 @@ export const HABIT_GUIDE_DATA = [
 	},
 	{
 		index: "12",
-		title: "시각화&공유로 부스터 달기",
+		title: "시각화 & 공유로 부스터 달기",
 		paragraph: (
 			<p>
 				심리학자 게일 메튜스 박사의 연구로 자신의 목표를 손으로 적을 때 달성률이 39.5%나 높아진다는
