@@ -8,39 +8,41 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-function HabitCheckModal({ text }: { text: string }) {
-	const navigate = useNavigate();
+import { PATH } from "@/constants/path";
+
+const HabitRecordModal = ({ text }: { text: string }) => {
 	const dispatch = useAppDispatch();
+
+	const navigate = useNavigate();
 
 	return (
 		<Modal>
 			<div css={layoutStyle}>
-				<div>
-					<h1>아래의 습관을 실천하였나요?</h1>
-					<p>{text}</p>
-				</div>
+				<h1>아래의 습관을 실천했나요?</h1>
+				<p>{text}</p>
+
 				<FooterBtn
 					leftText="쉬는 날 🙂"
 					text="실천 완료 😎"
 					isPositionStatic
 					isTransparent
 					handleLeftBtnClick={() => {
-						navigate("/rest-record");
+						navigate(PATH.REST_RECORD);
 						dispatch(closeModal());
 					}}
 					handleBtnClick={() => {
-						navigate("/habit-record");
+						navigate(PATH.PRACTICE_RECORD);
 						dispatch(closeModal());
 					}}
 				/>
 			</div>
 		</Modal>
 	);
-}
+};
 
-export default HabitCheckModal;
+export default HabitRecordModal;
 
-export const layoutStyle = css`
+const layoutStyle = css`
 	width: 18rem;
 	height: 13.75rem;
 	display: flex;
@@ -50,14 +52,13 @@ export const layoutStyle = css`
 	background-color: #fff;
 	padding: 1rem;
 
-	& > div:first-of-type {
-		& > h1 {
-			font-size: 1.125rem;
-			font-weight: 700;
-			margin-bottom: 1.25rem;
-		}
-		& > p {
-			margin-bottom: 2.5rem;
-		}
+	& > h1 {
+		font-size: 1.125rem;
+		font-weight: 700;
+		margin-bottom: 1.25rem;
+	}
+
+	& > p {
+		margin-bottom: 2.5rem;
 	}
 `;
