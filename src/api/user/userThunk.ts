@@ -7,6 +7,17 @@ import { END_POINTS } from "@/constants/api";
 import type { ConstellationListType } from "@/types/user";
 import type { UserDataType, onboardingUserDataType } from "@/types/userDataType";
 
+export const editIdentity = createAsyncThunk(
+	"user/editIdentity",
+	async (identity: string, thunkOptions) => {
+		try {
+			return await axiosInstance.put(END_POINTS.EDIT_IDENTITY, { identity });
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
 export const editAge = createAsyncThunk(
 	"user/editAge",
 	async (ageRangeType: string, thunkOptions) => {

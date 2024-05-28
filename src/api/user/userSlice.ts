@@ -6,9 +6,10 @@ import {
 	postOnboarding,
 	getUserConstellationList,
 	getUserInfo,
-	editNickName,
+	editNickname,
 	editGender,
 	editAge,
+	editIdentity,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -90,17 +91,21 @@ const userSlice = createSlice({
 				state.isLoading = false;
 				state.userData = action.payload.data;
 			})
-			.addCase(editNickName.fulfilled, (state, action) => {
+			.addCase(editNickname.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.userData.nickname = action.meta.arg;
 			})
-			.addCase(editGender.fulfilled, (state, aciton) => {
+			.addCase(editGender.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.userData.genderType = aciton.meta.arg;
+				state.userData.genderType = action.meta.arg;
 			})
 			.addCase(editAge.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.userData.ageRangeType = action.meta.arg;
+			})
+			.addCase(editIdentity.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.userData.identity = action.meta.arg;
 			});
 	},
 });
