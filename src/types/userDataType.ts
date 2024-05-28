@@ -5,6 +5,7 @@ export interface userType {
 	isLoading: boolean;
 	isOnboarding: boolean;
 	constellation: ConstellationList[];
+	userIdentityList: { identity: string }[];
 }
 
 export interface UserDataType {

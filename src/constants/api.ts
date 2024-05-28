@@ -10,6 +10,7 @@ export const END_POINTS = {
 	CONSTELLATION_LIST: "/user/constellation/list",
 	USER_INFO: "/user/basic-info",
 	USER_INFO_WITH_HABIT: "/user/basic-info-habit",
+	USER_IDENTITY: "/user/identity-info",
 	EDIT_NICKNAME: "/user/nickname",
 	EDIT_GENDER: "/user/gender",
 	EDIT_AGE: "/user/age-range",

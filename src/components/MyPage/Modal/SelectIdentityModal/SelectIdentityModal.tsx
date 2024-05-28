@@ -1,27 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
-import { useAppDispatch } from "@/api/hooks";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { getUserIdentity, editIdentity } from "@/api/user/userThunk";
 
 import {
 	layoutStyle,
 	flexBoxStyle,
 } from "@/components/MyPage/Modal/SelectIdentityModal/SelectIdentityModal.style";
-
-const identityButtonData = [
-	{
-		text: "건강한",
-	},
-	{
-		text: "매일 성장하는",
-	},
-	{
-		text: "스스로를 믿는",
-	},
-];
 
 interface SelectIdentityModalProps {
 	prevIdentity: string;
@@ -30,24 +19,31 @@ interface SelectIdentityModalProps {
 const SelectIdentityModal = ({ prevIdentity }: SelectIdentityModalProps) => {
 	const dispatch = useAppDispatch();
 
+	const { userIdentityList } = useAppSelector((state) => state.user);
+
 	const [identityText, setIdentityText] = useState(prevIdentity);
 
-	const handleCheckClick = () => {
+	const handleChangeIdentity = () => {
+		dispatch(editIdentity(identityText));
 		dispatch(closeModal());
 	};
+
+	useEffect(() => {
+		dispatch(getUserIdentity());
+	}, []);
 
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>정체성을 선택해 주세요</h1>
 				<div css={flexBoxStyle}>
-					{identityButtonData.map((data) => (
+					{userIdentityList.map((identityData) => (
 						<button
-							key={data.text}
-							onClick={() => setIdentityText(data.text)}
-							className={identityText === data.text ? "select" : ""}
+							key={identityData.identity}
+							onClick={() => setIdentityText(identityData.identity)}
+							className={identityText === identityData.identity ? "select" : ""}
 						>
-							{data.text}
+							{identityData.identity}
 						</button>
 					))}
 				</div>
@@ -56,7 +52,7 @@ const SelectIdentityModal = ({ prevIdentity }: SelectIdentityModalProps) => {
 					text="확인"
 					leftText="취소"
 					isPositionStatic
-					handleBtnClick={handleCheckClick}
+					handleBtnClick={handleChangeIdentity}
 					handleLeftBtnClick={() => dispatch(closeModal())}
 				/>
 			</div>

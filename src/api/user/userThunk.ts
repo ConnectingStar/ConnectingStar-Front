@@ -51,6 +51,16 @@ export const editNickname = createAsyncThunk(
 	},
 );
 
+export const getUserIdentity = createAsyncThunk("user/getUserIdentity", async (_, thunkOptions) => {
+	try {
+		const { data } = await axiosInstance.get(END_POINTS.USER_IDENTITY);
+
+		return data;
+	} catch (error) {
+		throw thunkOptions.rejectWithValue(error);
+	}
+});
+
 export const getUserInfoWithHabit = createAsyncThunk(
 	"user/getUserInfoWithHabit",
 	async (_, thunkOptions) => {
