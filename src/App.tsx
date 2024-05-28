@@ -10,6 +10,7 @@ import CreateHabitPage from "@/pages/CreateHabitPage/CreateHabitPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitDetailPage from "@/pages/HabitDetailPage";
 import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
+import HabitManagePage from "@/pages/HabitManagePage";
 import HabitPage from "@/pages/HabitPage/HabitPage";
 import HabitRecordPage from "@/pages/HabitRecordPage";
 import KakaoLoginPage from "@/pages/KakaoLoginPage";
@@ -50,6 +51,7 @@ const App = () => {
 					<Route path={PATH.PRACTICE_RECORD} element={<HabitRecordPage />} />
 					<Route path={PATH.CREATE_HABIT} element={<CreateHabitPage />} />
 					<Route path="habit-guide" element={<HabitGuidePage />} />
+					<Route path={PATH.HABIT_MANAGE} element={<HabitManagePage />} />
 				</Routes>
 			</BrowserRouter>
 			<ToastContainer />
