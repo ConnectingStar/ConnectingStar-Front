@@ -1,7 +1,8 @@
-import { StarDataType } from "@/types/star";
 import { createSlice } from "@reduxjs/toolkit";
 
 import { getStarCardDetail } from "@/api/star/starThunk";
+
+import { StarDataType } from "@/types/star";
 
 const initialState: StarDataType = {
 	isLoading: false,
