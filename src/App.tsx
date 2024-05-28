@@ -20,7 +20,7 @@ import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import OnboardingPage from "@/pages/OnboardingPage";
-import RestRecordPage from "@/pages/RestRecordPage";
+import RestRecordPage from "@/pages/RestRecordPage/RestRecordPage";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
 import StarMainPage from "@/pages/StarMainPage/StarMainPage";

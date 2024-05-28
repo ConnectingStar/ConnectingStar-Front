@@ -41,8 +41,8 @@ export const inputBoxStyle = css`
 		background-color: ${theme.color.bg};
 		border-radius: 15px;
 		height: 11.875rem;
-		-ms-overflow-style: none; /* 인터넷 익스플로러 */
-		scrollbar-width: none; /* 파이어폭스 */
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 
 		&::-webkit-scrollbar {
 			display: none;
