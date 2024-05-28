@@ -1,20 +1,23 @@
 import starImg from "@/assets/image/img-card-detail-star.png";
 
+import { StarCardDetailStatus } from "@/types/star";
+
 import { imgStyle, labelStyle, starImgStyle } from "@/components/StarPage/StarCardDetail/Img.style";
 
 interface ImgProps {
-	state: "default" | "selected" | "have";
+	state: StarCardDetailStatus;
+	image: string;
+	starCount: number;
 }
 
-export default function Img({ state }: ImgProps) {
+export default function Img({ state, image, starCount }: ImgProps) {
 	return (
-		<div css={imgStyle} className={state === "selected" ? "selected" : ""}>
-			<img src="" alt="별자리" />
-			{state === "have" && <div css={labelStyle}>보유</div>}
+		<div css={imgStyle} className={state === "PROGRESS" ? "selected" : ""}>
+			<img src={image} alt="별자리" />
+			{state === "COMPLETE" && <div css={labelStyle}>보유</div>}
 			<div css={starImgStyle}>
 				<img src={starImg} alt="노란색 별" />
-				{/* TODO: API 연결 후 수정 예정 */}
-				<strong>{10}</strong>
+				<strong>{starCount}</strong>
 			</div>
 		</div>
 	);

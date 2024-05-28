@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
@@ -10,6 +13,7 @@ import Story from "@/components/StarPage/StarCardDetail/Story";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
+import { getStarCardDetail } from "@/api/star/starThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { buttonState } from "@/constants/starPageConstants";
@@ -18,28 +22,24 @@ import { theme } from "@/styles/theme";
 
 import { getModalType } from "@/utils/starCardDetailUtil";
 
-// TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
-interface DataType {
-	state: "default" | "selected" | "have";
-}
-
-// TODO: API 연결 후 삭제 예정(상태에 따른 Img, Button UI 변경 확인 용)
-const data: DataType = {
-	state: "have",
-};
-
 export default function StarCardDetailPage() {
+	const { id } = useParams();
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
+	const { starCardDetail } = useAppSelector((state) => state.star);
 
 	const handleModal = () => {
-		const modalType = getModalType(data.state);
+		const modalType = getModalType(starCardDetail.status);
 
 		if (modalType) {
 			dispatch(openModal(modalType));
 		}
 	};
+
+	useEffect(() => {
+		dispatch(getStarCardDetail(id ?? ""));
+	}, []);
 
 	return (
 		<>
@@ -47,13 +47,19 @@ export default function StarCardDetailPage() {
 				<Header.PrevButton />
 			</Header>
 			<section css={sectionStyle}>
-				<Img state={data.state} />
-				<CategoryLabel />
-				<h1>캐릭터 이름</h1>
-				<h2>정체성</h2>
-				<Story />
+				<Img
+					state={starCardDetail.status}
+					image={starCardDetail.image}
+					starCount={starCardDetail.starCount}
+				/>
+				<CategoryLabel typeName={starCardDetail.typeName} />
+				<h1>{starCardDetail.name}</h1>
+				<h2>{starCardDetail.identity}</h2>
+				<Story story={starCardDetail.story} />
 			</section>
-			<FooterBtn text={buttonState[data.state]} handleBtnClick={handleModal} />
+			{starCardDetail.status !== "OTHER" && (
+				<FooterBtn text={buttonState[starCardDetail.status]} handleBtnClick={handleModal} />
+			)}
 
 			{modal === modalType.SELECT_STAR && <SelectStarModal />}
 			{modal === modalType.SELECT_PROFILE_CHARACTER && <SelectProfileCharacterModal />}
