@@ -11,7 +11,7 @@ const LocationInput = ({ inputData, handleModalOpen }: LocationInputProps) => {
 	return (
 		<div css={inputBoxStyle}>
 			<span>어디서</span>
-			<div css={inputStyle()} onClick={handleModalOpen}>
+			<div css={inputStyle(inputData !== "")} onClick={handleModalOpen}>
 				<span>{inputData === "" ? "장소를 선택해 주세요" : inputData}</span>
 				<DownArrowIcon />
 			</div>

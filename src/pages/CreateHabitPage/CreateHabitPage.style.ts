@@ -75,14 +75,14 @@ export const inputTitleStyle = css`
 	}
 `;
 
-export const inputStyle = (width?: string) => css`
+export const inputStyle = (isActive: boolean, width?: string) => css`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	height: 3.4375rem;
 	padding: 1rem;
 	border-radius: 15px;
-	color: ${theme.color.button_deactivated};
+	color: ${isActive ? theme.color.font_black : theme.color.button_deactivated};
 	background-color: ${theme.color.bg};
 	margin-top: 0.75rem;
 	width: ${width};

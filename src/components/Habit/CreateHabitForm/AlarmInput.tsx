@@ -25,7 +25,7 @@ const AlarmInput = ({ inputData, handleModalOpen, isSecond }: AlarmInputProps) =
 					{isSecond ? "습관 기록을 독려하는 알림이에요!" : "약속을 상기시켜 드리는 알림이에요!"}
 				</span>
 			</div>
-			<div css={inputStyle()} onClick={handleModalOpen}>
+			<div css={inputStyle(inputData.noon !== "")} onClick={handleModalOpen}>
 				<span>
 					{isEmpty
 						? `${isSecond ? "2차" : "1차"} 알림 시간을 선택해 주세요`

@@ -13,7 +13,7 @@ const TimeInput = ({ inputData, handleModalOpen }: TimeInputProps) => {
 	return (
 		<div css={inputBoxStyle}>
 			<span>언제</span>
-			<div css={inputStyle()} onClick={handleModalOpen}>
+			<div css={inputStyle(inputData.noon !== "")} onClick={handleModalOpen}>
 				<span>
 					{isEmpty
 						? "시간을 선택해 주세요"
