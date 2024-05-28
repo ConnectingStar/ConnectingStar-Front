@@ -6,6 +6,7 @@ import {
 	postOnboarding,
 	getUserConstellationList,
 	getUserInfo,
+	getUserIdentity,
 	editNickname,
 	editGender,
 	editAge,
@@ -29,6 +30,7 @@ const initialState: userType = {
 	},
 	isLoading: false,
 	isOnboarding: false,
+	userIdentityList: [],
 	constellation: [],
 };
 
@@ -106,6 +108,10 @@ const userSlice = createSlice({
 			.addCase(editIdentity.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.userData.identity = action.meta.arg;
+			})
+			.addCase(getUserIdentity.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.userIdentityList = action.payload.data;
 			});
 	},
 });
