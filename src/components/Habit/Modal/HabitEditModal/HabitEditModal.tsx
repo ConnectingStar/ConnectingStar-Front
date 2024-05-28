@@ -4,7 +4,7 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { theme } from "@/styles/theme";
 
-function HabitModifyModal() {
+function HabitEditModal() {
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
@@ -15,10 +15,10 @@ function HabitModifyModal() {
 	);
 }
 
-export default HabitModifyModal;
+export default HabitEditModal;
 
 const layoutStyle = css`
-	padding: 1.125rem 1.5rem 2.275rem;
+	padding: 1.125rem 1.5rem 1.25rem;
 	border-radius: 15px 15px 0 0;
 	color: ${theme.color.font_black};
 	background-color: #fff;
@@ -29,6 +29,9 @@ const layoutStyle = css`
 	}
 
 	& > button {
-		margin-top: 1.75rem;
+		width: 100%;
+		height: 3.625rem;
+		margin-top: 0.75rem;
+		text-align: left;
 	}
 `;
