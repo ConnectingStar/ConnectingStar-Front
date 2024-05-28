@@ -19,6 +19,7 @@ export const END_POINTS = {
 	HABIT: "/habit",
 	HABIT_HISTORY_LIST: (runHabitId: number, increase: boolean, isRest: boolean) =>
 		`/habit/history?runHabitId=${runHabitId}&increase=${increase}&isRest=${isRest}`,
+	STAR_CARD_DETAIL: (id: string) => `constellation?constellationId=${id}`,
 };
 
 export const OAUTH_KAKAO_URL = `${BASE_URL}/oauth/code/url?socialType=K`;
