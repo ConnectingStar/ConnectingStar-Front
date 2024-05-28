@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
@@ -10,6 +10,7 @@ import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
 import CategoryLabel from "@/components/StarPage/StarCardDetail/CategoryLabel";
 import Img from "@/components/StarPage/StarCardDetail/Img";
 import Story from "@/components/StarPage/StarCardDetail/Story";
+import { StarCardDetailStatus } from "@/types/star";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -25,15 +26,29 @@ import { getModalType } from "@/utils/starCardDetailUtil";
 export default function StarCardDetailPage() {
 	const { id } = useParams();
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	const { modal } = useAppSelector((state) => state.modal);
 	const { starCardDetail } = useAppSelector((state) => state.star);
 
-	const handleModal = () => {
-		const modalType = getModalType(starCardDetail.status);
+	const handleModal = (status: StarCardDetailStatus) => {
+		const modalType = getModalType(status);
 
 		if (modalType) {
 			dispatch(openModal(modalType));
+		}
+	};
+
+	const handleFooterBtnClick = (status: StarCardDetailStatus) => {
+		switch (status) {
+			case "PROGRESS":
+				return navigate("/star");
+			case "SELECT":
+				return handleModal(status);
+			case "COMPLETE":
+				return handleModal(status);
+			default:
+				return;
 		}
 	};
 
@@ -58,7 +73,10 @@ export default function StarCardDetailPage() {
 				<Story story={starCardDetail.story} />
 			</section>
 			{starCardDetail.status !== "OTHER" && (
-				<FooterBtn text={buttonState[starCardDetail.status]} handleBtnClick={handleModal} />
+				<FooterBtn
+					text={buttonState[starCardDetail.status]}
+					handleBtnClick={() => handleFooterBtnClick(starCardDetail.status)}
+				/>
 			)}
 
 			{modal === modalType.SELECT_STAR && <SelectStarModal />}
