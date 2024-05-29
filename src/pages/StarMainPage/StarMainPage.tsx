@@ -1,22 +1,44 @@
+import { useEffect } from "react";
+
 import Gnb from "@/components/common/Gnb/Gnb";
-import CharacterUnlockModal from "@/components/StarPage/Modal/CharacterUnlockModal";
+// import CharacterUnlockModal from "@/components/StarPage/Modal/CharacterUnlockModal";
 import StarBackground from "@/components/StarPage/StarMain/StarBackground";
 import StarButton from "@/components/StarPage/StarMain/StarButton";
 import StarCardLink from "@/components/StarPage/StarMain/StarCardLink";
 import StarCharacter from "@/components/StarPage/StarMain/StarCharacter";
 import StarInfo from "@/components/StarPage/StarMain/StarInfo";
 
-import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { openModal } from "@/api/modal/modalSlice";
+import { axiosInstance } from "@/api/axiosInstance";
+// import { useAppDispatch, useAppSelector } from "@/api/hooks";
+// import { openModal } from "@/api/modal/modalSlice";
 
-import { modalType } from "@/constants/modalConstants";
+// import { modalType } from "@/constants/modalConstants";
 
 import { containerStyle, starMainPageGnbStyle } from "@/pages/StarMainPage/StarMainPage.style";
 
 export default function StarMainPage() {
-	const dispatch = useAppDispatch();
+	// const dispatch = useAppDispatch();
 
-	const { modal } = useAppSelector((state) => state.modal);
+	// const { modal } = useAppSelector((state) => state.modal);
+
+	// TODO: 테스트용 코드 (추후 별자리 메인 브랜치에서 수정 예정)
+	useEffect(() => {
+		// 현재 남은 별 개수 확인하는 API - 콘솔에서 확인 가능
+		axiosInstance.get("/user/star").then((data) => console.log(data.data.data.star));
+	}, []);
+
+	// TODO: 테스트용 코드 (추후 별자리 메인 브랜치에서 수정 예정)
+	const handleButtonClick = () => {
+		// 별 채우는 API - 타스 별자리 선택해야함
+		axiosInstance
+			.put("/user/constellation/star", {
+				constellationId: 1,
+			})
+			.then((data) => {
+				console.log(data);
+			})
+			.catch((error) => console.error(error));
+	};
 
 	return (
 		<div css={containerStyle}>
@@ -25,7 +47,7 @@ export default function StarMainPage() {
 			<StarInfo starCount={114} starCardId={1} />
 			<StarCharacter svgData={data} />
 			<div className="wrapper">
-				<StarButton onClick={() => dispatch(openModal(modalType.CHARACTER_UNLOCK))} />
+				<StarButton onClick={handleButtonClick} />
 				<StarCardLink />
 			</div>
 
@@ -33,7 +55,7 @@ export default function StarMainPage() {
 				<Gnb />
 			</div>
 
-			{modal === modalType.CHARACTER_UNLOCK && <CharacterUnlockModal />}
+			{/* {modal === modalType.CHARACTER_UNLOCK && <CharacterUnlockModal />} */}
 		</div>
 	);
 }
