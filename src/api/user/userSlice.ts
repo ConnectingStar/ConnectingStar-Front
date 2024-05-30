@@ -4,6 +4,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
 	getIsOnboarding,
 	postOnboarding,
+	editProfileImage,
 	getUserConstellationList,
 	getUserInfo,
 	getUserIdentity,
@@ -77,6 +78,15 @@ const userSlice = createSlice({
 				state.isLoading = false;
 			})
 			.addCase(postOnboarding.rejected, (state) => {
+				state.isLoading = false;
+			})
+			.addCase(editProfileImage.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(editProfileImage.fulfilled, (state) => {
+				state.isLoading = false;
+			})
+			.addCase(editProfileImage.rejected, (state) => {
 				state.isLoading = false;
 			})
 			.addCase(getUserConstellationList.pending, (state) => {

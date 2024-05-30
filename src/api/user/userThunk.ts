@@ -123,3 +123,14 @@ export const getUserConstellationList = createAsyncThunk<ConstellationListType>(
 		}
 	},
 );
+
+export const editProfileImage = createAsyncThunk(
+	"user/editProfileImage",
+	async (constellationId: string, thunkOptions) => {
+		try {
+			return await axiosInstance.put(END_POINTS.EDIT_PROFILE_IMAGE, { constellationId });
+		} catch (error) {
+			return thunkOptions.rejectWithValue(error);
+		}
+	},
+);
