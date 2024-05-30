@@ -7,6 +7,7 @@ import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeMod
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
+import { getUserInfo } from "@/api/user/userThunk";
 
 import { habitRecordConditions } from "@/constants/homeConstants";
 import { prizeComments } from "@/constants/homeConstants";
@@ -29,9 +30,12 @@ interface HabitRecordsState {
 }
 
 function HabitRecord() {
-	const today = new Date();
 	const dispatch = useAppDispatch();
+
+	const { userData } = useAppSelector((state) => state.user);
 	const { modal } = useAppSelector((state) => state.modal);
+
+	const today = new Date();
 
 	// 임시로 랜덤요소를 통해 멘트에 변화를 주고 있음. 나중에 api 추가되면 수정할 예정
 	const Random = Math.floor(Math.random() * 10) % prizeComments.length;
@@ -74,12 +78,16 @@ function HabitRecord() {
 		}
 	}, [habitRecords]);
 
+	useEffect(() => {
+		dispatch(getUserInfo());
+	}, []);
+
 	return (
 		<main css={layoutStyle}>
 			<h1>{`${today.getMonth() + 1}월 ${today.getDate()}일\n영택님의 실천 기록`}</h1>
 			<label>
 				<h2>정체성</h2>
-				<span>매일 성장하는 사람</span>
+				<span>{userData.identity} 사람</span>
 			</label>
 			<section css={conditionWrapperStyle}>
 				<h3>
