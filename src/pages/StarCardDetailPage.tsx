@@ -21,32 +21,22 @@ import { buttonState } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
 
-import { getModalType } from "@/utils/starCardDetailUtil";
-
 export default function StarCardDetailPage() {
 	const { id } = useParams();
-	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
+	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
 	const { starCardDetail } = useAppSelector((state) => state.star);
-
-	const handleModal = (status: StarCardDetailStatus) => {
-		const modalType = getModalType(status);
-
-		if (modalType) {
-			dispatch(openModal(modalType));
-		}
-	};
 
 	const handleFooterBtnClick = (status: StarCardDetailStatus) => {
 		switch (status) {
 			case "PROGRESS":
 				return navigate("/star");
 			case "SELECT":
-				return handleModal(status);
+				return dispatch(openModal(modalType.SELECT_STAR));
 			case "COMPLETE":
-				return handleModal(status);
+				return dispatch(openModal(modalType.SELECT_PROFILE_CHARACTER));
 			default:
 				return;
 		}
