@@ -15,6 +15,11 @@ interface FCMTokenResponseType {
 	nickname: string;
 }
 
+interface WithdrawalRequestType {
+	reason: string;
+	deletedDt: string;
+}
+
 export const postFCMToken = createAsyncThunk(
 	"auth/postFCMToken",
 	async ({ token, nickname, password }: FCMTokenRequestType, thunkAPI) => {
@@ -50,10 +55,13 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkOptions) =>
 	}
 });
 
-export const withdrawal = createAsyncThunk("auth/withdrawal", async (_, thunkOptions) => {
-	try {
-		return await axiosInstance.delete(END_POINTS.WITHDRAWAL);
-	} catch (error) {
-		thunkOptions.rejectWithValue(error);
-	}
-});
+export const withdrawal = createAsyncThunk(
+	"auth/withdrawal",
+	async ({ reason, deletedDt }: WithdrawalRequestType, thunkOptions) => {
+		try {
+			return await axiosInstance.post(END_POINTS.WITHDRAWAL, { reason, deletedDt });
+		} catch (error) {
+			thunkOptions.rejectWithValue(error);
+		}
+	},
+);

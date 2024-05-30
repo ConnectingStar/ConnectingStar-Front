@@ -6,7 +6,7 @@ export const layoutStyle = css`
 	width: 22.5rem;
 	height: calc(100vh - 4.4375rem);
 	margin: 0 auto;
-	padding: 1.25rem 1.5rem 0;
+	padding: 4.75rem 1.5rem 0;
 
 	& > h1 {
 		${theme.font.head_a};

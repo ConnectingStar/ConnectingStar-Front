@@ -89,9 +89,7 @@ const SelectReason = ({
 					isSquare
 					isTransparent
 					disabled={inputText === ""}
-					handleBtnClick={() => {
-						setIsInputFocus(false);
-					}}
+					handleBtnClick={() => setIsInputFocus(false)}
 				/>
 			) : (
 				<FooterBtn text={footerBtnText} isTransparent disabled={reason === reasonDefaultText} />
