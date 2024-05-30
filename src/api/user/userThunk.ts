@@ -135,4 +135,13 @@ export const editProfileImage = createAsyncThunk(
 	},
 );
 
-export const selectStar = createAsyncThunk("user/selectStar", async () => {});
+export const selectStar = createAsyncThunk(
+	"user/selectStar",
+	async (constellationId: string, thunkOptions) => {
+		try {
+			return await axiosInstance.post(END_POINTS.SELECT_CONSTELLATION, { constellationId });
+		} catch (error) {
+			return thunkOptions.rejectWithValue(error);
+		}
+	},
+);
