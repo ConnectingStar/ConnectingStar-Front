@@ -12,6 +12,7 @@ import {
 	editGender,
 	editAge,
 	editIdentity,
+	selectStar,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -87,6 +88,15 @@ const userSlice = createSlice({
 				state.isLoading = false;
 			})
 			.addCase(editProfileImage.rejected, (state) => {
+				state.isLoading = false;
+			})
+			.addCase(selectStar.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(selectStar.fulfilled, (state) => {
+				state.isLoading = false;
+			})
+			.addCase(selectStar.rejected, (state) => {
 				state.isLoading = false;
 			})
 			.addCase(getUserConstellationList.pending, (state) => {
