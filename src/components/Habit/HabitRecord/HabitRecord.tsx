@@ -1,4 +1,5 @@
 import { useState, ChangeEvent, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import ExclamationMarkIcon from "@/assets/icon/ic-exclamation-mark.svg?react";
 
@@ -34,6 +35,9 @@ function HabitRecord() {
 
 	const { userData } = useAppSelector((state) => state.user);
 	const { modal } = useAppSelector((state) => state.modal);
+
+	const params = useParams();
+	console.log(params.runHabitId);
 
 	const today = new Date();
 

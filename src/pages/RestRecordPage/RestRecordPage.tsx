@@ -25,6 +25,8 @@ const RestRecordPage = () => {
 		dispatch(getUserInfo());
 	}, []);
 
+	// 휴식 기록 api 추가
+
 	return (
 		<>
 			<Header>
