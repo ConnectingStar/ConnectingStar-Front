@@ -12,7 +12,6 @@ import HabitDetailPage from "@/pages/HabitDetailPage";
 import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
 import HabitManagePage from "@/pages/HabitManagePage";
 import HabitPage from "@/pages/HabitPage/HabitPage";
-import HabitRecordPage from "@/pages/HabitRecordPage";
 import KakaoLoginPage from "@/pages/KakaoLoginPage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage/MyInfoPage";
@@ -20,6 +19,7 @@ import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import OnboardingPage from "@/pages/OnboardingPage";
+import PracticeRecordPage from "@/pages/PracticeRecordPage";
 import RestRecordPage from "@/pages/RestRecordPage/RestRecordPage";
 import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
@@ -48,7 +48,7 @@ const App = () => {
 					<Route path="/habit-delete" element={<HabitDeletePage />} />
 					<Route path="/onboarding" element={<OnboardingPage />} />
 					<Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
-					<Route path={PATH.PRACTICE_RECORD} element={<HabitRecordPage />} />
+					<Route path={PATH.PRACTICE_RECORD(":runHabitId")} element={<PracticeRecordPage />} />
 					<Route path={PATH.CREATE_HABIT} element={<CreateHabitPage />} />
 					<Route path="habit-guide" element={<HabitGuidePage />} />
 					<Route path={PATH.HABIT_MANAGE} element={<HabitManagePage />} />

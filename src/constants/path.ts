@@ -5,6 +5,6 @@ export const PATH = {
 	STAR: "/star",
 	ONBOARDING: "/onboarding",
 	REST_RECORD: "/rest-record",
-	PRACTICE_RECORD: "/practice-record",
+	PRACTICE_RECORD: (runHabitId: string) => `/practice-record/${runHabitId}`,
 	HABIT_MANAGE: "/habit-manage",
 } as const;

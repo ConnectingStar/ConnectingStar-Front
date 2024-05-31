@@ -36,7 +36,9 @@ const HabitItem = ({ habitId, habitState, habitText }: HabitItemProps) => {
 				<TabIcon />
 			</button>
 
-			{modal === modalType.HABIT_RECORD(habitId) && <HabitRecordModal text={habitText} />}
+			{modal === modalType.HABIT_RECORD(habitId) && (
+				<HabitRecordModal text={habitText} habitId={habitId} />
+			)}
 
 			{modal === modalType.HABIT_EDIT && <HabitEditModal />}
 		</div>

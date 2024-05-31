@@ -1,7 +1,7 @@
 import Header from "@/components/common/Header/Header";
 import HabitRecord from "@/components/Habit/HabitRecord/HabitRecord";
 
-function HabitRecordPage() {
+const PracticeRecordPage = () => {
 	return (
 		<>
 			<Header>
@@ -11,6 +11,6 @@ function HabitRecordPage() {
 			<HabitRecord />
 		</>
 	);
-}
+};
 
-export default HabitRecordPage;
+export default PracticeRecordPage;

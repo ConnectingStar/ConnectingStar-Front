@@ -10,7 +10,12 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { PATH } from "@/constants/path";
 
-const HabitRecordModal = ({ text }: { text: string }) => {
+interface HabitRecordModalProps {
+	text: string;
+	habitId: number;
+}
+
+const HabitRecordModal = ({ text, habitId }: HabitRecordModalProps) => {
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
@@ -31,7 +36,7 @@ const HabitRecordModal = ({ text }: { text: string }) => {
 						dispatch(closeModal());
 					}}
 					handleBtnClick={() => {
-						navigate(PATH.PRACTICE_RECORD);
+						navigate(PATH.PRACTICE_RECORD(String(habitId)));
 						dispatch(closeModal());
 					}}
 				/>
