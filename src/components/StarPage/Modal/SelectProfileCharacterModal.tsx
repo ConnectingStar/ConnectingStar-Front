@@ -7,20 +7,22 @@ import { layoutStyle } from "@/components/MyPage/Modal/LogoutModal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { updateIsProfile } from "@/api/star/starSlice";
 import { editProfileImage } from "@/api/user/userThunk";
 
 import { useToast } from "@/hooks/useToast";
 
 export default function SelectProfileCharacterModal() {
-	const dispatch = useAppDispatch();
 	const { id } = useParams();
 	const { createToast } = useToast();
+	const dispatch = useAppDispatch();
 
 	const handleFooterBtnClick = async () => {
 		try {
 			await dispatch(editProfileImage(id ?? "")).unwrap();
 			dispatch(closeModal());
 			createToast("프로필 이미지로 설정 되었어요!");
+			dispatch(updateIsProfile({ isProfile: true }));
 		} catch (error) {
 			console.error(error);
 		}
@@ -30,7 +32,6 @@ export default function SelectProfileCharacterModal() {
 		<Modal>
 			<div css={layoutStyle}>
 				<h1>프로필 이미지로 설정할까요?</h1>
-
 				<FooterBtn
 					text="확인"
 					leftText="취소"
