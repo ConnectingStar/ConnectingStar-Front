@@ -5,6 +5,7 @@ import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
+import LoadingSpinner from "@/components/StarPage/LoadingSpinner";
 import SelectProfileCharacterModal from "@/components/StarPage/Modal/SelectProfileCharacterModal";
 import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
 import CategoryLabel from "@/components/StarPage/StarCardDetail/CategoryLabel";
@@ -25,8 +26,10 @@ export default function StarCardDetailPage() {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+
 	const { modal } = useAppSelector((state) => state.modal);
 	const { starCardDetail } = useAppSelector((state) => state.star);
+	const { isLoading } = useAppSelector((state) => state.user);
 
 	const handleFooterBtnClick = (status: StarCardDetailStatus) => {
 		switch (status) {
@@ -61,6 +64,7 @@ export default function StarCardDetailPage() {
 				<h2>{starCardDetail.identity}</h2>
 				<Story story={starCardDetail.story} />
 			</section>
+
 			{starCardDetail.status !== "OTHER" && (
 				<FooterBtn
 					text={buttonState[starCardDetail.status]}
@@ -69,6 +73,7 @@ export default function StarCardDetailPage() {
 				/>
 			)}
 
+			{isLoading && <LoadingSpinner />}
 			{modal === modalType.SELECT_STAR && <SelectStarModal />}
 			{modal === modalType.SELECT_PROFILE_CHARACTER && <SelectProfileCharacterModal />}
 		</>
