@@ -15,6 +15,7 @@ const initialState: StarDataType = {
 		image: "",
 		starCount: 0,
 		status: "SELECT",
+		isProfile: false,
 	},
 };
 
