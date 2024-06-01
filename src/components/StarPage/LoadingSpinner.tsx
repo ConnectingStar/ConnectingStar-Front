@@ -22,7 +22,7 @@ export default function LoadingSpinner() {
 	const { View, setSpeed } = useLottie(options, style);
 
 	useEffect(() => {
-		setSpeed(0.8);
+		setSpeed(0.9);
 	}, []);
 
 	return <div css={backgroundStyle}>{View}</div>;
