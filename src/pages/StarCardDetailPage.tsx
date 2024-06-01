@@ -21,6 +21,8 @@ import { buttonState } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
 
+import { generateName } from "@/utils/starUtils";
+
 export default function StarCardDetailPage() {
 	const { id } = useParams();
 	const navigate = useNavigate();
@@ -59,7 +61,7 @@ export default function StarCardDetailPage() {
 					starCount={starCardDetail.starCount}
 				/>
 				<p css={categoryLabelStyle}>{starCardDetail.typeName}</p>
-				<h1>{starCardDetail.name}</h1>
+				<h1>{generateName(starCardDetail.name, starCardDetail.status)}</h1>
 				<h2>{starCardDetail.identity}</h2>
 				<Story story={starCardDetail.story} />
 			</section>

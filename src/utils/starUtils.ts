@@ -1,4 +1,6 @@
-export default function generateStars() {
+import { StarCardDetailStatus } from "@/types/star";
+
+export function generateStars() {
 	const stars = [];
 	const numberOfStars = 200;
 
@@ -15,4 +17,12 @@ export default function generateStars() {
 	}
 
 	return stars;
+}
+
+export function generateName(characterName: string, status: StarCardDetailStatus) {
+	if (status === "COMPLETE") {
+		return characterName;
+	} else {
+		return characterName + " 자리";
+	}
 }
