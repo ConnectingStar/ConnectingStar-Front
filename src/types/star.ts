@@ -10,6 +10,7 @@ interface StarCardDetailType {
 	image: string;
 	starCount: number;
 	status: StarCardDetailStatus;
+	isProfile: boolean;
 }
 
 export interface StarDataType {

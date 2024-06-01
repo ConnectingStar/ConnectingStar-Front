@@ -24,7 +24,6 @@ import { theme } from "@/styles/theme";
 export default function StarCardDetailPage() {
 	const { id } = useParams();
 	const navigate = useNavigate();
-
 	const dispatch = useAppDispatch();
 	const { modal } = useAppSelector((state) => state.modal);
 	const { starCardDetail } = useAppSelector((state) => state.star);
@@ -66,6 +65,7 @@ export default function StarCardDetailPage() {
 				<FooterBtn
 					text={buttonState[starCardDetail.status]}
 					handleBtnClick={() => handleFooterBtnClick(starCardDetail.status)}
+					disabled={starCardDetail.isProfile}
 				/>
 			)}
 
