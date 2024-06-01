@@ -2,7 +2,6 @@ export const buttonState = {
 	SELECT: "선택",
 	PROGRESS: "별자리 보러 가기",
 	COMPLETE: "프로필 이미지로 설정",
-	OTHER: "",
 };
 
 export const categoryData = [
