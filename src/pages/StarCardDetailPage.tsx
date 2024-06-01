@@ -8,7 +8,6 @@ import Header from "@/components/common/Header/Header";
 import LoadingSpinner from "@/components/StarPage/LoadingSpinner";
 import SelectProfileCharacterModal from "@/components/StarPage/Modal/SelectProfileCharacterModal";
 import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
-import CategoryLabel from "@/components/StarPage/StarCardDetail/CategoryLabel";
 import Img from "@/components/StarPage/StarCardDetail/Img";
 import Story from "@/components/StarPage/StarCardDetail/Story";
 import { StarCardDetailStatus } from "@/types/star";
@@ -59,7 +58,7 @@ export default function StarCardDetailPage() {
 					image={starCardDetail.image}
 					starCount={starCardDetail.starCount}
 				/>
-				<CategoryLabel typeName={starCardDetail.typeName} />
+				<p css={categoryLabelStyle}>{starCardDetail.typeName}</p>
 				<h1>{starCardDetail.name}</h1>
 				<h2>{starCardDetail.identity}</h2>
 				<Story story={starCardDetail.story} />
@@ -96,4 +95,14 @@ const sectionStyle = css`
 		${theme.font.body_a}
 		color: ${theme.color.font_black};
 	}
+`;
+
+const categoryLabelStyle = css`
+	width: 4.9375rem;
+	padding: 0.5rem 0;
+	border-radius: 0.9375rem;
+	${theme.font.body_c_bold};
+	text-align: center;
+	color: ${theme.color.main_blue};
+	background-color: ${theme.color.main_light_blue};
 `;
