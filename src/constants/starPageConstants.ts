@@ -5,12 +5,12 @@ export const buttonState = {
 };
 
 export const categoryData = [
-	"전체",
-	"육체 활동",
-	"마음 강화",
-	"지식 습득",
-	"기록 습관",
-	"휴식ㅣ취미",
+	{ id: 0, title: "전체" },
+	{ id: 1, title: "육체 활동" },
+	{ id: 2, title: "마음 강화" },
+	{ id: 3, title: "지식 습득" },
+	{ id: 4, title: "기록 습관" },
+	{ id: 5, title: "휴식ㅣ취미" },
 ];
 
 export const STAR_DETAIL_STATUS = {

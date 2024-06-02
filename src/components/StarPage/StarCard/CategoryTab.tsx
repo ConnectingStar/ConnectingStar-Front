@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import { css } from "@emotion/react";
 
@@ -6,19 +6,22 @@ import { categoryData } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
 
-export default function CategoryTab() {
-	const [select, setSelect] = useState("전체");
+interface CategoryTabProps {
+	select: { id: number; title: string };
+	onSelect: (id: number, item: string) => void;
+}
 
+export default function CategoryTab({ select, onSelect }: CategoryTabProps) {
 	return (
 		<div css={containerStyle}>
 			{categoryData.map((item) => (
 				<button
-					key={item}
-					className={select === item ? "active" : ""}
+					key={item.id}
+					className={select.title === item.title ? "active" : ""}
 					css={tabStyle}
-					onClick={() => setSelect(item)}
+					onClick={() => onSelect(item.id, item.title)}
 				>
-					{item}
+					{item.title}
 				</button>
 			))}
 		</div>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { css } from "@emotion/react";
 
@@ -14,9 +14,17 @@ const StarCardPage = () => {
 	const dispatch = useAppDispatch();
 	const { starCard } = useAppSelector((state) => state.star);
 
+	const [isToggleActive, setIsToggleActive] = useState(false);
+	const [select, setSelect] = useState({ id: 0, title: "전체" });
+
 	useEffect(() => {
-		dispatch(getStarCard({ id: "", isRegistered: false }));
-	}, []);
+		dispatch(
+			getStarCard({
+				id: `${select.id === 0 ? "" : String(select.id)}`,
+				isRegistered: isToggleActive,
+			}),
+		);
+	}, [select, isToggleActive]);
 
 	return (
 		<>
@@ -25,8 +33,14 @@ const StarCardPage = () => {
 				<Header.Title>별자리 카드</Header.Title>
 			</Header>
 			<section css={sectionStyle}>
-				<CategoryTab />
-				<Toggle />
+				<CategoryTab
+					select={select}
+					onSelect={(id: number, item: string) => setSelect({ id, title: item })}
+				/>
+				<Toggle
+					isToggleActive={isToggleActive}
+					onToggle={() => setIsToggleActive(!isToggleActive)}
+				/>
 				<ul css={cardSectionStyle}>
 					{starCard.list.map((card) => (
 						<StarCard
