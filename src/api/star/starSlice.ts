@@ -1,13 +1,17 @@
 import { StarDataType } from "@/types/star";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getStarCardDetail } from "@/api/star/starThunk";
+import { getStarCardDetail, getStarCard } from "@/api/star/starThunk";
 import { editProfileImage } from "@/api/user/userThunk";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
 const initialState: StarDataType = {
 	isLoading: false,
+	starCard: {
+		list: [],
+		count: 0,
+	},
 	starDetail: {
 		constellationId: 0,
 		typeName: "",
@@ -27,6 +31,16 @@ const starSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
+			.addCase(getStarCard.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(getStarCard.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.starCard = action.payload;
+			})
+			.addCase(getStarCard.rejected, (state) => {
+				state.isLoading = false;
+			})
 			.addCase(getStarCardDetail.pending, (state) => {
 				state.isLoading = true;
 			})
