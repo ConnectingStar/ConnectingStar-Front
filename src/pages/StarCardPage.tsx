@@ -31,6 +31,7 @@ const StarCardPage = () => {
 					{starCard.list.map((card) => (
 						<StarCard
 							key={card.constellationId}
+							id={card.constellationId}
 							title={card.name}
 							subTitle={card.typeName}
 							starNumber={card.starCount}
