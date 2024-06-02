@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { css } from "@emotion/react";
 
 import Header from "@/components/common/Header/Header";
@@ -5,48 +7,17 @@ import CategoryTab from "@/components/StarPage/StarCard/CategoryTab";
 import StarCard from "@/components/StarPage/StarCard/StarCard";
 import Toggle from "@/components/StarPage/StarCard/Toggle";
 
-// TODO: API 연결 후 삭제 예정(UI 확인용)
-interface starCardDataType {
-	id: number;
-	subTitle: string;
-	title: string;
-	starNumber: number;
-	state: "default" | "selected" | "have";
-}
-
-// TODO: API 연결 후 삭제 예정(UI 확인용)
-const starCardData: starCardDataType[] = [
-	{
-		id: 0,
-		subTitle: "육체 활동",
-		title: "캐릭터 이름",
-		starNumber: 10,
-		state: "default",
-	},
-	{
-		id: 1,
-		subTitle: "육체 활동",
-		title: "캐릭터 이름",
-		starNumber: 10,
-		state: "have",
-	},
-	{
-		id: 2,
-		subTitle: "육체 활동",
-		title: "캐릭터 이름",
-		starNumber: 10,
-		state: "selected",
-	},
-	{
-		id: 3,
-		subTitle: "육체 활동",
-		title: "캐릭터 이름",
-		starNumber: 10,
-		state: "default",
-	},
-];
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { getStarCard } from "@/api/star/starThunk";
 
 const StarCardPage = () => {
+	const dispatch = useAppDispatch();
+	const { starCard } = useAppSelector((state) => state.star);
+
+	useEffect(() => {
+		dispatch(getStarCard({ id: "", isRegistered: false }));
+	}, []);
+
 	return (
 		<>
 			<Header>
@@ -57,13 +28,14 @@ const StarCardPage = () => {
 				<CategoryTab />
 				<Toggle />
 				<ul css={cardSectionStyle}>
-					{starCardData.map((card) => (
+					{starCard.list.map((card) => (
 						<StarCard
-							key={card.id}
-							title={card.title}
-							subTitle={card.subTitle}
-							starNumber={card.starNumber}
-							state={card.state}
+							key={card.constellationId}
+							title={card.name}
+							subTitle={card.typeName}
+							starNumber={card.starCount}
+							image={card.image}
+							state={card.status}
 						/>
 					))}
 				</ul>
