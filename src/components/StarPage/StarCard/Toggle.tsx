@@ -1,19 +1,17 @@
-import { useState } from "react";
-
 import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export default function Toggle() {
-	const [isToggleActive, setIsToggleActive] = useState(false);
+interface ToggleProps {
+	isToggleActive: boolean;
+	onToggle: () => void;
+}
 
+export default function Toggle({ isToggleActive, onToggle }: ToggleProps) {
 	return (
 		<div css={containerStyle}>
 			<p>보유 카드 모아보기</p>
-			<div
-				css={getToggleStyle(isToggleActive)}
-				onClick={() => setIsToggleActive(!isToggleActive)}
-			></div>
+			<div css={getToggleStyle(isToggleActive)} onClick={onToggle}></div>
 		</div>
 	);
 }
