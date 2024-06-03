@@ -28,3 +28,19 @@ export function generateName(characterName: string, status: StarCardDetailStatus
 		return characterName + " 자리";
 	}
 }
+
+type CategoryType = { id: number; title: string; param: string }[];
+
+export function filterCategoryItem(category: CategoryType, param: string | null) {
+	if (param === null) return;
+
+	return category.filter((item) => {
+		return item.param === param;
+	})[0];
+}
+
+export function validateCategoryParams(category: CategoryType, param: string | null) {
+	return category.some((item) => {
+		return item.param === param;
+	});
+}

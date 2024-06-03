@@ -5,12 +5,12 @@ export const buttonState = {
 };
 
 export const categoryData = [
-	{ id: 0, title: "전체" },
-	{ id: 1, title: "육체 활동" },
-	{ id: 2, title: "마음 강화" },
-	{ id: 3, title: "지식 습득" },
-	{ id: 4, title: "기록 습관" },
-	{ id: 5, title: "휴식ㅣ취미" },
+	{ id: 0, title: "전체", param: "all" },
+	{ id: 1, title: "육체 활동", param: "physical-activity" },
+	{ id: 2, title: "마음 강화", param: "mind" },
+	{ id: 3, title: "지식 습득", param: "knowledge" },
+	{ id: 4, title: "기록 습관", param: "record" },
+	{ id: 5, title: "휴식ㅣ취미", param: "rest-and-hobby" },
 ];
 
 export const STAR_DETAIL_STATUS = {
