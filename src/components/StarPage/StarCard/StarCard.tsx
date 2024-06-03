@@ -4,6 +4,8 @@ import starImg from "@/assets/image/img-card-detail-star.png";
 
 import { StarCardStatus } from "@/types/star";
 
+import { generateName } from "@/utils/starUtils";
+
 import {
 	containerStyle,
 	imgStyle,
@@ -36,7 +38,7 @@ export default function StarCard({ id, title, subTitle, starNumber, image, state
 				</div>
 				<div css={titleStyle}>
 					<strong>{subTitle}</strong>
-					<h3>{title}</h3>
+					<h3>{generateName(title, state)}</h3>
 				</div>
 				{state === "PROGRESS" && <div css={selectedStyle}></div>}
 			</Link>
