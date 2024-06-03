@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
@@ -10,21 +11,38 @@ import Toggle from "@/components/StarPage/StarCard/Toggle";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { getStarCard } from "@/api/star/starThunk";
 
+import { categoryData } from "@/constants/starPageConstants";
+import { TAB_KEY } from "@/constants/tabConstants";
+
+import { filterCategoryItem, validateCategoryParams } from "@/utils/starUtils";
+
 const StarCardPage = () => {
 	const dispatch = useAppDispatch();
 	const { starCard } = useAppSelector((state) => state.star);
 
 	const [isToggleActive, setIsToggleActive] = useState(false);
-	const [select, setSelect] = useState({ id: 0, title: "전체" });
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
+		const isParamValid = validateCategoryParams(categoryData, searchParams.get(TAB_KEY));
+
+		if (searchParams.size === 0 || !isParamValid) {
+			setSearchParams(`${TAB_KEY}=${categoryData[0].param}`);
+		}
+	}, [searchParams]);
+
+	useEffect(() => {
+		const categoryItem = filterCategoryItem(categoryData, searchParams.get(TAB_KEY));
+
+		if (categoryItem === undefined) return;
+
 		dispatch(
 			getStarCard({
-				id: `${select.id === 0 ? "" : String(select.id)}`,
+				id: categoryItem.id === 0 ? "" : String(categoryItem.id),
 				isRegistered: isToggleActive,
 			}),
 		);
-	}, [select, isToggleActive]);
+	}, [searchParams, isToggleActive]);
 
 	return (
 		<>
@@ -34,8 +52,8 @@ const StarCardPage = () => {
 			</Header>
 			<section css={sectionStyle}>
 				<CategoryTab
-					select={select}
-					onSelect={(id: number, item: string) => setSelect({ id, title: item })}
+					searchParams={searchParams}
+					onSetSearchParams={(param: string) => setSearchParams(`${TAB_KEY}=${param}`)}
 				/>
 				<Toggle
 					isToggleActive={isToggleActive}

@@ -1,25 +1,24 @@
-// import { useState } from "react";
-
 import { css } from "@emotion/react";
 
 import { categoryData } from "@/constants/starPageConstants";
+import { TAB_KEY } from "@/constants/tabConstants";
 
 import { theme } from "@/styles/theme";
 
 interface CategoryTabProps {
-	select: { id: number; title: string };
-	onSelect: (id: number, item: string) => void;
+	searchParams: URLSearchParams;
+	onSetSearchParams: (param: string) => void;
 }
 
-export default function CategoryTab({ select, onSelect }: CategoryTabProps) {
+export default function CategoryTab({ searchParams, onSetSearchParams }: CategoryTabProps) {
 	return (
 		<div css={containerStyle}>
 			{categoryData.map((item) => (
 				<button
 					key={item.id}
-					className={select.title === item.title ? "active" : ""}
+					className={searchParams.get(TAB_KEY) === item.param ? "active" : ""}
 					css={tabStyle}
-					onClick={() => onSelect(item.id, item.title)}
+					onClick={() => onSetSearchParams(item.param)}
 				>
 					{item.title}
 				</button>
