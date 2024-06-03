@@ -1,4 +1,4 @@
-import { StarCardDetailStatus } from "@/types/star";
+import { StarCardDetailStatus, StarCardStatus } from "@/types/star";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
@@ -21,7 +21,7 @@ export function generateStars() {
 	return stars;
 }
 
-export function generateName(characterName: string, status: StarCardDetailStatus) {
+export function generateName(characterName: string, status: StarCardDetailStatus | StarCardStatus) {
 	if (status === STAR_DETAIL_STATUS.COMPLETE) {
 		return characterName;
 	} else {
