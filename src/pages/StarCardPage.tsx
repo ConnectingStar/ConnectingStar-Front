@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { css } from "@emotion/react";
@@ -11,23 +11,29 @@ import Toggle from "@/components/StarPage/StarCard/Toggle";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { getStarCard } from "@/api/star/starThunk";
 
-import { categoryData } from "@/constants/starPageConstants";
+import { categoryData, TOGGLE_KEY } from "@/constants/starPageConstants";
 import { TAB_KEY } from "@/constants/tabConstants";
 
-import { filterCategoryItem, validateCategoryParams } from "@/utils/starUtils";
+import {
+	filterCategoryItem,
+	validateCategoryParams,
+	validateToggleParams,
+} from "@/utils/starUtils";
 
 const StarCardPage = () => {
 	const dispatch = useAppDispatch();
 	const { starCard } = useAppSelector((state) => state.star);
 
-	const [isToggleActive, setIsToggleActive] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	useEffect(() => {
-		const isParamValid = validateCategoryParams(categoryData, searchParams.get(TAB_KEY));
+	const isToggle = searchParams.get(TOGGLE_KEY) === "true";
 
-		if (searchParams.size === 0 || !isParamValid) {
-			setSearchParams(`${TAB_KEY}=${categoryData[0].param}`);
+	useEffect(() => {
+		const isCategoryParamValid = validateCategoryParams(categoryData, searchParams.get(TAB_KEY));
+		const isToggleParamValid = validateToggleParams(searchParams.get(TOGGLE_KEY));
+
+		if (searchParams.size === 0 || !isCategoryParamValid || !isToggleParamValid) {
+			setSearchParams({ [TAB_KEY]: categoryData[0].param, [TOGGLE_KEY]: "false" });
 		}
 	}, [searchParams]);
 
@@ -39,10 +45,10 @@ const StarCardPage = () => {
 		dispatch(
 			getStarCard({
 				id: categoryItem.id === 0 ? "" : String(categoryItem.id),
-				isRegistered: isToggleActive,
+				isRegistered: isToggle,
 			}),
 		);
-	}, [searchParams, isToggleActive]);
+	}, [searchParams]);
 
 	return (
 		<>
@@ -53,11 +59,18 @@ const StarCardPage = () => {
 			<section css={sectionStyle}>
 				<CategoryTab
 					searchParams={searchParams}
-					onSetSearchParams={(param: string) => setSearchParams(`${TAB_KEY}=${param}`)}
+					onSetSearchParams={(param: string) =>
+						setSearchParams({ [TAB_KEY]: param, [TOGGLE_KEY]: `${isToggle}` })
+					}
 				/>
 				<Toggle
-					isToggleActive={isToggleActive}
-					onToggle={() => setIsToggleActive(!isToggleActive)}
+					isToggleActive={isToggle}
+					onToggle={() => {
+						setSearchParams({
+							[TAB_KEY]: `${searchParams.get(TAB_KEY)}`,
+							[TOGGLE_KEY]: `${!isToggle}`,
+						});
+					}}
 				/>
 				<ul css={cardSectionStyle}>
 					{starCard.list.map((card) => (

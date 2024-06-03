@@ -44,3 +44,9 @@ export function validateCategoryParams(category: CategoryType, param: string | n
 		return item.param === param;
 	});
 }
+
+export function validateToggleParams(param: string | null) {
+	if (param === null) return;
+	console.log(param === "true" || param === "false");
+	return param === "true" || param === "false";
+}
