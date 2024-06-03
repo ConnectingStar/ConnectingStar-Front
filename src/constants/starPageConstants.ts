@@ -19,3 +19,5 @@ export const STAR_DETAIL_STATUS = {
 	PROGRESS: "PROGRESS", // 해금 진행 중
 	COMPLETE: "COMPLETE", // 해금 완료
 } as const;
+
+export const TOGGLE_KEY = "have";
