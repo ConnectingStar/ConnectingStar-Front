@@ -14,3 +14,9 @@ export interface UserInfoType {
 	nickname: string;
 	profileCharacter: string;
 }
+
+export interface WithdrawalRequestType {
+	reason: string;
+	content: string;
+	deletedDt: string;
+}

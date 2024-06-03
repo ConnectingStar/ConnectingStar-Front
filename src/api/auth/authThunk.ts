@@ -4,6 +4,8 @@ import { axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
+import type { WithdrawalRequestType } from "@/types/user";
+
 interface FCMTokenRequestType {
 	token: string;
 	nickname: string;
@@ -13,11 +15,6 @@ interface FCMTokenRequestType {
 interface FCMTokenResponseType {
 	tokenInfo: string;
 	nickname: string;
-}
-
-interface WithdrawalRequestType {
-	reason: string;
-	deletedDt: string;
 }
 
 export const postFCMToken = createAsyncThunk(
@@ -57,9 +54,9 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkOptions) =>
 
 export const withdrawal = createAsyncThunk(
 	"auth/withdrawal",
-	async ({ reason, deletedDt }: WithdrawalRequestType, thunkOptions) => {
+	async ({ reason, content, deletedDt }: WithdrawalRequestType, thunkOptions) => {
 		try {
-			return await axiosInstance.post(END_POINTS.WITHDRAWAL, { reason, deletedDt });
+			return await axiosInstance.post(END_POINTS.WITHDRAWAL, { reason, content, deletedDt });
 		} catch (error) {
 			thunkOptions.rejectWithValue(error);
 		}
