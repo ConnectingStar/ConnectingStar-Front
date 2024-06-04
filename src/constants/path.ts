@@ -3,4 +3,5 @@ export const PATH = {
 	CREATE_HABIT: "/habit-new",
 	MY: "/mypage",
 	STAR: "/star",
+	ONBOARDING: "/onboarding",
 } as const;
