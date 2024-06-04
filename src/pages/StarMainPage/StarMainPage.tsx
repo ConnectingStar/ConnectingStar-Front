@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 // import CharacterUnlockModal from "@/components/StarPage/Modal/CharacterUnlockModal";
+import SelectStarButton from "@/components/StarPage/StarMain/SelectStarButton";
 import StarBackground from "@/components/StarPage/StarMain/StarBackground";
 import StarButton from "@/components/StarPage/StarMain/StarButton";
 import StarCardLink from "@/components/StarPage/StarMain/StarCardLink";
@@ -45,11 +46,15 @@ export default function StarMainPage() {
 	return (
 		<div css={containerStyle}>
 			<StarBackground />
-
-			<StarInfo starCount={starMain.starCount} starName={starMain.name} starCardId={1} />
-			<StarCharacter svgData={starMain.svg} />
+			<StarInfo
+				isProgress={starMain.isProgress}
+				starCount={starMain.starCount}
+				starName={starMain.name}
+				starCardId={1}
+			/>
+			{starMain.isProgress ? <StarCharacter svgData={starMain.svg} /> : <SelectStarButton />}
 			<div className="wrapper">
-				<StarButton onClick={handleButtonClick} />
+				{starMain.isProgress && <StarButton onClick={handleButtonClick} />}
 				<StarCardLink />
 			</div>
 
