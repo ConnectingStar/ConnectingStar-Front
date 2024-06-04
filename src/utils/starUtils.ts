@@ -1,5 +1,7 @@
 import { StarCardDetailStatus } from "@/types/star";
 
+import { STAR_CARD_DETAIL_STATUS } from "@/constants/starPageConstants";
+
 export function generateStars() {
 	const stars = [];
 	const numberOfStars = 200;
@@ -20,7 +22,7 @@ export function generateStars() {
 }
 
 export function generateName(characterName: string, status: StarCardDetailStatus) {
-	if (status === "COMPLETE") {
+	if (status === STAR_CARD_DETAIL_STATUS.COMPLETE) {
 		return characterName;
 	} else {
 		return characterName + " 자리";

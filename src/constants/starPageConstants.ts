@@ -12,3 +12,10 @@ export const categoryData = [
 	"기록 습관",
 	"휴식ㅣ취미",
 ];
+
+export const STAR_CARD_DETAIL_STATUS = {
+	SELECT: "SELECT",
+	OTHER: "OTHER",
+	PROGRESS: "PROGRESS",
+	COMPLETE: "COMPLETE",
+} as const;
