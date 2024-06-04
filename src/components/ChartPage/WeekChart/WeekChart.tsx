@@ -56,7 +56,7 @@ const WeekChart = () => {
 						<LeftArrowIcon onClick={handlePrevMonth} width={16} height={16} />
 
 						<h3>
-							{dateFormat(startDate)} - {dateFormat(endDate)}
+							{dateFormat(startDate, "POINT")} - {dateFormat(endDate, "POINT")}
 						</h3>
 
 						{endDate >= nowMonth ? (

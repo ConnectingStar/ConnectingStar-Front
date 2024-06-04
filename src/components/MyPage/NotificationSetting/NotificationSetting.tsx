@@ -48,7 +48,7 @@ const NotificationSetting = () => {
 				</p>
 				<ToggleButton
 					title="약속 전체 일시 정지"
-					subTitle={`${dateFormat(startDay)} - ${dateFormat(endDay)}`}
+					subTitle={`${dateFormat(startDay, "POINT")} - ${dateFormat(endDay, "POINT")}`}
 					hasToggle
 					isToggle={isStopHabitToggle}
 					isDateText
