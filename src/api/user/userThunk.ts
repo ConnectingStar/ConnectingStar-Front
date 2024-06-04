@@ -128,7 +128,7 @@ export const editProfileImage = createAsyncThunk(
 	"user/editProfileImage",
 	async (constellationId: string, thunkOptions) => {
 		try {
-			return await axiosInstance.put(END_POINTS.SELECT_CONSTELLATION, { constellationId });
+			return await axiosInstance.put(END_POINTS.USER_CONSTELLATION, { constellationId });
 		} catch (error) {
 			return thunkOptions.rejectWithValue(error);
 		}
@@ -139,7 +139,7 @@ export const selectStar = createAsyncThunk(
 	"user/selectStar",
 	async (constellationId: string, thunkOptions) => {
 		try {
-			return await axiosInstance.post(END_POINTS.SELECT_CONSTELLATION, { constellationId });
+			return await axiosInstance.post(END_POINTS.USER_CONSTELLATION, { constellationId });
 		} catch (error) {
 			return thunkOptions.rejectWithValue(error);
 		}
