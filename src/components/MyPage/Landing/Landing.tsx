@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
+
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { getUserInfo } from "@/api/user/userThunk";
 
 import { MENU_BUTTON_DATA, PROFILE_BUTTON_DATA } from "@/constants/mypage";
 
@@ -15,14 +19,22 @@ import {
 } from "@/components/MyPage/Landing/Landing.style";
 
 const Landing = () => {
+	const dispatch = useAppDispatch();
+
+	const { userData } = useAppSelector((state) => state.user);
+
 	const isLatestVersion = true;
+
+	useEffect(() => {
+		dispatch(getUserInfo());
+	}, []);
 
 	return (
 		<div css={layoutStyle}>
 			<div css={profileBoxStyle}>
 				<div css={profileImgStyle} />
 				<Link to="/myinfo">
-					<p>사용자 닉네임</p>
+					<p>{userData.nickname}</p>
 					<RightArrowIcon />
 				</Link>
 			</div>
