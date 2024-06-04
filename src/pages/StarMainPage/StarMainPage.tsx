@@ -11,7 +11,7 @@ import StarInfo from "@/components/StarPage/StarMain/StarInfo";
 
 import { axiosInstance } from "@/api/axiosInstance";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { getStarMain } from "@/api/star/starThunk";
+import { getStarMain, addStarToConstellation } from "@/api/star/starThunk";
 // import { openModal } from "@/api/modal/modalSlice";
 
 // import { modalType } from "@/constants/modalConstants";
@@ -32,15 +32,9 @@ export default function StarMainPage() {
 		dispatch(getStarMain());
 	}, []);
 
-	// TODO: 테스트용 코드 (추후 별자리 메인 브랜치에서 수정 예정)
 	const handleButtonClick = () => {
-		// 별 채우는 API
-		axiosInstance
-			.put("/user/constellation/star")
-			.then((data) => {
-				console.log(data.data.data.isRegistered);
-			})
-			.catch((error) => console.error(error));
+		// TODO: 보유한 별 없으면 에러 발생 -> 기획/디자인 상의 필요
+		dispatch(addStarToConstellation());
 	};
 
 	return (
