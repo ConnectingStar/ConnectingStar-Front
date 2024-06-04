@@ -1,4 +1,6 @@
-export const dateFormat = (date: Date) => {
+import type { DateFormatType } from "@/types/common";
+
+export const dateFormat = (date: Date, type: DateFormatType) => {
 	let formatMonth = String(date.getMonth() + 1);
 	let formatDay = String(date.getDate());
 
@@ -8,6 +10,10 @@ export const dateFormat = (date: Date) => {
 
 	if (Number(formatDay) < 10) {
 		formatDay = `0${formatDay}`;
+	}
+
+	if (type === "LINE") {
+		return `${date.getFullYear()}-${formatMonth}-${formatDay}`;
 	}
 
 	return `${date.getFullYear()}.${formatMonth}.${formatDay}`;

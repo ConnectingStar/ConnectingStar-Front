@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import SelectReasonModal from "@/components/common/SelectReason/SelectReasonModal/SelectReasonModal";
 
+import { withdrawal } from "@/api/auth/authThunk";
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
+import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
+import { PATH } from "@/constants/path";
+
+import { dateFormat } from "@/utils/dateFormat";
 
 import {
 	layoutStyle,
@@ -46,10 +52,23 @@ const SelectReason = ({
 
 	const { modal } = useAppSelector((state) => state.modal);
 
+	const navigate = useNavigate();
+
 	const [isInputFocus, setIsInputFocus] = useState(false);
 
 	const [reason, setReason] = useState(reasonDefaultText);
-	const [inputText, setInputText] = useState("");
+	const [content, setContent] = useState("");
+
+	const deletedDt = dateFormat(new Date(), "LINE");
+
+	const handleWithDrawal = async () => {
+		try {
+			await dispatch(withdrawal({ reason, content, deletedDt })).unwrap();
+			navigate(`${PATH.ONBOARDING}?${STEP_KEY}=${ONBOARDING_STEP.OAUTH_SIGN_UP}`);
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	return (
 		<div css={layoutStyle}>
@@ -69,8 +88,8 @@ const SelectReason = ({
 							<textarea
 								placeholder={data.placeholder}
 								onFocus={() => setIsInputFocus(true)}
-								value={inputText}
-								onChange={(e) => setInputText(e.target.value)}
+								value={content}
+								onChange={(e) => setContent(e.target.value)}
 							/>
 						</div>
 					)}
@@ -88,11 +107,16 @@ const SelectReason = ({
 					text="확인"
 					isSquare
 					isTransparent
-					disabled={inputText === ""}
+					disabled={content === ""}
 					handleBtnClick={() => setIsInputFocus(false)}
 				/>
 			) : (
-				<FooterBtn text={footerBtnText} isTransparent disabled={reason === reasonDefaultText} />
+				<FooterBtn
+					text={footerBtnText}
+					isTransparent
+					disabled={reason === reasonDefaultText}
+					handleBtnClick={handleWithDrawal}
+				/>
 			)}
 
 			{modal === modalType.SELECT_REASON && (
