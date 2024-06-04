@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
-import LoadingSpinner from "@/components/StarPage/LoadingSpinner";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
 import SelectProfileCharacterModal from "@/components/StarPage/Modal/SelectProfileCharacterModal";
 import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
 import Img from "@/components/StarPage/StarCardDetail/Img";
