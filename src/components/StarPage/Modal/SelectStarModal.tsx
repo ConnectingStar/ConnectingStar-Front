@@ -9,6 +9,8 @@ import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 import { selectStar } from "@/api/user/userThunk";
 
+import { PATH } from "@/constants/path";
+
 import { theme } from "@/styles/theme";
 
 export default function SelectStarModal() {
@@ -19,7 +21,7 @@ export default function SelectStarModal() {
 	const handleFooterBtnClick = async () => {
 		try {
 			await dispatch(selectStar(id ?? "")).unwrap();
-			navigate("/star");
+			navigate(PATH.STAR);
 		} catch (error) {
 			console.error(error);
 		}

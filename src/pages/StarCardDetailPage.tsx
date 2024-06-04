@@ -17,6 +17,7 @@ import { openModal } from "@/api/modal/modalSlice";
 import { getStarCardDetail } from "@/api/star/starThunk";
 
 import { modalType } from "@/constants/modalConstants";
+import { PATH } from "@/constants/path";
 import { buttonState } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
@@ -35,7 +36,7 @@ export default function StarCardDetailPage() {
 	const handleFooterBtnClick = (status: StarCardDetailStatus) => {
 		switch (status) {
 			case "PROGRESS":
-				return navigate("/star");
+				return navigate(PATH.STAR);
 			case "SELECT":
 				return dispatch(openModal(modalType.SELECT_STAR));
 			case "COMPLETE":
