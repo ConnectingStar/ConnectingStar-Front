@@ -19,7 +19,7 @@ const initialState: StarDataType = {
 };
 
 const starSlice = createSlice({
-	name: "starCardDetail",
+	name: "star",
 	initialState,
 	reducers: {
 		updateIsProfile: (state, action: PayloadAction<{ isProfile: boolean }>) => {
