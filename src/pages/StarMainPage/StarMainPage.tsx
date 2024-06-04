@@ -9,7 +9,8 @@ import StarCharacter from "@/components/StarPage/StarMain/StarCharacter";
 import StarInfo from "@/components/StarPage/StarMain/StarInfo";
 
 import { axiosInstance } from "@/api/axiosInstance";
-// import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { getStarMain } from "@/api/star/starThunk";
 // import { openModal } from "@/api/modal/modalSlice";
 
 // import { modalType } from "@/constants/modalConstants";
@@ -17,7 +18,8 @@ import { axiosInstance } from "@/api/axiosInstance";
 import { containerStyle, starMainPageGnbStyle } from "@/pages/StarMainPage/StarMainPage.style";
 
 export default function StarMainPage() {
-	// const dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
+	const { starMain } = useAppSelector((state) => state.star);
 
 	// const { modal } = useAppSelector((state) => state.modal);
 
@@ -26,7 +28,7 @@ export default function StarMainPage() {
 		// 현재 남은 별 개수 확인하는 API - 콘솔에서 확인 가능
 		axiosInstance.get("/user/star").then((data) => console.log(data.data.data.star));
 		// 현재 별자리 확인 API
-		axiosInstance.get("/constellation/main").then((data) => console.log(data.data.data));
+		dispatch(getStarMain());
 	}, []);
 
 	// TODO: 테스트용 코드 (추후 별자리 메인 브랜치에서 수정 예정)
@@ -44,8 +46,8 @@ export default function StarMainPage() {
 		<div css={containerStyle}>
 			<StarBackground />
 
-			<StarInfo starCount={114} starCardId={1} />
-			<StarCharacter svgData={data} />
+			<StarInfo starCount={starMain.starCount} starCardId={1} />
+			<StarCharacter svgData={starMain.svg} />
 			<div className="wrapper">
 				<StarButton onClick={handleButtonClick} />
 				<StarCardLink />
