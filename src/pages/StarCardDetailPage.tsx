@@ -18,11 +18,14 @@ import { getStarCardDetail } from "@/api/star/starThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { PATH } from "@/constants/path";
+import { STAR_CARD_DETAIL_STATUS } from "@/constants/starPageConstants";
 import { buttonState } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
 
 import { generateName } from "@/utils/starUtils";
+
+const { PROGRESS, SELECT, COMPLETE } = STAR_CARD_DETAIL_STATUS;
 
 export default function StarCardDetailPage() {
 	const { id } = useParams();
@@ -35,11 +38,11 @@ export default function StarCardDetailPage() {
 
 	const handleFooterBtnClick = (status: StarCardDetailStatus) => {
 		switch (status) {
-			case "PROGRESS":
+			case PROGRESS:
 				return navigate(PATH.STAR);
-			case "SELECT":
+			case SELECT:
 				return dispatch(openModal(modalType.SELECT_STAR));
-			case "COMPLETE":
+			case COMPLETE:
 				return dispatch(openModal(modalType.SELECT_PROFILE_CHARACTER));
 			default:
 				return;

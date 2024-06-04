@@ -3,6 +3,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { getStarCardDetail } from "@/api/star/starThunk";
 
+import { STAR_CARD_DETAIL_STATUS } from "@/constants/starPageConstants";
+
 const initialState: StarDataType = {
 	isLoading: false,
 	starCardDetail: {
@@ -13,7 +15,7 @@ const initialState: StarDataType = {
 		identity: "",
 		image: "",
 		starCount: 0,
-		status: "SELECT",
+		status: STAR_CARD_DETAIL_STATUS.SELECT,
 		isProfile: false,
 	},
 };
