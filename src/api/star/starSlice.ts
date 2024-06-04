@@ -52,7 +52,7 @@ const starSlice = createSlice({
 			})
 			.addCase(getStarMain.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.starCard = action.payload.data;
+				state.starMain = action.payload.data;
 			})
 			.addCase(getStarMain.rejected, (state) => {
 				state.isLoading = false;

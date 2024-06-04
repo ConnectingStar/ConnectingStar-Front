@@ -11,13 +11,13 @@ import { theme } from "@/styles/theme";
 
 import { getOutlineTextStyle } from "@/components/StarPage/StarMain/Star.style";
 
-// TODO: 별 개수(starCount)는 API 연결 후 수정 예정
 interface StarInfoProps {
 	starCount: number;
+	starName: string;
 	starCardId: number;
 }
 
-export default function StarInfo({ starCount, starCardId }: StarInfoProps) {
+export default function StarInfo({ starCount, starName, starCardId }: StarInfoProps) {
 	return (
 		<div css={containerStyle}>
 			<div css={starCountStyle}>
@@ -25,8 +25,8 @@ export default function StarInfo({ starCount, starCardId }: StarInfoProps) {
 				<p>{starCount}</p>
 			</div>
 			<Link to={`${PATH.STAR_CARD}/${starCardId}`} css={characterLinkStyle}>
-				<span css={getOutlineTextStyle("#7400cf", "head_a")} data-text="캐릭터 이름">
-					캐릭터 이름
+				<span css={getOutlineTextStyle("#7400cf", "head_a")} data-text={starName}>
+					{starName}
 				</span>
 				<ArrowRightIcon />
 			</Link>
