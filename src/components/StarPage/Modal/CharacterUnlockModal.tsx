@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
@@ -6,10 +8,13 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import { PATH } from "@/constants/path";
+
 import { theme } from "@/styles/theme";
 
-export default function CharacterUnlockModal() {
+export default function CharacterUnlockModal({ id }: { id: number }) {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	return (
 		<Modal>
@@ -27,6 +32,7 @@ export default function CharacterUnlockModal() {
 					text="확인하러 가기"
 					leftText="닫기"
 					isTransparent
+					handleBtnClick={() => navigate(`${PATH.STAR_CARD}/${id}`)}
 					handleLeftBtnClick={() => dispatch(closeModal())}
 				/>
 			</div>
