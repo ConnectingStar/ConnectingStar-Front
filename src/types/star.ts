@@ -3,6 +3,39 @@ export type StarCardStatus = "PROGRESS" | "COMPLETE" | "NONE";
 export type StarCardDetailStatus = "SELECT" | "OTHER" | "PROGRESS" | "COMPLETE";
 export type CategoryType = { id: number; title: string; param: string };
 
+export interface StarDataType {
+	isLoading: boolean;
+	starMain: StarMainType;
+	starCard: StarCardType;
+	starDetail: StarDetailType;
+}
+
+interface StarMainType {
+	starCount: number;
+	name: string;
+	svg: Svg;
+	isProgress: boolean;
+}
+
+interface Svg {
+	fill: string;
+	stroke: string;
+	strokeWidth: number;
+	opacity: number;
+	width: number;
+	height: number;
+	viewBox: string;
+	path: string;
+	circleList: Circle[];
+}
+
+interface Circle {
+	cx: number;
+	cy: number;
+	r: number;
+	filled: boolean;
+}
+
 interface StarCardType {
 	list: StarCardItem[];
 	count: number;
@@ -27,10 +60,4 @@ interface StarDetailType {
 	starCount: number;
 	status: StarCardDetailStatus;
 	isProfile: boolean;
-}
-
-export interface StarDataType {
-	isLoading: boolean;
-	starCard: StarCardType;
-	starDetail: StarDetailType;
 }

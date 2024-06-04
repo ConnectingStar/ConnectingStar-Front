@@ -1,13 +1,29 @@
 import { StarDataType } from "@/types/star";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getStarCardDetail, getStarCard } from "@/api/star/starThunk";
+import { getStarMain, getStarCardDetail, getStarCard } from "@/api/star/starThunk";
 import { editProfileImage } from "@/api/user/userThunk";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
 const initialState: StarDataType = {
 	isLoading: false,
+	starMain: {
+		starCount: 0,
+		name: "",
+		svg: {
+			fill: "",
+			stroke: "",
+			strokeWidth: 0,
+			opacity: 0,
+			width: 0,
+			height: 0,
+			viewBox: "",
+			path: "",
+			circleList: [],
+		},
+		isProgress: false,
+	},
 	starCard: {
 		list: [],
 		count: 0,
@@ -31,6 +47,16 @@ const starSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
+			.addCase(getStarMain.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(getStarMain.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.starCard = action.payload.data;
+			})
+			.addCase(getStarMain.rejected, (state) => {
+				state.isLoading = false;
+			})
 			.addCase(getStarCard.pending, (state) => {
 				state.isLoading = true;
 			})

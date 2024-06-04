@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
 interface Circle {
-	id: number;
+	// id: number;
 	cx: number;
 	cy: number;
 	r: number;
@@ -36,7 +36,7 @@ export default function StarCharacter({ svgData }: StarCharacterProps) {
 				<path opacity={opacity} d={path} stroke={stroke} strokeWidth={strokeWidth} />
 
 				{circle.map((circle) => (
-					<g filter={circle.filled ? "url(#shadow)" : ""} key={circle.id}>
+					<g filter={circle.filled ? "url(#shadow)" : ""} key={circle.cx}>
 						<circle
 							cx={circle.cx}
 							cy={circle.cy}

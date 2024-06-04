@@ -4,6 +4,15 @@ import { authorizedAxiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
+export const getStarMain = createAsyncThunk("star/getStarMain", async (_, thunkOptions) => {
+	try {
+		const { data } = await axiosInstance.get(END_POINTS.STAR_MAIN);
+		return data;
+	} catch (error) {
+		throw thunkOptions.rejectWithValue(error);
+	}
+});
+
 export const getStarCard = createAsyncThunk(
 	"star/getStarCard",
 	async ({ id, isRegistered }: { id: string; isRegistered: boolean }, thunkOptions) => {
