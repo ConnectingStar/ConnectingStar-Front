@@ -36,7 +36,6 @@ export default function StarMainPage() {
 	}, [isRegistered]);
 
 	const handleButtonClick = () => {
-		// TODO: 보유한 별 없으면 에러 발생 -> 버튼 disabled만 해두기..?
 		dispatch(addStarToConstellation());
 	};
 
@@ -51,7 +50,9 @@ export default function StarMainPage() {
 			/>
 			{starMain.isProgress ? <StarCharacter svgData={starMain.svg} /> : <SelectStarButton />}
 			<div className="wrapper">
-				{starMain.isProgress && <StarButton onClick={handleButtonClick} />}
+				{starMain.isProgress && (
+					<StarButton onClick={handleButtonClick} disabled={starMain.starCount <= 0} />
+				)}
 				<StarCardLink />
 			</div>
 
