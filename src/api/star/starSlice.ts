@@ -14,6 +14,7 @@ import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 const initialState: StarDataType = {
 	isLoading: false,
 	starMain: {
+		constellationId: 0,
 		starCount: 0,
 		name: "",
 		svg: {
