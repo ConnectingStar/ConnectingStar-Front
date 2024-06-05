@@ -5,6 +5,7 @@ export type CategoryType = { id: number; title: string; param: string };
 
 export interface StarDataType {
 	isLoading: boolean;
+	isRegistered: boolean;
 	starMain: StarMainType;
 	starCard: StarCardType;
 	starDetail: StarDetailType;

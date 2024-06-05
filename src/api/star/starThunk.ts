@@ -17,7 +17,8 @@ export const addStarToConstellation = createAsyncThunk(
 	"star/addStarToConstellation",
 	async (_, thunkOptions) => {
 		try {
-			return await axiosInstance.put(END_POINTS.ADD_STAR_TO_CONSTELLATION);
+			const { data } = await axiosInstance.put(END_POINTS.ADD_STAR_TO_CONSTELLATION);
+			return data;
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
 		}

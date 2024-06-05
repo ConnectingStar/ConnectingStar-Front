@@ -13,6 +13,7 @@ import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
 const initialState: StarDataType = {
 	isLoading: false,
+	isRegistered: false,
 	starMain: {
 		constellationId: 0,
 		starCount: 0,
@@ -96,8 +97,9 @@ const starSlice = createSlice({
 			.addCase(addStarToConstellation.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(addStarToConstellation.fulfilled, (state) => {
+			.addCase(addStarToConstellation.fulfilled, (state, action) => {
 				state.isLoading = false;
+				state.isRegistered = action.payload.data.isRegistered;
 			})
 			.addCase(addStarToConstellation.rejected, (state) => {
 				state.isLoading = false;
