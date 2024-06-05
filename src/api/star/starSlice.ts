@@ -108,9 +108,8 @@ const starSlice = createSlice({
 				state.isRegistered = action.payload.data.isRegistered;
 				state.starMain.starCount = state.starMain.starCount - 1;
 
-				const { item, index } = findCircleItem(state.starMain.svg.circleList);
-				item.filled = true;
-				state.starMain.svg.circleList[index] = item;
+				const index = findCircleItem(state.starMain.svg.circleList);
+				state.starMain.svg.circleList[index].filled = true;
 			})
 			.addCase(addStarToConstellation.rejected, (state) => {
 				state.isLoading = false;

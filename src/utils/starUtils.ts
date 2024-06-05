@@ -43,9 +43,5 @@ export function validateToggleParams(param: string | null) {
 }
 
 export function findCircleItem(arr: Circle[]) {
-	const index = arr.findIndex((item) => item.filled === false);
-	return {
-		item: arr[index],
-		index,
-	};
+	return arr.findIndex((item) => item.filled === false);
 }
