@@ -11,6 +11,7 @@ export interface StarDataType {
 }
 
 interface StarMainType {
+	constellationId: number;
 	starCount: number;
 	name: string;
 	svg: Svg;

@@ -21,7 +21,6 @@ import { containerStyle, starMainPageGnbStyle } from "@/pages/StarMainPage/StarM
 export default function StarMainPage() {
 	const dispatch = useAppDispatch();
 	const { starMain } = useAppSelector((state) => state.star);
-
 	// const { modal } = useAppSelector((state) => state.modal);
 
 	// TODO: 테스트용 코드 (추후 별자리 메인 브랜치에서 수정 예정)
@@ -33,7 +32,7 @@ export default function StarMainPage() {
 	}, []);
 
 	const handleButtonClick = () => {
-		// TODO: 보유한 별 없으면 에러 발생 -> 기획/디자인 상의 필요
+		// TODO: 보유한 별 없으면 에러 발생 -> 버튼 disabled만 해두기..?
 		dispatch(addStarToConstellation());
 	};
 
@@ -44,7 +43,7 @@ export default function StarMainPage() {
 				isProgress={starMain.isProgress}
 				starCount={starMain.starCount}
 				starName={starMain.name}
-				starCardId={1}
+				starCardId={starMain.constellationId}
 			/>
 			{starMain.isProgress ? <StarCharacter svgData={starMain.svg} /> : <SelectStarButton />}
 			<div className="wrapper">
