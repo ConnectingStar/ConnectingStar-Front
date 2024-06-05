@@ -100,6 +100,7 @@ const starSlice = createSlice({
 			.addCase(addStarToConstellation.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.isRegistered = action.payload.data.isRegistered;
+				state.starMain.starCount = state.starMain.starCount - 1;
 			})
 			.addCase(addStarToConstellation.rejected, (state) => {
 				state.isLoading = false;
