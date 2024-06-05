@@ -62,6 +62,10 @@ const starSlice = createSlice({
 			.addCase(getStarMain.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.starMain = action.payload.data;
+
+				if (state.isRegistered) {
+					state.isRegistered = false;
+				}
 			})
 			.addCase(getStarMain.rejected, (state) => {
 				state.isLoading = false;

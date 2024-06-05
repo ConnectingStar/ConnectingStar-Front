@@ -12,7 +12,12 @@ import { PATH } from "@/constants/path";
 
 import { theme } from "@/styles/theme";
 
-export default function CharacterUnlockModal({ id }: { id: number }) {
+interface CharacterUnlockModalProps {
+	id: number;
+	name: string;
+}
+
+export default function CharacterUnlockModal({ id, name }: CharacterUnlockModalProps) {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
@@ -24,7 +29,7 @@ export default function CharacterUnlockModal({ id }: { id: number }) {
 					<img src="" alt="별자리 캐릭터" />
 					<h1>축하합니다!</h1>
 					<p>
-						[캐릭터이름]이 <br />
+						{name}이 <br />
 						당신의 친구가 되었어요!
 					</p>
 				</div>
