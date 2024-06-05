@@ -1,4 +1,4 @@
-import { StarCardDetailStatus, StarCardStatus, CategoryType } from "@/types/star";
+import { StarCardDetailStatus, StarCardStatus, CategoryType, Circle } from "@/types/star";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
@@ -40,4 +40,12 @@ export function validateCategoryParams(category: CategoryType[], param: string |
 export function validateToggleParams(param: string | null) {
 	if (param === null) return;
 	return param === "true" || param === "false";
+}
+
+export function findCircleItem(arr: Circle[]) {
+	const index = arr.findIndex((item) => item.filled === false);
+	return {
+		item: arr[index],
+		index,
+	};
 }

@@ -11,6 +11,8 @@ import { editProfileImage } from "@/api/user/userThunk";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
+import { findCircleItem } from "@/utils/starUtils";
+
 const initialState: StarDataType = {
 	isLoading: false,
 	isRegistered: false,
@@ -101,6 +103,10 @@ const starSlice = createSlice({
 				state.isLoading = false;
 				state.isRegistered = action.payload.data.isRegistered;
 				state.starMain.starCount = state.starMain.starCount - 1;
+
+				const { item, index } = findCircleItem(state.starMain.svg.circleList);
+				item.filled = true;
+				state.starMain.svg.circleList[index] = item;
 			})
 			.addCase(addStarToConstellation.rejected, (state) => {
 				state.isLoading = false;
