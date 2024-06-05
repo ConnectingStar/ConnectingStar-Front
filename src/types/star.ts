@@ -31,7 +31,7 @@ interface Svg {
 	circleList: Circle[];
 }
 
-interface Circle {
+export interface Circle {
 	cx: number;
 	cy: number;
 	r: number;
