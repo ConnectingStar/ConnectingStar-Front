@@ -25,7 +25,7 @@ import { theme } from "@/styles/theme";
 
 import { generateName } from "@/utils/starUtils";
 
-const { PROGRESS, SELECT, COMPLETE } = STAR_CARD_DETAIL_STATUS;
+const { PROGRESS, SELECT, COMPLETE, OTHER } = STAR_CARD_DETAIL_STATUS;
 
 export default function StarCardDetailPage() {
 	const { id } = useParams();
@@ -66,7 +66,7 @@ export default function StarCardDetailPage() {
 				<Story story={starDetail.story} />
 			</section>
 
-			{starDetail.status !== "OTHER" && (
+			{starDetail.status !== OTHER && (
 				<FooterBtn
 					text={buttonState[starDetail.status]}
 					handleBtnClick={() => handleFooterBtnClick(starDetail.status)}
