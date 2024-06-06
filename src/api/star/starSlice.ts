@@ -7,7 +7,7 @@ import { STAR_CARD_DETAIL_STATUS } from "@/constants/starPageConstants";
 
 const initialState: StarDataType = {
 	isLoading: false,
-	starCardDetail: {
+	starDetail: {
 		constellationId: 0,
 		typeName: "",
 		name: "",
@@ -25,7 +25,7 @@ const starSlice = createSlice({
 	initialState,
 	reducers: {
 		updateIsProfile: (state, action: PayloadAction<{ isProfile: boolean }>) => {
-			state.starCardDetail.isProfile = action.payload.isProfile;
+			state.starDetail.isProfile = action.payload.isProfile;
 		},
 	},
 	extraReducers: (builder) => {
@@ -35,7 +35,7 @@ const starSlice = createSlice({
 			})
 			.addCase(getStarCardDetail.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.starCardDetail = action.payload.data;
+				state.starDetail = action.payload.data;
 			})
 			.addCase(getStarCardDetail.rejected, (state) => {
 				state.isLoading = false;

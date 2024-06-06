@@ -1,7 +1,7 @@
 type TypeName = "육체활동" | "마음강화" | "지식습득" | "기록 습관" | "휴식 | 취미" | "";
 export type StarCardDetailStatus = "SELECT" | "OTHER" | "PROGRESS" | "COMPLETE";
 
-interface StarCardDetailType {
+interface StarDetailType {
 	constellationId: number;
 	typeName: TypeName;
 	name: string;
@@ -15,5 +15,5 @@ interface StarCardDetailType {
 
 export interface StarDataType {
 	isLoading: boolean;
-	starCardDetail: StarCardDetailType;
+	starDetail: StarDetailType;
 }

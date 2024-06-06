@@ -33,7 +33,7 @@ export default function StarCardDetailPage() {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { starCardDetail } = useAppSelector((state) => state.star);
+	const { starDetail } = useAppSelector((state) => state.star);
 	const { isLoading } = useAppSelector((state) => state.user);
 
 	const handleFooterBtnClick = (status: StarCardDetailStatus) => {
@@ -59,22 +59,18 @@ export default function StarCardDetailPage() {
 				<Header.PrevButton />
 			</Header>
 			<section css={sectionStyle}>
-				<Img
-					state={starCardDetail.status}
-					image={starCardDetail.image}
-					starCount={starCardDetail.starCount}
-				/>
-				<p css={categoryLabelStyle}>{starCardDetail.typeName}</p>
-				<h1>{generateName(starCardDetail.name, starCardDetail.status)}</h1>
-				<h2>{starCardDetail.identity}</h2>
-				<Story story={starCardDetail.story} />
+				<Img state={starDetail.status} image={starDetail.image} starCount={starDetail.starCount} />
+				<p css={categoryLabelStyle}>{starDetail.typeName}</p>
+				<h1>{generateName(starDetail.name, starDetail.status)}</h1>
+				<h2>{starDetail.identity}</h2>
+				<Story story={starDetail.story} />
 			</section>
 
-			{starCardDetail.status !== "OTHER" && (
+			{starDetail.status !== "OTHER" && (
 				<FooterBtn
-					text={buttonState[starCardDetail.status]}
-					handleBtnClick={() => handleFooterBtnClick(starCardDetail.status)}
-					disabled={starCardDetail.isProfile}
+					text={buttonState[starDetail.status]}
+					handleBtnClick={() => handleFooterBtnClick(starDetail.status)}
+					disabled={starDetail.isProfile}
 				/>
 			)}
 
