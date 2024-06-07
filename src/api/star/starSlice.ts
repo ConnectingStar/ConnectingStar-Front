@@ -1,7 +1,8 @@
 import { StarDataType } from "@/types/star";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 import { getStarCardDetail } from "@/api/star/starThunk";
+import { editProfileImage } from "@/api/user/userThunk";
 
 import { STAR_CARD_DETAIL_STATUS } from "@/constants/starPageConstants";
 
@@ -23,11 +24,7 @@ const initialState: StarDataType = {
 const starSlice = createSlice({
 	name: "star",
 	initialState,
-	reducers: {
-		updateIsProfile: (state, action: PayloadAction<{ isProfile: boolean }>) => {
-			state.starDetail.isProfile = action.payload.isProfile;
-		},
-	},
+	reducers: {},
 	extraReducers: (builder) => {
 		builder
 			.addCase(getStarCardDetail.pending, (state) => {
@@ -39,9 +36,18 @@ const starSlice = createSlice({
 			})
 			.addCase(getStarCardDetail.rejected, (state) => {
 				state.isLoading = false;
+			})
+			.addCase(editProfileImage.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(editProfileImage.fulfilled, (state) => {
+				state.isLoading = false;
+				state.starDetail.isProfile = true;
+			})
+			.addCase(editProfileImage.rejected, (state) => {
+				state.isLoading = false;
 			});
 	},
 });
 
-export const { updateIsProfile } = starSlice.actions;
 export const starReducer = starSlice.reducer;
