@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getStarCardDetail } from "@/api/star/starThunk";
 import { editProfileImage } from "@/api/user/userThunk";
 
-import { STAR_CARD_DETAIL_STATUS } from "@/constants/starPageConstants";
+import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
 const initialState: StarDataType = {
 	isLoading: false,
@@ -16,7 +16,7 @@ const initialState: StarDataType = {
 		identity: "",
 		image: "",
 		starCount: 0,
-		status: STAR_CARD_DETAIL_STATUS.SELECT,
+		status: STAR_DETAIL_STATUS.SELECT,
 		isProfile: false,
 	},
 };

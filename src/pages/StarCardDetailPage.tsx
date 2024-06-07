@@ -18,14 +18,14 @@ import { getStarCardDetail } from "@/api/star/starThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { PATH } from "@/constants/path";
-import { STAR_CARD_DETAIL_STATUS } from "@/constants/starPageConstants";
+import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 import { buttonState } from "@/constants/starPageConstants";
 
 import { theme } from "@/styles/theme";
 
 import { generateName } from "@/utils/starUtils";
 
-const { PROGRESS, SELECT, COMPLETE, OTHER } = STAR_CARD_DETAIL_STATUS;
+const { PROGRESS, SELECT, COMPLETE, OTHER } = STAR_DETAIL_STATUS;
 
 export default function StarCardDetailPage() {
 	const { id } = useParams();
