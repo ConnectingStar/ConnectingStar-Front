@@ -8,7 +8,7 @@ export const getStarCardDetail = createAsyncThunk(
 	"star/getStarCardDetail",
 	async (id: string, thunkOptions) => {
 		try {
-			const { data } = await axiosInstance.get(END_POINTS.STAR_CARD_DETAIL(id));
+			const { data } = await axiosInstance.get(END_POINTS.STAR_DETAIL(id));
 			return data;
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
