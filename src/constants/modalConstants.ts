@@ -13,7 +13,7 @@ export const modalType = {
 	LOGOUT: "LOGOUT",
 	SORT: "SORT",
 	DELETE_HISTORY: (id: number) => `DELETE_HISTORY_${id}`,
-	HABIT_EDIT: "HABIT_EDIT",
+	HABIT_EDIT: (habidId: number) => `HABIT_EDIT_${habidId}`,
 	HABIT_RECORD: (habitId: number) => `HABIT_RECORD_${habitId}`,
 	STOP_HABIT: "STOP_HABIT",
 	SELECT_REASON: "SELECT_REASON",

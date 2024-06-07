@@ -8,14 +8,14 @@ import { PATH } from "@/constants/path";
 
 import { theme } from "@/styles/theme";
 
-function HabitEditModal() {
+function HabitEditModal({ habitId }: { habitId: number }) {
 	const navigate = useNavigate();
 
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>습관 수정</h1>
-				<button onClick={() => navigate(PATH.HABIT_MANAGE)}>수정하기</button>
+				<button onClick={() => navigate(PATH.HABIT_MANAGE(String(habitId)))}>수정하기</button>
 			</div>
 		</Modal>
 	);
