@@ -46,7 +46,7 @@ function HabitManage() {
 			<div css={habitMenuBoxStyle}>
 				<h3>습관</h3>
 				{HABIT_DATA.map((habitData) => (
-					<MenuButton title={habitData.title} content={habitData.content} />
+					<MenuButton key={habitData.title} title={habitData.title} content={habitData.content} />
 				))}
 			</div>
 

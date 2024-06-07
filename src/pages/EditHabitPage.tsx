@@ -1,7 +1,7 @@
 import Header from "@/components/common/Header/Header";
 import HabitManage from "@/components/Habit/habitManage/HabitManage";
 
-function HabitManagePage() {
+const EditHabitPage = () => {
 	return (
 		<>
 			<Header>
@@ -12,6 +12,6 @@ function HabitManagePage() {
 			<HabitManage />
 		</>
 	);
-}
+};
 
-export default HabitManagePage;
+export default EditHabitPage;
