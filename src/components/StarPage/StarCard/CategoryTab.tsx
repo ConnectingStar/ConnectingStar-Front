@@ -7,10 +7,10 @@ import { theme } from "@/styles/theme";
 
 interface CategoryTabProps {
 	searchParams: URLSearchParams;
-	onSetSearchParams: (param: string) => void;
+	onTabClick: (param: string) => void;
 }
 
-export default function CategoryTab({ searchParams, onSetSearchParams }: CategoryTabProps) {
+export default function CategoryTab({ searchParams, onTabClick }: CategoryTabProps) {
 	return (
 		<div css={containerStyle}>
 			{categoryData.map((item) => (
@@ -18,7 +18,7 @@ export default function CategoryTab({ searchParams, onSetSearchParams }: Categor
 					key={item.id}
 					className={searchParams.get(TAB_KEY) === item.param ? "active" : ""}
 					css={tabStyle}
-					onClick={() => onSetSearchParams(item.param)}
+					onClick={() => onTabClick(item.param)}
 				>
 					{item.title}
 				</button>
