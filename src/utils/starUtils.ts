@@ -47,6 +47,5 @@ export function validateCategoryParams(category: CategoryType, param: string | n
 
 export function validateToggleParams(param: string | null) {
 	if (param === null) return;
-	console.log(param === "true" || param === "false");
 	return param === "true" || param === "false";
 }
