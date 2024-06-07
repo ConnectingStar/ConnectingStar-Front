@@ -57,7 +57,7 @@ const StarCardPage = () => {
 			<section css={sectionStyle}>
 				<CategoryTab
 					searchParams={searchParams}
-					onSetSearchParams={(param: string) =>
+					onTabClick={(param: string) =>
 						setSearchParams({ [TAB_KEY]: param, [TOGGLE_KEY]: `${isToggle}` }, { replace: true })
 					}
 				/>
