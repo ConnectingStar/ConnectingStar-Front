@@ -28,7 +28,10 @@ const StarCardPage = () => {
 		const isToggleParamValid = validateToggleParams(searchParams.get(TOGGLE_KEY));
 
 		if (searchParams.size === 0 || !isCategoryParamValid || !isToggleParamValid) {
-			setSearchParams({ [TAB_KEY]: categoryData[0].param, [TOGGLE_KEY]: "false" });
+			setSearchParams(
+				{ [TAB_KEY]: categoryData[0].param, [TOGGLE_KEY]: "false" },
+				{ replace: true },
+			);
 		}
 	}, [searchParams]);
 
@@ -55,16 +58,19 @@ const StarCardPage = () => {
 				<CategoryTab
 					searchParams={searchParams}
 					onSetSearchParams={(param: string) =>
-						setSearchParams({ [TAB_KEY]: param, [TOGGLE_KEY]: `${isToggle}` })
+						setSearchParams({ [TAB_KEY]: param, [TOGGLE_KEY]: `${isToggle}` }, { replace: true })
 					}
 				/>
 				<Toggle
 					isToggleActive={isToggle}
 					onToggle={() => {
-						setSearchParams({
-							[TAB_KEY]: `${searchParams.get(TAB_KEY)}`,
-							[TOGGLE_KEY]: `${!isToggle}`,
-						});
+						setSearchParams(
+							{
+								[TAB_KEY]: `${searchParams.get(TAB_KEY)}`,
+								[TOGGLE_KEY]: `${!isToggle}`,
+							},
+							{ replace: true },
+						);
 					}}
 				/>
 				<ul css={cardSectionStyle}>
