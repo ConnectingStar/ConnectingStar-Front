@@ -4,6 +4,8 @@ import starImg from "@/assets/image/img-card-detail-star.png";
 
 import { StarCardStatus } from "@/types/star";
 
+import { PATH } from "@/constants/path";
+
 import { generateName } from "@/utils/starUtils";
 
 import {
@@ -27,7 +29,7 @@ interface StarCardProps {
 export default function StarCard({ id, title, subTitle, starNumber, image, state }: StarCardProps) {
 	return (
 		<li css={containerStyle}>
-			<Link to={`/star-card/${id}`}>
+			<Link to={`${PATH.STAR_CARD}/${id}`}>
 				<div css={imgStyle}>
 					<img src={image} alt="별자리" />
 					<div css={starImgStyle}>
