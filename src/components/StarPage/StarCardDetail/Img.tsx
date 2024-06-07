@@ -2,11 +2,11 @@ import starImg from "@/assets/image/img-card-detail-star.png";
 
 import { StarCardDetailStatus } from "@/types/star";
 
-import { STAR_CARD_DETAIL_STATUS } from "@/constants/starPageConstants";
+import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
 import { imgStyle, labelStyle, starImgStyle } from "@/components/StarPage/StarCardDetail/Img.style";
 
-const { PROGRESS, COMPLETE } = STAR_CARD_DETAIL_STATUS;
+const { PROGRESS, COMPLETE } = STAR_DETAIL_STATUS;
 
 interface ImgProps {
 	state: StarCardDetailStatus;

@@ -13,9 +13,9 @@ export const categoryData = [
 	"휴식ㅣ취미",
 ];
 
-export const STAR_CARD_DETAIL_STATUS = {
-	SELECT: "SELECT",
-	OTHER: "OTHER",
-	PROGRESS: "PROGRESS",
-	COMPLETE: "COMPLETE",
+export const STAR_DETAIL_STATUS = {
+	SELECT: "SELECT", // 아무것도 선택되지 않음(선택 가능한 상태)
+	OTHER: "OTHER", // 다른 별자리 해금 진행 중
+	PROGRESS: "PROGRESS", // 해금 진행 중
+	COMPLETE: "COMPLETE", // 해금 완료
 } as const;
