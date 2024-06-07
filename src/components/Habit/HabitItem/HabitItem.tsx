@@ -32,7 +32,7 @@ const HabitItem = ({ habitId, habitState, habitText }: HabitItemProps) => {
 				<p>{habitText}</p>
 			</div>
 
-			<button onClick={() => dispatch(openModal(modalType.HABIT_EDIT))}>
+			<button onClick={() => dispatch(openModal(modalType.HABIT_EDIT(habitId)))}>
 				<TabIcon />
 			</button>
 
@@ -40,7 +40,7 @@ const HabitItem = ({ habitId, habitState, habitText }: HabitItemProps) => {
 				<HabitRecordModal text={habitText} habitId={habitId} />
 			)}
 
-			{modal === modalType.HABIT_EDIT && <HabitEditModal />}
+			{modal === modalType.HABIT_EDIT(habitId) && <HabitEditModal habitId={habitId} />}
 		</div>
 	);
 };

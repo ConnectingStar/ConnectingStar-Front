@@ -48,10 +48,10 @@ const App = () => {
 					<Route path="/habit-delete" element={<HabitDeletePage />} />
 					<Route path="/onboarding" element={<OnboardingPage />} />
 					<Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
-					<Route path={PATH.PRACTICE_RECORD(":runHabitId")} element={<PracticeRecordPage />} />
+					<Route path={PATH.PRACTICE_RECORD(":habitId")} element={<PracticeRecordPage />} />
 					<Route path={PATH.CREATE_HABIT} element={<CreateHabitPage />} />
 					<Route path="habit-guide" element={<HabitGuidePage />} />
-					<Route path={PATH.HABIT_MANAGE} element={<HabitManagePage />} />
+					<Route path={PATH.HABIT_MANAGE(":habitId")} element={<HabitManagePage />} />
 				</Routes>
 			</BrowserRouter>
 			<ToastContainer />
