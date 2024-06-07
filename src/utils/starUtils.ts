@@ -1,4 +1,4 @@
-import { StarCardDetailStatus, StarCardStatus } from "@/types/star";
+import { StarCardDetailStatus, StarCardStatus, CategoryType } from "@/types/star";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
@@ -29,13 +29,11 @@ export function generateName(characterName: string, status: StarCardDetailStatus
 	}
 }
 
-type CategoryType = { id: number; title: string; param: string }[];
-
-export function findCategoryItem(category: CategoryType, param: string | null) {
+export function findCategoryItem(category: CategoryType[], param: string | null) {
 	return category.find((item) => item.param === param);
 }
 
-export function validateCategoryParams(category: CategoryType, param: string | null) {
+export function validateCategoryParams(category: CategoryType[], param: string | null) {
 	return category.some((item) => item.param === param);
 }
 

@@ -1,6 +1,7 @@
 type TypeName = "육체활동" | "마음강화" | "지식습득" | "기록 습관" | "휴식 | 취미" | "";
 export type StarCardStatus = "PROGRESS" | "COMPLETE" | "NONE";
 export type StarCardDetailStatus = "SELECT" | "OTHER" | "PROGRESS" | "COMPLETE";
+export type CategoryType = { id: number; title: string; param: string };
 
 interface StarCardType {
 	list: StarCardItem[];
