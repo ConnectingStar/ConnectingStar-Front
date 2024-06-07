@@ -7,7 +7,6 @@ import { layoutStyle } from "@/components/MyPage/Modal/LogoutModal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import { updateIsProfile } from "@/api/star/starSlice";
 import { editProfileImage } from "@/api/user/userThunk";
 
 import { useToast } from "@/hooks/useToast";
@@ -22,7 +21,6 @@ export default function SelectProfileCharacterModal() {
 			await dispatch(editProfileImage(id ?? "")).unwrap();
 			dispatch(closeModal());
 			createToast("프로필 이미지로 설정 되었어요!");
-			dispatch(updateIsProfile({ isProfile: true }));
 		} catch (error) {
 			console.error(error);
 		}
