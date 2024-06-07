@@ -5,6 +5,8 @@ import { css } from "@emotion/react";
 import ArrowRightIcon from "@/assets/icon/ic-right-arrow-with-shadow.svg?react";
 import star from "@/assets/image/img-3d-star.png";
 
+import { PATH } from "@/constants/path";
+
 import { theme } from "@/styles/theme";
 
 import { getOutlineTextStyle } from "@/components/StarPage/StarMain/Star.style";
@@ -22,7 +24,7 @@ export default function StarInfo({ starCount, starCardId }: StarInfoProps) {
 				<img src={star} alt="3D 별" />
 				<p>{starCount}</p>
 			</div>
-			<Link to={`/star-card/${starCardId}`} css={characterLinkStyle}>
+			<Link to={`${PATH.STAR_CARD}/${starCardId}`} css={characterLinkStyle}>
 				<span css={getOutlineTextStyle("#7400cf", "head_a")} data-text="캐릭터 이름">
 					캐릭터 이름
 				</span>

@@ -4,11 +4,13 @@ import { css } from "@emotion/react";
 
 import starCardBook from "@/assets/image/img-3d-star-card-book.png";
 
+import { PATH } from "@/constants/path";
+
 import { getOutlineTextStyle } from "@/components/StarPage/StarMain/Star.style";
 
 export default function StarCardLink() {
 	return (
-		<Link to="/star-card" css={containerStyle}>
+		<Link to={PATH.STAR_CARD} css={containerStyle}>
 			<img src={starCardBook} alt="별자리 카드" />
 			<span css={getOutlineTextStyle("#7400cf", "head_c")} data-text="별자리 카드">
 				별자리 카드
