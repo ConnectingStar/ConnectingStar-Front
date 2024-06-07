@@ -14,17 +14,12 @@ import { getStarCard } from "@/api/star/starThunk";
 import { categoryData, TOGGLE_KEY } from "@/constants/starPageConstants";
 import { TAB_KEY } from "@/constants/tabConstants";
 
-import {
-	filterCategoryItem,
-	validateCategoryParams,
-	validateToggleParams,
-} from "@/utils/starUtils";
+import { findCategoryItem, validateCategoryParams, validateToggleParams } from "@/utils/starUtils";
 
 const StarCardPage = () => {
+	const [searchParams, setSearchParams] = useSearchParams();
 	const dispatch = useAppDispatch();
 	const { starCard } = useAppSelector((state) => state.star);
-
-	const [searchParams, setSearchParams] = useSearchParams();
 
 	const isToggle = searchParams.get(TOGGLE_KEY) === "true";
 
@@ -38,7 +33,7 @@ const StarCardPage = () => {
 	}, [searchParams]);
 
 	useEffect(() => {
-		const categoryItem = filterCategoryItem(categoryData, searchParams.get(TAB_KEY));
+		const categoryItem = findCategoryItem(categoryData, searchParams.get(TAB_KEY));
 
 		if (categoryItem === undefined) return;
 

@@ -31,18 +31,12 @@ export function generateName(characterName: string, status: StarCardDetailStatus
 
 type CategoryType = { id: number; title: string; param: string }[];
 
-export function filterCategoryItem(category: CategoryType, param: string | null) {
-	if (param === null) return;
-
-	return category.filter((item) => {
-		return item.param === param;
-	})[0];
+export function findCategoryItem(category: CategoryType, param: string | null) {
+	return category.find((item) => item.param === param);
 }
 
 export function validateCategoryParams(category: CategoryType, param: string | null) {
-	return category.some((item) => {
-		return item.param === param;
-	});
+	return category.some((item) => item.param === param);
 }
 
 export function validateToggleParams(param: string | null) {
