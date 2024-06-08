@@ -20,7 +20,7 @@ import { containerStyle, starMainPageGnbStyle } from "@/pages/StarMainPage/StarM
 export default function StarMainPage() {
 	const dispatch = useAppDispatch();
 	const { starMain } = useAppSelector((state) => state.star);
-	const { isRegistered } = useAppSelector((state) => state.star);
+	const { addStar } = useAppSelector((state) => state.star);
 	const { modal } = useAppSelector((state) => state.modal);
 
 	useEffect(() => {
@@ -28,12 +28,12 @@ export default function StarMainPage() {
 	}, []);
 
 	useEffect(() => {
-		if (isRegistered) {
+		if (addStar.isRegistered) {
 			dispatch(openModal(modalType.CHARACTER_UNLOCK));
 		} else {
 			dispatch(closeModal());
 		}
-	}, [isRegistered]);
+	}, [addStar.isRegistered]);
 
 	const handleButtonClick = () => {
 		dispatch(addStarToConstellation());
@@ -61,7 +61,11 @@ export default function StarMainPage() {
 			</div>
 
 			{modal === modalType.CHARACTER_UNLOCK && (
-				<CharacterUnlockModal id={starMain.constellationId} name={starMain.name} />
+				<CharacterUnlockModal
+					id={starMain.constellationId}
+					name={starMain.name}
+					image={addStar.characterImage}
+				/>
 			)}
 		</div>
 	);

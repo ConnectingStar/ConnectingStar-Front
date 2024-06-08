@@ -15,7 +15,6 @@ import { findCircleItem } from "@/utils/starUtils";
 
 const initialState: StarDataType = {
 	isLoading: false,
-	isRegistered: false,
 	starMain: {
 		constellationId: 0,
 		starCount: 0,
@@ -48,6 +47,11 @@ const initialState: StarDataType = {
 		status: STAR_DETAIL_STATUS.SELECT,
 		isProfile: false,
 	},
+	addStar: {
+		isRegistered: false,
+		mainImage: "",
+		characterImage: "",
+	},
 };
 
 const starSlice = createSlice({
@@ -63,8 +67,8 @@ const starSlice = createSlice({
 				state.isLoading = false;
 				state.starMain = action.payload.data;
 
-				if (state.isRegistered) {
-					state.isRegistered = false;
+				if (state.addStar.isRegistered) {
+					state.addStar.isRegistered = false;
 				}
 			})
 			.addCase(getStarMain.rejected, (state) => {
@@ -105,11 +109,18 @@ const starSlice = createSlice({
 			})
 			.addCase(addStarToConstellation.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.isRegistered = action.payload.data.isRegistered;
-				state.starMain.starCount = state.starMain.starCount - 1;
+				state.addStar.isRegistered = action.payload.data.isRegistered;
 
-				const index = findCircleItem(state.starMain.svg.circleList);
-				state.starMain.svg.circleList[index].filled = true;
+				if (state.addStar.isRegistered) {
+					state.addStar.mainImage =
+						"https://tars-image.s3.ap-northeast-2.amazonaws.com/constellation/grey/Mandarin_grey.png";
+					state.addStar.characterImage =
+						"https://tars-image.s3.ap-northeast-2.amazonaws.com/constellation/character/Mandarin.png";
+				} else {
+					state.starMain.starCount = state.starMain.starCount - 1;
+					const index = findCircleItem(state.starMain.svg.circleList);
+					state.starMain.svg.circleList[index].filled = true;
+				}
 			})
 			.addCase(addStarToConstellation.rejected, (state) => {
 				state.isLoading = false;
