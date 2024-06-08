@@ -5,10 +5,10 @@ export type CategoryType = { id: number; title: string; param: string };
 
 export interface StarDataType {
 	isLoading: boolean;
-	isRegistered: boolean;
 	starMain: StarMainType;
 	starCard: StarCardType;
 	starDetail: StarDetailType;
+	addStar: AddStarType;
 }
 
 interface StarMainType {
@@ -62,4 +62,10 @@ interface StarDetailType {
 	starCount: number;
 	status: StarCardDetailStatus;
 	isProfile: boolean;
+}
+
+interface AddStarType {
+	isRegistered: boolean;
+	mainImage: string;
+	characterImage: string;
 }

@@ -15,9 +15,10 @@ import { theme } from "@/styles/theme";
 interface CharacterUnlockModalProps {
 	id: number;
 	name: string;
+	image: string;
 }
 
-export default function CharacterUnlockModal({ id, name }: CharacterUnlockModalProps) {
+export default function CharacterUnlockModal({ id, name, image }: CharacterUnlockModalProps) {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
@@ -25,8 +26,7 @@ export default function CharacterUnlockModal({ id, name }: CharacterUnlockModalP
 		<Modal>
 			<div css={containerStyle}>
 				<div css={contentStyle}>
-					{/* TODO: 이미지는 API 연결 후 추가될 예정 */}
-					<img src="" alt="별자리 캐릭터" />
+					<img src={image} alt="별자리 캐릭터" />
 					<h1>축하합니다!</h1>
 					<p>
 						{name}이 <br />
