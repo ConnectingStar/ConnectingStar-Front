@@ -13,11 +13,10 @@ import Profile from "@/components/Habit/Profile/Profile";
 import { getProgressHabitList, getHabitHistoryList } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
-import { daysOfTheWeek, currentDate, msPerDay } from "@/constants/homeConstants";
+import { WEEK, TODAY } from "@/constants/calendar";
 import { PATH } from "@/constants/path";
 
 import { generateHabitText } from "@/utils/generateHabitText";
-import { convertTimeGap } from "@/utils/homeUtils";
 
 import {
 	mainBoxStyle,
@@ -38,30 +37,19 @@ const HabitPage = () => {
 	console.log(progressHabitList);
 	console.log(habitHistoryList);
 
-	const { year, month, date, day } = currentDate;
+	const { year, month, date, day } = TODAY;
 
 	const [selectedDate, setSelectedDate] = useState<DateInfo>({
 		year,
 		month: month + 1,
 		date,
-		day: daysOfTheWeek[day],
+		day: WEEK[day],
 		isPlanned: false,
 	});
-
-	const [timeGap, setTimeGap] = useState<string>("오늘");
 
 	const handleSelectedDate = (date: DateInfo) => {
 		setSelectedDate(date);
 	};
-
-	useEffect(() => {
-		const From = new Date(year, month, date);
-		const To = new Date(`${selectedDate.year}.${selectedDate.month}.${selectedDate.date}`);
-		const timeGapInMs = From.getTime() - To.getTime();
-		const dateGap = Math.floor(timeGapInMs / msPerDay);
-
-		setTimeGap(convertTimeGap(dateGap));
-	}, [selectedDate]);
 
 	useEffect(() => {
 		dispatch(getProgressHabitList());
@@ -76,11 +64,7 @@ const HabitPage = () => {
 					<HabitGuideBanner />
 					<HabitAdviceBanner />
 				</div>
-				<Calender
-					handleSelectedDate={handleSelectedDate}
-					selectedDate={selectedDate}
-					timeGap={timeGap}
-				/>
+				<Calender handleSelectedDate={handleSelectedDate} selectedDate={selectedDate} />
 				<div css={habitListBoxStyle}>
 					{progressHabitList.map((habitData) => (
 						<HabitItem

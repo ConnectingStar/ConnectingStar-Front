@@ -13,7 +13,7 @@ import {
 
 import CalendarHeader from "@/components/MyPage/NotificationSetting/StopHabitModal/Calendar/CalendarHeader";
 
-import { WEEK } from "@/constants/calendarConstants";
+import { WEEK } from "@/constants/calendar";
 
 import {
 	dateBoxStyle,

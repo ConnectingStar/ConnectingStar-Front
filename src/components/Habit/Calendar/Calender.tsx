@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { daysOfTheWeek, currentDate } from "@/constants/homeConstants";
+import { WEEK, TODAY } from "@/constants/calendar";
 
 import { isNextDates, renderDates } from "@/utils/homeUtils";
 
@@ -16,19 +16,18 @@ import {
 interface CalenderProps {
 	selectedDate: DateInfo;
 	handleSelectedDate: (date: DateInfo) => void;
-	timeGap: string;
 }
 
-function Calender({ selectedDate, handleSelectedDate, timeGap }: CalenderProps) {
+function Calender({ selectedDate, handleSelectedDate }: CalenderProps) {
 	const containerRef = useRef<HTMLDivElement | null>(null);
 
-	const { year, month, date, day } = currentDate;
+	const { year, month, date, day } = TODAY;
 
 	const centerDate = {
 		year: year,
 		month: month + 1,
 		date: date,
-		day: daysOfTheWeek[day],
+		day: WEEK[day],
 		isPlanned: true,
 	};
 
@@ -37,19 +36,24 @@ function Calender({ selectedDate, handleSelectedDate, timeGap }: CalenderProps) 
 
 	const [dateList, setDateList] = useState<DateInfo[]>([...prevDates, centerDate, ...nextDates]);
 
+	const handleTodayClick = () => {
+		handleSelectedDate(centerDate);
+
+		setDateList([...prevDates, centerDate, ...nextDates]);
+	};
+
 	const handleContainerScroll = () => {
-		if (!containerRef.current) {
-			return;
-		}
-		if (containerRef.current.scrollLeft === 0) {
+		const target = containerRef.current;
+
+		if (!target) return;
+
+		if (target.scrollLeft === 0) {
 			const { year, month, date } = dateList[0];
 			const prev = renderDates(year, month - 1, date, 14, false);
 			setDateList([...prev, ...dateList.slice(0, 15)]);
 		}
-		if (
-			containerRef.current.scrollLeft ===
-			containerRef.current.scrollWidth - containerRef.current.offsetWidth
-		) {
+
+		if (target.scrollLeft === target.scrollWidth - target.offsetWidth) {
 			const { year, month, date } = dateList[dateList.length - 1];
 			const next = renderDates(year, month - 1, date, 14, true);
 			setDateList([...dateList.slice(dateList.length - 15), ...next]);
@@ -57,9 +61,8 @@ function Calender({ selectedDate, handleSelectedDate, timeGap }: CalenderProps) 
 	};
 
 	useEffect(() => {
-		if (!containerRef.current) {
-			return;
-		}
+		if (!containerRef.current) return;
+
 		containerRef.current.scrollTo({
 			left: (containerRef.current.scrollWidth - containerRef.current.offsetWidth) / 2,
 			behavior: "instant",
@@ -75,7 +78,7 @@ function Calender({ selectedDate, handleSelectedDate, timeGap }: CalenderProps) 
 					</span>
 					<span>{selectedDate.year}</span>
 				</p>
-				<span>{timeGap}</span>
+				<button onClick={handleTodayClick}>오늘로</button>
 			</div>
 
 			<div css={carouselBoxStyle} ref={containerRef} onScroll={handleContainerScroll}>

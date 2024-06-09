@@ -27,7 +27,7 @@ export const titleBoxStyle = css`
 		}
 	}
 
-	& > span {
+	& > button {
 		${theme.font.button_big}
 		color: ${theme.color.font_deep_gray};
 	}
@@ -37,8 +37,8 @@ export const carouselBoxStyle = css`
 	position: relative;
 	overflow-x: scroll;
 	height: 5rem;
-	-ms-overflow-style: none; /* 인터넷 익스플로러 */
-	scrollbar-width: none; /* 파이어폭스 */
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -49,37 +49,36 @@ export const carouselBoxStyle = css`
 	}
 `;
 
-export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean, isNextDate: boolean) => {
-	return css`
+export const dayBoxStyle = (isSelected: boolean, isPlanned: boolean, isNextDate: boolean) => css`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 2.9375rem;
+	height: 5rem;
+	border-radius: 10px;
+	background-color: ${isSelected && `${theme.color.main_light_blue}`};
+	color: ${isNextDate && `${theme.color.button_deactivated}`};
+
+	& > span {
 		display: flex;
-		flex-direction: column;
+		justify-content: center;
 		align-items: center;
-		min-width: 2.9375rem;
-		height: 5rem;
-		border-radius: 10px;
-		background-color: ${isSelected && `${theme.color.main_light_blue}`};
-		color: ${isNextDate && `${theme.color.button_deactivated}`};
+		height: 50%;
+		${isSelected ? theme.font.body_b_bold : theme.font.body_b}
 
-		& > span {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 50%;
-			${isSelected ? theme.font.body_b_bold : theme.font.body_b}
-			&:last-of-type {
-				${theme.font.body_b_bold};
+		&:last-of-type {
+			${theme.font.body_b_bold};
 
-				& > p {
-					width: 1.5rem;
-					height: 1.5rem;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					border-radius: 50%;
-					color: ${isPlanned && "#fff"};
-					background-color: ${isPlanned && `${theme.color.main_blue}`};
-				}
+			& > p {
+				width: 1.5rem;
+				height: 1.5rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 50%;
+				color: ${isPlanned && "#fff"};
+				background-color: ${isPlanned && `${theme.color.main_blue}`};
 			}
 		}
-	`;
-};
+	}
+`;
