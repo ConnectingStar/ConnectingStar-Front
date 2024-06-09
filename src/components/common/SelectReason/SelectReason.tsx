@@ -88,6 +88,7 @@ const SelectReason = ({
 							<textarea
 								placeholder={data.placeholder}
 								onFocus={() => setIsInputFocus(true)}
+								onBlur={() => setIsInputFocus(false)}
 								value={content}
 								onChange={(e) => setContent(e.target.value)}
 							/>
