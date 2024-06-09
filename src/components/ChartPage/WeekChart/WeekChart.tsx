@@ -11,7 +11,7 @@ import NormalChartIcon from "@/assets/icon/ic-chart-normal.svg?react";
 import VeryBadChartIcon from "@/assets/icon/ic-chart-very-bad.svg?react";
 import VeryGoodChartIcon from "@/assets/icon/ic-chart-very-good.svg?react";
 
-import { WEEK } from "@/constants/calendarConstants";
+import { WEEK } from "@/constants/calendar";
 
 import { dateFormat } from "@/utils/dateFormat";
 

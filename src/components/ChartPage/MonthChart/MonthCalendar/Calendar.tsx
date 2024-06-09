@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 import { format, startOfMonth, startOfWeek, addDays, isSameMonth } from "date-fns";
 
-import { WEEK } from "@/constants/calendarConstants";
+import { WEEK } from "@/constants/calendar";
 
 import {
 	dateBoxStyle,
