@@ -24,6 +24,18 @@ const StarCardPage = () => {
 	const dispatch = useAppDispatch();
 	const { starCard } = useAppSelector((state) => state.star);
 
+	const handleCategoryTabClick = (param: string) => {
+		setSearchParams({ [TAB_KEY]: param, [TOGGLE_KEY]: `${isToggle}` }, { replace: true });
+	};
+
+	const handleToggleClick = () => {
+		handleTogglePrev();
+		setSearchParams(
+			{ [TAB_KEY]: `${searchParams.get(TAB_KEY)}`, [TOGGLE_KEY]: `${!isToggle}` },
+			{ replace: true },
+		);
+	};
+
 	useEffect(() => {
 		const isCategoryParamValid = validateCategoryParams(categoryData, searchParams.get(TAB_KEY));
 		const isToggleParamValid = validateToggleParams(searchParams.get(TOGGLE_KEY));
@@ -56,22 +68,8 @@ const StarCardPage = () => {
 				<Header.Title>별자리 카드</Header.Title>
 			</Header>
 			<section css={sectionStyle}>
-				<CategoryTab
-					searchParams={searchParams}
-					onTabClick={(param: string) =>
-						setSearchParams({ [TAB_KEY]: param, [TOGGLE_KEY]: `${isToggle}` }, { replace: true })
-					}
-				/>
-				<ToggleButton
-					isToggle={isToggle}
-					handleTogglePrev={() => {
-						handleTogglePrev();
-						setSearchParams(
-							{ [TAB_KEY]: `${searchParams.get(TAB_KEY)}`, [TOGGLE_KEY]: `${!isToggle}` },
-							{ replace: true },
-						);
-					}}
-				/>
+				<CategoryTab searchParams={searchParams} onTabClick={handleCategoryTabClick} />
+				<ToggleButton isToggle={isToggle} handleTogglePrev={handleToggleClick} />
 				<ul css={cardSectionStyle}>
 					{starCard.list.map((card) => (
 						<StarCard
