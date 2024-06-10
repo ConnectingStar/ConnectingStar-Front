@@ -3,10 +3,10 @@ import { useSearchParams } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
+import Toggle from "@/components/common/Button/Toggle/Toggle";
 import Header from "@/components/common/Header/Header";
 import CategoryTab from "@/components/StarPage/StarCard/CategoryTab";
 import StarCard from "@/components/StarPage/StarCard/StarCard";
-import ToggleButton from "@/components/StarPage/StarCard/ToggleButton";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { getStarCard } from "@/api/star/starThunk";
@@ -15,6 +15,8 @@ import { categoryData, TOGGLE_KEY } from "@/constants/starPageConstants";
 import { TAB_KEY } from "@/constants/tabConstants";
 
 import { useToggleTrigger } from "@/hooks/useToggleTrigger";
+
+import { theme } from "@/styles/theme";
 
 import { findCategoryItem, validateCategoryParams, validateToggleParams } from "@/utils/starUtils";
 
@@ -69,7 +71,10 @@ const StarCardPage = () => {
 			</Header>
 			<section css={sectionStyle}>
 				<CategoryTab searchParams={searchParams} onTabClick={handleCategoryTabClick} />
-				<ToggleButton isToggle={isToggle} handleTogglePrev={handleToggleClick} />
+				<div css={toggleStyle}>
+					<p>보유 카드 모아보기</p>
+					<Toggle isToggle={isToggle} handleTogglePrev={handleToggleClick} />
+				</div>
 				<ul css={cardSectionStyle}>
 					{starCard.list.map((card) => (
 						<StarCard
@@ -94,6 +99,15 @@ const sectionStyle = css`
 	width: 22.5rem;
 	padding: 4.75rem 1.5rem 2.5rem 1.5rem;
 	margin: 0 auto;
+`;
+
+const toggleStyle = css`
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 12px;
+	margin: 1.25rem 0;
+	${theme.font.body_b_bold}
 `;
 
 const cardSectionStyle = css`
