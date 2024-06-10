@@ -41,6 +41,7 @@ const StarCardPage = () => {
 	useEffect(() => {
 		const isCategoryParamValid = validateCategoryParams(categoryData, searchParams.get(TAB_KEY));
 		const isToggleParamValid = validateToggleParams(searchParams.get(TOGGLE_KEY));
+		const categoryItem = findCategoryItem(categoryData, searchParams.get(TAB_KEY));
 
 		if (searchParams.size === 0 || !isCategoryParamValid || !isToggleParamValid) {
 			setSearchParams(
@@ -48,10 +49,6 @@ const StarCardPage = () => {
 				{ replace: true },
 			);
 		}
-	}, [searchParams]);
-
-	useEffect(() => {
-		const categoryItem = findCategoryItem(categoryData, searchParams.get(TAB_KEY));
 
 		if (categoryItem === undefined) return;
 
