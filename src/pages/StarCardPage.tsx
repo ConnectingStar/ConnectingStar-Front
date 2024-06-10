@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 import Header from "@/components/common/Header/Header";
 import CategoryTab from "@/components/StarPage/StarCard/CategoryTab";
 import StarCard from "@/components/StarPage/StarCard/StarCard";
-import Toggle from "@/components/StarPage/StarCard/Toggle";
+import ToggleButton from "@/components/StarPage/StarCard/ToggleButton";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { getStarCard } from "@/api/star/starThunk";
@@ -14,14 +14,15 @@ import { getStarCard } from "@/api/star/starThunk";
 import { categoryData, TOGGLE_KEY } from "@/constants/starPageConstants";
 import { TAB_KEY } from "@/constants/tabConstants";
 
+import { useToggleTrigger } from "@/hooks/useToggleTrigger";
+
 import { findCategoryItem, validateCategoryParams, validateToggleParams } from "@/utils/starUtils";
 
 const StarCardPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const { isToggle, handleTogglePrev } = useToggleTrigger();
 	const dispatch = useAppDispatch();
 	const { starCard } = useAppSelector((state) => state.star);
-
-	const isToggle = searchParams.get(TOGGLE_KEY) === "true";
 
 	useEffect(() => {
 		const isCategoryParamValid = validateCategoryParams(categoryData, searchParams.get(TAB_KEY));
@@ -61,14 +62,15 @@ const StarCardPage = () => {
 						setSearchParams({ [TAB_KEY]: param, [TOGGLE_KEY]: `${isToggle}` }, { replace: true })
 					}
 				/>
-				<Toggle
-					isToggleActive={isToggle}
-					onToggle={() =>
+				<ToggleButton
+					isToggle={isToggle}
+					handleTogglePrev={() => {
+						handleTogglePrev();
 						setSearchParams(
 							{ [TAB_KEY]: `${searchParams.get(TAB_KEY)}`, [TOGGLE_KEY]: `${!isToggle}` },
 							{ replace: true },
-						)
-					}
+						);
+					}}
 				/>
 				<ul css={cardSectionStyle}>
 					{starCard.list.map((card) => (
