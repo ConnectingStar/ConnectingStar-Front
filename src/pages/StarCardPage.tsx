@@ -14,24 +14,22 @@ import { getStarCard } from "@/api/star/starThunk";
 import { categoryData, TOGGLE_KEY } from "@/constants/starPageConstants";
 import { TAB_KEY } from "@/constants/tabConstants";
 
-import { useToggleTrigger } from "@/hooks/useToggleTrigger";
-
 import { theme } from "@/styles/theme";
 
 import { findCategoryItem, validateCategoryParams, validateToggleParams } from "@/utils/starUtils";
 
 const StarCardPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const { isToggle, handleTogglePrev } = useToggleTrigger();
 	const dispatch = useAppDispatch();
 	const { starCard } = useAppSelector((state) => state.star);
+
+	const isToggle = searchParams.get(TOGGLE_KEY) === "true";
 
 	const handleCategoryTabClick = (param: string) => {
 		setSearchParams({ [TAB_KEY]: param, [TOGGLE_KEY]: `${isToggle}` }, { replace: true });
 	};
 
 	const handleToggleClick = () => {
-		handleTogglePrev();
 		setSearchParams(
 			{ [TAB_KEY]: `${searchParams.get(TAB_KEY)}`, [TOGGLE_KEY]: `${!isToggle}` },
 			{ replace: true },
