@@ -63,15 +63,12 @@ const StarCardPage = () => {
 				/>
 				<Toggle
 					isToggleActive={isToggle}
-					onToggle={() => {
+					onToggle={() =>
 						setSearchParams(
-							{
-								[TAB_KEY]: `${searchParams.get(TAB_KEY)}`,
-								[TOGGLE_KEY]: `${!isToggle}`,
-							},
+							{ [TAB_KEY]: `${searchParams.get(TAB_KEY)}`, [TOGGLE_KEY]: `${!isToggle}` },
 							{ replace: true },
-						);
-					}}
+						)
+					}
 				/>
 				<ul css={cardSectionStyle}>
 					{starCard.list.map((card) => (
