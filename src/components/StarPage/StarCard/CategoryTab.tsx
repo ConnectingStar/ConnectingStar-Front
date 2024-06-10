@@ -16,8 +16,7 @@ export default function CategoryTab({ searchParams, onTabClick }: CategoryTabPro
 			{categoryData.map((item) => (
 				<button
 					key={item.id}
-					className={searchParams.get(TAB_KEY) === item.param ? "active" : ""}
-					css={tabStyle}
+					css={tabStyle(searchParams.get(TAB_KEY) === item.param)}
 					onClick={() => onTabClick(item.param)}
 				>
 					{item.title}
@@ -34,16 +33,11 @@ const containerStyle = css`
 	gap: 6px;
 `;
 
-const tabStyle = css`
+const tabStyle = (isActive: boolean) => css`
 	width: 6.25rem;
 	padding: 1rem 0;
 	border-radius: 15px;
 	${theme.font.body_a_bold}
-	color: ${theme.color.button_deactivated};
-	background-color: ${theme.color.button_disabled};
-
-	&.active {
-		color: #fff;
-		background-color: ${theme.color.main_blue};
-	}
+	color: ${isActive ? "#fff" : theme.color.button_deactivated};
+	background-color: ${isActive ? theme.color.main_blue : theme.color.button_disabled};
 `;
