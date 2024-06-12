@@ -6,5 +6,5 @@ export const PATH = {
 	ONBOARDING: "/onboarding",
 	REST_RECORD: "/rest-record",
 	PRACTICE_RECORD: (habitId: string) => `/practice-record/${habitId}`,
-	EDIT_HABIT: (habitId: string) => `/habit-manage/${habitId}`,
+	EDIT_HABIT: (habitId: string) => `/habit-edit/${habitId}`,
 } as const;

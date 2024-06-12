@@ -4,7 +4,7 @@ export const generateHabitText = (
 	runTime: CommonAlertType,
 	place: string,
 	behavior: string,
-	behaviorValue: number,
+	behaviorValue: string,
 	behaviorUnit: string,
 ) => {
 	return `${runTime.noon} ${runTime.hour}시 ${runTime.minute}분에 ${place}에서 ${behavior} ${behaviorValue}${behaviorUnit}`;

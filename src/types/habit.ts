@@ -18,15 +18,15 @@ export interface HabitRequestType {
 }
 
 export interface HabitInitialStateType {
-	progressHabitList: ProgressHabitListType[];
+	progressHabitList: HabitType[];
 	habitHistoryList: [];
-	habit: ProgressHabitListType | null;
+	habit: HabitType | null;
 }
 
-interface ProgressHabitListType {
+export interface HabitType {
 	behavior: string;
 	behaviorUnit: string;
-	behaviorValue: number;
+	behaviorValue: string;
 	firstAlert: CommonAlertType;
 	identity: string;
 	place: string;

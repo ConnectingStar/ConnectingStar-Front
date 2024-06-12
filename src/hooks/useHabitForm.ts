@@ -8,19 +8,26 @@ import { modalType } from "@/constants/modalConstants";
 
 import type { HabitRequestType } from "@/types/habit";
 
-export const useHabitForm = () => {
+interface UseHabitFormProps {
+	habitId?: number;
+	initialData?: HabitRequestType | null;
+}
+
+export const useHabitForm = ({ initialData }: UseHabitFormProps) => {
 	const dispatch = useAppDispatch();
 
-	const [habitRequest, setHabitRequest] = useState({
-		identity: "",
-		runTime: { noon: "", hour: "", minute: "" },
-		place: "",
-		behavior: "",
-		behaviorValue: "",
-		behaviorUnit: "",
-		firstAlert: { noon: "", hour: "", minute: "" },
-		secondAlert: { noon: "", hour: "", minute: "" },
-	});
+	const [habitRequest, setHabitRequest] = useState(
+		initialData ?? {
+			identity: "",
+			runTime: { noon: "", hour: "", minute: "" },
+			place: "",
+			behavior: "",
+			behaviorValue: "",
+			behaviorUnit: "",
+			firstAlert: { noon: "", hour: "", minute: "" },
+			secondAlert: { noon: "", hour: "", minute: "" },
+		},
+	);
 
 	const isEmpty =
 		habitRequest.identity === "" ||
