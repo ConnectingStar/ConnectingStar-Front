@@ -4,7 +4,6 @@ import GoogleIcon from "@/assets/icon/ic-signup.google.svg";
 import KakaoIcon from "@/assets/icon/ic-signup.kakao.svg";
 import LogoImg from "@/assets/image/img-logo-black.png";
 
-import Header from "@/components/common/Header/Header";
 import FooterPrivacyPolicyLink from "@/components/Onboarding/OauthSignup/FooterPrivacyPolicyLink";
 
 import { OAUTH_KAKAO_URL } from "@/constants/api";
@@ -14,9 +13,6 @@ import { theme } from "@/styles/theme";
 function OauthSignUp({ onNext }: { onNext: () => void }) {
 	return (
 		<>
-			<Header>
-				<Header.CloseButton />
-			</Header>
 			<div css={container}>
 				<div css={wrap}>
 					<img src={LogoImg} alt="logo" />
