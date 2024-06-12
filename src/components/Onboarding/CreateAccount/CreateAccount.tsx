@@ -100,9 +100,10 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 				disabled={!nickname || !genderType || !ageRangeType}
 				handleBtnClick={confirmBasicUserData}
 			/>
-
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
-			{modal === modalType.SELECT_GENDERTYPE && <SelectGenderModal changeGender={setGenderType} />}
+			{modal === modalType.SELECT_GENDERTYPE && (
+				<SelectGenderModal prevGender={genderType} changeGender={setGenderType} />
+			)}
 			{modal === modalType.SELECT_AGERANGETYPE && <SelectAgeModal changeAge={setAgeRangeType} />}
 		</>
 	);
