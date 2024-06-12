@@ -6,6 +6,19 @@ import { END_POINTS } from "@/constants/api";
 
 import type { HabitHistoryListRequest, HabitRequestType } from "@/types/habit";
 
+export const getHabit = createAsyncThunk(
+	"habit/getHabit",
+	async (runHabitId: number, thunkOptions) => {
+		try {
+			const { data } = await axiosInstance.get(END_POINTS.HABIT_ONE(runHabitId));
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
 export const createHabit = createAsyncThunk(
 	"habit/createHabit",
 	async (habitRequest: HabitRequestType, thunkOptions) => {

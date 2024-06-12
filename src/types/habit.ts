@@ -20,6 +20,7 @@ export interface HabitRequestType {
 export interface HabitInitialStateType {
 	progressHabitList: ProgressHabitListType[];
 	habitHistoryList: [];
+	habit: ProgressHabitListType | null;
 }
 
 interface ProgressHabitListType {
