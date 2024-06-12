@@ -7,7 +7,7 @@ import { PATH } from "@/constants/path";
 import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
 import CreateHabitPage from "@/pages/CreateHabitPage/CreateHabitPage";
-import EditHabitPage from "@/pages/EditHabitPage";
+import EditHabitPage from "@/pages/EditHabitPage/EditHabitPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitDetailPage from "@/pages/HabitDetailPage";
 import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
