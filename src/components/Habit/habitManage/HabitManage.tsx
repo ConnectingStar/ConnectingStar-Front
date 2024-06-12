@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 import ToggleButton from "@/components/common/Button/ToggleButton/ToggleButton";
 import AlarmCheckModal from "@/components/Habit/habitManage/AlarmCheckModal/AlarmCheckModal";
 
+import { getHabit } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
-import { HABIT_DATA } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 
 import { useToggleTrigger } from "@/hooks/useToggleTrigger";
@@ -23,9 +24,9 @@ function HabitManage() {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
+	const { habit } = useAppSelector((state) => state.habit);
 
-	const [firstAlarmTime] = useState("오후 7:50");
-	const [secondAlarmTime] = useState("오후 8:30");
+	const param = useParams();
 
 	// api로 알람 on,off 여부 받아와서 toggle trigger와 연결
 	// const [firstAlarmOn] = useState(true);
@@ -39,23 +40,36 @@ function HabitManage() {
 	const { isToggle: secondNotiToggle, handleTogglePrev: handleSecondNotiTogglePrev } =
 		useToggleTrigger();
 
+	useEffect(() => {
+		dispatch(getHabit(Number(param.habitId)));
+	}, []);
+
+	if (!habit) {
+		return <div />;
+	}
+
 	return (
 		<main css={layoutStyle}>
-			<MenuButton title="정체성" content="성장하는" />
+			<MenuButton title="정체성" content={habit.identity} />
 
 			<div css={habitMenuBoxStyle}>
 				<h3>습관</h3>
-				{HABIT_DATA.map((habitData) => (
-					<MenuButton key={habitData.title} title={habitData.title} content={habitData.content} />
-				))}
+				<MenuButton
+					title="언제"
+					content={`${habit.runTime.noon} ${habit.runTime.hour}시 ${habit.runTime.minute}분`}
+				/>
+				<MenuButton title="어디서" content={habit.place} />
+				<MenuButton title="무엇을" content={habit.behavior} />
+				<MenuButton title="얼마나" content={String(habit.behaviorValue)} />
+				<MenuButton title="단위" content={habit.behaviorUnit} />
 			</div>
 
 			<div css={notiMenuBoxStyle}>
 				<span>알림</span>
 				<ToggleButton
 					title="1차 알림"
-					subTitle="곧 약속 시간이에요 :) 성장하는 세림님 화이팅!"
-					alarmTime={firstAlarmTime}
+					subTitle={`곧 약속 시간이에요 :) 성장하는 ${habit.userNickname}님 화이팅!`}
+					alarmTime={`${habit.firstAlert.noon} ${habit.firstAlert.hour}:${habit.firstAlert.minute}`}
 					hasToggle
 					isToggle={firstNotiToggle}
 					onClick={() => {
@@ -67,7 +81,7 @@ function HabitManage() {
 				<ToggleButton
 					title="2차 알림"
 					subTitle="오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!"
-					alarmTime={secondAlarmTime}
+					alarmTime={`${habit.secondAlert.noon} ${habit.secondAlert.hour}:${habit.secondAlert.minute}`}
 					hasToggle
 					isToggle={secondNotiToggle}
 					onClick={() => {
@@ -78,6 +92,7 @@ function HabitManage() {
 				/>
 			</div>
 			<button css={quitButtonStyle}>습관 그만두기</button>
+
 			{modal === modalType.ALARM_CHECK && <AlarmCheckModal alarmTarget={alarmTarget} />}
 		</main>
 	);

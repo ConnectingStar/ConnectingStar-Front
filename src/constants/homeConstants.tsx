@@ -108,30 +108,6 @@ export const prizeComments = [
 	// },
 ];
 
-// 임시로 쓰는 데이터 나중에는 지정된 데이터를 habitManage로 배치할 예정
-export const HABIT_DATA = [
-	{
-		title: "언제",
-		content: "오후 8시",
-	},
-	{
-		title: "어디서",
-		content: "우리집 안 내 책상 위",
-	},
-	{
-		title: "무엇을",
-		content: "책 읽기",
-	},
-	{
-		title: "얼마나",
-		content: "5",
-	},
-	{
-		title: "단위",
-		content: "페이지",
-	},
-];
-
 export type AlarmData = {
 	key: number;
 	title: string;
