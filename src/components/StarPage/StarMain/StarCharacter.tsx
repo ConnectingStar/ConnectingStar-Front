@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 
 interface Circle {
-	// id: number;
 	cx: number;
 	cy: number;
 	r: number;
@@ -19,14 +18,16 @@ interface StarCharacterProps {
 		path: string;
 		circleList: Circle[];
 	};
+	image: string;
 }
 
-export default function StarCharacter({ svgData }: StarCharacterProps) {
+export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 	const { width, viewBox, fill, opacity, stroke, strokeWidth, path, circleList: circle } = svgData;
 
 	return (
 		<div css={containerStyle}>
 			<svg
+				css={svgStyle}
 				width={width}
 				height="100%"
 				viewBox={viewBox}
@@ -58,6 +59,12 @@ export default function StarCharacter({ svgData }: StarCharacterProps) {
 					</filter>
 				</defs>
 			</svg>
+
+			{image && (
+				<div css={imageStyle}>
+					<img src={image} alt="캐릭터" />
+				</div>
+			)}
 		</div>
 	);
 }
@@ -66,4 +73,21 @@ const containerStyle = css`
 	display: flex;
 	justify-content: center;
 	height: calc(100dvh - 20.825rem);
+	position: relative;
+`;
+
+const svgStyle = css`
+	position: absolute;
+`;
+
+const imageStyle = css`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		width: 100%;
+		height: auto;
+		max-height: 100%;
+	}
 `;
