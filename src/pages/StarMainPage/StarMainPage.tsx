@@ -48,7 +48,13 @@ export default function StarMainPage() {
 				starName={starMain.name}
 				starCardId={starMain.constellationId}
 			/>
-			{starMain.isProgress ? <StarCharacter svgData={starMain.svg} /> : <SelectStarButton />}
+
+			{starMain.isProgress ? (
+				<StarCharacter svgData={starMain.svg} image={addStar.mainImage} />
+			) : (
+				<SelectStarButton />
+			)}
+
 			<div className="wrapper">
 				{starMain.isProgress && (
 					<StarButton onClick={handleButtonClick} disabled={starMain.starCount <= 0} />
