@@ -23,6 +23,10 @@ export default function StarMainPage() {
 	const { addStar } = useAppSelector((state) => state.star);
 	const { modal } = useAppSelector((state) => state.modal);
 
+	const handleStarButtonClick = () => {
+		dispatch(addStarToConstellation());
+	};
+
 	useEffect(() => {
 		dispatch(getStarMain());
 	}, []);
@@ -34,10 +38,6 @@ export default function StarMainPage() {
 			dispatch(closeModal());
 		}
 	}, [addStar.isRegistered]);
-
-	const handleButtonClick = () => {
-		dispatch(addStarToConstellation());
-	};
 
 	return (
 		<div css={containerStyle}>
@@ -57,7 +57,7 @@ export default function StarMainPage() {
 
 			<div className="wrapper">
 				{starMain.isProgress && (
-					<StarButton onClick={handleButtonClick} disabled={starMain.starCount <= 0} />
+					<StarButton onClick={handleStarButtonClick} disabled={starMain.starCount <= 0} />
 				)}
 				<StarCardLink />
 			</div>
