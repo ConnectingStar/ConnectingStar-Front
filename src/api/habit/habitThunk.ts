@@ -19,12 +19,21 @@ export const getHabit = createAsyncThunk(
 	},
 );
 
+export const editHabit = createAsyncThunk(
+	"habit/editHabit",
+	async (habitRequest: HabitRequestType, thunkOptions) => {
+		try {
+			return await axiosInstance.put(END_POINTS.HABIT, habitRequest);
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
 export const createHabit = createAsyncThunk(
 	"habit/createHabit",
 	async (habitRequest: HabitRequestType, thunkOptions) => {
 		try {
-			console.log(habitRequest);
-
 			return await axiosInstance.post(END_POINTS.HABIT, habitRequest);
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);

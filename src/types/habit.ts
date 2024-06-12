@@ -7,6 +7,7 @@ export interface HabitHistoryListRequest {
 }
 
 export interface HabitRequestType {
+	runHabitId?: number;
 	identity: string;
 	runTime: { noon: string; hour: string; minute: string };
 	place: string;

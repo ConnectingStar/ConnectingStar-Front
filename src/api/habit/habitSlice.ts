@@ -8,19 +8,6 @@ const initialState: HabitInitialStateType = {
 	progressHabitList: [],
 	habitHistoryList: [],
 	habit: null,
-	// habit: {
-	// 	behavior: "",
-	// 	behaviorUnit: "",
-	// 	behaviorValue: "",
-	// 	firstAlert: { noon: "", hour: "", minute: "" },
-	// 	identity: "",
-	// 	place: "",
-	// 	runHabitId: 0,
-	// 	runTime: { noon: "", hour: "", minute: "" },
-	// 	secondAlert: { noon: "", hour: "", minute: "" },
-	// 	userId: 0,
-	// 	userNickname: "",
-	// },
 };
 
 const habitSlice = createSlice({
