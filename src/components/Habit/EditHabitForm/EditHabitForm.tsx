@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 import ToggleButton from "@/components/common/Button/ToggleButton/ToggleButton";
+import Header from "@/components/common/Header/Header";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import AlarmCheckModal from "@/components/Habit/Modal/AlarmCheckModal/AlarmCheckModal";
 
@@ -56,9 +57,10 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 
 	const [alarmTarget, setAlarmTarget] = useState("");
 
-	const { habitRequest, updateInputValue } = useHabitForm({
+	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({
 		habitId,
 		initialData: {
+			runHabitId: habitId,
 			identity,
 			runTime,
 			place,
@@ -71,64 +73,71 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 	});
 
 	return (
-		<main css={layoutStyle}>
-			<MenuButton
-				title="정체성"
-				content={habitRequest.identity}
-				onClick={() => dispatch(openModal(modalType.SELECT_IDENTITY))}
-			/>
-
-			<div css={habitMenuBoxStyle}>
-				<h3>습관</h3>
+		<>
+			<Header>
+				<Header.CloseButton />
+				<Header.Title>습관관리</Header.Title>
+				<Header.TextButton onClick={handleSubmit}>완료</Header.TextButton>
+			</Header>
+			<main css={layoutStyle}>
 				<MenuButton
-					title="언제"
-					content={`${habitRequest.runTime.noon} ${habitRequest.runTime.hour}시 ${habitRequest.runTime.minute}분`}
+					title="정체성"
+					content={habitRequest.identity}
+					onClick={() => dispatch(openModal(modalType.SELECT_IDENTITY))}
 				/>
-				<MenuButton title="어디서" content={habitRequest.place} />
-				<MenuButton title="무엇을" content={habitRequest.behavior} />
-				<MenuButton title="얼마나" content={String(habitRequest.behaviorValue)} />
-				<MenuButton title="단위" content={habitRequest.behaviorUnit} />
-			</div>
 
-			<div css={notiMenuBoxStyle}>
-				<span>알림</span>
-				<ToggleButton
-					title="1차 알림"
-					subTitle={`곧 약속 시간이에요 :) 성장하는 ${habit.userNickname}님 화이팅!`}
-					alarmTime={`${habitRequest.firstAlert.noon} ${habitRequest.firstAlert.hour}:${habitRequest.firstAlert.minute}`}
-					hasToggle
-					isToggle={firstNotiToggle}
-					onClick={() => {
-						setAlarmTarget("first");
-						dispatch(openModal(modalType.ALARM_CHECK));
-					}}
-					handleTogglePrev={handleFirstNotiTogglePrev}
-				/>
-				<ToggleButton
-					title="2차 알림"
-					subTitle="오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!"
-					alarmTime={`${habitRequest.secondAlert.noon} ${habitRequest.secondAlert.hour}:${habitRequest.secondAlert.minute}`}
-					hasToggle
-					isToggle={secondNotiToggle}
-					onClick={() => {
-						setAlarmTarget("second");
-						dispatch(openModal(modalType.ALARM_CHECK));
-					}}
-					handleTogglePrev={handleSecondNotiTogglePrev}
-				/>
-			</div>
-			<button css={quitButtonStyle}>습관 그만두기</button>
+				<div css={habitMenuBoxStyle}>
+					<h3>습관</h3>
+					<MenuButton
+						title="언제"
+						content={`${habitRequest.runTime.noon} ${habitRequest.runTime.hour}시 ${habitRequest.runTime.minute}분`}
+					/>
+					<MenuButton title="어디서" content={habitRequest.place} />
+					<MenuButton title="무엇을" content={habitRequest.behavior} />
+					<MenuButton title="얼마나" content={String(habitRequest.behaviorValue)} />
+					<MenuButton title="단위" content={habitRequest.behaviorUnit} />
+				</div>
 
-			{modal === modalType.ALARM_CHECK && <AlarmCheckModal alarmTarget={alarmTarget} />}
+				<div css={notiMenuBoxStyle}>
+					<span>알림</span>
+					<ToggleButton
+						title="1차 알림"
+						subTitle={`곧 약속 시간이에요 :) 성장하는 ${habit.userNickname}님 화이팅!`}
+						alarmTime={`${habitRequest.firstAlert.noon} ${habitRequest.firstAlert.hour}:${habitRequest.firstAlert.minute}`}
+						hasToggle
+						isToggle={firstNotiToggle}
+						onClick={() => {
+							setAlarmTarget("first");
+							dispatch(openModal(modalType.ALARM_CHECK));
+						}}
+						handleTogglePrev={handleFirstNotiTogglePrev}
+					/>
+					<ToggleButton
+						title="2차 알림"
+						subTitle="오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!"
+						alarmTime={`${habitRequest.secondAlert.noon} ${habitRequest.secondAlert.hour}:${habitRequest.secondAlert.minute}`}
+						hasToggle
+						isToggle={secondNotiToggle}
+						onClick={() => {
+							setAlarmTarget("second");
+							dispatch(openModal(modalType.ALARM_CHECK));
+						}}
+						handleTogglePrev={handleSecondNotiTogglePrev}
+					/>
+				</div>
+				<button css={quitButtonStyle}>습관 그만두기</button>
 
-			{modal === modalType.SELECT_IDENTITY && (
-				<SelectTagModal
-					title="어떤 사람이 되고 싶으세요?"
-					tags={SELECT_TAG_DATA.identityTags}
-					updateInputValue={updateInputValue}
-				/>
-			)}
-		</main>
+				{modal === modalType.ALARM_CHECK && <AlarmCheckModal alarmTarget={alarmTarget} />}
+
+				{modal === modalType.SELECT_IDENTITY && (
+					<SelectTagModal
+						title="어떤 사람이 되고 싶으세요?"
+						tags={SELECT_TAG_DATA.identityTags}
+						updateInputValue={updateInputValue}
+					/>
+				)}
+			</main>
+		</>
 	);
 };
 

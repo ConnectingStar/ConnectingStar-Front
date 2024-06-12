@@ -1,10 +1,12 @@
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { createHabit } from "@/api/habit/habitThunk";
+import { createHabit, editHabit } from "@/api/habit/habitThunk";
 import { useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
+import { PATH } from "@/constants/path";
 
 import type { HabitRequestType } from "@/types/habit";
 
@@ -13,8 +15,10 @@ interface UseHabitFormProps {
 	initialData?: HabitRequestType | null;
 }
 
-export const useHabitForm = ({ initialData }: UseHabitFormProps) => {
+export const useHabitForm = ({ habitId, initialData }: UseHabitFormProps) => {
 	const dispatch = useAppDispatch();
+
+	const navigate = useNavigate();
 
 	const [habitRequest, setHabitRequest] = useState(
 		initialData ?? {
@@ -61,8 +65,13 @@ export const useHabitForm = ({ initialData }: UseHabitFormProps) => {
 
 	const handleSubmit = async () => {
 		try {
-			await dispatch(createHabit(habitRequest)).unwrap();
-			dispatch(openModal(modalType.HABIT_GENERATE));
+			if (!habitId) {
+				await dispatch(createHabit(habitRequest)).unwrap();
+				dispatch(openModal(modalType.HABIT_GENERATE));
+			} else {
+				await dispatch(editHabit(habitRequest)).unwrap();
+				navigate(PATH.HOME);
+			}
 		} catch (error) {
 			console.log(error);
 		}
