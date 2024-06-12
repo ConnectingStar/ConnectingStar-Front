@@ -31,7 +31,7 @@ const RestRecordPage = () => {
 		<>
 			<Header>
 				<Header.PrevButton />
-				<Header.TextButton onClick={() => navigate(PATH.HABIT_MANAGE)}>관리</Header.TextButton>
+				<Header.TextButton onClick={() => navigate(PATH.EDIT_HABIT("1"))}>관리</Header.TextButton>
 			</Header>
 			<div css={layoutStyle}>
 				<h1>쉬는 날이었군요?</h1>

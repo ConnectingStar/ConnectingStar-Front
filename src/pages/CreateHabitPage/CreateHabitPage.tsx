@@ -39,7 +39,7 @@ const CreateHabitPage = () => {
 	const { modal } = useAppSelector((state) => state.modal);
 	const { userData } = useAppSelector((state) => state.user);
 
-	const { habitRequest, isEmpty, updateInputValue, handleSubmit } = useHabitForm();
+	const { habitRequest, isEmpty, updateInputValue, handleSubmit } = useHabitForm({});
 
 	useEffect(() => {
 		dispatch(getUserInfo());
