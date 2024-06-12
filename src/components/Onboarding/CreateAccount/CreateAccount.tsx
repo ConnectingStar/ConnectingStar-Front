@@ -6,7 +6,6 @@ import { css } from "@emotion/react";
 import ArrowDownIcon from "@/assets/icon/ic-arrow-down.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
-import Header from "@/components/common/Header/Header";
 import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
 import SelectAgeModal from "@/components/common/Modal/CommonModal/SelectAgeModal";
 import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal";
@@ -75,10 +74,6 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 
 	return (
 		<>
-			<Header>
-				<Header.PrevButton />
-			</Header>
-
 			<div css={container}>
 				<h1>내 정보 입력을 완료해 주세요</h1>
 				<ul css={wrap}>
