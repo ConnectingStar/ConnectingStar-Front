@@ -1,7 +1,7 @@
-import { useState, ChangeEvent, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import ExclamationMarkIcon from "@/assets/icon/ic-exclamation-mark.svg?react";
+import InfoIcon from "@/assets/icon/ic-blue-exclamation-mark.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
@@ -11,25 +11,18 @@ import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import { getUserInfo } from "@/api/user/userThunk";
 
-import { habitRecordConditions } from "@/constants/homeConstants";
 import { prizeComments } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 import { habitIconData } from "@/constants/mypage";
 
 import {
 	layoutStyle,
-	conditionWrapperStyle,
-	iconsStyle,
+	contentBoxStyle,
+	contentTitleBoxStyle,
+	iconStyle,
 	inputBoxStyle,
+	identityBoxStyle,
 } from "@/components/Habit/HabitRecord/HabitRecord.style";
-
-interface HabitRecordsState {
-	when: string;
-	where: string;
-	what: string;
-	unit: string | number;
-	[condition: string]: string | number;
-}
 
 function HabitRecord() {
 	const dispatch = useAppDispatch();
@@ -44,25 +37,9 @@ function HabitRecord() {
 	const Random = Math.floor(Math.random() * 10) % prizeComments.length;
 	const { blueText, yellowText, comment } = prizeComments[Random];
 
-	const [habitRecords, setHabitRecords] = useState<HabitRecordsState>({
-		when: "",
-		where: "",
-		what: "",
-		unit: "",
-	});
 	const [traceText, setTraceText] = useState<string>("");
-	const [isActivated, setIsActivated] = useState<boolean>(false);
+	const [isActivated] = useState<boolean>(false);
 	const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
-
-	const handleConditionInput = (e: ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
-		const numericValue = value.replace(/^0+|[^0-9]/g, "");
-
-		setHabitRecords({
-			...habitRecords,
-			[name]: name === "unit" ? numericValue : value,
-		});
-	};
 
 	const handleIconClick = (id: number) => {
 		if (id !== selectedIcon) {
@@ -71,15 +48,6 @@ function HabitRecord() {
 			setSelectedIcon(null);
 		}
 	};
-
-	useEffect(() => {
-		const { unit } = habitRecords;
-		if (+unit > 0 && (unit + "").length > 0) {
-			setIsActivated(true);
-		} else {
-			setIsActivated(false);
-		}
-	}, [habitRecords]);
 
 	useEffect(() => {
 		dispatch(getUserInfo());
@@ -93,35 +61,39 @@ function HabitRecord() {
 	return (
 		<main css={layoutStyle}>
 			<h1>{`${params.month}월 ${params.date}일\n${userData.nickname}님의 실천 기록`}</h1>
-			<label>
-				<h2>정체성</h2>
+			<div css={identityBoxStyle}>
+				<h3>정체성</h3>
 				<span>{habit.identity} 사람</span>
-			</label>
-			<section css={conditionWrapperStyle}>
-				<h3>
-					나는
-					<span>
-						<ExclamationMarkIcon />
-					</span>
-				</h3>
+			</div>
+
+			<div css={contentBoxStyle}>
+				<div css={contentTitleBoxStyle}>
+					<h3>나는</h3>
+					<InfoIcon />
+					<span>약속대로 실천했다면 얼마나 했는지만 적으면 돼요 :)</span>
+				</div>
 
 				<ul>
-					{habitRecordConditions.map(({ condition, placeholder }) => (
-						<li key={condition}>
-							<input
-								inputMode={condition === "unit" ? "numeric" : "none"}
-								placeholder={placeholder}
-								name={condition}
-								onChange={handleConditionInput}
-								value={habitRecords[condition]}
-							/>
-							{condition === "unit" && <span>페이지</span>}
-						</li>
-					))}
+					<li>
+						<input
+							placeholder={`${habit.runTime.noon} ${habit.runTime.hour}시 ${habit.runTime.minute}분에`}
+						/>
+					</li>
+					<li>
+						<input placeholder={`${habit.place}애서`} />
+					</li>
+					<li>
+						<input placeholder={`${habit.behavior}를`} />
+					</li>
+					<li>
+						<input />
+						<span>{habit.behaviorUnit}</span>
+					</li>
 				</ul>
 				<h3>했다</h3>
-			</section>
-			<section css={iconsStyle(isActivated, selectedIcon)}>
+			</div>
+
+			<section css={iconStyle(isActivated, selectedIcon)}>
 				<h2>오늘의 습관 실천을 어떠셨나요?</h2>
 				<div>
 					{habitIconData.map((habitIcon) => (

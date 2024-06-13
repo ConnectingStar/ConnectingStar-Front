@@ -28,34 +28,42 @@ export const layoutStyle = css`
 		${theme.color.button_deactivated}
 	}
 
-	h1 {
+	& > h1 {
 		${theme.font.head_a};
 	}
 
-	h2,
 	h3 {
 		${theme.font.head_c};
 		color: ${theme.color.font_gray};
 	}
+`;
 
-	& > label {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
+export const identityBoxStyle = css`
+	& > h3 {
+		margin-bottom: 12px;
+	}
+
+	& > span {
+		color: ${theme.color.font_black};
+		${theme.font.body_a};
 	}
 `;
 
-export const conditionWrapperStyle = css`
-	& > h3:first-of-type {
-		display: flex;
-		align-items: center;
-		gap: 6px;
-		margin-bottom: 0.75rem;
-	}
+export const contentTitleBoxStyle = css`
+	display: flex;
+	gap: 6px;
+	align-items: center;
 
-	& > h3:last-of-type {
-		margin-top: 0.75rem;
+	& > span {
+		${theme.font.body_xs};
+		color: ${theme.color.main_blue};
 	}
+`;
+
+export const contentBoxStyle = css`
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 
 	& > ul {
 		display: flex;
@@ -64,6 +72,11 @@ export const conditionWrapperStyle = css`
 
 		& > li > input {
 			width: 100%;
+			outline: none;
+
+			&::placeholder {
+				color: ${theme.color.button_deactivated};
+			}
 		}
 
 		& > li:last-of-type {
@@ -71,7 +84,9 @@ export const conditionWrapperStyle = css`
 				width: 4.875rem;
 				margin-right: 0.75rem;
 			}
+
 			span:after {
+				margin-left: 2px;
 				content: "*";
 				color: ${theme.color.main_blue};
 			}
@@ -79,7 +94,7 @@ export const conditionWrapperStyle = css`
 	}
 `;
 
-export const iconsStyle = (isActivated: boolean, selectedIcon: number | null) => css`
+export const iconStyle = (isActivated: boolean, selectedIcon: number | null) => css`
 	opacity: ${!isActivated && 0.5};
 	pointer-events: ${!isActivated && "none"};
 	& > div {
