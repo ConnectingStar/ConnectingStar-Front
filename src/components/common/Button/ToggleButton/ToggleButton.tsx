@@ -14,6 +14,7 @@ interface buttonType {
 	isDateText?: boolean;
 	isTextVisible?: boolean;
 	onClick?: () => void;
+	onTimeClick?: () => void;
 	handleTogglePrev?: () => void;
 }
 
@@ -26,6 +27,7 @@ const ToggleButton = ({
 	isDateText,
 	isTextVisible,
 	onClick,
+	onTimeClick,
 	handleTogglePrev,
 }: buttonType) => {
 	return (
@@ -33,7 +35,7 @@ const ToggleButton = ({
 			<div css={getFlexStyle}>
 				<h3>
 					{title}
-					{alarmTime && <span>{alarmTime}</span>}
+					{alarmTime && <span onClick={onTimeClick}>{alarmTime}</span>}
 				</h3>
 
 				{hasToggle && (

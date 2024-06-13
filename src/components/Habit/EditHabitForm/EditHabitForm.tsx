@@ -94,6 +94,7 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 					<MenuButton
 						title="언제"
 						content={`${habitRequest.runTime.noon} ${habitRequest.runTime.hour}시 ${habitRequest.runTime.minute}분`}
+						onClick={() => dispatch(openModal(modalType.SELECT_TIME("RUNTIME")))}
 					/>
 					<MenuButton
 						title="어디서"
@@ -110,7 +111,11 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 						content={String(habitRequest.behaviorValue)}
 						onClick={() => dispatch(openModal(modalType.SELECT_BEHAVIORUNIT))}
 					/>
-					<MenuButton title="단위" content={habitRequest.behaviorUnit} />
+					<MenuButton
+						title="단위"
+						content={habitRequest.behaviorUnit}
+						onClick={() => dispatch(openModal(modalType.SELECT_BEHAVIORUNIT))}
+					/>
 				</div>
 
 				<div css={notiMenuBoxStyle}>
@@ -125,6 +130,7 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 							setAlarmTarget("first");
 							dispatch(openModal(modalType.ALARM_CHECK));
 						}}
+						onTimeClick={() => dispatch(openModal(modalType.SELECT_TIME("FIRSTALERT")))}
 						handleTogglePrev={handleFirstNotiTogglePrev}
 					/>
 					<ToggleButton
@@ -137,6 +143,7 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 							setAlarmTarget("second");
 							dispatch(openModal(modalType.ALARM_CHECK));
 						}}
+						onTimeClick={() => dispatch(openModal(modalType.SELECT_TIME("SECONDALERT")))}
 						handleTogglePrev={handleSecondNotiTogglePrev}
 					/>
 				</div>
