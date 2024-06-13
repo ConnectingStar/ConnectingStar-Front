@@ -21,11 +21,7 @@ const EditHabitPage = () => {
 		return <div />;
 	}
 
-	return (
-		<>
-			<EditHabitForm habitId={Number(param.habitId)} habit={habit} />
-		</>
-	);
+	return <EditHabitForm habitId={Number(param.habitId)} habit={habit} />;
 };
 
 export default EditHabitPage;
