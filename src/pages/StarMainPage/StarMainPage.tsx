@@ -33,7 +33,9 @@ export default function StarMainPage() {
 
 	useEffect(() => {
 		if (addStar.isRegistered) {
-			dispatch(openModal(modalType.CHARACTER_UNLOCK));
+			setTimeout(() => {
+				dispatch(openModal(modalType.CHARACTER_UNLOCK));
+			}, 1500);
 		} else {
 			dispatch(closeModal());
 		}
