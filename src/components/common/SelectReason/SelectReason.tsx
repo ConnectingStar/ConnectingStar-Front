@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
@@ -7,8 +7,10 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import SelectReasonModal from "@/components/common/SelectReason/SelectReasonModal/SelectReasonModal";
 
 import { withdrawal } from "@/api/auth/authThunk";
+import { deleteHabit } from "@/api/habit/habitThunk";
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
+import { getUserInfo } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
@@ -51,10 +53,11 @@ const SelectReason = ({
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
+	const { userData } = useAppSelector((state) => state.user);
 
 	const navigate = useNavigate();
 
-	const [isInputFocus, setIsInputFocus] = useState(false);
+	const param = useParams();
 
 	const [reason, setReason] = useState(reasonDefaultText);
 	const [content, setContent] = useState("");
@@ -69,6 +72,19 @@ const SelectReason = ({
 			console.error(error);
 		}
 	};
+
+	const handleDeleteHabit = async () => {
+		try {
+			await dispatch(deleteHabit({ runHabitId: param.habitId, reason })).unwrap();
+			navigate(PATH.HOME);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		dispatch(getUserInfo());
+	}, []);
 
 	return (
 		<div css={layoutStyle}>
@@ -87,8 +103,6 @@ const SelectReason = ({
 						<div css={textBoxStyle}>
 							<textarea
 								placeholder={data.placeholder}
-								onFocus={() => setIsInputFocus(true)}
-								onBlur={() => setIsInputFocus(false)}
 								value={content}
 								onChange={(e) => setContent(e.target.value)}
 							/>
@@ -98,27 +112,21 @@ const SelectReason = ({
 					{data.title === reason && (
 						<div css={subTextBoxStyle}>
 							<p>{data.subText}</p>
+							<p>
+								{data.title === "습관이 완전히 자리 잡았어요" &&
+									`벌써 ${userData.nickname}님과의 다음 약속이 기대되네요 :)`}
+							</p>
 						</div>
 					)}
 				</div>
 			))}
 
-			{isInputFocus ? (
-				<FooterBtn
-					text="확인"
-					isSquare
-					isTransparent
-					disabled={content === ""}
-					handleBtnClick={() => setIsInputFocus(false)}
-				/>
-			) : (
-				<FooterBtn
-					text={footerBtnText}
-					isTransparent
-					disabled={reason === reasonDefaultText}
-					handleBtnClick={handleWithDrawal}
-				/>
-			)}
+			<FooterBtn
+				text={footerBtnText}
+				isTransparent
+				disabled={reason === reasonDefaultText}
+				handleBtnClick={param.habitId ? handleDeleteHabit : handleWithDrawal}
+			/>
 
 			{modal === modalType.SELECT_REASON && (
 				<SelectReasonModal

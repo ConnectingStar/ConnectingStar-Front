@@ -1,5 +1,10 @@
 import type { CommonAlertType } from "@/types/common";
 
+export interface HabitDeleteRequestType {
+	runHabitId?: string;
+	reason: string;
+}
+
 export interface HabitHistoryListRequest {
 	runHabitId: number;
 	increase: boolean;
