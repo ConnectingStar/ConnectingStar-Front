@@ -45,6 +45,8 @@ const HabitPage = () => {
 		isPlanned: false,
 	});
 
+	console.log(selectedDate);
+
 	const handleSelectedDate = (date: DateInfo) => {
 		setSelectedDate(date);
 	};
@@ -65,7 +67,13 @@ const HabitPage = () => {
 				<Calender handleSelectedDate={handleSelectedDate} selectedDate={selectedDate} />
 				<div css={habitListBoxStyle}>
 					{progressHabitList.map((habitData) => (
-						<HabitItem key={habitData.runHabitId} habitData={habitData} habitState="progress" />
+						<HabitItem
+							key={habitData.runHabitId}
+							habitData={habitData}
+							habitState="progress"
+							month={selectedDate.month}
+							date={selectedDate.date}
+						/>
 					))}
 					<div css={addButtonStyle} onClick={() => navigate(PATH.CREATE_HABIT)}>
 						<HabitAddIcon />

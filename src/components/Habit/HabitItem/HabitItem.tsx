@@ -17,9 +17,11 @@ import type { HabitType } from "@/types/habit";
 interface HabitItemProps {
 	habitState?: "progress" | "complete" | "rest" | "end";
 	habitData: HabitType;
+	month: number;
+	date: number;
 }
 
-const HabitItem = ({ habitState, habitData }: HabitItemProps) => {
+const HabitItem = ({ habitData, habitState, month, date }: HabitItemProps) => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
@@ -49,7 +51,7 @@ const HabitItem = ({ habitState, habitData }: HabitItemProps) => {
 			</button>
 
 			{modal === modalType.HABIT_RECORD(habitData.runHabitId) && (
-				<HabitRecordModal habitData={habitData} />
+				<HabitRecordModal habitData={habitData} month={month} date={date} />
 			)}
 
 			{modal === modalType.HABIT_EDIT(habitData.runHabitId) && (
