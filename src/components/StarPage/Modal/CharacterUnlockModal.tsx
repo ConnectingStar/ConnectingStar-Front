@@ -60,13 +60,11 @@ const contentStyle = css`
 	align-items: center;
 	height: 100dvh;
 
-	/* TODO: 이미지 추가되면 background-color 삭제 예정 */
 	img {
 		width: 13rem;
 		height: 13rem;
 		border-radius: 15px;
 		margin-bottom: 1.25rem;
-		background-color: #d9d9d9;
 	}
 
 	h1 {
