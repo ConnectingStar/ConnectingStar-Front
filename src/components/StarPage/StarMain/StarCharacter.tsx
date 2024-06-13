@@ -1,5 +1,7 @@
 import { css } from "@emotion/react";
 
+import { motion } from "framer-motion";
+
 interface Circle {
 	cx: number;
 	cy: number;
@@ -20,6 +22,15 @@ interface StarCharacterProps {
 	};
 	image: string;
 }
+
+const variants = {
+	initial: {
+		opacity: 0,
+	},
+	animate: {
+		opacity: 0.3,
+	},
+};
 
 export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 	const { width, viewBox, fill, opacity, stroke, strokeWidth, path, circleList: circle } = svgData;
@@ -61,9 +72,15 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 			</svg>
 
 			{image && (
-				<div css={imageStyle}>
+				<motion.div
+					css={imageStyle}
+					variants={variants}
+					initial="initial"
+					animate="animate"
+					transition={{ delay: 0.5 }}
+				>
 					<img src={image} alt="캐릭터" />
-				</div>
+				</motion.div>
 			)}
 		</div>
 	);
