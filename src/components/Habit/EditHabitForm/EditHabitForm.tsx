@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import BehaviorModal from "@/components/Chatting/BehaviorModal";
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
@@ -14,6 +15,7 @@ import { openModal } from "@/api/modal/modalSlice";
 
 import { SELECT_TAG_DATA } from "@/constants/modalConstants";
 import { modalType } from "@/constants/modalConstants";
+import { PATH } from "@/constants/path";
 
 import { useHabitForm } from "@/hooks/useHabitForm";
 import { useToggleTrigger } from "@/hooks/useToggleTrigger";
@@ -37,6 +39,10 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
+
+	const navigate = useNavigate();
+
+	const params = useParams();
 
 	const {
 		identity,
@@ -151,7 +157,9 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 						handleTogglePrev={handleSecondNotiTogglePrev}
 					/>
 				</div>
-				<button css={quitButtonStyle}>습관 그만두기</button>
+				<button css={quitButtonStyle} onClick={() => navigate(PATH.DELETE_HABIT(params.habitId))}>
+					습관 그만두기
+				</button>
 
 				{modal === modalType.ALARM_CHECK && <AlarmCheckModal alarmTarget={alarmTarget} />}
 
