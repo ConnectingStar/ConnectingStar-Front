@@ -61,6 +61,7 @@ export const textBoxStyle = css`
 export const subTextBoxStyle = css`
 	height: calc(100vh - 29.8875rem);
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 

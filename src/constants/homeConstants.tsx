@@ -35,11 +35,10 @@ export const REST_RECORD_BLUE_TEXT = {
 	lastText: "정체성을 뚜렷하게 만드는 열쇠",
 };
 
-export const deleteReasonData = [
+export const DELETE_REASON_DATA = [
 	{
 		title: "습관이 완전히 자리 잡았어요",
-		subText: `100회를 넘기신 건가요? 너무너무 멋져요!!\n\n벌써 {닉네임}님과의 다음 약속이 기대되네요 :)
-			`,
+		subText: `100회를 넘기신 건가요? 너무너무 멋져요!!\n\n`,
 	},
 	{
 		title: "실수로 잘못 만들었어요",
