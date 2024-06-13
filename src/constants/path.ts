@@ -8,4 +8,5 @@ export const PATH = {
 	REST_RECORD: "/rest-record",
 	PRACTICE_RECORD: (habitId: string) => `/practice-record/${habitId}`,
 	EDIT_HABIT: (habitId: string) => `/habit-edit/${habitId}`,
+	DELETE_HABIT: (habitId?: string) => `/habit-delete/${habitId}`,
 } as const;
