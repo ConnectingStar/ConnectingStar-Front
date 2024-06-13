@@ -7,6 +7,7 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { getStarMain } from "@/api/star/starThunk";
 
 import { PATH } from "@/constants/path";
 
@@ -38,7 +39,10 @@ export default function CharacterUnlockModal({ id, name, image }: CharacterUnloc
 					leftText="닫기"
 					isTransparent
 					handleBtnClick={() => navigate(`${PATH.STAR_CARD}/${id}`)}
-					handleLeftBtnClick={() => dispatch(closeModal())}
+					handleLeftBtnClick={() => {
+						dispatch(getStarMain());
+						dispatch(closeModal());
+					}}
 				/>
 			</div>
 		</Modal>
