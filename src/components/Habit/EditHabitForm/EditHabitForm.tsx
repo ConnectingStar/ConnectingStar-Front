@@ -1,9 +1,12 @@
 import { useState } from "react";
 
+import BehaviorModal from "@/components/Chatting/BehaviorModal";
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 import ToggleButton from "@/components/common/Button/ToggleButton/ToggleButton";
 import Header from "@/components/common/Header/Header";
+import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
+import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import AlarmCheckModal from "@/components/Habit/Modal/AlarmCheckModal/AlarmCheckModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
@@ -92,9 +95,21 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 						title="언제"
 						content={`${habitRequest.runTime.noon} ${habitRequest.runTime.hour}시 ${habitRequest.runTime.minute}분`}
 					/>
-					<MenuButton title="어디서" content={habitRequest.place} />
-					<MenuButton title="무엇을" content={habitRequest.behavior} />
-					<MenuButton title="얼마나" content={String(habitRequest.behaviorValue)} />
+					<MenuButton
+						title="어디서"
+						content={habitRequest.place}
+						onClick={() => dispatch(openModal(modalType.SELECT_PLACE))}
+					/>
+					<MenuButton
+						title="무엇을"
+						content={habitRequest.behavior}
+						onClick={() => dispatch(openModal(modalType.SELECT_BEHAVIOR))}
+					/>
+					<MenuButton
+						title="얼마나"
+						content={String(habitRequest.behaviorValue)}
+						onClick={() => dispatch(openModal(modalType.SELECT_BEHAVIORUNIT))}
+					/>
 					<MenuButton title="단위" content={habitRequest.behaviorUnit} />
 				</div>
 
@@ -133,6 +148,37 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 					<SelectTagModal
 						title="어떤 사람이 되고 싶으세요?"
 						tags={SELECT_TAG_DATA.identityTags}
+						updateInputValue={updateInputValue}
+					/>
+				)}
+				{modal === modalType.SELECT_TIME("RUNTIME") && (
+					<SelectTimeModal title="시간을 선택해 주세요" updateInputValue={updateInputValue} />
+				)}
+				{modal == modalType.SELECT_TIME("FIRSTALERT") && (
+					<SelectTimeModal
+						title="1차 알림시간을 선택해 주세요"
+						updateInputValue={updateInputValue}
+					/>
+				)}
+				{modal == modalType.SELECT_TIME("SECONDALERT") && (
+					<SelectTimeModal
+						title="2차 알림시간을 선택해 주세요"
+						updateInputValue={updateInputValue}
+					/>
+				)}
+				{modal === modalType.SELECT_PLACE && <LocationModal updateInputValue={updateInputValue} />}
+				{modal === modalType.SELECT_BEHAVIOR && (
+					<SelectTagModal
+						title="어떤 습관을 만들어 볼까요?"
+						tags={SELECT_TAG_DATA.habitTags}
+						updateInputValue={updateInputValue}
+					/>
+				)}
+				{modal === modalType.SELECT_BEHAVIORUNIT && (
+					<BehaviorModal
+						behavior={habitRequest.behavior}
+						prevValue={habitRequest.behaviorValue}
+						prevUnit={habitRequest.behaviorUnit}
 						updateInputValue={updateInputValue}
 					/>
 				)}
