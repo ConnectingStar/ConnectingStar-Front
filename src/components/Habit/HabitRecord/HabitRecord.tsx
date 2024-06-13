@@ -6,6 +6,7 @@ import ExclamationMarkIcon from "@/assets/icon/ic-exclamation-mark.svg?react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
+import { getHabit } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import { getUserInfo } from "@/api/user/userThunk";
@@ -34,12 +35,10 @@ function HabitRecord() {
 	const dispatch = useAppDispatch();
 
 	const { userData } = useAppSelector((state) => state.user);
+	const { habit } = useAppSelector((state) => state.habit);
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const params = useParams();
-	console.log(params.runHabitId);
-
-	const today = new Date();
 
 	// 임시로 랜덤요소를 통해 멘트에 변화를 주고 있음. 나중에 api 추가되면 수정할 예정
 	const Random = Math.floor(Math.random() * 10) % prizeComments.length;
@@ -84,14 +83,19 @@ function HabitRecord() {
 
 	useEffect(() => {
 		dispatch(getUserInfo());
+		dispatch(getHabit(Number(params.habitId)));
 	}, []);
+
+	if (!habit) {
+		return <div />;
+	}
 
 	return (
 		<main css={layoutStyle}>
-			<h1>{`${today.getMonth() + 1}월 ${today.getDate()}일\n영택님의 실천 기록`}</h1>
+			<h1>{`${params.month}월 ${params.date}일\n${userData.nickname}님의 실천 기록`}</h1>
 			<label>
 				<h2>정체성</h2>
-				<span>{userData.identity} 사람</span>
+				<span>{habit.identity} 사람</span>
 			</label>
 			<section css={conditionWrapperStyle}>
 				<h3>

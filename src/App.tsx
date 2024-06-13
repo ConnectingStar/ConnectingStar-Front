@@ -49,7 +49,10 @@ const App = () => {
 					<Route path={PATH.DELETE_HABIT(":habitId")} element={<HabitDeletePage />} />
 					<Route path={PATH.ONBOARDING} element={<OnboardingPage />} />
 					<Route path={PATH.LOGIN_KAKAO} element={<KakaoLoginPage />} />
-					<Route path={PATH.PRACTICE_RECORD(":habitId")} element={<PracticeRecordPage />} />
+					<Route
+						path={PATH.PRACTICE_RECORD(":habitId", ":month", ":date")}
+						element={<PracticeRecordPage />}
+					/>
 					<Route path={PATH.CREATE_HABIT} element={<CreateHabitPage />} />
 					<Route path="habit-guide" element={<HabitGuidePage />} />
 					<Route path={PATH.EDIT_HABIT(":habitId")} element={<EditHabitPage />} />
