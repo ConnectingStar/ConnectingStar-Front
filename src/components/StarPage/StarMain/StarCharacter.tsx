@@ -31,15 +31,20 @@ const variants = {
 		opacity: 0.3,
 	},
 };
+const transition = { duration: 1, ease: "easeInOut" };
+const starlight = {
+	on: "0 0 0 0 0 0 0 0 0 0.4 0 0 0 0 1 0 0 0 0.95 0",
+	off: "0",
+};
 
 export default function StarCharacter({ svgData, image }: StarCharacterProps) {
-	const { width, viewBox, fill, opacity, stroke, strokeWidth, path, circleList: circle } = svgData;
+	const { viewBox, fill, opacity, stroke, strokeWidth, path, circleList: circle } = svgData;
 
 	return (
 		<div css={containerStyle}>
 			<svg
 				css={svgStyle}
-				width={width}
+				width="100%"
 				height="100%"
 				viewBox={viewBox}
 				fill="none"
@@ -48,27 +53,37 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 				<path opacity={opacity} d={path} stroke={stroke} strokeWidth={strokeWidth} />
 
 				{circle.map((circle, index) => (
-					<g filter={circle.filled ? "url(#shadow)" : ""} key={index}>
-						<circle
+					<g filter={circle.filled ? `url(#shadow${index})` : ""} key={index}>
+						<motion.circle
 							cx={circle.cx}
 							cy={circle.cy}
-							r={circle.filled ? circle.r - 1 : circle.r}
-							fill={circle.filled ? "#fff" : fill}
-							stroke={circle.filled ? "none" : stroke}
-							strokeWidth={circle.filled ? 0 : strokeWidth}
+							animate={{
+								r: circle.filled ? circle.r - 1 : circle.r,
+								fill: circle.filled ? "#fff" : fill,
+								stroke: circle.filled ? "none" : stroke,
+								strokeWidth: circle.filled ? 0 : strokeWidth,
+							}}
+							transition={transition}
 						/>
+						{circle.filled && (
+							<defs>
+								<filter id={`shadow${index}`} filterUnits="userSpaceOnUse">
+									<feFlood floodColor="#00B2FF" />
+									<feMorphology radius="3" operator="dilate" in="SourceAlpha" />
+									<feGaussianBlur stdDeviation="5" />
+									<motion.feColorMatrix
+										type="matrix"
+										animate={{
+											values: circle.filled ? starlight.on : starlight.off,
+										}}
+										transition={transition}
+									/>
+									<feBlend mode="normal" in="SourceGraphic" result="shape" />
+								</filter>
+							</defs>
+						)}
 					</g>
 				))}
-
-				<defs>
-					<filter id="shadow" filterUnits="userSpaceOnUse">
-						<feFlood floodColor="#00B2FF" />
-						<feMorphology radius="3" operator="dilate" in="SourceAlpha" />
-						<feGaussianBlur stdDeviation="5" />
-						<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.4 0 0 0 0 1 0 0 0 0.95 0" />
-						<feBlend mode="normal" in="SourceGraphic" result="shape" />
-					</filter>
-				</defs>
 			</svg>
 
 			{image && (
