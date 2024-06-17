@@ -19,37 +19,9 @@ interface StarMainType {
 	isProgress: boolean;
 }
 
-interface Svg {
-	fill: string;
-	stroke: string;
-	strokeWidth: number;
-	opacity: number;
-	width: number;
-	height: number;
-	viewBox: string;
-	path: string;
-	circleList: Circle[];
-}
-
-export interface Circle {
-	cx: number;
-	cy: number;
-	r: number;
-	filled: boolean;
-}
-
 interface StarCardType {
 	list: StarCardItem[];
 	count: number;
-}
-
-interface StarCardItem {
-	constellationId: number;
-	typeName: TypeName;
-	name: string;
-	image: string;
-	starCount: number;
-	status: StarCardStatus;
 }
 
 interface StarDetailType {
@@ -68,4 +40,32 @@ interface AddStarType {
 	isRegistered: boolean;
 	mainImage: string;
 	characterImage: string;
+}
+
+export interface Svg {
+	fill: string;
+	stroke: string;
+	strokeWidth: number;
+	opacity: number;
+	width: number;
+	height: number;
+	viewBox: string;
+	path: string;
+	circleList: Circle[];
+}
+
+export interface Circle {
+	cx: number;
+	cy: number;
+	r: number;
+	filled: boolean;
+}
+
+interface StarCardItem {
+	constellationId: number;
+	typeName: TypeName;
+	name: string;
+	image: string;
+	starCount: number;
+	status: StarCardStatus;
 }
