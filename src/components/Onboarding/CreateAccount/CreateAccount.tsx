@@ -16,9 +16,10 @@ import { updateBasicUserData } from "@/api/user/userSlice";
 import { getIsOnboarding } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
-import { ageRangeTypeList, genderTypeList } from "@/constants/onboarding";
 
 import { theme } from "@/styles/theme";
+
+import { generateAge, generateGender } from "@/utils/generateRangeType";
 
 function CreateAccount({ onNext }: { onNext: () => void }) {
 	const dispatch = useAppDispatch();
@@ -57,8 +58,8 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 		dispatch(
 			updateBasicUserData({
 				nickname,
-				genderType: genderTypeList.find((item) => item.text === genderType)?.code || "",
-				ageRangeType: ageRangeTypeList.find((item) => item.text === ageRangeType)?.code || "",
+				genderType: generateGender(genderType),
+				ageRangeType: generateAge(ageRangeType),
 			}),
 		);
 		onNext();
