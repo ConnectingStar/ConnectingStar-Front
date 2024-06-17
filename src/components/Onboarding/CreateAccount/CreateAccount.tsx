@@ -7,7 +7,7 @@ import ArrowDownIcon from "@/assets/icon/ic-arrow-down.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
-import SelectAgeModal from "@/components/common/Modal/CommonModal/SelectAgeModal";
+import SelectAgeRangeModal from "@/components/common/Modal/CommonModal/SelectAgeRangeModal";
 import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
@@ -105,7 +105,7 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 				<SelectGenderModal prevGender={genderType} changeGender={setGenderType} />
 			)}
 			{modal === modalType.SELECT_AGERANGETYPE && (
-				<SelectAgeModal changeAgeRange={setAgeRangeType} />
+				<SelectAgeRangeModal prevAgeRange={ageRangeType} changeAgeRange={setAgeRangeType} />
 			)}
 		</>
 	);
