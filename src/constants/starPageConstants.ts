@@ -13,6 +13,11 @@ export const categoryData = [
 	{ id: 5, title: "휴식ㅣ취미", param: "rest-and-hobby" },
 ];
 
+export const STARLIGHT = {
+	ON: "0 0 0 0 0 0 0 0 0 0.4 0 0 0 0 1 0 0 0 0.95 0",
+	OFF: "0",
+};
+
 export const STAR_CARD_STATUS = {
 	PROGRESS: "PROGRESS", // 해금 진행 중
 	COMPLETE: "COMPLETE", // 해금 완료
