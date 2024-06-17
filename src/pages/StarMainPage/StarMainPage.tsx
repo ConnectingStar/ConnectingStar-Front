@@ -59,7 +59,10 @@ export default function StarMainPage() {
 
 			<div className="wrapper">
 				{starMain.isProgress && (
-					<StarButton onClick={handleStarButtonClick} disabled={starMain.starCount <= 0} />
+					<StarButton
+						onClick={handleStarButtonClick}
+						disabled={starMain.starCount <= 0 || addStar.isRegistered}
+					/>
 				)}
 				<StarCardLink />
 			</div>
