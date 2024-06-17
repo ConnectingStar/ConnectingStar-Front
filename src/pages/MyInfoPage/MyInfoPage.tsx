@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 import Header from "@/components/common/Header/Header";
 import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
-import SelectAgeModal from "@/components/common/Modal/CommonModal/SelectAgeModal";
+import SelectAgeRangeModal from "@/components/common/Modal/CommonModal/SelectAgeRangeModal";
 import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal";
 import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
 import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
@@ -99,7 +99,7 @@ const MyInfoPage = () => {
 					<ChangeNicknameModal prevNickname={userData.nickname} />
 				)}
 				{modal === modalType.SELECT_AGERANGETYPE && (
-					<SelectAgeModal prevAgeRange={generateAgeType(userData.ageRangeType)} />
+					<SelectAgeRangeModal prevAgeRange={generateAgeType(userData.ageRangeType)} />
 				)}
 				{modal === modalType.SELECT_MAIN_IDENTITY && (
 					<SelectIdentityModal prevIdentity={userData.identity} />
