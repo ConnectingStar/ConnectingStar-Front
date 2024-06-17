@@ -2,39 +2,21 @@ import { css } from "@emotion/react";
 
 import { motion } from "framer-motion";
 
-interface Circle {
-	cx: number;
-	cy: number;
-	r: number;
-	filled: boolean;
-}
+import { Svg } from "@/types/star";
 
 interface StarCharacterProps {
-	svgData: {
-		width: number;
-		viewBox: string;
-		fill: string;
-		opacity: number;
-		stroke: string;
-		strokeWidth: number;
-		path: string;
-		circleList: Circle[];
-	};
+	svgData: Svg;
 	image: string;
 }
-
-const variants = {
-	initial: {
-		opacity: 0,
-	},
-	animate: {
-		opacity: 0.3,
-	},
-};
 
 const starlight = {
 	on: "0 0 0 0 0 0 0 0 0 0.4 0 0 0 0 1 0 0 0 0.95 0",
 	off: "0",
+};
+
+const starTransition = {
+	duration: 0.3,
+	ease: "easeIn",
 };
 
 export default function StarCharacter({ svgData, image }: StarCharacterProps) {
@@ -63,7 +45,7 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 								stroke: circle.filled ? "#ffffff0" : stroke,
 								strokeWidth: circle.filled ? 0 : strokeWidth,
 							}}
-							transition={{ duration: 0.3, ease: "easeIn" }}
+							transition={starTransition}
 						/>
 						{circle.filled && (
 							<defs>
@@ -74,10 +56,8 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 									<motion.feColorMatrix
 										type="matrix"
 										initial={{ values: starlight.off }}
-										animate={{
-											values: circle.filled ? starlight.on : starlight.off,
-										}}
-										transition={{ duration: 0.3, ease: "easeIn" }}
+										animate={{ values: starlight.on }}
+										transition={starTransition}
 									/>
 									<feBlend mode="normal" in="SourceGraphic" result="shape" />
 								</filter>
@@ -90,9 +70,8 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 			{image && (
 				<motion.div
 					css={imageStyle}
-					variants={variants}
-					initial="initial"
-					animate="animate"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
 					transition={{ delay: 1, duration: 1, ease: "easeIn" }}
 				>
 					<img src={image} alt="캐릭터" />
