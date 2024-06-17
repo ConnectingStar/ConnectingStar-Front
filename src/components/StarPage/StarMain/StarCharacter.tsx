@@ -60,7 +60,7 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 							animate={{
 								r: circle.filled ? circle.r - 1 : circle.r,
 								fill: circle.filled ? "#fff" : fill,
-								stroke: circle.filled ? "none" : stroke,
+								stroke: circle.filled ? "#ffffff0" : stroke,
 								strokeWidth: circle.filled ? 0 : strokeWidth,
 							}}
 							transition={transition}
