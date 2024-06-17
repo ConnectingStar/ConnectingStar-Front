@@ -69,7 +69,7 @@ const HabitPage = () => {
 					{progressHabitList.map((habitData) => (
 						<HabitItem
 							key={habitData.runHabitId}
-							habitId={habitData.runHabitId}
+							habitId={habitData.runHabitId ?? -1}
 							habitState="progress"
 							habitText={generateHabitText(
 								habitData.runTime,

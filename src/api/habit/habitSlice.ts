@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getHabit, getHabitHistoryList, getProgressHabitList } from "@/api/habit//habitThunk";
+import {
+	getHabit,
+	getHabitHistoryList,
+	getProgressHabitList,
+	editHabit,
+} from "@/api/habit//habitThunk";
 
 import type { HabitInitialStateType } from "@/types/habit";
 
@@ -24,6 +29,9 @@ const habitSlice = createSlice({
 			})
 			.addCase(getHabit.fulfilled, (state, action) => {
 				state.habit = action.payload.data;
+			})
+			.addCase(editHabit.fulfilled, (state, action) => {
+				state.habit = { ...action.meta.arg, runHabitId: action.meta.arg.runHabitId };
 			});
 	},
 });
