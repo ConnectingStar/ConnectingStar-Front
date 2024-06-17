@@ -4,20 +4,12 @@ import { motion } from "framer-motion";
 
 import { Svg } from "@/types/star";
 
+import { STARLIGHT } from "@/constants/starPageConstants";
+
 interface StarCharacterProps {
 	svgData: Svg;
 	image: string;
 }
-
-const starlight = {
-	on: "0 0 0 0 0 0 0 0 0 0.4 0 0 0 0 1 0 0 0 0.95 0",
-	off: "0",
-};
-
-const starTransition = {
-	duration: 0.3,
-	ease: "easeIn",
-};
 
 export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 	const { viewBox, fill, opacity, stroke, strokeWidth, path, circleList: circle } = svgData;
@@ -45,7 +37,7 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 								stroke: circle.filled ? "#ffffff0" : stroke,
 								strokeWidth: circle.filled ? 0 : strokeWidth,
 							}}
-							transition={starTransition}
+							transition={{ duration: 0.3, ease: "easeIn" }}
 						/>
 						{circle.filled && (
 							<defs>
@@ -55,9 +47,9 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 									<feGaussianBlur stdDeviation="5" />
 									<motion.feColorMatrix
 										type="matrix"
-										initial={{ values: starlight.off }}
-										animate={{ values: starlight.on }}
-										transition={starTransition}
+										initial={{ values: STARLIGHT.OFF }}
+										animate={{ values: STARLIGHT.ON }}
+										transition={{ duration: 0.3, ease: "easeIn" }}
 									/>
 									<feBlend mode="normal" in="SourceGraphic" result="shape" />
 								</filter>
