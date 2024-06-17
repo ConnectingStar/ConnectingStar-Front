@@ -25,7 +25,6 @@ const SelectAgeRangeModal = ({ prevAgeRange, changeAgeRange }: SelectAgeModalPro
 
 	const handleChangeAgeRange = (ageRange: string) => {
 		changeAgeRange ? changeAgeRange(ageRange) : dispatch(editAge(generateAge(ageRange)));
-
 		dispatch(closeModal());
 	};
 

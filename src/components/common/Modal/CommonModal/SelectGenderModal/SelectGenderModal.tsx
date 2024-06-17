@@ -24,10 +24,7 @@ const SelectGenderModal = ({ prevGender, changeGender }: SelectGenderModalProps)
 	const dispatch = useAppDispatch();
 
 	const handleChangeGender = (gender: string) => {
-		changeGender
-			? changeGender && changeGender(gender)
-			: dispatch(editGender(generateGender(gender)));
-
+		changeGender ? changeGender(gender) : dispatch(editGender(generateGender(gender)));
 		dispatch(closeModal());
 	};
 
