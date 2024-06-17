@@ -13,6 +13,8 @@ import { PATH } from "@/constants/path";
 
 import { theme } from "@/styles/theme";
 
+import { josaIga } from "@/utils/starUtils";
+
 interface CharacterUnlockModalProps {
 	id: number;
 	name: string;
@@ -30,7 +32,8 @@ export default function CharacterUnlockModal({ id, name, image }: CharacterUnloc
 					<img src={image} alt="별자리 캐릭터" />
 					<h1>축하합니다!</h1>
 					<p>
-						{name}이 <br />
+						{name}
+						{josaIga(name)} <br />
 						당신의 친구가 되었어요!
 					</p>
 				</div>
