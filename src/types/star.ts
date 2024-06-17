@@ -8,7 +8,7 @@ export interface StarDataType {
 	starMain: StarMainType;
 	starCard: StarCardType;
 	starDetail: StarDetailType;
-	addStar: AddStarType;
+	addStarResult: AddStarType;
 }
 
 interface StarMainType {

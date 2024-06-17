@@ -13,17 +13,14 @@ export const getStarMain = createAsyncThunk("star/getStarMain", async (_, thunkO
 	}
 });
 
-export const addStarToConstellation = createAsyncThunk(
-	"star/addStarToConstellation",
-	async (_, thunkOptions) => {
-		try {
-			const { data } = await axiosInstance.put(END_POINTS.ADD_STAR_TO_CONSTELLATION);
-			return data;
-		} catch (error) {
-			throw thunkOptions.rejectWithValue(error);
-		}
-	},
-);
+export const addStar = createAsyncThunk("star/addStar", async (_, thunkOptions) => {
+	try {
+		const { data } = await axiosInstance.put(END_POINTS.ADD_STAR);
+		return data;
+	} catch (error) {
+		throw thunkOptions.rejectWithValue(error);
+	}
+});
 
 export const getStarCard = createAsyncThunk(
 	"star/getStarCard",

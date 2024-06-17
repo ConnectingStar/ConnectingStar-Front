@@ -1,12 +1,7 @@
 import { StarDataType } from "@/types/star";
 import { createSlice } from "@reduxjs/toolkit";
 
-import {
-	getStarMain,
-	getStarCardDetail,
-	getStarCard,
-	addStarToConstellation,
-} from "@/api/star/starThunk";
+import { getStarMain, getStarCardDetail, getStarCard, addStar } from "@/api/star/starThunk";
 import { editProfileImage } from "@/api/user/userThunk";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
@@ -47,7 +42,7 @@ const initialState: StarDataType = {
 		status: STAR_DETAIL_STATUS.SELECT,
 		isProfile: false,
 	},
-	addStar: {
+	addStarResult: {
 		isRegistered: false,
 		mainImage: "",
 		characterImage: "",
@@ -67,8 +62,8 @@ const starSlice = createSlice({
 				state.isLoading = false;
 				state.starMain = action.payload.data;
 
-				if (state.addStar.isRegistered) {
-					state.addStar.isRegistered = false;
+				if (state.addStarResult.isRegistered) {
+					state.addStarResult.isRegistered = false;
 				}
 			})
 			.addCase(getStarMain.rejected, (state) => {
@@ -104,25 +99,21 @@ const starSlice = createSlice({
 			.addCase(editProfileImage.rejected, (state) => {
 				state.isLoading = false;
 			})
-			.addCase(addStarToConstellation.pending, (state) => {
+			.addCase(addStar.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(addStarToConstellation.fulfilled, (state, action) => {
+			.addCase(addStar.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.addStar.isRegistered = action.payload.data.isRegistered;
 
-				if (state.addStar.isRegistered) {
-					state.addStar.mainImage =
-						"https://tars-image.s3.ap-northeast-2.amazonaws.com/constellation/grey/Mandarin_grey.png";
-					state.addStar.characterImage =
-						"https://tars-image.s3.ap-northeast-2.amazonaws.com/constellation/character/Mandarin.png";
-				} else {
+				if (!state.addStarResult.isRegistered) {
 					state.starMain.starCount = state.starMain.starCount - 1;
 					const index = findCircleItem(state.starMain.svg.circleList);
 					state.starMain.svg.circleList[index].filled = true;
 				}
+
+				state.addStarResult = action.payload.data;
 			})
-			.addCase(addStarToConstellation.rejected, (state) => {
+			.addCase(addStar.rejected, (state) => {
 				state.isLoading = false;
 			});
 	},

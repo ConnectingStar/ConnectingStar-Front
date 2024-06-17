@@ -28,7 +28,7 @@ export const END_POINTS = {
 		`constellation/list?constellationTypeId=${id}&isRegistered=${isRegistered}`,
 	STAR_DETAIL: (id: string) => `constellation?constellationId=${id}`,
 	USER_CONSTELLATION: "/user/constellation",
-	ADD_STAR_TO_CONSTELLATION: "user/constellation/star",
+	ADD_STAR: "user/constellation/star",
 };
 
 export const OAUTH_KAKAO_URL = `${BASE_URL}/oauth/code/url?socialType=K`;

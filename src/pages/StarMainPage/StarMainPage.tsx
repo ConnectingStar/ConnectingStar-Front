@@ -11,7 +11,7 @@ import StarInfo from "@/components/StarPage/StarMain/StarInfo";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal, closeModal } from "@/api/modal/modalSlice";
-import { getStarMain, addStarToConstellation } from "@/api/star/starThunk";
+import { getStarMain, addStar } from "@/api/star/starThunk";
 
 import { modalType } from "@/constants/modalConstants";
 
@@ -20,11 +20,11 @@ import { containerStyle, starMainPageGnbStyle } from "@/pages/StarMainPage/StarM
 export default function StarMainPage() {
 	const dispatch = useAppDispatch();
 	const { starMain } = useAppSelector((state) => state.star);
-	const { addStar } = useAppSelector((state) => state.star);
+	const { addStarResult } = useAppSelector((state) => state.star);
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const handleStarButtonClick = () => {
-		dispatch(addStarToConstellation());
+		dispatch(addStar());
 	};
 
 	useEffect(() => {
@@ -32,14 +32,14 @@ export default function StarMainPage() {
 	}, []);
 
 	useEffect(() => {
-		if (addStar.isRegistered) {
+		if (addStarResult.isRegistered) {
 			setTimeout(() => {
 				dispatch(openModal(modalType.CHARACTER_UNLOCK));
 			}, 2500);
 		} else {
 			dispatch(closeModal());
 		}
-	}, [addStar.isRegistered]);
+	}, [addStarResult.isRegistered]);
 
 	return (
 		<div css={containerStyle}>
@@ -52,7 +52,7 @@ export default function StarMainPage() {
 			/>
 
 			{starMain.isProgress ? (
-				<StarCharacter svgData={starMain.svg} image={addStar.mainImage} />
+				<StarCharacter svgData={starMain.svg} image={addStarResult.mainImage} />
 			) : (
 				<SelectStarButton />
 			)}
@@ -61,7 +61,7 @@ export default function StarMainPage() {
 				{starMain.isProgress && (
 					<StarButton
 						onClick={handleStarButtonClick}
-						disabled={starMain.starCount <= 0 || addStar.isRegistered}
+						disabled={starMain.starCount <= 0 || addStarResult.isRegistered}
 					/>
 				)}
 				<StarCardLink />
@@ -75,7 +75,7 @@ export default function StarMainPage() {
 				<CharacterUnlockModal
 					id={starMain.constellationId}
 					name={starMain.name}
-					image={addStar.characterImage}
+					image={addStarResult.characterImage}
 				/>
 			)}
 		</div>
