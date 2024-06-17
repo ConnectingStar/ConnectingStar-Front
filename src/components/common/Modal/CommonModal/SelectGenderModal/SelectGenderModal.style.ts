@@ -2,9 +2,9 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
-export const layoutStyle = () => {
+export const layoutStyle = (isSort?: boolean) => {
 	return css`
-		padding: 1.125rem 1.5rem 1.125rem;
+		padding: 1.125rem 1.5rem ${!isSort && "1.125rem"};
 		border-radius: 15px 15px 0 0;
 		color: ${theme.color.font_black};
 		background-color: #fff;
