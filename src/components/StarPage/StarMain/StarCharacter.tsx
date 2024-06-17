@@ -31,7 +31,7 @@ const variants = {
 		opacity: 0.3,
 	},
 };
-const transition = { duration: 1, ease: "easeInOut" };
+
 const starlight = {
 	on: "0 0 0 0 0 0 0 0 0 0.4 0 0 0 0 1 0 0 0 0.95 0",
 	off: "0",
@@ -63,7 +63,7 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 								stroke: circle.filled ? "#ffffff0" : stroke,
 								strokeWidth: circle.filled ? 0 : strokeWidth,
 							}}
-							transition={transition}
+							transition={{ duration: 0.3, ease: "easeIn" }}
 						/>
 						{circle.filled && (
 							<defs>
@@ -73,10 +73,11 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 									<feGaussianBlur stdDeviation="5" />
 									<motion.feColorMatrix
 										type="matrix"
+										initial={{ values: starlight.off }}
 										animate={{
 											values: circle.filled ? starlight.on : starlight.off,
 										}}
-										transition={transition}
+										transition={{ duration: 0.3, ease: "easeIn" }}
 									/>
 									<feBlend mode="normal" in="SourceGraphic" result="shape" />
 								</filter>
@@ -92,7 +93,7 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 					variants={variants}
 					initial="initial"
 					animate="animate"
-					transition={{ delay: 0.5 }}
+					transition={{ delay: 1, duration: 1, ease: "easeIn" }}
 				>
 					<img src={image} alt="캐릭터" />
 				</motion.div>
