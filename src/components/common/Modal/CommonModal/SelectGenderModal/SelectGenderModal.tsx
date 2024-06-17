@@ -4,8 +4,11 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
+import { editGender } from "@/api/user/userThunk";
 
 import { genderTypeList } from "@/constants/onboarding";
+
+import { generateGender } from "@/utils/generateRangeType";
 
 import {
 	layoutStyle,
@@ -21,7 +24,10 @@ const SelectGenderModal = ({ prevGender, changeGender }: SelectGenderModalProps)
 	const dispatch = useAppDispatch();
 
 	const handleChangeGender = (gender: string) => {
-		changeGender && changeGender(gender);
+		changeGender
+			? changeGender && changeGender(gender)
+			: dispatch(editGender(generateGender(gender)));
+
 		dispatch(closeModal());
 	};
 
@@ -32,13 +38,7 @@ const SelectGenderModal = ({ prevGender, changeGender }: SelectGenderModalProps)
 				<ul>
 					{genderTypeList.map((data) => (
 						<li key={data.code}>
-							<input
-								type="radio"
-								name="gender"
-								id={data.text}
-								onChange={() => handleChangeGender(data.text)}
-								checked={prevGender === data.text}
-							/>
+							<input type="radio" id={data.text} onChange={() => handleChangeGender(data.text)} />
 							<label htmlFor={data.text} css={getCheckBoxLabelStyle(prevGender === data.text)}>
 								{prevGender === data.text && <CheckIcon />}
 							</label>
