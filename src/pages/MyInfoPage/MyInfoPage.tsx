@@ -99,7 +99,7 @@ const MyInfoPage = () => {
 					<ChangeNicknameModal prevNickname={userData.nickname} />
 				)}
 				{modal === modalType.SELECT_AGERANGETYPE && (
-					<SelectAgeModal prevAge={generateAgeType(userData.ageRangeType)} />
+					<SelectAgeModal prevAgeRange={generateAgeType(userData.ageRangeType)} />
 				)}
 				{modal === modalType.SELECT_MAIN_IDENTITY && (
 					<SelectIdentityModal prevIdentity={userData.identity} />
