@@ -104,7 +104,9 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 			{modal === modalType.SELECT_GENDERTYPE && (
 				<SelectGenderModal prevGender={genderType} changeGender={setGenderType} />
 			)}
-			{modal === modalType.SELECT_AGERANGETYPE && <SelectAgeModal changeAge={setAgeRangeType} />}
+			{modal === modalType.SELECT_AGERANGETYPE && (
+				<SelectAgeModal changeAgeRange={setAgeRangeType} />
+			)}
 		</>
 	);
 }

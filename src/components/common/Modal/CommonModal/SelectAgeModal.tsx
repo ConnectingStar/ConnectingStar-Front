@@ -19,17 +19,17 @@ import {
 } from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal.style";
 
 interface SelectAgeModalProps {
-	prevAge?: string;
-	changeAge?: (age: string) => void;
+	prevAgeRange?: string;
+	changeAgeRange?: (age: string) => void;
 }
 
-const SelectAgeModal = ({ prevAge, changeAge }: SelectAgeModalProps) => {
+const SelectAgeModal = ({ prevAgeRange, changeAgeRange }: SelectAgeModalProps) => {
 	const dispatch = useAppDispatch();
 
-	const [checkItem, setCheckItem] = useState(prevAge ?? "");
+	const [checkItem, setCheckItem] = useState(prevAgeRange ?? "");
 
 	const handleCheckClick = () => {
-		changeAge && changeAge(checkItem);
+		changeAgeRange && changeAgeRange(checkItem);
 		dispatch(closeModal());
 	};
 
@@ -57,7 +57,7 @@ const SelectAgeModal = ({ prevAge, changeAge }: SelectAgeModalProps) => {
 				<FooterBtn
 					text="확인"
 					leftText="취소"
-					handleBtnClick={prevAge ? handleChangeAge : handleCheckClick}
+					handleBtnClick={prevAgeRange ? handleChangeAge : handleCheckClick}
 					handleLeftBtnClick={() => dispatch(closeModal())}
 					isPositionStatic
 				/>
