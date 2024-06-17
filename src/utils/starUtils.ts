@@ -1,6 +1,6 @@
 import { StarCardDetailStatus, StarCardStatus, CategoryType, Circle } from "@/types/star";
 
-import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
+import { STAR_DETAIL_STATUS, HANGUL_START_CHARCODE, JONGSUNG } from "@/constants/starPageConstants";
 
 export function generateStars() {
 	const stars = [];
@@ -44,4 +44,10 @@ export function validateToggleParams(param: string | null) {
 
 export function findCircleItem(arr: Circle[]) {
 	return arr.findIndex((item) => item.filled === false);
+}
+
+export function josaIga(letter: string) {
+	const lastCharCode = letter.charCodeAt(letter.length - 1);
+	const jongsungIndex = (lastCharCode - HANGUL_START_CHARCODE) % JONGSUNG;
+	return jongsungIndex ? "이" : "가";
 }
