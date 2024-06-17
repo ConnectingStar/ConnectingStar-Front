@@ -31,9 +31,9 @@ export interface HabitType {
 	firstAlert: CommonAlertType;
 	identity: string;
 	place: string;
-	runHabitId: number;
+	runHabitId?: number;
 	runTime: CommonAlertType;
 	secondAlert: CommonAlertType;
-	userId: number;
-	userNickname: string;
+	// userId: number;
+	// userNickname: string;
 }

@@ -30,9 +30,10 @@ import type { HabitType } from "@/types/habit";
 interface EditHabitFormProps {
 	habitId: number;
 	habit: HabitType;
+	nickname: string;
 }
 
-const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
+const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
@@ -74,6 +75,9 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 			secondAlert,
 		},
 	});
+
+	// console.log(habitRequest.behaviorValue);
+	// console.log(habit.behaviorValue);
 
 	return (
 		<>
@@ -122,7 +126,7 @@ const EditHabitForm = ({ habitId, habit }: EditHabitFormProps) => {
 					<span>알림</span>
 					<ToggleButton
 						title="1차 알림"
-						subTitle={`곧 약속 시간이에요 :) 성장하는 ${habit.userNickname}님 화이팅!`}
+						subTitle={`곧 약속 시간이에요 :) 성장하는 ${nickname}님 화이팅!`}
 						alarmTime={`${habitRequest.firstAlert.noon} ${habitRequest.firstAlert.hour}:${habitRequest.firstAlert.minute}`}
 						hasToggle
 						isToggle={firstNotiToggle}
