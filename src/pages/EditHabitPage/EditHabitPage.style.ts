@@ -26,6 +26,11 @@ export const notiMenuBoxStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+
+	& > h3 {
+		${theme.font.head_c}
+		color: ${theme.color.font_gray}
+	}
 `;
 
 export const quitButtonStyle = css`

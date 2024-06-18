@@ -123,7 +123,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 				</div>
 
 				<div css={notiMenuBoxStyle}>
-					<span>알림</span>
+					<h3>알림</h3>
 					<ToggleButton
 						title="1차 알림"
 						subTitle={`곧 약속 시간이에요 :) 성장하는 ${nickname}님 화이팅!`}
