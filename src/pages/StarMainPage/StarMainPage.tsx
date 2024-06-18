@@ -35,7 +35,7 @@ export default function StarMainPage() {
 		if (addStarResult.isRegistered) {
 			setTimeout(() => {
 				dispatch(openModal(modalType.CHARACTER_UNLOCK));
-			}, 2500);
+			}, 3000);
 		} else {
 			dispatch(closeModal());
 		}
