@@ -42,7 +42,7 @@ export function validateToggleParams(param: string | null) {
 	return param === "true" || param === "false";
 }
 
-export function findCircleItem(arr: Circle[]) {
+export function findCircleIndex(arr: Circle[]) {
 	return arr.findIndex((item) => item.filled === false);
 }
 
