@@ -6,7 +6,7 @@ import { editProfileImage } from "@/api/user/userThunk";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
-import { findCircleItem } from "@/utils/starUtils";
+import { findCircleIndex } from "@/utils/starUtils";
 
 const initialState: StarDataType = {
 	isLoading: false,
@@ -107,7 +107,7 @@ const starSlice = createSlice({
 
 				if (!state.addStarResult.isRegistered) {
 					state.starMain.starCount = state.starMain.starCount - 1;
-					const index = findCircleItem(state.starMain.svg.circleList);
+					const index = findCircleIndex(state.starMain.svg.circleList);
 					state.starMain.svg.circleList[index].filled = true;
 				}
 
