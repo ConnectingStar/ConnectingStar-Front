@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { memo } from "react";
 
 import { css } from "@emotion/react";
 
@@ -6,8 +6,8 @@ import Star from "@/components/StarPage/StarMain/Star";
 
 import { generateStars } from "@/utils/starUtils";
 
-export default function StarBackground() {
-	const stars = useMemo(() => generateStars(), []);
+function StarBackground() {
+	const stars = generateStars();
 
 	return (
 		<svg css={starStyle}>
@@ -23,3 +23,5 @@ const starStyle = css`
 	width: 500px;
 	height: 100dvh;
 `;
+
+export default memo(StarBackground);
