@@ -49,7 +49,7 @@ const HabitItem = ({ habitState, habitData }: HabitItemProps) => {
 			</button>
 
 			{modal === modalType.HABIT_RECORD(habitData.runHabitId) && (
-				<HabitRecordModal text={habitData.behavior} habitId={habitData.runHabitId} />
+				<HabitRecordModal habitData={habitData} />
 			)}
 
 			{modal === modalType.HABIT_EDIT(habitData.runHabitId) && (

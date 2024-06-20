@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import { css } from "@emotion/react";
-
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
@@ -10,12 +8,19 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { PATH } from "@/constants/path";
 
+import type { HabitType } from "@/types/habit";
+
+import {
+	layoutStyle,
+	behaviorBoxStyle,
+	closeButtonBoxStyle,
+} from "@/components/Habit/Modal/HabitRecordModal/HabitRecordModal.style";
+
 interface HabitRecordModalProps {
-	text: string;
-	habitId?: number;
+	habitData: HabitType;
 }
 
-const HabitRecordModal = ({ text, habitId }: HabitRecordModalProps) => {
+const HabitRecordModal = ({ habitData }: HabitRecordModalProps) => {
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
@@ -24,7 +29,16 @@ const HabitRecordModal = ({ text, habitId }: HabitRecordModalProps) => {
 		<Modal>
 			<div css={layoutStyle}>
 				<h1>아래의 습관을 실천했나요?</h1>
-				<p>{text}</p>
+				<h2>{habitData.behavior}</h2>
+				<div css={behaviorBoxStyle}>
+					<span>
+						{habitData.runTime.noon} {habitData.runTime.hour}:{habitData.runTime.minute}
+					</span>
+					<div />
+					<span>
+						{habitData.behaviorValue} {habitData.behaviorUnit}
+					</span>
+				</div>
 
 				<FooterBtn
 					leftText="쉬는 날 🙂"
@@ -36,34 +50,16 @@ const HabitRecordModal = ({ text, habitId }: HabitRecordModalProps) => {
 						dispatch(closeModal());
 					}}
 					handleBtnClick={() => {
-						navigate(PATH.PRACTICE_RECORD(String(habitId)));
+						navigate(PATH.PRACTICE_RECORD(String(habitData.runHabitId)));
 						dispatch(closeModal());
 					}}
 				/>
+				<div css={closeButtonBoxStyle}>
+					<button onClick={() => dispatch(closeModal())}>닫기</button>
+				</div>
 			</div>
 		</Modal>
 	);
 };
 
 export default HabitRecordModal;
-
-const layoutStyle = css`
-	width: 18rem;
-	height: 13.75rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	border-radius: 15px;
-	background-color: #fff;
-	padding: 1rem;
-
-	& > h1 {
-		font-size: 1.125rem;
-		font-weight: 700;
-		margin-bottom: 1.25rem;
-	}
-
-	& > p {
-		margin-bottom: 2.5rem;
-	}
-`;
