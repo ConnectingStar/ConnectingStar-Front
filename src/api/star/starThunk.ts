@@ -13,15 +13,6 @@ export const getStarMain = createAsyncThunk("star/getStarMain", async (_, thunkO
 	}
 });
 
-export const addStar = createAsyncThunk("star/addStar", async (_, thunkOptions) => {
-	try {
-		const { data } = await axiosInstance.put(END_POINTS.ADD_STAR);
-		return data;
-	} catch (error) {
-		throw thunkOptions.rejectWithValue(error);
-	}
-});
-
 export const getStarCard = createAsyncThunk(
 	"star/getStarCard",
 	async ({ id, isRegistered }: { id: string; isRegistered: boolean }, thunkOptions) => {
