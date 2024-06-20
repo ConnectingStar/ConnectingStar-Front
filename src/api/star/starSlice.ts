@@ -64,6 +64,8 @@ const starSlice = createSlice({
 
 				if (state.addStarResult.isRegistered) {
 					state.addStarResult.isRegistered = false;
+					state.addStarResult.mainImage = "";
+					state.addStarResult.characterImage = "";
 				}
 			})
 			.addCase(getStarMain.rejected, (state) => {
