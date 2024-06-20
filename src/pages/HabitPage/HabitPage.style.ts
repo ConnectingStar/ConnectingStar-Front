@@ -25,46 +25,92 @@ export const habitListBoxStyle = css`
 	gap: 6px;
 `;
 
-export const habitArticleStyle = (status?: string) => {
-	return css`
-		position: relative;
-		display: flex;
-		padding: 1rem;
-		border: ${status === "rest" || status === "end" ? "none" : `2px solid ${theme.color.line}`};
-		border-radius: 15px;
-		height: 4.875rem;
-		background-color: ${status === "rest"
+export const habitListItemStyle = (status?: string) => css`
+	border-radius: 15px;
+	height: 5.438rem;
+	position: relative;
+	padding: 1rem;
+	border: ${status === "progress" && `2px solid ${theme.color.main_blue}`};
+	display: flex;
+	justify-content: space-between;
+	background-color: ${status === "progress"
+		? theme.color.white
+		: status === "end"
 			? theme.color.button_disabled
-			: status === "end" && theme.color.bg};
+			: theme.color.main_blue};
+	padding-left: ${status === "end" && "2.375rem"};
 
-		${status === "add" && { display: "flex", alignItems: "center", justifyContent: "center" }}
+	& > div {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+
+		& > span {
+			${theme.font.body_xs}
+			color: ${theme.color.white};
+			font-size: 0.6875rem;
+		}
+	}
+
+	& > button > svg > path {
+		fill: ${status === "progress"
+			? theme.color.font_deep_gray
+			: status === "end"
+				? theme.color.button_deactivated
+				: theme.color.white};
+	}
+`;
+
+export const habitContentStyle = (status?: string) => css`
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+
+	& > span {
+		${theme.font.header};
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: 14rem;
+		color: ${status === "progress"
+			? theme.color.font_black
+			: status === "end"
+				? theme.color.button_deactivated
+				: theme.color.white};
+	}
+
+	& > div {
+		display: flex;
+		gap: 6px;
+		align-items: center;
+
+		& > span {
+			color: ${status === "progress"
+				? theme.color.font_black
+				: status === "end"
+					? theme.color.button_deactivated
+					: theme.color.white};
+			${theme.font.body_b};
+		}
 
 		& > div {
-			display: flex;
-			align-items: center;
-			gap: 16px;
-
-			& > span {
-				${theme.font.body_xs}
-				color: ${theme.color.main_blue};
-				font-size: 0.6875rem;
-			}
-
-			& > p {
-				max-width: 14rem;
-				text-decoration: ${(status === "rest" || status === "complete") && "line-through"};
-
-				${status === "end" && {
-					color: theme.color.button_deactivated,
-					marginLeft: "36px",
-				}}
-			}
+			width: 0.188rem;
+			height: 0.188rem;
+			border-radius: 50%;
+			background-color: ${status === "progress"
+				? theme.color.font_black
+				: status === "end"
+					? theme.color.button_deactivated
+					: theme.color.white};
 		}
+	}
+`;
 
-		& > button {
-			position: absolute;
-			right: 1rem;
-			top: 1rem;
-		}
-	`;
-};
+export const addButtonStyle = css`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2.75rem;
+	border-radius: 10px;
+	border: 2px solid ${theme.color.line};
+`;

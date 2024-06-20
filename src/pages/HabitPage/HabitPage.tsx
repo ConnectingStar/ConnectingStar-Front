@@ -16,14 +16,12 @@ import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { WEEK, TODAY } from "@/constants/calendar";
 import { PATH } from "@/constants/path";
 
-import { generateHabitText } from "@/utils/generateHabitText";
-
 import {
 	mainBoxStyle,
 	mainTopBoxStyle,
 	habitListBoxStyle,
+	addButtonStyle,
 } from "@/pages/HabitPage/HabitPage.style";
-import { habitArticleStyle } from "@/pages/HabitPage/HabitPage.style";
 
 import type { DateInfo } from "@/types/homeTypes";
 
@@ -67,21 +65,9 @@ const HabitPage = () => {
 				<Calender handleSelectedDate={handleSelectedDate} selectedDate={selectedDate} />
 				<div css={habitListBoxStyle}>
 					{progressHabitList.map((habitData) => (
-						<HabitItem
-							key={habitData.runHabitId}
-							habitId={habitData.runHabitId ?? -1}
-							habitState="progress"
-							habitText={generateHabitText(
-								habitData.runTime,
-								habitData.place,
-								habitData.behavior,
-								habitData.behaviorValue,
-								habitData.behaviorUnit,
-							)}
-						/>
+						<HabitItem key={habitData.runHabitId} habitData={habitData} habitState="progress" />
 					))}
-
-					<div css={habitArticleStyle("add")} onClick={() => navigate(PATH.CREATE_HABIT)}>
+					<div css={addButtonStyle} onClick={() => navigate(PATH.CREATE_HABIT)}>
 						<HabitAddIcon />
 					</div>
 				</div>

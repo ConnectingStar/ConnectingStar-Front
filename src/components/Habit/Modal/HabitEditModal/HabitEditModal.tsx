@@ -8,7 +8,7 @@ import { PATH } from "@/constants/path";
 
 import { theme } from "@/styles/theme";
 
-function HabitEditModal({ habitId }: { habitId: number }) {
+function HabitEditModal({ habitId }: { habitId?: number }) {
 	const navigate = useNavigate();
 
 	return (
