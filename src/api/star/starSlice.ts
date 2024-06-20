@@ -1,8 +1,8 @@
 import { StarDataType } from "@/types/star";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getStarMain, getStarCardDetail, getStarCard, addStar } from "@/api/star/starThunk";
-import { editProfileImage } from "@/api/user/userThunk";
+import { getStarMain, getStarCardDetail, getStarCard } from "@/api/star/starThunk";
+import { editProfileImage, addStar } from "@/api/user/userThunk";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 

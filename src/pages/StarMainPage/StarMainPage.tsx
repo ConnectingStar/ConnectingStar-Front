@@ -11,7 +11,8 @@ import StarInfo from "@/components/StarPage/StarMain/StarInfo";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal, closeModal } from "@/api/modal/modalSlice";
-import { getStarMain, addStar } from "@/api/star/starThunk";
+import { getStarMain } from "@/api/star/starThunk";
+import { addStar } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 
