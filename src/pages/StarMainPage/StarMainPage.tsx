@@ -32,13 +32,17 @@ export default function StarMainPage() {
 	}, []);
 
 	useEffect(() => {
+		let timer: number;
+
 		if (addStarResult.isRegistered) {
-			setTimeout(() => {
+			timer = setTimeout(() => {
 				dispatch(openModal(modalType.CHARACTER_UNLOCK));
 			}, 3000);
 		} else {
 			dispatch(closeModal());
 		}
+
+		return () => clearTimeout(timer);
 	}, [addStarResult.isRegistered]);
 
 	return (
