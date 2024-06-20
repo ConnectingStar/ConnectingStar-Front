@@ -1,4 +1,4 @@
-import BlueCheckIcon from "@/assets/icon/ic-homepage-habit-blue-check.svg?react";
+import WhiteCheckIcon from "@/assets/icon/ic-habit-check.svg?react";
 import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
 
@@ -10,37 +10,51 @@ import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
 
-import { habitArticleStyle } from "@/pages/HabitPage/HabitPage.style";
+import { habitListItemStyle, habitContentStyle } from "@/pages/HabitPage/HabitPage.style";
+
+import type { HabitType } from "@/types/habit";
 
 interface HabitItemProps {
-	habitId: number;
 	habitState?: "progress" | "complete" | "rest" | "end";
-	habitText: string;
+	habitData: HabitType;
 }
 
-const HabitItem = ({ habitId, habitState, habitText }: HabitItemProps) => {
+const HabitItem = ({ habitState, habitData }: HabitItemProps) => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
 
 	return (
-		<div css={habitArticleStyle(habitState)}>
-			<div onClick={() => dispatch(openModal(modalType.HABIT_RECORD(habitId)))}>
+		<div css={habitListItemStyle(habitState)}>
+			<div onClick={() => dispatch(openModal(modalType.HABIT_RECORD(habitData.runHabitId)))}>
 				{habitState === "progress" && <CheckIcon />}
-				{habitState === "complete" && <BlueCheckIcon />}
+				{habitState === "complete" && <WhiteCheckIcon />}
 				{habitState === "rest" && <span>휴식</span>}
-				<p>{habitText}</p>
+				<div css={habitContentStyle(habitState)}>
+					<span>{habitData.behavior}</span>
+					<div>
+						<span>
+							{habitData.runTime.noon} {habitData.runTime.hour}:{habitData.runTime.minute}
+						</span>
+						<div />
+						<span>
+							{habitData.behaviorValue} {habitData.behaviorUnit}
+						</span>
+					</div>
+				</div>
 			</div>
 
-			<button onClick={() => dispatch(openModal(modalType.HABIT_EDIT(habitId)))}>
+			<button onClick={() => dispatch(openModal(modalType.HABIT_EDIT(habitData.runHabitId)))}>
 				<TabIcon />
 			</button>
 
-			{modal === modalType.HABIT_RECORD(habitId) && (
-				<HabitRecordModal text={habitText} habitId={habitId} />
+			{modal === modalType.HABIT_RECORD(habitData.runHabitId) && (
+				<HabitRecordModal text={habitData.behavior} habitId={habitData.runHabitId} />
 			)}
 
-			{modal === modalType.HABIT_EDIT(habitId) && <HabitEditModal habitId={habitId} />}
+			{modal === modalType.HABIT_EDIT(habitData.runHabitId) && (
+				<HabitEditModal habitId={habitData.runHabitId} />
+			)}
 		</div>
 	);
 };

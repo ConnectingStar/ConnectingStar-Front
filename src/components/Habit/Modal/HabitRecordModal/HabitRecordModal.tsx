@@ -12,7 +12,7 @@ import { PATH } from "@/constants/path";
 
 interface HabitRecordModalProps {
 	text: string;
-	habitId: number;
+	habitId?: number;
 }
 
 const HabitRecordModal = ({ text, habitId }: HabitRecordModalProps) => {
