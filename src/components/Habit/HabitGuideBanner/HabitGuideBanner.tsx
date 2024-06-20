@@ -29,7 +29,7 @@ export const layoutStyle = css`
 	align-items: center;
 	gap: 12px;
 	height: 3.25rem;
-	border-radius: 15px;
+	border-radius: 10px;
 	background-color: ${theme.color.bg};
 	padding: 1rem;
 	margin-top: 0.5rem;
