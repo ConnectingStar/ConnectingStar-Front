@@ -9,7 +9,7 @@ export const ONBOARDING_STEP = {
 	GUIDE_LINE: "guide-line",
 	OAUTH_SIGN_UP: "oauth-sign-up",
 	CREATE_ACCOUNT: "create-account",
-	VISITOR_ROUTE: "visitor-route",
+	REFERRER: "referrer",
 };
 
 export const STEP_KEY = "step";

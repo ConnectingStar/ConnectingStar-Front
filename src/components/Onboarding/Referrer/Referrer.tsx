@@ -9,11 +9,11 @@ import { visitorRouteData } from "@/constants/onboarding";
 
 import { theme } from "@/styles/theme";
 
-function VisitorRoute({ onNext }: { onNext: () => void }) {
+function Referrer({ onNext }: { onNext: () => void }) {
 	const dispatch = useAppDispatch();
 
-	const confirmVisitorRouteData = (VisitorRoute: string) => {
-		dispatch(updateVisitorRoute(VisitorRoute));
+	const confirmVisitorRouteData = (Referrer: string) => {
+		dispatch(updateVisitorRoute(Referrer));
 		onNext();
 	};
 
@@ -25,9 +25,9 @@ function VisitorRoute({ onNext }: { onNext: () => void }) {
 			<div css={container}>
 				<h1>어떤 경로를 통해 오셨나요?</h1>
 				<ul>
-					{visitorRouteData.map((VisitorRoute) => (
-						<li key={VisitorRoute}>
-							<button onClick={() => confirmVisitorRouteData(VisitorRoute)}>{VisitorRoute}</button>
+					{visitorRouteData.map((referrer) => (
+						<li key={referrer}>
+							<button onClick={() => confirmVisitorRouteData(referrer)}>{referrer}</button>
 						</li>
 					))}
 				</ul>
@@ -36,7 +36,7 @@ function VisitorRoute({ onNext }: { onNext: () => void }) {
 	);
 }
 
-export default VisitorRoute;
+export default Referrer;
 
 const container = css`
 	width: 22.5rem;
