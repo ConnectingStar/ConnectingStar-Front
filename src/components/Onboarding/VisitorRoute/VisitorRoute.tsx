@@ -11,8 +11,9 @@ import { theme } from "@/styles/theme";
 
 function VisitorRoute({ onNext }: { onNext: () => void }) {
 	const dispatch = useAppDispatch();
-	const confirmVisitorRouteData = (referrer: string) => {
-		dispatch(updateVisitorRoute(referrer));
+
+	const confirmVisitorRouteData = (VisitorRoute: string) => {
+		dispatch(updateVisitorRoute(VisitorRoute));
 		onNext();
 	};
 
@@ -24,9 +25,9 @@ function VisitorRoute({ onNext }: { onNext: () => void }) {
 			<div css={container}>
 				<h1>어떤 경로를 통해 오셨나요?</h1>
 				<ul>
-					{visitorRouteData.map((item) => (
-						<li key={item}>
-							<button onClick={() => confirmVisitorRouteData(item)}>{item}</button>
+					{visitorRouteData.map((VisitorRoute) => (
+						<li key={VisitorRoute}>
+							<button onClick={() => confirmVisitorRouteData(VisitorRoute)}>{VisitorRoute}</button>
 						</li>
 					))}
 				</ul>

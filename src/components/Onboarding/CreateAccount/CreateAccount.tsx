@@ -23,11 +23,10 @@ import { generateAge, generateGender } from "@/utils/generateRangeType";
 
 function CreateAccount({ onNext }: { onNext: () => void }) {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	const { modal } = useAppSelector((state) => state.modal);
 	const { isOnboarding } = useAppSelector((state) => state.user);
-
-	const navigate = useNavigate();
 
 	const [nickname, setNickname] = useState<string>("");
 	const [genderType, setGenderType] = useState<string>("");
@@ -87,7 +86,7 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 									dispatch(openModal(item.modalType));
 								}}
 							>
-								{item.state === "" ? item.content : item.state}
+								{item.state ? item.state : item.content}
 								{item.title !== "닉네임" && <ArrowDownIcon />}
 							</div>
 						</li>
@@ -101,6 +100,7 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 				disabled={!nickname || !genderType || !ageRangeType}
 				handleBtnClick={confirmBasicUserData}
 			/>
+
 			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
 			{modal === modalType.SELECT_GENDERTYPE && (
 				<SelectGenderModal prevGender={genderType} changeGender={setGenderType} />
