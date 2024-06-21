@@ -19,12 +19,16 @@ import { SELECT_TAG_DATA } from "@/constants/modalConstants";
 import { theme } from "@/styles/theme";
 
 function ChattingPage() {
-	const [progress, setProgress] = useState(0);
+	const navigate = useNavigate();
+
 	const { modal } = useAppSelector((state) => state.modal);
 	const { userData } = useAppSelector((state) => state.user);
+
 	const chatData = createChatData(userData);
-	const extraBtnHeight = chatData[progress] ? chatData[progress].replyBtnMessage.length > 1 : false;
-	const navigate = useNavigate();
+
+	const [progress, setProgress] = useState(0);
+
+	const isExtraBtn = chatData[progress].replyBtnMessage.length > 1 ? true : false;
 
 	useEffect(() => {
 		const { nickname, genderType, referrer } = userData;
@@ -40,7 +44,7 @@ function ChattingPage() {
 			</Header>
 			<progress css={chattingPageStyle.progress} value={progress + 1} max={11} />
 			<div css={chattingPageStyle.container}>
-				<div css={chattingPageStyle.chattingWrap(extraBtnHeight)}>
+				<div css={chattingPageStyle.chattingWrap(isExtraBtn)}>
 					{chatData.slice(0, progress + 1).map((chatData) => (
 						<ChattingMessage
 							key={chatData.id}
@@ -104,8 +108,8 @@ const chattingPageStyle = {
 		background-color: ${theme.color.bg};
 	`,
 
-	chattingWrap: (isbuttonHeiger: boolean) => css`
-		padding: 5.75rem 1.5rem ${isbuttonHeiger ? "8.5rem" : "5.438rem"} 1.5rem;
+	chattingWrap: (isExtraBtn: boolean) => css`
+		padding: 5.75rem 1.5rem ${isExtraBtn ? "8.5rem" : "5.438rem"} 1.5rem;
 		margin: 0 auto;
 		${theme.font.body_b};
 	`,
