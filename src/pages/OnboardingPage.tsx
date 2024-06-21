@@ -4,8 +4,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import CreateAccount from "@/components/Onboarding/CreateAccount/CreateAccount";
 import GuideLine from "@/components/Onboarding/GuideLine/GuideLine";
 import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
+import Referrer from "@/components/Onboarding/Referrer/Referrer";
 import Splash from "@/components/Onboarding/Splash/Splash";
-import VisitorRoute from "@/components/Onboarding/VisitorRoute/VisitorRoute";
 
 import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
 import { PATH } from "@/constants/path";
@@ -39,14 +39,10 @@ function OnboardingPage() {
 			)}
 
 			{step === ONBOARDING_STEP.CREATE_ACCOUNT && (
-				<CreateAccount
-					onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.VISITOR_ROUTE}`)}
-				/>
+				<CreateAccount onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.REFERRER}`)} />
 			)}
 
-			{step === ONBOARDING_STEP.VISITOR_ROUTE && (
-				<VisitorRoute onNext={() => navigate(PATH.CHATTING)} />
-			)}
+			{step === ONBOARDING_STEP.REFERRER && <Referrer onNext={() => navigate(PATH.CHATTING)} />}
 		</>
 	);
 }
