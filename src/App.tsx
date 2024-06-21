@@ -45,10 +45,10 @@ const App = () => {
 					<Route path="/notification-setting" element={<NotificationSettingPage />} />
 					<Route path="/withdrawal" element={<WithdrawalPage />} />
 					<Route path={PATH.REST_RECORD} element={<RestRecordPage />} />
-					<Route path="/chatting" element={<ChattingPage />} />
+					<Route path={PATH.CHATTING} element={<ChattingPage />} />
 					<Route path={PATH.DELETE_HABIT(":habitId")} element={<HabitDeletePage />} />
-					<Route path="/onboarding" element={<OnboardingPage />} />
-					<Route path="/oauth2/kakao" element={<KakaoLoginPage />} />
+					<Route path={PATH.ONBOARDING} element={<OnboardingPage />} />
+					<Route path={PATH.LOGIN_KAKAO} element={<KakaoLoginPage />} />
 					<Route path={PATH.PRACTICE_RECORD(":habitId")} element={<PracticeRecordPage />} />
 					<Route path={PATH.CREATE_HABIT} element={<CreateHabitPage />} />
 					<Route path="habit-guide" element={<HabitGuidePage />} />
