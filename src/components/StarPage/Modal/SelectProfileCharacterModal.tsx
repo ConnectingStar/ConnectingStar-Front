@@ -20,7 +20,7 @@ export default function SelectProfileCharacterModal() {
 		try {
 			await dispatch(editProfileImage(id ?? "")).unwrap();
 			dispatch(closeModal());
-			createToast("프로필 이미지로 설정 되었어요!");
+			createToast("프로필 이미지로 설정했어요 😊");
 		} catch (error) {
 			console.error(error);
 		}
