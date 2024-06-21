@@ -23,7 +23,7 @@ function OnboardingPage() {
 	}, [searchParams, step]);
 
 	return (
-		<main>
+		<>
 			{step === ONBOARDING_STEP.SPLASH && (
 				<Splash onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.GUIDE_LINE}`)} />
 			)}
@@ -47,7 +47,7 @@ function OnboardingPage() {
 			{step === ONBOARDING_STEP.VISITOR_ROUTE && (
 				<VisitorRoute onNext={() => navigate(PATH.CHATTING)} />
 			)}
-		</main>
+		</>
 	);
 }
 

@@ -12,24 +12,22 @@ import { theme } from "@/styles/theme";
 
 function OauthSignUp({ onNext }: { onNext: () => void }) {
 	return (
-		<>
-			<div css={container}>
-				<div css={wrap}>
-					<img src={LogoImg} alt="logo" />
-					<div>
-						<button type="button" onClick={() => window.location.assign(OAUTH_KAKAO_URL)}>
-							<img src={KakaoIcon} alt="kakao-icon" />
-							카카오로 계속하기
-						</button>
-						<button type="button" onClick={onNext}>
-							<img src={GoogleIcon} alt="google-icon" />
-							구글로 계속하기
-						</button>
-					</div>
+		<div css={container}>
+			<div css={wrap}>
+				<img src={LogoImg} alt="logo" />
+				<div>
+					<button type="button" onClick={() => window.location.assign(OAUTH_KAKAO_URL)}>
+						<img src={KakaoIcon} alt="kakao-icon" />
+						카카오로 계속하기
+					</button>
+					<button type="button" onClick={onNext}>
+						<img src={GoogleIcon} alt="google-icon" />
+						구글로 계속하기
+					</button>
 				</div>
 			</div>
 			<FooterPrivacyPolicyLink />
-		</>
+		</div>
 	);
 }
 
