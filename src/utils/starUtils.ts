@@ -47,7 +47,7 @@ export function findCircleIndex(arr: Circle[]) {
 }
 
 export function josaIga(letter: string) {
-	if (!letter) return "";
+	if (!letter) return;
 	const lastCharCode = letter.charCodeAt(letter.length - 1);
 	const jongsungIndex = (lastCharCode - HANGUL_START_CHARCODE) % JONGSUNG;
 	return jongsungIndex ? "이" : "가";
