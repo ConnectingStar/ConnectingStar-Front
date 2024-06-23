@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { authorizedAxiosInstance } from "@/api/axiosInstance";
+import { authorizedAxiosInstance, axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
@@ -89,7 +89,9 @@ export const getUserInfo = createAsyncThunk<UserDataType>(
 
 export const getIsOnboarding = createAsyncThunk("user/getIsOnboarding", async (_, thunkOptions) => {
 	try {
-		const { data } = await authorizedAxiosInstance.get(END_POINTS.IS_ONBOARDING);
+		const { data } = await axiosInstance.get(END_POINTS.IS_ONBOARDING);
+
+		console.log(data);
 		return data;
 	} catch (error) {
 		throw thunkOptions.rejectWithValue(error);
