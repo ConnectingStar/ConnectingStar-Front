@@ -23,7 +23,7 @@ export const checkToken = (config: InternalAxiosRequestConfig) => {
 		throw new Error("토큰이 유효하지 않습니다");
 	}
 
-	config.headers.Authorization = `Bearer ${accessToken}`;
+	config.headers.Authorization = `${accessToken}`;
 
 	return config;
 };

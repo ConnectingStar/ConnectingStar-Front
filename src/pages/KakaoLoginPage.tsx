@@ -22,7 +22,7 @@ function KakaoLoginPage() {
 
 			localStorage.setItem(ACCESS_TOKEN_KEY, data.accessToken);
 
-			axiosInstance.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
+			axiosInstance.defaults.headers.Authorization = `${data.accessToken}`;
 
 			navigate("/onboarding?step=create-account");
 		} catch (error) {
