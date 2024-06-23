@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { checkToken, handleTokenError } from "@/api/interceptors";
+
 import { BASE_URL } from "@/constants/api";
 
 // import { getCookie } from "@/utils/getCookie";
@@ -10,6 +12,16 @@ export const axiosInstance = axios.create({
 	withCredentials: true,
 	headers: { "Content-Type": "application/json" },
 });
+
+export const authorizedAxiosInstance = axios.create({
+	baseURL: BASE_URL,
+	timeout: 5000,
+	withCredentials: true,
+});
+
+authorizedAxiosInstance.interceptors.request.use(checkToken);
+
+authorizedAxiosInstance.interceptors.response.use((response) => response, handleTokenError);
 
 // axiosInstance.interceptors.request.use(
 // 	(config) => {

@@ -1,7 +1,10 @@
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
+export const ACCESS_TOKEN_KEY = "ACCESS_TOKEN";
+
 export const END_POINTS = {
 	FCM: "/api/fcm/register",
+	REFRESH: "/oauth/issue",
 	LOGIN: "/oauth/login",
 	LOGOUT: "/oauth/logout",
 	ONBOARDING: "/user/onboarding",
