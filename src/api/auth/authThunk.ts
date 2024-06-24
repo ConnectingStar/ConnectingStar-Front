@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { axiosInstance, authorizedAxiosInstance } from "@/api/axiosInstance";
 
-import { END_POINTS } from "@/constants/api";
+import { END_POINTS, ACCESS_TOKEN_KEY } from "@/constants/api";
 
 import type { WithdrawalRequestType } from "@/types/user";
 
@@ -49,6 +49,8 @@ export const logIn = createAsyncThunk("auth/logIn", async (authCode: string, thu
 
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkOptions) => {
 	try {
+		localStorage.removeItem(ACCESS_TOKEN_KEY);
+
 		return await authorizedAxiosInstance.post(END_POINTS.LOGOUT);
 	} catch (error) {
 		throw thunkOptions.rejectWithValue(error);
