@@ -50,6 +50,7 @@ function ChattingPage() {
 					<ChattingMessage
 						key={chatData.id}
 						chatData={chatData}
+						progress={progress}
 						addProgress={() => setProgress((prev) => prev + 1)}
 					/>
 				))}

@@ -20,17 +20,21 @@ interface chatType {
 		reply: string;
 		modalType?: (string | null)[];
 	};
+	progress: number;
 	addProgress: () => void;
 }
 
-function ChattingMessage({ chatData, addProgress }: chatType) {
-	const { message, replyBtnMessage, reply, modalType } = chatData;
-	const { userData } = useAppSelector((state) => state.user);
-	const [messageIndex, setMessageIndex] = useState(0);
-	const [isReply, setIsReply] = useState(false);
-	const endOfMessagesRef = useRef<HTMLDivElement>(null);
+function ChattingMessage({ chatData, progress, addProgress }: chatType) {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	const endOfMessagesRef = useRef<HTMLDivElement>(null);
+
+	const { userData } = useAppSelector((state) => state.user);
+
+	const { message, replyBtnMessage, reply, modalType } = chatData;
+
+	const [messageIndex, setMessageIndex] = useState(0);
+	const [isReply, setIsReply] = useState(false);
 
 	useEffect(() => {
 		// 자동 스크롤 다운
@@ -46,6 +50,11 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 
 		return () => clearTimeout(timer);
 	}, [messageIndex]);
+
+	useEffect(() => {
+		message.length === messageIndex && setIsReply(true);
+		setMessageIndex((prev) => prev + 1);
+	}, [progress]);
 
 	// 버튼여러개라면 답글 먼저보이게하기
 	useEffect(() => {
@@ -63,8 +72,6 @@ function ChattingMessage({ chatData, addProgress }: chatType) {
 			}
 		}
 
-		setMessageIndex((prevIndex) => prevIndex + 1);
-		setIsReply(true);
 		if (chatData.id === "last") {
 			dispatch(postOnboarding(userData)).then(() => {
 				dispatch(getIsOnboarding()).then((res) => {
