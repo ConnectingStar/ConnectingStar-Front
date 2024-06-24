@@ -4,7 +4,7 @@ import { authorizedAxiosInstance, axiosInstance } from "@/api/axiosInstance";
 
 import { ACCESS_TOKEN_KEY, END_POINTS } from "@/constants/api";
 
-export interface ErrorResponseData {
+interface ErrorResponseData {
 	statusCode?: number;
 	message?: string;
 	code?: number;
@@ -35,20 +35,20 @@ export const handleTokenError = async (error: AxiosError<ErrorResponseData>) => 
 		throw new Error("에러가 발생했습니다.");
 	}
 
-	const { data, status } = error.response;
-
-	if (status === 400) {
-		localStorage.removeItem(ACCESS_TOKEN_KEY);
-	}
+	const { data } = error.response;
 
 	if (data.code === 401) {
-		const { result } = authorizedAxiosInstance.get(END_POINTS.REFRESH);
+		try {
+			const { data } = await authorizedAxiosInstance.get(END_POINTS.REFRESH);
 
-		originalRequest.headers.Authorization = `Bearer ${result.accessToken}`;
+			originalRequest.headers.Authorization = `${data.data.accessToken}`;
 
-		localStorage.setItem(ACCESS_TOKEN_KEY, result.accessToken);
+			localStorage.setItem(ACCESS_TOKEN_KEY, data.data.accessToken);
 
-		return axiosInstance(originalRequest);
+			return axiosInstance(originalRequest);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	throw error;
