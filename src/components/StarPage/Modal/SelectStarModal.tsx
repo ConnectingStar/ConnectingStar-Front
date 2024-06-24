@@ -21,6 +21,7 @@ export default function SelectStarModal() {
 	const handleFooterBtnClick = async () => {
 		try {
 			await dispatch(selectStar(id ?? "")).unwrap();
+			dispatch(closeModal());
 			navigate(PATH.STAR);
 		} catch (error) {
 			console.error(error);
