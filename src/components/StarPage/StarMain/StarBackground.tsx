@@ -20,7 +20,7 @@ function StarBackground() {
 
 const starStyle = css`
 	position: absolute;
-	width: 500px;
+	width: 500px; // Global Style max-width와 동일한 값, 단위
 	height: 100dvh;
 `;
 
