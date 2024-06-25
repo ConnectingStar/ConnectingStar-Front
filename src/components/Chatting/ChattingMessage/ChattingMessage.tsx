@@ -11,7 +11,10 @@ import { getIsOnboarding, postOnboarding } from "@/api/user/userThunk";
 
 import { theme } from "@/styles/theme";
 
-import { chattingStyle, replyStyle } from "@/components/Chatting/ChattingMessage.style";
+import {
+	chattingStyle,
+	replyStyle,
+} from "@/components/Chatting/ChattingMessage/ChattingMessage.style";
 interface chatType {
 	chatData: {
 		id: string;
