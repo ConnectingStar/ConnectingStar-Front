@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 
 import BehaviorModal from "@/components/Chatting/BehaviorModal";
-import ChattingMessage from "@/components/Chatting/ChattingMessage";
+import ChattingMessage from "@/components/Chatting/ChattingMessage/ChattingMessage";
 import Header from "@/components/common/Header/Header";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
