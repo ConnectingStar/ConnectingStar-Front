@@ -23,7 +23,7 @@ export const checkToken = (config: InternalAxiosRequestConfig) => {
 		throw new Error("토큰이 유효하지 않습니다");
 	}
 
-	config.headers.Authorization = `${accessToken}`;
+	config.headers.Authorization = `Bearer ${accessToken}`;
 
 	return config;
 };
@@ -41,7 +41,7 @@ export const handleTokenError = async (error: AxiosError<ErrorResponseData>) => 
 		try {
 			const { data } = await authorizedAxiosInstance.get(END_POINTS.REFRESH);
 
-			originalRequest.headers.Authorization = `${data.data.accessToken}`;
+			originalRequest.headers.Authorization = `Bearer ${data.data.accessToken}`;
 
 			localStorage.setItem(ACCESS_TOKEN_KEY, data.data.accessToken);
 
