@@ -39,9 +39,9 @@ function BehaviorModal({
 	const [behaviorUnit, setBehaviorUnit] = useState<string>(prevUnit ?? "");
 
 	const confirmSelectedTag = () => {
-		if (progress === 6) addprogress && addprogress();
+		progress === 6 && addprogress && addprogress();
 
-		if (behaviorUnit && behaviorValue) {
+		if (behaviorValue && behaviorUnit) {
 			dispatch(updateHabitUserData({ behaviorValue, behaviorUnit }));
 
 			if (updateInputValue) {
