@@ -9,10 +9,14 @@ import { updateHabitUserData } from "@/api/user/userSlice";
 
 import type { HabitRequestType } from "@/types/habit";
 
-import { selectTagModalStyle } from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal.style";
+import {
+	container,
+	wrap,
+	tagStyle,
+} from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal.style";
 
-interface selectTagModal {
-	title: string;
+interface selectTagModalType {
+	type: string;
 	tags: string[];
 	progress?: number;
 	addprogress?: () => void;
@@ -22,12 +26,18 @@ interface selectTagModal {
 	) => void;
 }
 
-function SelectTagModal({ title, tags, progress, addprogress, updateInputValue }: selectTagModal) {
+function SelectTagModal({
+	type,
+	tags,
+	progress,
+	addprogress,
+	updateInputValue,
+}: selectTagModalType) {
 	const dispatch = useAppDispatch();
 
 	const [selectedTag, setSelectedTag] = useState<string | null>(null);
-	const [isInputFocus, setIsInputFocus] = useState(false);
 	const [inputText, setInputText] = useState("");
+	const [isInputFocus, setIsInputFocus] = useState<boolean>(false);
 
 	const handleInputOnFocus = () => {
 		setSelectedTag(null);
@@ -37,44 +47,43 @@ function SelectTagModal({ title, tags, progress, addprogress, updateInputValue }
 	const confirmSelectedTag = () => {
 		const updatedHabit = selectedTag || inputText;
 
-		if (updatedHabit && addprogress !== undefined) {
-			if (title === "어떤 습관을 만들어 볼까요?") {
+		// 온보딩시
+		if (addprogress) {
+			if (type === "behavior") {
 				dispatch(updateHabitUserData({ behavior: updatedHabit }));
-				if (progress === 0) addprogress();
-			} else if (title === "어떤 사람이 되고 싶으세요?") {
+				progress === 0 && addprogress();
+			} else if (type === "identity") {
 				dispatch(updateHabitUserData({ identity: updatedHabit }));
-
-				if (progress === 1) addprogress();
+				progress === 1 && addprogress();
 			}
-
-			dispatch(closeModal());
 		}
 
-		if (title === "어떤 사람이 되고 싶으세요?") {
-			updateInputValue && updateInputValue("identity", updatedHabit);
-		} else if (title === "어떤 습관을 만들어 볼까요?") {
-			updateInputValue && updateInputValue("behavior", updatedHabit);
+		// 행동, 정체성 수정시
+		if (!addprogress) {
+			type === "behavior" && updateInputValue && updateInputValue("identity", updatedHabit);
+			type === "identity" && updateInputValue && updateInputValue("behavior", updatedHabit);
 		}
 
 		dispatch(closeModal());
 	};
 
 	return (
-		<div css={selectTagModalStyle.container}>
+		<div css={container}>
 			<Header>
 				<Header.CloseButton onClick={() => dispatch(closeModal())} />
 			</Header>
-			<div css={selectTagModalStyle.wrap}>
-				<h1>{title}</h1>
-				<div css={selectTagModalStyle.tags(isInputFocus === true)}>
+
+			<div css={wrap}>
+				<h1>{type === "behavior" ? "어떤 습관을 만들어 볼까요?" : "어떤 사람이 되고 싶으세요?"}</h1>
+				<div css={tagStyle(isInputFocus)}>
 					<ul>
-						{tags.map((item) => (
+						{tags.map((tag) => (
 							<li
-								key={item}
-								onClick={() => setSelectedTag((prevTag) => (prevTag === item ? null : item))}
-								className={selectedTag === item ? "selected" : ""}
+								key={tag}
+								onClick={() => setSelectedTag((prevTag) => (prevTag === tag ? null : tag))}
+								className={selectedTag === tag ? "selected" : ""}
 							>
-								{item}
+								{tag}
 							</li>
 						))}
 					</ul>
@@ -88,24 +97,14 @@ function SelectTagModal({ title, tags, progress, addprogress, updateInputValue }
 					/>
 				</div>
 			</div>
-			{isInputFocus ? (
-				<FooterBtn
-					text="확인"
-					isSquare
-					isTransparent
-					disabled={inputText === ""}
-					handleBtnClick={() => {
-						setIsInputFocus(false);
-					}}
-				/>
-			) : (
-				<FooterBtn
-					text="선택"
-					disabled={(selectedTag || inputText) === ""}
-					handleBtnClick={confirmSelectedTag}
-					isTransparent
-				/>
-			)}
+
+			<FooterBtn
+				text={isInputFocus ? "확인" : "선택"}
+				isSquare={isInputFocus}
+				isTransparent
+				disabled={inputText === "" && !selectedTag}
+				handleBtnClick={isInputFocus ? () => setIsInputFocus(false) : confirmSelectedTag}
+			/>
 		</div>
 	);
 }
