@@ -12,6 +12,7 @@ import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import { getUserInfo } from "@/api/user/userThunk";
 
+import { ACCESS_TOKEN_KEY } from "@/constants/api";
 import { modalType } from "@/constants/modalConstants";
 import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
 import { PATH } from "@/constants/path";
@@ -67,6 +68,7 @@ const SelectReason = ({
 	const handleWithDrawal = async () => {
 		try {
 			await dispatch(withdrawal({ reason, content, deletedDt })).unwrap();
+			localStorage.removeItem(ACCESS_TOKEN_KEY);
 			navigate(`${PATH.ONBOARDING}?${STEP_KEY}=${ONBOARDING_STEP.OAUTH_SIGN_UP}`);
 		} catch (error) {
 			console.error(error);

@@ -9,6 +9,8 @@ import { logOut } from "@/api/auth/authThunk";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import { ACCESS_TOKEN_KEY } from "@/constants/api";
+
 import { theme } from "@/styles/theme";
 
 const LogoutModal = () => {
@@ -19,6 +21,7 @@ const LogoutModal = () => {
 	const handleLogout = async () => {
 		try {
 			await dispatch(logOut()).unwrap();
+			localStorage.removeItem(ACCESS_TOKEN_KEY);
 			dispatch(closeModal());
 			navigate("/onboarding?step=oauth-sign-up");
 		} catch (error) {
