@@ -9,6 +9,7 @@ import Header from "@/components/common/Header/Header";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
+import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
 import { useAppSelector } from "@/api/hooks";
 
@@ -28,7 +29,7 @@ function ChattingPage() {
 
 	const [progress, setProgress] = useState(0);
 
-	const isExtraBtn = chatData[progress].replyBtnMessage.length > 1 ? true : false;
+	const isExtraBtn = chatData[progress].bottomButton.length > 1 ? true : false;
 
 	useEffect(() => {
 		const { nickname, genderType, referrer } = userData;
@@ -94,6 +95,12 @@ function ChattingPage() {
 			)}
 			{modal === modalType.SELECT_TIME("SECONDALERT") && (
 				<SelectTimeModal title="2차 알림시간을 선택해 주세요" />
+			)}
+			{modal === modalType.HABIT_GENERATE && (
+				<StarPrizeModal
+					blueText="시작이 반!"
+					comment={`더욱 ${userData.identity} 사람이 되기 위한 한 걸음\n제가 ${userData.nickname}님을 응원할게요 😊`}
+				/>
 			)}
 		</>
 	);
