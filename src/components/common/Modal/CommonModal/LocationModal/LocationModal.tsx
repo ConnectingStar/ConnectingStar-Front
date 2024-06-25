@@ -35,11 +35,12 @@ function LocationModal({ progress, addprogress, updateInputValue }: LocationModa
 	const [isFocus, setIsFocus] = useState(false);
 
 	const confirmSelectedTag = () => {
-		if (progress === 5) addprogress && addprogress();
+		progress === 5 && addprogress && addprogress();
 
-		dispatch(updateHabitUserData({ place }));
-
-		updateInputValue && updateInputValue("place", place);
+		// 온보딩시
+		addprogress && dispatch(updateHabitUserData({ place }));
+		// 장소 수정시
+		!addprogress && updateInputValue && updateInputValue("place", place);
 
 		dispatch(closeModal());
 	};
@@ -49,14 +50,15 @@ function LocationModal({ progress, addprogress, updateInputValue }: LocationModa
 			<Header>
 				<Header.CloseButton onClick={() => dispatch(closeModal())} />
 			</Header>
+
 			<div css={wrap}>
 				<h1>장소를 입력해 주세요</h1>
 				<ul css={locationListStyle}>
 					<p>예시</p>
-					{locationModalData.map((text) => (
-						<li key={text}>
+					{locationModalData.map((example) => (
+						<li key={example}>
 							<CheckIcon />
-							{text}
+							{example}
 						</li>
 					))}
 				</ul>
@@ -68,24 +70,16 @@ function LocationModal({ progress, addprogress, updateInputValue }: LocationModa
 					onBlur={() => setIsFocus(false)}
 					onChange={(e) => setPlace(e.target.value)}
 				/>
-				{isFocus ? (
-					<FooterBtn
-						text="확인"
-						isSquare
-						isTransparent
-						disabled={!place}
-						handleBtnClick={() => {
-							setIsFocus(false);
-						}}
-					/>
-				) : (
-					<FooterBtn
-						text="확인"
-						disabled={!place}
-						isTransparent
-						handleBtnClick={confirmSelectedTag}
-					/>
-				)}
+
+				<FooterBtn
+					text="확인"
+					isSquare={isFocus}
+					isTransparent
+					disabled={!place}
+					handleBtnClick={() => {
+						isFocus ? setIsFocus(false) : confirmSelectedTag();
+					}}
+				/>
 			</div>
 		</div>
 	);
