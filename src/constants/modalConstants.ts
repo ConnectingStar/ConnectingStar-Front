@@ -26,7 +26,7 @@ export const modalType = {
 };
 
 export const SELECT_TAG_DATA = {
-	habitTags: [
+	behaviorTags: [
 		"러닝하기",
 		"헬스하기",
 		"산책하기",

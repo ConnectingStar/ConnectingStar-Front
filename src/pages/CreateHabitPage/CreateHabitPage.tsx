@@ -110,7 +110,7 @@ const CreateHabitPage = () => {
 
 				{modal === modalType.SELECT_IDENTITY && (
 					<SelectTagModal
-						title="어떤 사람이 되고 싶으세요?"
+						type="identity"
 						tags={SELECT_TAG_DATA.identityTags}
 						updateInputValue={updateInputValue}
 					/>
@@ -133,8 +133,8 @@ const CreateHabitPage = () => {
 				{modal === modalType.SELECT_PLACE && <LocationModal updateInputValue={updateInputValue} />}
 				{modal === modalType.SELECT_BEHAVIOR && (
 					<SelectTagModal
-						title="어떤 습관을 만들어 볼까요?"
-						tags={SELECT_TAG_DATA.habitTags}
+						type="behavior"
+						tags={SELECT_TAG_DATA.behaviorTags}
 						updateInputValue={updateInputValue}
 					/>
 				)}
