@@ -46,7 +46,7 @@ function ChattingPage() {
 
 			<progress css={progressStyle} value={progress + 1} max={11} />
 
-			<div css={container(isExtraBtn)}>
+			<div css={wrap(isExtraBtn)}>
 				{chatData.slice(0, progress + 1).map((chatData) => (
 					<ChattingMessage
 						key={chatData.id}
@@ -99,7 +99,7 @@ function ChattingPage() {
 			{modal === modalType.HABIT_GENERATE && (
 				<StarPrizeModal
 					blueText="시작이 반!"
-					comment={`더욱 ${userData.identity} 사람이 되기 위한 한 걸음\n제가 ${userData.nickname}님을 응원할게요 😊`}
+					comment={`환영의 의미로 n개의 별을 준비했어요.\n별을 별자리에 넣어보러 갈까요?`}
 				/>
 			)}
 		</>
@@ -108,7 +108,7 @@ function ChattingPage() {
 
 export default ChattingPage;
 
-const container = (isExtraBtn: boolean) => css`
+const wrap = (isExtraBtn: boolean) => css`
 	max-width: 22.5rem;
 	min-height: 100vh;
 	padding: 5.75rem 1.5rem ${isExtraBtn ? "8.5rem" : "5.438rem"} 1.5rem;
