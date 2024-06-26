@@ -32,7 +32,7 @@ function LocationModal({ progress, addprogress, updateInputValue }: LocationModa
 	const dispatch = useAppDispatch();
 
 	const [place, setPlace] = useState("");
-	const [isFocus, setIsFocus] = useState(false);
+	const [isInputFocus, setIsInputFocus] = useState(false);
 
 	const confirmSelectedTag = () => {
 		progress === 5 && addprogress && addprogress();
@@ -66,18 +66,18 @@ function LocationModal({ progress, addprogress, updateInputValue }: LocationModa
 					css={locationInputStyle}
 					type="text"
 					placeholder="직접입력"
-					onFocus={() => setIsFocus(true)}
-					onBlur={() => setIsFocus(false)}
+					onFocus={() => setIsInputFocus(true)}
+					onBlur={() => setIsInputFocus(false)}
 					onChange={(e) => setPlace(e.target.value)}
 				/>
 
 				<FooterBtn
 					text="확인"
-					isSquare={isFocus}
+					isSquare={isInputFocus}
 					isTransparent
 					disabled={!place}
 					handleBtnClick={() => {
-						isFocus ? setIsFocus(false) : confirmSelectedTag();
+						isInputFocus ? setIsInputFocus(false) : confirmSelectedTag();
 					}}
 				/>
 			</div>
