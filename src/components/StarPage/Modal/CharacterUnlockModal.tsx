@@ -32,7 +32,7 @@ export default function CharacterUnlockModal({ id, name, image }: CharacterUnloc
 					<img src={image} alt="별자리 캐릭터" />
 					<h1>축하합니다!</h1>
 					<p>
-						{name}
+						<span>{name}</span>
 						{josaIga(name)} <br />
 						당신의 친구가 되었어요!
 					</p>
@@ -79,5 +79,10 @@ const contentStyle = css`
 	p {
 		color: #fff;
 		text-align: center;
+	}
+
+	span {
+		color: #ffbb00;
+		${theme.font.body_a_bold}
 	}
 `;
