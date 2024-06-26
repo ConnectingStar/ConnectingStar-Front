@@ -33,6 +33,7 @@ export function createChatData(userData: onboardingUserDataType) {
 			botMessage: [
 				`좋습니다. :)`,
 				`지금 이 순간부터 ${userData.nickname}님은 ${userData.identity} 사람이에요.`,
+				`오늘부터 진심으로 ${userData.nickname}님은 ${userData.identity} 사람이라고 믿어 주세요!`,
 			],
 			bottomButton: ["그런데 정체성을 왜 정하는 거야?"],
 			userMessage: "그런데 정체성을 왜 정하는 거야?",
@@ -42,7 +43,6 @@ export function createChatData(userData: onboardingUserDataType) {
 			botMessage: [
 				`정체성을 정함으로써 스스로에게 믿음을 부여할 수 있어요.`,
 				`그리고 우리는 놀랍도록 스스로가 믿는 대로 행동하죠.`,
-				`오늘부터 진심으로 ${userData.nickname}님은 ${userData.identity} 사람이라고 믿어 주세요!`,
 			],
 			bottomButton: ["알겠어!"],
 			userMessage: "알겠어!",
