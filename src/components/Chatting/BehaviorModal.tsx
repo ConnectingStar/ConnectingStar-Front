@@ -35,7 +35,7 @@ function BehaviorModal({
 }: BehaviorModalProps) {
 	const dispatch = useAppDispatch();
 
-	const [behaviorValue, setBehaviorValue] = useState<string | undefined>(prevValue ?? undefined);
+	const [behaviorValue, setBehaviorValue] = useState<string>(prevValue ?? "");
 	const [behaviorUnit, setBehaviorUnit] = useState<string>(prevUnit ?? "");
 
 	const confirmSelectedTag = () => {
