@@ -150,7 +150,7 @@ export const selectStar = createAsyncThunk(
 
 export const addStar = createAsyncThunk("star/addStar", async (_, thunkOptions) => {
 	try {
-		const { data } = await axiosInstance.put(END_POINTS.ADD_STAR);
+		const { data } = await authorizedAxiosInstance.put(END_POINTS.ADD_STAR);
 		return data;
 	} catch (error) {
 		throw thunkOptions.rejectWithValue(error);
