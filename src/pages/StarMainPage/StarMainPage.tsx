@@ -20,8 +20,7 @@ import { containerStyle, starMainPageGnbStyle } from "@/pages/StarMainPage/StarM
 
 export default function StarMainPage() {
 	const dispatch = useAppDispatch();
-	const { starMain } = useAppSelector((state) => state.star);
-	const { addStarResult } = useAppSelector((state) => state.star);
+	const { starMain, addStarResult } = useAppSelector((state) => state.star);
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const handleStarButtonClick = () => {
