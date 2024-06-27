@@ -23,10 +23,6 @@ export default function StarMainPage() {
 	const { starMain, addStarResult } = useAppSelector((state) => state.star);
 	const { modal } = useAppSelector((state) => state.modal);
 
-	const handleStarButtonClick = () => {
-		dispatch(addStar());
-	};
-
 	useEffect(() => {
 		dispatch(getStarMain());
 	}, []);
@@ -64,7 +60,7 @@ export default function StarMainPage() {
 			<div className="wrapper">
 				{starMain.isProgress && (
 					<StarButton
-						onClick={handleStarButtonClick}
+						onClick={() => dispatch(addStar())}
 						disabled={starMain.starCount <= 0 || addStarResult.isRegistered}
 					/>
 				)}
