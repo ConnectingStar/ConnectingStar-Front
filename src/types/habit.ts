@@ -23,6 +23,15 @@ export interface HabitRequestType {
 	secondAlert: { noon: string; hour: string; minute: string };
 }
 
+export interface HabitRecordRequestType {
+	runHabitId?: number;
+	achievement: number;
+	runPlace: string;
+	behavirValue: string;
+	review: string;
+	isRest: boolean;
+}
+
 export interface HabitInitialStateType {
 	progressHabitList: HabitType[];
 	habitHistoryList: [];

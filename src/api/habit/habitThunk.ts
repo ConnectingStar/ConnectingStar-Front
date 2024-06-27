@@ -8,7 +8,19 @@ import type {
 	HabitHistoryListRequest,
 	HabitRequestType,
 	HabitDeleteRequestType,
+	HabitRecordRequestType,
 } from "@/types/habit";
+
+export const createHabitRecord = createAsyncThunk(
+	"habit/createHabitRecord",
+	async (habitRecordRequest: HabitRecordRequestType, thunkOptions) => {
+		try {
+			return await authorizedAxiosInstance.post(END_POINTS.HABIT_HISTORY, habitRecordRequest);
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
 
 export const getHabit = createAsyncThunk(
 	"habit/getHabit",
