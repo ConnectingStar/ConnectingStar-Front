@@ -41,7 +41,7 @@ const style: React.CSSProperties = {
 export default function CharacterUnlockModal({ id, name, image }: CharacterUnlockModalProps) {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { View: StarLottie, setSpeed } = useLottie(options, style);
+	const { View: StarBurstLottie, setSpeed } = useLottie(options, style);
 
 	useEffect(() => {
 		setSpeed(0.7);
@@ -51,8 +51,8 @@ export default function CharacterUnlockModal({ id, name, image }: CharacterUnloc
 		<Modal>
 			<div css={containerStyle}>
 				<div css={contentStyle}>
-					<div css={lottieContainerStyle}>
-						{StarLottie}
+					<div css={imageStyle}>
+						{StarBurstLottie}
 						<img src={image} alt="별자리 캐릭터" />
 					</div>
 					<h1>축하합니다🎉</h1>
@@ -77,11 +77,6 @@ export default function CharacterUnlockModal({ id, name, image }: CharacterUnloc
 	);
 }
 
-const lottieContainerStyle = css`
-	margin-bottom: 1.25rem;
-	position: relative;
-`;
-
 const containerStyle = css`
 	width: 22.5rem;
 	position: relative;
@@ -94,13 +89,6 @@ const contentStyle = css`
 	justify-content: center;
 	align-items: center;
 	height: 100dvh;
-
-	img {
-		width: 13rem;
-		height: 13rem;
-		border-radius: 15px;
-		margin-bottom: 1.25rem;
-	}
 
 	h1 {
 		margin-bottom: 0.5rem;
@@ -116,5 +104,16 @@ const contentStyle = css`
 	span {
 		color: #ffbb00;
 		${theme.font.body_a_bold}
+	}
+`;
+
+const imageStyle = css`
+	margin-bottom: 1.25rem;
+	position: relative;
+
+	img {
+		width: 13rem;
+		height: 13rem;
+		border-radius: 15px;
 	}
 `;
