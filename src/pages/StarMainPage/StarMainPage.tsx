@@ -16,12 +16,23 @@ import { addStar } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 
+import { useToast } from "@/hooks/useToast";
+
 import { containerStyle, starMainPageGnbStyle } from "@/pages/StarMainPage/StarMainPage.style";
 
 export default function StarMainPage() {
 	const dispatch = useAppDispatch();
 	const { starMain, addStarResult } = useAppSelector((state) => state.star);
 	const { modal } = useAppSelector((state) => state.modal);
+	const { createToast } = useToast();
+
+	const handleStarButtonClick = () => {
+		if (starMain.starCount <= 0) {
+			return createToast("보유하고 있는 별이 없어요🥲");
+		}
+
+		dispatch(addStar());
+	};
 
 	useEffect(() => {
 		dispatch(getStarMain());
@@ -59,10 +70,7 @@ export default function StarMainPage() {
 
 			<div className="wrapper">
 				{starMain.isProgress && (
-					<StarButton
-						onClick={() => dispatch(addStar())}
-						disabled={starMain.starCount <= 0 || addStarResult.isRegistered}
-					/>
+					<StarButton onClick={handleStarButtonClick} disabled={addStarResult.isRegistered} />
 				)}
 				<StarCardLink />
 			</div>
