@@ -56,7 +56,7 @@ function ChattingMessage({ chatData, progress, addProgress }: chattingType) {
 			if (botMessage.length > botMessageIndex) {
 				setBotMessageIndex((prevIndex) => prevIndex + 1);
 			}
-		}, 100);
+		}, 600);
 
 		return () => clearTimeout(timer);
 	}, [botMessageIndex]);
@@ -83,7 +83,7 @@ function ChattingMessage({ chatData, progress, addProgress }: chattingType) {
 			<img src={ProfileImg} alt="profile" />
 			<div css={chatWrap} ref={endOfMessagesRef}>
 				<ul>
-					{botMessage.slice(0, botMessageIndex + 1).map((message) => (
+					{botMessage.slice(0, botMessageIndex).map((message) => (
 						<li key={message} dangerouslySetInnerHTML={{ __html: message }} />
 					))}
 				</ul>
