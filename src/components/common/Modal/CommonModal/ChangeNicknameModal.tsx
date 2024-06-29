@@ -62,7 +62,7 @@ const ChangeNicknameModal = ({ prevNickname, changeNickname }: ChangeNicknameMod
 			<FooterBtn
 				text="확인"
 				leftText="취소"
-				handleBtnClick={prevNickname ? handleChangeNickname : handleChangeInput}
+				handleBtnClick={changeNickname ? handleChangeInput : handleChangeNickname}
 				handleLeftBtnClick={() => dispatch(closeModal())}
 				disabled={nickname.trim().length === 0}
 				isSquare
