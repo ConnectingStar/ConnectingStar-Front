@@ -99,7 +99,7 @@ function ChattingPage() {
 			{modal === modalType.HABIT_GENERATE && (
 				<StarPrizeModal
 					blueText="시작이 반!"
-					comment={`환영의 의미로 n개의 별을 준비했어요.\n별을 별자리에 넣어보러 갈까요?`}
+					comment={`환영의 의미로 7개의 별을 준비했어요.\n별을 별자리에 넣어보러 갈까요?`}
 				/>
 			)}
 		</>
