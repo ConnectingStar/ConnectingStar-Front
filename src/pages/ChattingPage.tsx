@@ -16,6 +16,8 @@ import { useAppSelector } from "@/api/hooks";
 import { createChatData } from "@/constants/chatData";
 import { modalType } from "@/constants/modalConstants";
 import { SELECT_TAG_DATA } from "@/constants/modalConstants";
+import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
+import { PATH } from "@/constants/path";
 
 import { theme } from "@/styles/theme";
 
@@ -32,9 +34,9 @@ function ChattingPage() {
 	const isExtraBtn = chatData[progress].bottomButton.length > 1 ? true : false;
 
 	useEffect(() => {
-		const { nickname, genderType, referrer } = userData;
-		if (!nickname || !genderType || !referrer) {
-			navigate("/onboarding?step=CreateAccount");
+		const { nickname, genderType, ageRangeType, referrer } = userData;
+		if (!nickname || !genderType || !ageRangeType || !referrer) {
+			navigate(`${PATH.ONBOARDING}?${STEP_KEY}=${ONBOARDING_STEP.CREATE_ACCOUNT}`);
 		}
 	}, []);
 
