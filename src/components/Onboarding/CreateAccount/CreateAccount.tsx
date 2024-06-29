@@ -101,7 +101,9 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 				handleBtnClick={confirmBasicUserData}
 			/>
 
-			{modal === modalType.CHANGE_NICKNAME && <ChangeNicknameModal changeNickname={setNickname} />}
+			{modal === modalType.CHANGE_NICKNAME && (
+				<ChangeNicknameModal prevNickname={nickname} changeNickname={setNickname} />
+			)}
 			{modal === modalType.SELECT_GENDERTYPE && (
 				<SelectGenderModal prevGender={genderType} changeGender={setGenderType} />
 			)}
