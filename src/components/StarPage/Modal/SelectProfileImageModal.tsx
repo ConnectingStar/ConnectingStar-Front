@@ -11,7 +11,7 @@ import { editProfileImage } from "@/api/user/userThunk";
 
 import { useToast } from "@/hooks/useToast";
 
-export default function SelectProfileCharacterModal() {
+export default function SelectProfileImageModal() {
 	const { id } = useParams();
 	const { createToast } = useToast();
 	const dispatch = useAppDispatch();
