@@ -8,13 +8,13 @@ import Header from "@/components/common/Header/Header";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import SelectProfileCharacterModal from "@/components/StarPage/Modal/SelectProfileCharacterModal";
 import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
-import Img from "@/components/StarPage/StarCardDetail/Img";
-import Story from "@/components/StarPage/StarCardDetail/Story";
-import { StarCardDetailStatus } from "@/types/star";
+import Img from "@/components/StarPage/StarDetail/Img";
+import Story from "@/components/StarPage/StarDetail/Story";
+import { StarDetailStatus } from "@/types/star";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getStarCardDetail } from "@/api/star/starThunk";
+import { getStarDetail } from "@/api/star/starThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { PATH } from "@/constants/path";
@@ -27,7 +27,7 @@ import { generateName } from "@/utils/starUtils";
 
 const { PROGRESS, SELECT, COMPLETE, OTHER } = STAR_DETAIL_STATUS;
 
-export default function StarCardDetailPage() {
+export default function StarDetailPage() {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
@@ -36,7 +36,7 @@ export default function StarCardDetailPage() {
 	const { starDetail } = useAppSelector((state) => state.star);
 	const { isLoading } = useAppSelector((state) => state.user);
 
-	const handleFooterBtnClick = (status: StarCardDetailStatus) => {
+	const handleFooterBtnClick = (status: StarDetailStatus) => {
 		switch (status) {
 			case PROGRESS:
 				return navigate(PATH.STAR);
@@ -50,7 +50,7 @@ export default function StarCardDetailPage() {
 	};
 
 	useEffect(() => {
-		dispatch(getStarCardDetail(id ?? ""));
+		dispatch(getStarDetail(id ?? ""));
 	}, []);
 
 	return (

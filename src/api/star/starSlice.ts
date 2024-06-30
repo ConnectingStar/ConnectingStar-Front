@@ -1,7 +1,7 @@
 import { StarDataType } from "@/types/star";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getStarMain, getStarCardDetail, getStarCard } from "@/api/star/starThunk";
+import { getStarMain, getStarDetail, getStarCard } from "@/api/star/starThunk";
 import { editProfileImage, addStar } from "@/api/user/userThunk";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
@@ -81,14 +81,14 @@ const starSlice = createSlice({
 			.addCase(getStarCard.rejected, (state) => {
 				state.isLoading = false;
 			})
-			.addCase(getStarCardDetail.pending, (state) => {
+			.addCase(getStarDetail.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(getStarCardDetail.fulfilled, (state, action) => {
+			.addCase(getStarDetail.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.starDetail = action.payload.data;
 			})
-			.addCase(getStarCardDetail.rejected, (state) => {
+			.addCase(getStarDetail.rejected, (state) => {
 				state.isLoading = false;
 			})
 			.addCase(editProfileImage.pending, (state) => {
