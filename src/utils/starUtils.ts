@@ -1,4 +1,4 @@
-import { StarCardDetailStatus, StarCardStatus, CategoryType, Circle } from "@/types/star";
+import { StarDetailStatus, StarCardStatus, CategoryType, Circle } from "@/types/star";
 
 import { STAR_DETAIL_STATUS, HANGUL_START_CHARCODE, JONGSUNG } from "@/constants/starPageConstants";
 
@@ -21,7 +21,7 @@ export function generateStars() {
 	return stars;
 }
 
-export function generateName(characterName: string, status: StarCardDetailStatus | StarCardStatus) {
+export function generateName(characterName: string, status: StarDetailStatus | StarCardStatus) {
 	if (status === STAR_DETAIL_STATUS.COMPLETE) {
 		return characterName;
 	} else {

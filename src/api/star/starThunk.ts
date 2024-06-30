@@ -25,8 +25,8 @@ export const getStarCard = createAsyncThunk(
 	},
 );
 
-export const getStarCardDetail = createAsyncThunk(
-	"star/getStarCardDetail",
+export const getStarDetail = createAsyncThunk(
+	"star/getStarDetail",
 	async (id: string, thunkOptions) => {
 		try {
 			const { data } = await authorizedAxiosInstance.get(END_POINTS.STAR_DETAIL(id));

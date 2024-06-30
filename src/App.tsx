@@ -21,8 +21,8 @@ import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import OnboardingPage from "@/pages/OnboardingPage";
 import PracticeRecordPage from "@/pages/PracticeRecordPage";
 import RestRecordPage from "@/pages/RestRecordPage/RestRecordPage";
-import StarCardDetailPage from "@/pages/StarCardDetailPage";
 import StarCardPage from "@/pages/StarCardPage";
+import StarDetailPage from "@/pages/StarDetailPage";
 import StarMainPage from "@/pages/StarMainPage/StarMainPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 
@@ -35,7 +35,7 @@ const App = () => {
 					<Route path="/:id" element={<HabitDetailPage />} />
 					<Route path={PATH.STAR} element={<StarMainPage />} />
 					<Route path={PATH.STAR_CARD} element={<StarCardPage />} />
-					<Route path={`${PATH.STAR_CARD}/:id`} element={<StarCardDetailPage />} />
+					<Route path={`${PATH.STAR_CARD}/:id`} element={<StarDetailPage />} />
 					<Route path="/chart" element={<ChartPage />} />
 					<Route path="/mypage" element={<MyPage />} />
 					<Route path="/myinfo" element={<MyInfoPage />} />
