@@ -6,7 +6,7 @@ import { css } from "@emotion/react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-import SelectProfileCharacterModal from "@/components/StarPage/Modal/SelectProfileCharacterModal";
+import SelectProfileImageModal from "@/components/StarPage/Modal/SelectProfileImageModal";
 import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
 import Img from "@/components/StarPage/StarDetail/Img";
 import Story from "@/components/StarPage/StarDetail/Story";
@@ -43,7 +43,7 @@ export default function StarDetailPage() {
 			case SELECT:
 				return dispatch(openModal(modalType.SELECT_STAR));
 			case COMPLETE:
-				return dispatch(openModal(modalType.SELECT_PROFILE_CHARACTER));
+				return dispatch(openModal(modalType.SELECT_PROFILE_IMAGE));
 			default:
 				return;
 		}
@@ -76,7 +76,7 @@ export default function StarDetailPage() {
 
 			{isLoading && <LoadingSpinner />}
 			{modal === modalType.SELECT_STAR && <SelectStarModal />}
-			{modal === modalType.SELECT_PROFILE_CHARACTER && <SelectProfileCharacterModal />}
+			{modal === modalType.SELECT_PROFILE_IMAGE && <SelectProfileImageModal />}
 		</>
 	);
 }
