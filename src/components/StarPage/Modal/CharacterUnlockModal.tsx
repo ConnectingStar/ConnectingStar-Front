@@ -5,7 +5,7 @@ import { css } from "@emotion/react";
 
 import { useLottie } from "lottie-react";
 
-import starBurstAnimation from "@/assets/lottie/lottie-star-burst-animation.json";
+import StarBurstAnimation from "@/assets/lottie/lottie-star-burst-animation.json";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
@@ -27,7 +27,7 @@ interface CharacterUnlockModalProps {
 }
 
 const options = {
-	animationData: starBurstAnimation,
+	animationData: StarBurstAnimation,
 	loop: false,
 };
 
