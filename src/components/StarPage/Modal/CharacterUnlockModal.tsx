@@ -33,9 +33,9 @@ const options = {
 
 const style: React.CSSProperties = {
 	position: "absolute",
-	top: "-3%",
+	top: "5%",
 	left: "10%",
-	transform: "scale(5)",
+	transform: "translateY(-50%) scale(5)",
 };
 
 export default function CharacterUnlockModal({ id, name, image }: CharacterUnlockModalProps) {
