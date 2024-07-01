@@ -1,11 +1,6 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { css } from "@emotion/react";
-
-import { useLottie } from "lottie-react";
-
-import starBurstAnimation from "@/assets/lottie/lottie-star-burst-animation.json";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
@@ -26,36 +21,16 @@ interface CharacterUnlockModalProps {
 	image: string;
 }
 
-const options = {
-	animationData: starBurstAnimation,
-	loop: false,
-};
-
-const style: React.CSSProperties = {
-	position: "absolute",
-	top: "5%",
-	left: "10%",
-	transform: "translateY(-50%) scale(5)",
-};
-
 export default function CharacterUnlockModal({ id, name, image }: CharacterUnlockModalProps) {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { View: StarLottie, setSpeed } = useLottie(options, style);
-
-	useEffect(() => {
-		setSpeed(0.7);
-	}, []);
 
 	return (
 		<Modal>
 			<div css={containerStyle}>
 				<div css={contentStyle}>
-					<div css={lottieContainerStyle}>
-						{StarLottie}
-						<img src={image} alt="별자리 캐릭터" />
-					</div>
-					<h1>축하합니다🎉</h1>
+					<img src={image} alt="별자리 캐릭터" />
+					<h1>축하합니다!</h1>
 					<p>
 						<span>{name}</span>
 						{josaIga(name)} <br />
@@ -77,15 +52,8 @@ export default function CharacterUnlockModal({ id, name, image }: CharacterUnloc
 	);
 }
 
-const lottieContainerStyle = css`
-	margin-bottom: 1.25rem;
-	position: relative;
-`;
-
 const containerStyle = css`
 	width: 22.5rem;
-	position: relative;
-	overflow: hidden;
 `;
 
 const contentStyle = css`
