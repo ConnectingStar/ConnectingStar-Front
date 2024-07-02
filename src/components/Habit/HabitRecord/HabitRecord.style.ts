@@ -94,48 +94,30 @@ export const contentBoxStyle = css`
 	}
 `;
 
-export const iconStyle = (isActivated: boolean, selectedIcon: number | null) => css`
-	opacity: ${!isActivated && 0.5};
-	pointer-events: ${!isActivated && "none"};
+export const iconStyle = css`
 	& > div {
 		display: flex;
 		gap: 18px;
 
-		& > span {
-			transition: 0.3s ease;
-		}
-
 		& > :not(.selected) {
-			opacity: ${selectedIcon && 0.5};
+			opacity: 0.5;
 		}
 	}
 
-	& > h2 {
+	& > h3 {
 		margin-bottom: 0.75rem;
 
-		& > p {
-			display: inline;
+		&:after {
+			content: "*";
 			color: ${theme.color.main_blue};
 		}
 	}
-
-	& > h2:after {
-		content: "*";
-		color: ${theme.color.main_blue};
-	}
 `;
 
-export const inputBoxStyle = (isActivated: boolean, selectedIcon: number | null) => css`
+export const inputBoxStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	position: relative;
-	opacity: ${(!isActivated || !selectedIcon) && 0.5};
-	pointer-events: ${(!isActivated || !selectedIcon) && "none"};
-	label {
-		color: ${theme.color.font_gray};
-		${theme.font.head_c};
-	}
 
 	textarea {
 		all: unset;
@@ -143,8 +125,8 @@ export const inputBoxStyle = (isActivated: boolean, selectedIcon: number | null)
 		background-color: ${theme.color.bg};
 		border-radius: 15px;
 		height: 11.875rem;
-		-ms-overflow-style: none; /* 인터넷 익스플로러 */
-		scrollbar-width: none; /* 파이어폭스 */
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 
 		&::-webkit-scrollbar {
 			display: none;
@@ -154,6 +136,7 @@ export const inputBoxStyle = (isActivated: boolean, selectedIcon: number | null)
 			color: ${theme.color.button_deactivated};
 		}
 	}
+
 	& > span {
 		${theme.font.body_c_bold};
 		color: ${theme.color.font_gray};
