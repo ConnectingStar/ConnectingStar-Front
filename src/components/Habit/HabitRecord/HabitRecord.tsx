@@ -44,7 +44,7 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 			runHabitId: habitData.runHabitId,
 			achievement: -1,
 			runPlace: habitData.place,
-			behaviorValue: habitData.behaviorValue,
+			behaviorValue: "",
 			review: "",
 			isRest: false,
 		},
@@ -56,15 +56,11 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 	const Random = Math.floor(Math.random() * 10) % prizeComments.length;
 	const { blueText, yellowText, comment } = prizeComments[Random];
 
-	const [isActivated] = useState<boolean>(false);
 	const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
 
 	const handleIconClick = (id: number) => {
-		if (id !== selectedIcon) {
-			setSelectedIcon(id);
-		} else {
-			setSelectedIcon(null);
-		}
+		id !== selectedIcon ? setSelectedIcon(id) : setSelectedIcon(null);
+		updateInputValue("achievement", id);
 	};
 
 	useEffect(() => {
@@ -96,18 +92,21 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 						<input placeholder={`${habitData.place}에서`} />
 					</li>
 					<li>
-						<input placeholder={`${habitData.behavior}를`} />
+						<input placeholder={`${habitData.behavior}을(를)`} />
 					</li>
 					<li>
-						<input />
+						<input
+							value={habitRecordRequest.behaviorValue}
+							onChange={(e) => updateInputValue("behaviorValue", e.target.value)}
+						/>
 						<span>{habitData.behaviorUnit}</span>
 					</li>
 				</ul>
 				<h3>했다</h3>
 			</div>
 
-			<section css={iconStyle(isActivated, selectedIcon)}>
-				<h2>오늘의 습관 실천을 어떠셨나요?</h2>
+			<div css={iconStyle}>
+				<h3>오늘의 습관 실천을 어떠셨나요?</h3>
 				<div>
 					{habitIconData.map((habitIcon) => (
 						<span
@@ -119,10 +118,12 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 						</span>
 					))}
 				</div>
-			</section>
+			</div>
 
-			<section css={inputBoxStyle(isActivated, selectedIcon)}>
-				<label htmlFor="review">별자취 남기기</label>
+			<div css={inputBoxStyle}>
+				<label htmlFor="review">
+					<h3>별자취 남기기</h3>
+				</label>
 				<textarea
 					placeholder="실천하며 느낀 점이나 다짐 등을 자유롭게 적어보세요!"
 					maxLength={1000}
@@ -131,12 +132,12 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 					onChange={(e) => updateInputValue("review", e.target.value)}
 				/>
 				<span>{habitRecordRequest.review.length}/1,000자</span>
-			</section>
+			</div>
 
 			<FooterBtn
 				handleBtnClick={() => dispatch(openModal(modalType.STAR_PRIZE))}
 				text="기록하여 별 얻기"
-				disabled={!isActivated || !selectedIcon}
+				isTransparent
 			/>
 
 			{modal === modalType.STAR_PRIZE && (
