@@ -16,28 +16,26 @@ export const container = css`
 `;
 
 export const chatWrap = css`
-	& > ul {
-		width: 100%;
-		padding-right: 1rem;
-		> li {
-			white-space: pre-wrap;
-			display: inline-block;
-			border: 2px solid ${theme.color.line};
-			border-radius: 15px;
-			margin-bottom: 0.375rem;
-			background-color: white;
-			padding: 1rem;
-		}
-		> button {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			height: 2rem;
-			padding: 0.5rem 1rem;
-			border-radius: 20px;
-			color: white;
-			background-color: ${theme.color.main_deep_blue};
-		}
+	width: 100%;
+	padding-right: 1rem;
+	> li {
+		white-space: pre-wrap;
+		display: inline-block;
+		border: 2px solid ${theme.color.line};
+		border-radius: 15px;
+		margin-bottom: 0.375rem;
+		background-color: white;
+		padding: 1rem;
+	}
+	> button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 2rem;
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		color: white;
+		background-color: ${theme.color.main_deep_blue};
 	}
 `;
 

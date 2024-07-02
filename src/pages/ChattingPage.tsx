@@ -31,7 +31,7 @@ function ChattingPage() {
 
 	const [progress, setProgress] = useState(0);
 
-	const isExtraBtn = chatData[progress].bottomButton.length > 1 ? true : false;
+	const isExtraBtn = chatData[progress].bottomButton.length > 1;
 
 	useEffect(() => {
 		const { nickname, genderType, ageRangeType, referrer } = userData;

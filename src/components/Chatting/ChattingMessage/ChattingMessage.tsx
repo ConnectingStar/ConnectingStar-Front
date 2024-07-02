@@ -81,8 +81,8 @@ function ChattingMessage({ chatData, progress, addProgress }: chattingType) {
 	return (
 		<div css={container}>
 			<img src={ProfileImg} alt="profile" />
-			<div css={chatWrap} ref={endOfMessagesRef}>
-				<ul>
+			<div ref={endOfMessagesRef}>
+				<ul css={chatWrap}>
 					{botMessage.slice(0, botMessageIndex).map((message) => (
 						<li key={message} dangerouslySetInnerHTML={{ __html: message }} />
 					))}

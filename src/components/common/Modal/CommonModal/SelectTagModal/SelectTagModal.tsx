@@ -60,8 +60,8 @@ function SelectTagModal({
 
 		// 행동, 정체성 수정시
 		if (!addprogress) {
-			type === "behavior" && updateInputValue && updateInputValue("identity", updatedHabit);
-			type === "identity" && updateInputValue && updateInputValue("behavior", updatedHabit);
+			type === "behavior" && updateInputValue && updateInputValue("behavior", updatedHabit);
+			type === "identity" && updateInputValue && updateInputValue("identity", updatedHabit);
 		}
 
 		dispatch(closeModal());
