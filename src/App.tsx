@@ -17,6 +17,7 @@ import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage/MyInfoPage";
 import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
+import NotFoundPage from "@/pages/NotFoundPage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import OnboardingPage from "@/pages/OnboardingPage";
 import PracticeRecordPage from "@/pages/PracticeRecordPage";
@@ -52,6 +53,7 @@ const App = () => {
 					<Route path={PATH.CREATE_HABIT} element={<CreateHabitPage />} />
 					<Route path="habit-guide" element={<HabitGuidePage />} />
 					<Route path={PATH.EDIT_HABIT(":habitId")} element={<EditHabitPage />} />
+					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
 			</BrowserRouter>
 			<ToastContainer />
