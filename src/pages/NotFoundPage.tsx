@@ -6,6 +6,8 @@ import NotFoundCharacter from "@/assets/image/img-not-found-character.png";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
+import { PATH } from "@/constants/path";
+
 import { theme } from "@/styles/theme";
 
 export default function NotFoundPage() {
@@ -16,7 +18,7 @@ export default function NotFoundPage() {
 			<img src={NotFoundCharacter} alt="도망가는 타스" />
 			<h1>잘못된 접근입니다.</h1>
 			<p>찾으시는 페이지가 존재하지 않아요😅</p>
-			<FooterBtn text="닫기" handleBtnClick={() => navigate(-1)} />
+			<FooterBtn text="홈으로" handleBtnClick={() => navigate(PATH.HOME)} />
 		</div>
 	);
 }
