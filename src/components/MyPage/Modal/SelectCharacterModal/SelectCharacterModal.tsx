@@ -1,34 +1,35 @@
-import { useState } from "react";
-
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import type { ConstellationList } from "@/types/user";
+
 import {
 	layoutStyle,
 	characterWrapperStyle,
-	getCharacterBoxStyle,
+	characterBoxStyle,
 } from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal.style";
 
-const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+interface SelectCharacterModalProps {
+	constellationList: ConstellationList[];
+}
 
-const SelectCharacterModal = () => {
+const SelectCharacterModal = ({ constellationList }: SelectCharacterModalProps) => {
 	const dispatch = useAppDispatch();
-
-	const [isSelect, setIsSelect] = useState(1);
 
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
 				<h1>버디를 선택해 주세요</h1>
 				<div css={characterWrapperStyle}>
-					{count.map((index) => (
-						<div
-							key={index}
-							css={getCharacterBoxStyle(isSelect === index)}
-							onClick={() => setIsSelect(index)}
+					{constellationList.map((constellation) => (
+						<img
+							src={constellation.imageUrl}
+							alt={`image${constellation.constellationId}`}
+							key={constellation.constellationId}
+							css={characterBoxStyle(true)}
 						/>
 					))}
 				</div>

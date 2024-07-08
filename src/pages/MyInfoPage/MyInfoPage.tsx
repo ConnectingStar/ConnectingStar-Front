@@ -31,7 +31,7 @@ const MyInfoPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { userData } = useAppSelector((state) => state.user);
+	const { userData, constellationList } = useAppSelector((state) => state.user);
 
 	const navigate = useNavigate();
 
@@ -39,6 +39,8 @@ const MyInfoPage = () => {
 		dispatch(getUserConstellationList());
 		dispatch(getUserInfo());
 	}, []);
+
+	console.log(constellationList);
 
 	return (
 		<>
@@ -91,7 +93,9 @@ const MyInfoPage = () => {
 					<button onClick={() => navigate("/withdrawal")}>회원탈퇴</button>
 				</div>
 
-				{modal === modalType.SELECT_CHARACTER && <SelectCharacterModal />}
+				{modal === modalType.SELECT_CHARACTER && (
+					<SelectCharacterModal constellationList={constellationList} />
+				)}
 				{modal === modalType.SELECT_GENDERTYPE && (
 					<SelectGenderModal prevGender={generateGenderType(userData.genderType)} />
 				)}

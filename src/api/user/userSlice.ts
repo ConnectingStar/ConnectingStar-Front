@@ -33,7 +33,7 @@ const initialState: userType = {
 	isLoading: false,
 	isOnboarding: false,
 	userIdentityList: [],
-	constellation: [],
+	constellationList: [],
 };
 
 const userSlice = createSlice({
@@ -95,7 +95,7 @@ const userSlice = createSlice({
 			})
 			.addCase(getUserConstellationList.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.constellation = action.payload.list;
+				state.constellationList = action.payload.list;
 			})
 			.addCase(getUserConstellationList.rejected, (state) => {
 				state.isLoading = false;

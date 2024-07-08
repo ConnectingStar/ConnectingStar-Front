@@ -4,7 +4,7 @@ export interface userType {
 	userData: onboardingUserDataType;
 	isLoading: boolean;
 	isOnboarding: boolean | null;
-	constellation: ConstellationList[];
+	constellationList: ConstellationList[];
 	userIdentityList: { identity: string }[];
 }
 
