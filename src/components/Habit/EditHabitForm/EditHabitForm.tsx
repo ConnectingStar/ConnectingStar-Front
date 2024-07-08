@@ -103,7 +103,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					<h3>습관</h3>
 					<MenuButton
 						title="언제"
-						content={`${habitRequest.runTime.noon} ${habitRequest.runTime.hour}시 ${habitRequest.runTime.minute}분`}
+						content={`${habitRequest.runTime.noon} ${habitRequest.runTime.hour}:${habitRequest.runTime.minute}`}
 						onClick={() => dispatch(openModal(modalType.SELECT_TIME("RUNTIME")))}
 					/>
 					<MenuButton
