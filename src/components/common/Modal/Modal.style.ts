@@ -2,6 +2,15 @@ import { css, keyframes } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const modalShow = keyframes`
   0% {
     transform: translateY(100%);
@@ -22,7 +31,7 @@ export const modalBackdropStyle = css`
 	background-color: rgba(0, 0, 0, 0.9);
 `;
 
-export const getModalLayoutStyle = (isBottomSheet: boolean | undefined) => {
+export const getModalLayoutStyle = (isBottomSheet?: boolean, isFadeIn?: boolean) => {
 	return css`
 		position: fixed;
 		display: block;
@@ -38,6 +47,10 @@ export const getModalLayoutStyle = (isBottomSheet: boolean | undefined) => {
 		animation: ${isBottomSheet &&
 		css`
 			${modalShow} 0.3s
+		`};
+		animation: ${isFadeIn &&
+		css`
+			${fadeIn} 2s
 		`};
 	`;
 };

@@ -10,9 +10,10 @@ import { modalBackdropStyle, getModalLayoutStyle } from "@/components/common/Mod
 interface modalType {
 	children: React.ReactNode;
 	isBottomSheet?: boolean;
+	isFadeIn?: boolean;
 }
 
-const Modal = ({ children, isBottomSheet }: modalType) => {
+const Modal = ({ children, isBottomSheet, isFadeIn }: modalType) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
@@ -26,7 +27,7 @@ const Modal = ({ children, isBottomSheet }: modalType) => {
 	return (
 		<Portal elementId="modal">
 			<div css={modalBackdropStyle} onClick={() => dispatch(closeModal())} />
-			<div css={getModalLayoutStyle(isBottomSheet)}>{children}</div>
+			<div css={getModalLayoutStyle(isBottomSheet, isFadeIn)}>{children}</div>
 		</Portal>
 	);
 };
