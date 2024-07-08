@@ -34,7 +34,7 @@ export const footerBtnStyle = (
 			}
 
 			&.cancel {
-				color: ${theme.color.button_deactivated};
+				color: ${theme.color.font_deep_gray};
 				background-color: ${theme.color.button_disabled};
 			}
 		}
