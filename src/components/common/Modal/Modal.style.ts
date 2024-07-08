@@ -50,7 +50,7 @@ export const getModalLayoutStyle = (isBottomSheet?: boolean, isFadeIn?: boolean)
 		`};
 		animation: ${isFadeIn &&
 		css`
-			${fadeIn} 2s
+			${fadeIn} 1s
 		`};
 	`;
 };
