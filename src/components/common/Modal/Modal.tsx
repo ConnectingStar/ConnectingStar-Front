@@ -11,9 +11,10 @@ interface modalType {
 	children: React.ReactNode;
 	isBottomSheet?: boolean;
 	isFadeIn?: boolean;
+	isBackdropClose?: boolean;
 }
 
-const Modal = ({ children, isBottomSheet, isFadeIn }: modalType) => {
+const Modal = ({ children, isBottomSheet, isFadeIn, isBackdropClose = true }: modalType) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
@@ -26,7 +27,12 @@ const Modal = ({ children, isBottomSheet, isFadeIn }: modalType) => {
 
 	return (
 		<Portal elementId="modal">
-			<div css={modalBackdropStyle} onClick={() => dispatch(closeModal())} />
+			<div
+				css={modalBackdropStyle}
+				onClick={() => {
+					isBackdropClose && dispatch(closeModal());
+				}}
+			/>
 			<div css={getModalLayoutStyle(isBottomSheet, isFadeIn)}>{children}</div>
 		</Portal>
 	);
