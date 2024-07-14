@@ -26,9 +26,11 @@ interface StarPrizeModalProps {
 
 function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPrizeModalProps) {
 	const navigate = useNavigate();
+
 	const dispatch = useAppDispatch();
+
 	return (
-		<Modal>
+		<Modal isBackdropClose={false}>
 			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
 				<span css={imageWrapperStyle}>
 					<Lottie animationData={isHabitStart ? StarMedalAnimation : ClapAnimation} loop={false} />

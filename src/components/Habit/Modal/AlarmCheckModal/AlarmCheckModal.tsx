@@ -23,7 +23,7 @@ function AlarmCheckModal({ alarmTarget }: AlarmCheckModalProps) {
 	};
 
 	return (
-		<Modal>
+		<Modal isBackdropClose={false}>
 			<div css={layoutStyle}>
 				<div>
 					<p>알림을 off 하면 저와의 약속을 잊으실까 걱정돼요 😥</p>

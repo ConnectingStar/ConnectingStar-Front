@@ -29,7 +29,7 @@ export default function SelectStarModal() {
 	};
 
 	return (
-		<Modal>
+		<Modal isBackdropClose={false}>
 			<div css={containerStyle}>
 				<h1>이 별자리로 선택할까요? </h1>
 				<p>
