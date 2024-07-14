@@ -48,7 +48,7 @@ export default function CharacterUnlockModal({ id, name, image }: CharacterUnloc
 	}, []);
 
 	return (
-		<Modal isFadeIn>
+		<Modal isFadeIn isBackdropClose={false}>
 			<div css={containerStyle}>
 				<div css={contentStyle}>
 					<div css={imageStyle}>

@@ -9,7 +9,7 @@ const DeleteHistoryModal = () => {
 	const dispatch = useAppDispatch();
 
 	return (
-		<Modal>
+		<Modal isBackdropClose={false}>
 			<div css={layoutStyle}>
 				<h1>지난 히스토리를 삭제할까요?</h1>
 

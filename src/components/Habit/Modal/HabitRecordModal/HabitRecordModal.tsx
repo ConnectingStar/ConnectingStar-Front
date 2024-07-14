@@ -26,7 +26,7 @@ const HabitRecordModal = ({ habitData }: HabitRecordModalProps) => {
 	const navigate = useNavigate();
 
 	return (
-		<Modal>
+		<Modal isBackdropClose={false}>
 			<div css={layoutStyle}>
 				<h1>아래의 습관을 실천했나요?</h1>
 				<h2>{habitData.behavior}</h2>
