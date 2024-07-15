@@ -17,11 +17,11 @@ export const checkToken = (config: InternalAxiosRequestConfig) => {
 
 	const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
 
-	if (!accessToken) {
-		window.location.href = "/onboarding?step=CreateAccount";
+	// if (!accessToken) {
+	// 	window.location.href = "/onboarding?step=CreateAccount";
 
-		throw new Error("토큰이 유효하지 않습니다");
-	}
+	// 	throw new Error("토큰이 유효하지 않습니다");
+	// }
 
 	config.headers.Authorization = `Bearer ${accessToken}`;
 
