@@ -1,9 +1,7 @@
+import type { CommonAlertType } from "@/types/common";
+
 interface adjustTimeType {
-	time: {
-		noon: string;
-		hour: string; // "00"부터 "12"까지의 문자열
-		minute: string; // "00"부터 "59"까지의 문자열
-	};
+	time: CommonAlertType;
 	change: number;
 }
 
@@ -48,4 +46,50 @@ export const adjustTime = ({ time, change }: adjustTimeType) => {
 		hour: newHour,
 		minute: newMinute,
 	};
+};
+
+export const earlyTimeValidation = (selectTime: CommonAlertType, runTime?: CommonAlertType) => {
+	if (!runTime) return;
+
+	if (runTime.noon === "오후" && selectTime.noon === "오전") {
+		return false;
+	}
+
+	if (runTime.noon === selectTime.noon) {
+		if (
+			Number(runTime.hour) === Number(selectTime.hour) &&
+			Number(runTime.minute) <= Number(selectTime.minute)
+		) {
+			return false;
+		}
+
+		if (Number(runTime.hour) < Number(selectTime.hour)) {
+			return false;
+		}
+	}
+
+	return true;
+};
+
+export const lateTimeValidation = (selectTime: CommonAlertType, runTime?: CommonAlertType) => {
+	if (!runTime) return;
+
+	if (runTime.noon === "오전" && selectTime.noon === "오후") {
+		return false;
+	}
+
+	if (runTime.noon === selectTime.noon) {
+		if (
+			Number(runTime.hour) === Number(selectTime.hour) &&
+			Number(runTime.minute) >= Number(selectTime.minute)
+		) {
+			return false;
+		}
+
+		if (Number(runTime.hour) > Number(selectTime.hour)) {
+			return false;
+		}
+	}
+
+	return true;
 };

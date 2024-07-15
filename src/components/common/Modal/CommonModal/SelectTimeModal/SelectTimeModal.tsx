@@ -10,8 +10,11 @@ import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/time";
 
-import { adjustTime } from "@/utils/adjustTime";
+import { useToast } from "@/hooks/useToast";
 
+import { adjustTime, earlyTimeValidation, lateTimeValidation } from "@/utils/time";
+
+import type { CommonAlertType } from "@/types/common";
 import type { HabitRequestType } from "@/types/habit";
 
 import {
@@ -23,6 +26,7 @@ import {
 interface selectTimeModalType {
 	title?: string;
 	progress?: number;
+	runTime?: CommonAlertType;
 	addprogress?: () => void;
 	updateInputValue?: <Key extends keyof HabitRequestType>(
 		key: Key,
@@ -30,8 +34,16 @@ interface selectTimeModalType {
 	) => void;
 }
 
-function SelectTimeModal({ title, progress, addprogress, updateInputValue }: selectTimeModalType) {
+function SelectTimeModal({
+	title,
+	progress,
+	runTime,
+	addprogress,
+	updateInputValue,
+}: selectTimeModalType) {
 	const dispatch = useAppDispatch();
+
+	const { createToast } = useToast();
 
 	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
 
@@ -40,7 +52,6 @@ function SelectTimeModal({ title, progress, addprogress, updateInputValue }: sel
 	};
 
 	const handleSelectClick = () => {
-		// hour와 minute의 길이가 1이라면 앞에 0을 붙여줌
 		const addZeroTime = {
 			...selectTime,
 			hour: selectTime.hour.length < 2 ? `0${selectTime.hour}` : selectTime.hour,
@@ -49,6 +60,7 @@ function SelectTimeModal({ title, progress, addprogress, updateInputValue }: sel
 
 		if (title === "시간을 선택해 주세요") {
 			if (addprogress !== undefined && progress === 4) addprogress();
+
 			dispatch(
 				updateHabitUserData({
 					runTime: addZeroTime,
@@ -59,16 +71,29 @@ function SelectTimeModal({ title, progress, addprogress, updateInputValue }: sel
 
 			updateInputValue && updateInputValue("runTime", addZeroTime);
 		}
-		if (title === "1차 알림시간을 선택해 주세요") {
-			dispatch(updateHabitUserData({ firstAlert: addZeroTime }));
 
-			updateInputValue && updateInputValue("firstAlert", addZeroTime);
+		if (title === "1차 알림시간을 선택해 주세요") {
+			if (earlyTimeValidation(selectTime, runTime)) {
+				dispatch(updateHabitUserData({ firstAlert: addZeroTime }));
+
+				updateInputValue && updateInputValue("firstAlert", addZeroTime);
+			} else {
+				createToast("약속시간 보다 이르게 설정해 주세요");
+
+				return;
+			}
 		}
 
 		if (title === "2차 알림시간을 선택해 주세요") {
-			dispatch(updateHabitUserData({ secondAlert: addZeroTime }));
+			if (lateTimeValidation(selectTime, runTime)) {
+				dispatch(updateHabitUserData({ secondAlert: addZeroTime }));
 
-			updateInputValue && updateInputValue("secondAlert", addZeroTime);
+				updateInputValue && updateInputValue("secondAlert", addZeroTime);
+			} else {
+				createToast("약속시간 보다 늦게 설정해 주세요");
+
+				return;
+			}
 		}
 
 		dispatch(closeModal());
