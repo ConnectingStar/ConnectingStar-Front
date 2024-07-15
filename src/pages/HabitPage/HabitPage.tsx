@@ -8,7 +8,7 @@ import Calender from "@/components/Habit/Calendar/Calender";
 import HabitAdviceBanner from "@/components/Habit/HabitAdviceBanner/HabitAdviceBanner";
 import HabitGuideBanner from "@/components/Habit/HabitGuideBanner/HabitGuideBanner";
 // import HabitItem from "@/components/Habit/HabitItem/HabitItem";
-import Profile from "@/components/Habit/Profile/Profile";
+// import Profile from "@/components/Habit/Profile/Profile";
 
 // import { getProgressHabitList, getHabitHistoryList } from "@/api/habit/habitThunk";
 // import { useAppDispatch, useAppSelector } from "@/api/hooks";
@@ -57,7 +57,7 @@ const HabitPage = () => {
 	return (
 		<>
 			<main css={mainBoxStyle}>
-				<Profile />
+				{/* <Profile /> */}
 				<div css={mainTopBoxStyle}>
 					<HabitGuideBanner />
 					<HabitAdviceBanner />
