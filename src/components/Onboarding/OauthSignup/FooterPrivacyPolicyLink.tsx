@@ -3,18 +3,14 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 
 function FooterPrivacyPolicyLink() {
-	//TODO: 약관 추가
 	return (
 		<footer css={container}>
 			<p>서비스를 시작하시면 다음 항목에 동의하게 돼요</p>
 			<div>
-				<a
-					className="line"
-					href="https://connecting-star.notion.site/4c168fc92ca54c66b2cd95cae28b1e6d?pvs=4"
-				>
+				<a className="line" href="https://habit-buddy.notion.site/4c168fc92ca54c66b2cd95cae28b1e6d">
 					서비스 이용약관
 				</a>
-				<a href="https://connecting-star.notion.site/24132eec53ad457b944742e551f522b2?pvs=4">
+				<a href="https://habit-buddy.notion.site/24132eec53ad457b944742e551f522b2">
 					개인정보 처리방침
 				</a>
 			</div>
