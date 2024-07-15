@@ -122,6 +122,7 @@ const CreateHabitPage = () => {
 					<SelectTimeModal
 						title="1차 알림시간을 선택해 주세요"
 						updateInputValue={updateInputValue}
+						runTime={habitRequest.runTime}
 					/>
 				)}
 				{modal == modalType.SELECT_TIME("SECONDALERT") && (
