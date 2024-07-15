@@ -65,7 +65,7 @@ const wrap = css`
 			border-radius: 15px;
 			gap: 0.313rem;
 			&:first-of-type {
-				background-color: ${theme.color.main_yellow};
+				background-color: #fae100;
 			}
 			&:last-of-type {
 				border: 2px solid ${theme.color.line};
