@@ -3,6 +3,7 @@ import type { AxiosError, InternalAxiosRequestConfig } from "axios";
 import { authorizedAxiosInstance, axiosInstance } from "@/api/axiosInstance";
 
 import { ACCESS_TOKEN_KEY, END_POINTS } from "@/constants/api";
+import { PATH } from "@/constants/path";
 
 interface ErrorResponseData {
 	statusCode?: number;
@@ -18,7 +19,7 @@ export const checkToken = (config: InternalAxiosRequestConfig) => {
 	const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
 
 	if (!accessToken) {
-		window.location.href = "/onboarding?step=CreateAccount";
+		window.location.href = PATH.SIGN_UP;
 
 		throw new Error("토큰이 유효하지 않습니다");
 	}

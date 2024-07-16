@@ -6,6 +6,7 @@ import { axiosInstance } from "@/api/axiosInstance";
 import { useAppDispatch } from "@/api/hooks";
 
 import { ACCESS_TOKEN_KEY } from "@/constants/api";
+import { PATH } from "@/constants/path";
 
 function KakaoLoginPage() {
 	const dispatch = useAppDispatch();
@@ -27,7 +28,7 @@ function KakaoLoginPage() {
 			navigate("/onboarding?step=create-account");
 		} catch (error) {
 			console.log(error);
-			navigate("/onboarding?step=oauth-sign-up");
+			navigate(PATH.SIGN_UP);
 		}
 	};
 

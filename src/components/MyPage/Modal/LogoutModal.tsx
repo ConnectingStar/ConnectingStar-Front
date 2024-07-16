@@ -10,6 +10,7 @@ import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
 import { ACCESS_TOKEN_KEY } from "@/constants/api";
+import { PATH } from "@/constants/path";
 
 import { theme } from "@/styles/theme";
 
@@ -23,7 +24,7 @@ const LogoutModal = () => {
 			await dispatch(logOut()).unwrap();
 			localStorage.removeItem(ACCESS_TOKEN_KEY);
 			dispatch(closeModal());
-			navigate("/onboarding?step=oauth-sign-up");
+			navigate(PATH.SIGN_UP);
 		} catch (error) {
 			console.log(error);
 		}
