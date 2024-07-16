@@ -93,10 +93,10 @@ function ChattingPage() {
 				/>
 			)}
 			{modal === modalType.SELECT_TIME("FIRSTALERT") && (
-				<SelectTimeModal title="1차 알림시간을 선택해 주세요" />
+				<SelectTimeModal title="1차 알림시간을 선택해 주세요" runTime={userData.runTime} />
 			)}
 			{modal === modalType.SELECT_TIME("SECONDALERT") && (
-				<SelectTimeModal title="2차 알림시간을 선택해 주세요" />
+				<SelectTimeModal title="2차 알림시간을 선택해 주세요" runTime={userData.runTime} />
 			)}
 			{modal === modalType.HABIT_GENERATE && (
 				<StarPrizeModal
