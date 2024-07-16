@@ -15,7 +15,7 @@ function OnboardingPage() {
 
 	useEffect(() => {
 		if (step === null || validSteps.includes(step) === false) {
-			setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.OAUTH_SIGN_UP}`);
+			setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.CREATE_ACCOUNT}`);
 		}
 	}, [searchParams, step]);
 
