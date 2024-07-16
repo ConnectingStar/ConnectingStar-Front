@@ -16,31 +16,31 @@ export default defineConfig({
 				enabled: true,
 			},
 			manifest: {
-				name: "Tars",
-				short_name: "Tars",
+				name: "Habit Buddy",
+				short_name: "Habit Buddy",
 				start_url: "/",
 				display: "standalone",
-				background_color: "#ffffff",
+				background_color: "#28388B",
 				theme_color: "#0176F9",
 				icons: [
 					{
-						src: "/icon-192.png",
+						src: "/assets/icon-192.png",
 						type: "image/png",
 						sizes: "192x192",
 					},
 					{
-						src: "/icon-192-maskable.png",
+						src: "/assets/icon-192.png",
 						type: "image/png",
 						sizes: "192x192",
 						purpose: "maskable",
 					},
 					{
-						src: "/icon-512.png",
+						src: "/assets/icon-512.png",
 						type: "image/png",
 						sizes: "512x512",
 					},
 					{
-						src: "/icon-512-maskable.png",
+						src: "/assets/icon-512.png",
 						type: "image/png",
 						sizes: "512x512",
 						purpose: "maskable",
