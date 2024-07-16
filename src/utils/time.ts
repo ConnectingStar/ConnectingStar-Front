@@ -74,14 +74,14 @@ export const earlyTimeValidation = (selectTime: CommonAlertType, runTime?: Commo
 export const lateTimeValidation = (selectTime: CommonAlertType, runTime?: CommonAlertType) => {
 	if (!runTime) return;
 
-	if (runTime.noon === "오전" && selectTime.noon === "오후") {
+	if (runTime.noon === "오후" && selectTime.noon === "오전") {
 		return false;
 	}
 
 	if (runTime.noon === selectTime.noon) {
 		if (
 			Number(runTime.hour) === Number(selectTime.hour) &&
-			Number(runTime.minute) >= Number(selectTime.minute)
+			Number(runTime.minute) <= Number(selectTime.minute)
 		) {
 			return false;
 		}
