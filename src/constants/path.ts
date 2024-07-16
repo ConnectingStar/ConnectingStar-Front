@@ -6,6 +6,8 @@ export const PATH = {
 	MY_INFO: "/myinfo",
 	STAR: "/star",
 	STAR_CARD: "/star-card",
+	SIGN_UP: "/sign-up",
+	GUIDE: "/guide",
 	ONBOARDING: "/onboarding",
 	LOGIN_KAKAO: "/oauth2/kakao",
 	REST_RECORD: (habitId: string, year: string, month: string, date: string) =>
