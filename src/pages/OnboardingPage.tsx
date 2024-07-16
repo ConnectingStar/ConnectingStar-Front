@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import CreateAccount from "@/components/Onboarding/CreateAccount/CreateAccount";
-import OauthSignUp from "@/components/Onboarding/OauthSignup/OauthSignUp";
 import Referrer from "@/components/Onboarding/Referrer/Referrer";
 
 import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
@@ -22,12 +21,6 @@ function OnboardingPage() {
 
 	return (
 		<>
-			{step === ONBOARDING_STEP.OAUTH_SIGN_UP && (
-				<OauthSignUp
-					onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.CREATE_ACCOUNT}`)}
-				/>
-			)}
-
 			{step === ONBOARDING_STEP.CREATE_ACCOUNT && (
 				<CreateAccount onNext={() => setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.REFERRER}`)} />
 			)}
