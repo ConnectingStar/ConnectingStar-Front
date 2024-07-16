@@ -32,7 +32,9 @@ function Profile() {
 			<div css={profileBoxStyle} onClick={() => navigate(PATH.MY)}>
 				<img src={StarImage} alt="user 프로필 이미지" />
 				<div>
-					<p css={identityTextStyle}>{userData.identity}</p>
+					<p css={identityTextStyle}>
+						{userData.identity === "없음" ? "약속을 만들어 주세요" : userData.identity}
+					</p>
 					<p css={nicknameTextStyle}>{userData.nickname}</p>
 				</div>
 			</div>

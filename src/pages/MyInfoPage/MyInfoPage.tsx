@@ -58,7 +58,7 @@ const MyInfoPage = () => {
 						<h3>내 정보</h3>
 						<MenuButton
 							title="대표 정체성"
-							content={userData.identity}
+							content={userData.identity === "없음" ? "약속을 만들어 주세요" : userData.identity}
 							onClick={() => dispatch(openModal(modalType.SELECT_MAIN_IDENTITY))}
 						/>
 						<MenuButton
