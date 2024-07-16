@@ -8,6 +8,7 @@ import ChartPage from "@/pages/ChartPage";
 import ChattingPage from "@/pages/ChattingPage";
 import CreateHabitPage from "@/pages/CreateHabitPage/CreateHabitPage";
 import EditHabitPage from "@/pages/EditHabitPage/EditHabitPage";
+import GuidePage from "@/pages/GuidePage/GuidePage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
 import HabitPage from "@/pages/HabitPage/HabitPage";
@@ -22,6 +23,7 @@ import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import OnboardingPage from "@/pages/OnboardingPage";
 import PracticeRecordPage from "@/pages/PracticeRecordPage";
 import RestRecordPage from "@/pages/RestRecordPage";
+import SignUpPage from "@/pages/SignUpPage/SignUpPage";
 import StarCardPage from "@/pages/StarCardPage";
 import StarDetailPage from "@/pages/StarDetailPage";
 import StarMainPage from "@/pages/StarMainPage/StarMainPage";
@@ -34,6 +36,9 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<HabitPage />} />
 					<Route path={PATH.HABIT_RECORD(":habitId")} element={<HabitRecordPage />} />
+					<Route path={PATH.HOME} element={<HabitPage />} />
+					<Route path={PATH.SIGN_UP} element={<SignUpPage />} />
+					<Route path={PATH.GUIDE} element={<GuidePage />} />
 					<Route path={PATH.STAR} element={<StarMainPage />} />
 					<Route path={PATH.STAR_CARD} element={<StarCardPage />} />
 					<Route path={`${PATH.STAR_CARD}/:id`} element={<StarDetailPage />} />
