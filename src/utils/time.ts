@@ -81,7 +81,7 @@ export const lateTimeValidation = (selectTime: CommonAlertType, runTime?: Common
 	if (runTime.noon === selectTime.noon) {
 		if (
 			Number(runTime.hour) === Number(selectTime.hour) &&
-			Number(runTime.minute) <= Number(selectTime.minute)
+			Number(runTime.minute) >= Number(selectTime.minute)
 		) {
 			return false;
 		}
