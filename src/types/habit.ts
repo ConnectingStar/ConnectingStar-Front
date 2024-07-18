@@ -25,9 +25,12 @@ export interface HabitRequestType {
 
 export interface HabitRecordRequestType {
 	runHabitId?: number;
-	achievement: number;
+	referenceDate: string;
+	runTime: string;
 	runPlace: string;
-	behaviorValue: string;
+	action: string;
+	behaviorValue: string | undefined;
+	achievement: number;
 	review: string;
 	isRest: boolean;
 }

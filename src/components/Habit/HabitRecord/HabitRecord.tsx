@@ -7,7 +7,6 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { openModal } from "@/api/modal/modalSlice";
 import { getUserInfo } from "@/api/user/userThunk";
 
 import { prizeComments } from "@/constants/homeConstants";
@@ -39,12 +38,19 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 
 	const params = useParams();
 
-	const { habitRecordRequest, updateInputValue } = useHabitRecordForm({
+	const month = Number(params.month) < 10 ? `0${params.month}` : params.month;
+	const date = Number(params.date) < 10 ? `0${params.date}` : params.date;
+
+	const { habitRecordRequest, updateInputValue, handleSubmit } = useHabitRecordForm({
 		initialData: {
 			runHabitId: habitData.runHabitId,
+			referenceDate: `${params.year}-${month}-${date}`,
+			// runTime: `${habitData.runTime.noon} ${habitData.runTime.hour}시 ${habitData.runTime.minute}분에`,
+			runTime: "18:24",
+			runPlace: `${habitData.place}에서`,
+			action: `${habitData.behavior}을(를)`,
+			behaviorValue: undefined,
 			achievement: -1,
-			runPlace: habitData.place,
-			behaviorValue: "",
 			review: "",
 			isRest: false,
 		},
@@ -86,18 +92,25 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 					<li>
 						<input
 							placeholder={`${habitData.runTime.noon} ${habitData.runTime.hour}시 ${habitData.runTime.minute}분에`}
+							// onChange={(e) => updateInputValue("runTime", e.target.value)}
 						/>
 					</li>
 					<li>
-						<input placeholder={`${habitData.place}에서`} />
-					</li>
-					<li>
-						<input placeholder={`${habitData.behavior}을(를)`} />
+						<input
+							placeholder={`${habitData.place}에서`}
+							onChange={(e) => updateInputValue("runPlace", e.target.value)}
+						/>
 					</li>
 					<li>
 						<input
-							value={habitRecordRequest.behaviorValue}
-							onChange={(e) => updateInputValue("behaviorValue", e.target.value)}
+							placeholder={`${habitData.behavior}을(를)`}
+							onChange={(e) => updateInputValue("action", e.target.value)}
+						/>
+					</li>
+					<li>
+						<input
+							value={habitRecordRequest.behaviorValue || ""}
+							onChange={(e) => updateInputValue("behaviorValue", Number(e.target.value))}
 						/>
 						<span>{habitData.behaviorUnit}</span>
 					</li>
@@ -134,11 +147,7 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 				<span>{habitRecordRequest.review.length}/1,000자</span>
 			</div>
 
-			<FooterBtn
-				handleBtnClick={() => dispatch(openModal(modalType.STAR_PRIZE))}
-				text="기록하여 별 얻기"
-				isTransparent
-			/>
+			<FooterBtn handleBtnClick={handleSubmit} text="기록하여 별 얻기" isTransparent />
 
 			{modal === modalType.STAR_PRIZE && (
 				<StarPrizeModal
