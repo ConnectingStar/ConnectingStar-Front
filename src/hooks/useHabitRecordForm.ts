@@ -34,7 +34,7 @@ export const useHabitRecordForm = ({ initialData }: HabitRecordDataType) => {
 	const handleSubmit = async () => {
 		try {
 			await dispatch(createHabitRecord(habitRecordRequest)).unwrap();
-			dispatch(openModal(modalType.STAR_PRIZE));
+			dispatch(openModal(modalType.HABIT_RECORD_ACHIEVE));
 		} catch (error) {
 			console.log(error);
 		}
