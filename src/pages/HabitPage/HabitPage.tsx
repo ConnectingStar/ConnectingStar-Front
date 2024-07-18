@@ -10,7 +10,7 @@ import HabitGuideBanner from "@/components/Habit/HabitGuideBanner/HabitGuideBann
 import HabitItem from "@/components/Habit/HabitItem/HabitItem";
 import Profile from "@/components/Habit/Profile/Profile";
 
-import { getProgressHabitList, getHabitHistoryList } from "@/api/habit/habitThunk";
+import { getProgressHabitList, getHabitHistoryList, getHabitRecord } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
 import { WEEK, TODAY } from "@/constants/calendar";
@@ -28,12 +28,15 @@ import type { DateInfo } from "@/types/homeTypes";
 const HabitPage = () => {
 	const dispatch = useAppDispatch();
 
-	const { progressHabitList, habitHistoryList } = useAppSelector((state) => state.habit);
+	const { progressHabitList, habitHistoryList, habitRecord } = useAppSelector(
+		(state) => state.habit,
+	);
 
 	const navigate = useNavigate();
 
 	console.log(progressHabitList);
 	console.log(habitHistoryList);
+	console.log(habitRecord);
 
 	const { year, month, date, day } = TODAY;
 
@@ -53,7 +56,8 @@ const HabitPage = () => {
 
 	useEffect(() => {
 		dispatch(getProgressHabitList());
-		dispatch(getHabitHistoryList({ runHabitId: 38, increase: true, isRest: false }));
+		dispatch(getHabitHistoryList({ runHabitId: 110, increase: true, isRest: false }));
+		dispatch(getHabitRecord({ runHabitId: 110, referenceDate: "2024-07-18" }));
 	}, []);
 
 	return (

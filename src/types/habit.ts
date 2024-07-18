@@ -11,6 +11,11 @@ export interface HabitHistoryListRequest {
 	isRest: boolean;
 }
 
+export interface GetHabitRecordRequestType {
+	runHabitId: number;
+	referenceDate: string;
+}
+
 export interface HabitRequestType {
 	runHabitId?: number;
 	identity: string;
@@ -42,6 +47,7 @@ export interface HabitInitialStateType {
 	progressHabitList: HabitType[];
 	habitHistoryList: [];
 	habit: HabitType | null;
+	habitRecord: HabitRecordRequestType | null;
 }
 
 export interface HabitType {

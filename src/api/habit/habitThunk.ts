@@ -10,7 +10,23 @@ import type {
 	HabitDeleteRequestType,
 	HabitRecordRequestType,
 	HabitRestRecordRequestType,
+	GetHabitRecordRequestType,
 } from "@/types/habit";
+
+export const getHabitRecord = createAsyncThunk(
+	"habit/getHabitRecord",
+	async ({ runHabitId, referenceDate }: GetHabitRecordRequestType, thunkOptions) => {
+		try {
+			const { data } = await authorizedAxiosInstance.get(
+				END_POINTS.HABIT_HISTORY_ONE(runHabitId, referenceDate),
+			);
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
 
 export const createHabitRestRecord = createAsyncThunk(
 	"habit/createHabitRestRecord",
