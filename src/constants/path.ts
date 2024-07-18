@@ -7,7 +7,8 @@ export const PATH = {
 	STAR_CARD: "/star-card",
 	ONBOARDING: "/onboarding",
 	LOGIN_KAKAO: "/oauth2/kakao",
-	REST_RECORD: "/rest-record",
+	REST_RECORD: (habitId: string, year: string, month: string, date: string) =>
+		`/rest-record/${habitId}/${year}/${month}/${date}`,
 	PRACTICE_RECORD: (habitId: string, year: string, month: string, date: string) =>
 		`/practice-record/${habitId}/${year}/${month}/${date}`,
 	EDIT_HABIT: (habitId?: string) => `/habit-edit/${habitId}`,

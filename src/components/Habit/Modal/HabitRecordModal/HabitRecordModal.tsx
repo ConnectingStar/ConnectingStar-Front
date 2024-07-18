@@ -49,7 +49,14 @@ const HabitRecordModal = ({ habitData, year, month, date }: HabitRecordModalProp
 					isPositionStatic
 					isTransparent
 					handleLeftBtnClick={() => {
-						navigate(PATH.REST_RECORD);
+						navigate(
+							PATH.REST_RECORD(
+								String(habitData.runHabitId),
+								String(year),
+								String(month),
+								String(date),
+							),
+						);
 						dispatch(closeModal());
 					}}
 					handleBtnClick={() => {
