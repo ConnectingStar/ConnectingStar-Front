@@ -9,7 +9,6 @@ import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeMod
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { getUserInfo } from "@/api/user/userThunk";
 
-import { prizeComments } from "@/constants/homeConstants";
 import { modalType } from "@/constants/modalConstants";
 import { habitIconData } from "@/constants/mypage";
 
@@ -56,17 +55,23 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 		},
 	});
 
-	console.log(habitRecordRequest);
-
-	// 임시로 랜덤요소를 통해 멘트에 변화를 주고 있음. 나중에 api 추가되면 수정할 예정
-	const Random = Math.floor(Math.random() * 10) % prizeComments.length;
-	const { blueText, yellowText, comment } = prizeComments[Random];
-
 	const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
 
 	const handleIconClick = (id: number) => {
 		id !== selectedIcon ? setSelectedIcon(id) : setSelectedIcon(null);
 		updateInputValue("achievement", id);
+	};
+
+	const handleAchieveText = (runValue?: number) => {
+		if (!runValue) return;
+
+		if (runValue < Number(habitData.behaviorValue)) {
+			return "less";
+		} else if (runValue === Number(habitData.behaviorValue)) {
+			return "enough";
+		} else {
+			return "many";
+		}
 	};
 
 	useEffect(() => {
@@ -152,9 +157,8 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 			{modal === modalType.STAR_PRIZE && (
 				<StarPrizeModal
 					isHabitStart
-					blueText={blueText}
-					yellowText={yellowText}
-					comment={comment}
+					achiveStatus={handleAchieveText(habitRecordRequest.behaviorValue)}
+					identity={habitData.identity}
 				/>
 			)}
 		</main>

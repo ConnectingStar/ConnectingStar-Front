@@ -11,6 +11,7 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import { STAR_PRAIZE_TEXT_DATA } from "@/constants/homeConstants";
 import { PATH } from "@/constants/path";
 
 import {
@@ -21,45 +22,56 @@ import {
 
 interface StarPrizeModalProps {
 	isHabitStart?: boolean;
-	blueText: string;
-	yellowText?: string;
-	comment: string;
+	achiveStatus?: string;
+	identity?: string;
 }
 
-function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPrizeModalProps) {
+function StarPrizeModal({ isHabitStart, achiveStatus, identity }: StarPrizeModalProps) {
 	const navigate = useNavigate();
 
 	const dispatch = useAppDispatch();
 
 	return (
 		<Modal isBackdropClose={false}>
-			<div css={containerStyle}>
-				<span css={imageWrapperStyle}>
-					<Lottie animationData={isHabitStart ? StarMedalAnimation : ClapAnimation} loop={false} />
-				</span>
-				<div css={prizeCommentStyle}>
-					<div>
-						<span>{blueText}</span>
-						{isHabitStart && <span>{yellowText}</span>}
-					</div>
-					<div>
-						<span>{comment}</span>
-					</div>
-				</div>
-				<FooterBtn
-					leftText={isHabitStart ? "홈으로" : "홈 탐색하기"}
-					text={isHabitStart ? "별자리 채우기" : "별자리로 가기"}
-					handleLeftBtnClick={() => {
-						navigate(PATH.HOME);
-						dispatch(closeModal());
-					}}
-					handleBtnClick={() => {
-						navigate(PATH.STAR);
-						dispatch(closeModal());
-					}}
-					isTransparent
-				/>
-			</div>
+			{STAR_PRAIZE_TEXT_DATA.map(
+				(data) =>
+					data.id === achiveStatus && (
+						<div css={containerStyle} key={data.id}>
+							<span css={imageWrapperStyle}>
+								<Lottie
+									animationData={isHabitStart ? StarMedalAnimation : ClapAnimation}
+									loop={false}
+								/>
+							</span>
+							<div css={prizeCommentStyle}>
+								<div>
+									<span>{data.blueText}</span>
+									{isHabitStart && <span>{data.yellowText}</span>}
+								</div>
+								<div>
+									<span>
+										{data.id === "enough" && "정체성 "}
+										{identity}
+										{data.comment}
+									</span>
+								</div>
+							</div>
+							<FooterBtn
+								leftText={isHabitStart ? "홈으로" : "홈 탐색하기"}
+								text={isHabitStart ? "별자리 채우기" : "별자리로 가기"}
+								handleLeftBtnClick={() => {
+									navigate(PATH.HOME);
+									dispatch(closeModal());
+								}}
+								handleBtnClick={() => {
+									navigate(PATH.STAR);
+									dispatch(closeModal());
+								}}
+								isTransparent
+							/>
+						</div>
+					),
+			)}
 		</Modal>
 	);
 }
