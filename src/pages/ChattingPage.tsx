@@ -9,7 +9,7 @@ import Header from "@/components/common/Header/Header";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
-import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
+import SuccessGuideModal from "@/components/common/Modal/CommonModal/SuccessGuideModal/SuccessGuideModal";
 
 import { useAppSelector } from "@/api/hooks";
 
@@ -98,10 +98,10 @@ function ChattingPage() {
 			{modal === modalType.SELECT_TIME("SECONDALERT") && (
 				<SelectTimeModal title="2차 알림시간을 선택해 주세요" runTime={userData.runTime} />
 			)}
-			{modal === modalType.HABIT_GENERATE && (
-				<StarPrizeModal
-					blueText="시작이 반!"
-					comment={`환영의 의미로 7개의 별을 준비했어요.\n별을 별자리에 넣어보러 갈까요?`}
+			{modal === modalType.SUCCESS_GUIDE && (
+				<SuccessGuideModal
+					title="시작이 반!"
+					content={`환영의 의미로 7개의 별을 준비했어요.\n별을 별자리에 넣어보러 갈까요?`}
 				/>
 			)}
 		</>

@@ -8,6 +8,7 @@ import Header from "@/components/common/Header/Header";
 import LocationModal from "@/components/common/Modal/CommonModal/LocationModal/LocationModal";
 import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal/SelectTagModal";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
+import SuccessGuideModal from "@/components/common/Modal/CommonModal/SuccessGuideModal/SuccessGuideModal";
 import AlarmInput from "@/components/Habit/CreateHabitForm/AlarmInput";
 import BehaviorInput from "@/components/Habit/CreateHabitForm/BehaviorInput";
 import BehaviorValueInput from "@/components/Habit/CreateHabitForm/BehaviorValueInput";
@@ -15,7 +16,6 @@ import IdentityInput from "@/components/Habit/CreateHabitForm/IdentityInput";
 import LocationInput from "@/components/Habit/CreateHabitForm/LocationInput";
 import TimeInput from "@/components/Habit/CreateHabitForm/TimeInput";
 import HabitTip from "@/components/Habit/HabitTip/HabitTip";
-import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -148,10 +148,10 @@ const CreateHabitPage = () => {
 						updateInputValue={updateInputValue}
 					/>
 				)}
-				{modal === modalType.HABIT_GENERATE && (
-					<StarPrizeModal
-						blueText="시작이 반!"
-						comment={`더욱 ${habitRequest.identity} 사람이 되기 위한 한 걸음\n제가 ${userData.nickname}님을 응원할게요 😊`}
+				{modal === modalType.SUCCESS_GUIDE && (
+					<SuccessGuideModal
+						title="시작이 반!"
+						content={`더욱 ${habitRequest.identity} 사람이 되기 위한 한 걸음\n제가 ${userData.nickname}님을 응원할게요 😊`}
 					/>
 				)}
 			</main>

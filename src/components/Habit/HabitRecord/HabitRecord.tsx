@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import InfoIcon from "@/assets/icon/ic-blue-exclamation-mark.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
-import StarPrizeModal from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal";
+import HabitRecordAchieveModal from "@/components/Habit/Modal/HabitRecordAchieveModal/HabitRecordAchieveModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { getUserInfo } from "@/api/user/userThunk";
@@ -154,9 +154,8 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 
 			<FooterBtn handleBtnClick={handleSubmit} text="기록하여 별 얻기" isTransparent />
 
-			{modal === modalType.STAR_PRIZE && (
-				<StarPrizeModal
-					isHabitStart
+			{modal === modalType.HABIT_RECORD_ACHIEVE && (
+				<HabitRecordAchieveModal
 					achiveStatus={handleAchieveText(habitRecordRequest.behaviorValue)}
 					identity={habitData.identity}
 				/>

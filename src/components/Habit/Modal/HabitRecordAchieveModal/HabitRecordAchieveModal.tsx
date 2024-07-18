@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 import Lottie from "lottie-react";
 
-import ClapAnimation from "@/assets/lottie/lottie-clap-animation.json";
 import StarMedalAnimation from "@/assets/lottie/lottie-star-medal-animation.json";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
@@ -18,18 +17,17 @@ import {
 	containerStyle,
 	imageWrapperStyle,
 	prizeCommentStyle,
-} from "@/components/Habit/Modal/StarPrizeModal/StarPrizeModal.style";
+} from "@/components/Habit/Modal/HabitRecordAchieveModal/HabitRecordAchieveModal.style";
 
-interface StarPrizeModalProps {
-	isHabitStart?: boolean;
+interface HabitRecordAchieveModalProps {
 	achiveStatus?: string;
 	identity?: string;
 }
 
-function StarPrizeModal({ isHabitStart, achiveStatus, identity }: StarPrizeModalProps) {
-	const navigate = useNavigate();
-
+const HabitRecordAchieveModal = ({ achiveStatus, identity }: HabitRecordAchieveModalProps) => {
 	const dispatch = useAppDispatch();
+
+	const navigate = useNavigate();
 
 	return (
 		<Modal isBackdropClose={false}>
@@ -38,15 +36,12 @@ function StarPrizeModal({ isHabitStart, achiveStatus, identity }: StarPrizeModal
 					data.id === achiveStatus && (
 						<div css={containerStyle} key={data.id}>
 							<span css={imageWrapperStyle}>
-								<Lottie
-									animationData={isHabitStart ? StarMedalAnimation : ClapAnimation}
-									loop={false}
-								/>
+								<Lottie animationData={StarMedalAnimation} loop={false} />
 							</span>
 							<div css={prizeCommentStyle}>
 								<div>
 									<span>{data.blueText}</span>
-									{isHabitStart && <span>{data.yellowText}</span>}
+									<span>{data.yellowText}</span>
 								</div>
 								<div>
 									<span>
@@ -57,8 +52,8 @@ function StarPrizeModal({ isHabitStart, achiveStatus, identity }: StarPrizeModal
 								</div>
 							</div>
 							<FooterBtn
-								leftText={isHabitStart ? "홈으로" : "홈 탐색하기"}
-								text={isHabitStart ? "별자리 채우기" : "별자리로 가기"}
+								leftText="홈으로"
+								text="별자리 채우기"
 								handleLeftBtnClick={() => {
 									navigate(PATH.HOME);
 									dispatch(closeModal());
@@ -74,6 +69,6 @@ function StarPrizeModal({ isHabitStart, achiveStatus, identity }: StarPrizeModal
 			)}
 		</Modal>
 	);
-}
+};
 
-export default StarPrizeModal;
+export default HabitRecordAchieveModal;

@@ -67,7 +67,7 @@ export const useHabitForm = ({ habitId, initialData }: UseHabitFormProps) => {
 		try {
 			if (!habitId) {
 				await dispatch(createHabit(habitRequest)).unwrap();
-				dispatch(openModal(modalType.HABIT_GENERATE));
+				dispatch(openModal(modalType.SUCCESS_GUIDE));
 			} else {
 				await dispatch(editHabit(habitRequest)).unwrap();
 				navigate(PATH.HOME);
