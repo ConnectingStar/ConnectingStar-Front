@@ -90,6 +90,7 @@ function SelectTagModal({
 					<input
 						type="text"
 						placeholder="직접입력"
+						maxLength={10}
 						className={!selectedTag && inputText !== "" ? "selected" : ""}
 						onFocus={handleInputOnFocus}
 						onChange={(e) => setInputText(e.target.value)}
