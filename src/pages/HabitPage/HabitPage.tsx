@@ -71,6 +71,7 @@ const HabitPage = () => {
 							key={habitData.runHabitId}
 							habitData={habitData}
 							habitState="progress"
+							year={selectedDate.year}
 							month={selectedDate.month}
 							date={selectedDate.date}
 						/>

@@ -18,11 +18,12 @@ import {
 
 interface HabitRecordModalProps {
 	habitData: HabitType;
+	year: number;
 	month: number;
 	date: number;
 }
 
-const HabitRecordModal = ({ habitData, month, date }: HabitRecordModalProps) => {
+const HabitRecordModal = ({ habitData, year, month, date }: HabitRecordModalProps) => {
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
@@ -53,7 +54,12 @@ const HabitRecordModal = ({ habitData, month, date }: HabitRecordModalProps) => 
 					}}
 					handleBtnClick={() => {
 						navigate(
-							PATH.PRACTICE_RECORD(String(habitData.runHabitId), String(month), String(date)),
+							PATH.PRACTICE_RECORD(
+								String(habitData.runHabitId),
+								String(year),
+								String(month),
+								String(date),
+							),
 						);
 						dispatch(closeModal());
 					}}

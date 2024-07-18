@@ -27,12 +27,7 @@ const Modal = ({ children, isBottomSheet, isFadeIn, isBackdropClose = true }: mo
 
 	return (
 		<Portal elementId="modal">
-			<div
-				css={modalBackdropStyle}
-				onClick={() => {
-					isBackdropClose && dispatch(closeModal());
-				}}
-			/>
+			<div css={modalBackdropStyle} onClick={() => isBackdropClose && dispatch(closeModal())} />
 			<div css={getModalLayoutStyle(isBottomSheet, isFadeIn)}>{children}</div>
 		</Portal>
 	);

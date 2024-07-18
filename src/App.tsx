@@ -50,7 +50,7 @@ const App = () => {
 					<Route path={PATH.ONBOARDING} element={<OnboardingPage />} />
 					<Route path={PATH.LOGIN_KAKAO} element={<KakaoLoginPage />} />
 					<Route
-						path={PATH.PRACTICE_RECORD(":habitId", ":month", ":date")}
+						path={PATH.PRACTICE_RECORD(":habitId", ":year", ":month", ":date")}
 						element={<PracticeRecordPage />}
 					/>
 					<Route path={PATH.CREATE_HABIT} element={<CreateHabitPage />} />

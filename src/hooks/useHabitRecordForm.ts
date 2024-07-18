@@ -1,5 +1,11 @@
 import { useCallback, useState } from "react";
 
+import { createHabitRecord } from "@/api/habit/habitThunk";
+import { useAppDispatch } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
+
+import { modalType } from "@/constants/modalConstants";
+
 import type { HabitRecordRequestType } from "@/types/habit";
 
 interface HabitRecordDataType {
@@ -7,6 +13,8 @@ interface HabitRecordDataType {
 }
 
 export const useHabitRecordForm = ({ initialData }: HabitRecordDataType) => {
+	const dispatch = useAppDispatch();
+
 	const [habitRecordRequest, setHabitRecordRequest] = useState(initialData);
 
 	const updateInputValue = useCallback(
@@ -23,5 +31,14 @@ export const useHabitRecordForm = ({ initialData }: HabitRecordDataType) => {
 		[],
 	);
 
-	return { habitRecordRequest, updateInputValue };
+	const handleSubmit = async () => {
+		try {
+			await dispatch(createHabitRecord(habitRecordRequest)).unwrap();
+			dispatch(openModal(modalType.STAR_PRIZE));
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	return { habitRecordRequest, updateInputValue, handleSubmit };
 };

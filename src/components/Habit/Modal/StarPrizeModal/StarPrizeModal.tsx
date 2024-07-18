@@ -11,6 +11,8 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import { PATH } from "@/constants/path";
+
 import {
 	containerStyle,
 	imageWrapperStyle,
@@ -31,7 +33,7 @@ function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPri
 
 	return (
 		<Modal isBackdropClose={false}>
-			<div css={containerStyle} onClick={() => dispatch(closeModal())}>
+			<div css={containerStyle}>
 				<span css={imageWrapperStyle}>
 					<Lottie animationData={isHabitStart ? StarMedalAnimation : ClapAnimation} loop={false} />
 				</span>
@@ -48,11 +50,11 @@ function StarPrizeModal({ isHabitStart, blueText, comment, yellowText }: StarPri
 					leftText={isHabitStart ? "홈으로" : "홈 탐색하기"}
 					text={isHabitStart ? "별자리 채우기" : "별자리로 가기"}
 					handleLeftBtnClick={() => {
-						navigate("/");
+						navigate(PATH.HOME);
 						dispatch(closeModal());
 					}}
 					handleBtnClick={() => {
-						navigate("/star");
+						navigate(PATH.STAR);
 						dispatch(closeModal());
 					}}
 					isTransparent
