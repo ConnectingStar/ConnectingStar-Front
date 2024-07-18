@@ -4,6 +4,7 @@ import {
 	getHabit,
 	getHabitHistoryList,
 	getProgressHabitList,
+	getHabitRecord,
 	editHabit,
 } from "@/api/habit//habitThunk";
 
@@ -13,6 +14,7 @@ const initialState: HabitInitialStateType = {
 	progressHabitList: [],
 	habitHistoryList: [],
 	habit: null,
+	habitRecord: null,
 };
 
 const habitSlice = createSlice({
@@ -32,6 +34,9 @@ const habitSlice = createSlice({
 			})
 			.addCase(editHabit.fulfilled, (state, action) => {
 				state.habit = { ...action.meta.arg, runHabitId: action.meta.arg.runHabitId };
+			})
+			.addCase(getHabitRecord.fulfilled, (state, action) => {
+				state.habitRecord = action.payload.data;
 			});
 	},
 });
