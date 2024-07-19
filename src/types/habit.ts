@@ -32,7 +32,6 @@ export interface HabitRecordRequestType {
 	behaviorValue: string | undefined;
 	achievement: number;
 	review: string;
-	isRest: boolean;
 }
 
 export interface HabitInitialStateType {
