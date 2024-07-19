@@ -4,9 +4,12 @@ import { useParams } from "react-router-dom";
 import InfoIcon from "@/assets/icon/ic-blue-exclamation-mark.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
+import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import HabitRecordAchieveModal from "@/components/Habit/Modal/HabitRecordAchieveModal/HabitRecordAchieveModal";
+import { CommonAlertType } from "@/types/common";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
 import { getUserInfo } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
@@ -14,11 +17,14 @@ import { habitIconData } from "@/constants/mypage";
 
 import { useHabitRecordForm } from "@/hooks/useHabitRecordForm";
 
+import { convertTimeString } from "@/utils/time";
+
 import type { HabitType } from "@/types/habit";
 
 import {
 	layoutStyle,
 	contentBoxStyle,
+	contentInputStyle,
 	contentTitleBoxStyle,
 	iconStyle,
 	inputBoxStyle,
@@ -40,12 +46,14 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 	const month = Number(params.month) < 10 ? `0${params.month}` : params.month;
 	const date = Number(params.date) < 10 ? `0${params.date}` : params.date;
 
+	const [prevRunTime, setPrevRunTime] = useState(habitData.runTime);
+	const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
+
 	const { habitRecordRequest, updateInputValue, handleSubmit } = useHabitRecordForm({
 		initialData: {
 			runHabitId: habitData.runHabitId,
 			referenceDate: `${params.year}-${month}-${date}`,
-			// runTime: `${habitData.runTime.noon} ${habitData.runTime.hour}시 ${habitData.runTime.minute}분에`,
-			runTime: "18:24",
+			runTime: convertTimeString(prevRunTime.noon, prevRunTime.hour, prevRunTime.minute),
 			runPlace: `${habitData.place}에서`,
 			action: `${habitData.behavior}을(를)`,
 			behaviorValue: undefined,
@@ -54,7 +62,10 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 		},
 	});
 
-	const [selectedIcon, setSelectedIcon] = useState<number | null>(null);
+	const handleChangeRunTime = (runTime: CommonAlertType) => {
+		setPrevRunTime(runTime);
+		updateInputValue("runTime", convertTimeString(runTime.noon, runTime.hour, runTime.minute));
+	};
 
 	const handleIconClick = (id: number) => {
 		id !== selectedIcon ? setSelectedIcon(id) : setSelectedIcon(null);
@@ -94,25 +105,30 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 
 				<ul>
 					<li>
-						<input
-							placeholder={`${habitData.runTime.noon} ${habitData.runTime.hour}시 ${habitData.runTime.minute}분에`}
-							// onChange={(e) => updateInputValue("runTime", e.target.value)}
-						/>
+						<div
+							css={contentInputStyle(prevRunTime !== habitData.runTime)}
+							onClick={() => dispatch(openModal(modalType.SELECT_TIME("RUNTIME")))}
+						>
+							{`${prevRunTime.noon} ${prevRunTime.hour}시 ${prevRunTime.minute}분에`}
+						</div>
 					</li>
 					<li>
 						<input
+							css={contentInputStyle()}
 							placeholder={`${habitData.place}에서`}
 							onChange={(e) => updateInputValue("runPlace", e.target.value)}
 						/>
 					</li>
 					<li>
 						<input
+							css={contentInputStyle()}
 							placeholder={`${habitData.behavior}을(를)`}
 							onChange={(e) => updateInputValue("action", e.target.value)}
 						/>
 					</li>
 					<li>
 						<input
+							css={contentInputStyle()}
 							value={habitRecordRequest.behaviorValue || ""}
 							onChange={(e) => updateInputValue("behaviorValue", e.target.value)}
 						/>
@@ -158,6 +174,10 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 					achiveStatus={handleAchieveText(habitRecordRequest.behaviorValue)}
 					identity={habitData.identity}
 				/>
+			)}
+
+			{modal === modalType.SELECT_TIME("RUNTIME") && (
+				<SelectTimeModal title="시간을 선택해 주세요" handleChangeRunTime={handleChangeRunTime} />
 			)}
 		</main>
 	);

@@ -32,6 +32,7 @@ interface selectTimeModalType {
 		key: Key,
 		value: HabitRequestType[Key],
 	) => void;
+	handleChangeRunTime?: (runTime: CommonAlertType) => void;
 }
 
 function SelectTimeModal({
@@ -40,6 +41,7 @@ function SelectTimeModal({
 	runTime,
 	addprogress,
 	updateInputValue,
+	handleChangeRunTime,
 }: selectTimeModalType) {
 	const dispatch = useAppDispatch();
 
@@ -70,6 +72,7 @@ function SelectTimeModal({
 			);
 
 			updateInputValue && updateInputValue("runTime", addZeroTime);
+			handleChangeRunTime && handleChangeRunTime(addZeroTime);
 		}
 
 		if (title === "1차 알림시간을 선택해 주세요") {
