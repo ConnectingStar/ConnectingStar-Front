@@ -196,7 +196,7 @@ export function createChatData(userData: onboardingUserDataType) {
 			],
 			bottomButton: ["나도 잘 부탁해"],
 			userMessage: "",
-			modalType: [modalType.HABIT_GENERATE],
+			modalType: [modalType.SUCCESS_GUIDE],
 		},
 	];
 }

@@ -51,7 +51,6 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 			behaviorValue: undefined,
 			achievement: -1,
 			review: "",
-			isRest: false,
 		},
 	});
 
@@ -62,12 +61,12 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 		updateInputValue("achievement", id);
 	};
 
-	const handleAchieveText = (runValue?: number) => {
+	const handleAchieveText = (runValue?: string) => {
 		if (!runValue) return;
 
-		if (runValue < Number(habitData.behaviorValue)) {
+		if (Number(runValue) < Number(habitData.behaviorValue)) {
 			return "less";
-		} else if (runValue === Number(habitData.behaviorValue)) {
+		} else if (Number(runValue) === Number(habitData.behaviorValue)) {
 			return "enough";
 		} else {
 			return "many";
@@ -115,7 +114,7 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 					<li>
 						<input
 							value={habitRecordRequest.behaviorValue || ""}
-							onChange={(e) => updateInputValue("behaviorValue", Number(e.target.value))}
+							onChange={(e) => updateInputValue("behaviorValue", e.target.value)}
 						/>
 						<span>{habitData.behaviorUnit}</span>
 					</li>
