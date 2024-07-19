@@ -130,6 +130,7 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 						<input
 							css={contentInputStyle()}
 							value={habitRecordRequest.behaviorValue || ""}
+							maxLength={3}
 							onChange={(e) => updateInputValue("behaviorValue", e.target.value)}
 						/>
 						<span>{habitData.behaviorUnit}</span>
@@ -167,7 +168,15 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 				<span>{habitRecordRequest.review.length}/1,000자</span>
 			</div>
 
-			<FooterBtn handleBtnClick={handleSubmit} text="기록하여 별 얻기" isTransparent />
+			<FooterBtn
+				handleBtnClick={handleSubmit}
+				text="기록하여 별 얻기"
+				isTransparent
+				isPositionStatic
+				disabled={
+					habitRecordRequest.behaviorValue === undefined || habitRecordRequest.achievement === -1
+				}
+			/>
 
 			{modal === modalType.HABIT_RECORD_ACHIEVE && (
 				<HabitRecordAchieveModal
