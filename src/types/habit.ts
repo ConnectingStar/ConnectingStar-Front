@@ -43,8 +43,13 @@ export interface HabitRecordRequestType extends HabitRestRecordRequestType {
 	review: string;
 }
 
+interface ProgressHabitType extends HabitType {
+	habitStatus: number;
+}
+
 export interface HabitInitialStateType {
 	progressHabitList: HabitType[];
+	progressHabit: ProgressHabitType[];
 	habitHistoryList: [];
 	habit: HabitType | null;
 	habitRecord: HabitRecordRequestType | null;

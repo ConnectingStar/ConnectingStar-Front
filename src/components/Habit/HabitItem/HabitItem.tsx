@@ -25,6 +25,8 @@ interface HabitItemProps {
 const HabitItem = ({ habitData, habitState, year, month, date }: HabitItemProps) => {
 	const dispatch = useAppDispatch();
 
+	console.log(habitData);
+
 	const { modal } = useAppSelector((state) => state.modal);
 
 	return (
