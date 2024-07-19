@@ -23,9 +23,13 @@ export interface HabitRequestType {
 	secondAlert: { noon: string; hour: string; minute: string };
 }
 
-export interface HabitRecordRequestType {
+export interface HabitRestRecordRequestType {
 	runHabitId?: number;
 	referenceDate: string;
+	review: string;
+}
+
+export interface HabitRecordRequestType extends HabitRestRecordRequestType {
 	runTime: string;
 	runPlace: string;
 	action: string;
