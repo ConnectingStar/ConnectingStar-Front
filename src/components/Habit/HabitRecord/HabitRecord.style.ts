@@ -13,21 +13,6 @@ export const layoutStyle = css`
 	${theme.font.body_a};
 	color: ${theme.color.font_black};
 
-	input {
-		border: none;
-		white-space: nowrap;
-		height: 3.4375rem;
-		background-color: ${theme.color.bg};
-		border-radius: 15px;
-		white-space: pre-wrap;
-		padding: 0.9375rem;
-		resize: none;
-	}
-
-	input::placeholder {
-		${theme.color.button_deactivated}
-	}
-
 	& > h1 {
 		${theme.font.head_a};
 	}
@@ -70,15 +55,6 @@ export const contentBoxStyle = css`
 		flex-direction: column;
 		gap: 6px;
 
-		& > li > input {
-			width: 100%;
-			outline: none;
-
-			&::placeholder {
-				color: ${theme.color.button_deactivated};
-			}
-		}
-
 		& > li:last-of-type {
 			input {
 				width: 4.875rem;
@@ -91,6 +67,24 @@ export const contentBoxStyle = css`
 				color: ${theme.color.main_blue};
 			}
 		}
+	}
+`;
+
+export const contentInputStyle = (isChanged?: boolean) => css`
+	border: none;
+	white-space: nowrap;
+	height: 3.4375rem;
+	background-color: ${theme.color.bg};
+	border-radius: 15px;
+	white-space: pre-wrap;
+	padding: 0.9375rem;
+	resize: none;
+	width: 100%;
+	outline: none;
+	color: ${isChanged ? theme.color.black : theme.color.button_deactivated};
+
+	&::placeholder {
+		${theme.color.button_deactivated}
 	}
 `;
 

@@ -93,3 +93,11 @@ export const lateTimeValidation = (selectTime: CommonAlertType, runTime?: Common
 
 	return true;
 };
+
+export const convertTimeString = (noon: string, hour: string, minute: string) => {
+	if (noon === "오전") {
+		return `${hour}:${minute}`;
+	} else {
+		return `${Number(hour) + 12}:${minute}`;
+	}
+};
