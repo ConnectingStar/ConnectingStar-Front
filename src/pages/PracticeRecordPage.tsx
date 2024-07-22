@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Header from "@/components/common/Header/Header";
-import HabitRecord from "@/components/Habit/HabitRecord/HabitRecord";
+import PracticeRecord from "@/components/Habit/PracticeRecord/PracticeRecord";
 
 import { getHabit } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
@@ -34,7 +34,7 @@ const PracticeRecordPage = () => {
 					관리
 				</Header.TextButton>
 			</Header>
-			<HabitRecord habitData={habit} />
+			<PracticeRecord habitData={habit} />
 		</>
 	);
 };

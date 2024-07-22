@@ -29,13 +29,13 @@ import {
 	iconStyle,
 	inputBoxStyle,
 	identityBoxStyle,
-} from "@/components/Habit/HabitRecord/HabitRecord.style";
+} from "@/components/Habit/PracticeRecord/PracticeRecord.style";
 
-interface HabitRecordProps {
+interface PracticeRecordProps {
 	habitData: HabitType;
 }
 
-function HabitRecord({ habitData }: HabitRecordProps) {
+const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 	const dispatch = useAppDispatch();
 
 	const { userData } = useAppSelector((state) => state.user);
@@ -188,6 +188,6 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 			)}
 		</main>
 	);
-}
+};
 
-export default HabitRecord;
+export default PracticeRecord;
