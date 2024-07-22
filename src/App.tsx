@@ -11,7 +11,7 @@ import EditHabitPage from "@/pages/EditHabitPage/EditHabitPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
 import HabitPage from "@/pages/HabitPage/HabitPage";
-import HabitRecordPage from "@/pages/HabitRecordPage";
+import HabitRecordPage from "@/pages/HabitRecordPage/HabitRecordPage";
 import KakaoLoginPage from "@/pages/KakaoLoginPage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage/MyInfoPage";
