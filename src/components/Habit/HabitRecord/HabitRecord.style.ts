@@ -84,7 +84,7 @@ export const contentInputStyle = (isChanged?: boolean) => css`
 	color: ${isChanged === false && theme.color.button_deactivated};
 
 	&::placeholder {
-		${theme.color.button_deactivated}
+		color: ${theme.color.button_deactivated};
 	}
 `;
 
@@ -102,6 +102,7 @@ export const iconStyle = css`
 		margin-bottom: 0.75rem;
 
 		&:after {
+			margin-left: 2px;
 			content: "*";
 			color: ${theme.color.main_blue};
 		}

@@ -180,7 +180,7 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 
 			{modal === modalType.HABIT_RECORD_ACHIEVE && (
 				<HabitRecordAchieveModal
-					achiveStatus={handleAchieveText(habitRecordRequest.behaviorValue)}
+					achieveStatus={handleAchieveText(habitRecordRequest.behaviorValue)}
 					identity={habitData.identity}
 				/>
 			)}
