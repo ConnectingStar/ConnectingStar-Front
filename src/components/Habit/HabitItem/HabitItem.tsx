@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import WhiteCheckIcon from "@/assets/icon/ic-habit-check.svg?react";
 import TabIcon from "@/assets/icon/ic-homepage-habit-button.svg?react";
 import CheckIcon from "@/assets/icon/ic-homepage-habit-check.svg?react";
@@ -9,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
+import { PATH } from "@/constants/path";
 
 import type { HabitRecordOneDayType } from "@/types/habit";
 
@@ -28,6 +31,8 @@ const HabitItem = ({ habitData, year, month, date }: HabitItemProps) => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
+
+	const navigate = useNavigate();
 
 	const isHabitHistory = habitData.status === "COMPLETED";
 
@@ -53,7 +58,13 @@ const HabitItem = ({ habitData, year, month, date }: HabitItemProps) => {
 
 	return (
 		<div css={habitListItemStyle(habitData.status)}>
-			<div onClick={() => dispatch(openModal(modalType.HABIT_RECORD(habitData.habit.runHabitId)))}>
+			<div
+				onClick={() =>
+					habitData.status === "TO_DO"
+						? dispatch(openModal(modalType.HABIT_RECORD(habitData.habit.runHabitId)))
+						: navigate(PATH.HABIT_RECORD(Number(habitData.habit.runHabitId), year, month, date))
+				}
+			>
 				{habitData.status === "TO_DO" && <CheckIcon />}
 				{habitData.status === "COMPLETED" && <WhiteCheckIcon />}
 				{habitData.status === "REST" && <span>휴식</span>}

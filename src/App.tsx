@@ -9,9 +9,9 @@ import ChattingPage from "@/pages/ChattingPage";
 import CreateHabitPage from "@/pages/CreateHabitPage/CreateHabitPage";
 import EditHabitPage from "@/pages/EditHabitPage/EditHabitPage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
-import HabitDetailPage from "@/pages/HabitDetailPage";
 import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
 import HabitPage from "@/pages/HabitPage/HabitPage";
+import HabitRecordPage from "@/pages/HabitRecordPage";
 import KakaoLoginPage from "@/pages/KakaoLoginPage";
 import MyHabitPage from "@/pages/MyHabitPage";
 import MyInfoPage from "@/pages/MyInfoPage/MyInfoPage";
@@ -33,7 +33,10 @@ const App = () => {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<HabitPage />} />
-					<Route path="/:id" element={<HabitDetailPage />} />
+					<Route
+						path={PATH.HABIT_RECORD(":habitId", ":year", ":month", ":date")}
+						element={<HabitRecordPage />}
+					/>
 					<Route path={PATH.STAR} element={<StarMainPage />} />
 					<Route path={PATH.STAR_CARD} element={<StarCardPage />} />
 					<Route path={`${PATH.STAR_CARD}/:id`} element={<StarDetailPage />} />
