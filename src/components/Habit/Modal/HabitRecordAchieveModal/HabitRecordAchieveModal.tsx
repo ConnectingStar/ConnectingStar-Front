@@ -20,11 +20,11 @@ import {
 } from "@/components/Habit/Modal/HabitRecordAchieveModal/HabitRecordAchieveModal.style";
 
 interface HabitRecordAchieveModalProps {
-	achiveStatus?: string;
+	achieveStatus?: string;
 	identity?: string;
 }
 
-const HabitRecordAchieveModal = ({ achiveStatus, identity }: HabitRecordAchieveModalProps) => {
+const HabitRecordAchieveModal = ({ achieveStatus, identity }: HabitRecordAchieveModalProps) => {
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
@@ -33,7 +33,7 @@ const HabitRecordAchieveModal = ({ achiveStatus, identity }: HabitRecordAchieveM
 		<Modal isBackdropClose={false}>
 			{STAR_PRAIZE_TEXT_DATA.map(
 				(data) =>
-					data.id === achiveStatus && (
+					data.id === achieveStatus && (
 						<div css={containerStyle} key={data.id}>
 							<span css={imageWrapperStyle}>
 								<Lottie animationData={StarMedalAnimation} loop={false} />
