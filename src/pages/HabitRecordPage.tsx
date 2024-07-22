@@ -1,6 +1,6 @@
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
-import HabitDetail from "@/components/Habit/HabitDetail/HabitDetail";
+import HabitRecord from "@/components/Habit/HabitRecord/HabitRecord";
 
 const HabitRecordPage = () => {
 	return (
@@ -8,7 +8,7 @@ const HabitRecordPage = () => {
 			<Header>
 				<Header.PrevButton />
 			</Header>
-			<HabitDetail />
+			<HabitRecord />
 			<FooterBtn text="확인" isTransparent />
 		</>
 	);
