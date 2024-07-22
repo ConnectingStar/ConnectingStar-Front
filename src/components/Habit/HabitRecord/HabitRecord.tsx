@@ -1,8 +1,8 @@
-import HabitActionRecord from "@/components/Habit/HabitDetail/HabitActionRecord";
+import HabitActionRecord from "@/components/Habit/HabitRecord/HabitActionRecord";
 
-import { layoutStyle } from "@/components/Habit/HabitDetail/HabitDetail.style";
+import { layoutStyle } from "@/components/Habit/HabitRecord/HabitRecord.style";
 
-function HabitDetail() {
+const HabitRecord = () => {
 	const mode = ["휴식", "실천"];
 	const randomIndex = Math.floor(Math.random() * 10);
 	const today = new Date();
@@ -16,6 +16,6 @@ function HabitDetail() {
 			</div>
 		</main>
 	);
-}
+};
 
-export default HabitDetail;
+export default HabitRecord;

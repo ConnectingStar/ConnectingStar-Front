@@ -62,7 +62,14 @@ const HabitItem = ({ habitData, year, month, date }: HabitItemProps) => {
 				onClick={() =>
 					habitData.status === "TO_DO"
 						? dispatch(openModal(modalType.HABIT_RECORD(habitData.habit.runHabitId)))
-						: navigate(PATH.HABIT_RECORD(Number(habitData.habit.runHabitId), year, month, date))
+						: navigate(
+								PATH.HABIT_RECORD(
+									String(habitData.habit.runHabitId),
+									String(year),
+									String(month),
+									String(date),
+								),
+							)
 				}
 			>
 				{habitData.status === "TO_DO" && <CheckIcon />}
