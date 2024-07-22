@@ -7,7 +7,7 @@ export const layoutStyle = css`
 	flex-direction: column;
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 1.25rem 1.5rem 5.438rem;
+	padding: 4.75rem 1.5rem 5.438rem;
 	gap: 40px;
 	white-space: pre-wrap;
 	${theme.font.body_a}
