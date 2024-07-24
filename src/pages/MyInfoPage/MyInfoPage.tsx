@@ -12,7 +12,7 @@ import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/S
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getUserConstellationList, getUserInfo } from "@/api/user/userThunk";
+import { getUserConstellationList, getUserInfo, getUserInfoV2 } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 
@@ -31,16 +31,21 @@ const MyInfoPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { userData, constellationList } = useAppSelector((state) => state.user);
+	const { constellationList, userInfo } = useAppSelector((state) => state.user);
 
 	const navigate = useNavigate();
+
+	console.log(userInfo?.ageRange);
 
 	useEffect(() => {
 		dispatch(getUserConstellationList());
 		dispatch(getUserInfo());
+		dispatch(getUserInfoV2());
 	}, []);
 
-	console.log(constellationList);
+	if (!userInfo) {
+		return <div />;
+	}
 
 	return (
 		<>
@@ -51,6 +56,7 @@ const MyInfoPage = () => {
 			<div css={layoutStyle}>
 				<div css={mainBoxStyle}>
 					<div css={characterBoxStyle}>
+						<img src={userInfo?.constellation.characterImage} alt="characterImage" />
 						<button onClick={() => dispatch(openModal(modalType.SELECT_CHARACTER))}>
 							<p>이미지 변경</p>
 						</button>
@@ -60,22 +66,22 @@ const MyInfoPage = () => {
 						<h3>내 정보</h3>
 						<MenuButton
 							title="대표 정체성"
-							content={userData.identity === "없음" ? "약속을 만들어 주세요" : userData.identity}
+							content={userInfo.identity === "없음" ? "약속을 만들어 주세요" : userInfo.identity}
 							onClick={() => dispatch(openModal(modalType.SELECT_MAIN_IDENTITY))}
 						/>
 						<MenuButton
 							title="닉네임"
-							content={userData.nickname}
+							content={userInfo.nickname}
 							onClick={() => dispatch(openModal(modalType.CHANGE_NICKNAME))}
 						/>
 						<MenuButton
 							title="성별"
-							content={generateGenderType(userData.genderType)}
+							content={generateGenderType(userInfo.gender)}
 							onClick={() => dispatch(openModal(modalType.SELECT_GENDERTYPE))}
 						/>
 						<MenuButton
 							title="나이대"
-							content={generateAgeType(userData.ageRangeType)}
+							content={generateAgeType(userInfo.ageRange)}
 							onClick={() => dispatch(openModal(modalType.SELECT_AGERANGETYPE))}
 						/>
 					</div>
@@ -97,16 +103,16 @@ const MyInfoPage = () => {
 					<SelectCharacterModal constellationList={constellationList} />
 				)}
 				{modal === modalType.SELECT_GENDERTYPE && (
-					<SelectGenderModal prevGender={generateGenderType(userData.genderType)} />
+					<SelectGenderModal prevGender={generateGenderType(userInfo.gender)} />
 				)}
 				{modal === modalType.CHANGE_NICKNAME && (
-					<ChangeNicknameModal prevNickname={userData.nickname} />
+					<ChangeNicknameModal prevNickname={userInfo.nickname} />
 				)}
 				{modal === modalType.SELECT_AGERANGETYPE && (
-					<SelectAgeRangeModal prevAgeRange={generateAgeType(userData.ageRangeType)} />
+					<SelectAgeRangeModal prevAgeRange={generateAgeType(userInfo.ageRange)} />
 				)}
 				{modal === modalType.SELECT_MAIN_IDENTITY && (
-					<SelectIdentityModal prevIdentity={userData.identity} />
+					<SelectIdentityModal prevIdentity={userInfo.identity} />
 				)}
 				{modal === modalType.LOGOUT && <LogoutModal />}
 			</div>

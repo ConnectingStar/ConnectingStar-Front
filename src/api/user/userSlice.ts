@@ -13,6 +13,7 @@ import {
 	editIdentity,
 	selectStar,
 	getOnlyUserInfo,
+	getUserInfoV2,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -30,6 +31,7 @@ const initialState: userType = {
 		firstAlert: { noon: "오전", hour: "09", minute: "50" },
 		secondAlert: { noon: "오전", hour: "10", minute: "10" },
 	},
+	userInfo: null,
 	isLoading: false,
 	isOnboarding: false,
 	userIdentityList: [],
@@ -127,6 +129,10 @@ const userSlice = createSlice({
 			.addCase(getOnlyUserInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.userData = action.payload.data.user;
+			})
+			.addCase(getUserInfoV2.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.userInfo = action.payload.data.user;
 			});
 	},
 });
