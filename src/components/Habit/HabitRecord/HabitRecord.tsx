@@ -171,8 +171,6 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 			<FooterBtn
 				handleBtnClick={handleSubmit}
 				text="기록하여 별 얻기"
-				isTransparent
-				isPositionStatic
 				disabled={
 					habitRecordRequest.behaviorValue === undefined || habitRecordRequest.achievement === -1
 				}

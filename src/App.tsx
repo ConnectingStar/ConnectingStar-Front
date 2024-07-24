@@ -21,7 +21,7 @@ import NotFoundPage from "@/pages/NotFoundPage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
 import OnboardingPage from "@/pages/OnboardingPage";
 import PracticeRecordPage from "@/pages/PracticeRecordPage";
-import RestRecordPage from "@/pages/RestRecordPage/RestRecordPage";
+import RestRecordPage from "@/pages/RestRecordPage";
 import StarCardPage from "@/pages/StarCardPage";
 import StarDetailPage from "@/pages/StarDetailPage";
 import StarMainPage from "@/pages/StarMainPage/StarMainPage";

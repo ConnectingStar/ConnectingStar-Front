@@ -51,7 +51,7 @@ const RestRecord = ({ habitData, identity, nickname }: RestRecordProps) => {
 				<span>{habitRestRecordRequest.review.length}/1,000자</span>
 			</div>
 
-			<FooterBtn text="완료" isTransparent handleBtnClick={handleSubmit} />
+			<FooterBtn text="완료" handleBtnClick={handleSubmit} />
 		</div>
 	);
 };
