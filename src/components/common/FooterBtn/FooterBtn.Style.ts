@@ -12,17 +12,17 @@ export const footerBtnStyle = (
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: ${isPositionStatic || isSquare ? "100%" : "22.5rem"};
+		width: 100%;
 		padding: ${!isSquare && !isPositionStatic && "1rem 1.5rem"};
 		gap: ${!isSquare && "0.5rem"};
 		position: ${!isPositionStatic && "fixed"};
 		bottom: ${!isPositionStatic && 0};
-		background-color: ${!transparent && "white"};
+		background-color: ${!transparent && "#fff"};
 		left: ${!isPositionStatic && "50%"};
 		transform: ${!isPositionStatic && "translateX(-50%)"};
 
 		& > button {
-			width: 100%;
+			width: 19.5rem;
 			height: 3.438rem;
 			border-radius: ${!isSquare && "15px"};
 			${theme.font.button_big};
