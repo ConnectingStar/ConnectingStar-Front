@@ -10,9 +10,12 @@ import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
 
-import { habitListItemStyle, habitContentStyle } from "@/pages/HabitPage/HabitPage.style";
-
 import type { HabitRecordOneDayType } from "@/types/habit";
+
+import {
+	habitListItemStyle,
+	habitContentStyle,
+} from "@/components/Habit/HabitItem/HabitItem.style";
 
 interface HabitItemProps {
 	habitData: HabitRecordOneDayType;
@@ -26,16 +29,27 @@ const HabitItem = ({ habitData, year, month, date }: HabitItemProps) => {
 
 	const { modal } = useAppSelector((state) => state.modal);
 
-	const habit = habitData.status === "COMPLETED" ? habitData.history : habitData.habit;
+	const isHabitHistory = habitData.status === "COMPLETED";
+
+	const habit = isHabitHistory ? habitData.history : habitData.habit;
+
+	const originalNoon = isHabitHistory
+		? habitData.history.runDate.split(" ")[1].split(":")[0]
+		: habitData.habit.runTime.split(":")[0];
+	const originalHour = isHabitHistory
+		? habitData.history.runDate.split(" ")[1].split(":")[0]
+		: habitData.habit.runTime.split(":")[0];
 
 	const noon = Number(habitData.habit.runTime.split(":")[0]) > 12 ? "오후" : "오전";
 	const hour =
-		Number(habitData.habit.runTime.split(":")[0]) > 12
-			? Number(habitData.habit.runTime.split(":")[0]) - 12
+		Number(originalNoon) > 12
+			? Number(originalHour) - 12
 			: Number(habitData.habit.runTime.split(":")[0]);
-	const minute = habitData.habit.runTime.split(":")[1];
+	const minute = isHabitHistory
+		? habitData.history.runDate.split(" ")[1].split(":")[1]
+		: habitData.habit.runTime.split(":")[1];
 
-	console.log(habitData);
+	const value = isHabitHistory ? habitData.history.runValue : habitData.habit.value;
 
 	return (
 		<div css={habitListItemStyle(habitData.status)}>
@@ -51,7 +65,7 @@ const HabitItem = ({ habitData, year, month, date }: HabitItemProps) => {
 						</span>
 						<div />
 						<span>
-							{habitData.habit.value} {habitData.habit.unit}
+							{value} {habitData.habit.unit}
 						</span>
 					</div>
 				</div>

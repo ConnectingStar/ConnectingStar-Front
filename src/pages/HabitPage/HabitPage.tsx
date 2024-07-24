@@ -10,13 +10,7 @@ import HabitGuideBanner from "@/components/Habit/HabitGuideBanner/HabitGuideBann
 import HabitItem from "@/components/Habit/HabitItem/HabitItem";
 import Profile from "@/components/Habit/Profile/Profile";
 
-import {
-	getProgressHabitList,
-	getHabitHistoryList,
-	getHabitRecord,
-	getProgressHabit,
-	getHabitRecordOneDay,
-} from "@/api/habit/habitThunk";
+import { getHabitRecordOneDay } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
 import { WEEK, TODAY } from "@/constants/calendar";
@@ -34,16 +28,9 @@ import type { DateInfo } from "@/types/homeTypes";
 const HabitPage = () => {
 	const dispatch = useAppDispatch();
 
-	const { progressHabitList, habitHistoryList, habitRecord, progressHabit, habitRecordOneDay } =
-		useAppSelector((state) => state.habit);
+	const { habitRecordOneDay } = useAppSelector((state) => state.habit);
 
 	const navigate = useNavigate();
-
-	console.log(progressHabitList);
-	console.log(habitHistoryList);
-	console.log(habitRecord);
-	console.log(progressHabit);
-	console.log(habitRecordOneDay);
 
 	const { year, month, date, day } = TODAY;
 
@@ -52,22 +39,19 @@ const HabitPage = () => {
 		month: month + 1,
 		date,
 		day: WEEK[day],
-		isPlanned: false,
+		isPlanned: habitRecordOneDay.map((data) => data.history === null).includes(false),
 	});
 
-	console.log(selectedDate);
+	const formatMonth = selectedDate.month < 10 ? `0${selectedDate.month}` : selectedDate.month;
+	const formatDate = selectedDate.date < 10 ? `0${selectedDate.date}` : selectedDate.date;
 
 	const handleSelectedDate = (date: DateInfo) => {
 		setSelectedDate(date);
 	};
 
 	useEffect(() => {
-		dispatch(getProgressHabitList());
-		dispatch(getHabitHistoryList({ runHabitId: 110, increase: true, isRest: false }));
-		dispatch(getHabitRecord({ runHabitId: 110, referenceDate: "2024-07-18" }));
-		dispatch(getProgressHabit("2024-07-19"));
-		dispatch(getHabitRecordOneDay("2024-07-24"));
-	}, []);
+		dispatch(getHabitRecordOneDay(`${selectedDate.year}-${formatMonth}-${formatDate}`));
+	}, [selectedDate]);
 
 	return (
 		<>
