@@ -122,7 +122,7 @@ function HabitRecord({ habitData }: HabitRecordProps) {
 					<li>
 						<input
 							css={contentInputStyle()}
-							placeholder={`${habitData.behavior}을(를)`}
+							placeholder={habitData.behavior}
 							onChange={(e) => updateInputValue("action", e.target.value)}
 						/>
 					</li>
