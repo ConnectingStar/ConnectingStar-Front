@@ -34,10 +34,10 @@ const HabitItem = ({ habitData, year, month, date }: HabitItemProps) => {
 	const habit = isHabitHistory ? habitData.history : habitData.habit;
 
 	const originalNoon = isHabitHistory
-		? habitData.history.runDate.split(" ")[1].split(":")[0]
+		? habitData.history.runDate.split("T")[1].split(":")[0]
 		: habitData.habit.runTime.split(":")[0];
 	const originalHour = isHabitHistory
-		? habitData.history.runDate.split(" ")[1].split(":")[0]
+		? habitData.history.runDate.split("T")[1].split(":")[0]
 		: habitData.habit.runTime.split(":")[0];
 
 	const noon = Number(habitData.habit.runTime.split(":")[0]) > 12 ? "오후" : "오전";
@@ -46,7 +46,7 @@ const HabitItem = ({ habitData, year, month, date }: HabitItemProps) => {
 			? Number(originalHour) - 12
 			: Number(habitData.habit.runTime.split(":")[0]);
 	const minute = isHabitHistory
-		? habitData.history.runDate.split(" ")[1].split(":")[1]
+		? habitData.history.runDate.split("T")[1].split(":")[1]
 		: habitData.habit.runTime.split(":")[1];
 
 	const value = isHabitHistory ? habitData.history.runValue : habitData.habit.value;
