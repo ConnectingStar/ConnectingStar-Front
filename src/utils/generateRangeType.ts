@@ -19,21 +19,21 @@ export const generateGender = (gender: string) => {
 };
 
 export const generateAgeType = (ageType: string) => {
-	if (ageType === "A") {
+	if (ageType === "AGE_15") {
 		return "15-19";
-	} else if (ageType === "B") {
+	} else if (ageType === "AGE_20") {
 		return "20-24";
-	} else if (ageType === "C") {
+	} else if (ageType === "AGE_25") {
 		return "25-29";
-	} else if (ageType === "D") {
+	} else if (ageType === "AGE_30") {
 		return "30-34";
-	} else if (ageType === "E") {
+	} else if (ageType === "AGE_35") {
 		return "35-39";
-	} else if (ageType === "F") {
+	} else if (ageType === "AGE_40") {
 		return "40-44";
-	} else if (ageType === "G") {
+	} else if (ageType === "AGE_45") {
 		return "45-49";
-	} else if (ageType === "H") {
+	} else if (ageType === "AGE_50") {
 		return "50-54";
 	} else {
 		return "55 이상";

@@ -108,19 +108,27 @@ const userSlice = createSlice({
 			})
 			.addCase(editNickname.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.userData.nickname = action.meta.arg;
+				if (state.userInfo) {
+					state.userInfo.nickname = action.meta.arg;
+				}
 			})
 			.addCase(editGender.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.userData.genderType = action.meta.arg;
+				if (state.userInfo) {
+					state.userInfo.gender = action.meta.arg;
+				}
 			})
 			.addCase(editAge.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.userData.ageRangeType = action.meta.arg;
+				if (state.userInfo) {
+					state.userInfo.ageRange = action.meta.arg;
+				}
 			})
 			.addCase(editIdentity.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.userData.identity = action.meta.arg;
+				if (state.userInfo) {
+					state.userInfo.identity = action.meta.arg;
+				}
 			})
 			.addCase(getUserIdentity.fulfilled, (state, action) => {
 				state.isLoading = false;
