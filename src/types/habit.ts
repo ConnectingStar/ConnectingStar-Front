@@ -1,5 +1,7 @@
 import type { CommonAlertType } from "@/types/common";
 
+export type HabitRecordStatusType = "TO_DO" | "COMPLETED" | "REST" | "EXPIRED";
+
 export interface HabitDeleteRequestType {
 	runHabitId?: string;
 	reason: string;
@@ -53,6 +55,37 @@ export interface HabitInitialStateType {
 	habitHistoryList: [];
 	habit: HabitType | null;
 	habitRecord: HabitRecordRequestType | null;
+	habitRecordOneDay: HabitRecordOneDayType[];
+}
+
+export interface HabitRecordOneDayType {
+	habit: HabitOneDayType;
+	history: HistoryOneDayType;
+	status: HabitRecordStatusType;
+}
+
+export interface HabitOneDayType {
+	action: string;
+	identity: string;
+	place: string;
+	runHabitId: number;
+	runTime: string;
+	unit: string;
+	userId: number;
+	value: number;
+}
+
+interface HistoryOneDayType {
+	achievement: number;
+	action: string;
+	habitHistoryId: number;
+	isRest: boolean;
+	review: string;
+	runDate: string;
+	runHabitId: number;
+	runPlace: string;
+	runValue: string;
+	userId: number;
 }
 
 export interface HabitType {

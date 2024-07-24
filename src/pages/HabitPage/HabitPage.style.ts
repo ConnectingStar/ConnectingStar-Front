@@ -2,6 +2,8 @@ import { css } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
+import type { HabitRecordStatusType } from "@/types/habit";
+
 export const mainBoxStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
@@ -25,20 +27,20 @@ export const habitListBoxStyle = css`
 	gap: 6px;
 `;
 
-export const habitListItemStyle = (status?: string) => css`
+export const habitListItemStyle = (status?: HabitRecordStatusType) => css`
 	border-radius: 15px;
 	height: 5.438rem;
 	position: relative;
 	padding: 1rem;
-	border: ${status === "progress" && `2px solid ${theme.color.main_blue}`};
+	border: ${status === "TO_DO" && `2px solid ${theme.color.main_blue}`};
 	display: flex;
 	justify-content: space-between;
-	background-color: ${status === "progress"
+	background-color: ${status === "TO_DO"
 		? theme.color.white
-		: status === "end"
+		: status === "EXPIRED"
 			? theme.color.button_disabled
 			: theme.color.main_blue};
-	padding-left: ${status === "end" && "2.375rem"};
+	padding-left: ${status === "EXPIRED" && "2.375rem"};
 
 	& > div {
 		display: flex;
@@ -53,15 +55,15 @@ export const habitListItemStyle = (status?: string) => css`
 	}
 
 	& > button > svg > path {
-		fill: ${status === "progress"
+		fill: ${status === "TO_DO"
 			? theme.color.font_deep_gray
-			: status === "end"
+			: status === "EXPIRED"
 				? theme.color.button_deactivated
 				: theme.color.white};
 	}
 `;
 
-export const habitContentStyle = (status?: string) => css`
+export const habitContentStyle = (status?: HabitRecordStatusType) => css`
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
@@ -72,9 +74,9 @@ export const habitContentStyle = (status?: string) => css`
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		width: 14rem;
-		color: ${status === "progress"
+		color: ${status === "TO_DO"
 			? theme.color.font_black
-			: status === "end"
+			: status === "EXPIRED"
 				? theme.color.button_deactivated
 				: theme.color.white};
 	}
@@ -85,9 +87,9 @@ export const habitContentStyle = (status?: string) => css`
 		align-items: center;
 
 		& > span {
-			color: ${status === "progress"
+			color: ${status === "TO_DO"
 				? theme.color.font_black
-				: status === "end"
+				: status === "EXPIRED"
 					? theme.color.button_deactivated
 					: theme.color.white};
 			${theme.font.body_b};
@@ -97,9 +99,9 @@ export const habitContentStyle = (status?: string) => css`
 			width: 0.188rem;
 			height: 0.188rem;
 			border-radius: 50%;
-			background-color: ${status === "progress"
+			background-color: ${status === "TO_DO"
 				? theme.color.font_black
-				: status === "end"
+				: status === "EXPIRED"
 					? theme.color.button_deactivated
 					: theme.color.white};
 		}

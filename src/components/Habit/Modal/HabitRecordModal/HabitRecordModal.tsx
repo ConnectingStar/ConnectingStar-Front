@@ -8,7 +8,7 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { PATH } from "@/constants/path";
 
-import type { HabitType } from "@/types/habit";
+import type { HabitOneDayType } from "@/types/habit";
 
 import {
 	layoutStyle,
@@ -17,13 +17,24 @@ import {
 } from "@/components/Habit/Modal/HabitRecordModal/HabitRecordModal.style";
 
 interface HabitRecordModalProps {
-	habitData: HabitType;
+	habitData: HabitOneDayType;
 	year: number;
 	month: number;
 	date: number;
+	noon: string;
+	hour: number;
+	minute: string;
 }
 
-const HabitRecordModal = ({ habitData, year, month, date }: HabitRecordModalProps) => {
+const HabitRecordModal = ({
+	habitData,
+	year,
+	month,
+	date,
+	noon,
+	hour,
+	minute,
+}: HabitRecordModalProps) => {
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
@@ -32,14 +43,14 @@ const HabitRecordModal = ({ habitData, year, month, date }: HabitRecordModalProp
 		<Modal isBackdropClose={false}>
 			<div css={layoutStyle}>
 				<h1>아래의 습관을 실천했나요?</h1>
-				<h2>{habitData.behavior}</h2>
+				<h2>{habitData.action}</h2>
 				<div css={behaviorBoxStyle}>
 					<span>
-						{habitData.runTime.noon} {habitData.runTime.hour}:{habitData.runTime.minute}
+						{noon} {hour}:{minute}
 					</span>
 					<div />
 					<span>
-						{habitData.behaviorValue} {habitData.behaviorUnit}
+						{habitData.value} {habitData.unit}
 					</span>
 				</div>
 

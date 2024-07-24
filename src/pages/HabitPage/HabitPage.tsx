@@ -15,6 +15,7 @@ import {
 	getHabitHistoryList,
 	getHabitRecord,
 	getProgressHabit,
+	getHabitRecordOneDay,
 } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
@@ -33,9 +34,8 @@ import type { DateInfo } from "@/types/homeTypes";
 const HabitPage = () => {
 	const dispatch = useAppDispatch();
 
-	const { progressHabitList, habitHistoryList, habitRecord, progressHabit } = useAppSelector(
-		(state) => state.habit,
-	);
+	const { progressHabitList, habitHistoryList, habitRecord, progressHabit, habitRecordOneDay } =
+		useAppSelector((state) => state.habit);
 
 	const navigate = useNavigate();
 
@@ -43,6 +43,7 @@ const HabitPage = () => {
 	console.log(habitHistoryList);
 	console.log(habitRecord);
 	console.log(progressHabit);
+	console.log(habitRecordOneDay);
 
 	const { year, month, date, day } = TODAY;
 
@@ -65,6 +66,7 @@ const HabitPage = () => {
 		dispatch(getHabitHistoryList({ runHabitId: 110, increase: true, isRest: false }));
 		dispatch(getHabitRecord({ runHabitId: 110, referenceDate: "2024-07-18" }));
 		dispatch(getProgressHabit("2024-07-19"));
+		dispatch(getHabitRecordOneDay("2024-07-24"));
 	}, []);
 
 	return (
@@ -77,11 +79,10 @@ const HabitPage = () => {
 				</div>
 				<Calender handleSelectedDate={handleSelectedDate} selectedDate={selectedDate} />
 				<div css={habitListBoxStyle}>
-					{progressHabitList.map((habitData) => (
+					{habitRecordOneDay.map((habitData) => (
 						<HabitItem
-							key={habitData.runHabitId}
+							key={habitData.habit.runHabitId}
 							habitData={habitData}
-							habitState="progress"
 							year={selectedDate.year}
 							month={selectedDate.month}
 							date={selectedDate.date}

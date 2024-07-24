@@ -114,6 +114,19 @@ export const getProgressHabit = createAsyncThunk(
 	},
 );
 
+export const getHabitRecordOneDay = createAsyncThunk(
+	"habit/getHabitRecordOneDay",
+	async (date: string, thunkOptions) => {
+		try {
+			const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT_RECORD_ONE_DAY(date));
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
 export const getProgressHabitList = createAsyncThunk(
 	"habit/getProgressHabitList",
 	async (_, thunkOptions) => {

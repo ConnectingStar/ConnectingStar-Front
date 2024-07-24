@@ -12,53 +12,69 @@ import { modalType } from "@/constants/modalConstants";
 
 import { habitListItemStyle, habitContentStyle } from "@/pages/HabitPage/HabitPage.style";
 
-import type { HabitType } from "@/types/habit";
+import type { HabitRecordOneDayType } from "@/types/habit";
 
 interface HabitItemProps {
-	habitState?: "progress" | "complete" | "rest" | "end";
-	habitData: HabitType;
+	habitData: HabitRecordOneDayType;
 	year: number;
 	month: number;
 	date: number;
 }
 
-const HabitItem = ({ habitData, habitState, year, month, date }: HabitItemProps) => {
+const HabitItem = ({ habitData, year, month, date }: HabitItemProps) => {
 	const dispatch = useAppDispatch();
-
-	console.log(habitData);
 
 	const { modal } = useAppSelector((state) => state.modal);
 
+	const habit = habitData.status === "COMPLETED" ? habitData.history : habitData.habit;
+
+	const noon = Number(habitData.habit.runTime.split(":")[0]) > 12 ? "오후" : "오전";
+	const hour =
+		Number(habitData.habit.runTime.split(":")[0]) > 12
+			? Number(habitData.habit.runTime.split(":")[0]) - 12
+			: Number(habitData.habit.runTime.split(":")[0]);
+	const minute = habitData.habit.runTime.split(":")[1];
+
+	console.log(habitData);
+
 	return (
-		<div css={habitListItemStyle(habitState)}>
-			<div onClick={() => dispatch(openModal(modalType.HABIT_RECORD(habitData.runHabitId)))}>
-				{habitState === "progress" && <CheckIcon />}
-				{habitState === "complete" && <WhiteCheckIcon />}
-				{habitState === "rest" && <span>휴식</span>}
-				<div css={habitContentStyle(habitState)}>
-					<span>{habitData.behavior}</span>
+		<div css={habitListItemStyle(habitData.status)}>
+			<div onClick={() => dispatch(openModal(modalType.HABIT_RECORD(habitData.habit.runHabitId)))}>
+				{habitData.status === "TO_DO" && <CheckIcon />}
+				{habitData.status === "COMPLETED" && <WhiteCheckIcon />}
+				{habitData.status === "REST" && <span>휴식</span>}
+				<div css={habitContentStyle(habitData.status)}>
+					<span>{habit.action}</span>
 					<div>
 						<span>
-							{habitData.runTime.noon} {habitData.runTime.hour}:{habitData.runTime.minute}
+							{noon} {hour}:{minute}
 						</span>
 						<div />
 						<span>
-							{habitData.behaviorValue} {habitData.behaviorUnit}
+							{habitData.habit.value} {habitData.habit.unit}
 						</span>
 					</div>
 				</div>
 			</div>
 
-			<button onClick={() => dispatch(openModal(modalType.HABIT_EDIT(habitData.runHabitId)))}>
+			<button onClick={() => dispatch(openModal(modalType.HABIT_EDIT(habitData.habit.runHabitId)))}>
 				<TabIcon />
 			</button>
 
-			{modal === modalType.HABIT_RECORD(habitData.runHabitId) && (
-				<HabitRecordModal habitData={habitData} year={year} month={month} date={date} />
+			{modal === modalType.HABIT_RECORD(habitData.habit.runHabitId) && (
+				<HabitRecordModal
+					habitData={habitData.habit}
+					year={year}
+					month={month}
+					date={date}
+					noon={noon}
+					hour={hour}
+					minute={minute}
+				/>
 			)}
 
-			{modal === modalType.HABIT_EDIT(habitData.runHabitId) && (
-				<HabitEditModal habitId={habitData.runHabitId} />
+			{modal === modalType.HABIT_EDIT(habitData.habit.runHabitId) && (
+				<HabitEditModal habitId={habitData.habit.runHabitId} />
 			)}
 		</div>
 	);
