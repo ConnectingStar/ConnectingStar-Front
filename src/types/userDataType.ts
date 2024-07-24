@@ -2,10 +2,38 @@ import type { ConstellationList } from "@/types/user";
 
 export interface userType {
 	userData: onboardingUserDataType;
+	userInfo: UserInfoType | null;
 	isLoading: boolean;
 	isOnboarding: boolean | null;
 	constellationList: ConstellationList[];
 	userIdentityList: { identity: string }[];
+}
+
+interface UserInfoType {
+	id: number;
+	email: string;
+	socialType: "KAKAO";
+	nickname: string;
+	ageRange: string;
+	gender: string;
+	identity: string;
+	onboard: boolean;
+	star: number;
+	referrer: string;
+	constellationId: number;
+	constellation: ConstellationType;
+}
+
+interface ConstellationType {
+	constellationId: number;
+	name: string;
+	story: string;
+	identity: string;
+	image: string;
+	characterImage: string;
+	mainImage: string;
+	starCount: number;
+	constellationTypeId: number;
 }
 
 export interface UserDataType {

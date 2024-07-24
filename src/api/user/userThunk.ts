@@ -84,6 +84,16 @@ export const getOnlyUserInfo = createAsyncThunk("user/getOnlyUserInfo", async (_
 	}
 });
 
+export const getUserInfoV2 = createAsyncThunk("user/getUserInfoV2", async (_, thunkOptions) => {
+	try {
+		const { data } = await authorizedAxiosInstance.get(END_POINTS.USER_INFO_V2);
+
+		return data;
+	} catch (error) {
+		throw thunkOptions.rejectWithValue(error);
+	}
+});
+
 export const getUserInfo = createAsyncThunk<UserDataType>(
 	"user/getUserInfo",
 	async (_, thunkOptions) => {

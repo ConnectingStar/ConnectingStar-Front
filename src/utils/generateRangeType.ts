@@ -1,7 +1,7 @@
 export const generateGenderType = (genderType: string) => {
-	if (genderType === "M") {
+	if (genderType === "MALE") {
 		return "남";
-	} else if (genderType === "F") {
+	} else if (genderType === "FEMALE") {
 		return "여";
 	} else {
 		return "선택 안 함";
