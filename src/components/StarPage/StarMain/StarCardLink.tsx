@@ -20,7 +20,7 @@ export default function StarCardLink() {
 }
 
 const containerStyle = css`
-	width: 4.25rem;
+	width: 4.3125rem;
 	height: 4.375rem;
 	position: absolute;
 	right: 1.5rem;
