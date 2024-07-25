@@ -28,7 +28,7 @@ export const END_POINTS = {
 	HABIT_HISTORY: "/habit/history",
 	HABIT_HISTORY_LIST: (runHabitId: number, increase: boolean, isRest: boolean) =>
 		`/habit/history?runHabitId=${runHabitId}&increase=${increase}&isRest=${isRest}`,
-	HABIT_HISTORY_ONE: (habitHistoryId: number) => `v2/histories/${habitHistoryId}`,
+	HABIT_HISTORY_ONE: (habitHistoryId: number) => `v2/histories/${habitHistoryId}?related=runHabit`,
 	STAR_MAIN: "/constellation/main",
 	STAR_CARD: (id: string, isRegistered: boolean) =>
 		`constellation/list?constellationTypeId=${id}&isRegistered=${isRegistered}`,
