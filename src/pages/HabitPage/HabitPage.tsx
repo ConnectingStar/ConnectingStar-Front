@@ -29,6 +29,7 @@ const HabitPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { habitRecordOneDay } = useAppSelector((state) => state.habit);
+	console.log(habitRecordOneDay);
 
 	const navigate = useNavigate();
 

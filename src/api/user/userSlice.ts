@@ -12,6 +12,7 @@ import {
 	editAge,
 	editIdentity,
 	selectStar,
+	getOnlyUserInfo,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -122,6 +123,10 @@ const userSlice = createSlice({
 			.addCase(getUserIdentity.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.userIdentityList = action.payload.data;
+			})
+			.addCase(getOnlyUserInfo.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.userData = action.payload.data.user;
 			});
 	},
 });

@@ -13,11 +13,6 @@ export interface HabitHistoryListRequest {
 	isRest: boolean;
 }
 
-export interface GetHabitRecordRequestType {
-	runHabitId: number;
-	referenceDate: string;
-}
-
 export interface HabitRequestType {
 	runHabitId?: number;
 	identity: string;
@@ -54,7 +49,7 @@ export interface HabitInitialStateType {
 	progressHabit: ProgressHabitType[];
 	habitHistoryList: [];
 	habit: HabitType | null;
-	habitRecord: HabitRecordRequestType | null;
+	habitRecord: HistoryOneDayType | null;
 	habitRecordOneDay: HabitRecordOneDayType[];
 }
 
@@ -75,7 +70,7 @@ export interface HabitOneDayType {
 	value: number;
 }
 
-interface HistoryOneDayType {
+export interface HistoryOneDayType {
 	achievement: number;
 	action: string;
 	habitHistoryId: number;

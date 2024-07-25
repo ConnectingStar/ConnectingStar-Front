@@ -11,6 +11,7 @@ export const END_POINTS = {
 	IS_ONBOARDING: "/user/check-onboarding",
 	WITHDRAWAL: "/user/withdraw",
 	CONSTELLATION_LIST: "/user/constellation/list",
+	ONLY_USER_INFO: "/v2/users/me",
 	USER_INFO: "/user/basic-info",
 	USER_INFO_WITH_HABIT: "/user/basic-info-habit",
 	USER_IDENTITY: "/user/identity-info",
@@ -27,8 +28,7 @@ export const END_POINTS = {
 	HABIT_HISTORY: "/habit/history",
 	HABIT_HISTORY_LIST: (runHabitId: number, increase: boolean, isRest: boolean) =>
 		`/habit/history?runHabitId=${runHabitId}&increase=${increase}&isRest=${isRest}`,
-	HABIT_HISTORY_ONE: (runHabitId: number, referenceDate: string) =>
-		`/habit/history/date?runHabitId=${runHabitId}&referenceDate=${referenceDate}`,
+	HABIT_HISTORY_ONE: (habitHistoryId: number) => `v2/histories/${habitHistoryId}`,
 	STAR_MAIN: "/constellation/main",
 	STAR_CARD: (id: string, isRegistered: boolean) =>
 		`constellation/list?constellationTypeId=${id}&isRegistered=${isRegistered}`,

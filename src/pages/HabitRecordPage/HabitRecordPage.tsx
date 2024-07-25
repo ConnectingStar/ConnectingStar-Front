@@ -7,7 +7,7 @@ import HabitPracticeRecord from "@/components/Habit/HabitPracticeRecord/HabitPra
 
 import { getHabitRecord } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { getUserInfo } from "@/api/user/userThunk";
+import { getOnlyUserInfo } from "@/api/user/userThunk";
 
 import { PATH } from "@/constants/path";
 
@@ -23,22 +23,9 @@ const HabitRecordPage = () => {
 
 	const navigate = useNavigate();
 
-	console.log(habitRecord);
-
-	const mode = ["휴식", "실천"];
-	const randomIndex = Math.floor(Math.random() * 10);
-
-	const month = Number(params.month) < 10 ? `0${params.month}` : params.month;
-	const date = Number(params.date) < 10 ? `0${params.date}` : params.date;
-
 	useEffect(() => {
-		dispatch(
-			getHabitRecord({
-				runHabitId: Number(params.habitId),
-				referenceDate: `${params.year}-${month}-${date}`,
-			}),
-		);
-		dispatch(getUserInfo());
+		dispatch(getHabitRecord(Number(params.habitId)));
+		dispatch(getOnlyUserInfo());
 	}, []);
 
 	if (!habitRecord) {
@@ -51,9 +38,9 @@ const HabitRecordPage = () => {
 				<Header.PrevButton />
 			</Header>
 			<main css={layoutStyle}>
-				<h1>{`${params.month}월 ${params.date}일\n${userData.nickname}님의 ${mode[randomIndex % 2]} 기록`}</h1>
+				<h1>{`${Number(habitRecord.runDate.split("T")[0].split("-")[1])}월 ${Number(habitRecord.runDate.split("T")[0].split("-")[2])}일\n${userData.nickname}님의 ${habitRecord.isRest ? "휴식" : "실천"} 기록`}</h1>
 
-				{mode[randomIndex % 2] === "실천" && <HabitPracticeRecord habitRecord={habitRecord} />}
+				{habitRecord.isRest === false && <HabitPracticeRecord habitRecord={habitRecord} />}
 
 				<div>
 					<h2>별자취 남기기</h2>

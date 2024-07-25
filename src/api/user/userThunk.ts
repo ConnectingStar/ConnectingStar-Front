@@ -74,6 +74,16 @@ export const getUserInfoWithHabit = createAsyncThunk(
 	},
 );
 
+export const getOnlyUserInfo = createAsyncThunk("user/getOnlyUserInfo", async (_, thunkOptions) => {
+	try {
+		const { data } = await authorizedAxiosInstance.get(END_POINTS.ONLY_USER_INFO);
+
+		return data;
+	} catch (error) {
+		throw thunkOptions.rejectWithValue(error);
+	}
+});
+
 export const getUserInfo = createAsyncThunk<UserDataType>(
 	"user/getUserInfo",
 	async (_, thunkOptions) => {
