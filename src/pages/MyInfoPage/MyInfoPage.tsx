@@ -35,7 +35,7 @@ const MyInfoPage = () => {
 
 	const navigate = useNavigate();
 
-	console.log(userInfo?.ageRange);
+	console.log(userInfo);
 
 	useEffect(() => {
 		dispatch(getUserConstellationList());
@@ -107,7 +107,10 @@ const MyInfoPage = () => {
 				</div>
 
 				{modal === modalType.SELECT_CHARACTER && (
-					<SelectCharacterModal constellationList={constellationList} />
+					<SelectCharacterModal
+						prevConstellation={userInfo.constellationId}
+						constellationList={constellationList}
+					/>
 				)}
 				{modal === modalType.SELECT_GENDERTYPE && (
 					<SelectGenderModal prevGender={generateGenderType(userInfo.gender)} />

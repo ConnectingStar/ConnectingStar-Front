@@ -14,6 +14,7 @@ import {
 	selectStar,
 	getOnlyUserInfo,
 	getUserInfoV2,
+	editProfileImage,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -129,6 +130,10 @@ const userSlice = createSlice({
 				if (state.userInfo) {
 					state.userInfo.identity = action.meta.arg;
 				}
+			})
+			.addCase(editProfileImage.fulfilled, (state, action) => {
+				state.isLoading = false;
+				console.log(action.payload);
 			})
 			.addCase(getUserIdentity.fulfilled, (state, action) => {
 				state.isLoading = false;
