@@ -33,10 +33,7 @@ const App = () => {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<HabitPage />} />
-					<Route
-						path={PATH.HABIT_RECORD(":habitId", ":year", ":month", ":date")}
-						element={<HabitRecordPage />}
-					/>
+					<Route path={PATH.HABIT_RECORD(":habitId")} element={<HabitRecordPage />} />
 					<Route path={PATH.STAR} element={<StarMainPage />} />
 					<Route path={PATH.STAR_CARD} element={<StarCardPage />} />
 					<Route path={`${PATH.STAR_CARD}/:id`} element={<StarDetailPage />} />
