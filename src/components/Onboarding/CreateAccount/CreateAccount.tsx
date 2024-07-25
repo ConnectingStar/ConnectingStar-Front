@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
@@ -10,7 +7,6 @@ import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGende
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getIsOnboarding } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 
@@ -31,20 +27,7 @@ export interface OnboardingProps {
 const CreateAccount = ({ userInfoRequest, updateInputValue, onNext }: OnboardingProps) => {
 	const dispatch = useAppDispatch();
 
-	const navigate = useNavigate();
-
 	const { modal } = useAppSelector((state) => state.modal);
-	const { isOnboarding } = useAppSelector((state) => state.user);
-
-	useEffect(() => {
-		dispatch(getIsOnboarding());
-	}, []);
-
-	useEffect(() => {
-		isOnboarding && navigate("/");
-	}, [isOnboarding]);
-
-	console.log(userInfoRequest);
 
 	return (
 		<>

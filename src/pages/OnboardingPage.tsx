@@ -4,12 +4,19 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import CreateAccount from "@/components/Onboarding/CreateAccount/CreateAccount";
 import Referrer from "@/components/Onboarding/Referrer/Referrer";
 
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { getIsOnboarding } from "@/api/user/userThunk";
+
 import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
 import { PATH } from "@/constants/path";
 
 import { useOnboarding } from "@/hooks/useOnboarding";
 
 function OnboardingPage() {
+	const dispatch = useAppDispatch();
+
+	const { isOnboarding } = useAppSelector((state) => state.user);
+
 	const navigate = useNavigate();
 
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -24,6 +31,14 @@ function OnboardingPage() {
 			setSearchParams(`${STEP_KEY}=${ONBOARDING_STEP.CREATE_ACCOUNT}`);
 		}
 	}, [searchParams, step]);
+
+	useEffect(() => {
+		dispatch(getIsOnboarding());
+	}, []);
+
+	useEffect(() => {
+		isOnboarding && navigate(PATH.HOME);
+	}, [isOnboarding]);
 
 	return (
 		<>
