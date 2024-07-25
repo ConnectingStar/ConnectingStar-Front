@@ -62,14 +62,3 @@ export interface onboardingUserDataType {
 	firstAlert: { noon: string; hour: string; minute: string };
 	secondAlert: { noon: string; hour: string; minute: string };
 }
-
-export interface habitUserDataType {
-	identity?: string;
-	runTime?: { noon: string; hour: string; minute: string };
-	place?: string;
-	behavior?: string;
-	behaviorValue?: number | string;
-	behaviorUnit?: string;
-	firstAlert?: { noon: string; hour: string; minute: string };
-	secondAlert?: { noon: string; hour: string; minute: string };
-}

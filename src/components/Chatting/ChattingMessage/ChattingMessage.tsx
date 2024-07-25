@@ -11,6 +11,8 @@ import { postOnboarding } from "@/api/user/userThunk";
 
 import { theme } from "@/styles/theme";
 
+import type { HabitRequestType } from "@/types/habit";
+
 import {
 	container,
 	chatWrap,
@@ -26,14 +28,17 @@ interface chattingType {
 	};
 	progress: number;
 	addProgress: () => void;
+	habitRequest: HabitRequestType;
 }
 
-function ChattingMessage({ chatData, progress, addProgress }: chattingType) {
+function ChattingMessage({ chatData, progress, addProgress, habitRequest }: chattingType) {
 	const dispatch = useAppDispatch();
 
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
 	const { userData } = useAppSelector((state) => state.user);
+
+	console.log(habitRequest);
 
 	const { botMessage, bottomButton, userMessage, modalType } = chatData;
 
