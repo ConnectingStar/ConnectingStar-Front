@@ -3,17 +3,29 @@ import { css } from "@emotion/react";
 import Header from "@/components/common/Header/Header";
 
 import { useAppDispatch } from "@/api/hooks";
-import { updateVisitorRoute } from "@/api/user/userSlice";
+import { postOnboardingUserInfo } from "@/api/user/userThunk";
 
 import { visitorRouteData } from "@/constants/onboarding";
 
 import { theme } from "@/styles/theme";
 
-function Referrer({ onNext }: { onNext: () => void }) {
+import { generateAge, generateGender } from "@/utils/generateRangeType";
+
+import type { OnboardingProps } from "@/components/Onboarding/CreateAccount/CreateAccount";
+
+function Referrer({ userInfoRequest, onNext }: OnboardingProps) {
 	const dispatch = useAppDispatch();
 
-	const confirmVisitorRouteData = (Referrer: string) => {
-		dispatch(updateVisitorRoute(Referrer));
+	const confirmVisitorRouteData = async (referrer: string) => {
+		const onboardingRequest = {
+			nickname: userInfoRequest.nickname,
+			genderType: generateGender(userInfoRequest.genderType),
+			ageRangeType: generateAge(userInfoRequest.ageRangeType),
+			referrer,
+		};
+
+		await dispatch(postOnboardingUserInfo(onboardingRequest)).unwrap();
+
 		onNext();
 	};
 
@@ -42,10 +54,12 @@ const container = css`
 	width: 22.5rem;
 	padding: 4.75rem 1.5rem;
 	margin: 0 auto;
+
 	& > h1 {
 		margin-bottom: 2.5rem;
 		${theme.font.head_a}
 	}
+
 	button {
 		display: flex;
 		justify-content: center;

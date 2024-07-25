@@ -8,6 +8,8 @@ import { genderTypeList } from "@/constants/onboarding";
 
 import { generateGender } from "@/utils/generateRangeType";
 
+import type { UserInfoType } from "@/types/userDataType";
+
 import {
 	layoutStyle,
 	getCheckBoxLabelStyle,
@@ -15,14 +17,16 @@ import {
 
 interface SelectGenderModalProps {
 	prevGender?: string;
-	changeGender?: (gender: string) => void;
+	updateInputValue?: <Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => void;
 }
 
-const SelectGenderModal = ({ prevGender, changeGender }: SelectGenderModalProps) => {
+const SelectGenderModal = ({ prevGender, updateInputValue }: SelectGenderModalProps) => {
 	const dispatch = useAppDispatch();
 
 	const handleChangeGender = (gender: string) => {
-		changeGender ? changeGender(gender) : dispatch(editGender(generateGender(gender)));
+		updateInputValue
+			? updateInputValue("genderType", gender)
+			: dispatch(editGender(generateGender(gender)));
 		dispatch(closeModal());
 	};
 

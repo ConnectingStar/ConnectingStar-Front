@@ -1,4 +1,4 @@
-import { userType, basicUserDataType, habitUserDataType } from "@/types/userDataType";
+import { userType, habitUserDataType } from "@/types/userDataType";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import {
@@ -43,15 +43,6 @@ const userSlice = createSlice({
 	name: "user",
 	initialState,
 	reducers: {
-		updateBasicUserData: (state, action: PayloadAction<basicUserDataType>) => {
-			const { nickname, genderType, ageRangeType } = action.payload;
-			state.userData.nickname = nickname;
-			state.userData.genderType = genderType;
-			state.userData.ageRangeType = ageRangeType;
-		},
-		updateVisitorRoute: (state, action: PayloadAction<string>) => {
-			state.userData.referrer = action.payload;
-		},
 		updateHabitUserData: (state, action: PayloadAction<habitUserDataType>) => {
 			state.userData.identity = action.payload.identity ?? state.userData.identity;
 			state.userData.runTime = action.payload.runTime ?? state.userData.runTime;
@@ -148,5 +139,5 @@ const userSlice = createSlice({
 	},
 });
 
-export const { updateBasicUserData, updateVisitorRoute, updateHabitUserData } = userSlice.actions;
+export const { updateHabitUserData } = userSlice.actions;
 export const userReducer = userSlice.reducer;

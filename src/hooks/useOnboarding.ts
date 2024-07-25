@@ -1,20 +1,28 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+
+import type { UserInfoType } from "@/types/userDataType";
 
 export const useOnboarding = () => {
-	const [onboardingRequest] = useState({
-		nickname: "",
-		genderType: "",
-		ageRangeType: "",
+	const [userInfoRequest, setUserInfoRequest] = useState({
+		nickname: "닉네임을 입력해 주세요",
+		genderType: "성별을 선택해 주세요",
+		ageRangeType: "나이대를 선택해 주세요",
 		referrer: "",
-		identity: "",
-		runTime: { noon: "오전", hour: "10", minute: "00" },
-		place: "",
-		behavior: "",
-		behaviorValue: 0,
-		behaviorUnit: "",
-		firstAlert: { noon: "오전", hour: "09", minute: "50" },
-		secondAlert: { noon: "오전", hour: "10", minute: "10" },
 	});
 
-	return { onboardingRequest };
+	const updateInputValue = useCallback(
+		<Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => {
+			setUserInfoRequest((prevUserInfoRequest) => {
+				const data = {
+					...prevUserInfoRequest,
+					[key]: value,
+				};
+
+				return data;
+			});
+		},
+		[],
+	);
+
+	return { userInfoRequest, updateInputValue };
 };
