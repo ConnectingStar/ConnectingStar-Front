@@ -1,9 +1,9 @@
-import { HabitRecordRequestType } from "@/types/habit";
+import { HistoryOneDayType } from "@/types/habit";
 
 import { habitIconData } from "@/constants/mypage";
 
 interface HabitPracticeRecordProps {
-	habitRecord: HabitRecordRequestType;
+	habitRecord: HistoryOneDayType;
 }
 
 const HabitPracticeRecord = ({ habitRecord }: HabitPracticeRecordProps) => {
@@ -17,17 +17,16 @@ const HabitPracticeRecord = ({ habitRecord }: HabitPracticeRecordProps) => {
 			<div>
 				<h2>나는</h2>
 				<div>
-					<p>{habitRecord.runTime}</p>
+					<p>{habitRecord.runDate}</p>
 					<p>{habitRecord.runPlace}</p>
 					<p>{habitRecord.action}</p>
-					<p>{habitRecord.behaviorValue}</p>
+					<p>{habitRecord.runValue}</p>
 				</div>
 				<h2>했다</h2>
 			</div>
 			<div>
 				<h2>오늘의 습관 실천은</h2>
-				{/* api 필드 추가 필요 */}
-				{habitIconData[1].icon}
+				{habitIconData[habitRecord.achievement].icon}
 			</div>
 		</>
 	);

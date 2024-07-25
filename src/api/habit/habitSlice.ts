@@ -43,7 +43,7 @@ const habitSlice = createSlice({
 				state.habit = { ...action.meta.arg, runHabitId: action.meta.arg.runHabitId };
 			})
 			.addCase(getHabitRecord.fulfilled, (state, action) => {
-				state.habitRecord = action.payload.data;
+				state.habitRecord = action.payload.data.history;
 			})
 			.addCase(getHabitRecordOneDay.fulfilled, (state, action) => {
 				state.habitRecordOneDay = action.payload.data;
