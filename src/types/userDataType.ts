@@ -22,6 +22,7 @@ interface UserInfoType {
 	referrer: string;
 	constellationId: number;
 	constellation: ConstellationType;
+	defaultCharacterImage: string;
 }
 
 interface ConstellationType {

@@ -56,7 +56,14 @@ const MyInfoPage = () => {
 			<div css={layoutStyle}>
 				<div css={mainBoxStyle}>
 					<div css={characterBoxStyle}>
-						<img src={userInfo?.constellation.characterImage} alt="characterImage" />
+						<img
+							src={
+								userInfo.constellation === null
+									? userInfo.defaultCharacterImage
+									: userInfo.constellation.characterImage
+							}
+							alt="characterImage"
+						/>
 						<button onClick={() => dispatch(openModal(modalType.SELECT_CHARACTER))}>
 							<p>이미지 변경</p>
 						</button>
