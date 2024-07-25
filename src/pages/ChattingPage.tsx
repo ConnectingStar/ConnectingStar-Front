@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
@@ -11,33 +10,42 @@ import SelectTagModal from "@/components/common/Modal/CommonModal/SelectTagModal
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import SuccessGuideModal from "@/components/common/Modal/CommonModal/SuccessGuideModal/SuccessGuideModal";
 
-import { useAppSelector } from "@/api/hooks";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { getOnlyUserInfo } from "@/api/user/userThunk";
 
 import { createChatData } from "@/constants/chatData";
 import { modalType } from "@/constants/modalConstants";
 import { SELECT_TAG_DATA } from "@/constants/modalConstants";
-import { ONBOARDING_STEP, STEP_KEY } from "@/constants/onboarding";
-import { PATH } from "@/constants/path";
+
+import { useHabitForm } from "@/hooks/useHabitForm";
 
 import { theme } from "@/styles/theme";
 
 function ChattingPage() {
-	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
 	const { userData } = useAppSelector((state) => state.user);
 
-	const chatData = createChatData(userData);
+	const { habitRequest, updateInputValue } = useHabitForm({});
+
+	const chatData = createChatData(userData, habitRequest);
 
 	const [progress, setProgress] = useState(0);
 
 	const isExtraBtn = chatData[progress].bottomButton.length > 1;
 
+	console.log(habitRequest);
+
+	// useEffect(() => {
+	// 	const { nickname, genderType, ageRangeType, referrer } = userData;
+	// 	if (!nickname || !genderType || !ageRangeType || !referrer) {
+	// 		navigate(`${PATH.ONBOARDING}?${STEP_KEY}=${ONBOARDING_STEP.CREATE_ACCOUNT}`);
+	// 	}
+	// }, []);
+
 	useEffect(() => {
-		const { nickname, genderType, ageRangeType, referrer } = userData;
-		if (!nickname || !genderType || !ageRangeType || !referrer) {
-			navigate(`${PATH.ONBOARDING}?${STEP_KEY}=${ONBOARDING_STEP.CREATE_ACCOUNT}`);
-		}
+		dispatch(getOnlyUserInfo());
 	}, []);
 
 	return (
@@ -55,6 +63,7 @@ function ChattingPage() {
 						chatData={chatData}
 						progress={progress}
 						addProgress={() => setProgress((prev) => prev + 1)}
+						habitRequest={habitRequest}
 					/>
 				))}
 			</div>
@@ -65,6 +74,8 @@ function ChattingPage() {
 					tags={SELECT_TAG_DATA.behaviorTags}
 					progress={progress}
 					addprogress={() => setProgress((prev) => prev + 1)}
+					prevValue={habitRequest.behavior}
+					updateInputValue={updateInputValue}
 				/>
 			)}
 			{modal === modalType.SELECT_IDENTITY && (
@@ -73,6 +84,8 @@ function ChattingPage() {
 					tags={SELECT_TAG_DATA.identityTags}
 					progress={progress}
 					addprogress={() => setProgress((prev) => prev + 1)}
+					prevValue={habitRequest.identity}
+					updateInputValue={updateInputValue}
 				/>
 			)}
 			{modal === modalType.SELECT_TIME("RUNTIME") && (
@@ -80,16 +93,26 @@ function ChattingPage() {
 					title="시간을 선택해 주세요"
 					progress={progress}
 					addprogress={() => setProgress((prev) => prev + 1)}
+					updateInputValue={updateInputValue}
+					runTime={habitRequest.runTime}
 				/>
 			)}
 			{modal === modalType.SELECT_PLACE && (
-				<LocationModal progress={progress} addprogress={() => setProgress((prev) => prev + 1)} />
+				<LocationModal
+					progress={progress}
+					addprogress={() => setProgress((prev) => prev + 1)}
+					prevValue={habitRequest.place}
+					updateInputValue={updateInputValue}
+				/>
 			)}
 			{modal === modalType.SELECT_BEHAVIORUNIT && (
 				<BehaviorModal
 					behavior={userData.behavior}
 					progress={progress}
 					addprogress={() => setProgress((prev) => prev + 1)}
+					prevValue={habitRequest.behaviorValue}
+					prevUnit={habitRequest.behaviorUnit}
+					updateInputValue={updateInputValue}
 				/>
 			)}
 			{modal === modalType.SELECT_TIME("FIRSTALERT") && (

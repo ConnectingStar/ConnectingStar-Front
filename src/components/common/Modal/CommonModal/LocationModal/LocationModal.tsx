@@ -13,7 +13,6 @@ import {
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { locationModalData } from "@/constants/locationModalConstants";
 
@@ -22,25 +21,23 @@ import type { HabitRequestType } from "@/types/habit";
 interface LocationModalType {
 	progress?: number;
 	addprogress?: () => void;
+	prevValue: string;
 	updateInputValue?: <Key extends keyof HabitRequestType>(
 		key: Key,
 		value: HabitRequestType[Key],
 	) => void;
 }
 
-function LocationModal({ progress, addprogress, updateInputValue }: LocationModalType) {
+function LocationModal({ progress, addprogress, prevValue, updateInputValue }: LocationModalType) {
 	const dispatch = useAppDispatch();
 
-	const [place, setPlace] = useState("");
+	const [place, setPlace] = useState(prevValue ?? "");
 	const [isInputFocus, setIsInputFocus] = useState(false);
 
 	const confirmSelectedTag = () => {
 		progress === 5 && addprogress && addprogress();
 
-		// 온보딩시
-		addprogress && dispatch(updateHabitUserData({ place }));
-		// 장소 수정시
-		!addprogress && updateInputValue && updateInputValue("place", place);
+		updateInputValue && updateInputValue("place", place);
 
 		dispatch(closeModal());
 	};
@@ -66,6 +63,7 @@ function LocationModal({ progress, addprogress, updateInputValue }: LocationModa
 					css={locationInputStyle}
 					type="text"
 					placeholder="직접입력"
+					value={place}
 					onFocus={() => setIsInputFocus(true)}
 					onBlur={() => setIsInputFocus(false)}
 					onChange={(e) => setPlace(e.target.value)}

@@ -1,5 +1,5 @@
-import { userType, habitUserDataType } from "@/types/userDataType";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { userType } from "@/types/userDataType";
+import { createSlice } from "@reduxjs/toolkit";
 
 import {
 	getIsOnboarding,
@@ -42,18 +42,7 @@ const initialState: userType = {
 const userSlice = createSlice({
 	name: "user",
 	initialState,
-	reducers: {
-		updateHabitUserData: (state, action: PayloadAction<habitUserDataType>) => {
-			state.userData.identity = action.payload.identity ?? state.userData.identity;
-			state.userData.runTime = action.payload.runTime ?? state.userData.runTime;
-			state.userData.place = action.payload.place ?? state.userData.place;
-			state.userData.behavior = action.payload.behavior ?? state.userData.behavior;
-			state.userData.behaviorValue = action.payload.behaviorValue ?? state.userData.behaviorValue;
-			state.userData.behaviorUnit = action.payload.behaviorUnit ?? state.userData.behaviorUnit;
-			state.userData.firstAlert = action.payload.firstAlert ?? state.userData.firstAlert;
-			state.userData.secondAlert = action.payload.secondAlert ?? state.userData.secondAlert;
-		},
-	},
+	reducers: {},
 	extraReducers(builder) {
 		builder
 			.addCase(getIsOnboarding.pending, (state) => {
@@ -139,5 +128,4 @@ const userSlice = createSlice({
 	},
 });
 
-export const { updateHabitUserData } = userSlice.actions;
 export const userReducer = userSlice.reducer;

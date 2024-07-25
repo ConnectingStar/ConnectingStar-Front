@@ -1,10 +1,11 @@
-import { onboardingUserDataType } from "@/types/userDataType";
-
 import { modalType } from "@/constants/modalConstants";
 
 import { theme } from "@/styles/theme";
 
-export function createChatData(userData: onboardingUserDataType) {
+import type { HabitRequestType } from "@/types/habit";
+import type { onboardingUserDataType } from "@/types/userDataType";
+
+export function createChatData(userData: onboardingUserDataType, habitRequest: HabitRequestType) {
 	return [
 		{
 			id: "firstMeet",
@@ -14,7 +15,7 @@ export function createChatData(userData: onboardingUserDataType) {
 				`매일 해도 무리 없는 쉬운 것부터 시작하기를 추천해요 😊`,
 			],
 			bottomButton: ["습관 선택"],
-			userMessage: `${userData.behavior}`,
+			userMessage: `${habitRequest.behavior}`,
 			modalType: [modalType.SELECT_BEHAVIOR],
 		},
 		{
@@ -22,18 +23,18 @@ export function createChatData(userData: onboardingUserDataType) {
 			botMessage: [
 				`그렇군요!`,
 				`이번엔 정체성을 정해 볼게요`,
-				`${userData.behavior}을(를) 통해서 ${userData.nickname}님은 어떤 사람이 되고 싶으세요?`,
+				`${habitRequest.behavior}을(를) 통해서 ${userData.nickname}님은 어떤 사람이 되고 싶으세요?`,
 			],
 			bottomButton: ["정체성 선택"],
-			userMessage: `${userData.identity}`,
+			userMessage: `${habitRequest.identity}`,
 			modalType: [modalType.SELECT_IDENTITY],
 		},
 		{
 			id: "identity",
 			botMessage: [
 				`좋습니다 :)`,
-				`지금 이 순간부터 ${userData.nickname}님은 ${userData.identity} 사람이에요`,
-				`오늘부터 진심으로 ${userData.nickname}님은 ${userData.identity} 사람이라고 믿어 주세요!`,
+				`지금 이 순간부터 ${userData.nickname}님은 ${habitRequest.identity} 사람이에요`,
+				`오늘부터 진심으로 ${userData.nickname}님은 ${habitRequest.identity} 사람이라고 믿어 주세요!`,
 			],
 			bottomButton: ["그런데 정체성을 왜 정하는 거야?"],
 			userMessage: "그런데 정체성을 왜 정하는 거야?",
@@ -58,7 +59,7 @@ export function createChatData(userData: onboardingUserDataType) {
 				`다른 일에 방해 받지 않는 시간 혹은 매일 지키기에 수월한 시간으로 설정해 주세요`,
 			],
 			bottomButton: ["시간 선택"],
-			userMessage: `${userData.runTime.noon} ${userData.runTime.hour}:${userData.runTime.minute}`,
+			userMessage: `${habitRequest.runTime.noon} ${habitRequest.runTime.hour}:${habitRequest.runTime.minute}`,
 			modalType: [modalType.SELECT_TIME("RUNTIME")],
 		},
 		{
@@ -69,7 +70,7 @@ export function createChatData(userData: onboardingUserDataType) {
 				`가는 것만으로 만족스럽거나 습관을 쉽게 할 수 있는 곳으로 명확하게 적어 주세요`,
 			],
 			bottomButton: ["장소 선택"],
-			userMessage: `${userData.place}`,
+			userMessage: `${habitRequest.place}`,
 			modalType: [modalType.SELECT_PLACE],
 		},
 
@@ -82,7 +83,7 @@ export function createChatData(userData: onboardingUserDataType) {
 				`3장으로 시작했지만, 점차 자리 잡으면 30장도 쉬운 일이 되어 있을 거예요!`,
 			],
 			bottomButton: ["실천 정도 선택"],
-			userMessage: `${userData.behaviorValue} ${userData.behaviorUnit}`,
+			userMessage: `${habitRequest.behaviorValue} ${habitRequest.behaviorUnit}`,
 			modalType: [modalType.SELECT_BEHAVIORUNIT],
 		},
 		{
@@ -97,9 +98,9 @@ export function createChatData(userData: onboardingUserDataType) {
 					<div>2차 알림(기록 독려)</div>
 				</div>
 				<div class="bold">
-					<div>${userData.firstAlert.noon} ${userData.firstAlert.hour}:${userData.firstAlert.minute}</div>
-					<div>${userData.runTime.noon} ${userData.runTime.hour}:${userData.runTime.minute}</div>
-					<div>${userData.secondAlert.noon} ${userData.secondAlert.hour}:${userData.secondAlert.minute}</div>
+					<div>${habitRequest.firstAlert.noon} ${habitRequest.firstAlert.hour}:${habitRequest.firstAlert.minute}</div>
+					<div>${habitRequest.runTime.noon} ${habitRequest.runTime.hour}:${habitRequest.runTime.minute}</div>
+					<div>${habitRequest.secondAlert.noon} ${habitRequest.secondAlert.hour}:${habitRequest.secondAlert.minute}</div>
 				</div>
 			</div>
 		`,
@@ -127,7 +128,7 @@ export function createChatData(userData: onboardingUserDataType) {
 						<li>정체성</li>
 					</ul>
 					<ul class="bold">
-						<li>${userData.identity}</li>
+						<li>${habitRequest.identity}</li>
 					</ul>
 				</div>
 			</div>
@@ -141,10 +142,10 @@ export function createChatData(userData: onboardingUserDataType) {
 						<li>실천 정도</li>
 					</ul>
 					<ul class="bold">
-						<li>${userData.runTime.noon} ${userData.runTime.hour}:${userData.runTime.minute}</li>
-						<li>${userData.place}</li>
-						<li>${userData.behavior}</li>
-						<li>${userData.behaviorValue}${userData.behaviorUnit}</li>
+						<li>${habitRequest.runTime.noon} ${habitRequest.runTime.hour}:${habitRequest.runTime.minute}</li>
+						<li>${habitRequest.place}</li>
+						<li>${habitRequest.behavior}</li>
+						<li>${habitRequest.behaviorValue}${habitRequest.behaviorUnit}</li>
 					</ul>
 				</div>
 			</div>
@@ -156,8 +157,8 @@ export function createChatData(userData: onboardingUserDataType) {
 						<li>2차 알림</li>
 					</ul>
 					<ul class="bold">
-						<li>${userData.firstAlert.noon} ${userData.firstAlert.hour}:${userData.firstAlert.minute}</li>
-						<li>${userData.secondAlert.noon} ${userData.secondAlert.hour}:${userData.secondAlert.minute}</li>
+						<li>${habitRequest.firstAlert.noon} ${habitRequest.firstAlert.hour}:${habitRequest.firstAlert.minute}</li>
+						<li>${habitRequest.secondAlert.noon} ${habitRequest.secondAlert.hour}:${habitRequest.secondAlert.minute}</li>
 					</ul>
 				</div>
 			</div>
@@ -192,7 +193,7 @@ export function createChatData(userData: onboardingUserDataType) {
 				`매번 완벽할 필요 없습니다`,
 				`약속의 단 10%만 지켜지더라도 \n<span style="color: ${theme.color.main_blue};font-weight: 700;">"꾸준하게 하는 것”</span>이 핵심이니까요`,
 				`고생 많으셨습니다!`,
-				`${userData.behavior}를 꾸준히 하는 ${userData.nickname}님을 응원할게요 XD`,
+				`${habitRequest.behavior}를 꾸준히 하는 ${userData.nickname}님을 응원할게요 XD`,
 			],
 			bottomButton: ["나도 잘 부탁해!"],
 			userMessage: "",

@@ -5,7 +5,6 @@ import Header from "@/components/common/Header/Header";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import { updateHabitUserData } from "@/api/user/userSlice";
 
 import type { HabitRequestType } from "@/types/habit";
 
@@ -18,24 +17,26 @@ import {
 interface selectTagModalType {
 	type: string;
 	tags: string[];
-	progress?: number;
-	addprogress?: () => void;
-	updateInputValue?: <Key extends keyof HabitRequestType>(
+	prevValue: string;
+	updateInputValue: <Key extends keyof HabitRequestType>(
 		key: Key,
 		value: HabitRequestType[Key],
 	) => void;
+	progress?: number;
+	addprogress?: () => void;
 }
 
 function SelectTagModal({
 	type,
 	tags,
+	prevValue,
+	updateInputValue,
 	progress,
 	addprogress,
-	updateInputValue,
 }: selectTagModalType) {
 	const dispatch = useAppDispatch();
 
-	const [selectedTag, setSelectedTag] = useState<string | null>(null);
+	const [selectedTag, setSelectedTag] = useState<string | null>(prevValue ?? null);
 	const [inputText, setInputText] = useState("");
 	const [isInputFocus, setIsInputFocus] = useState<boolean>(false);
 
@@ -47,21 +48,12 @@ function SelectTagModal({
 	const confirmSelectedTag = () => {
 		const updatedHabit = selectedTag || inputText;
 
-		// 온보딩시
-		if (addprogress) {
-			if (type === "behavior") {
-				dispatch(updateHabitUserData({ behavior: updatedHabit }));
-				progress === 0 && addprogress();
-			} else if (type === "identity") {
-				dispatch(updateHabitUserData({ identity: updatedHabit }));
-				progress === 1 && addprogress();
-			}
-		}
-
-		// 행동, 정체성 수정시
-		if (!addprogress) {
-			type === "behavior" && updateInputValue && updateInputValue("behavior", updatedHabit);
-			type === "identity" && updateInputValue && updateInputValue("identity", updatedHabit);
+		if (type === "behavior") {
+			updateInputValue("behavior", updatedHabit);
+			progress === 0 && addprogress && addprogress();
+		} else if (type === "identity") {
+			updateInputValue("identity", updatedHabit);
+			progress === 1 && addprogress && addprogress();
 		}
 
 		dispatch(closeModal());

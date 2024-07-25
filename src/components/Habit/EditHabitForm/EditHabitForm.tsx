@@ -167,6 +167,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					<SelectTagModal
 						type="identity"
 						tags={SELECT_TAG_DATA.identityTags}
+						prevValue={habitRequest.identity}
 						updateInputValue={updateInputValue}
 					/>
 				)}
@@ -187,11 +188,14 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 						runTime={habitRequest.runTime}
 					/>
 				)}
-				{modal === modalType.SELECT_PLACE && <LocationModal updateInputValue={updateInputValue} />}
+				{modal === modalType.SELECT_PLACE && (
+					<LocationModal prevValue={habitRequest.place} updateInputValue={updateInputValue} />
+				)}
 				{modal === modalType.SELECT_BEHAVIOR && (
 					<SelectTagModal
 						type="behavior"
 						tags={SELECT_TAG_DATA.behaviorTags}
+						prevValue={habitRequest.behavior}
 						updateInputValue={updateInputValue}
 					/>
 				)}

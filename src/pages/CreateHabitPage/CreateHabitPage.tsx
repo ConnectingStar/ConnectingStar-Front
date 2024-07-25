@@ -112,6 +112,7 @@ const CreateHabitPage = () => {
 					<SelectTagModal
 						type="identity"
 						tags={SELECT_TAG_DATA.identityTags}
+						prevValue={habitRequest.identity}
 						updateInputValue={updateInputValue}
 					/>
 				)}
@@ -132,11 +133,14 @@ const CreateHabitPage = () => {
 						runTime={habitRequest.runTime}
 					/>
 				)}
-				{modal === modalType.SELECT_PLACE && <LocationModal updateInputValue={updateInputValue} />}
+				{modal === modalType.SELECT_PLACE && (
+					<LocationModal prevValue={habitRequest.place} updateInputValue={updateInputValue} />
+				)}
 				{modal === modalType.SELECT_BEHAVIOR && (
 					<SelectTagModal
 						type="behavior"
 						tags={SELECT_TAG_DATA.behaviorTags}
+						prevValue={habitRequest.behavior}
 						updateInputValue={updateInputValue}
 					/>
 				)}
