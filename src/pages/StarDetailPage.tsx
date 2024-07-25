@@ -5,7 +5,6 @@ import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import Header from "@/components/common/Header/Header";
-import LoadingSpinner from "@/components/common/LoadingSpinner";
 import SelectProfileImageModal from "@/components/StarPage/Modal/SelectProfileImageModal";
 import SelectStarModal from "@/components/StarPage/Modal/SelectStarModal";
 import Img from "@/components/StarPage/StarDetail/Img";
@@ -33,7 +32,7 @@ export default function StarDetailPage() {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { isLoading, starDetail } = useAppSelector((state) => state.star);
+	const { starDetail } = useAppSelector((state) => state.star);
 
 	const handleFooterBtnClick = (status: StarDetailStatus) => {
 		switch (status) {
@@ -73,7 +72,6 @@ export default function StarDetailPage() {
 				/>
 			)}
 
-			{isLoading && <LoadingSpinner />}
 			{modal === modalType.SELECT_STAR && <SelectStarModal />}
 			{modal === modalType.SELECT_PROFILE_IMAGE && <SelectProfileImageModal />}
 		</>
