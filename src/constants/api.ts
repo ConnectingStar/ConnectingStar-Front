@@ -8,6 +8,7 @@ export const END_POINTS = {
 	LOGIN: "/oauth/login",
 	LOGOUT: "/oauth/logout",
 	ONBOARDING: "/user/onboarding",
+	ONBOARDING_V2: "/v2/users/me/onboarding",
 	IS_ONBOARDING: "/user/check-onboarding",
 	WITHDRAWAL: "/user/withdraw",
 	CONSTELLATION_LIST_V2: (constellationTypeId?: string, isRegistered?: boolean, related?: string) =>

@@ -41,6 +41,13 @@ export interface UserDataType {
 	data: onboardingUserDataType;
 }
 
+export interface UserInfoType {
+	nickname: string;
+	genderType: string;
+	ageRangeType: string;
+	referrer: string;
+}
+
 export interface onboardingUserDataType {
 	nickname: string;
 	genderType: string;
@@ -54,12 +61,6 @@ export interface onboardingUserDataType {
 	behaviorUnit: string;
 	firstAlert: { noon: string; hour: string; minute: string };
 	secondAlert: { noon: string; hour: string; minute: string };
-}
-
-export interface basicUserDataType {
-	nickname: string;
-	genderType: string;
-	ageRangeType: string;
 }
 
 export interface habitUserDataType {

@@ -8,6 +8,8 @@ import { ageRangeTypeList } from "@/constants/onboarding";
 
 import { generateAge } from "@/utils/generateRangeType";
 
+import type { UserInfoType } from "@/types/userDataType";
+
 import {
 	layoutStyle,
 	getCheckBoxLabelStyle,
@@ -15,16 +17,20 @@ import {
 
 interface SelectAgeModalProps {
 	prevAgeRange?: string;
-	changeAgeRange?: (age: string) => void;
+	updateInputValue?: <Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => void;
 }
 
-const SelectAgeRangeModal = ({ prevAgeRange, changeAgeRange }: SelectAgeModalProps) => {
+const SelectAgeRangeModal = ({ prevAgeRange, updateInputValue }: SelectAgeModalProps) => {
 	const dispatch = useAppDispatch();
 
 	const handleChangeAgeRange = (ageRange: string) => {
-		changeAgeRange ? changeAgeRange(ageRange) : dispatch(editAge(generateAge(ageRange)));
+		updateInputValue
+			? updateInputValue("ageRangeType", ageRange)
+			: dispatch(editAge(generateAge(ageRange)));
 		dispatch(closeModal());
 	};
+
+	console.log(prevAgeRange);
 
 	return (
 		<Modal isBottomSheet>

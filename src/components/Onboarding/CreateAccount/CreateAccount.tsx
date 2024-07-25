@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { css } from "@emotion/react";
-
-import ArrowDownIcon from "@/assets/icon/ic-arrow-down.svg?react";
+import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
@@ -12,57 +10,31 @@ import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGende
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { updateBasicUserData } from "@/api/user/userSlice";
 import { getIsOnboarding } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 
-import { theme } from "@/styles/theme";
+import type { UserInfoType } from "@/types/userDataType";
 
-import { generateAge, generateGender } from "@/utils/generateRangeType";
+import {
+	layoutStyle,
+	boxStyle,
+	inputBoxStyle,
+} from "@/components/Onboarding/CreateAccount/CreateAccount.style";
 
-function CreateAccount({ onNext }: { onNext: () => void }) {
+export interface OnboardingProps {
+	userInfoRequest: UserInfoType;
+	updateInputValue?: <Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => void;
+	onNext: () => void;
+}
+
+const CreateAccount = ({ userInfoRequest, updateInputValue, onNext }: OnboardingProps) => {
 	const dispatch = useAppDispatch();
+
 	const navigate = useNavigate();
 
 	const { modal } = useAppSelector((state) => state.modal);
 	const { isOnboarding } = useAppSelector((state) => state.user);
-
-	const [nickname, setNickname] = useState<string>("");
-	const [genderType, setGenderType] = useState<string>("");
-	const [ageRangeType, setAgeRangeType] = useState<string>("");
-
-	const accountInputData = [
-		{
-			state: nickname,
-			title: "닉네임",
-			content: "닉네임을 입력해 주세요",
-			modalType: modalType.CHANGE_NICKNAME,
-		},
-		{
-			state: genderType,
-			title: "성별",
-			content: "성별을 선택해 주세요",
-			modalType: modalType.SELECT_GENDERTYPE,
-		},
-		{
-			state: ageRangeType,
-			title: "나이대",
-			content: "나이대를 선택해 주세요",
-			modalType: modalType.SELECT_AGERANGETYPE,
-		},
-	];
-
-	const confirmBasicUserData = () => {
-		dispatch(
-			updateBasicUserData({
-				nickname,
-				genderType: generateGender(genderType),
-				ageRangeType: generateAge(ageRangeType),
-			}),
-		);
-		onNext();
-	};
 
 	useEffect(() => {
 		dispatch(getIsOnboarding());
@@ -72,79 +44,69 @@ function CreateAccount({ onNext }: { onNext: () => void }) {
 		isOnboarding && navigate("/");
 	}, [isOnboarding]);
 
+	console.log(userInfoRequest);
+
 	return (
 		<>
-			<div css={container}>
+			<div css={layoutStyle}>
 				<h1>내 정보 입력을 완료해 주세요</h1>
-				<ul css={wrap}>
-					{accountInputData.map((item) => (
-						<li key={item.title}>
-							<h2>{item.title}</h2>
-							<div
-								style={{ color: item.state && "black" }}
-								onClick={() => {
-									dispatch(openModal(item.modalType));
-								}}
-							>
-								{item.state ? item.state : item.content}
-								{item.title !== "닉네임" && <ArrowDownIcon />}
-							</div>
-						</li>
-					))}
-				</ul>
+				<div css={boxStyle}>
+					<div css={inputBoxStyle(userInfoRequest.nickname !== "닉네임을 입력해 주세요")}>
+						<h2>닉네임</h2>
+						<div onClick={() => dispatch(openModal(modalType.CHANGE_NICKNAME))}>
+							<span>{userInfoRequest.nickname}</span>
+						</div>
+					</div>
+
+					<div css={inputBoxStyle(userInfoRequest.genderType !== "성별을 선택해 주세요")}>
+						<h2>성별</h2>
+						<div onClick={() => dispatch(openModal(modalType.SELECT_GENDERTYPE))}>
+							<span>{userInfoRequest.genderType}</span>
+							<DownArrowIcon />
+						</div>
+					</div>
+
+					<div css={inputBoxStyle(userInfoRequest.ageRangeType !== "나이대를 선택해 주세요")}>
+						<h2>나이대</h2>
+						<div onClick={() => dispatch(openModal(modalType.SELECT_AGERANGETYPE))}>
+							<span>{userInfoRequest.ageRangeType}</span>
+							<DownArrowIcon />
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<FooterBtn
 				text="다음"
 				isTransparent
-				disabled={!nickname || !genderType || !ageRangeType}
-				handleBtnClick={confirmBasicUserData}
+				disabled={
+					userInfoRequest.nickname === "닉네임을 입력해 주세요" ||
+					userInfoRequest.genderType === "성별을 선택해 주세요" ||
+					userInfoRequest.ageRangeType === "나이대를 선택해 주세요"
+				}
+				handleBtnClick={onNext}
 			/>
 
 			{modal === modalType.CHANGE_NICKNAME && (
-				<ChangeNicknameModal prevNickname={nickname} changeNickname={setNickname} />
+				<ChangeNicknameModal
+					prevNickname={userInfoRequest.nickname}
+					updateInputValue={updateInputValue}
+				/>
 			)}
 			{modal === modalType.SELECT_GENDERTYPE && (
-				<SelectGenderModal prevGender={genderType} changeGender={setGenderType} />
+				<SelectGenderModal
+					prevGender={userInfoRequest.genderType}
+					updateInputValue={updateInputValue}
+				/>
 			)}
 			{modal === modalType.SELECT_AGERANGETYPE && (
-				<SelectAgeRangeModal prevAgeRange={ageRangeType} changeAgeRange={setAgeRangeType} />
+				<SelectAgeRangeModal
+					prevAgeRange={userInfoRequest.ageRangeType}
+					updateInputValue={updateInputValue}
+				/>
 			)}
 		</>
 	);
-}
+};
 
 export default CreateAccount;
-
-const container = css`
-	width: 22.5rem;
-	margin: 0 auto;
-	padding: 4.75rem 1.5rem;
-
-	& > h1 {
-		${theme.font.head_a}
-		margin-bottom: 2.5rem;
-	}
-`;
-
-const wrap = css`
-	& > li {
-		margin-bottom: 1.25rem;
-		& > h2 {
-			${theme.font.head_c}
-			color: ${theme.color.font_gray};
-			margin-bottom: 0.75rem;
-		}
-		& > div {
-			display: flex;
-			justify-content: space-between;
-			height: 3.438rem;
-			background-color: ${theme.color.bg};
-			color: ${theme.color.button_deactivated};
-			align-items: center;
-			${theme.font.body_a};
-			border-radius: 15px;
-			padding: 1rem;
-		}
-	}
-`;

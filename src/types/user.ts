@@ -28,11 +28,6 @@ export interface ConstellationList {
 	// imageUrl: string;
 }
 
-export interface UserInfoType {
-	nickname: string;
-	profileCharacter: string;
-}
-
 export interface WithdrawalRequestType {
 	reason: string;
 	content: string;

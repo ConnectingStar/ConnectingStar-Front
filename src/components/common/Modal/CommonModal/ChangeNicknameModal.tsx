@@ -15,15 +15,19 @@ import { theme } from "@/styles/theme";
 
 import isValidNickname from "@/utils/isValidNickname";
 
+import type { UserInfoType } from "@/types/userDataType";
+
 interface ChangeNicknameModalProps {
-	prevNickname?: string;
-	changeNickname?: (nickname: string) => void;
+	prevNickname: string;
+	updateInputValue?: <Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => void;
 }
 
-const ChangeNicknameModal = ({ prevNickname, changeNickname }: ChangeNicknameModalProps) => {
+const ChangeNicknameModal = ({ prevNickname, updateInputValue }: ChangeNicknameModalProps) => {
 	const dispatch = useAppDispatch();
 
-	const [nickname, setNickname] = useState(prevNickname ?? "");
+	const [nickname, setNickname] = useState(
+		prevNickname === "" || prevNickname === "닉네임을 입력해 주세요" ? "" : prevNickname,
+	);
 
 	const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value;
@@ -39,7 +43,7 @@ const ChangeNicknameModal = ({ prevNickname, changeNickname }: ChangeNicknameMod
 	};
 
 	const handleChangeInput = () => {
-		changeNickname && changeNickname(nickname);
+		updateInputValue && updateInputValue("nickname", nickname);
 		dispatch(closeModal());
 	};
 
@@ -62,9 +66,9 @@ const ChangeNicknameModal = ({ prevNickname, changeNickname }: ChangeNicknameMod
 			<FooterBtn
 				text="확인"
 				leftText="취소"
-				handleBtnClick={changeNickname ? handleChangeInput : handleChangeNickname}
+				handleBtnClick={updateInputValue ? handleChangeInput : handleChangeNickname}
 				handleLeftBtnClick={() => dispatch(closeModal())}
-				disabled={nickname.trim().length === 0}
+				disabled={nickname.trim().length === 0 || nickname === "닉네임을 입력해 주세요"}
 				isSquare
 			/>
 		</Modal>
