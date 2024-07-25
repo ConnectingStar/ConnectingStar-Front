@@ -81,6 +81,7 @@ export interface HistoryOneDayType {
 	runPlace: string;
 	runValue: string;
 	userId: number;
+	runHabit: HabitOneDayType;
 }
 
 export interface HabitType {

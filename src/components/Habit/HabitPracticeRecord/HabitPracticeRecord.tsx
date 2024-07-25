@@ -7,20 +7,30 @@ interface HabitPracticeRecordProps {
 }
 
 const HabitPracticeRecord = ({ habitRecord }: HabitPracticeRecordProps) => {
+	const noon = Number(habitRecord.runDate.split("T")[1].split(":")[0]) > 12 ? "오후" : "오전";
+	const hour =
+		Number(habitRecord.runDate.split("T")[1].split(":")[0]) > 12
+			? Number(habitRecord.runDate.split("T")[1].split(":")[0]) - 12
+			: Number(habitRecord.runDate.split("T")[1].split(":")[0]);
+	const minute = Number(habitRecord.runDate.split("T")[1].split(":")[1]);
+
 	return (
 		<>
 			<div>
 				<h2>정체성</h2>
-				{/* api 필드 추가 필요 */}
-				<p>매일 성장하는 사람</p>
+				<p>{habitRecord.runHabit.identity}</p>
 			</div>
 			<div>
 				<h2>나는</h2>
 				<div>
-					<p>{habitRecord.runDate}</p>
+					<p>
+						{noon} {hour}시 {minute}분에
+					</p>
 					<p>{habitRecord.runPlace}</p>
 					<p>{habitRecord.action}</p>
-					<p>{habitRecord.runValue}</p>
+					<p>
+						{habitRecord.runValue} {habitRecord.runHabit.unit}
+					</p>
 				</div>
 				<h2>했다</h2>
 			</div>
