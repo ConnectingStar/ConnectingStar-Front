@@ -22,7 +22,7 @@ export const footerBtnStyle = (
 		transform: ${!isPositionStatic && "translateX(-50%)"};
 
 		& > button {
-			width: 19.5rem;
+			width: ${isSquare ? "100%" : "19.5rem"};
 			height: 3.438rem;
 			border-radius: ${!isSquare && "15px"};
 			${theme.font.button_big};
