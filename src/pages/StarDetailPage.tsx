@@ -33,8 +33,7 @@ export default function StarDetailPage() {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { starDetail } = useAppSelector((state) => state.star);
-	const { isLoading } = useAppSelector((state) => state.user);
+	const { isLoading, starDetail } = useAppSelector((state) => state.star);
 
 	const handleFooterBtnClick = (status: StarDetailStatus) => {
 		switch (status) {
