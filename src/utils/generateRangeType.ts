@@ -1,7 +1,7 @@
 export const generateGenderType = (genderType: string) => {
-	if (genderType === "MALE") {
+	if (genderType === "M") {
 		return "남";
-	} else if (genderType === "FEMALE") {
+	} else if (genderType === "F") {
 		return "여";
 	} else {
 		return "선택 안 함";
@@ -19,21 +19,21 @@ export const generateGender = (gender: string) => {
 };
 
 export const generateAgeType = (ageType: string) => {
-	if (ageType === "AGE_15") {
+	if (ageType === "A") {
 		return "15-19";
-	} else if (ageType === "AGE_20") {
+	} else if (ageType === "B") {
 		return "20-24";
-	} else if (ageType === "AGE_25") {
+	} else if (ageType === "C") {
 		return "25-29";
-	} else if (ageType === "AGE_30") {
+	} else if (ageType === "D") {
 		return "30-34";
-	} else if (ageType === "AGE_35") {
+	} else if (ageType === "E") {
 		return "35-39";
-	} else if (ageType === "AGE_40") {
+	} else if (ageType === "F") {
 		return "40-44";
-	} else if (ageType === "AGE_45") {
+	} else if (ageType === "G") {
 		return "45-49";
-	} else if (ageType === "AGE_50") {
+	} else if (ageType === "H") {
 		return "50-54";
 	} else {
 		return "55 이상";
