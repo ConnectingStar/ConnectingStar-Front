@@ -7,7 +7,6 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import { updateHabitUserData } from "@/api/user/userSlice";
 
 import { theme } from "@/styles/theme";
 
@@ -42,8 +41,6 @@ function BehaviorModal({
 		progress === 6 && addprogress && addprogress();
 
 		if (behaviorValue && behaviorUnit) {
-			dispatch(updateHabitUserData({ behaviorValue, behaviorUnit }));
-
 			if (updateInputValue) {
 				updateInputValue("behaviorValue", behaviorValue);
 				updateInputValue("behaviorUnit", behaviorUnit);

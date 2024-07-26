@@ -8,7 +8,7 @@ import { ageRangeTypeList } from "@/constants/onboarding";
 
 import { generateAge } from "@/utils/generateRangeType";
 
-import type { UserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/userDataType";
 
 import {
 	layoutStyle,
@@ -17,7 +17,10 @@ import {
 
 interface SelectAgeModalProps {
 	prevAgeRange?: string;
-	updateInputValue?: <Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => void;
+	updateInputValue?: <Key extends keyof OnboardingUserInfoType>(
+		key: Key,
+		value: OnboardingUserInfoType[Key],
+	) => void;
 }
 
 const SelectAgeRangeModal = ({ prevAgeRange, updateInputValue }: SelectAgeModalProps) => {

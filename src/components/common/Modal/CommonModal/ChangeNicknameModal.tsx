@@ -15,11 +15,14 @@ import { theme } from "@/styles/theme";
 
 import isValidNickname from "@/utils/isValidNickname";
 
-import type { UserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/userDataType";
 
 interface ChangeNicknameModalProps {
 	prevNickname: string;
-	updateInputValue?: <Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => void;
+	updateInputValue?: <Key extends keyof OnboardingUserInfoType>(
+		key: Key,
+		value: OnboardingUserInfoType[Key],
+	) => void;
 }
 
 const ChangeNicknameModal = ({ prevNickname, updateInputValue }: ChangeNicknameModalProps) => {
