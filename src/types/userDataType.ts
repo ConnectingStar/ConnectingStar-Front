@@ -41,7 +41,7 @@ export interface UserDataType {
 	data: onboardingUserDataType;
 }
 
-export interface UserInfoType {
+export interface OnboardingUserInfoType {
 	nickname: string;
 	genderType: string;
 	ageRangeType: string;

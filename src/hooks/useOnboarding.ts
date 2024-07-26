@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import type { UserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/userDataType";
 
 export const useOnboarding = () => {
 	const [userInfoRequest, setUserInfoRequest] = useState({
@@ -11,7 +11,7 @@ export const useOnboarding = () => {
 	});
 
 	const updateInputValue = useCallback(
-		<Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => {
+		<Key extends keyof OnboardingUserInfoType>(key: Key, value: OnboardingUserInfoType[Key]) => {
 			setUserInfoRequest((prevUserInfoRequest) => {
 				const data = {
 					...prevUserInfoRequest,

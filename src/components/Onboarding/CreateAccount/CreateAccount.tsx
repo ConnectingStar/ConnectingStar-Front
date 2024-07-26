@@ -10,7 +10,7 @@ import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
 
-import type { UserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/userDataType";
 
 import {
 	layoutStyle,
@@ -19,8 +19,11 @@ import {
 } from "@/components/Onboarding/CreateAccount/CreateAccount.style";
 
 export interface OnboardingProps {
-	userInfoRequest: UserInfoType;
-	updateInputValue?: <Key extends keyof UserInfoType>(key: Key, value: UserInfoType[Key]) => void;
+	userInfoRequest: OnboardingUserInfoType;
+	updateInputValue?: <Key extends keyof OnboardingUserInfoType>(
+		key: Key,
+		value: OnboardingUserInfoType[Key],
+	) => void;
 	onNext: () => void;
 }
 
