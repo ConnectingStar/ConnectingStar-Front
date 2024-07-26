@@ -1,7 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
 
-import CheckIcon from "@/assets/icon/ic-check.svg?react";
-
 import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
@@ -32,23 +30,23 @@ const SortModal = ({
 
 	return (
 		<Modal isBottomSheet>
-			<div css={layoutStyle(true)}>
+			<div css={layoutStyle}>
 				<h1>정렬기준</h1>
 				<ul>
 					{sortData.map((data) => (
 						<li key={data.text}>
-							<input
-								type="checkbox"
-								id={data.text}
-								onChange={() => {
-									changeSortOption(data.text);
-									dispatch(closeModal());
-								}}
-							/>
-							<label htmlFor={data.text} css={getCheckBoxLabelStyle(sortOption === data.text)}>
-								{sortOption === data.text && <CheckIcon />}
+							<label css={getCheckBoxLabelStyle}>
+								<input
+									type="radio"
+									id={data.text}
+									checked={sortOption === data.text}
+									onChange={() => {
+										changeSortOption(data.text);
+										dispatch(closeModal());
+									}}
+								/>
+								<p>{data.text}</p>
 							</label>
-							<p>{data.text}</p>
 						</li>
 					))}
 				</ul>
