@@ -1,51 +1,53 @@
 import { css } from "@emotion/react";
 
+import CheckIcon from "@/assets/icon/ic-check.svg";
+
 import { theme } from "@/styles/theme";
 
-export const layoutStyle = (isSort?: boolean) => {
-	return css`
-		padding: 1.125rem 1.5rem ${!isSort && "1.125rem"};
-		border-radius: 15px 15px 0 0;
+export const layoutStyle = css`
+	padding: 1.125rem 1.5rem 1.25rem;
+	border-radius: 15px 15px 0 0;
+	color: ${theme.color.font_black};
+	background-color: #fff;
+
+	& > h1 {
+		margin-bottom: 0.6875rem;
 		color: ${theme.color.font_black};
-		background-color: #fff;
+		${theme.font.header};
+	}
 
-		& > h1 {
-			color: ${theme.color.font_black};
-			${theme.font.header};
-		}
-
-		& > ul {
-			margin: 1.75rem 0;
-			display: flex;
-			flex-direction: column;
-			gap: 2.25rem;
-
-			& > li {
-				display: flex;
-				align-items: center;
-				gap: 20px;
-
-				& > p {
-					color: ${theme.color.font_black};
-				}
-
-				& > input {
-					display: none;
-				}
-			}
-		}
-	`;
-};
-
-export const getCheckBoxLabelStyle = (isCheck: boolean) => {
-	return css`
-		width: 24px;
-		height: 24px;
-		border: 1px solid ${isCheck ? theme.color.main_blue : theme.color.button_disabled};
-		border-radius: 4px;
+	& > ul {
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		background-color: ${isCheck && theme.color.main_blue};
-	`;
-};
+		flex-direction: column;
+
+		& > li {
+			display: flex;
+			align-items: center;
+		}
+	}
+`;
+
+export const getCheckBoxLabelStyle = css`
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	width: 100%;
+	height: 100%;
+	padding: 1.0625rem 0;
+
+	input[type="radio"] {
+		appearance: none;
+		width: 1.5rem;
+		height: 1.5rem;
+		border: 1px solid ${theme.color.button_disabled};
+		border-radius: 4px;
+	}
+
+	input[type="radio"]:checked {
+		border: 1px solid ${theme.color.main_blue};
+		background-color: ${theme.color.main_blue};
+		background-image: url(${CheckIcon});
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+`;
