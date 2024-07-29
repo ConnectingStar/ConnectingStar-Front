@@ -46,7 +46,7 @@ export const getCheckBoxLabelStyle = css`
 	input[type="radio"]:checked {
 		border: 1px solid ${theme.color.main_blue};
 		background-color: ${theme.color.main_blue};
-		background-image: url(${CheckIcon});
+		background-image: ${`url("${CheckIcon}")`};
 		background-repeat: no-repeat;
 		background-position: center;
 	}
