@@ -1,4 +1,4 @@
-import { UserStateType } from "@/types/userDataType";
+import { UserStateType } from "@/types/user";
 import { createSlice } from "@reduxjs/toolkit";
 
 import {

@@ -1,3 +1,44 @@
+export interface UserStateType {
+	userProfile: UserProfileType | null;
+	userInfo: UserInfoType | null;
+	isLoading: boolean;
+	isOnboarding: boolean | null;
+	constellationList: ConstellationListType[];
+	userIdentityList: { identity: string }[];
+}
+
+interface UserType extends UserInfoType {
+	user: ConstellationType;
+}
+
+interface UserProfileType {
+	user: UserType;
+	defaultCharacterImage: string;
+}
+
+export interface UserInfoType {
+	id: number;
+	email: string;
+	socialType: "KAKAO";
+	nickname: string;
+	ageRange: string;
+	gender: string;
+	identity: string;
+	onboard: boolean;
+	star: number;
+	referrer: string;
+	constellationId: number;
+	constellation: ConstellationType;
+	defaultCharacterImage: string;
+}
+
+export interface OnboardingUserInfoType {
+	nickname: string;
+	genderType: string;
+	ageRangeType: string;
+	referrer: string;
+}
+
 interface ConstellationType {
 	characterImage: string;
 	constellationId: number;
@@ -14,7 +55,7 @@ interface ConstellationType {
 	};
 }
 
-export interface ConstellationList {
+export interface ConstellationListType {
 	userConstellation: {
 		userId: number;
 		constellationId: number;
@@ -24,23 +65,4 @@ export interface ConstellationList {
 		constellation: ConstellationType;
 	};
 	status: string;
-	// constellationId: number;
-	// imageUrl: string;
-}
-
-export interface WithdrawalRequestType {
-	reason: string;
-	content: string;
-	deletedDt: string;
-}
-
-export interface EditProfileImageRequestType {
-	constellationId: string;
-	related?: string;
-}
-
-export interface GetUserConstellationListRequestType {
-	constellationTypeId?: string;
-	isRegistered?: boolean;
-	related?: string;
 }

@@ -10,7 +10,7 @@ import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
 
-import type { OnboardingUserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/user";
 
 import {
 	layoutStyle,

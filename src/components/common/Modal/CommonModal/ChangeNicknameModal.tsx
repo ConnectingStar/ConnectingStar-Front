@@ -15,7 +15,7 @@ import { theme } from "@/styles/theme";
 
 import isValidNickname from "@/utils/isValidNickname";
 
-import type { OnboardingUserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/user";
 
 interface ChangeNicknameModalProps {
 	prevNickname: string;

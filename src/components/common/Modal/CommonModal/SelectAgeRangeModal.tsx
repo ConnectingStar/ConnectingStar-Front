@@ -8,7 +8,7 @@ import { ageRangeTypeList } from "@/constants/onboarding";
 
 import { generateAge } from "@/utils/generateRangeType";
 
-import type { OnboardingUserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/user";
 
 import {
 	layoutStyle,
