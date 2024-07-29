@@ -20,3 +20,8 @@ export interface WithdrawalRequestType {
 	content: string;
 	deletedDt: string;
 }
+
+export interface EditProfileImageRequestType {
+	constellationId: string;
+	related?: string;
+}

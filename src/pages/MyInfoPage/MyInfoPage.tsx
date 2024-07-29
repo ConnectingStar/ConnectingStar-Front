@@ -35,8 +35,6 @@ const MyInfoPage = () => {
 
 	const navigate = useNavigate();
 
-	console.log(userInfo);
-
 	useEffect(() => {
 		dispatch(getUserConstellationList());
 		dispatch(getUserInfo());

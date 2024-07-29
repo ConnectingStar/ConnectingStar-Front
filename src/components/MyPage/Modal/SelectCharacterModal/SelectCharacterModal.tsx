@@ -5,7 +5,7 @@ import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import { editProfileImage } from "@/api/user/userThunk";
+import { editProfileImageV2 } from "@/api/user/userThunk";
 
 import type { ConstellationList } from "@/types/user";
 
@@ -30,15 +30,17 @@ const SelectCharacterModal = ({
 
 	const handleSelectConstellation = async () => {
 		try {
-			await dispatch(editProfileImage(String(selectConstellation))).unwrap();
+			await dispatch(
+				editProfileImageV2({
+					constellationId: String(selectConstellation),
+					related: "constellation",
+				}),
+			).unwrap();
 			dispatch(closeModal());
 		} catch (error) {
 			console.error(error);
 		}
 	};
-
-	console.log(prevConstellation);
-	console.log(constellationList);
 
 	return (
 		<Modal isBottomSheet>

@@ -14,7 +14,7 @@ import {
 	selectStar,
 	getOnlyUserInfo,
 	getUserInfoV2,
-	editProfileImage,
+	editProfileImageV2,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -131,9 +131,12 @@ const userSlice = createSlice({
 					state.userInfo.identity = action.meta.arg;
 				}
 			})
-			.addCase(editProfileImage.fulfilled, (state, action) => {
+			.addCase(editProfileImageV2.fulfilled, (state, action) => {
 				state.isLoading = false;
-				console.log(action.payload);
+				if (state.userInfo) {
+					state.userInfo.constellation.characterImage =
+						action.payload.data.user.constellation.characterImage;
+				}
 			})
 			.addCase(getUserIdentity.fulfilled, (state, action) => {
 				state.isLoading = false;
