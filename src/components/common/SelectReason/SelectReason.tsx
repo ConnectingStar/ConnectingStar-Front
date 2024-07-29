@@ -10,7 +10,7 @@ import { withdrawal } from "@/api/auth/authThunk";
 import { deleteHabit } from "@/api/habit/habitThunk";
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getUserInfo } from "@/api/user/userThunk";
+import { getOnlyUserInfo } from "@/api/user/userThunk";
 
 import { ACCESS_TOKEN_KEY } from "@/constants/api";
 import { modalType } from "@/constants/modalConstants";
@@ -53,7 +53,7 @@ const SelectReason = ({
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { userData } = useAppSelector((state) => state.user);
+	const { userInfo } = useAppSelector((state) => state.user);
 
 	const navigate = useNavigate();
 
@@ -84,8 +84,12 @@ const SelectReason = ({
 	};
 
 	useEffect(() => {
-		dispatch(getUserInfo());
+		dispatch(getOnlyUserInfo());
 	}, []);
+
+	if (!userInfo) {
+		return <div />;
+	}
 
 	return (
 		<div css={layoutStyle}>
@@ -115,7 +119,7 @@ const SelectReason = ({
 							<p>{data.subText}</p>
 							<p>
 								{data.title === "습관이 완전히 자리 잡았어요" &&
-									`벌써 ${userData.nickname}님과의 다음 약속이 기대되네요 :)`}
+									`벌써 ${userInfo.nickname}님과의 다음 약속이 기대되네요 :)`}
 							</p>
 						</div>
 					)}

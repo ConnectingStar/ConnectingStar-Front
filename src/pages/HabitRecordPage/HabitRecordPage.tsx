@@ -17,7 +17,7 @@ const HabitRecordPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { habitRecord } = useAppSelector((state) => state.habit);
-	const { userData } = useAppSelector((state) => state.user);
+	const { userInfo } = useAppSelector((state) => state.user);
 
 	const params = useParams();
 
@@ -28,7 +28,7 @@ const HabitRecordPage = () => {
 		dispatch(getOnlyUserInfo());
 	}, []);
 
-	if (!habitRecord) {
+	if (!habitRecord || !userInfo) {
 		return <div />;
 	}
 
@@ -38,7 +38,7 @@ const HabitRecordPage = () => {
 				<Header.PrevButton />
 			</Header>
 			<main css={layoutStyle}>
-				<h1>{`${Number(habitRecord.runDate.split("T")[0].split("-")[1])}월 ${Number(habitRecord.runDate.split("T")[0].split("-")[2])}일\n${userData.nickname}님의 ${habitRecord.isRest ? "휴식" : "실천"} 기록`}</h1>
+				<h1>{`${Number(habitRecord.runDate.split("T")[0].split("-")[1])}월 ${Number(habitRecord.runDate.split("T")[0].split("-")[2])}일\n${userInfo.nickname}님의 ${habitRecord.isRest ? "휴식" : "실천"} 기록`}</h1>
 
 				{habitRecord.isRest === false && <HabitPracticeRecord habitRecord={habitRecord} />}
 

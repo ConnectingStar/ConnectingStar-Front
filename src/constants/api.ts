@@ -15,8 +15,6 @@ export const END_POINTS = {
 		`/v2/users/me/constellations?related=${related}&constellationTypeId=${constellationTypeId}&isRegistered=${isRegistered}`,
 	ONLY_USER_INFO: "/v2/users/me",
 	USER_INFO_V2: "/v2/users/me/profile",
-	USER_INFO: "/user/basic-info",
-	USER_INFO_WITH_HABIT: "/user/basic-info-habit",
 	USER_IDENTITY: "/user/identity-info",
 	EDIT_NICKNAME: "/user/nickname",
 	EDIT_GENDER: "/user/gender",

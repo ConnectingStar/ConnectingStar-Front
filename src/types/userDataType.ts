@@ -1,12 +1,21 @@
 import type { ConstellationList } from "@/types/user";
 
-export interface userType {
-	userData: onboardingUserDataType;
+export interface UserStateType {
+	userProfile: UserProfileType | null;
 	userInfo: UserInfoType | null;
 	isLoading: boolean;
 	isOnboarding: boolean | null;
 	constellationList: ConstellationList[];
 	userIdentityList: { identity: string }[];
+}
+
+interface UserType extends UserInfoType {
+	user: ConstellationType;
+}
+
+interface UserProfileType {
+	user: UserType;
+	defaultCharacterImage: string;
 }
 
 export interface UserInfoType {
@@ -37,28 +46,9 @@ interface ConstellationType {
 	constellationTypeId: number;
 }
 
-export interface UserDataType {
-	data: onboardingUserDataType;
-}
-
 export interface OnboardingUserInfoType {
 	nickname: string;
 	genderType: string;
 	ageRangeType: string;
 	referrer: string;
-}
-
-export interface onboardingUserDataType {
-	nickname: string;
-	genderType: string;
-	ageRangeType: string;
-	referrer: string;
-	identity: string;
-	runTime: { noon: string; hour: string; minute: string };
-	place: string;
-	behavior: string;
-	behaviorValue: number | string;
-	behaviorUnit: string;
-	firstAlert: { noon: string; hour: string; minute: string };
-	secondAlert: { noon: string; hour: string; minute: string };
 }

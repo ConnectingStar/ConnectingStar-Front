@@ -19,7 +19,7 @@ import HabitTip from "@/components/Habit/HabitTip/HabitTip";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getUserInfo } from "@/api/user/userThunk";
+import { getOnlyUserInfo } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { SELECT_TAG_DATA } from "@/constants/modalConstants";
@@ -37,13 +37,17 @@ const CreateHabitPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { userData } = useAppSelector((state) => state.user);
+	const { userInfo } = useAppSelector((state) => state.user);
 
 	const { habitRequest, isEmpty, updateInputValue, handleSubmit } = useHabitForm({});
 
 	useEffect(() => {
-		dispatch(getUserInfo());
+		dispatch(getOnlyUserInfo());
 	}, []);
+
+	if (!userInfo) {
+		return <div />;
+	}
 
 	return (
 		<>
@@ -56,7 +60,7 @@ const CreateHabitPage = () => {
 					<div css={profileBoxStyle}>
 						<img src={CharacterExampleImage} alt="profile" />
 						<div>
-							<p>반가워요 {userData.nickname}님!</p>
+							<p>반가워요 {userInfo.nickname}님!</p>
 							<p>이번엔 어떤 습관을 만들어볼까요?</p>
 							<p>그래서 어떤 사람이 되고 싶으신가요?</p>
 						</div>
@@ -155,7 +159,7 @@ const CreateHabitPage = () => {
 				{modal === modalType.SUCCESS_GUIDE && (
 					<SuccessGuideModal
 						title="시작이 반!"
-						content={`더욱 ${habitRequest.identity} 사람이 되기 위한 한 걸음\n제가 ${userData.nickname}님을 응원할게요 😊`}
+						content={`더욱 ${habitRequest.identity} 사람이 되기 위한 한 걸음\n제가 ${userInfo.nickname}님을 응원할게요 😊`}
 					/>
 				)}
 			</main>

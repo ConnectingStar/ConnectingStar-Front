@@ -10,7 +10,7 @@ import { CommonAlertType } from "@/types/common";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getUserInfo } from "@/api/user/userThunk";
+import { getOnlyUserInfo } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { habitIconData } from "@/constants/mypage";
@@ -38,7 +38,7 @@ interface PracticeRecordProps {
 const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 	const dispatch = useAppDispatch();
 
-	const { userData } = useAppSelector((state) => state.user);
+	const { userInfo } = useAppSelector((state) => state.user);
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const params = useParams();
@@ -85,12 +85,16 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 	};
 
 	useEffect(() => {
-		dispatch(getUserInfo());
+		dispatch(getOnlyUserInfo());
 	}, []);
+
+	if (!userInfo) {
+		return <div />;
+	}
 
 	return (
 		<main css={layoutStyle}>
-			<h1>{`${params.month}월 ${params.date}일\n${userData.nickname}님의 실천 기록`}</h1>
+			<h1>{`${params.month}월 ${params.date}일\n${userInfo.nickname}님의 실천 기록`}</h1>
 			<div css={identityBoxStyle}>
 				<h3>정체성</h3>
 				<span>{habitData.identity} 사람</span>

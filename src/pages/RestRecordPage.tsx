@@ -6,7 +6,7 @@ import RestRecord from "@/components/Habit/RestRecord/RestRecord";
 
 import { getHabit } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { getUserInfo } from "@/api/user/userThunk";
+import { getOnlyUserInfo } from "@/api/user/userThunk";
 
 import { PATH } from "@/constants/path";
 
@@ -14,18 +14,18 @@ const RestRecordPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { habit } = useAppSelector((state) => state.habit);
-	const { userData } = useAppSelector((state) => state.user);
+	const { userInfo } = useAppSelector((state) => state.user);
 
 	const params = useParams();
 
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		dispatch(getUserInfo());
+		dispatch(getOnlyUserInfo());
 		dispatch(getHabit(Number(params.habitId)));
 	}, []);
 
-	if (!habit || !userData) {
+	if (!habit || !userInfo) {
 		return <div />;
 	}
 
@@ -37,7 +37,7 @@ const RestRecordPage = () => {
 					관리
 				</Header.TextButton>
 			</Header>
-			<RestRecord habitData={habit} identity={userData.identity} nickname={userData.nickname} />
+			<RestRecord habitData={habit} identity={userInfo.identity} nickname={userInfo.nickname} />
 		</>
 	);
 };
