@@ -8,11 +8,7 @@ import type {
 	EditProfileImageRequestType,
 	GetUserConstellationListRequestType,
 } from "@/types/user";
-import type {
-	UserDataType,
-	onboardingUserDataType,
-	OnboardingUserInfoType,
-} from "@/types/userDataType";
+import type { UserDataType, OnboardingUserInfoType } from "@/types/userDataType";
 
 export const editIdentity = createAsyncThunk(
 	"user/editIdentity",
@@ -130,21 +126,6 @@ export const postOnboardingUserInfo = createAsyncThunk(
 		try {
 			const { data } = await authorizedAxiosInstance.patch(END_POINTS.ONBOARDING_V2, userInfo);
 
-			return data;
-		} catch (error) {
-			throw thunkOptions.rejectWithValue(error);
-		}
-	},
-);
-
-export const postOnboarding = createAsyncThunk(
-	"user/postOnboarding",
-	async (userData: onboardingUserDataType, thunkOptions) => {
-		try {
-			const { data } = await authorizedAxiosInstance.post<onboardingUserDataType>(
-				END_POINTS.ONBOARDING,
-				userData,
-			);
 			return data;
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);

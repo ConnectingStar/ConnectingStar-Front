@@ -5,19 +5,17 @@ import ProfileImg from "@/assets/image/img-profile-example.png";
 import FooterSideBtn from "@/components/Chatting/ChattingMessage/FooterSideBtn";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
-import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { postOnboarding } from "@/api/user/userThunk";
 
 import { theme } from "@/styles/theme";
-
-import type { HabitRequestType } from "@/types/habit";
 
 import {
 	container,
 	chatWrap,
 	userMessageStyle,
 } from "@/components/Chatting/ChattingMessage/ChattingMessage.style";
+
 interface chattingType {
 	chatData: {
 		id: string;
@@ -28,17 +26,13 @@ interface chattingType {
 	};
 	progress: number;
 	addProgress: () => void;
-	habitRequest: HabitRequestType;
+	handleSubmit: () => void;
 }
 
-function ChattingMessage({ chatData, progress, addProgress, habitRequest }: chattingType) {
+function ChattingMessage({ chatData, progress, addProgress, handleSubmit }: chattingType) {
 	const dispatch = useAppDispatch();
 
 	const endOfMessagesRef = useRef<HTMLDivElement>(null);
-
-	const { userData } = useAppSelector((state) => state.user);
-
-	console.log(habitRequest);
 
 	const { botMessage, bottomButton, userMessage, modalType } = chatData;
 
@@ -80,7 +74,7 @@ function ChattingMessage({ chatData, progress, addProgress, habitRequest }: chat
 			dispatch(openModal(modalType[0]));
 		}
 
-		chatData.id === "last" && dispatch(postOnboarding(userData));
+		chatData.id === "last" && handleSubmit;
 	};
 
 	return (
