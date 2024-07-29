@@ -4,11 +4,18 @@ import { authorizedAxiosInstance, axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-import type {
-	EditProfileImageRequestType,
-	GetUserConstellationListRequestType,
-} from "@/types/user";
-import type { OnboardingUserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/user";
+
+interface EditProfileImageRequestType {
+	constellationId: string;
+	related?: string;
+}
+
+interface GetUserConstellationListRequestType {
+	constellationTypeId?: string;
+	isRegistered?: boolean;
+	related?: string;
+}
 
 export const editIdentity = createAsyncThunk(
 	"user/editIdentity",

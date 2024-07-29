@@ -7,7 +7,7 @@ import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 import { editProfileImageV2 } from "@/api/user/userThunk";
 
-import type { ConstellationList } from "@/types/user";
+import type { ConstellationListType } from "@/types/user";
 
 import {
 	layoutStyle,
@@ -17,7 +17,7 @@ import {
 
 interface SelectCharacterModalProps {
 	prevConstellation: number;
-	constellationList: ConstellationList[];
+	constellationList: ConstellationListType[];
 }
 
 const SelectCharacterModal = ({

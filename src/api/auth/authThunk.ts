@@ -4,8 +4,6 @@ import { axiosInstance, authorizedAxiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-import type { WithdrawalRequestType } from "@/types/user";
-
 interface FCMTokenRequestType {
 	token: string;
 	nickname: string;
@@ -15,6 +13,12 @@ interface FCMTokenRequestType {
 interface FCMTokenResponseType {
 	tokenInfo: string;
 	nickname: string;
+}
+
+interface WithdrawalRequestType {
+	reason: string;
+	content: string;
+	deletedDt: string;
 }
 
 export const postFCMToken = createAsyncThunk(

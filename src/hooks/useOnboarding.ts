@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import type { OnboardingUserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/user";
 
 export const useOnboarding = () => {
 	const [userInfoRequest, setUserInfoRequest] = useState({
