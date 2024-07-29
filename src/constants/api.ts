@@ -7,7 +7,6 @@ export const END_POINTS = {
 	REFRESH: "/oauth/issue",
 	LOGIN: "/oauth/login",
 	LOGOUT: "/oauth/logout",
-	ONBOARDING: "/user/onboarding",
 	ONBOARDING_V2: "/v2/users/me/onboarding",
 	IS_ONBOARDING: "/user/check-onboarding",
 	WITHDRAWAL: "/user/withdraw",
@@ -21,13 +20,10 @@ export const END_POINTS = {
 	EDIT_AGE: "/user/age-range",
 	EDIT_IDENTITY: "/user/identity",
 	HABIT_ONE: (runHabitId: number) => `/habit/one?runHabitId=${runHabitId}`,
-	PROGRESS_HABIT_LIST: "/habit",
 	HABIT_RECORD_ONE_DAY: (date: string) => `/v2/habits/daily-trackings?date=${date}`,
 	HABIT: "/habit",
 	HABIT_REST_RECORD: "/habit/history/rest",
 	HABIT_HISTORY: "/habit/history",
-	HABIT_HISTORY_LIST: (runHabitId: number, increase: boolean, isRest: boolean) =>
-		`/habit/history?runHabitId=${runHabitId}&increase=${increase}&isRest=${isRest}`,
 	HABIT_HISTORY_ONE: (habitHistoryId: number) => `v2/histories/${habitHistoryId}?related=runHabit`,
 	STAR_MAIN: "/constellation/main",
 	STAR_CARD: (id: string, isRegistered: boolean) =>
