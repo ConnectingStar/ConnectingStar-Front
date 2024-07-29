@@ -49,11 +49,15 @@ const SelectCharacterModal = ({
 				<div css={characterWrapperStyle}>
 					{constellationList.map((constellation) => (
 						<img
-							src={constellation.imageUrl}
-							alt={`image${constellation.constellationId}`}
-							key={constellation.constellationId}
-							css={characterBoxStyle(selectConstellation === constellation.constellationId)}
-							onClick={() => setSelectConstellation(constellation.constellationId)}
+							src={constellation.userConstellation.constellation.characterImage}
+							alt={`image${constellation.userConstellation.constellationId}`}
+							key={constellation.userConstellation.constellationId}
+							css={characterBoxStyle(
+								selectConstellation === constellation.userConstellation.constellationId,
+							)}
+							onClick={() =>
+								setSelectConstellation(constellation.userConstellation.constellationId)
+							}
 						/>
 					))}
 				</div>
