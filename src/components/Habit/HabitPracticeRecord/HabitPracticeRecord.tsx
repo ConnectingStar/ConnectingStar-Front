@@ -36,7 +36,7 @@ const HabitPracticeRecord = ({ habitRecord }: HabitPracticeRecordProps) => {
 			</div>
 			<div>
 				<h2>오늘의 습관 실천은</h2>
-				{habitIconData[habitRecord.achievement].icon}
+				{habitIconData[habitRecord.achievement - 1].icon}
 			</div>
 		</>
 	);
