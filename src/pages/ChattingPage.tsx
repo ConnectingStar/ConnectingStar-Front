@@ -25,24 +25,15 @@ function ChattingPage() {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { userData } = useAppSelector((state) => state.user);
+	const { userInfo } = useAppSelector((state) => state.user);
 
 	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({});
 
-	const chatData = createChatData(userData, habitRequest);
+	const chatData = createChatData(userInfo, habitRequest);
 
 	const [progress, setProgress] = useState(0);
 
-	const isExtraBtn = chatData[progress].bottomButton.length > 1;
-
-	console.log(habitRequest);
-
-	// useEffect(() => {
-	// 	const { nickname, genderType, ageRangeType, referrer } = userData;
-	// 	if (!nickname || !genderType || !ageRangeType || !referrer) {
-	// 		navigate(`${PATH.ONBOARDING}?${STEP_KEY}=${ONBOARDING_STEP.CREATE_ACCOUNT}`);
-	// 	}
-	// }, []);
+	const isExtraBtn = chatData && chatData[progress].bottomButton.length > 1;
 
 	useEffect(() => {
 		dispatch(getOnlyUserInfo());
@@ -57,15 +48,18 @@ function ChattingPage() {
 			<progress css={progressStyle} value={progress + 1} max={11} />
 
 			<div css={wrap(isExtraBtn)}>
-				{chatData.slice(0, progress + 1).map((chatData) => (
-					<ChattingMessage
-						key={chatData.id}
-						chatData={chatData}
-						progress={progress}
-						addProgress={() => setProgress((prev) => prev + 1)}
-						handleSubmit={handleSubmit}
-					/>
-				))}
+				{chatData &&
+					chatData
+						.slice(0, progress + 1)
+						.map((chatData) => (
+							<ChattingMessage
+								key={chatData.id}
+								chatData={chatData}
+								progress={progress}
+								addProgress={() => setProgress((prev) => prev + 1)}
+								handleSubmit={handleSubmit}
+							/>
+						))}
 			</div>
 
 			{modal === modalType.SELECT_BEHAVIOR && (
@@ -107,7 +101,7 @@ function ChattingPage() {
 			)}
 			{modal === modalType.SELECT_BEHAVIORUNIT && (
 				<BehaviorModal
-					behavior={userData.behavior}
+					behavior={habitRequest.behavior}
 					progress={progress}
 					addprogress={() => setProgress((prev) => prev + 1)}
 					prevValue={habitRequest.behaviorValue}
@@ -116,10 +110,10 @@ function ChattingPage() {
 				/>
 			)}
 			{modal === modalType.SELECT_TIME("FIRSTALERT") && (
-				<SelectTimeModal title="1차 알림시간을 선택해 주세요" runTime={userData.runTime} />
+				<SelectTimeModal title="1차 알림시간을 선택해 주세요" runTime={habitRequest.runTime} />
 			)}
 			{modal === modalType.SELECT_TIME("SECONDALERT") && (
-				<SelectTimeModal title="2차 알림시간을 선택해 주세요" runTime={userData.runTime} />
+				<SelectTimeModal title="2차 알림시간을 선택해 주세요" runTime={habitRequest.runTime} />
 			)}
 			{modal === modalType.SUCCESS_GUIDE && (
 				<SuccessGuideModal
@@ -133,7 +127,7 @@ function ChattingPage() {
 
 export default ChattingPage;
 
-const wrap = (isExtraBtn: boolean) => css`
+const wrap = (isExtraBtn?: boolean) => css`
 	max-width: 22.5rem;
 	min-height: 100vh;
 	padding: 5.75rem 1.5rem ${isExtraBtn ? "8.5rem" : "5.438rem"} 1.5rem;
