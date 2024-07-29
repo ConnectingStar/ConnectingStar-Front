@@ -21,7 +21,7 @@ import { useHabitForm } from "@/hooks/useHabitForm";
 
 import { theme } from "@/styles/theme";
 
-function ChattingPage() {
+const OnboardingHabitPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
@@ -123,9 +123,9 @@ function ChattingPage() {
 			)}
 		</>
 	);
-}
+};
 
-export default ChattingPage;
+export default OnboardingHabitPage;
 
 const wrap = (isExtraBtn?: boolean) => css`
 	max-width: 22.5rem;

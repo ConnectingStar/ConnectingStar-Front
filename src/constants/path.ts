@@ -1,6 +1,5 @@
 export const PATH = {
 	HOME: "/",
-	CHATTING: "/chatting",
 	CREATE_HABIT: "/habit-new",
 	MY: "/mypage",
 	MY_INFO: "/myinfo",
@@ -8,7 +7,8 @@ export const PATH = {
 	STAR_CARD: "/star-card",
 	SIGN_UP: "/sign-up",
 	GUIDE: "/guide",
-	ONBOARDING: "/onboarding",
+	ONBOARDING_USER_INFO: "/onboarding/user-info",
+	ONBOARDING_HABIT: "/onboarding/habit",
 	LOGIN_KAKAO: "/oauth2/kakao",
 	REST_RECORD: (habitId: string, year: string, month: string, date: string) =>
 		`/rest-record/${habitId}/${year}/${month}/${date}`,
