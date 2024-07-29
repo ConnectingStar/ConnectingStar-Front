@@ -3,14 +3,18 @@ import { modalType } from "@/constants/modalConstants";
 import { theme } from "@/styles/theme";
 
 import type { HabitRequestType } from "@/types/habit";
-import type { OnboardingUserInfoType } from "@/types/userDataType";
+import type { UserInfoType } from "@/types/userDataType";
 
-export function createChatData(userData: OnboardingUserInfoType, habitRequest: HabitRequestType) {
+export function createChatData(userInfo: UserInfoType | null, habitRequest: HabitRequestType) {
+	if (!userInfo) {
+		return;
+	}
+
 	return [
 		{
 			id: "firstMeet",
 			botMessage: [
-				`반가워요 ${userData.nickname}님!\n저는 약속 맺기를 도울 타스예요 :)`,
+				`반가워요 ${userInfo.nickname}님!\n저는 약속 맺기를 도울 타스예요 :)`,
 				`어떤 습관을 함께 만들어 볼까요?`,
 				`매일 해도 무리 없는 쉬운 것부터 시작하기를 추천해요 😊`,
 			],
@@ -23,7 +27,7 @@ export function createChatData(userData: OnboardingUserInfoType, habitRequest: H
 			botMessage: [
 				`그렇군요!`,
 				`이번엔 정체성을 정해 볼게요`,
-				`${habitRequest.behavior}을(를) 통해서 ${userData.nickname}님은 어떤 사람이 되고 싶으세요?`,
+				`${habitRequest.behavior}을(를) 통해서 ${userInfo.nickname}님은 어떤 사람이 되고 싶으세요?`,
 			],
 			bottomButton: ["정체성 선택"],
 			userMessage: `${habitRequest.identity}`,
@@ -33,8 +37,8 @@ export function createChatData(userData: OnboardingUserInfoType, habitRequest: H
 			id: "identity",
 			botMessage: [
 				`좋습니다 :)`,
-				`지금 이 순간부터 ${userData.nickname}님은 ${habitRequest.identity} 사람이에요`,
-				`오늘부터 진심으로 ${userData.nickname}님은 ${habitRequest.identity} 사람이라고 믿어 주세요!`,
+				`지금 이 순간부터 ${userInfo.nickname}님은 ${habitRequest.identity} 사람이에요`,
+				`오늘부터 진심으로 ${userInfo.nickname}님은 ${habitRequest.identity} 사람이라고 믿어 주세요!`,
 			],
 			bottomButton: ["그런데 정체성을 왜 정하는 거야?"],
 			userMessage: "그런데 정체성을 왜 정하는 거야?",
@@ -66,7 +70,7 @@ export function createChatData(userData: OnboardingUserInfoType, habitRequest: H
 			id: "place",
 			botMessage: [
 				`다음으로 장소를 정해 볼게요!`,
-				`어떤 장소가 ${userData.nickname}님에게 매력적인가요?`,
+				`어떤 장소가 ${userInfo.nickname}님에게 매력적인가요?`,
 				`가는 것만으로 만족스럽거나 습관을 쉽게 할 수 있는 곳으로 명확하게 적어 주세요`,
 			],
 			bottomButton: ["장소 선택"],
@@ -188,12 +192,12 @@ export function createChatData(userData: OnboardingUserInfoType, habitRequest: H
 			botMessage: [
 				`감사합니다. 실천을 기록하신 날에는 별을 드릴게요🌟`,
 				`모은 별로  별자리를 완성시킬 때마다 캐릭터를 획득할 수 있어요 :)`,
-				`성운 마을의 귀여운 친구들이 ${userData.nickname}님과 만날 날을 기다리고 있답니다 :D`,
+				`성운 마을의 귀여운 친구들이 ${userInfo.nickname}님과 만날 날을 기다리고 있답니다 :D`,
 				`Tars와 맺는 습관 약속은 <span style="color: ${theme.color.main_blue};font-weight: 700;">매일 실행</span>하는 것을 권장하고 있어요`,
 				`매번 완벽할 필요 없습니다`,
 				`약속의 단 10%만 지켜지더라도 \n<span style="color: ${theme.color.main_blue};font-weight: 700;">"꾸준하게 하는 것”</span>이 핵심이니까요`,
 				`고생 많으셨습니다!`,
-				`${habitRequest.behavior}를 꾸준히 하는 ${userData.nickname}님을 응원할게요 XD`,
+				`${habitRequest.behavior}를 꾸준히 하는 ${userInfo.nickname}님을 응원할게요 XD`,
 			],
 			bottomButton: ["나도 잘 부탁해!"],
 			userMessage: "",

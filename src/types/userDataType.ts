@@ -9,7 +9,7 @@ export interface userType {
 	userIdentityList: { identity: string }[];
 }
 
-interface UserInfoType {
+export interface UserInfoType {
 	id: number;
 	email: string;
 	socialType: "KAKAO";
