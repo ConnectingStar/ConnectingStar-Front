@@ -35,6 +35,7 @@ export const END_POINTS = {
 		`constellation/list?constellationTypeId=${id}&isRegistered=${isRegistered}`,
 	STAR_DETAIL: (id: string) => `constellation?constellationId=${id}`,
 	USER_CONSTELLATION: "/user/constellation",
+	USER_CONSTELLATION_V2: "/v2/users/me/constellation",
 	ADD_STAR: "user/constellation/star",
 };
 
