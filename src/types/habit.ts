@@ -7,12 +7,6 @@ export interface HabitDeleteRequestType {
 	reason: string;
 }
 
-export interface HabitHistoryListRequest {
-	runHabitId: number;
-	increase: boolean;
-	isRest: boolean;
-}
-
 export interface HabitRequestType {
 	runHabitId?: number;
 	identity: string;
@@ -41,7 +35,6 @@ export interface HabitRecordRequestType extends HabitRestRecordRequestType {
 }
 
 export interface HabitInitialStateType {
-	habitHistoryList: [];
 	habit: HabitType | null;
 	habitRecord: HistoryOneDayType | null;
 	habitRecordOneDay: HabitRecordOneDayType[];

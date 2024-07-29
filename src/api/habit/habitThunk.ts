@@ -5,7 +5,6 @@ import { authorizedAxiosInstance } from "@/api/axiosInstance";
 import { END_POINTS } from "@/constants/api";
 
 import type {
-	HabitHistoryListRequest,
 	HabitRequestType,
 	HabitDeleteRequestType,
 	HabitRecordRequestType,
@@ -105,21 +104,6 @@ export const getHabitRecordOneDay = createAsyncThunk(
 	async (date: string, thunkOptions) => {
 		try {
 			const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT_RECORD_ONE_DAY(date));
-
-			return data;
-		} catch (error) {
-			throw thunkOptions.rejectWithValue(error);
-		}
-	},
-);
-
-export const getHabitHistoryList = createAsyncThunk(
-	"habit/getHabitHistoryList",
-	async ({ runHabitId, increase, isRest }: HabitHistoryListRequest, thunkOptions) => {
-		try {
-			const { data } = await authorizedAxiosInstance.get(
-				END_POINTS.HABIT_HISTORY_LIST(runHabitId, increase, isRest),
-			);
 
 			return data;
 		} catch (error) {
