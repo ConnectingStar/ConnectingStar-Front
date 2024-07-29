@@ -18,8 +18,8 @@ export default function SelectProfileImageModal() {
 
 	const handleFooterBtnClick = async () => {
 		try {
-			dispatch(closeModal());
 			await dispatch(editProfileImage(id ?? "")).unwrap();
+			dispatch(closeModal());
 			createToast("프로필 이미지로 설정했어요 😊");
 		} catch (error) {
 			console.error(error);
