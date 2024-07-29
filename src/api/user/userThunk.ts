@@ -8,7 +8,7 @@ import type {
 	EditProfileImageRequestType,
 	GetUserConstellationListRequestType,
 } from "@/types/user";
-import type { UserDataType, OnboardingUserInfoType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/userDataType";
 
 export const editIdentity = createAsyncThunk(
 	"user/editIdentity",
@@ -64,19 +64,6 @@ export const getUserIdentity = createAsyncThunk("user/getUserIdentity", async (_
 	}
 });
 
-export const getUserInfoWithHabit = createAsyncThunk(
-	"user/getUserInfoWithHabit",
-	async (_, thunkOptions) => {
-		try {
-			const { data } = await authorizedAxiosInstance.get(END_POINTS.USER_INFO_WITH_HABIT);
-
-			return { data };
-		} catch (error) {
-			throw thunkOptions.rejectWithValue(error);
-		}
-	},
-);
-
 export const getOnlyUserInfo = createAsyncThunk("user/getOnlyUserInfo", async (_, thunkOptions) => {
 	try {
 		const { data } = await authorizedAxiosInstance.get(END_POINTS.ONLY_USER_INFO);
@@ -96,19 +83,6 @@ export const getUserInfoV2 = createAsyncThunk("user/getUserInfoV2", async (_, th
 		throw thunkOptions.rejectWithValue(error);
 	}
 });
-
-export const getUserInfo = createAsyncThunk<UserDataType>(
-	"user/getUserInfo",
-	async (_, thunkOptions) => {
-		try {
-			const { data } = await authorizedAxiosInstance.get(END_POINTS.USER_INFO);
-
-			return data;
-		} catch (error) {
-			throw thunkOptions.rejectWithValue(error);
-		}
-	},
-);
 
 export const getIsOnboarding = createAsyncThunk("user/getIsOnboarding", async (_, thunkOptions) => {
 	try {

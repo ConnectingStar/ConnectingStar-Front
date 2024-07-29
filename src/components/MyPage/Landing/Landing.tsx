@@ -6,7 +6,7 @@ import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { getUserInfo } from "@/api/user/userThunk";
+import { getOnlyUserInfo } from "@/api/user/userThunk";
 
 import { MENU_BUTTON_DATA, PROFILE_BUTTON_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
@@ -23,22 +23,26 @@ import {
 const Landing = () => {
 	const dispatch = useAppDispatch();
 
-	const { userData } = useAppSelector((state) => state.user);
+	const { userInfo } = useAppSelector((state) => state.user);
 
 	const navigate = useNavigate();
 
 	const isLatestVersion = true;
 
 	useEffect(() => {
-		dispatch(getUserInfo());
+		dispatch(getOnlyUserInfo());
 	}, []);
+
+	if (!userInfo) {
+		return <div />;
+	}
 
 	return (
 		<div css={layoutStyle}>
 			<div css={profileBoxStyle} onClick={() => navigate(PATH.MY_INFO)}>
 				<div css={profileImgStyle} />
 				<div css={profileTextBoxStyle}>
-					<p>{userData.nickname}</p>
+					<p>{userInfo.nickname}</p>
 					<RightArrowIcon />
 				</div>
 			</div>
