@@ -12,7 +12,7 @@ import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/S
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getUserConstellationList, getUserInfo, getUserInfoV2 } from "@/api/user/userThunk";
+import { getUserConstellationListV2, getUserInfo, getUserInfoV2 } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 
@@ -36,7 +36,13 @@ const MyInfoPage = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		dispatch(getUserConstellationList());
+		dispatch(
+			getUserConstellationListV2({
+				constellationTypeId: "",
+				isRegistered: true,
+				related: "constellation",
+			}),
+		);
 		dispatch(getUserInfo());
 		dispatch(getUserInfoV2());
 	}, []);
@@ -106,7 +112,7 @@ const MyInfoPage = () => {
 
 				{modal === modalType.SELECT_CHARACTER && (
 					<SelectCharacterModal
-						prevConstellation={userInfo.constellationId}
+						prevConstellation={userInfo.constellation.constellationId}
 						constellationList={constellationList}
 					/>
 				)}

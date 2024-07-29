@@ -4,7 +4,6 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {
 	getIsOnboarding,
 	postOnboarding,
-	getUserConstellationList,
 	getUserInfo,
 	getUserIdentity,
 	editNickname,
@@ -15,6 +14,7 @@ import {
 	getOnlyUserInfo,
 	getUserInfoV2,
 	editProfileImageV2,
+	getUserConstellationListV2,
 } from "@/api/user/userThunk";
 
 const initialState: userType = {
@@ -93,16 +93,12 @@ const userSlice = createSlice({
 			.addCase(selectStar.rejected, (state) => {
 				state.isLoading = false;
 			})
-			.addCase(getUserConstellationList.pending, (state) => {
-				state.isLoading = true;
-			})
-			.addCase(getUserConstellationList.fulfilled, (state, action) => {
+
+			.addCase(getUserConstellationListV2.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.constellationList = action.payload.list;
+				state.constellationList = action.payload.data.userConstellationAndStatusList;
 			})
-			.addCase(getUserConstellationList.rejected, (state) => {
-				state.isLoading = false;
-			})
+
 			.addCase(getUserInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.userData = action.payload.data;
@@ -134,8 +130,7 @@ const userSlice = createSlice({
 			.addCase(editProfileImageV2.fulfilled, (state, action) => {
 				state.isLoading = false;
 				if (state.userInfo) {
-					state.userInfo.constellation.characterImage =
-						action.payload.data.user.constellation.characterImage;
+					state.userInfo.constellation = action.payload.data.user.constellation;
 				}
 			})
 			.addCase(getUserIdentity.fulfilled, (state, action) => {

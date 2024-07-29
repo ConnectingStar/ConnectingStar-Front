@@ -4,7 +4,10 @@ import { authorizedAxiosInstance, axiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-import type { ConstellationListType, EditProfileImageRequestType } from "@/types/user";
+import type {
+	EditProfileImageRequestType,
+	GetUserConstellationListRequestType,
+} from "@/types/user";
 import type { UserDataType, onboardingUserDataType } from "@/types/userDataType";
 
 export const editIdentity = createAsyncThunk(
@@ -133,11 +136,16 @@ export const postOnboarding = createAsyncThunk(
 	},
 );
 
-export const getUserConstellationList = createAsyncThunk<ConstellationListType>(
-	"user/getUserConstellationList",
-	async (_, thunkOptions) => {
+export const getUserConstellationListV2 = createAsyncThunk(
+	"user/getUserConstellationListV2",
+	async (
+		{ constellationTypeId, isRegistered, related }: GetUserConstellationListRequestType,
+		thunkOptions,
+	) => {
 		try {
-			const { data } = await authorizedAxiosInstance.get(END_POINTS.CONSTELLATION_LIST);
+			const { data } = await authorizedAxiosInstance.get(
+				END_POINTS.CONSTELLATION_LIST_V2(constellationTypeId, isRegistered, related),
+			);
 
 			return data;
 		} catch (error) {

@@ -10,7 +10,8 @@ export const END_POINTS = {
 	ONBOARDING: "/user/onboarding",
 	IS_ONBOARDING: "/user/check-onboarding",
 	WITHDRAWAL: "/user/withdraw",
-	CONSTELLATION_LIST: "/user/constellation/list",
+	CONSTELLATION_LIST_V2: (constellationTypeId?: string, isRegistered?: boolean, related?: string) =>
+		`/v2/users/me/constellations?related=${related}&constellationTypeId=${constellationTypeId}&isRegistered=${isRegistered}`,
 	ONLY_USER_INFO: "/v2/users/me",
 	USER_INFO_V2: "/v2/users/me/profile",
 	USER_INFO: "/user/basic-info",

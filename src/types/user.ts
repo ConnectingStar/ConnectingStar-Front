@@ -1,13 +1,31 @@
-import { CommonResponseType } from "@/types/common";
-
-export interface ConstellationListType extends CommonResponseType {
-	list: ConstellationList[];
-	count: number;
+interface ConstellationType {
+	characterImage: string;
+	constellationId: number;
+	constellationTypeId: number;
+	identity: string;
+	image: string;
+	mainImage: string;
+	name: string;
+	starCount: number;
+	story: string;
+	type: {
+		constellationTypeId: number;
+		name: string;
+	};
 }
 
 export interface ConstellationList {
-	constellationId: number;
-	imageUrl: string;
+	userConstellation: {
+		userId: number;
+		constellationId: number;
+		regYn: boolean;
+		starCount: number;
+		userConstellationId: number;
+		constellation: ConstellationType;
+	};
+	status: string;
+	// constellationId: number;
+	// imageUrl: string;
 }
 
 export interface UserInfoType {
@@ -23,5 +41,11 @@ export interface WithdrawalRequestType {
 
 export interface EditProfileImageRequestType {
 	constellationId: string;
+	related?: string;
+}
+
+export interface GetUserConstellationListRequestType {
+	constellationTypeId?: string;
+	isRegistered?: boolean;
 	related?: string;
 }
