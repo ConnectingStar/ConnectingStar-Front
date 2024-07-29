@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import {
 	getIsOnboarding,
-	postOnboarding,
 	getUserInfo,
 	getUserIdentity,
 	editNickname,
@@ -53,15 +52,6 @@ const userSlice = createSlice({
 				state.isOnboarding = action.payload.data.onboard;
 			})
 			.addCase(getIsOnboarding.rejected, (state) => {
-				state.isLoading = false;
-			})
-			.addCase(postOnboarding.pending, (state) => {
-				state.isLoading = true;
-			})
-			.addCase(postOnboarding.fulfilled, (state) => {
-				state.isLoading = false;
-			})
-			.addCase(postOnboarding.rejected, (state) => {
 				state.isLoading = false;
 			})
 			.addCase(selectStar.pending, (state) => {

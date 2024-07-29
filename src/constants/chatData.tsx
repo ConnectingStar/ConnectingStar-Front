@@ -3,9 +3,9 @@ import { modalType } from "@/constants/modalConstants";
 import { theme } from "@/styles/theme";
 
 import type { HabitRequestType } from "@/types/habit";
-import type { onboardingUserDataType } from "@/types/userDataType";
+import type { OnboardingUserInfoType } from "@/types/userDataType";
 
-export function createChatData(userData: onboardingUserDataType, habitRequest: HabitRequestType) {
+export function createChatData(userData: OnboardingUserInfoType, habitRequest: HabitRequestType) {
 	return [
 		{
 			id: "firstMeet",

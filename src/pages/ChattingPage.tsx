@@ -27,7 +27,7 @@ function ChattingPage() {
 	const { modal } = useAppSelector((state) => state.modal);
 	const { userData } = useAppSelector((state) => state.user);
 
-	const { habitRequest, updateInputValue } = useHabitForm({});
+	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({});
 
 	const chatData = createChatData(userData, habitRequest);
 
@@ -63,7 +63,7 @@ function ChattingPage() {
 						chatData={chatData}
 						progress={progress}
 						addProgress={() => setProgress((prev) => prev + 1)}
-						habitRequest={habitRequest}
+						handleSubmit={handleSubmit}
 					/>
 				))}
 			</div>
