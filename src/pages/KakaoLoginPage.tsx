@@ -25,7 +25,7 @@ function KakaoLoginPage() {
 
 			axiosInstance.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
 
-			navigate("/onboarding?step=create-account");
+			navigate(PATH.ONBOARDING_USER_INFO);
 		} catch (error) {
 			console.log(error);
 			navigate(PATH.SIGN_UP);

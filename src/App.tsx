@@ -5,7 +5,6 @@ import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContai
 import { PATH } from "@/constants/path";
 
 import ChartPage from "@/pages/ChartPage";
-import ChattingPage from "@/pages/ChattingPage";
 import CreateHabitPage from "@/pages/CreateHabitPage/CreateHabitPage";
 import EditHabitPage from "@/pages/EditHabitPage/EditHabitPage";
 import GuidePage from "@/pages/GuidePage/GuidePage";
@@ -20,7 +19,8 @@ import MyPage from "@/pages/MyPage";
 import MyStarTracePage from "@/pages/MyStarTracePage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import NotificationSettingPage from "@/pages/NotificationSettingPage";
-import OnboardingPage from "@/pages/OnboardingPage";
+import OnboardingHabitPage from "@/pages/OnboardingHabitPage";
+import OnboardingUserInfoPage from "@/pages/OnboardingUserInfoPage";
 import PracticeRecordPage from "@/pages/PracticeRecordPage";
 import RestRecordPage from "@/pages/RestRecordPage";
 import SignUpPage from "@/pages/SignUpPage/SignUpPage";
@@ -53,9 +53,9 @@ const App = () => {
 						path={PATH.REST_RECORD(":habitId", ":year", ":month", ":date")}
 						element={<RestRecordPage />}
 					/>
-					<Route path={PATH.CHATTING} element={<ChattingPage />} />
+					<Route path={PATH.ONBOARDING_HABIT} element={<OnboardingHabitPage />} />
 					<Route path={PATH.DELETE_HABIT(":habitId")} element={<HabitDeletePage />} />
-					<Route path={PATH.ONBOARDING} element={<OnboardingPage />} />
+					<Route path={PATH.ONBOARDING_USER_INFO} element={<OnboardingUserInfoPage />} />
 					<Route path={PATH.LOGIN_KAKAO} element={<KakaoLoginPage />} />
 					<Route
 						path={PATH.PRACTICE_RECORD(":habitId", ":year", ":month", ":date")}

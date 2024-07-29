@@ -12,7 +12,7 @@ import { PATH } from "@/constants/path";
 
 import { useOnboarding } from "@/hooks/useOnboarding";
 
-function OnboardingPage() {
+const OnboardingUserInfoPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { isOnboarding } = useAppSelector((state) => state.user);
@@ -51,10 +51,13 @@ function OnboardingPage() {
 			)}
 
 			{step === ONBOARDING_STEP.REFERRER && (
-				<Referrer userInfoRequest={userInfoRequest} onNext={() => navigate(PATH.CHATTING)} />
+				<Referrer
+					userInfoRequest={userInfoRequest}
+					onNext={() => navigate(PATH.ONBOARDING_HABIT)}
+				/>
 			)}
 		</>
 	);
-}
+};
 
-export default OnboardingPage;
+export default OnboardingUserInfoPage;
