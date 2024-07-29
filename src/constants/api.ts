@@ -22,7 +22,6 @@ export const END_POINTS = {
 	EDIT_IDENTITY: "/user/identity",
 	HABIT_ONE: (runHabitId: number) => `/habit/one?runHabitId=${runHabitId}`,
 	PROGRESS_HABIT_LIST: "/habit",
-	PROGRESS_HABIT: (referenceDate: string) => `/habit/day?referenceDate=${referenceDate}`,
 	HABIT_RECORD_ONE_DAY: (date: string) => `/v2/habits/daily-trackings?date=${date}`,
 	HABIT: "/habit",
 	HABIT_REST_RECORD: "/habit/history/rest",
