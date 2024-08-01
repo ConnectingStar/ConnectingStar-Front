@@ -3,6 +3,7 @@ export const PATH = {
 	CHATTING: "/chatting",
 	CREATE_HABIT: "/habit-new",
 	MY: "/mypage",
+	MY_INFO: "/myinfo",
 	STAR: "/star",
 	STAR_CARD: "/star-card",
 	ONBOARDING: "/onboarding",

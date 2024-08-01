@@ -13,16 +13,8 @@ export const profileBoxStyle = css`
 	flex-direction: column;
 	align-items: center;
 	gap: 12px;
-	margin: 3.125rem 0 1.25rem;
-
-	& > a {
-		display: flex;
-		align-items: center;
-
-		& > p {
-			${theme.font.header};
-		}
-	}
+	margin: 3.125rem auto 1.25rem;
+	width: fit-content;
 `;
 
 export const profileImgStyle = css`
@@ -30,6 +22,15 @@ export const profileImgStyle = css`
 	height: 6.25rem;
 	border-radius: 15px;
 	background-color: #d9d9d9;
+`;
+
+export const profileTextBoxStyle = css`
+	display: flex;
+	align-items: center;
+
+	& > p {
+		${theme.font.header};
+	}
 `;
 
 export const buttonBoxStyle = css`
