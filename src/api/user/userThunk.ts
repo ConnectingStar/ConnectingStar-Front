@@ -150,17 +150,6 @@ export const editProfileImageV2 = createAsyncThunk(
 	},
 );
 
-export const editProfileImage = createAsyncThunk(
-	"user/editProfileImage",
-	async (constellationId: string, thunkOptions) => {
-		try {
-			return await authorizedAxiosInstance.put(END_POINTS.USER_CONSTELLATION, { constellationId });
-		} catch (error) {
-			return thunkOptions.rejectWithValue(error);
-		}
-	},
-);
-
 export const selectStar = createAsyncThunk(
 	"user/selectStar",
 	async (constellationId: string, thunkOptions) => {

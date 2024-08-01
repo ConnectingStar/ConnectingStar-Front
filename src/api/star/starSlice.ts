@@ -2,7 +2,7 @@ import { StarDataType } from "@/types/star";
 import { createSlice } from "@reduxjs/toolkit";
 
 import { getStarMain, getStarDetail, getStarCard } from "@/api/star/starThunk";
-import { editProfileImage, addStar } from "@/api/user/userThunk";
+import { editProfileImageV2, addStar } from "@/api/user/userThunk";
 
 import { STAR_DETAIL_STATUS } from "@/constants/starPageConstants";
 
@@ -91,14 +91,14 @@ const starSlice = createSlice({
 			.addCase(getStarDetail.rejected, (state) => {
 				state.isLoading = false;
 			})
-			.addCase(editProfileImage.pending, (state) => {
+			.addCase(editProfileImageV2.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(editProfileImage.fulfilled, (state) => {
+			.addCase(editProfileImageV2.fulfilled, (state) => {
 				state.isLoading = false;
 				state.starDetail.isProfile = true;
 			})
-			.addCase(editProfileImage.rejected, (state) => {
+			.addCase(editProfileImageV2.rejected, (state) => {
 				state.isLoading = false;
 			})
 			.addCase(addStar.pending, (state) => {

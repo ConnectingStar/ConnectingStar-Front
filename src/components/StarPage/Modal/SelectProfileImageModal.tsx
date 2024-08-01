@@ -7,7 +7,7 @@ import { layoutStyle } from "@/components/MyPage/Modal/LogoutModal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
-import { editProfileImage } from "@/api/user/userThunk";
+import { editProfileImageV2 } from "@/api/user/userThunk";
 
 import { useToast } from "@/hooks/useToast";
 
@@ -18,7 +18,12 @@ export default function SelectProfileImageModal() {
 
 	const handleFooterBtnClick = async () => {
 		try {
-			await dispatch(editProfileImage(id ?? "")).unwrap();
+			await dispatch(
+				editProfileImageV2({
+					constellationId: String(id),
+					related: "null",
+				}),
+			).unwrap();
 			dispatch(closeModal());
 			createToast("프로필 이미지로 설정했어요 😊");
 		} catch (error) {
