@@ -38,8 +38,8 @@ const App = () => {
 					<Route path={PATH.STAR_CARD} element={<StarCardPage />} />
 					<Route path={`${PATH.STAR_CARD}/:id`} element={<StarDetailPage />} />
 					<Route path="/chart" element={<ChartPage />} />
-					<Route path="/mypage" element={<MyPage />} />
-					<Route path="/myinfo" element={<MyInfoPage />} />
+					<Route path={PATH.MY} element={<MyPage />} />
+					<Route path={PATH.MY_INFO} element={<MyInfoPage />} />
 					<Route path="/star-trace" element={<MyStarTracePage />} />
 					<Route path="/habit-history" element={<MyHabitPage />} />
 					<Route path="/notification-setting" element={<NotificationSettingPage />} />
