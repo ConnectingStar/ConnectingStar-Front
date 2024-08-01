@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 
@@ -9,11 +9,13 @@ import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { getUserInfo } from "@/api/user/userThunk";
 
 import { MENU_BUTTON_DATA, PROFILE_BUTTON_DATA } from "@/constants/mypage";
+import { PATH } from "@/constants/path";
 
 import {
 	layoutStyle,
 	profileBoxStyle,
 	profileImgStyle,
+	profileTextBoxStyle,
 	buttonBoxStyle,
 	buttonInnerBoxStyle,
 } from "@/components/MyPage/Landing/Landing.style";
@@ -23,6 +25,8 @@ const Landing = () => {
 
 	const { userData } = useAppSelector((state) => state.user);
 
+	const navigate = useNavigate();
+
 	const isLatestVersion = true;
 
 	useEffect(() => {
@@ -31,12 +35,12 @@ const Landing = () => {
 
 	return (
 		<div css={layoutStyle}>
-			<div css={profileBoxStyle}>
+			<div css={profileBoxStyle} onClick={() => navigate(PATH.MY_INFO)}>
 				<div css={profileImgStyle} />
-				<Link to="/myinfo">
+				<div css={profileTextBoxStyle}>
 					<p>{userData.nickname}</p>
 					<RightArrowIcon />
-				</Link>
+				</div>
 			</div>
 
 			<div css={buttonBoxStyle}>
