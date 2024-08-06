@@ -13,8 +13,6 @@ const EditHabitPage = () => {
 	const { habit } = useAppSelector((state) => state.habit);
 	const { userData } = useAppSelector((state) => state.user);
 
-	console.log(userData);
-
 	const param = useParams();
 
 	useEffect(() => {

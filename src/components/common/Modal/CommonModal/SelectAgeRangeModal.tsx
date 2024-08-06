@@ -33,8 +33,6 @@ const SelectAgeRangeModal = ({ prevAgeRange, updateInputValue }: SelectAgeModalP
 		dispatch(closeModal());
 	};
 
-	console.log(prevAgeRange);
-
 	return (
 		<Modal isBottomSheet>
 			<div css={layoutStyle}>
