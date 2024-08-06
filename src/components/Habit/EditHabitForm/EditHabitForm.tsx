@@ -82,9 +82,6 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 		},
 	});
 
-	// console.log(habitRequest.behaviorValue);
-	// console.log(habit.behaviorValue);
-
 	return (
 		<>
 			<Header>
