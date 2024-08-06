@@ -9,6 +9,7 @@ import type {
 	HabitDeleteRequestType,
 	HabitRecordRequestType,
 	HabitRestRecordRequestType,
+	HabitRequestV2Type,
 } from "@/types/habit";
 
 export const getHabitRecord = createAsyncThunk(
@@ -82,6 +83,17 @@ export const editHabit = createAsyncThunk(
 	async (habitRequest: HabitRequestType, thunkOptions) => {
 		try {
 			return await authorizedAxiosInstance.put(END_POINTS.HABIT, habitRequest);
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
+export const createHabitV2 = createAsyncThunk(
+	"habit/createHabitV2",
+	async (habitRequest: HabitRequestV2Type, thunkOptions) => {
+		try {
+			return await authorizedAxiosInstance.post(END_POINTS.HABIT_V2, habitRequest);
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
 		}

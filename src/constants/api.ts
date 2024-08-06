@@ -21,6 +21,7 @@ export const END_POINTS = {
 	EDIT_IDENTITY: "/user/identity",
 	HABIT_ONE: (runHabitId: number) => `/habit/one?runHabitId=${runHabitId}`,
 	HABIT_RECORD_ONE_DAY: (date: string) => `/v2/habits/daily-trackings?date=${date}`,
+	HABIT_V2: "/v2/habits",
 	HABIT: "/habit",
 	HABIT_REST_RECORD: "/habit/history/rest",
 	HABIT_HISTORY: "/habit/history",

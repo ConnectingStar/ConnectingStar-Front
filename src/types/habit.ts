@@ -7,6 +7,18 @@ export interface HabitDeleteRequestType {
 	reason: string;
 }
 
+export interface HabitRequestV2Type {
+	identity: string;
+	runTime: string;
+	place: string;
+	action: string;
+	value: number;
+	unit: string;
+	firstAlert: string;
+	secondAlert: string;
+	isOnboarding?: boolean;
+}
+
 export interface HabitRequestType {
 	runHabitId?: number;
 	identity: string;
