@@ -25,11 +25,11 @@ const OnboardingHabitPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { userInfo } = useAppSelector((state) => state.user);
+	const { userData } = useAppSelector((state) => state.user);
 
 	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({});
 
-	const chatData = createChatData(userInfo, habitRequest);
+	const chatData = createChatData(userData.nickname, habitRequest);
 
 	const [progress, setProgress] = useState(0);
 
