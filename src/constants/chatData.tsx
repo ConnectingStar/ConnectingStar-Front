@@ -4,7 +4,7 @@ import { theme } from "@/styles/theme";
 
 import type { HabitRequestType } from "@/types/habit";
 
-export function createChatData(nickname: string, habitRequest: HabitRequestType) {
+export function createChatData(habitRequest: HabitRequestType, nickname?: string) {
 	return [
 		{
 			id: "firstMeet",
