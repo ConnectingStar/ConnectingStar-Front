@@ -173,7 +173,7 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 		{
 			id: "inform",
 			botMessage: [
-				`마지막으로 습관 형성에 중요한 <span class="bold blue">두 가지 주의 사항</span>을 말씀드릴게요`,
+				`마지막으로 습관 형성에 중요한 <span class="bold">두 가지 주의 사항</span>을 말씀드릴게요`,
 				`<span class="bold blue">첫째,</span> 시간/장소/정도에 너무 얽매이지 마세요🙅 물론 지키면 좋지만, 중요한 건 <span class="bold blue">일단 하는 거</span>니까요`,
 				`<span class="bold blue">둘째,</span> 실천했든 쉬었든 그날의 기록을 남겨 주세요📝 <span class="bold blue">기록은 그 자체로 강력한 동기부여 수단</span>이 된답니다`,
 			],
