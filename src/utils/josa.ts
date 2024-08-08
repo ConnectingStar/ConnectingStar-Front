@@ -22,3 +22,7 @@ function hasJongsung(letter: string) {
 export function josaIga(letter: string) {
 	return hasJongsung(letter) ? "이" : "가";
 }
+
+export function josaEulReul(letter: string) {
+	return hasJongsung(letter) ? "을" : "를";
+}
