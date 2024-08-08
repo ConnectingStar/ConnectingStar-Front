@@ -18,7 +18,7 @@ import { PATH } from "@/constants/path";
 
 import { theme } from "@/styles/theme";
 
-import { josaIga } from "@/utils/starUtils";
+import { josaIga } from "@/utils/josa";
 
 interface CharacterUnlockModalProps {
 	id: number;
