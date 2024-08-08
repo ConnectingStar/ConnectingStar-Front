@@ -32,6 +32,3 @@ export const STAR_DETAIL_STATUS = {
 } as const;
 
 export const TOGGLE_KEY = "have";
-
-export const HANGUL_START_CHARCODE = "가".charCodeAt(0);
-export const JONGSUNG = 28;
