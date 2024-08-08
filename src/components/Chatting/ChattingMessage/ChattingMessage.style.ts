@@ -13,6 +13,14 @@ export const container = css`
 		margin-right: 0.375rem;
 		background-color: #d9d9d9;
 	}
+
+	.bold {
+		${theme.font.body_b_bold}
+	}
+
+	.blue {
+		color: ${theme.color.main_blue};
+	}
 `;
 
 export const chatWrap = css`
@@ -55,9 +63,6 @@ export const userMessageStyle = css`
 			flex-direction: column;
 			gap: 0.75rem;
 		}
-		.bold {
-			${theme.font.body_b_bold}
-		}
 	}
 	.allUserData {
 		width: 13.125rem;
@@ -73,14 +78,12 @@ export const userMessageStyle = css`
 				gap: 6px;
 			}
 		}
-		.bold {
-			${theme.font.body_b_bold}
-		}
 		::after {
 			width: 100%;
 			height: 1px;
 			content: "";
 			background-color: white;
+			opacity: 0.3;
 			margin: 0.75rem 0;
 		}
 		&:last-of-type {
