@@ -1,5 +1,7 @@
 import { modalType } from "@/constants/modalConstants";
 
+import { josaEulReul } from "@/utils/josa";
+
 import type { HabitRequestType } from "@/types/habit";
 
 export function createChatData(habitRequest: HabitRequestType, nickname?: string) {
@@ -19,8 +21,7 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 			id: "behavior",
 			botMessage: [
 				`좋아요, 이번엔 정체성을 정해 보죠`,
-				// TODO: 조사 을를 적용
-				`${habitRequest.behavior}를 통해 ${nickname}님은 어떤 사람이 되고 싶으세요?`,
+				`${habitRequest.behavior}${josaEulReul(habitRequest.behavior)} 통해 ${nickname}님은 어떤 사람이 되고 싶으세요?`,
 			],
 			bottomButton: ["정체성 선택"],
 			userMessage: `${habitRequest.identity}`,
@@ -58,9 +59,8 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 		},
 		{
 			id: "place",
-			// TODO: 조사 을를 적용
 			botMessage: [
-				`이번엔 장소를 정해 볼게요🧭 ${habitRequest.behavior}를 쉽게 할 수 있거나 가는 것만으로 기분이 좋아지는 곳이 있나요?`,
+				`이번엔 장소를 정해 볼게요🧭 ${habitRequest.behavior}${josaEulReul(habitRequest.behavior)} 쉽게 할 수 있거나 가는 것만으로 기분이 좋아지는 곳이 있나요?`,
 			],
 			bottomButton: ["장소 선택"],
 			userMessage: `${habitRequest.place}`,
@@ -70,8 +70,7 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 		{
 			id: "behaviorUnit",
 			botMessage: [
-				// TODO: 조사 을를 적용
-				`다음으로 ${habitRequest.behavior}를 얼마나 할지 정해 보겠습니다🚩 이때, 가능한 쉬운 수준으로 시작해 보세요`,
+				`다음으로 ${habitRequest.behavior}${josaEulReul(habitRequest.behavior)} 얼마나 할지 정해 보겠습니다🚩 이때, 가능한 쉬운 수준으로 시작해 보세요`,
 				`그러다 일주일 내내 실천할 수 있게 될 때쯤, 난이도를 살짝 높이고 주기적으로 수준을 높여가는 거예요😉`,
 			],
 			bottomButton: ["실천 정도 선택"],
