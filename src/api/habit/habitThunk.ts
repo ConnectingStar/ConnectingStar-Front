@@ -6,6 +6,7 @@ import { END_POINTS } from "@/constants/api";
 
 import type {
 	HabitRequestType,
+	HabitPostV2RequestType,
 	HabitDeleteRequestType,
 	HabitRecordRequestType,
 	HabitRestRecordRequestType,
@@ -90,9 +91,9 @@ export const editHabit = createAsyncThunk(
 
 export const createHabit = createAsyncThunk(
 	"habit/createHabit",
-	async (habitRequest: HabitRequestType, thunkOptions) => {
+	async (habitRequest: HabitPostV2RequestType, thunkOptions) => {
 		try {
-			return await authorizedAxiosInstance.post(END_POINTS.HABIT, habitRequest);
+			return await authorizedAxiosInstance.post(END_POINTS.HABIT_V2, habitRequest);
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
 		}

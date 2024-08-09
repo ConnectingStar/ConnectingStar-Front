@@ -9,18 +9,20 @@ import { modalType } from "@/constants/modalConstants";
 import { PATH } from "@/constants/path";
 
 import type { HabitRequestType } from "@/types/habit";
+import { convertHabitRequestToHabitPostV2Request } from "@/mappers/convertHabitRequestToHabitPostV2Request";
 
 interface UseHabitFormProps {
 	habitId?: number;
 	initialData?: HabitRequestType | null;
+	isOnboarding?: boolean;
 }
 
-export const useHabitForm = ({ habitId, initialData }: UseHabitFormProps) => {
+export const useHabitForm = ({ habitId, initialData, isOnboarding }: UseHabitFormProps) => {
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
 
-	const [habitRequest, setHabitRequest] = useState(
+	const [habitRequest, setHabitRequest] = useState<HabitRequestType>(
 		initialData ?? {
 			identity: "",
 			runTime: { noon: "", hour: "", minute: "" },
@@ -66,7 +68,7 @@ export const useHabitForm = ({ habitId, initialData }: UseHabitFormProps) => {
 	const handleSubmit = async () => {
 		try {
 			if (!habitId) {
-				await dispatch(createHabit(habitRequest)).unwrap();
+				await dispatch(createHabit(convertHabitRequestToHabitPostV2Request(habitRequest, isOnboarding))).unwrap();
 				dispatch(openModal(modalType.SUCCESS_GUIDE));
 			} else {
 				await dispatch(editHabit(habitRequest)).unwrap();
