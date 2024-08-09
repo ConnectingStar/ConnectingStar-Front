@@ -65,7 +65,8 @@ const userSlice = createSlice({
 			.addCase(editProfileImageV2.fulfilled, (state, action) => {
 				state.isLoading = false;
 				if (state.userProfile) {
-					state.userProfile.user.constellation = action.payload.data.user.constellation;
+					state.userProfile.user.profileConstellation =
+						action.payload.data.user.profileConstellation;
 				}
 			})
 			.addCase(getUserIdentity.fulfilled, (state, action) => {
