@@ -61,9 +61,9 @@ const MyInfoPage = () => {
 					<div css={characterBoxStyle}>
 						<img
 							src={
-								userProfile.user.constellation === null
+								userProfile.user.profileConstellation === null
 									? userProfile.defaultCharacterImage
-									: userProfile.user.constellation.characterImage
+									: userProfile.user.profileConstellation.characterImage
 							}
 							alt="characterImage"
 						/>
@@ -115,7 +115,7 @@ const MyInfoPage = () => {
 
 				{modal === modalType.SELECT_CHARACTER && (
 					<SelectCharacterModal
-						prevConstellation={userProfile.user.constellation.constellationId}
+						prevConstellation={userProfile.user.profileConstellation.constellationId}
 						constellationList={constellationList}
 					/>
 				)}

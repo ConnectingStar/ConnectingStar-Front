@@ -27,8 +27,8 @@ export interface UserInfoType {
 	onboard: boolean;
 	star: number;
 	referrer: string;
-	constellationId: number;
-	constellation: ConstellationType;
+	profileConstellationId: number;
+	profileConstellation: ConstellationType;
 	defaultCharacterImage: string;
 }
 
