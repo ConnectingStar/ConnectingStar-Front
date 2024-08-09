@@ -27,7 +27,7 @@ const OnboardingHabitPage = () => {
 	const { modal } = useAppSelector((state) => state.modal);
 	const { userInfo } = useAppSelector((state) => state.user);
 
-	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({});
+	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({ isOnboarding: true });
 
 	const chatData = createChatData(habitRequest, userInfo?.nickname);
 
