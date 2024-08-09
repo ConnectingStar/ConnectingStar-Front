@@ -70,6 +70,10 @@ const CreateHabitPage = () => {
 				</div>
 
 				<div css={inputListStyle}>
+					<BehaviorInput
+						inputData={habitRequest.behavior}
+						handleModalOpen={() => dispatch(openModal(modalType.SELECT_BEHAVIOR))}
+					/>
 					<IdentityInput
 						inputData={habitRequest.identity}
 						handleModalOpen={() => dispatch(openModal(modalType.SELECT_IDENTITY))}
@@ -81,10 +85,6 @@ const CreateHabitPage = () => {
 					<LocationInput
 						inputData={habitRequest.place}
 						handleModalOpen={() => dispatch(openModal(modalType.SELECT_PLACE))}
-					/>
-					<BehaviorInput
-						inputData={habitRequest.behavior}
-						handleModalOpen={() => dispatch(openModal(modalType.SELECT_BEHAVIOR))}
 					/>
 					<div css={inputBoxStyle}>
 						<span>얼마나</span>
