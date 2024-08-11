@@ -19,6 +19,10 @@ export const boxStyle = css`
 	width: 100%;
 	margin-bottom: 6.875rem;
 	gap: 12.5rem;
+
+	img[alt="logo"] {
+		width: 18.4375rem;
+	}
 `;
 
 export const buttonBoxStyle = css`
