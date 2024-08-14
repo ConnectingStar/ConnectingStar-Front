@@ -140,7 +140,8 @@ const progressStyle = css`
 	position: fixed;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 22.5rem;
+	width: 100%;
+	max-width: 31.25rem;
 	padding-top: 3.5rem;
 	appearance: none;
 	::-webkit-progress-bar {
