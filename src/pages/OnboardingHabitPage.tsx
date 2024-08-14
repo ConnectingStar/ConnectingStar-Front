@@ -131,7 +131,7 @@ export default OnboardingHabitPage;
 
 const containerStyle = css`
 	width: 100%;
-	max-width: 31.25rem; // TODO: globalStyle max-width와 동일(추후 600으로 변경 필요)
+	max-width: 500px; // TODO: globalStyle max-width와 동일(추후 600으로 변경 필요)
 	background-color: ${theme.color.bg};
 `;
 
@@ -148,7 +148,7 @@ const progressStyle = css`
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
-	max-width: 31.25rem;
+	max-width: 500px; // TODO: globalStyle max-width와 동일(추후 600으로 변경 필요)
 	padding-top: 3.5rem;
 	appearance: none;
 	::-webkit-progress-bar {
