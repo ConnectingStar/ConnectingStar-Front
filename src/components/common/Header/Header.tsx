@@ -8,6 +8,7 @@ import { HeaderProps, TitleProps, IconButtonProps } from "@/types/headerType";
 
 import {
 	getContainerStyle,
+	innerContainerStyle,
 	getTitleStyle,
 	iconButtonStyle,
 	textButtonStyle,
@@ -18,7 +19,11 @@ import {
  */
 
 export default function Header({ children, isFixed = true }: HeaderProps) {
-	return <div css={getContainerStyle(isFixed)}>{children}</div>;
+	return (
+		<div css={getContainerStyle(isFixed)}>
+			<div css={innerContainerStyle}>{children}</div>
+		</div>
+	);
 }
 
 Header.Title = function HeaderTitle({ children, hasButton = true }: TitleProps) {
