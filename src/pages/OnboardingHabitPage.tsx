@@ -47,19 +47,21 @@ const OnboardingHabitPage = () => {
 
 			<progress css={progressStyle} value={progress + 1} max={11} />
 
-			<div css={wrap(isExtraBtn)}>
-				{chatData &&
-					chatData
-						.slice(0, progress + 1)
-						.map((chatData) => (
-							<ChattingMessage
-								key={chatData.id}
-								chatData={chatData}
-								progress={progress}
-								addProgress={() => setProgress((prev) => prev + 1)}
-								handleSubmit={handleSubmit}
-							/>
-						))}
+			<div css={containerStyle}>
+				<div css={wrap(isExtraBtn)}>
+					{chatData &&
+						chatData
+							.slice(0, progress + 1)
+							.map((chatData) => (
+								<ChattingMessage
+									key={chatData.id}
+									chatData={chatData}
+									progress={progress}
+									addProgress={() => setProgress((prev) => prev + 1)}
+									handleSubmit={handleSubmit}
+								/>
+							))}
+				</div>
 			</div>
 
 			{modal === modalType.SELECT_BEHAVIOR && (
@@ -127,12 +129,17 @@ const OnboardingHabitPage = () => {
 
 export default OnboardingHabitPage;
 
+const containerStyle = css`
+	width: 100%;
+	max-width: 31.25rem; // TODO: globalStyle max-width와 동일(추후 600으로 변경 필요)
+	background-color: ${theme.color.bg};
+`;
+
 const wrap = (isExtraBtn?: boolean) => css`
 	max-width: 22.5rem;
 	min-height: 100vh;
 	padding: 5.75rem 1.5rem ${isExtraBtn ? "8.5rem" : "5.438rem"} 1.5rem;
 	margin: 0 auto;
-	background-color: ${theme.color.bg};
 	${theme.font.body_b};
 `;
 
