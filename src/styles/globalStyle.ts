@@ -26,6 +26,7 @@ export const GlobalStyle = css`
 	html,
 	body {
 		height: 100%;
+		overscroll-behavior-y: none;
 	}
 
 	img,
