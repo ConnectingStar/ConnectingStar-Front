@@ -1,6 +1,8 @@
 import InfoIcon from "@/assets/icon/ic-blue-exclamation-mark.svg?react";
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
+import { convertFromTimeString } from "@/utils/time";
+
 import {
 	inputBoxStyle,
 	inputStyle,
@@ -8,13 +10,13 @@ import {
 } from "@/pages/CreateHabitPage/CreateHabitPage.style";
 
 interface AlarmInputProps {
-	inputData: { noon: string; hour: string; minute: string };
+	inputData: string;
 	handleModalOpen: () => void;
 	isSecond?: boolean;
 }
 
 const AlarmInput = ({ inputData, handleModalOpen, isSecond }: AlarmInputProps) => {
-	const isEmpty = inputData.noon === "" || inputData.hour === "" || inputData.minute === "";
+	const isEmpty = inputData === "";
 
 	return (
 		<div css={inputBoxStyle}>
@@ -25,11 +27,11 @@ const AlarmInput = ({ inputData, handleModalOpen, isSecond }: AlarmInputProps) =
 					{isSecond ? "습관 기록을 독려하는 알림이에요!" : "약속을 상기시켜 드리는 알림이에요!"}
 				</span>
 			</div>
-			<div css={inputStyle(inputData.noon !== "")} onClick={handleModalOpen}>
+			<div css={inputStyle(inputData !== "")} onClick={handleModalOpen}>
 				<span>
 					{isEmpty
 						? `${isSecond ? "2차" : "1차"} 알림 시간을 선택해 주세요`
-						: `${inputData.noon} ${inputData.hour}:${inputData.minute}`}
+						: `${convertFromTimeString(inputData)}`}
 				</span>
 				<DownArrowIcon />
 			</div>

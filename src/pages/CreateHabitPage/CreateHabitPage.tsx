@@ -71,7 +71,7 @@ const CreateHabitPage = () => {
 
 				<div css={inputListStyle}>
 					<BehaviorInput
-						inputData={habitRequest.behavior}
+						inputData={habitRequest.action}
 						handleModalOpen={() => dispatch(openModal(modalType.SELECT_BEHAVIOR))}
 					/>
 					<IdentityInput
@@ -89,8 +89,8 @@ const CreateHabitPage = () => {
 					<div css={inputBoxStyle}>
 						<span>얼마나</span>
 						<BehaviorValueInput
-							inputValueData={habitRequest.behaviorValue}
-							inputUnitData={habitRequest.behaviorUnit}
+							inputValueData={habitRequest.value}
+							inputUnitData={habitRequest.unit}
 							handleModalOpen={() => dispatch(openModal(modalType.SELECT_BEHAVIORUNIT))}
 						/>
 					</div>
@@ -144,15 +144,15 @@ const CreateHabitPage = () => {
 					<SelectTagModal
 						type="behavior"
 						tags={SELECT_TAG_DATA.behaviorTags}
-						prevValue={habitRequest.behavior}
+						prevValue={habitRequest.action}
 						updateInputValue={updateInputValue}
 					/>
 				)}
 				{modal === modalType.SELECT_BEHAVIORUNIT && (
 					<BehaviorModal
-						behavior={habitRequest.behavior}
-						prevValue={habitRequest.behaviorValue}
-						prevUnit={habitRequest.behaviorUnit}
+						behavior={habitRequest.action}
+						prevValue={habitRequest.value}
+						prevUnit={habitRequest.unit}
 						updateInputValue={updateInputValue}
 					/>
 				)}

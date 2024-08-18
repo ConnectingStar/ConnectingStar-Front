@@ -9,13 +9,14 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/time";
 
-// import { useToast } from "@/hooks/useToast";
+import { useToast } from "@/hooks/useToast";
 
 import {
 	adjustTime,
-	// earlyTimeValidation,
-	// lateTimeValidation,
+	earlyTimeValidation,
+	lateTimeValidation,
 	convertTimeString,
+	convertFromTimeString,
 } from "@/utils/time";
 
 import type { CommonAlertType } from "@/types/common";
@@ -42,14 +43,14 @@ interface selectTimeModalType {
 function SelectTimeModal({
 	title,
 	progress,
-	// runTime,
+	runTime,
 	addprogress,
 	updateInputValue,
 	handleChangeRunTime,
 }: selectTimeModalType) {
 	const dispatch = useAppDispatch();
 
-	// const { createToast } = useToast();
+	const { createToast } = useToast();
 
 	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
 
@@ -98,29 +99,33 @@ function SelectTimeModal({
 			handleChangeRunTime && handleChangeRunTime(addZeroTime);
 		}
 
-		// if (title === "1차 알림시간을 선택해 주세요") {
-		// 	if (earlyTimeValidation(selectTime, convertFromTimeString(runTime))) {
-		// 		updateInputValue &&
-		// 			updateInputValue(
-		// 				"firstAlert",
-		// 				convertTimeString(addZeroTime.noon, addZeroTime.hour, addZeroTime.minute),
-		// 			);
-		// 	} else {
-		// 		createToast("약속시간 보다 이르게 설정해 주세요");
+		if (title === "1차 알림시간을 선택해 주세요") {
+			if (earlyTimeValidation(selectTime, convertFromTimeString(runTime))) {
+				updateInputValue &&
+					updateInputValue(
+						"firstAlert",
+						convertTimeString(addZeroTime.noon, addZeroTime.hour, addZeroTime.minute),
+					);
+			} else {
+				createToast("약속시간 보다 이르게 설정해 주세요");
 
-		// 		return;
-		// 	}
-		// }
+				return;
+			}
+		}
 
-		// if (title === "2차 알림시간을 선택해 주세요") {
-		// 	if (lateTimeValidation(selectTime, runTime)) {
-		// 		updateInputValue && updateInputValue("secondAlert", addZeroTime);
-		// 	} else {
-		// 		createToast("약속시간 보다 늦게 설정해 주세요");
+		if (title === "2차 알림시간을 선택해 주세요") {
+			if (lateTimeValidation(selectTime, convertFromTimeString(runTime))) {
+				updateInputValue &&
+					updateInputValue(
+						"secondAlert",
+						convertTimeString(addZeroTime.noon, addZeroTime.hour, addZeroTime.minute),
+					);
+			} else {
+				createToast("약속시간 보다 늦게 설정해 주세요");
 
-		// 		return;
-		// 	}
-		// }
+				return;
+			}
+		}
 
 		dispatch(closeModal());
 	};

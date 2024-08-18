@@ -1,24 +1,22 @@
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
+import { convertFromTimeString } from "@/utils/time";
+
 import { inputBoxStyle, inputStyle } from "@/pages/CreateHabitPage/CreateHabitPage.style";
 
 interface TimeInputProps {
-	inputData: { noon: string; hour: string; minute: string };
+	inputData: string;
 	handleModalOpen: () => void;
 }
 
 const TimeInput = ({ inputData, handleModalOpen }: TimeInputProps) => {
-	const isEmpty = inputData.noon === "" || inputData.hour === "" || inputData.minute === "";
+	const isEmpty = inputData === "";
 
 	return (
 		<div css={inputBoxStyle}>
 			<span>언제</span>
-			<div css={inputStyle(inputData.noon !== "")} onClick={handleModalOpen}>
-				<span>
-					{isEmpty
-						? "시간을 선택해 주세요"
-						: `${inputData.noon} ${inputData.hour}:${inputData.minute}`}
-				</span>
+			<div css={inputStyle(inputData !== "")} onClick={handleModalOpen}>
+				<span>{isEmpty ? "시간을 선택해 주세요" : `${convertFromTimeString(inputData)}`}</span>
 				<DownArrowIcon />
 			</div>
 		</div>
