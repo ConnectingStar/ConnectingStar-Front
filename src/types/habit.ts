@@ -12,7 +12,7 @@ export interface HabitRequestV2Type {
 	runTime: string;
 	place: string;
 	action: string;
-	value: number;
+	value: number | null;
 	unit: string;
 	firstAlert: string;
 	secondAlert: string;

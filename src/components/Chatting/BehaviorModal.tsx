@@ -10,17 +10,17 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
-import type { HabitRequestType } from "@/types/habit";
+import type { HabitRequestV2Type } from "@/types/habit";
 
 interface BehaviorModalProps {
 	behavior: string;
-	prevValue?: string;
+	prevValue?: number | null;
 	prevUnit?: string;
 	progress?: number;
 	addprogress?: () => void;
-	updateInputValue?: <Key extends keyof HabitRequestType>(
+	updateInputValue?: <Key extends keyof HabitRequestV2Type>(
 		key: Key,
-		value: HabitRequestType[Key],
+		value: HabitRequestV2Type[Key],
 	) => void;
 }
 
@@ -34,16 +34,16 @@ function BehaviorModal({
 }: BehaviorModalProps) {
 	const dispatch = useAppDispatch();
 
-	const [behaviorValue, setBehaviorValue] = useState<string>(prevValue ?? "");
-	const [behaviorUnit, setBehaviorUnit] = useState<string>(prevUnit ?? "");
+	const [value, setValue] = useState<number | null>(prevValue ?? null);
+	const [unit, setUnit] = useState<string>(prevUnit ?? "");
 
 	const confirmSelectedTag = () => {
 		progress === 6 && addprogress && addprogress();
 
-		if (behaviorValue && behaviorUnit) {
+		if (value && unit) {
 			if (updateInputValue) {
-				updateInputValue("behaviorValue", behaviorValue);
-				updateInputValue("behaviorUnit", behaviorUnit);
+				updateInputValue("value", value);
+				updateInputValue("unit", unit);
 			}
 
 			dispatch(closeModal());
@@ -65,14 +65,14 @@ function BehaviorModal({
 								type="number"
 								placeholder="숫자 입력"
 								autoFocus
-								value={behaviorValue}
-								onChange={(e) => setBehaviorValue(e.target.value)}
+								value={value || ""}
+								onChange={(e) => setValue(Number(e.target.value))}
 							/>
 							<input
 								type="text"
 								placeholder="단위 입력 (예: 페이지)"
-								value={behaviorUnit}
-								onChange={(e) => setBehaviorUnit(e.target.value)}
+								value={unit}
+								onChange={(e) => setUnit(e.target.value)}
 							/>
 						</form>
 					</div>
@@ -82,7 +82,7 @@ function BehaviorModal({
 				text="확인"
 				isSquare
 				handleBtnClick={confirmSelectedTag}
-				disabled={!behaviorUnit || !behaviorValue}
+				disabled={!unit || !value}
 			/>
 		</Modal>
 	);

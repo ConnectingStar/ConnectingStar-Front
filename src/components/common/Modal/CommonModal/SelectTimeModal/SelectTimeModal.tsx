@@ -9,12 +9,17 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/time";
 
-import { useToast } from "@/hooks/useToast";
+// import { useToast } from "@/hooks/useToast";
 
-import { adjustTime, earlyTimeValidation, lateTimeValidation } from "@/utils/time";
+import {
+	adjustTime,
+	// earlyTimeValidation,
+	// lateTimeValidation,
+	convertTimeString,
+} from "@/utils/time";
 
 import type { CommonAlertType } from "@/types/common";
-import type { HabitRequestType } from "@/types/habit";
+import type { HabitRequestV2Type } from "@/types/habit";
 
 import {
 	footerBtnBoxStyle,
@@ -25,11 +30,11 @@ import {
 interface selectTimeModalType {
 	title?: string;
 	progress?: number;
-	runTime?: CommonAlertType;
+	runTime?: string;
 	addprogress?: () => void;
-	updateInputValue?: <Key extends keyof HabitRequestType>(
+	updateInputValue?: <Key extends keyof HabitRequestV2Type>(
 		key: Key,
-		value: HabitRequestType[Key],
+		value: HabitRequestV2Type[Key],
 	) => void;
 	handleChangeRunTime?: (runTime: CommonAlertType) => void;
 }
@@ -37,14 +42,14 @@ interface selectTimeModalType {
 function SelectTimeModal({
 	title,
 	progress,
-	runTime,
+	// runTime,
 	addprogress,
 	updateInputValue,
 	handleChangeRunTime,
 }: selectTimeModalType) {
 	const dispatch = useAppDispatch();
 
-	const { createToast } = useToast();
+	// const { createToast } = useToast();
 
 	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
 
@@ -67,34 +72,55 @@ function SelectTimeModal({
 			if (addprogress) {
 				if (!updateInputValue) return;
 
-				updateInputValue("runTime", addZeroTime);
-				updateInputValue("firstAlert", adjustTime({ time: selectTime, change: -10 }));
-				updateInputValue("secondAlert", adjustTime({ time: selectTime, change: 30 }));
+				updateInputValue(
+					"runTime",
+					convertTimeString(addZeroTime.noon, addZeroTime.hour, addZeroTime.minute),
+				);
+
+				const addTimeFirst = adjustTime({ time: selectTime, change: -10 });
+				const addTimeSecond = adjustTime({ time: selectTime, change: 30 });
+
+				updateInputValue(
+					"firstAlert",
+					convertTimeString(addTimeFirst.noon, addTimeFirst.hour, addTimeFirst.minute),
+				);
+				updateInputValue(
+					"secondAlert",
+					convertTimeString(addTimeSecond.noon, addTimeSecond.hour, addTimeSecond.minute),
+				);
 			}
 
-			updateInputValue && updateInputValue("runTime", addZeroTime);
+			updateInputValue &&
+				updateInputValue(
+					"runTime",
+					convertTimeString(addZeroTime.noon, addZeroTime.hour, addZeroTime.minute),
+				);
 			handleChangeRunTime && handleChangeRunTime(addZeroTime);
 		}
 
-		if (title === "1차 알림시간을 선택해 주세요") {
-			if (earlyTimeValidation(selectTime, runTime)) {
-				updateInputValue && updateInputValue("firstAlert", addZeroTime);
-			} else {
-				createToast("약속시간 보다 이르게 설정해 주세요");
+		// if (title === "1차 알림시간을 선택해 주세요") {
+		// 	if (earlyTimeValidation(selectTime, convertFromTimeString(runTime))) {
+		// 		updateInputValue &&
+		// 			updateInputValue(
+		// 				"firstAlert",
+		// 				convertTimeString(addZeroTime.noon, addZeroTime.hour, addZeroTime.minute),
+		// 			);
+		// 	} else {
+		// 		createToast("약속시간 보다 이르게 설정해 주세요");
 
-				return;
-			}
-		}
+		// 		return;
+		// 	}
+		// }
 
-		if (title === "2차 알림시간을 선택해 주세요") {
-			if (lateTimeValidation(selectTime, runTime)) {
-				updateInputValue && updateInputValue("secondAlert", addZeroTime);
-			} else {
-				createToast("약속시간 보다 늦게 설정해 주세요");
+		// if (title === "2차 알림시간을 선택해 주세요") {
+		// 	if (lateTimeValidation(selectTime, runTime)) {
+		// 		updateInputValue && updateInputValue("secondAlert", addZeroTime);
+		// 	} else {
+		// 		createToast("약속시간 보다 늦게 설정해 주세요");
 
-				return;
-			}
-		}
+		// 		return;
+		// 	}
+		// }
 
 		dispatch(closeModal());
 	};

@@ -16,15 +16,15 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { locationModalData } from "@/constants/locationModalConstants";
 
-import type { HabitRequestType } from "@/types/habit";
+import type { HabitRequestV2Type } from "@/types/habit";
 
 interface LocationModalType {
 	progress?: number;
 	addprogress?: () => void;
 	prevValue: string;
-	updateInputValue?: <Key extends keyof HabitRequestType>(
+	updateInputValue?: <Key extends keyof HabitRequestV2Type>(
 		key: Key,
-		value: HabitRequestType[Key],
+		value: HabitRequestV2Type[Key],
 	) => void;
 }
 

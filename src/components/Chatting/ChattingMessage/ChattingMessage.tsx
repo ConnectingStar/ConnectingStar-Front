@@ -74,7 +74,7 @@ function ChattingMessage({ chatData, progress, addProgress, handleSubmit }: chat
 			dispatch(openModal(modalType[0]));
 		}
 
-		chatData.id === "last" && handleSubmit;
+		chatData.id === "last" && handleSubmit();
 	};
 
 	return (

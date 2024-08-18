@@ -2,9 +2,11 @@ import { modalType } from "@/constants/modalConstants";
 
 import { josaEulReul } from "@/utils/josa";
 
-import type { HabitRequestType } from "@/types/habit";
+import { convertFromTimeString } from "@/utils/time";
 
-export function createChatData(habitRequest: HabitRequestType, nickname?: string) {
+import type { HabitRequestV2Type } from "@/types/habit";
+
+export function createChatData(habitRequest: HabitRequestV2Type, nickname?: string) {
 	return [
 		{
 			id: "firstMeet",
@@ -14,14 +16,14 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 				`처음엔 매일 해도 무리 없는 쉬운 것부터 시작하는 게 좋아요😊`,
 			],
 			bottomButton: ["습관 선택"],
-			userMessage: `${habitRequest.behavior}`,
+			userMessage: `${habitRequest.action}`,
 			modalType: [modalType.SELECT_BEHAVIOR],
 		},
 		{
 			id: "behavior",
 			botMessage: [
 				`좋아요, 이번엔 정체성을 정해 보죠`,
-				`${habitRequest.behavior}${josaEulReul(habitRequest.behavior)} 통해 ${nickname}님은 어떤 사람이 되고 싶으세요?`,
+				`${habitRequest.action}${josaEulReul(habitRequest.action)} 통해 ${nickname}님은 어떤 사람이 되고 싶으세요?`,
 			],
 			bottomButton: ["정체성 선택"],
 			userMessage: `${habitRequest.identity}`,
@@ -54,13 +56,13 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 				`시간부터 정해 볼게요⏰ 매일 지키기 쉽고 다른 일에 방해 받지 않는 시간은 언제인가요?`,
 			],
 			bottomButton: ["시간 선택"],
-			userMessage: `${habitRequest.runTime.noon} ${habitRequest.runTime.hour}:${habitRequest.runTime.minute}`,
+			userMessage: `${convertFromTimeString(habitRequest.runTime)}`,
 			modalType: [modalType.SELECT_TIME("RUNTIME")],
 		},
 		{
 			id: "place",
 			botMessage: [
-				`이번엔 장소를 정해 볼게요🧭 ${habitRequest.behavior}${josaEulReul(habitRequest.behavior)} 쉽게 할 수 있거나 가는 것만으로 기분이 좋아지는 곳이 있나요?`,
+				`이번엔 장소를 정해 볼게요🧭 ${habitRequest.action}${josaEulReul(habitRequest.action)} 쉽게 할 수 있거나 가는 것만으로 기분이 좋아지는 곳이 있나요?`,
 			],
 			bottomButton: ["장소 선택"],
 			userMessage: `${habitRequest.place}`,
@@ -70,11 +72,11 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 		{
 			id: "behaviorUnit",
 			botMessage: [
-				`다음으로 ${habitRequest.behavior}${josaEulReul(habitRequest.behavior)} 얼마나 할지 정해 보겠습니다🚩 이때, 가능한 쉬운 수준으로 시작해 보세요`,
+				`다음으로 ${habitRequest.action}${josaEulReul(habitRequest.action)} 얼마나 할지 정해 보겠습니다🚩 이때, 가능한 쉬운 수준으로 시작해 보세요`,
 				`그러다 일주일 내내 실천할 수 있게 될 때쯤, 난이도를 살짝 높이고 주기적으로 수준을 높여가는 거예요😉`,
 			],
 			bottomButton: ["실천 정도 선택"],
-			userMessage: `${habitRequest.behaviorValue} ${habitRequest.behaviorUnit}`,
+			userMessage: `${habitRequest.value} ${habitRequest.unit}`,
 			modalType: [modalType.SELECT_BEHAVIORUNIT],
 		},
 		{
@@ -92,9 +94,9 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 					<div>2차 알림(기록 독려)</div>
 				</div>
 				<div class="bold">
-					<div>${habitRequest.firstAlert.noon} ${habitRequest.firstAlert.hour}:${habitRequest.firstAlert.minute}</div>
-					<div>${habitRequest.runTime.noon} ${habitRequest.runTime.hour}:${habitRequest.runTime.minute}</div>
-					<div>${habitRequest.secondAlert.noon} ${habitRequest.secondAlert.hour}:${habitRequest.secondAlert.minute}</div>
+					<div>${convertFromTimeString(habitRequest.firstAlert)}</div>
+					<div>${convertFromTimeString(habitRequest.runTime)}</div>
+					<div>${convertFromTimeString(habitRequest.secondAlert)}</div>
 				</div>
 			</div>
 		`,
@@ -138,10 +140,10 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 						<li>실천 정도</li>
 					</ul>
 					<ul class="bold">
-						<li>${habitRequest.runTime.noon} ${habitRequest.runTime.hour}:${habitRequest.runTime.minute}</li>
+						<li>${convertFromTimeString(habitRequest.runTime)}</li>
 						<li>${habitRequest.place}</li>
-						<li>${habitRequest.behavior}</li>
-						<li>${habitRequest.behaviorValue}${habitRequest.behaviorUnit}</li>
+						<li>${habitRequest.action}</li>
+						<li>${habitRequest.value}${habitRequest.unit}</li>
 					</ul>
 				</div>
 			</div>
@@ -153,8 +155,8 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 						<li>2차 알림</li>
 					</ul>
 					<ul class="bold">
-						<li>${habitRequest.firstAlert.noon} ${habitRequest.firstAlert.hour}:${habitRequest.firstAlert.minute}</li>
-						<li>${habitRequest.secondAlert.noon} ${habitRequest.secondAlert.hour}:${habitRequest.secondAlert.minute}</li>
+						<li>${convertFromTimeString(habitRequest.firstAlert)}</li>
+						<li>${convertFromTimeString(habitRequest.secondAlert)}</li>
 					</ul>
 				</div>
 			</div>
@@ -191,7 +193,6 @@ export function createChatData(habitRequest: HabitRequestType, nickname?: string
 			],
 			bottomButton: ["나도 잘 부탁해!"],
 			userMessage: "",
-			modalType: [modalType.SUCCESS_GUIDE],
 		},
 	];
 }

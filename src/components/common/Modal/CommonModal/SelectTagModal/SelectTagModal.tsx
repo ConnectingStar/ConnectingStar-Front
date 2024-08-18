@@ -6,7 +6,7 @@ import Header from "@/components/common/Header/Header";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import type { HabitRequestType } from "@/types/habit";
+import type { HabitRequestV2Type } from "@/types/habit";
 
 import {
 	container,
@@ -18,9 +18,9 @@ interface selectTagModalType {
 	type: string;
 	tags: string[];
 	prevValue: string;
-	updateInputValue: <Key extends keyof HabitRequestType>(
+	updateInputValue: <Key extends keyof HabitRequestV2Type>(
 		key: Key,
-		value: HabitRequestType[Key],
+		value: HabitRequestV2Type[Key],
 	) => void;
 	progress?: number;
 	addprogress?: () => void;
@@ -49,7 +49,7 @@ function SelectTagModal({
 		const updatedHabit = selectedTag || inputText;
 
 		if (type === "behavior") {
-			updateInputValue("behavior", updatedHabit);
+			updateInputValue("action", updatedHabit);
 			progress === 0 && addprogress && addprogress();
 		} else if (type === "identity") {
 			updateInputValue("identity", updatedHabit);
@@ -66,7 +66,7 @@ function SelectTagModal({
 			</Header>
 
 			<div css={wrap}>
-				<h1>{type === "behavior" ? "어떤 습관을 만들어 볼까요?" : "어떤 사람이 되고 싶으세요?"}</h1>
+				<h1>{type === "action" ? "어떤 습관을 만들어 볼까요?" : "어떤 사람이 되고 싶으세요?"}</h1>
 				<div css={tagStyle(isInputFocus)}>
 					<ul>
 						{tags.map((tag) => (
