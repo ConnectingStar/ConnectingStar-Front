@@ -1,56 +1,52 @@
 import { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-import { createHabit, editHabit } from "@/api/habit/habitThunk";
+import { createHabitV2 } from "@/api/habit/habitThunk";
 import { useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
-import { PATH } from "@/constants/path";
+// import { PATH } from "@/constants/path";
 
-import type { HabitRequestType } from "@/types/habit";
+import type { HabitRequestV2Type } from "@/types/habit";
 
 interface UseHabitFormProps {
+	isOnboarding?: boolean;
 	habitId?: number;
-	initialData?: HabitRequestType | null;
+	initialData?: HabitRequestV2Type | null;
 }
 
-export const useHabitForm = ({ habitId, initialData }: UseHabitFormProps) => {
+export const useHabitForm = ({ isOnboarding, habitId, initialData }: UseHabitFormProps) => {
 	const dispatch = useAppDispatch();
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const [habitRequest, setHabitRequest] = useState(
 		initialData ?? {
 			identity: "",
-			runTime: { noon: "", hour: "", minute: "" },
+			runTime: "",
 			place: "",
-			behavior: "",
-			behaviorValue: "",
-			behaviorUnit: "",
-			firstAlert: { noon: "", hour: "", minute: "" },
-			secondAlert: { noon: "", hour: "", minute: "" },
+			action: "",
+			value: null,
+			unit: "",
+			firstAlert: "",
+			secondAlert: "",
+			isOnboarding,
 		},
 	);
 
 	const isEmpty =
 		habitRequest.identity === "" ||
-		habitRequest.runTime.noon === "" ||
-		habitRequest.runTime.hour === "" ||
-		habitRequest.runTime.minute === "" ||
+		habitRequest.runTime === "" ||
 		habitRequest.place === "" ||
-		habitRequest.behavior === "" ||
-		habitRequest.behaviorValue === "" ||
-		habitRequest.behaviorUnit === "" ||
-		habitRequest.firstAlert.noon === "" ||
-		habitRequest.firstAlert.hour === "" ||
-		habitRequest.firstAlert.minute === "" ||
-		habitRequest.secondAlert.noon === "" ||
-		habitRequest.secondAlert.hour === "" ||
-		habitRequest.secondAlert.minute === "";
+		habitRequest.action === "" ||
+		habitRequest.value === null ||
+		habitRequest.unit === "" ||
+		habitRequest.firstAlert === "" ||
+		habitRequest.secondAlert === "";
 
 	const updateInputValue = useCallback(
-		<Key extends keyof HabitRequestType>(key: Key, value: HabitRequestType[Key]) => {
+		<Key extends keyof HabitRequestV2Type>(key: Key, value: HabitRequestV2Type[Key]) => {
 			setHabitRequest((prevHabitRequest) => {
 				const data = {
 					...prevHabitRequest,
@@ -66,12 +62,14 @@ export const useHabitForm = ({ habitId, initialData }: UseHabitFormProps) => {
 	const handleSubmit = async () => {
 		try {
 			if (!habitId) {
-				await dispatch(createHabit(habitRequest)).unwrap();
+				await dispatch(createHabitV2(habitRequest)).unwrap();
 				dispatch(openModal(modalType.SUCCESS_GUIDE));
-			} else {
-				await dispatch(editHabit(habitRequest)).unwrap();
-				navigate(PATH.HOME);
 			}
+
+			// else {
+			// 	await dispatch(editHabit(habitRequest)).unwrap();
+			// 	navigate(PATH.HOME);
+			// }
 		} catch (error) {
 			console.log(error);
 		}

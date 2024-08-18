@@ -101,3 +101,16 @@ export const convertTimeString = (noon: string, hour: string, minute: string) =>
 		return `${Number(hour) + 12}:${minute}`;
 	}
 };
+
+export const convertFromTimeString = (time?: string) => {
+	if (!time) return;
+
+	if (Number(time.split(":")[0]) > 12) {
+		const hour = Number(time.split(":")[0]) - 12;
+		const minute = Number(time.split(":")[1]);
+
+		return `오후 ${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
+	} else {
+		return `오전 ${time}`;
+	}
+};

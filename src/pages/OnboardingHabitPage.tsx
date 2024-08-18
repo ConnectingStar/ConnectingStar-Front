@@ -27,7 +27,7 @@ const OnboardingHabitPage = () => {
 	const { modal } = useAppSelector((state) => state.modal);
 	const { userInfo } = useAppSelector((state) => state.user);
 
-	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({});
+	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({ isOnboarding: true });
 
 	const chatData = createChatData(habitRequest, userInfo?.nickname);
 
@@ -70,7 +70,7 @@ const OnboardingHabitPage = () => {
 					tags={SELECT_TAG_DATA.behaviorTags}
 					progress={progress}
 					addprogress={() => setProgress((prev) => prev + 1)}
-					prevValue={habitRequest.behavior}
+					prevValue={habitRequest.action}
 					updateInputValue={updateInputValue}
 				/>
 			)}
@@ -103,11 +103,11 @@ const OnboardingHabitPage = () => {
 			)}
 			{modal === modalType.SELECT_BEHAVIORUNIT && (
 				<BehaviorModal
-					behavior={habitRequest.behavior}
+					behavior={habitRequest.action}
 					progress={progress}
 					addprogress={() => setProgress((prev) => prev + 1)}
-					prevValue={habitRequest.behaviorValue}
-					prevUnit={habitRequest.behaviorUnit}
+					prevValue={habitRequest.value}
+					prevUnit={habitRequest.unit}
 					updateInputValue={updateInputValue}
 				/>
 			)}
