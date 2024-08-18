@@ -100,17 +100,6 @@ export const createHabitV2 = createAsyncThunk(
 	},
 );
 
-export const createHabit = createAsyncThunk(
-	"habit/createHabit",
-	async (habitRequest: HabitRequestType, thunkOptions) => {
-		try {
-			return await authorizedAxiosInstance.post(END_POINTS.HABIT, habitRequest);
-		} catch (error) {
-			throw thunkOptions.rejectWithValue(error);
-		}
-	},
-);
-
 export const getHabitRecordOneDay = createAsyncThunk(
 	"habit/getHabitRecordOneDay",
 	async (date: string, thunkOptions) => {

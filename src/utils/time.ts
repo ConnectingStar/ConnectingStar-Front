@@ -48,45 +48,48 @@ export const adjustTime = ({ time, change }: adjustTimeType) => {
 	};
 };
 
-export const earlyTimeValidation = (selectTime: CommonAlertType, runTime?: CommonAlertType) => {
+export const earlyTimeValidation = (selectTime: CommonAlertType, runTime?: string) => {
 	if (!runTime) return;
 
-	if (runTime.noon === "오후" && selectTime.noon === "오전") {
+	const noon = runTime.split(" ")[0];
+	const hour = runTime.split(" ")[1].split(":")[0];
+	const minute = runTime.split(" ")[1].split(":")[1];
+
+	if (noon === "오전" && selectTime.noon === "오후") {
+		console.log("abc");
 		return false;
 	}
 
-	if (runTime.noon === selectTime.noon) {
-		if (
-			Number(runTime.hour) === Number(selectTime.hour) &&
-			Number(runTime.minute) <= Number(selectTime.minute)
-		) {
+	if (noon === selectTime.noon) {
+		if (Number(hour) === Number(selectTime.hour) && Number(minute) <= Number(selectTime.minute)) {
 			return false;
 		}
+	}
 
-		if (Number(runTime.hour) < Number(selectTime.hour)) {
-			return false;
-		}
+	if (Number(hour) < Number(selectTime.hour)) {
+		return false;
 	}
 
 	return true;
 };
 
-export const lateTimeValidation = (selectTime: CommonAlertType, runTime?: CommonAlertType) => {
+export const lateTimeValidation = (selectTime: CommonAlertType, runTime?: string) => {
 	if (!runTime) return;
 
-	if (runTime.noon === "오후" && selectTime.noon === "오전") {
+	const noon = runTime.split(" ")[0];
+	const hour = runTime.split(" ")[1].split(":")[0];
+	const minute = runTime.split(" ")[1].split(":")[1];
+
+	if (noon === "오후" && selectTime.noon === "오전") {
 		return false;
 	}
 
-	if (runTime.noon === selectTime.noon) {
-		if (
-			Number(runTime.hour) === Number(selectTime.hour) &&
-			Number(runTime.minute) >= Number(selectTime.minute)
-		) {
+	if (noon === selectTime.noon) {
+		if (Number(hour) === Number(selectTime.hour) && Number(minute) >= Number(selectTime.minute)) {
 			return false;
 		}
 
-		if (Number(runTime.hour) > Number(selectTime.hour)) {
+		if (Number(hour) > Number(selectTime.hour)) {
 			return false;
 		}
 	}
