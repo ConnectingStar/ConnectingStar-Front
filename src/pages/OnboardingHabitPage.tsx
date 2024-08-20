@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
@@ -11,11 +12,12 @@ import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeMod
 import SuccessGuideModal from "@/components/common/Modal/CommonModal/SuccessGuideModal/SuccessGuideModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { getOnlyUserInfo } from "@/api/user/userThunk";
+import { getOnlyUserInfo, getIsOnboarding } from "@/api/user/userThunk";
 
 import { createChatData } from "@/constants/chatData";
 import { modalType } from "@/constants/modalConstants";
 import { SELECT_TAG_DATA } from "@/constants/modalConstants";
+import { PATH } from "@/constants/path";
 
 import { useHabitForm } from "@/hooks/useHabitForm";
 
@@ -25,7 +27,9 @@ const OnboardingHabitPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-	const { userInfo } = useAppSelector((state) => state.user);
+	const { userInfo, isOnboarding } = useAppSelector((state) => state.user);
+
+	const navigate = useNavigate();
 
 	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({ isOnboarding: true });
 
@@ -37,7 +41,12 @@ const OnboardingHabitPage = () => {
 
 	useEffect(() => {
 		dispatch(getOnlyUserInfo());
+		dispatch(getIsOnboarding());
 	}, []);
+
+	useEffect(() => {
+		isOnboarding && navigate(PATH.HOME);
+	}, [isOnboarding]);
 
 	return (
 		<>
