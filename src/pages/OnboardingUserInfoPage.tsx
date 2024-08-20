@@ -40,8 +40,6 @@ const OnboardingUserInfoPage = () => {
 		isOnboarding && navigate(PATH.HOME);
 	}, [isOnboarding]);
 
-	console.log(isOnboarding);
-
 	return (
 		<>
 			{step === ONBOARDING_STEP.CREATE_ACCOUNT && (
