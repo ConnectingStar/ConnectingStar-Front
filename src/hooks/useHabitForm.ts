@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { createHabitV2 } from "@/api/habit/habitThunk";
+import { createHabitV2, editHabit } from "@/api/habit/habitThunk";
 import { useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
-// import { PATH } from "@/constants/path";
+import { PATH } from "@/constants/path";
 
 import type { HabitRequestV2Type } from "@/types/habit";
 
@@ -19,7 +19,7 @@ interface UseHabitFormProps {
 export const useHabitForm = ({ isOnboarding, habitId, initialData }: UseHabitFormProps) => {
 	const dispatch = useAppDispatch();
 
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const [habitRequest, setHabitRequest] = useState(
 		initialData ?? {
@@ -64,12 +64,10 @@ export const useHabitForm = ({ isOnboarding, habitId, initialData }: UseHabitFor
 			if (!habitId) {
 				await dispatch(createHabitV2(habitRequest)).unwrap();
 				dispatch(openModal(modalType.SUCCESS_GUIDE));
+			} else {
+				await dispatch(editHabit({ runHabitId: habitId, habitRequest })).unwrap();
+				navigate(PATH.HOME);
 			}
-
-			// else {
-			// 	await dispatch(editHabit(habitRequest)).unwrap();
-			// 	navigate(PATH.HOME);
-			// }
 		} catch (error) {
 			console.log(error);
 		}

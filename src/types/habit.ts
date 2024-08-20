@@ -46,8 +46,20 @@ export interface HabitRecordRequestType extends HabitRestRecordRequestType {
 	review: string;
 }
 
+interface HabitV2Type extends HabitRequestV2Type {
+	habitAlerts: HabitAlertType[];
+}
+
+interface HabitAlertType {
+	habitAlertId: number;
+	runHabitId: number;
+	alertOrder: number;
+	alertTime: string;
+	alertStatus: boolean;
+}
+
 export interface HabitInitialStateType {
-	habit: HabitType | null;
+	habit: HabitV2Type | null;
 	habitRecord: HistoryOneDayType | null;
 	habitRecordOneDay: HabitRecordOneDayType[];
 }

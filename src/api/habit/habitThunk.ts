@@ -5,12 +5,16 @@ import { authorizedAxiosInstance } from "@/api/axiosInstance";
 import { END_POINTS } from "@/constants/api";
 
 import type {
-	HabitRequestType,
 	HabitDeleteRequestType,
 	HabitRecordRequestType,
 	HabitRestRecordRequestType,
 	HabitRequestV2Type,
 } from "@/types/habit";
+
+interface EditHabitRequestType {
+	runHabitId: number;
+	habitRequest: HabitRequestV2Type;
+}
 
 export const getHabitRecord = createAsyncThunk(
 	"habit/getHabitRecord",
@@ -56,7 +60,9 @@ export const getHabit = createAsyncThunk(
 	"habit/getHabit",
 	async (runHabitId: number, thunkOptions) => {
 		try {
-			const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT_ONE(runHabitId));
+			const { data } = await authorizedAxiosInstance.get(
+				END_POINTS.HABIT_V2_WITH_ALERT(runHabitId),
+			);
 
 			return data;
 		} catch (error) {
@@ -80,9 +86,14 @@ export const deleteHabit = createAsyncThunk(
 
 export const editHabit = createAsyncThunk(
 	"habit/editHabit",
-	async (habitRequest: HabitRequestType, thunkOptions) => {
+	async ({ runHabitId, habitRequest }: EditHabitRequestType, thunkOptions) => {
 		try {
-			return await authorizedAxiosInstance.put(END_POINTS.HABIT, habitRequest);
+			const { data } = await authorizedAxiosInstance.patch(
+				END_POINTS.HABIT_V2_ID(runHabitId),
+				habitRequest,
+			);
+
+			return data;
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
 		}
