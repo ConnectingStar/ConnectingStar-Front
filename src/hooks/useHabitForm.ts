@@ -12,7 +12,7 @@ import type { HabitRequestV2Type } from "@/types/habit";
 
 interface UseHabitFormProps {
 	isOnboarding?: boolean;
-	habitId?: number;
+	habitId?: string;
 	initialData?: HabitRequestV2Type | null;
 }
 

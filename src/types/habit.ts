@@ -46,7 +46,7 @@ export interface HabitRecordRequestType extends HabitRestRecordRequestType {
 	review: string;
 }
 
-interface HabitV2Type extends HabitRequestV2Type {
+export interface HabitV2Type extends HabitRequestV2Type {
 	habitAlerts: HabitAlertType[];
 }
 

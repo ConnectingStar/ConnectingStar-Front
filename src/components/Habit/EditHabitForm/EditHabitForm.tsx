@@ -64,7 +64,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 	const [alarmTarget, setAlarmTarget] = useState("");
 
 	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({
-		habitId,
+		habitId: String(habitId),
 		initialData: {
 			identity,
 			runTime,
