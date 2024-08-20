@@ -6,12 +6,12 @@ import { REST_RECORD_TEXT, REST_RECORD_BLUE_TEXT } from "@/constants/homeConstan
 
 import { useHabitRestRecordForm } from "@/hooks/useHabitRestRecordForm";
 
-import type { HabitType } from "@/types/habit";
+import type { HabitV2Type } from "@/types/habit";
 
 import { inputBoxStyle, layoutStyle } from "@/components/Habit/RestRecord/RestRecord.style";
 
 interface RestRecordProps {
-	habitData: HabitType;
+	habitData: HabitV2Type;
 	identity: string;
 	nickname: string;
 }
