@@ -17,10 +17,10 @@ const habitSlice = createSlice({
 	extraReducers(builder) {
 		builder
 			.addCase(getHabit.fulfilled, (state, action) => {
-				state.habit = action.payload.data;
+				state.habit = action.payload.data.runHabit;
 			})
 			.addCase(editHabit.fulfilled, (state, action) => {
-				state.habit = { ...action.meta.arg, runHabitId: action.meta.arg.runHabitId };
+				state.habit = { ...action.payload.data.runHabit };
 			})
 			.addCase(getHabitRecord.fulfilled, (state, action) => {
 				state.habitRecord = action.payload.data.history;

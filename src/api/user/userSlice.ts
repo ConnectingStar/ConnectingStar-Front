@@ -31,6 +31,7 @@ const userSlice = createSlice({
 		builder
 			.addCase(getIsOnboarding.fulfilled, (state, action) => {
 				state.isLoading = false;
+				console.log(action.payload.data);
 				state.isOnboarding = action.payload.data.onboard;
 			})
 

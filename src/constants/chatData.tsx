@@ -1,7 +1,6 @@
 import { modalType } from "@/constants/modalConstants";
 
 import { josaEulReul } from "@/utils/josa";
-
 import { convertFromTimeString } from "@/utils/time";
 
 import type { HabitRequestV2Type } from "@/types/habit";

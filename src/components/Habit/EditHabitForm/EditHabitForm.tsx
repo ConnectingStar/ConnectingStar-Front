@@ -20,6 +20,8 @@ import { PATH } from "@/constants/path";
 import { useHabitForm } from "@/hooks/useHabitForm";
 import { useToggleTrigger } from "@/hooks/useToggleTrigger";
 
+import { convertFromTimeString } from "@/utils/time";
+
 import {
 	layoutStyle,
 	habitMenuBoxStyle,
@@ -27,11 +29,11 @@ import {
 	quitButtonStyle,
 } from "@/pages/EditHabitPage/EditHabitPage.style";
 
-import type { HabitType } from "@/types/habit";
+import type { HabitV2Type } from "@/types/habit";
 
 interface EditHabitFormProps {
 	habitId: number;
-	habit: HabitType;
+	habit: HabitV2Type;
 	nickname: string;
 }
 
@@ -44,20 +46,14 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 
 	const params = useParams();
 
-	const {
-		identity,
-		runTime,
-		place,
-		behavior,
-		behaviorValue,
-		behaviorUnit,
-		firstAlert,
-		secondAlert,
-	} = habit;
+	const { identity, runTime, place, action, value, unit } = habit;
 
 	// api로 알람 on,off 여부 받아와서 toggle trigger와 연결
 	// const [firstAlarmOn] = useState(true);
 	// const [secondAlarmOn] = useState(false);
+
+	const firstAlert = habit.habitAlerts[0].alertTime;
+	const secondAlert = habit.habitAlerts[1].alertTime;
 
 	const { isToggle: firstNotiToggle, handleTogglePrev: handleFirstNotiTogglePrev } =
 		useToggleTrigger();
@@ -70,17 +66,18 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({
 		habitId,
 		initialData: {
-			runHabitId: habitId,
 			identity,
 			runTime,
 			place,
-			behavior,
-			behaviorValue,
-			behaviorUnit,
+			action,
+			value,
+			unit,
 			firstAlert,
 			secondAlert,
 		},
 	});
+
+	console.log(habitRequest);
 
 	return (
 		<>
@@ -100,7 +97,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					<h3>습관</h3>
 					<MenuButton
 						title="언제"
-						content={`${habitRequest.runTime.noon} ${habitRequest.runTime.hour}:${habitRequest.runTime.minute}`}
+						content={convertFromTimeString(habitRequest.runTime)}
 						onClick={() => dispatch(openModal(modalType.SELECT_TIME("RUNTIME")))}
 					/>
 					<MenuButton
@@ -110,17 +107,17 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					/>
 					<MenuButton
 						title="무엇을"
-						content={habitRequest.behavior}
+						content={habitRequest.action}
 						onClick={() => dispatch(openModal(modalType.SELECT_BEHAVIOR))}
 					/>
 					<MenuButton
 						title="얼마나"
-						content={String(habitRequest.behaviorValue)}
+						content={String(habitRequest.value)}
 						onClick={() => dispatch(openModal(modalType.SELECT_BEHAVIORUNIT))}
 					/>
 					<MenuButton
 						title="단위"
-						content={habitRequest.behaviorUnit}
+						content={habitRequest.unit}
 						onClick={() => dispatch(openModal(modalType.SELECT_BEHAVIORUNIT))}
 					/>
 				</div>
@@ -130,7 +127,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					<ToggleButton
 						title="1차 알림"
 						subTitle={`곧 약속 시간이에요 :) 성장하는 ${nickname}님 화이팅!`}
-						alarmTime={`${habitRequest.firstAlert.noon} ${habitRequest.firstAlert.hour}:${habitRequest.firstAlert.minute}`}
+						alarmTime={convertFromTimeString(habitRequest.firstAlert)}
 						hasToggle
 						isToggle={firstNotiToggle}
 						onClick={() => {
@@ -143,7 +140,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					<ToggleButton
 						title="2차 알림"
 						subTitle="오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!"
-						alarmTime={`${habitRequest.secondAlert.noon} ${habitRequest.secondAlert.hour}:${habitRequest.secondAlert.minute}`}
+						alarmTime={convertFromTimeString(habitRequest.secondAlert)}
 						hasToggle
 						isToggle={secondNotiToggle}
 						onClick={() => {
@@ -192,15 +189,15 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					<SelectTagModal
 						type="behavior"
 						tags={SELECT_TAG_DATA.behaviorTags}
-						prevValue={habitRequest.behavior}
+						prevValue={habitRequest.action}
 						updateInputValue={updateInputValue}
 					/>
 				)}
 				{modal === modalType.SELECT_BEHAVIORUNIT && (
 					<BehaviorModal
-						behavior={habitRequest.behavior}
-						prevValue={habitRequest.behaviorValue}
-						prevUnit={habitRequest.behaviorUnit}
+						behavior={habitRequest.action}
+						prevValue={habitRequest.value}
+						prevUnit={habitRequest.unit}
 						updateInputValue={updateInputValue}
 					/>
 				)}
