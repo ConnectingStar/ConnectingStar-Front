@@ -12,7 +12,7 @@ import type {
 } from "@/types/habit";
 
 interface EditHabitRequestType {
-	runHabitId: number;
+	runHabitId?: string;
 	habitRequest: HabitRequestV2Type;
 }
 
@@ -75,8 +75,8 @@ export const deleteHabit = createAsyncThunk(
 	"habit/deleteHabit",
 	async ({ runHabitId, reason }: HabitDeleteRequestType, thunkOptions) => {
 		try {
-			return await authorizedAxiosInstance.delete(END_POINTS.HABIT, {
-				data: { runHabitId, reason },
+			return await authorizedAxiosInstance.delete(END_POINTS.HABIT_V2_ID(runHabitId), {
+				data: { reasonOfQuit: reason },
 			});
 		} catch (error) {
 			thunkOptions.rejectWithValue(error);
