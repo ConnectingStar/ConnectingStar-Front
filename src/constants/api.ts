@@ -24,7 +24,6 @@ export const END_POINTS = {
 	HABIT_V2: "/v2/habits",
 	HABIT_V2_WITH_ALERT: (runHabtId: number) => `/v2/habits/${runHabtId}?related=habitAlerts`,
 	HABIT_V2_ID: (runHabtId?: string) => `/v2/habits/${runHabtId}`,
-	HABIT: "/habit",
 	HABIT_REST_RECORD: "/habit/history/rest",
 	HABIT_HISTORY: "/habit/history",
 	HABIT_HISTORY_ONE: (habitHistoryId: number) => `v2/histories/${habitHistoryId}?related=runHabit`,

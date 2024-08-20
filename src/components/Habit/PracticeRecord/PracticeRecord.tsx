@@ -6,7 +6,6 @@ import InfoIcon from "@/assets/icon/ic-blue-exclamation-mark.svg?react";
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
 import HabitRecordAchieveModal from "@/components/Habit/Modal/HabitRecordAchieveModal/HabitRecordAchieveModal";
-import { CommonAlertType } from "@/types/common";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
@@ -17,9 +16,9 @@ import { habitIconData } from "@/constants/mypage";
 
 import { useHabitRecordForm } from "@/hooks/useHabitRecordForm";
 
-import { convertTimeString } from "@/utils/time";
+import { convertFromTimeString } from "@/utils/time";
 
-import type { HabitType } from "@/types/habit";
+import type { HabitV2Type } from "@/types/habit";
 
 import {
 	layoutStyle,
@@ -32,7 +31,7 @@ import {
 } from "@/components/Habit/PracticeRecord/PracticeRecord.style";
 
 interface PracticeRecordProps {
-	habitData: HabitType;
+	habitData: HabitV2Type;
 }
 
 const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
@@ -53,18 +52,18 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 		initialData: {
 			runHabitId: habitData.runHabitId,
 			referenceDate: `${params.year}-${month}-${date}`,
-			runTime: convertTimeString(prevRunTime.noon, prevRunTime.hour, prevRunTime.minute),
+			runTime: habitData.runTime,
 			runPlace: `${habitData.place}에서`,
-			action: `${habitData.behavior}을(를)`,
+			action: `${habitData.action}을(를)`,
 			behaviorValue: undefined,
 			achievement: -1,
 			review: "",
 		},
 	});
 
-	const handleChangeRunTime = (runTime: CommonAlertType) => {
+	const handleChangeRunTime = (runTime: string) => {
 		setPrevRunTime(runTime);
-		updateInputValue("runTime", convertTimeString(runTime.noon, runTime.hour, runTime.minute));
+		updateInputValue("runTime", runTime);
 	};
 
 	const handleIconClick = (id: number) => {
@@ -75,9 +74,9 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 	const handleAchieveText = (runValue?: string) => {
 		if (!runValue) return;
 
-		if (Number(runValue) < Number(habitData.behaviorValue)) {
+		if (Number(runValue) < Number(habitData.value)) {
 			return "less";
-		} else if (Number(runValue) === Number(habitData.behaviorValue)) {
+		} else if (Number(runValue) === Number(habitData.value)) {
 			return "enough";
 		} else {
 			return "many";
@@ -113,7 +112,7 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 							css={contentInputStyle(prevRunTime !== habitData.runTime)}
 							onClick={() => dispatch(openModal(modalType.SELECT_TIME("RUNTIME")))}
 						>
-							{`${prevRunTime.noon} ${prevRunTime.hour}시 ${prevRunTime.minute}분에`}
+							{`${convertFromTimeString(prevRunTime)?.split(" ")[0]} ${convertFromTimeString(prevRunTime)?.split(" ")[1].split(":")[0]}시 ${convertFromTimeString(prevRunTime)?.split(" ")[1].split(":")[1]}분에`}
 						</div>
 					</li>
 					<li>
@@ -126,7 +125,7 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 					<li>
 						<input
 							css={contentInputStyle()}
-							placeholder={habitData.behavior}
+							placeholder={habitData.action}
 							onChange={(e) => updateInputValue("action", e.target.value)}
 						/>
 					</li>
@@ -137,7 +136,7 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 							maxLength={3}
 							onChange={(e) => updateInputValue("behaviorValue", e.target.value)}
 						/>
-						<span>{habitData.behaviorUnit}</span>
+						<span>{habitData.unit}</span>
 					</li>
 				</ul>
 				<h3>했다</h3>

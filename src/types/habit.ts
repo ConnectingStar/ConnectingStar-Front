@@ -48,6 +48,7 @@ export interface HabitRecordRequestType extends HabitRestRecordRequestType {
 
 export interface HabitV2Type extends HabitRequestV2Type {
 	habitAlerts: HabitAlertType[];
+	runHabitId: number;
 }
 
 interface HabitAlertType {

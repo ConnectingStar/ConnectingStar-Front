@@ -10,9 +10,11 @@ const HabitPracticeRecord = ({ habitRecord }: HabitPracticeRecordProps) => {
 	const noon = Number(habitRecord.runDate.split("T")[1].split(":")[0]) > 12 ? "오후" : "오전";
 	const hour =
 		Number(habitRecord.runDate.split("T")[1].split(":")[0]) > 12
-			? Number(habitRecord.runDate.split("T")[1].split(":")[0]) - 12
-			: Number(habitRecord.runDate.split("T")[1].split(":")[0]);
-	const minute = Number(habitRecord.runDate.split("T")[1].split(":")[1]);
+			? (Number(habitRecord.runDate.split("T")[1].split(":")[0]) - 12).toString().padStart(2, "0")
+			: Number(habitRecord.runDate.split("T")[1].split(":")[0]).toString().padStart(2, "0");
+	const minute = Number(habitRecord.runDate.split("T")[1].split(":")[1])
+		.toString()
+		.padStart(2, "0");
 
 	return (
 		<>

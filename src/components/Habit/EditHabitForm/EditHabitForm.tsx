@@ -77,8 +77,6 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 		},
 	});
 
-	console.log(habitRequest);
-
 	return (
 		<>
 			<Header>
