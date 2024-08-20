@@ -56,7 +56,6 @@ export const earlyTimeValidation = (selectTime: CommonAlertType, runTime?: strin
 	const minute = runTime.split(" ")[1].split(":")[1];
 
 	if (noon === "오전" && selectTime.noon === "오후") {
-		console.log("abc");
 		return false;
 	}
 

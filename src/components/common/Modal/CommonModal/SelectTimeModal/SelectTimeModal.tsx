@@ -19,7 +19,6 @@ import {
 	convertFromTimeString,
 } from "@/utils/time";
 
-import type { CommonAlertType } from "@/types/common";
 import type { HabitRequestV2Type } from "@/types/habit";
 
 import {
@@ -37,7 +36,7 @@ interface selectTimeModalType {
 		key: Key,
 		value: HabitRequestV2Type[Key],
 	) => void;
-	handleChangeRunTime?: (runTime: CommonAlertType) => void;
+	handleChangeRunTime?: (runTime: string) => void;
 }
 
 function SelectTimeModal({
@@ -96,7 +95,10 @@ function SelectTimeModal({
 					"runTime",
 					convertTimeString(addZeroTime.noon, addZeroTime.hour, addZeroTime.minute),
 				);
-			handleChangeRunTime && handleChangeRunTime(addZeroTime);
+			handleChangeRunTime &&
+				handleChangeRunTime(
+					convertTimeString(addZeroTime.noon, addZeroTime.hour, addZeroTime.minute),
+				);
 		}
 
 		if (title === "1차 알림시간을 선택해 주세요") {
