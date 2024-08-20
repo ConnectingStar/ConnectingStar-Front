@@ -1,5 +1,3 @@
-import type { CommonAlertType } from "@/types/common";
-
 export type HabitRecordStatusType = "TO_DO" | "COMPLETED" | "REST" | "EXPIRED";
 
 export interface HabitDeleteRequestType {
@@ -17,18 +15,6 @@ export interface HabitRequestV2Type {
 	firstAlert: string;
 	secondAlert: string;
 	isOnboarding?: boolean;
-}
-
-export interface HabitRequestType {
-	runHabitId?: number;
-	identity: string;
-	runTime: { noon: string; hour: string; minute: string };
-	place: string;
-	behavior: string;
-	behaviorValue: string;
-	behaviorUnit: string;
-	firstAlert: { noon: string; hour: string; minute: string };
-	secondAlert: { noon: string; hour: string; minute: string };
 }
 
 export interface HabitRestRecordRequestType {
@@ -94,18 +80,4 @@ export interface HistoryOneDayType {
 	runValue: string;
 	userId: number;
 	runHabit: HabitOneDayType;
-}
-
-export interface HabitType {
-	behavior: string;
-	behaviorUnit: string;
-	behaviorValue: string;
-	firstAlert: CommonAlertType;
-	identity: string;
-	place: string;
-	runHabitId?: number;
-	runTime: CommonAlertType;
-	secondAlert: CommonAlertType;
-	// userId: number;
-	// userNickname: string;
 }
