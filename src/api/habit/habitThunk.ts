@@ -60,9 +60,7 @@ export const getHabit = createAsyncThunk(
 	"habit/getHabit",
 	async (runHabitId: number, thunkOptions) => {
 		try {
-			const { data } = await authorizedAxiosInstance.get(
-				END_POINTS.HABIT_V2_WITH_ALERT(runHabitId),
-			);
+			const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT_WITH_ALERT(runHabitId));
 
 			return data;
 		} catch (error) {
@@ -75,7 +73,7 @@ export const deleteHabit = createAsyncThunk(
 	"habit/deleteHabit",
 	async ({ runHabitId, reason }: HabitDeleteRequestType, thunkOptions) => {
 		try {
-			return await authorizedAxiosInstance.delete(END_POINTS.HABIT_V2_ID(runHabitId), {
+			return await authorizedAxiosInstance.delete(END_POINTS.HABIT_ID(runHabitId), {
 				data: { reasonOfQuit: reason },
 			});
 		} catch (error) {
@@ -89,7 +87,7 @@ export const editHabit = createAsyncThunk(
 	async ({ runHabitId, habitRequest }: EditHabitRequestType, thunkOptions) => {
 		try {
 			const { data } = await authorizedAxiosInstance.patch(
-				END_POINTS.HABIT_V2_ID(runHabitId),
+				END_POINTS.HABIT_ID(runHabitId),
 				habitRequest,
 			);
 
@@ -104,7 +102,7 @@ export const createHabitV2 = createAsyncThunk(
 	"habit/createHabitV2",
 	async (habitRequest: HabitRequestV2Type, thunkOptions) => {
 		try {
-			return await authorizedAxiosInstance.post(END_POINTS.HABIT_V2, habitRequest);
+			return await authorizedAxiosInstance.post(END_POINTS.HABIT, habitRequest);
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
 		}

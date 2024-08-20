@@ -83,7 +83,7 @@ export const getOnlyUserInfo = createAsyncThunk("user/getOnlyUserInfo", async (_
 
 export const getUserInfoV2 = createAsyncThunk("user/getUserInfoV2", async (_, thunkOptions) => {
 	try {
-		const { data } = await authorizedAxiosInstance.get(END_POINTS.USER_INFO_V2);
+		const { data } = await authorizedAxiosInstance.get(END_POINTS.USER_INFO);
 
 		return data;
 	} catch (error) {
@@ -105,7 +105,7 @@ export const postOnboardingUserInfo = createAsyncThunk(
 	"user/postOnboardingUserInfo",
 	async (userInfo: OnboardingUserInfoType, thunkOptions) => {
 		try {
-			const { data } = await authorizedAxiosInstance.patch(END_POINTS.ONBOARDING_V2, userInfo);
+			const { data } = await authorizedAxiosInstance.patch(END_POINTS.ONBOARDING, userInfo);
 
 			return data;
 		} catch (error) {
