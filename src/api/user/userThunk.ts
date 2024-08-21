@@ -136,7 +136,7 @@ export const editProfileImageV2 = createAsyncThunk(
 	"user/editProfileImageV2",
 	async ({ constellationId, related }: EditProfileImageRequestType, thunkOptions) => {
 		try {
-			const { data } = await authorizedAxiosInstance.patch(END_POINTS.USER_CONSTELLATION_V2, {
+			const { data } = await authorizedAxiosInstance.patch(END_POINTS.USER_PROFILE_CONSTELLATION, {
 				constellationId,
 				response: {
 					related: [related],
