@@ -27,7 +27,7 @@ export interface HabitRecordRequestType extends HabitRestRecordRequestType {
 	runTime: string;
 	runPlace: string;
 	action: string;
-	behaviorValue: string | undefined;
+	behaviorValue: number | undefined;
 	achievement: number;
 	review: string;
 }
