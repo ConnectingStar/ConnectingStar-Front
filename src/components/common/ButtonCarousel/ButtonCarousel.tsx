@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { starTraceButtonData } from "@/constants/mypage";
+import type { HabitOneDayType } from "@/types/habit";
 
 import {
 	flexStyle,
@@ -8,20 +8,20 @@ import {
 	getButtonStyle,
 } from "@/components/common/ButtonCarousel/ButtonCarousel.style";
 
-const ButtonCarousel = () => {
-	const [buttonText, setButtonText] = useState("책 읽기");
+const ButtonCarousel = ({ habitList }: { habitList: HabitOneDayType[] }) => {
+	const [buttonText, setButtonText] = useState(habitList[0].action);
 
 	return (
 		<div css={flexStyle}>
 			<div css={scrollBoxStyle}>
-				{starTraceButtonData.map((data) => (
+				{habitList.map((habit) => (
 					<button
 						type="button"
-						css={getButtonStyle(buttonText === data.text)}
-						key={data.text}
-						onClick={() => setButtonText(data.text)}
+						css={getButtonStyle(buttonText === habit.action)}
+						key={habit.action}
+						onClick={() => setButtonText(habit.action)}
 					>
-						<p>{data.text}</p>
+						<p>{habit.action}</p>
 					</button>
 				))}
 			</div>

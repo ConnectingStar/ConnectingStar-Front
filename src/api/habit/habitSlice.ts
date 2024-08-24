@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getHabit, getHabitRecord, editHabit, getHabitRecordOneDay } from "@/api/habit//habitThunk";
+import {
+	getHabit,
+	getHabitRecord,
+	editHabit,
+	getHabitRecordOneDay,
+	getHabitList,
+} from "@/api/habit//habitThunk";
 
 import type { HabitInitialStateType } from "@/types/habit";
 
@@ -8,6 +14,7 @@ const initialState: HabitInitialStateType = {
 	habit: null,
 	habitRecord: null,
 	habitRecordOneDay: [],
+	habitList: null,
 	isHabitLoading: false,
 };
 
@@ -35,6 +42,9 @@ const habitSlice = createSlice({
 			})
 			.addCase(getHabitRecordOneDay.fulfilled, (state, action) => {
 				state.habitRecordOneDay = action.payload.data;
+			})
+			.addCase(getHabitList.fulfilled, (state, action) => {
+				state.habitList = action.payload.data.runHabits;
 			});
 	},
 });

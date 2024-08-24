@@ -62,24 +62,6 @@ export const MENU_BUTTON_DATA = [
 	},
 ];
 
-export const starTraceButtonData = [
-	{
-		text: "책 읽기",
-	},
-	{
-		text: "러닝 하기",
-	},
-	{
-		text: "감사일기 작성하기",
-	},
-	{
-		text: "감사일기 작성하기2",
-	},
-	{
-		text: "감사일기 작성하기3",
-	},
-];
-
 export const habitIconData = [
 	{
 		id: 1,

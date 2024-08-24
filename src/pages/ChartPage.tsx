@@ -29,7 +29,7 @@ const ChartPage = () => {
 			<Header isFixed={false}>
 				<Header.Title hasButton={false}>통계</Header.Title>
 			</Header>
-			<ButtonCarousel />
+			<ButtonCarousel habitList={[]} />
 			<TotalInfo />
 			<Tab searchParams={searchParams} setSearchParams={setSearchParams} />
 			{searchParams.get(TAB_KEY) === TAB_PARAM.WEEK ? <WeekChart /> : <MonthChart />}

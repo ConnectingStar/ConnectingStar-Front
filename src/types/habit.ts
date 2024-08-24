@@ -47,6 +47,7 @@ interface HabitAlertType {
 
 export interface HabitInitialStateType {
 	habit: HabitV2Type | null;
+	habitList: HabitOneDayType[] | null;
 	habitRecord: HistoryOneDayType | null;
 	habitRecordOneDay: HabitRecordOneDayType[];
 	isHabitLoading: boolean;
