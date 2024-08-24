@@ -16,6 +16,16 @@ interface EditHabitRequestType {
 	habitRequest: HabitRequestV2Type;
 }
 
+export const getHabitList = createAsyncThunk("habit/getHabitList", async (_, thunkOptions) => {
+	try {
+		const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT);
+
+		return data;
+	} catch (error) {
+		throw thunkOptions.rejectWithValue(error);
+	}
+});
+
 export const getHabitRecord = createAsyncThunk(
 	"habit/getHabitRecord",
 	async (habitHistoryId: number, thunkOptions) => {

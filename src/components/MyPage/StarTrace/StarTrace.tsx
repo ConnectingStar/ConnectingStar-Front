@@ -1,6 +1,11 @@
+import { useEffect } from "react";
+
 import ButtonCarousel from "@/components/common/ButtonCarousel/ButtonCarousel";
 import Content from "@/components/MyPage/StarTrace/Content";
 import SortButton from "@/components/MyPage/StarTrace/SortButton";
+
+import { getHabitList } from "@/api/habit/habitThunk";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
 import { layoutStyle } from "@/components/MyPage/StarTrace/StarTrace.style";
 
@@ -29,9 +34,22 @@ const mockData = [
 ];
 
 const StarTrace = () => {
+	const dispatch = useAppDispatch();
+
+	const { habitList } = useAppSelector((state) => state.habit);
+
+	useEffect(() => {
+		dispatch(getHabitList());
+	}, []);
+
+	if (!habitList) {
+		return <div />;
+	}
+
 	return (
 		<>
-			<ButtonCarousel />
+			{habitList !== null && <ButtonCarousel habitList={habitList} />}
+
 			<SortButton />
 			<div css={layoutStyle}>
 				{mockData.map((data) => (
