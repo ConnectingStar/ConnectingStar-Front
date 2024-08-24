@@ -4,7 +4,7 @@ import ButtonCarousel from "@/components/common/ButtonCarousel/ButtonCarousel";
 import Content from "@/components/MyPage/StarTrace/Content";
 import SortButton from "@/components/MyPage/StarTrace/SortButton";
 
-import { getHabitList } from "@/api/habit/habitThunk";
+import { getHabitList, getHabitRecordList } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
 import { layoutStyle } from "@/components/MyPage/StarTrace/StarTrace.style";
@@ -36,11 +36,24 @@ const mockData = [
 const StarTrace = () => {
 	const dispatch = useAppDispatch();
 
-	const { habitList } = useAppSelector((state) => state.habit);
+	const { habitList, habitRecordList } = useAppSelector((state) => state.habit);
+
+	const request = {
+		runHabitId: 139,
+		isRest: false,
+		page: 0,
+		size: 20,
+		sortBy: "runDate",
+		sortOrder: "asc",
+		related: "runHabit",
+	};
 
 	useEffect(() => {
 		dispatch(getHabitList());
+		dispatch(getHabitRecordList(request));
 	}, []);
+
+	console.log(habitRecordList);
 
 	if (!habitList) {
 		return <div />;

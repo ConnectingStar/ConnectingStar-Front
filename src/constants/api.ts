@@ -1,3 +1,5 @@
+import type { HabitHistoryRequestType } from "@/types/habit";
+
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const ACCESS_TOKEN_KEY = "ACCESS_TOKEN";
@@ -25,6 +27,16 @@ export const END_POINTS = {
 	HABIT_ID: (runHabtId?: string) => `/v2/habits/${runHabtId}`,
 	HABIT_REST_RECORD: "/v2/histories/rest",
 	HABIT_HISTORY: "/v2/histories",
+	HABIT_HISTORY_LIST: ({
+		runHabitId,
+		isRest,
+		page,
+		size,
+		sortBy,
+		sortOrder,
+		related,
+	}: HabitHistoryRequestType) =>
+		`/v2/histories?runHabitId=${runHabitId}&isRest=${isRest}&page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}&related=${related}`,
 	HABIT_HISTORY_ONE: (habitHistoryId: number) => `v2/histories/${habitHistoryId}?related=runHabit`,
 	STAR_MAIN: "/constellation/main",
 	STAR_CARD: (id: string, isRegistered: boolean) =>

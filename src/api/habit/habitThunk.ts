@@ -9,6 +9,7 @@ import type {
 	HabitRecordRequestType,
 	HabitRestRecordRequestType,
 	HabitRequestV2Type,
+	HabitHistoryRequestType,
 } from "@/types/habit";
 
 interface EditHabitRequestType {
@@ -25,6 +26,32 @@ export const getHabitList = createAsyncThunk("habit/getHabitList", async (_, thu
 		throw thunkOptions.rejectWithValue(error);
 	}
 });
+
+export const getHabitRecordList = createAsyncThunk(
+	"habit/getHabitRecordList",
+	async (
+		{ runHabitId, isRest, page, size, sortBy, sortOrder, related }: HabitHistoryRequestType,
+		thunkOptions,
+	) => {
+		try {
+			const { data } = await authorizedAxiosInstance.get(
+				END_POINTS.HABIT_HISTORY_LIST({
+					runHabitId,
+					isRest,
+					page,
+					size,
+					sortBy,
+					sortOrder,
+					related,
+				}),
+			);
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
 
 export const getHabitRecord = createAsyncThunk(
 	"habit/getHabitRecord",

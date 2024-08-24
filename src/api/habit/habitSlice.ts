@@ -6,6 +6,7 @@ import {
 	editHabit,
 	getHabitRecordOneDay,
 	getHabitList,
+	getHabitRecordList,
 } from "@/api/habit//habitThunk";
 
 import type { HabitInitialStateType } from "@/types/habit";
@@ -15,6 +16,7 @@ const initialState: HabitInitialStateType = {
 	habitRecord: null,
 	habitRecordOneDay: [],
 	habitList: null,
+	habitRecordList: null,
 	isHabitLoading: false,
 };
 
@@ -45,6 +47,9 @@ const habitSlice = createSlice({
 			})
 			.addCase(getHabitList.fulfilled, (state, action) => {
 				state.habitList = action.payload.data.runHabits;
+			})
+			.addCase(getHabitRecordList.fulfilled, (state, action) => {
+				state.habitRecordList = action.payload.data.histories;
 			});
 	},
 });
