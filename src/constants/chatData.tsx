@@ -192,6 +192,7 @@ export function createChatData(habitRequest: HabitRequestV2Type, nickname?: stri
 			],
 			bottomButton: ["나도 잘 부탁해!"],
 			userMessage: "",
+			modalType: [modalType.SUCCESS_GUIDE],
 		},
 	];
 }
