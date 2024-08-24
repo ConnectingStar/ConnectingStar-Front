@@ -71,12 +71,12 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 		updateInputValue("achievement", id);
 	};
 
-	const handleAchieveText = (runValue?: string) => {
-		if (!runValue) return;
+	const handleAchieveText = (runValue?: number) => {
+		if (!runValue || !habitData.value) return;
 
-		if (Number(runValue) < Number(habitData.value)) {
+		if (runValue < habitData.value) {
 			return "less";
-		} else if (Number(runValue) === Number(habitData.value)) {
+		} else if (runValue === habitData.value) {
 			return "enough";
 		} else {
 			return "many";
@@ -134,7 +134,7 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 							css={contentInputStyle()}
 							value={habitRecordRequest.behaviorValue || ""}
 							maxLength={3}
-							onChange={(e) => updateInputValue("behaviorValue", e.target.value)}
+							onChange={(e) => updateInputValue("behaviorValue", Number(e.target.value))}
 						/>
 						<span>{habitData.unit}</span>
 					</li>
