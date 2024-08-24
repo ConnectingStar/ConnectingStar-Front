@@ -12,7 +12,7 @@ import { PATH } from "@/constants/path";
 const PracticeRecordPage = () => {
 	const dispatch = useAppDispatch();
 
-	const { habit } = useAppSelector((state) => state.habit);
+	const { habit, isHabitLoading } = useAppSelector((state) => state.habit);
 
 	const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const PracticeRecordPage = () => {
 
 	useEffect(() => {
 		dispatch(getHabit(Number(params.habitId)));
-	}, []);
+	}, [params.habitId]);
 
 	if (!habit) {
 		return <div />;
@@ -34,7 +34,7 @@ const PracticeRecordPage = () => {
 					관리
 				</Header.TextButton>
 			</Header>
-			<PracticeRecord habitData={habit} />
+			{isHabitLoading === false && <PracticeRecord habitData={habit} />}
 		</>
 	);
 };

@@ -55,7 +55,7 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 			runTime: habitData.runTime,
 			runPlace: `${habitData.place}에서`,
 			action: `${habitData.action}을(를)`,
-			behaviorValue: undefined,
+			runValue: undefined,
 			achievement: -1,
 			review: "",
 		},
@@ -132,9 +132,9 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 					<li>
 						<input
 							css={contentInputStyle()}
-							value={habitRecordRequest.behaviorValue || ""}
+							value={habitRecordRequest.runValue || ""}
 							maxLength={3}
-							onChange={(e) => updateInputValue("behaviorValue", Number(e.target.value))}
+							onChange={(e) => updateInputValue("runValue", Number(e.target.value))}
 						/>
 						<span>{habitData.unit}</span>
 					</li>
@@ -175,13 +175,13 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 				handleBtnClick={handleSubmit}
 				text="기록하여 별 얻기"
 				disabled={
-					habitRecordRequest.behaviorValue === undefined || habitRecordRequest.achievement === -1
+					habitRecordRequest.runValue === undefined || habitRecordRequest.achievement === -1
 				}
 			/>
 
 			{modal === modalType.HABIT_RECORD_ACHIEVE && (
 				<HabitRecordAchieveModal
-					achieveStatus={handleAchieveText(habitRecordRequest.behaviorValue)}
+					achieveStatus={handleAchieveText(habitRecordRequest.runValue)}
 					identity={habitData.identity}
 				/>
 			)}
