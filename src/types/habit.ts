@@ -50,6 +50,7 @@ export interface HabitInitialStateType {
 	habitList: HabitOneDayType[] | null;
 	habitRecord: HistoryOneDayType | null;
 	habitRecordOneDay: HabitRecordOneDayType[];
+	habitRecordList: HistoryOneDayType[] | null;
 	isHabitLoading: boolean;
 }
 
@@ -82,4 +83,14 @@ export interface HistoryOneDayType {
 	runValue: string;
 	userId: number;
 	runHabit: HabitOneDayType;
+}
+
+export interface HabitHistoryRequestType {
+	runHabitId: number;
+	isRest: boolean | null;
+	page: number;
+	size: number;
+	sortBy: string;
+	sortOrder: string;
+	related: string;
 }
