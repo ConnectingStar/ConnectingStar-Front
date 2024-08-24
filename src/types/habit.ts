@@ -27,7 +27,7 @@ export interface HabitRecordRequestType extends HabitRestRecordRequestType {
 	runTime: string;
 	runPlace: string;
 	action: string;
-	behaviorValue: number | undefined;
+	runValue: number | undefined;
 	achievement: number;
 	review: string;
 }
@@ -49,6 +49,7 @@ export interface HabitInitialStateType {
 	habit: HabitV2Type | null;
 	habitRecord: HistoryOneDayType | null;
 	habitRecordOneDay: HabitRecordOneDayType[];
+	isHabitLoading: boolean;
 }
 
 export interface HabitRecordOneDayType {

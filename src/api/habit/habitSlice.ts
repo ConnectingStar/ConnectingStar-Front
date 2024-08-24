@@ -8,6 +8,7 @@ const initialState: HabitInitialStateType = {
 	habit: null,
 	habitRecord: null,
 	habitRecordOneDay: [],
+	isHabitLoading: false,
 };
 
 const habitSlice = createSlice({
@@ -16,8 +17,15 @@ const habitSlice = createSlice({
 	reducers: {},
 	extraReducers(builder) {
 		builder
+			.addCase(getHabit.pending, (state) => {
+				state.isHabitLoading = true;
+			})
 			.addCase(getHabit.fulfilled, (state, action) => {
 				state.habit = action.payload.data.runHabit;
+				state.isHabitLoading = false;
+			})
+			.addCase(getHabit.rejected, (state) => {
+				state.isHabitLoading = false;
 			})
 			.addCase(editHabit.fulfilled, (state, action) => {
 				state.habit = { ...action.payload.data.runHabit };
