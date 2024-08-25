@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
-
 import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
@@ -19,13 +17,12 @@ const sortData = [
 	},
 ];
 
-const SortModal = ({
-	sortOption,
-	changeSortOption,
-}: {
-	sortOption: string;
-	changeSortOption: Dispatch<SetStateAction<string>>;
-}) => {
+interface SortModalProps {
+	sortOrder: string;
+	handleSortOrder: (sortOrder: string) => void;
+}
+
+const SortModal = ({ sortOrder, handleSortOrder }: SortModalProps) => {
 	const dispatch = useAppDispatch();
 
 	return (
@@ -39,9 +36,9 @@ const SortModal = ({
 								<input
 									type="radio"
 									id={data.text}
-									checked={sortOption === data.text}
+									checked={sortOrder === data.text}
 									onChange={() => {
-										changeSortOption(data.text);
+										handleSortOrder(data.text);
 										dispatch(closeModal());
 									}}
 								/>

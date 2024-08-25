@@ -1,3 +1,5 @@
+import { WEEK } from "@/constants/calendar";
+
 import type { DateFormatType } from "@/types/common";
 
 export const dateFormat = (date: Date, type: DateFormatType) => {
@@ -17,4 +19,8 @@ export const dateFormat = (date: Date, type: DateFormatType) => {
 	}
 
 	return `${date.getFullYear()}.${formatMonth}.${formatDay}`;
+};
+
+export const weekFormat = (date: Date) => {
+	return WEEK[date.getDay()];
 };

@@ -8,7 +8,12 @@ import {
 	getButtonStyle,
 } from "@/components/common/ButtonCarousel/ButtonCarousel.style";
 
-const ButtonCarousel = ({ habitList }: { habitList: HabitOneDayType[] }) => {
+interface ButtonCarouselProps {
+	habitList: HabitOneDayType[];
+	handleHabitId: (habitId: number) => void;
+}
+
+const ButtonCarousel = ({ habitList, handleHabitId }: ButtonCarouselProps) => {
 	const [buttonText, setButtonText] = useState(habitList[0].action);
 
 	return (
@@ -19,7 +24,10 @@ const ButtonCarousel = ({ habitList }: { habitList: HabitOneDayType[] }) => {
 						type="button"
 						css={getButtonStyle(buttonText === habit.action)}
 						key={habit.action}
-						onClick={() => setButtonText(habit.action)}
+						onClick={() => {
+							setButtonText(habit.action);
+							handleHabitId(habit.runHabitId);
+						}}
 					>
 						<p>{habit.action}</p>
 					</button>

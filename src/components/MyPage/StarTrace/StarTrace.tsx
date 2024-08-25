@@ -1,80 +1,82 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import ButtonCarousel from "@/components/common/ButtonCarousel/ButtonCarousel";
 import Content from "@/components/MyPage/StarTrace/Content";
 import SortButton from "@/components/MyPage/StarTrace/SortButton";
 
-import { getHabitList, getHabitRecordList } from "@/api/habit/habitThunk";
+import { getHabitRecordList } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
+
+import { dateFormat, weekFormat } from "@/utils/dateFormat";
+import { convertFromTimeString } from "@/utils/time";
+
+import type { HabitOneDayType } from "@/types/habit";
 
 import { layoutStyle } from "@/components/MyPage/StarTrace/StarTrace.style";
 
-const mockData = [
-	{
-		date: "2023.12.13 (수)",
-		habitPractice: 5,
-		title: "오후 8시에 우리 집 안 내 책상 위에서 책 읽기 8 페이지",
-		content:
-			"ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ\n.\n.\n.\n.\n.\n.\n오늘은 3페이지를 더 읽었다...더보기",
-	},
-	{
-		date: "2023.12.13 (수)",
-		habitPractice: 4,
-		title: "오후 8시에 우리 집 안 내 책상 위에서 책 읽기 8 페이2",
-		content:
-			"ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ\n.\n.\n.\n.\n.\n.\n오늘은 3페이지를 더 읽었다...더보기",
-	},
-	{
-		date: "2023.12.13 (수)",
-		habitPractice: 3,
-		title: "오후 8시에 우리 집 안 내 책상 위에서 책 읽기 8 페이3",
-		content:
-			"ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ\n.\n.\n.\n.\n.\n.\n오늘은 3페이지를 더 읽었다...더보기",
-	},
-];
-
-const StarTrace = () => {
+const StarTrace = ({ habitList }: { habitList: HabitOneDayType[] }) => {
 	const dispatch = useAppDispatch();
 
-	const { habitList, habitRecordList } = useAppSelector((state) => state.habit);
+	const { habitRecordList } = useAppSelector((state) => state.habit);
+
+	const [sortOrder, setSortOrder] = useState("최신순");
+	const [isRest, setIsRest] = useState("실천");
+	const [runHabitId, setRunHabitId] = useState(habitList[0].runHabitId);
+
+	const handleSortOrder = (sortOrder: string) => {
+		setSortOrder(sortOrder);
+	};
+
+	const handleIsRest = (rest: string) => {
+		setIsRest(rest);
+	};
+
+	const handleHabitId = (habitId: number) => {
+		setRunHabitId(habitId);
+	};
 
 	const request = {
-		runHabitId: 139,
-		isRest: false,
+		runHabitId,
+		isRest: isRest === "실천" ? false : true,
 		page: 0,
 		size: 20,
 		sortBy: "runDate",
-		sortOrder: "asc",
+		sortOrder: sortOrder === "최신순" ? "asc" : "desc",
 		related: "runHabit",
 	};
 
 	useEffect(() => {
-		dispatch(getHabitList());
 		dispatch(getHabitRecordList(request));
-	}, []);
-
-	console.log(habitRecordList);
-
-	if (!habitList) {
-		return <div />;
-	}
+	}, [sortOrder, isRest, runHabitId]);
 
 	return (
 		<>
-			{habitList !== null && <ButtonCarousel habitList={habitList} />}
+			<ButtonCarousel habitList={habitList} handleHabitId={handleHabitId} />
 
-			<SortButton />
-			<div css={layoutStyle}>
-				{mockData.map((data) => (
-					<Content
-						key={data.title}
-						date={data.date}
-						title={data.title}
-						habitPractice={data.habitPractice}
-						content={data.content}
-					/>
-				))}
-			</div>
+			<SortButton
+				sortOrder={sortOrder}
+				handleSortOrder={handleSortOrder}
+				isRest={isRest}
+				handleIsRest={handleIsRest}
+			/>
+			{habitRecordList !== null && (
+				<div css={layoutStyle}>
+					{habitRecordList.map((data) => (
+						<Content
+							key={data.habitHistoryId}
+							date={`${dateFormat(new Date(data.runDate), "POINT")} (${weekFormat(new Date(data.runDate))})`}
+							title={
+								isRest === "휴식"
+									? "쉬었음"
+									: `${convertFromTimeString(data.runHabit.runTime)?.split(" ")[0]} ${convertFromTimeString(data.runHabit.runTime)?.split(" ")[1].split(":")[0]}시 ${convertFromTimeString(data.runHabit.runTime)?.split(" ")[1].split(":")[1]}분에 ${data.runPlace} ${data.action} ${data.runValue} ${data.runHabit.unit}`
+							}
+							achievement={data.achievement}
+							content={data.review}
+							isRest={isRest}
+						/>
+					))}
+				</div>
+			)}
 		</>
 	);
 };
