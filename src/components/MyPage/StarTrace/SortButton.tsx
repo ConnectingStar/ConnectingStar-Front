@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
 import SortModal from "@/components/MyPage/Modal/SortModal";
@@ -15,12 +13,17 @@ import {
 	buttonStyle,
 } from "@/components/MyPage/StarTrace/SortButton.style";
 
-const SortButton = () => {
+interface SortButtonProps {
+	sortOrder: string;
+	handleSortOrder: (sortOrder: string) => void;
+	isRest: string;
+	handleIsRest: (rest: string) => void;
+}
+
+const SortButton = ({ sortOrder, handleSortOrder, isRest, handleIsRest }: SortButtonProps) => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
-
-	const [sortOption, setSortOption] = useState("최신순");
 
 	return (
 		<div css={layoutStyle}>
@@ -29,18 +32,26 @@ const SortButton = () => {
 				css={sortButtonStyle}
 				onClick={() => dispatch(openModal(modalType.SORT))}
 			>
-				<p>{sortOption}</p>
+				<p>{sortOrder}</p>
 				<DownArrowIcon />
 			</button>
-			<button type="button" css={buttonStyle}>
+			<button
+				type="button"
+				css={buttonStyle(isRest === "실천")}
+				onClick={() => handleIsRest("실천")}
+			>
 				실천
 			</button>
-			<button type="button" css={buttonStyle}>
+			<button
+				type="button"
+				css={buttonStyle(isRest === "휴식")}
+				onClick={() => handleIsRest("휴식")}
+			>
 				휴식
 			</button>
 
 			{modal === modalType.SORT && (
-				<SortModal sortOption={sortOption} changeSortOption={setSortOption} />
+				<SortModal sortOrder={sortOrder} handleSortOrder={handleSortOrder} />
 			)}
 		</div>
 	);

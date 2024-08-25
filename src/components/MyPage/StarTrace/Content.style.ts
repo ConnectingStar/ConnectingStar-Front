@@ -19,6 +19,13 @@ export const contentBoxStyle = css`
 	margin-top: 0.75rem;
 `;
 
+export const iconBoxStyle = css`
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background-color: ${theme.color.button_disabled};
+`;
+
 export const textBoxStyle = css`
 	padding: 1rem;
 	border-radius: 15px;

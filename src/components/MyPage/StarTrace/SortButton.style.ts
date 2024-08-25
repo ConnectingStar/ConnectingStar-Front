@@ -31,11 +31,12 @@ export const sortButtonStyle = css`
 	}
 `;
 
-export const buttonStyle = css`
+export const buttonStyle = (isRest: boolean) => css`
 	width: 3.625rem;
 	height: 2.25rem;
 	border-radius: 20px;
-	background-color: ${theme.color.main_deep_blue};
-	color: #fff;
+	background-color: ${isRest ? theme.color.main_deep_blue : theme.color.white};
+	border: 2px solid ${isRest ? "transparent" : theme.color.button_disabled};
+	color: ${isRest ? theme.color.white : theme.color.black};
 	${theme.font.body_b};
 `;
