@@ -35,5 +35,13 @@ export const textBoxStyle = css`
 	& > p {
 		${theme.font.body_b};
 		white-space: pre-wrap;
+		max-height: 12rem;
+		overflow: auto;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+
+		::-webkit-scrollbar {
+			display: none;
+		}
 	}
 `;

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 
 import { habitIconData } from "@/constants/mypage";
 
@@ -18,6 +18,8 @@ interface contentType {
 }
 
 const Content = ({ date, title, achievement, content, isRest }: contentType) => {
+	const textRef = useRef<HTMLParagraphElement>(null);
+
 	return (
 		<div css={layoutStyle}>
 			<h3>{date}</h3>
@@ -32,7 +34,7 @@ const Content = ({ date, title, achievement, content, isRest }: contentType) => 
 				)}
 
 				<div css={textBoxStyle}>
-					<p>{content}</p>
+					<p ref={textRef}>{content}</p>
 				</div>
 			</div>
 		</div>
