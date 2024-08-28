@@ -41,7 +41,7 @@ const StarTrace = ({ habitList }: { habitList: HabitOneDayType[] }) => {
 		page: 0,
 		size: 20,
 		sortBy: "runDate",
-		sortOrder: sortOrder === "최신순" ? "asc" : "desc",
+		sortOrder: sortOrder === "최신순" ? "desc" : "asc",
 		related: "runHabit",
 	};
 
