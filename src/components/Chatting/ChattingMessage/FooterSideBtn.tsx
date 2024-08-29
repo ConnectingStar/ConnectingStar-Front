@@ -37,26 +37,27 @@ export default FooterSideBtn;
 
 const commonButton = css`
 	display: flex;
+	width: 100%;
+	max-width: 500px; // TODO: globalStyle max-width와 동일(추후 600으로 변경 필요)
+	padding: 0 1.5rem;
+	gap: 0.375rem;
 	position: fixed;
 	bottom: 5.188rem;
 	left: 50%;
-	width: 22.5rem;
-	height: 2.25rem;
-	padding: 0 1.5rem;
-	gap: 0.375rem;
+	transform: translateX(-50%);
 	& > button {
 		border: 2px solid ${theme.color.main_blue};
 		color: ${theme.color.main_blue};
 		${theme.font.body_b};
 		border-radius: 20px;
-		padding: 0.438rem 1.563rem;
+		padding: 0.375rem 1.563rem;
 		background-color: white;
 	}
 `;
 
 export const sideButton = css`
 	${commonButton};
-	transform: translateX(-50%);
+	justify-content: center;
 	& > button {
 		width: 9.563rem;
 	}
@@ -64,7 +65,6 @@ export const sideButton = css`
 
 export const scrollButton = css`
 	${commonButton};
-	transform: translateX(-11.25rem);
 	overflow-x: auto;
 	&::-webkit-scrollbar {
 		display: none;
