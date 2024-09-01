@@ -51,7 +51,9 @@ const EndHabitCard = ({ habitData }: HabitCardProps) => {
 				</p>
 			</div>
 
-			{modal === modalType.DELETE_HISTORY(habitData.quitHabitId) && <DeleteHistoryModal />}
+			{modal === modalType.DELETE_HISTORY(habitData.quitHabitId) && (
+				<DeleteHistoryModal quitHabitId={habitData.quitHabitId} />
+			)}
 		</div>
 	);
 };

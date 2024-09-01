@@ -184,3 +184,14 @@ export const getHabitRecordOneDay = createAsyncThunk(
 		}
 	},
 );
+
+export const deleteEndHabit = createAsyncThunk(
+	"habit/deleteEndHabit",
+	async (quitHabitId: number, thunkOptions) => {
+		try {
+			return await authorizedAxiosInstance.delete(END_POINTS.DELETE_END_HABIT(quitHabitId));
+		} catch (error) {
+			thunkOptions.rejectWithValue(error);
+		}
+	},
+);

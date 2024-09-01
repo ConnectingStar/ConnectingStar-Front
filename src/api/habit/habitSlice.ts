@@ -9,6 +9,7 @@ import {
 	getHabitRecordList,
 	getHabitListWithStatus,
 	getHabitListIsEnd,
+	deleteEndHabit,
 } from "@/api/habit//habitThunk";
 
 import type { HabitInitialStateType } from "@/types/habit";
@@ -60,6 +61,13 @@ const habitSlice = createSlice({
 			})
 			.addCase(getHabitListIsEnd.fulfilled, (state, action) => {
 				state.habitListIsEnd = action.payload.data.quitHabits;
+			})
+			.addCase(deleteEndHabit.fulfilled, (state, action) => {
+				if (!state.habitListIsEnd) return;
+
+				state.habitListIsEnd = state.habitListIsEnd.filter(
+					(data) => data.quitHabitId !== action.meta.arg,
+				);
 			});
 	},
 });
