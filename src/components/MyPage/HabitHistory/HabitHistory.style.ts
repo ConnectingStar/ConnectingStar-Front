@@ -4,7 +4,8 @@ import { theme } from "@/styles/theme";
 
 export const listStyle = css`
 	width: 22.5rem;
-	margin: 0.875rem auto 0;
+	padding-top: 3.5rem;
+	margin: 0 auto;
 	display: flex;
 
 	& > li {

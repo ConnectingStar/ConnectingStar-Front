@@ -51,13 +51,37 @@ export interface HabitInitialStateType {
 	habitRecord: HistoryOneDayType | null;
 	habitRecordOneDay: HabitRecordOneDayType[];
 	habitRecordList: HistoryOneDayType[] | null;
+	habitListWithStatus: HabitOneDayTypeWithStatus[] | null;
+	habitListIsEnd: EndHabitType[] | null;
 	isHabitLoading: boolean;
+}
+
+export interface HabitOneDayTypeWithStatus extends HabitOneDayType {
+	historyCountByStatus: {
+		completedCount: number;
+		restCount: number;
+	};
 }
 
 export interface HabitRecordOneDayType {
 	habit: HabitOneDayType;
 	history: HistoryOneDayType;
 	status: HabitRecordStatusType;
+}
+
+export interface EndHabitType {
+	quitHabitId: number;
+	userId: number;
+	runTime: string;
+	place: string;
+	action: string;
+	unit: string;
+	value: number;
+	completedHistoryCount: number;
+	restHistoryCount: number;
+	reasonOfQuit: string;
+	startDate: Date;
+	quitDate: Date;
 }
 
 export interface HabitOneDayType {

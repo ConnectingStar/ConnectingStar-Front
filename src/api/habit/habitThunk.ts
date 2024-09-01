@@ -17,9 +17,35 @@ interface EditHabitRequestType {
 	habitRequest: HabitRequestV2Type;
 }
 
+export const getHabitListIsEnd = createAsyncThunk(
+	"habit/getHabitListIsEnd",
+	async (_, thunkOptions) => {
+		try {
+			const { data } = await authorizedAxiosInstance.get(END_POINTS.END_HABIT_LIST);
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
+export const getHabitListWithStatus = createAsyncThunk(
+	"habit/getHabitListWithStatus",
+	async (_, thunkOptions) => {
+		try {
+			const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT(true));
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
+
 export const getHabitList = createAsyncThunk("habit/getHabitList", async (_, thunkOptions) => {
 	try {
-		const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT);
+		const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT());
 
 		return data;
 	} catch (error) {
@@ -139,7 +165,7 @@ export const createHabitV2 = createAsyncThunk(
 	"habit/createHabitV2",
 	async (habitRequest: HabitRequestV2Type, thunkOptions) => {
 		try {
-			return await authorizedAxiosInstance.post(END_POINTS.HABIT, habitRequest);
+			return await authorizedAxiosInstance.post(END_POINTS.HABIT(), habitRequest);
 		} catch (error) {
 			throw thunkOptions.rejectWithValue(error);
 		}
