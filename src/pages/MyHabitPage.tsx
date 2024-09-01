@@ -1,11 +1,33 @@
+import { useState, useEffect } from "react";
+
 import { css } from "@emotion/react";
 
 import Header from "@/components/common/Header/Header";
 import HabitHistory from "@/components/MyPage/HabitHistory/HabitHistory";
 
+import { getHabitListWithStatus, getHabitListIsEnd } from "@/api/habit/habitThunk";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
+
 import { theme } from "@/styles/theme";
 
+import { listStyle, getButtonStyle } from "@/components/MyPage/HabitHistory/HabitHistory.style";
+
 const MyHabitPage = () => {
+	const dispatch = useAppDispatch();
+
+	const { habitListWithStatus, habitListIsEnd } = useAppSelector((state) => state.habit);
+
+	const [tab, setTab] = useState("실천 중");
+
+	useEffect(() => {
+		dispatch(getHabitListWithStatus());
+		dispatch(getHabitListIsEnd());
+	}, []);
+
+	if (!habitListWithStatus || !habitListIsEnd) {
+		return <div />;
+	}
+
 	return (
 		<>
 			<Header>
@@ -17,7 +39,19 @@ const MyHabitPage = () => {
 					</p>
 				</Header.Title>
 			</Header>
-			<HabitHistory />
+			<ul css={listStyle}>
+				<li>
+					<button css={getButtonStyle(tab === "실천 중")} onClick={() => setTab("실천 중")}>
+						실천 중
+					</button>
+				</li>
+				<li>
+					<button css={getButtonStyle(tab === "지난")} onClick={() => setTab("지난")}>
+						지난
+					</button>
+				</li>
+			</ul>
+			<HabitHistory tab={tab} habitData={habitListWithStatus} endHabitData={habitListIsEnd} />
 		</>
 	);
 };
