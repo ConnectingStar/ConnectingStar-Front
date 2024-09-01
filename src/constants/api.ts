@@ -21,6 +21,7 @@ export const END_POINTS = {
 	EDIT_GENDER: "/user/gender",
 	EDIT_AGE: "/user/age-range",
 	EDIT_IDENTITY: "/user/identity",
+	DELETE_END_HABIT: (quitHabitId: number) => `/v2/quit-habits/${quitHabitId}`,
 	END_HABIT_LIST: "/v2/quit-habits?page=0&size=20&sortBy=quitDate&sortOrder=desc",
 	HABIT_RECORD_ONE_DAY: (date: string) => `/v2/habits/daily-trackings?date=${date}`,
 	HABIT: (isHistory?: boolean) =>
