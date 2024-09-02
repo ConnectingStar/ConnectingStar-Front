@@ -118,45 +118,42 @@ export function createChatData(habitRequest: HabitRequestV2Type, nickname?: stri
 			],
 			userMessage: `
 			<div>
-			<div class="allUserData">
-				<h2 class="bold">정체성</h2>
-				<div>
-					<ul>
-						<li>정체성</li>
-					</ul>
-					<ul class="bold">
-						<li>${habitRequest.identity}</li>
-					</ul>
+				<div class="all-user-data">
+					<h2 class="bold">정체성</h2>
+					<div class="contents">
+						<span>정체성</span>
+						<span class="bold">${habitRequest.identity}</span>
+					</div>
 				</div>
-			</div>
-			<div class="allUserData">
-				<h2 class="bold">습관 내용</h2>
-				<div>
-					<ul>
-						<li>시간</li>
-						<li>장소</li>
-						<li>행동</li>
-						<li>실천 정도</li>
-					</ul>
-					<ul class="bold">
-						<li>${convertFromTimeString(habitRequest.runTime)}</li>
-						<li>${habitRequest.place}</li>
-						<li>${habitRequest.action}</li>
-						<li>${habitRequest.value}${habitRequest.unit}</li>
-					</ul>
+				<div class="all-user-data">
+					<h2 class="bold">습관 내용</h2>
+					<div class="contents">
+						<span>시간</span>
+						<span class="bold">${convertFromTimeString(habitRequest.runTime)}</span>
+					</div>
+					<div class="contents">
+						<span>장소</span>
+						<span class="bold">${habitRequest.place}</span>
+					</div>
+					<div class="contents">
+						<span>행동</span>
+						<span class="bold">${habitRequest.action}</span>
+					</div>
+					<div class="contents">
+						<span>실천 정도</span>
+						<span class="bold">${habitRequest.value}${habitRequest.unit}</span>
+					</div>
 				</div>
-			</div>
-			<div class="allUserData">
-				<h2 class="bold">알림</h2>
-				<div>
-					<ul>
-						<li>1차 알림</li>
-						<li>2차 알림</li>
-					</ul>
-					<ul class="bold">
-						<li>${convertFromTimeString(habitRequest.firstAlert)}</li>
-						<li>${convertFromTimeString(habitRequest.secondAlert)}</li>
-					</ul>
+				<div class="all-user-data">
+					<h2 class="bold">알림</h2>
+					<div class="contents">
+						<span>1차 알림</span>
+						<span class="bold">${convertFromTimeString(habitRequest.firstAlert)}</span>
+					</div>
+					<div class="contents">
+						<span>2차 알림</span>
+						<span class="bold">${convertFromTimeString(habitRequest.secondAlert)}</span>
+					</div>
 				</div>
 			</div>
 		`,
