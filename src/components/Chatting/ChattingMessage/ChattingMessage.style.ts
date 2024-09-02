@@ -48,47 +48,49 @@ export const chatWrap = css`
 `;
 
 export const userMessageStyle = css`
-	${theme.font.body_b}
 	float: right;
-	margin: 0.75rem 0;
 	padding: 1rem;
 	border-radius: 15px;
-	background-color: ${theme.color.main_blue};
+	margin: 0.75rem 0;
 	color: white;
+	background-color: ${theme.color.main_blue};
+	${theme.font.body_b};
+
 	.alert {
 		display: flex;
-		gap: 1.625rem;
+		gap: 26px;
 		& > div {
 			display: flex;
 			flex-direction: column;
-			gap: 0.75rem;
+			gap: 12px;
 		}
 	}
-	.allUserData {
+
+	.all-user-data {
 		width: 13.125rem;
-		display: flex;
-		flex-direction: column;
-		& > div {
-			display: flex;
-			margin: 0.75rem 0 0.375rem 0;
-			ul {
-				width: 5.313rem;
-				display: flex;
-				flex-direction: column;
-				gap: 6px;
-			}
+
+		h2 {
+			margin-bottom: 0.75rem;
 		}
-		::after {
-			width: 100%;
-			height: 1px;
+
+		:not(:last-child)::after {
 			content: "";
-			background-color: white;
+			display: block;
+			border-bottom: 1px solid #ffffff;
+			margin: 0.9375rem 0;
 			opacity: 0.3;
-			margin: 0.75rem 0;
 		}
-		&:last-of-type {
-			::after {
-				display: none;
+
+		.contents {
+			display: flex;
+			gap: 26px;
+			span:first-child {
+				width: 3.6875rem;
+				flex-shrink: 0;
+			}
+
+			:not(:last-child) {
+				margin-bottom: 0.375rem;
 			}
 		}
 	}
