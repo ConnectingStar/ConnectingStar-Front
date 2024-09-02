@@ -84,12 +84,12 @@ export const userMessageStyle = css`
 		.contents {
 			display: flex;
 			gap: 26px;
-			span:first-child {
+			span:first-of-type {
 				width: 3.6875rem;
 				flex-shrink: 0;
 			}
 
-			:not(:last-child) {
+			:not(:last-of-type) {
 				margin-bottom: 0.375rem;
 			}
 		}
