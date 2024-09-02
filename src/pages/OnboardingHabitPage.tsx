@@ -121,10 +121,18 @@ const OnboardingHabitPage = () => {
 				/>
 			)}
 			{modal === modalType.SELECT_TIME("FIRSTALERT") && (
-				<SelectTimeModal title="1차 알림시간을 선택해 주세요" runTime={habitRequest.runTime} />
+				<SelectTimeModal
+					title="1차 알림시간을 선택해 주세요"
+					runTime={habitRequest.runTime}
+					updateInputValue={updateInputValue}
+				/>
 			)}
 			{modal === modalType.SELECT_TIME("SECONDALERT") && (
-				<SelectTimeModal title="2차 알림시간을 선택해 주세요" runTime={habitRequest.runTime} />
+				<SelectTimeModal
+					title="2차 알림시간을 선택해 주세요"
+					runTime={habitRequest.runTime}
+					updateInputValue={updateInputValue}
+				/>
 			)}
 			{modal === modalType.SUCCESS_GUIDE && (
 				<SuccessGuideModal
