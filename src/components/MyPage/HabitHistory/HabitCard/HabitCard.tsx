@@ -1,3 +1,4 @@
+import { dateFormat } from "@/utils/dateFormat";
 import { convertFromTimeString } from "@/utils/time";
 
 import type { HabitOneDayTypeWithStatus } from "@/types/habit";
@@ -16,7 +17,7 @@ const HabitCard = ({ habitData }: HabitCardProps) => {
 			</h1>
 
 			<p css={textStyle}>
-				{/* <span>시작일 : {startDate}</span> */}
+				<span>시작일 : {dateFormat(new Date(habitData.createdAt), "POINT")}</span>
 				<span>실천 : {habitData.historyCountByStatus.completedCount}</span>
 				<span>휴식 : {habitData.historyCountByStatus.restCount}</span>
 			</p>
