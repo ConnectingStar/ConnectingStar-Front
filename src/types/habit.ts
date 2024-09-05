@@ -57,6 +57,7 @@ export interface HabitInitialStateType {
 }
 
 export interface HabitOneDayTypeWithStatus extends HabitOneDayType {
+	createdAt: Date;
 	historyCountByStatus: {
 		completedCount: number;
 		restCount: number;
