@@ -12,7 +12,7 @@ import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeMod
 import SuccessGuideModal from "@/components/common/Modal/CommonModal/SuccessGuideModal/SuccessGuideModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { getOnlyUserInfo, getIsOnboarding } from "@/api/user/userThunk";
+import { getOnlyUserInfo, getIsOnboarding, selectStar } from "@/api/user/userThunk";
 
 import { createChatData } from "@/constants/chatData";
 import { modalType } from "@/constants/modalConstants";
@@ -38,6 +38,15 @@ const OnboardingHabitPage = () => {
 	const [progress, setProgress] = useState(0);
 
 	const isExtraBtn = chatData && chatData[progress].bottomButton.length > 1;
+
+	const handleOnboardingComplete = async () => {
+		try {
+			await handleSubmit();
+			await dispatch(selectStar("1"));
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	useEffect(() => {
 		dispatch(getOnlyUserInfo());
@@ -67,7 +76,7 @@ const OnboardingHabitPage = () => {
 									chatData={chatData}
 									progress={progress}
 									addProgress={() => setProgress((prev) => prev + 1)}
-									handleSubmit={handleSubmit}
+									handleSubmit={handleOnboardingComplete}
 								/>
 							))}
 				</div>
