@@ -17,6 +17,7 @@ import { getOnlyUserInfo, getIsOnboarding, selectStar } from "@/api/user/userThu
 import { createChatData } from "@/constants/chatData";
 import { modalType } from "@/constants/modalConstants";
 import { SELECT_TAG_DATA } from "@/constants/modalConstants";
+import { TARS_CONSTELLATION_ID } from "@/constants/onboarding";
 import { PATH } from "@/constants/path";
 
 import { useHabitForm } from "@/hooks/useHabitForm";
@@ -39,10 +40,10 @@ const OnboardingHabitPage = () => {
 
 	const isExtraBtn = chatData && chatData[progress].bottomButton.length > 1;
 
-	const handleOnboardingComplete = async () => {
+	const handleOnboardingSubmit = async () => {
 		try {
 			await handleSubmit();
-			await dispatch(selectStar("1"));
+			await dispatch(selectStar(TARS_CONSTELLATION_ID));
 		} catch (error) {
 			console.error(error);
 		}
@@ -76,7 +77,7 @@ const OnboardingHabitPage = () => {
 									chatData={chatData}
 									progress={progress}
 									addProgress={() => setProgress((prev) => prev + 1)}
-									handleSubmit={handleOnboardingComplete}
+									handleSubmit={handleOnboardingSubmit}
 								/>
 							))}
 				</div>

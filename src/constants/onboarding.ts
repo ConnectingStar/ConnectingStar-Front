@@ -80,3 +80,5 @@ export const ageRangeTypeList = [
 		code: "I",
 	},
 ];
+
+export const TARS_CONSTELLATION_ID = "1";
