@@ -26,7 +26,7 @@ export const iconBoxStyle = css`
 	background-color: ${theme.color.button_disabled};
 `;
 
-export const textBoxStyle = css`
+export const textBoxStyle = (isEmpty: boolean) => css`
 	padding: 1rem;
 	border-radius: 15px;
 	background-color: ${theme.color.bg};
@@ -34,6 +34,7 @@ export const textBoxStyle = css`
 
 	& > p {
 		${theme.font.body_b};
+		color: ${isEmpty && theme.color.button_deactivated};
 		white-space: pre-wrap;
 		max-height: 12rem;
 		overflow: auto;
