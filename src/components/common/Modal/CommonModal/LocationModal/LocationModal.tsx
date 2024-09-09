@@ -63,6 +63,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 					css={locationInputStyle}
 					type="text"
 					placeholder="직접입력"
+					maxLength={10}
 					value={place}
 					onFocus={() => setIsInputFocus(true)}
 					onBlur={() => setIsInputFocus(false)}
