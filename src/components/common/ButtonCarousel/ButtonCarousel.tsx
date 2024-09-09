@@ -19,11 +19,11 @@ const ButtonCarousel = ({ habitList, handleHabitId }: ButtonCarouselProps) => {
 	return (
 		<div css={flexStyle}>
 			<div css={scrollBoxStyle}>
-				{habitList.map((habit) => (
+				{habitList.map((habit, index) => (
 					<button
 						type="button"
 						css={getButtonStyle(buttonText === habit.action)}
-						key={habit.action}
+						key={`${habit.action}${index}`}
 						onClick={() => {
 							setButtonText(habit.action);
 							handleHabitId(habit.runHabitId);
