@@ -53,6 +53,8 @@ export interface HabitInitialStateType {
 	habitRecordList: HistoryOneDayType[] | null;
 	habitListWithStatus: HabitOneDayTypeWithStatus[] | null;
 	habitListIsEnd: EndHabitType[] | null;
+	habitStatistics: HabitStatisticsType | null;
+	habitListWithStat: HistoryOneDayType[] | null;
 	isHabitLoading: boolean;
 }
 
@@ -118,4 +120,20 @@ export interface HabitHistoryRequestType {
 	sortBy: string;
 	sortOrder: string;
 	related: string;
+}
+
+export interface HabitHistoryStatRequestType {
+	runHabitId: number;
+	startDate: string;
+	endDate: string;
+	page: number;
+	size: number;
+	sortBy: string;
+	sortOrder: string;
+	related: string;
+}
+
+export interface HabitStatisticsType {
+	totalStarCount: number;
+	totalValue: number;
 }

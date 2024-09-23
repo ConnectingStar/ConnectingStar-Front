@@ -1,38 +1,32 @@
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 
-import MonthChart from "@/components/ChartPage/MonthChart/MonthChart";
-import Tab from "@/components/ChartPage/Tab/Tab";
-import TotalInfo from "@/components/ChartPage/TotalInfo/TotalInfo";
-import WeekChart from "@/components/ChartPage/WeekChart/WeekChart";
-import ButtonCarousel from "@/components/common/ButtonCarousel/ButtonCarousel";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
+import Chart from "@/components/MyPage/Chart/Chart";
 
-import { TAB_KEY, TAB_PARAM } from "@/constants/tabConstants";
+import { getHabitList } from "@/api/habit/habitThunk";
+import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
 const ChartPage = () => {
-	const [searchParams, setSearchParams] = useSearchParams();
+	const dispatch = useAppDispatch();
+
+	const { habitList } = useAppSelector((state) => state.habit);
 
 	useEffect(() => {
-		if (
-			searchParams.size === 0 ||
-			(searchParams.get(TAB_KEY) !== TAB_PARAM.WEEK &&
-				searchParams.get(TAB_KEY) !== TAB_PARAM.MONTH)
-		) {
-			setSearchParams(`${TAB_KEY}=${TAB_PARAM.WEEK}`);
-		}
-	}, [searchParams]);
+		dispatch(getHabitList());
+	}, []);
+
+	if (!habitList) {
+		return <div />;
+	}
 
 	return (
 		<>
-			<Header isFixed={false}>
+			<Header>
 				<Header.Title hasButton={false}>통계</Header.Title>
 			</Header>
-			<ButtonCarousel habitList={[]} handleHabitId={() => {}} />
-			<TotalInfo />
-			<Tab searchParams={searchParams} setSearchParams={setSearchParams} />
-			{searchParams.get(TAB_KEY) === TAB_PARAM.WEEK ? <WeekChart /> : <MonthChart />}
+
+			<Chart habitList={habitList} />
 
 			<Gnb />
 		</>

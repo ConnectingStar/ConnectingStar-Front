@@ -10,6 +10,8 @@ import {
 	getHabitListWithStatus,
 	getHabitListIsEnd,
 	deleteEndHabit,
+	getHabitStatistics,
+	getHabitListWithStat,
 } from "@/api/habit//habitThunk";
 
 import type { HabitInitialStateType } from "@/types/habit";
@@ -23,6 +25,8 @@ const initialState: HabitInitialStateType = {
 	isHabitLoading: false,
 	habitListWithStatus: null,
 	habitListIsEnd: null,
+	habitStatistics: null,
+	habitListWithStat: null,
 };
 
 const habitSlice = createSlice({
@@ -31,6 +35,12 @@ const habitSlice = createSlice({
 	reducers: {},
 	extraReducers(builder) {
 		builder
+			.addCase(getHabitListWithStat.fulfilled, (state, action) => {
+				state.habitListWithStat = action.payload.data.histories;
+			})
+			.addCase(getHabitStatistics.fulfilled, (state, action) => {
+				state.habitStatistics = action.payload.data;
+			})
 			.addCase(getHabit.pending, (state) => {
 				state.isHabitLoading = true;
 			})
