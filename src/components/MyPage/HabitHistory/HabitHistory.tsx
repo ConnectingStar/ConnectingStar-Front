@@ -17,9 +17,9 @@ const HabitHistory = ({ tab, habitData, endHabitData }: HabitHistoryProps) => {
 			<div css={dividerStyle} />
 			<div css={cardBoxStyle}>
 				{tab === "실천 중" &&
-					habitData.map((habit) => <HabitCard key={habit.action} habitData={habit} />)}
+					habitData.map((habit) => <HabitCard key={habit.runHabitId} habitData={habit} />)}
 				{tab === "지난" &&
-					endHabitData.map((habit) => <EndHabitCard key={habit.action} habitData={habit} />)}
+					endHabitData.map((habit) => <EndHabitCard key={habit.quitHabitId} habitData={habit} />)}
 			</div>
 		</>
 	);

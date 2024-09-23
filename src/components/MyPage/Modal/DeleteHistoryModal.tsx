@@ -9,8 +9,6 @@ import { closeModal } from "@/api/modal/modalSlice";
 const DeleteHistoryModal = ({ quitHabitId }: { quitHabitId: number }) => {
 	const dispatch = useAppDispatch();
 
-	console.log(quitHabitId);
-
 	return (
 		<Modal isBackdropClose={false}>
 			<div css={layoutStyle}>
