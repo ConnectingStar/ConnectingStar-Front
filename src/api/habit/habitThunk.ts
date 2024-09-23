@@ -10,12 +10,26 @@ import type {
 	HabitRestRecordRequestType,
 	HabitRequestV2Type,
 	HabitHistoryRequestType,
+	HabitHistoryStatRequestType,
 } from "@/types/habit";
 
 interface EditHabitRequestType {
 	runHabitId?: string;
 	habitRequest: HabitRequestV2Type;
 }
+
+export const getHabitStatistics = createAsyncThunk(
+	"habit/getHabitStatistics",
+	async (runHabitId: number, thunkOptions) => {
+		try {
+			const { data } = await authorizedAxiosInstance.get(END_POINTS.HABIT_STATISTICS(runHabitId));
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
 
 export const getHabitListIsEnd = createAsyncThunk(
 	"habit/getHabitListIsEnd",
@@ -52,6 +66,42 @@ export const getHabitList = createAsyncThunk("habit/getHabitList", async (_, thu
 		throw thunkOptions.rejectWithValue(error);
 	}
 });
+
+export const getHabitListWithStat = createAsyncThunk(
+	"habit/getHabitListWithStat",
+	async (
+		{
+			runHabitId,
+			startDate,
+			endDate,
+			page,
+			size,
+			sortBy,
+			sortOrder,
+			related,
+		}: HabitHistoryStatRequestType,
+		thunkOptions,
+	) => {
+		try {
+			const { data } = await authorizedAxiosInstance.get(
+				END_POINTS.HABIT_HISTORY_LIST_STAT({
+					runHabitId,
+					startDate,
+					endDate,
+					page,
+					size,
+					sortBy,
+					sortOrder,
+					related,
+				}),
+			);
+
+			return data;
+		} catch (error) {
+			throw thunkOptions.rejectWithValue(error);
+		}
+	},
+);
 
 export const getHabitRecordList = createAsyncThunk(
 	"habit/getHabitRecordList",

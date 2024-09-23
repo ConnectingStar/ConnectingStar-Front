@@ -1,4 +1,4 @@
-import type { HabitHistoryRequestType } from "@/types/habit";
+import type { HabitHistoryRequestType, HabitHistoryStatRequestType } from "@/types/habit";
 
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -30,6 +30,17 @@ export const END_POINTS = {
 	HABIT_ID: (runHabtId?: string) => `/v2/habits/${runHabtId}`,
 	HABIT_REST_RECORD: "/v2/histories/rest",
 	HABIT_HISTORY: "/v2/histories",
+	HABIT_HISTORY_LIST_STAT: ({
+		runHabitId,
+		startDate,
+		endDate,
+		page,
+		size,
+		sortBy,
+		sortOrder,
+		related,
+	}: HabitHistoryStatRequestType) =>
+		`/v2/histories?runHabitId=${runHabitId}&runDate=${startDate},${endDate}&page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}&related=${related}`,
 	HABIT_HISTORY_LIST: ({
 		runHabitId,
 		isRest,
@@ -41,6 +52,7 @@ export const END_POINTS = {
 	}: HabitHistoryRequestType) =>
 		`/v2/histories?runHabitId=${runHabitId}&isRest=${isRest}&page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}&related=${related}`,
 	HABIT_HISTORY_ONE: (habitHistoryId: number) => `v2/histories/${habitHistoryId}?related=runHabit`,
+	HABIT_STATISTICS: (runHabitId: number) => `/v2/habits/${runHabitId}/statistics`,
 	STAR_MAIN: "/constellation/main",
 	STAR_CARD: (id: string, isRegistered: boolean) =>
 		`constellation/list?constellationTypeId=${id}&isRegistered=${isRegistered}`,
