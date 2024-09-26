@@ -49,17 +49,25 @@ export const chartStyle = css`
 	padding: 0 0.125rem;
 `;
 
+export const emptyChartStyle = css`
+	width: 28px;
+	height: 100px;
+	background-color: transparent;
+`;
+
 export const weekBoxStyle = css`
 	display: flex;
 	justify-content: space-between;
+`;
 
-	& > p {
-		width: 2rem;
-		height: 2rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		${theme.font.head_c};
-		color: ${theme.color.font_black};
-	}
+export const weekStyle = (isRest?: boolean) => css`
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	${isRest ? theme.font.body_b : theme.font.head_c};
+	border-radius: ${isRest && "50%"};
+	background-color: ${isRest && theme.color.line};
+	color: ${isRest ? theme.color.button_deactivated : theme.color.font_black};
 `;
