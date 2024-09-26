@@ -2,6 +2,8 @@ import { LineChart, Line, ReferenceLine } from "recharts";
 
 import { theme } from "@/styles/theme";
 
+import type { HistoryOneDayType } from "@/types/habit";
+
 import {
 	chartSectionStyle,
 	chartBoxStyle,
@@ -10,29 +12,30 @@ import {
 	infoBoxStyle,
 } from "@/components/ChartPage/MonthChart/MonthChart.style";
 
-const data = [
-	{ value: 3 },
-	{ value: 7 },
-	{ value: 16 },
-	{ value: 3 },
-	{ value: 1 },
-	{ value: 5 },
-	{ value: 9 },
-	{ value: 13 },
-	{ value: 4 },
-];
+interface ChartProps {
+	currentMonth: Date;
+	habitListWithStat: HistoryOneDayType[];
+}
 
-const Chart = ({ currentMonth }: { currentMonth: Date }) => {
+const Chart = ({ currentMonth, habitListWithStat }: ChartProps) => {
 	const firstDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
 	const lastDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0);
+
+	const data = habitListWithStat.map((habit) => ({
+		date: habit.runDate,
+		value: habit.achievement || 0,
+	}));
+
+	const totalAchievements = data.reduce((total, habit) => total + (habit.value || 0), 0);
+	const average = totalAchievements / data.length || 0;
 
 	return (
 		<section css={chartSectionStyle}>
 			<p>{currentMonth.getMonth() + 1}월</p>
 			<h1>
-				<span>평균 6 페이지,</span>
+				<span>평균 {average.toFixed(1)} 페이지,</span>
 				<br />
-				<span>누적 120 페이지</span>
+				<span>누적 {totalAchievements} 페이지</span>
 				<br />
 				해냈어요!
 			</h1>
@@ -45,7 +48,7 @@ const Chart = ({ currentMonth }: { currentMonth: Date }) => {
 						dot={false}
 						strokeWidth={3}
 					/>
-					<ReferenceLine y={6.7} stroke="#ffbb00" strokeDasharray="2" />
+					<ReferenceLine y={average} stroke="#ffbb00" strokeDasharray="2" />
 				</LineChart>
 				<div css={dividerStyle} />
 				<div css={chartTextStyle}>

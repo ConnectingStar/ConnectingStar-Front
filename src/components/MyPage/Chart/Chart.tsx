@@ -55,7 +55,7 @@ const Chart = ({ habitList }: { habitList: HabitOneDayType[] }) => {
 			{searchParams.get(TAB_KEY) === TAB_PARAM.WEEK ? (
 				<WeekChart runHabitId={runHabitId} />
 			) : (
-				<MonthChart />
+				<MonthChart runHabitId={runHabitId} />
 			)}
 		</>
 	);
