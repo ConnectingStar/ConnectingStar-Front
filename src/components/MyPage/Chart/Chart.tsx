@@ -8,7 +8,7 @@ import WeekChart from "@/components/ChartPage/WeekChart/WeekChart";
 import ButtonCarousel from "@/components/common/ButtonCarousel/ButtonCarousel";
 import { HabitOneDayType } from "@/types/habit";
 
-import { getHabitStatistics, getHabitListWithStat } from "@/api/habit/habitThunk";
+import { getHabitStatistics } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 
 import { TAB_KEY, TAB_PARAM } from "@/constants/tabConstants";
@@ -16,7 +16,7 @@ import { TAB_KEY, TAB_PARAM } from "@/constants/tabConstants";
 const Chart = ({ habitList }: { habitList: HabitOneDayType[] }) => {
 	const dispatch = useAppDispatch();
 
-	const { habitStatistics, habitListWithStat } = useAppSelector((state) => state.habit);
+	const { habitStatistics } = useAppSelector((state) => state.habit);
 
 	const [searchParams, setSearchParams] = useSearchParams();
 
@@ -24,19 +24,6 @@ const Chart = ({ habitList }: { habitList: HabitOneDayType[] }) => {
 
 	const handleHabitId = (habitId: number) => {
 		setRunHabitId(habitId);
-	};
-
-	console.log(habitListWithStat);
-
-	const request = {
-		runHabitId,
-		startDate: "2024-09-22",
-		endDate: "2024-09-28",
-		page: 0,
-		size: 20,
-		sortBy: "runDate",
-		sortOrder: "asc",
-		related: "runHabit",
 	};
 
 	useEffect(() => {
@@ -53,10 +40,6 @@ const Chart = ({ habitList }: { habitList: HabitOneDayType[] }) => {
 		dispatch(getHabitStatistics(runHabitId));
 	}, [runHabitId]);
 
-	useEffect(() => {
-		dispatch(getHabitListWithStat(request));
-	}, []);
-
 	if (!habitStatistics) {
 		return <div />;
 	}
@@ -69,7 +52,11 @@ const Chart = ({ habitList }: { habitList: HabitOneDayType[] }) => {
 				totalValue={habitStatistics.totalValue}
 			/>
 			<Tab searchParams={searchParams} setSearchParams={setSearchParams} />
-			{searchParams.get(TAB_KEY) === TAB_PARAM.WEEK ? <WeekChart /> : <MonthChart />}
+			{searchParams.get(TAB_KEY) === TAB_PARAM.WEEK ? (
+				<WeekChart runHabitId={runHabitId} />
+			) : (
+				<MonthChart />
+			)}
 		</>
 	);
 };
