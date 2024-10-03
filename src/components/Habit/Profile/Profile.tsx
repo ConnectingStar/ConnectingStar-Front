@@ -16,7 +16,7 @@ import {
 	nicknameTextStyle,
 } from "@/components/Habit/Profile/Profile.style";
 
-function Profile() {
+function Profile({ habitCount }: { habitCount: number }) {
 	const dispatch = useAppDispatch();
 
 	const { userInfo } = useAppSelector((state) => state.user);
@@ -42,7 +42,7 @@ function Profile() {
 					<p css={nicknameTextStyle}>{userInfo.nickname}</p>
 				</div>
 			</div>
-			<ProfileButtonIcon onClick={() => navigate(PATH.CREATE_HABIT)} />
+			{habitCount < 3 && <ProfileButtonIcon onClick={() => navigate(PATH.CREATE_HABIT)} />}
 		</div>
 	);
 }
