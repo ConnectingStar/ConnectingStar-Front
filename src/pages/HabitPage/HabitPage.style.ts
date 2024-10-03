@@ -19,6 +19,31 @@ export const mainTopBoxStyle = css`
 	padding-top: 3.25rem;
 `;
 
+export const habitCountBoxStyle = css`
+	display: flex;
+	gap: 8px;
+	align-items: center;
+
+	& > p {
+		${theme.font.head_b};
+	}
+`;
+
+export const habitCountTextStyle = css`
+	color: ${theme.color.main_blue};
+`;
+
+export const habitInfoBoxStyle = css`
+	display: flex;
+	gap: 6px;
+	align-items: center;
+`;
+
+export const habitInfoTextStyle = css`
+	${theme.font.body_xs};
+	color: ${theme.color.main_blue};
+`;
+
 export const habitListBoxStyle = css`
 	display: flex;
 	flex-direction: column;

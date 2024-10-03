@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import HabitAddIcon from "@/assets/icon/ic-habit-add.svg?react";
+import HabitInfoIcon from "@/assets/icon/ic-habit-info.svg?react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Calender from "@/components/Habit/Calendar/Calender";
@@ -20,6 +21,10 @@ import {
 	mainBoxStyle,
 	mainTopBoxStyle,
 	habitListBoxStyle,
+	habitCountBoxStyle,
+	habitCountTextStyle,
+	habitInfoTextStyle,
+	habitInfoBoxStyle,
 	addButtonStyle,
 } from "@/pages/HabitPage/HabitPage.style";
 
@@ -56,13 +61,23 @@ const HabitPage = () => {
 	return (
 		<>
 			<main css={mainBoxStyle}>
-				<Profile />
+				<Profile habitCount={habitRecordOneDay.length} />
 				<div css={mainTopBoxStyle}>
 					<HabitGuideBanner />
 					<HabitAdviceBanner />
 				</div>
 				<Calender handleSelectedDate={handleSelectedDate} selectedDate={selectedDate} />
+
 				<div css={habitListBoxStyle}>
+					<div css={habitCountBoxStyle}>
+						<p>
+							<span css={habitCountTextStyle}>{habitRecordOneDay.length}</span>/<span>3</span>
+						</p>
+						<div css={habitInfoBoxStyle}>
+							<HabitInfoIcon />
+							<span css={habitInfoTextStyle}>핵심 습관에 집중하기 위해 습관은 3개까지만!</span>
+						</div>
+					</div>
 					{habitRecordOneDay.map((habitData) => (
 						<HabitItem
 							key={habitData.habit.runHabitId}
@@ -72,9 +87,11 @@ const HabitPage = () => {
 							date={selectedDate.date}
 						/>
 					))}
-					<div css={addButtonStyle} onClick={() => navigate(PATH.CREATE_HABIT)}>
-						<HabitAddIcon />
-					</div>
+					{habitRecordOneDay.length < 3 && (
+						<div css={addButtonStyle} onClick={() => navigate(PATH.CREATE_HABIT)}>
+							<HabitAddIcon />
+						</div>
+					)}
 				</div>
 			</main>
 			<Gnb />
