@@ -40,7 +40,7 @@ export default function StarInfo({ isProgress, starCount, starName, starCardId }
 
 const containerStyle = css`
 	width: 22.5rem;
-	padding: 1.75rem 1.5rem 0;
+	padding: calc(1.75rem + env(safe-area-inset-top)) 1.5rem 0;
 	margin: 0 auto;
 `;
 

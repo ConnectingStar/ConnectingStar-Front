@@ -25,8 +25,11 @@ const containerStyle = css`
 	justify-content: center;
 	align-items: center;
 	gap: 24px;
-	height: calc(100dvh - 11.875rem);
-	position: relative;
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 
 	& > p {
 		${getOutlineTextStyle(theme.color.main_deep_blue, "head_b")}
