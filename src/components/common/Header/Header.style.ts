@@ -7,7 +7,8 @@ export const getContainerStyle = (isFixed: boolean) => css`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	height: 3.5rem;
+	height: calc(3.5rem + env(safe-area-inset-top));
+	padding-top: env(safe-area-inset-top);
 	max-width: 500px; // TODO: globalStyle max-width와 동일(추후 600으로 변경 필요)
 	background-color: #fff;
 	z-index: ${theme.zIndex.overlayBottom};
