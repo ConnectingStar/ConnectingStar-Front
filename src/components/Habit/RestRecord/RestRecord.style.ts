@@ -8,7 +8,7 @@ export const layoutStyle = css`
 	gap: 40px;
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 4.75rem 1.5rem 9.5rem;
+	padding: calc(4.75rem + env(safe-area-inset-top)) 1.5rem 9.5rem;
 
 	& > h1 {
 		${theme.font.head_a}
