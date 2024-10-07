@@ -8,7 +8,7 @@ export const layoutStyle = css`
 	gap: 40px;
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 4.75rem 1.25rem 0;
+	padding: calc(4.75rem + env(safe-area-inset-top)) 1.25rem 0;
 `;
 
 export const habitMenuBoxStyle = css`
