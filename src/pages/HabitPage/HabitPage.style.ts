@@ -16,7 +16,7 @@ export const mainTopBoxStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-	padding-top: 3.25rem;
+	padding-top: calc(3.25rem + env(safe-area-inset-top));
 `;
 
 export const habitCountBoxStyle = css`

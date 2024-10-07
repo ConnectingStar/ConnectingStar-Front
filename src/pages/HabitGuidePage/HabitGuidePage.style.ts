@@ -5,7 +5,7 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	display: flex;
 	width: 22.5rem;
-	padding: 4.75rem 1.5rem 2.5rem;
+	padding: calc(4.75rem + env(safe-area-inset-top)) 1.5rem 2.5rem;
 	margin: 0 auto;
 
 	& > ul {
