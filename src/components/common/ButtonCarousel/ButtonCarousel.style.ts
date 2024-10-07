@@ -4,7 +4,7 @@ import { theme } from "@/styles/theme";
 
 export const flexStyle = css`
 	white-space: nowrap;
-	padding: 4rem 1.5rem 0;
+	padding: calc(4rem + env(safe-area-inset-top)) 1.5rem 0;
 	max-width: 22.5rem;
 	margin: 0 auto;
 	overflow: auto;
