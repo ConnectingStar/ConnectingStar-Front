@@ -36,9 +36,9 @@ export const handleTokenError = async (error: AxiosError<ErrorResponseData>) => 
 		throw new Error("에러가 발생했습니다.");
 	}
 
-	const { data } = error.response;
+	const { status } = error.response;
 
-	if (data.code === 401) {
+	if (status === 401) {
 		try {
 			const { data } = await authorizedAxiosInstance.get(END_POINTS.REFRESH);
 
