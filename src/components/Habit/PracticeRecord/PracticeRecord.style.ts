@@ -71,6 +71,8 @@ export const contentBoxStyle = css`
 `;
 
 export const contentInputStyle = (isChanged?: boolean) => css`
+	display: flex;
+	justify-content: space-between;
 	border: none;
 	white-space: nowrap;
 	height: 3.4375rem;
@@ -82,6 +84,13 @@ export const contentInputStyle = (isChanged?: boolean) => css`
 	width: 100%;
 	outline: none;
 	color: ${isChanged === false && theme.color.button_deactivated};
+
+	& > p {
+		max-width: 15rem;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
 
 	&::placeholder {
 		color: ${theme.color.button_deactivated};
