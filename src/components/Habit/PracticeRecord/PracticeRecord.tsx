@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import InfoIcon from "@/assets/icon/ic-blue-exclamation-mark.svg?react";
+import PencilIcon from "@/assets/icon/ic-habit-pencil.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal";
@@ -109,10 +110,13 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 				<ul>
 					<li>
 						<div
-							css={contentInputStyle(prevRunTime !== habitData.runTime)}
+							css={contentInputStyle()}
 							onClick={() => dispatch(openModal(modalType.SELECT_TIME("RUNTIME")))}
 						>
-							{`${convertFromTimeString(prevRunTime)?.split(" ")[0]} ${convertFromTimeString(prevRunTime)?.split(" ")[1].split(":")[0]}시 ${convertFromTimeString(prevRunTime)?.split(" ")[1].split(":")[1]}분에`}
+							<p>
+								{`${convertFromTimeString(prevRunTime)?.split(" ")[0]} ${convertFromTimeString(prevRunTime)?.split(" ")[1].split(":")[0]}시 ${convertFromTimeString(prevRunTime)?.split(" ")[1].split(":")[1]}분에`}
+							</p>
+							<PencilIcon />
 						</div>
 					</li>
 					<li>
