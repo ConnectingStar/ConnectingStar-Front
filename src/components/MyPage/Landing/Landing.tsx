@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom";
 import RightArrowIcon from "@/assets/icon/ic-right-arrow.svg?react";
 
 import MenuButton from "@/components/common/Button/MenuButton/MenuButton";
+import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { openModal } from "@/api/modal/modalSlice";
 import { getOnlyUserInfo } from "@/api/user/userThunk";
 
+import { modalType } from "@/constants/modalConstants";
 import { MENU_BUTTON_DATA, PROFILE_BUTTON_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
 
@@ -18,12 +21,15 @@ import {
 	profileTextBoxStyle,
 	buttonBoxStyle,
 	buttonInnerBoxStyle,
+	dividerStyle,
+	logoutButtonStyle,
 } from "@/components/MyPage/Landing/Landing.style";
 
 const Landing = () => {
 	const dispatch = useAppDispatch();
 
 	const { userInfo } = useAppSelector((state) => state.user);
+	const { modal } = useAppSelector((state) => state.modal);
 
 	const navigate = useNavigate();
 
@@ -79,6 +85,14 @@ const Landing = () => {
 					</div>
 				))}
 			</div>
+
+			<div css={dividerStyle} />
+
+			<button onClick={() => dispatch(openModal(modalType.LOGOUT))} css={logoutButtonStyle}>
+				로그아웃
+			</button>
+
+			{modal === modalType.LOGOUT && <LogoutModal />}
 		</div>
 	);
 };

@@ -5,7 +5,7 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 0 1.5rem 6.375rem;
+	padding: 0 1.5rem 3.5rem;
 `;
 
 export const profileBoxStyle = css`
@@ -48,4 +48,17 @@ export const buttonInnerBoxStyle = css`
 		color: ${theme.color.font_gray};
 		${theme.font.body_b_bold};
 	}
+`;
+
+export const dividerStyle = css`
+	width: 100%;
+	height: 0.5rem;
+	background-color: ${theme.color.line};
+	margin-top: 2.5rem;
+`;
+
+export const logoutButtonStyle = css`
+	width: 100%;
+	height: 3.625rem;
+	color: ${theme.color.font_black};
 `;
