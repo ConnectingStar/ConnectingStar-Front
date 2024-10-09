@@ -68,19 +68,7 @@ export const dividerStyle = css`
 	margin-top: 2.5rem;
 `;
 
-export const authButtonBoxStyle = css`
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-
-	& > button {
-		height: 3.625rem;
-		color: ${theme.color.font_black};
-
-		&:last-of-type {
-			color: ${theme.color.error};
-		}
-	}
+export const withdrawalButtonStyle = css`
+	height: 3.625rem;
+	color: ${theme.color.error};
 `;

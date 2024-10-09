@@ -6,7 +6,6 @@ import Header from "@/components/common/Header/Header";
 import ChangeNicknameModal from "@/components/common/Modal/CommonModal/ChangeNicknameModal";
 import SelectAgeRangeModal from "@/components/common/Modal/CommonModal/SelectAgeRangeModal";
 import SelectGenderModal from "@/components/common/Modal/CommonModal/SelectGenderModal/SelectGenderModal";
-import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
 import SelectCharacterModal from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal";
 import SelectIdentityModal from "@/components/MyPage/Modal/SelectIdentityModal/SelectIdentityModal";
 
@@ -23,7 +22,7 @@ import {
 	characterBoxStyle,
 	buttonBoxStyle,
 	dividerStyle,
-	authButtonBoxStyle,
+	withdrawalButtonStyle,
 	mainBoxStyle,
 } from "@/pages/MyInfoPage/MyInfoPage.style";
 
@@ -108,10 +107,9 @@ const MyInfoPage = () => {
 
 				<div css={dividerStyle} />
 
-				<div css={authButtonBoxStyle}>
-					<button onClick={() => dispatch(openModal(modalType.LOGOUT))}>로그아웃</button>
-					<button onClick={() => navigate("/withdrawal")}>회원탈퇴</button>
-				</div>
+				<button onClick={() => navigate("/withdrawal")} css={withdrawalButtonStyle}>
+					회원탈퇴
+				</button>
 
 				{modal === modalType.SELECT_CHARACTER && (
 					<SelectCharacterModal
@@ -131,7 +129,6 @@ const MyInfoPage = () => {
 				{modal === modalType.SELECT_MAIN_IDENTITY && (
 					<SelectIdentityModal prevIdentity={userProfile.user.identity} />
 				)}
-				{modal === modalType.LOGOUT && <LogoutModal />}
 			</div>
 		</>
 	);
