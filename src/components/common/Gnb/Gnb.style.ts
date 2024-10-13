@@ -21,4 +21,8 @@ export const layoutStyle = css`
 			cursor: pointer;
 		}
 	}
+
+	@media (display-mode: standalone) {
+		padding-bottom: env(safe-area-inset-bottom);
+	}
 `;
