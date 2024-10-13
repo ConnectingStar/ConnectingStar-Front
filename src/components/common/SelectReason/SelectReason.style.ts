@@ -11,6 +11,10 @@ export const layoutStyle = css`
 	& > h1 {
 		${theme.font.head_a};
 	}
+
+	@media (display-mode: standalone) {
+		height: 100vh;
+	}
 `;
 
 export const getReasonBoxStyle = (isSelected: boolean) => {
