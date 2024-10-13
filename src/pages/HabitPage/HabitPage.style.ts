@@ -10,6 +10,10 @@ export const mainBoxStyle = css`
 	flex-direction: column;
 	gap: 20px;
 	position: relative;
+
+	@media (display-mode: standalone) {
+		height: 100vh;
+	}
 `;
 
 export const mainTopBoxStyle = css`
