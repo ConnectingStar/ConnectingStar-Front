@@ -14,7 +14,7 @@ export const container = css`
 
 export const wrap = css`
 	width: 22.5rem;
-	padding: 4.75rem 1.5rem 1rem;
+	padding: calc(4.75rem + env(safe-area-inset-top)) 1.5rem 1rem;
 	margin: 0 auto;
 
 	& > h1 {
