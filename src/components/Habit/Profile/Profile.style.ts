@@ -7,7 +7,8 @@ export const layoutStyle = css`
 	justify-content: space-between;
 	align-items: center;
 	width: 19.5rem;
-	height: 3.5rem;
+	height: calc(3.5rem + env(safe-area-inset-top));
+	padding-top: env(safe-area-inset-top);
 	position: fixed;
 	background-color: ${theme.color.white};
 	z-index: ${theme.zIndex.overlayBottom};

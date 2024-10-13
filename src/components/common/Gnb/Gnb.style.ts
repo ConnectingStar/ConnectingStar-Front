@@ -8,7 +8,7 @@ export const layoutStyle = css`
 	left: 50%;
 	transform: translateX(-50%);
 	width: 100%;
-	padding: 0.875rem 2.6875rem;
+	padding: 0.875rem 2.6875rem calc(0.875rem + env(safe-area-inset-bottom));
 	background-color: #fff;
 	z-index: ${theme.zIndex.overlayBottom};
 
