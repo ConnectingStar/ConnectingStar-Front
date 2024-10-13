@@ -76,7 +76,7 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 const containerStyle = css`
 	display: flex;
 	justify-content: center;
-	height: calc(100dvh - 20.825rem);
+	height: calc(100dvh - 20.825rem - env(safe-area-inset-top) - env(safe-area-inset-bottom));
 	position: relative;
 `;
 
