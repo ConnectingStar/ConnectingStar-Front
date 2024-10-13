@@ -165,7 +165,8 @@ const containerStyle = css`
 const wrap = (isExtraBtn?: boolean) => css`
 	max-width: 22.5rem;
 	min-height: 100vh;
-	padding: 5.75rem 1.5rem ${isExtraBtn ? "8.5rem" : "5.438rem"} 1.5rem;
+	padding: calc(5.75rem + env(safe-area-inset-top)) 1.5rem ${isExtraBtn ? "8.5rem" : "5.438rem"}
+		1.5rem;
 	margin: 0 auto;
 	${theme.font.body_b};
 `;
@@ -176,7 +177,7 @@ const progressStyle = css`
 	transform: translateX(-50%);
 	width: 100%;
 	max-width: 500px; // TODO: globalStyle max-width와 동일(추후 600으로 변경 필요)
-	padding-top: 3.5rem;
+	padding-top: calc(3.5rem + env(safe-area-inset-top));
 	appearance: none;
 	::-webkit-progress-bar {
 		background: white;
