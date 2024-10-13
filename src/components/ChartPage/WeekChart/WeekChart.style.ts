@@ -10,7 +10,7 @@ export const layoutStyle = css`
 
 export const boxStyle = css`
 	width: 22.5rem;
-	padding: 2.5rem 1.5rem 3.625rem;
+	padding: 2.5rem 1.5rem max(3.625rem, calc(100vh - 44.5625rem)); // 디바이스 세로 길이 - 헤더에서 주간•월간 탭 까지 길이(44.5625)
 	margin: 0 auto;
 
 	& > h3 {
