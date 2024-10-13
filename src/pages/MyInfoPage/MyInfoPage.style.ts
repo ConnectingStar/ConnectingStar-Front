@@ -69,6 +69,7 @@ export const dividerStyle = css`
 `;
 
 export const withdrawalButtonStyle = css`
-	height: 3.625rem;
+	height: calc(3.625rem + env(safe-area-inset-bottom));
 	color: ${theme.color.error};
+	padding-bottom: env(safe-area-inset-bottom);
 `;

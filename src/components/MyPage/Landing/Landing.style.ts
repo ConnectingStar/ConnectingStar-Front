@@ -5,7 +5,7 @@ import { theme } from "@/styles/theme";
 export const layoutStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 0 1.5rem 3.5rem;
+	padding: 0 1.5rem calc(3.5rem + env(safe-area-inset-bottom));
 `;
 
 export const profileBoxStyle = css`
