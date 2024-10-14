@@ -125,6 +125,7 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 							placeholder={`${habitData.place}에서`}
 							onChange={(e) => updateInputValue("runPlace", e.target.value)}
 						/>
+						<PencilIcon />
 					</li>
 					<li>
 						<input
@@ -132,6 +133,7 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 							placeholder={habitData.action}
 							onChange={(e) => updateInputValue("action", e.target.value)}
 						/>
+						<PencilIcon />
 					</li>
 					<li>
 						<input

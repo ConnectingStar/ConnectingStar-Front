@@ -55,16 +55,29 @@ export const contentBoxStyle = css`
 		flex-direction: column;
 		gap: 6px;
 
-		& > li:last-of-type {
-			input {
-				width: 4.875rem;
-				margin-right: 0.75rem;
+		& > li {
+			position: relative;
+
+			& > svg {
+				position: absolute;
+				top: 1rem;
+				right: 1rem;
 			}
 
-			span:after {
-				margin-left: 2px;
-				content: "*";
-				color: ${theme.color.main_blue};
+			&:last-of-type {
+				display: flex;
+				align-items: center;
+
+				input {
+					width: 4.875rem;
+					margin-right: 0.75rem;
+				}
+
+				span:after {
+					margin-left: 2px;
+					content: "*";
+					color: ${theme.color.main_blue};
+				}
 			}
 		}
 	}
@@ -93,7 +106,7 @@ export const contentInputStyle = (isChanged?: boolean) => css`
 	}
 
 	&::placeholder {
-		color: ${theme.color.button_deactivated};
+		color: ${theme.color.black};
 	}
 `;
 
