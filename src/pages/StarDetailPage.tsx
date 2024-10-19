@@ -80,7 +80,7 @@ export default function StarDetailPage() {
 
 const sectionStyle = css`
 	width: 22.5rem;
-	padding: 4.75rem 1.5rem 5.4375rem;
+	padding: calc(4.75rem + env(safe-area-inset-top)) 1.5rem 5.4375rem;
 	margin: 0 auto;
 
 	& > h1 {

@@ -24,7 +24,7 @@ const containerStyle = css`
 	height: 4.375rem;
 	position: absolute;
 	right: 1.5rem;
-	bottom: 4.75rem;
+	bottom: calc(4.75rem + env(safe-area-inset-bottom));
 
 	& > img {
 		width: 4.0625rem;

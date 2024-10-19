@@ -5,18 +5,23 @@ import { theme } from "@/styles/theme";
 export const mainBoxStyle = css`
 	width: 22.5rem;
 	margin: 0 auto;
-	padding: 0 1.5rem 3.5rem;
+	padding: 0 1.5rem calc(3.5rem + env(safe-area-inset-bottom));
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 	position: relative;
+
+	@media (display-mode: standalone) {
+		height: 100%;
+		min-height: 100vh;
+	}
 `;
 
 export const mainTopBoxStyle = css`
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-	padding-top: 3.25rem;
+	padding-top: calc(3.25rem + env(safe-area-inset-top));
 `;
 
 export const habitCountBoxStyle = css`

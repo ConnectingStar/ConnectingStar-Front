@@ -16,7 +16,7 @@ export const mainBoxStyle = css`
 	gap: 40px;
 	align-items: center;
 	width: 100%;
-	padding: 4.75rem 1.5rem 0;
+	padding: calc(4.75rem + env(safe-area-inset-top)) 1.5rem 0;
 `;
 
 export const characterBoxStyle = css`
@@ -69,6 +69,7 @@ export const dividerStyle = css`
 `;
 
 export const withdrawalButtonStyle = css`
-	height: 3.625rem;
+	height: calc(3.625rem + env(safe-area-inset-bottom));
 	color: ${theme.color.error};
+	padding-bottom: env(safe-area-inset-bottom);
 `;
