@@ -16,6 +16,8 @@ import { ACCESS_TOKEN_KEY } from "@/constants/api";
 import { modalType } from "@/constants/modalConstants";
 import { PATH } from "@/constants/path";
 
+import { useToast } from "@/hooks/useToast";
+
 import { dateFormat } from "@/utils/dateFormat";
 
 import {
@@ -59,6 +61,8 @@ const SelectReason = ({
 
 	const param = useParams();
 
+	const { createToast } = useToast();
+
 	const [reason, setReason] = useState(reasonDefaultText);
 	const [content, setContent] = useState("");
 
@@ -68,6 +72,7 @@ const SelectReason = ({
 		try {
 			await dispatch(withdrawal({ reason, content, deletedDt })).unwrap();
 			localStorage.removeItem(ACCESS_TOKEN_KEY);
+			createToast("회원탈퇴를 완료했어요🥲");
 			navigate(PATH.SIGN_UP);
 		} catch (error) {
 			console.error(error);
@@ -77,6 +82,7 @@ const SelectReason = ({
 	const handleDeleteHabit = async () => {
 		try {
 			await dispatch(deleteHabit({ runHabitId: param.habitId, reason })).unwrap();
+			createToast("습관을 삭제했어요. 다음 약속으로 만나요!");
 			navigate(PATH.HOME);
 		} catch (error) {
 			console.log(error);

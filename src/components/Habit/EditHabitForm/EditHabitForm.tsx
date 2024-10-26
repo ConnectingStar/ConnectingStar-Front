@@ -18,6 +18,7 @@ import { modalType } from "@/constants/modalConstants";
 import { PATH } from "@/constants/path";
 
 import { useHabitForm } from "@/hooks/useHabitForm";
+import { useToast } from "@/hooks/useToast";
 import { useToggleTrigger } from "@/hooks/useToggleTrigger";
 
 import { convertFromTimeString } from "@/utils/time";
@@ -45,6 +46,8 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 	const navigate = useNavigate();
 
 	const params = useParams();
+
+	const { createToast } = useToast();
 
 	const { identity, runTime, place, action, value, unit } = habit;
 
@@ -82,7 +85,14 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 			<Header>
 				<Header.CloseButton />
 				<Header.Title>습관관리</Header.Title>
-				<Header.TextButton onClick={handleSubmit}>완료</Header.TextButton>
+				<Header.TextButton
+					onClick={() => {
+						handleSubmit();
+						createToast("습관 약속을 수정했어요👌");
+					}}
+				>
+					완료
+				</Header.TextButton>
 			</Header>
 			<main css={layoutStyle}>
 				<MenuButton

@@ -6,8 +6,12 @@ import { deleteEndHabit } from "@/api/habit/habitThunk";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import { useToast } from "@/hooks/useToast";
+
 const DeleteHistoryModal = ({ quitHabitId }: { quitHabitId: number }) => {
 	const dispatch = useAppDispatch();
+
+	const { createToast } = useToast();
 
 	return (
 		<Modal isBackdropClose={false}>
@@ -21,6 +25,7 @@ const DeleteHistoryModal = ({ quitHabitId }: { quitHabitId: number }) => {
 					handleBtnClick={() => {
 						dispatch(deleteEndHabit(quitHabitId));
 						dispatch(closeModal());
+						createToast("히스토리를 삭제했어요🙂");
 					}}
 					isPositionStatic
 				/>

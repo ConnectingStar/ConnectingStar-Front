@@ -12,6 +12,8 @@ import { closeModal } from "@/api/modal/modalSlice";
 import { ACCESS_TOKEN_KEY } from "@/constants/api";
 import { PATH } from "@/constants/path";
 
+import { useToast } from "@/hooks/useToast";
+
 import { theme } from "@/styles/theme";
 
 const LogoutModal = () => {
@@ -19,11 +21,14 @@ const LogoutModal = () => {
 
 	const navigate = useNavigate();
 
+	const { createToast } = useToast();
+
 	const handleLogout = async () => {
 		try {
 			await dispatch(logOut()).unwrap();
 			localStorage.removeItem(ACCESS_TOKEN_KEY);
 			dispatch(closeModal());
+			createToast("로그아웃! 나중에 다시 만나요 😊");
 			navigate(PATH.SIGN_UP);
 		} catch (error) {
 			console.log(error);

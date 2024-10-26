@@ -5,6 +5,7 @@ import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import { REST_RECORD_TEXT, REST_RECORD_BLUE_TEXT } from "@/constants/homeConstants";
 
 import { useHabitRestRecordForm } from "@/hooks/useHabitRestRecordForm";
+import { useToast } from "@/hooks/useToast";
 
 import type { HabitV2Type } from "@/types/habit";
 
@@ -18,6 +19,8 @@ interface RestRecordProps {
 
 const RestRecord = ({ habitData, identity, nickname }: RestRecordProps) => {
 	const params = useParams();
+
+	const { createToast } = useToast();
 
 	const month = Number(params.month) < 10 ? `0${params.month}` : params.month;
 	const date = Number(params.date) < 10 ? `0${params.date}` : params.date;
@@ -51,7 +54,13 @@ const RestRecord = ({ habitData, identity, nickname }: RestRecordProps) => {
 				<span>{habitRestRecordRequest.review.length}/1,000자</span>
 			</div>
 
-			<FooterBtn text="완료" handleBtnClick={handleSubmit} />
+			<FooterBtn
+				text="완료"
+				handleBtnClick={() => {
+					handleSubmit();
+					createToast("휴식을 기록했습니다! 내일 또 만나요😊");
+				}}
+			/>
 		</div>
 	);
 };

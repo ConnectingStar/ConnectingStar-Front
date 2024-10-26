@@ -4,6 +4,8 @@ import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContai
 
 import { PATH } from "@/constants/path";
 
+import { useNetworkStatus } from "@/hooks/useNetworkStatus";
+
 import ChartPage from "@/pages/ChartPage";
 import CreateHabitPage from "@/pages/CreateHabitPage/CreateHabitPage";
 import EditHabitPage from "@/pages/EditHabitPage/EditHabitPage";
@@ -30,6 +32,8 @@ import StarMainPage from "@/pages/StarMainPage/StarMainPage";
 import WithdrawalPage from "@/pages/WithdrawalPage";
 
 const App = () => {
+	useNetworkStatus();
+
 	return (
 		<>
 			<BrowserRouter>

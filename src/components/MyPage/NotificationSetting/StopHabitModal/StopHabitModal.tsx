@@ -9,6 +9,8 @@ import Calender from "@/components/MyPage/NotificationSetting/StopHabitModal/Cal
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
+import { useToast } from "@/hooks/useToast";
+
 import { theme } from "@/styles/theme";
 
 interface StopHabitModalPropsType {
@@ -27,6 +29,8 @@ const StopHabitModal = ({
 	handleToggle,
 }: StopHabitModalPropsType) => {
 	const dispatch = useAppDispatch();
+
+	const { createToast } = useToast();
 
 	useEffect(() => {
 		return () => {
@@ -51,6 +55,7 @@ const StopHabitModal = ({
 					isPositionStatic
 					disabled={!startDay && !endDay}
 					handleBtnClick={() => {
+						createToast("습관 일시 정지! 기다리고 있을게요😊");
 						dispatch(closeModal());
 					}}
 					handleLeftBtnClick={() => {
