@@ -1,6 +1,7 @@
 export const PATH = {
 	HOME: "/",
 	CREATE_HABIT: "/habit-new",
+	CHART: "/chart",
 	MY: "/mypage",
 	MY_INFO: "/myinfo",
 	STAR: "/star",
