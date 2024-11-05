@@ -1,7 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken } from "firebase/messaging";
 
-import { postFCMToken } from "@/api/auth/authThunk";
+import { authorizedAxiosInstance } from "@/api/axiosInstance";
+
+import { END_POINTS } from "@/constants/api";
 
 const firebaseConfig = {
 	apiKey: import.meta.env.VITE_APP_FCM_API_KEY,
@@ -34,14 +36,15 @@ export const handleAllowNotification = async () => {
 		const permission = await Notification.requestPermission();
 
 		if (permission === "granted") {
-			const nickname = "test";
-			const password = "test";
 			const token = await getToken(messaging, {
 				vapidKey: import.meta.env.VITE_FCM_VAPID_KEY,
 			});
 
 			if (token) {
-				postFCMToken({ token, nickname, password });
+				authorizedAxiosInstance.post(END_POINTS.DEVICE, {
+					fcmRegistrationToken: token,
+				});
+				localStorage.setItem("fcm_registered", "true");
 			} else {
 				alert("토큰 등록이 불가능 합니다. 생성하려면 권한을 허용해주세요");
 			}

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContainer";
@@ -5,6 +6,8 @@ import ToastContainer from "@/components/common/Toast/ToastContainer/ToastContai
 import { PATH } from "@/constants/path";
 
 import { useNetworkStatus } from "@/hooks/useNetworkStatus";
+
+import { handleAllowNotification } from "@/utils/notification";
 
 import ChartPage from "@/pages/ChartPage";
 import CreateHabitPage from "@/pages/CreateHabitPage/CreateHabitPage";
@@ -33,6 +36,16 @@ import WithdrawalPage from "@/pages/WithdrawalPage";
 
 const App = () => {
 	useNetworkStatus();
+
+	useEffect(() => {
+		const isRegistered = localStorage.getItem("fcm_registered");
+
+		if (!isRegistered) {
+			handleAllowNotification();
+		} else {
+			console.log("Device is already registered.");
+		}
+	}, []);
 
 	return (
 		<>
