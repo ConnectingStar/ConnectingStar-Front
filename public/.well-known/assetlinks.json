@@ -1,0 +1,14 @@
+[
+	{
+		"relation": ["delegate_permission/common.handle_all_urls"],
+		"target": {
+			"namespace": "android_app",
+			"package_name": "me.habitbuddy",
+			"sha256_cert_fingerprints": [
+				"BB:D6:55:32:1D:39:B6:CB:62:A4:35:2F:F5:6B:1D:35:09:0A:04:9A:58:4B:FD:D6:32:AD:2E:7C:3B:3C:F2:AF",
+				"DA:4E:94:58:13:EA:32:33:E9:80:26:5F:7F:D1:B8:FB:55:06:8E:8C:A1:86:87:DC:8B:E3:53:D9:D4:83:27:68"
+			]
+		}
+	}
+]
+
