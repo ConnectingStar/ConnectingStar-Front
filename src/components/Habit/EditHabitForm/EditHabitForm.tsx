@@ -41,6 +41,8 @@ interface EditHabitFormProps {
 const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 	const dispatch = useAppDispatch();
 
+	console.log(habit);
+
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const navigate = useNavigate();
@@ -51,18 +53,17 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 
 	const { identity, runTime, place, action, value, unit } = habit;
 
-	// api로 알람 on,off 여부 받아와서 toggle trigger와 연결
-	// const [firstAlarmOn] = useState(true);
-	// const [secondAlarmOn] = useState(false);
+	const [firstAlarmOn] = useState(habit.habitAlerts[0].alertStatus);
+	const [secondAlarmOn] = useState(habit.habitAlerts[1].alertStatus);
 
 	const firstAlert = habit.habitAlerts[0].alertTime;
 	const secondAlert = habit.habitAlerts[1].alertTime;
 
 	const { isToggle: firstNotiToggle, handleTogglePrev: handleFirstNotiTogglePrev } =
-		useToggleTrigger();
+		useToggleTrigger({ toggle: firstAlarmOn });
 
 	const { isToggle: secondNotiToggle, handleTogglePrev: handleSecondNotiTogglePrev } =
-		useToggleTrigger();
+		useToggleTrigger({ toggle: secondAlarmOn });
 
 	const [alarmTarget, setAlarmTarget] = useState("");
 
@@ -79,6 +80,8 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 			secondAlert,
 		},
 	});
+
+	console.log(habitRequest);
 
 	return (
 		<>

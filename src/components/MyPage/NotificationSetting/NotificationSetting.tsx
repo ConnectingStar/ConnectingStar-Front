@@ -31,9 +31,9 @@ const NotificationSetting = () => {
 		isToggle: isStopHabitToggle,
 		handleToggle: handleStopHabitToggle,
 		handleTogglePrev: handleStopHabitTogglePrev,
-	} = useToggleTrigger();
+	} = useToggleTrigger({});
 
-	const { isToggle: notiToggle, handleTogglePrev: handleNotiTogglePrev } = useToggleTrigger();
+	const { isToggle: notiToggle, handleTogglePrev: handleNotiTogglePrev } = useToggleTrigger({});
 
 	const [startDay, setStartDay] = useState(new Date());
 	const [endDay, setEndDay] = useState(new Date());

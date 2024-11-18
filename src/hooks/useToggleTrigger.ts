@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export const useToggleTrigger = () => {
-	const [isToggle, setIsToggle] = useState(false);
+export const useToggleTrigger = ({ toggle }: { toggle?: boolean }) => {
+	const [isToggle, setIsToggle] = useState(toggle ?? false);
 
 	const handleToggle = (isToggle: boolean) => {
 		setIsToggle(isToggle);
