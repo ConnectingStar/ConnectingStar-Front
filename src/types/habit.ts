@@ -14,6 +14,8 @@ export interface HabitRequestV2Type {
 	unit: string;
 	firstAlert: string;
 	secondAlert: string;
+	firstAlertStatus?: string;
+	secondAlertStatus?: string;
 	isOnboarding?: boolean;
 }
 

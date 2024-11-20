@@ -1,6 +1,17 @@
 import { useState } from "react";
 
-export const useToggleTrigger = ({ toggle }: { toggle?: boolean }) => {
+import type { HabitRequestV2Type } from "@/types/habit";
+
+interface UseToggleTriggerProps {
+	toggle?: boolean;
+	updateInputValue?: <Key extends keyof HabitRequestV2Type>(
+		key: Key,
+		value: HabitRequestV2Type[Key],
+	) => void;
+	isFirst?: boolean;
+}
+
+export const useToggleTrigger = ({ toggle, updateInputValue, isFirst }: UseToggleTriggerProps) => {
 	const [isToggle, setIsToggle] = useState(toggle ?? false);
 
 	const handleToggle = (isToggle: boolean) => {
@@ -9,6 +20,8 @@ export const useToggleTrigger = ({ toggle }: { toggle?: boolean }) => {
 
 	const handleTogglePrev = () => {
 		setIsToggle((prev) => !prev);
+		updateInputValue &&
+			updateInputValue(isFirst ? "firstAlertStatus" : "secondAlertStatus", String(!isToggle));
 	};
 
 	return { isToggle, handleToggle, handleTogglePrev };

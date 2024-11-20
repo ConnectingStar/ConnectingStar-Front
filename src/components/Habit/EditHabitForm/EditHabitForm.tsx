@@ -41,8 +41,6 @@ interface EditHabitFormProps {
 const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 	const dispatch = useAppDispatch();
 
-	console.log(habit);
-
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const navigate = useNavigate();
@@ -53,19 +51,11 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 
 	const { identity, runTime, place, action, value, unit } = habit;
 
-	const [firstAlarmOn] = useState(habit.habitAlerts[0].alertStatus);
-	const [secondAlarmOn] = useState(habit.habitAlerts[1].alertStatus);
+	const [firstAlertStatus] = useState(habit.habitAlerts[0].alertStatus);
+	const [secondAlertStatus] = useState(habit.habitAlerts[1].alertStatus);
 
 	const firstAlert = habit.habitAlerts[0].alertTime;
 	const secondAlert = habit.habitAlerts[1].alertTime;
-
-	const { isToggle: firstNotiToggle, handleTogglePrev: handleFirstNotiTogglePrev } =
-		useToggleTrigger({ toggle: firstAlarmOn });
-
-	const { isToggle: secondNotiToggle, handleTogglePrev: handleSecondNotiTogglePrev } =
-		useToggleTrigger({ toggle: secondAlarmOn });
-
-	const [alarmTarget, setAlarmTarget] = useState("");
 
 	const { habitRequest, updateInputValue, handleSubmit } = useHabitForm({
 		habitId: String(habitId),
@@ -78,10 +68,25 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 			unit,
 			firstAlert,
 			secondAlert,
+			firstAlertStatus: String(firstAlertStatus),
+			secondAlertStatus: String(secondAlertStatus),
 		},
 	});
 
-	console.log(habitRequest);
+	const { isToggle: firstNotiToggle, handleTogglePrev: handleFirstNotiTogglePrev } =
+		useToggleTrigger({
+			toggle: firstAlertStatus,
+			updateInputValue,
+			isFirst: true,
+		});
+
+	const { isToggle: secondNotiToggle, handleTogglePrev: handleSecondNotiTogglePrev } =
+		useToggleTrigger({
+			toggle: secondAlertStatus,
+			updateInputValue,
+		});
+
+	const [alarmTarget, setAlarmTarget] = useState("");
 
 	return (
 		<>
