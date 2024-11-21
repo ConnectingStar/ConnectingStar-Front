@@ -21,7 +21,8 @@ export const useToggleTrigger = ({ toggle, updateInputValue, isFirst }: UseToggl
 	const handleTogglePrev = () => {
 		setIsToggle((prev) => !prev);
 		updateInputValue &&
-			updateInputValue(isFirst ? "firstAlertStatus" : "secondAlertStatus", String(!isToggle));
+			isToggle === false &&
+			updateInputValue(isFirst ? "firstAlertStatus" : "secondAlertStatus", String("true"));
 	};
 
 	return { isToggle, handleToggle, handleTogglePrev };

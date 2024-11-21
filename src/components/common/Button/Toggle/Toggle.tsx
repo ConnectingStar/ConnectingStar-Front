@@ -9,7 +9,7 @@ interface ToggleProps {
 const Toggle = ({ isToggle, handleTogglePrev, onClick }: ToggleProps) => {
 	const handleToggleClick = () => {
 		handleTogglePrev && handleTogglePrev();
-		onClick && !isToggle && onClick();
+		onClick && isToggle && onClick();
 	};
 
 	return (

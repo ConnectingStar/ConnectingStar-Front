@@ -51,9 +51,8 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 
 	const { identity, runTime, place, action, value, unit } = habit;
 
-	const [firstAlertStatus] = useState(habit.habitAlerts[0].alertStatus);
-	const [secondAlertStatus] = useState(habit.habitAlerts[1].alertStatus);
-
+	const firstAlertStatus = habit.habitAlerts[0].alertStatus;
+	const secondAlertStatus = habit.habitAlerts[1].alertStatus;
 	const firstAlert = habit.habitAlerts[0].alertTime;
 	const secondAlert = habit.habitAlerts[1].alertTime;
 
@@ -147,7 +146,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 						hasToggle
 						isToggle={firstNotiToggle}
 						onClick={() => {
-							setAlarmTarget("first");
+							setAlarmTarget("firstAlertStatus");
 							dispatch(openModal(modalType.ALARM_CHECK));
 						}}
 						onTimeClick={() => dispatch(openModal(modalType.SELECT_TIME("FIRSTALERT")))}
@@ -160,7 +159,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 						hasToggle
 						isToggle={secondNotiToggle}
 						onClick={() => {
-							setAlarmTarget("second");
+							setAlarmTarget("secondAlertStatus");
 							dispatch(openModal(modalType.ALARM_CHECK));
 						}}
 						onTimeClick={() => dispatch(openModal(modalType.SELECT_TIME("SECONDALERT")))}
@@ -171,7 +170,9 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					습관 그만두기
 				</button>
 
-				{modal === modalType.ALARM_CHECK && <AlarmCheckModal alarmTarget={alarmTarget} />}
+				{modal === modalType.ALARM_CHECK && (
+					<AlarmCheckModal alarmTarget={alarmTarget} updateInputValue={updateInputValue} />
+				)}
 
 				{modal === modalType.SELECT_IDENTITY && (
 					<SelectTagModal

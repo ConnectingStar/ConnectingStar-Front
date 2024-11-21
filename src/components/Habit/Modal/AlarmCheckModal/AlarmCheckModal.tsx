@@ -8,17 +8,23 @@ import { closeModal } from "@/api/modal/modalSlice";
 
 import { theme } from "@/styles/theme";
 
+import type { HabitRequestV2Type } from "@/types/habit";
+
 interface AlarmCheckModalProps {
 	alarmTarget: string;
+	updateInputValue: <Key extends keyof HabitRequestV2Type>(
+		key: Key,
+		value: HabitRequestV2Type[Key],
+	) => void;
 }
 
-function AlarmCheckModal({ alarmTarget }: AlarmCheckModalProps) {
+function AlarmCheckModal({ alarmTarget, updateInputValue }: AlarmCheckModalProps) {
 	const dispatch = useAppDispatch();
 
-	console.log(alarmTarget);
-
 	const handleAlarmOff = () => {
-		// alarm target -> first, second에 맞춰서 끄는 api 연결
+		alarmTarget === "firstAlertStatus"
+			? updateInputValue("firstAlertStatus", String(false))
+			: updateInputValue("secondAlertStatus", String(false));
 		dispatch(closeModal());
 	};
 
@@ -36,9 +42,7 @@ function AlarmCheckModal({ alarmTarget }: AlarmCheckModalProps) {
 					isPositionStatic
 					isTransparent
 					handleLeftBtnClick={handleAlarmOff}
-					handleBtnClick={() => {
-						dispatch(closeModal());
-					}}
+					handleBtnClick={() => dispatch(closeModal())}
 				/>
 			</div>
 		</Modal>
