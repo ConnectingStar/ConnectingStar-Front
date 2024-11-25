@@ -53,11 +53,11 @@ export const MENU_BUTTON_DATA = [
 			},
 			{
 				title: "이용약관",
-				link: "https://connecting-star.notion.site/4c168fc92ca54c66b2cd95cae28b1e6d?pvs=4",
+				link: "https://habit-buddy.notion.site/4c168fc92ca54c66b2cd95cae28b1e6d",
 			},
 			{
 				title: "개인정보 처리방침",
-				link: "https://connecting-star.notion.site/24132eec53ad457b944742e551f522b2?pvs=4",
+				link: "https://habit-buddy.notion.site/24132eec53ad457b944742e551f522b2",
 			},
 			{
 				title: "현재 버전",
