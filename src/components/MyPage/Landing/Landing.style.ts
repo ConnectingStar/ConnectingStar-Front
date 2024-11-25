@@ -21,7 +21,6 @@ export const profileImgStyle = css`
 	width: 6.25rem;
 	height: 6.25rem;
 	border-radius: 15px;
-	background-color: #d9d9d9;
 `;
 
 export const profileTextBoxStyle = css`
@@ -30,6 +29,10 @@ export const profileTextBoxStyle = css`
 
 	& > p {
 		${theme.font.header};
+	}
+
+	& > svg {
+		margin-top: 0.2rem;
 	}
 `;
 

@@ -8,7 +8,7 @@ import LogoutModal from "@/components/MyPage/Modal/LogoutModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
-import { getOnlyUserInfo } from "@/api/user/userThunk";
+import { getUserInfoV2 } from "@/api/user/userThunk";
 
 import { modalType } from "@/constants/modalConstants";
 import { MENU_BUTTON_DATA, PROFILE_BUTTON_DATA } from "@/constants/mypage";
@@ -28,7 +28,7 @@ import {
 const Landing = () => {
 	const dispatch = useAppDispatch();
 
-	const { userInfo } = useAppSelector((state) => state.user);
+	const { userProfile } = useAppSelector((state) => state.user);
 	const { modal } = useAppSelector((state) => state.modal);
 
 	const navigate = useNavigate();
@@ -36,19 +36,27 @@ const Landing = () => {
 	const isLatestVersion = true;
 
 	useEffect(() => {
-		dispatch(getOnlyUserInfo());
+		dispatch(getUserInfoV2());
 	}, []);
 
-	if (!userInfo) {
+	if (!userProfile) {
 		return <div />;
 	}
 
 	return (
 		<div css={layoutStyle}>
 			<div css={profileBoxStyle} onClick={() => navigate(PATH.MY_INFO)}>
-				<div css={profileImgStyle} />
+				<img
+					src={
+						userProfile.user.profileConstellation === null
+							? userProfile.defaultCharacterImage
+							: userProfile.user.profileConstellation.characterImage
+					}
+					alt="user 프로필 이미지"
+					css={profileImgStyle}
+				/>
 				<div css={profileTextBoxStyle}>
-					<p>{userInfo.nickname}</p>
+					<p>{userProfile.user.nickname}</p>
 					<RightArrowIcon />
 				</div>
 			</div>
