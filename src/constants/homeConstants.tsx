@@ -1,3 +1,8 @@
+import BannerWebp1 from "@/assets/image/Banner-1.webp";
+import BannerWebp2 from "@/assets/image/Banner-2.webp";
+import BannerWebp3 from "@/assets/image/Banner-3.webp";
+import BannerWebp4 from "@/assets/image/Banner-4.webp";
+import BannerWebp5 from "@/assets/image/Banner-5.webp";
 import banner01 from "@/assets/image/img-homepage-banner-01.png";
 import banner02 from "@/assets/image/img-homepage-banner-02.png";
 import banner03 from "@/assets/image/img-homepage-banner-03.png";
@@ -6,22 +11,27 @@ import banner05 from "@/assets/image/img-homepage-banner-05.png";
 
 export const adviceImages = [
 	{
+		webp: BannerWebp1,
 		src: banner01,
 		alt: "advice banner 01",
 	},
 	{
+		webp: BannerWebp2,
 		src: banner02,
 		alt: "advice banner 02",
 	},
 	{
+		webp: BannerWebp3,
 		src: banner03,
 		alt: "advice banner 03",
 	},
 	{
+		webp: BannerWebp4,
 		src: banner04,
 		alt: "advice banner 04",
 	},
 	{
+		webp: BannerWebp5,
 		src: banner05,
 		alt: "advice banner 05",
 	},

@@ -13,7 +13,7 @@ function HabitAdviceBanner() {
 		swipe: true,
 		speed: 500,
 		autoplay: true,
-		autoplaySpeed: 2000,
+		autoplaySpeed: 5000,
 	};
 
 	return (
@@ -21,7 +21,7 @@ function HabitAdviceBanner() {
 			<Slider {...settings}>
 				{adviceImages.map((image) => (
 					<div key={image.src}>
-						<img src={image.src} alt={image.alt} />
+						<img src={image.webp} alt={image.alt} />
 					</div>
 				))}
 			</Slider>
