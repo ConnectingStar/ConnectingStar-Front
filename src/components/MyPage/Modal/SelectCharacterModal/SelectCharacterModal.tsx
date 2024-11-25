@@ -16,7 +16,7 @@ import {
 } from "@/components/MyPage/Modal/SelectCharacterModal/SelectCharacterModal.style";
 
 interface SelectCharacterModalProps {
-	prevConstellation: number;
+	prevConstellation?: number;
 	constellationList: ConstellationListType[];
 }
 
@@ -26,7 +26,7 @@ const SelectCharacterModal = ({
 }: SelectCharacterModalProps) => {
 	const dispatch = useAppDispatch();
 
-	const [selectConstellation, setSelectConstellation] = useState(prevConstellation);
+	const [selectConstellation, setSelectConstellation] = useState(prevConstellation ?? "");
 
 	const handleSelectConstellation = async () => {
 		try {

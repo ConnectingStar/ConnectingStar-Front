@@ -32,6 +32,8 @@ const MyInfoPage = () => {
 	const { modal } = useAppSelector((state) => state.modal);
 	const { constellationList, userProfile } = useAppSelector((state) => state.user);
 
+	console.log(userProfile);
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -113,7 +115,11 @@ const MyInfoPage = () => {
 
 				{modal === modalType.SELECT_CHARACTER && (
 					<SelectCharacterModal
-						prevConstellation={userProfile.user.profileConstellation.constellationId}
+						prevConstellation={
+							userProfile.user.profileConstellation === null
+								? undefined
+								: userProfile.user.profileConstellation.constellationId
+						}
 						constellationList={constellationList}
 					/>
 				)}
