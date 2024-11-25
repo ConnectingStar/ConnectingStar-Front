@@ -11,7 +11,7 @@ import SelectTimeModal from "@/components/common/Modal/CommonModal/SelectTimeMod
 import AlarmCheckModal from "@/components/Habit/Modal/AlarmCheckModal/AlarmCheckModal";
 
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
-import { openModal } from "@/api/modal/modalSlice";
+import { closeModal, openModal } from "@/api/modal/modalSlice";
 
 import { SELECT_TAG_DATA } from "@/constants/modalConstants";
 import { modalType } from "@/constants/modalConstants";
@@ -96,7 +96,12 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 	return (
 		<>
 			<Header>
-				<Header.CloseButton />
+				<Header.CloseButton
+					onClick={() => {
+						navigate(PATH.HOME);
+						dispatch(closeModal());
+					}}
+				/>
 				<Header.Title>습관관리</Header.Title>
 				<Header.TextButton
 					onClick={() => {

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { createHabitV2, editHabit } from "@/api/habit/habitThunk";
 import { useAppDispatch } from "@/api/hooks";
-import { openModal } from "@/api/modal/modalSlice";
+import { closeModal, openModal } from "@/api/modal/modalSlice";
 
 import { modalType } from "@/constants/modalConstants";
 import { PATH } from "@/constants/path";
@@ -67,6 +67,7 @@ export const useHabitForm = ({ isOnboarding, habitId, initialData }: UseHabitFor
 			} else {
 				await dispatch(editHabit({ runHabitId: habitId, habitRequest })).unwrap();
 				navigate(PATH.HOME);
+				dispatch(closeModal());
 			}
 		} catch (error) {
 			console.log(error);
