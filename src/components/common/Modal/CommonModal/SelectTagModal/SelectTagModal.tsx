@@ -66,7 +66,7 @@ function SelectTagModal({
 			</Header>
 
 			<div css={wrap}>
-				<h1>{type === "action" ? "어떤 습관을 만들어 볼까요?" : "어떤 사람이 되고 싶으세요?"}</h1>
+				<h1>{type === "behavior" ? "어떤 습관을 만들어 볼까요?" : "어떤 사람이 되고 싶으세요?"}</h1>
 				<div css={tagStyle(isInputFocus)}>
 					<ul>
 						{tags.map((tag) => (
