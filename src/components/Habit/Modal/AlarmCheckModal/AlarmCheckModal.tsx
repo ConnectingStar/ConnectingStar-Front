@@ -16,15 +16,34 @@ interface AlarmCheckModalProps {
 		key: Key,
 		value: HabitRequestV2Type[Key],
 	) => void;
+	firstHandleToggle: (toggle: boolean) => void;
+	secondHandleToogle: (toggle: boolean) => void;
 }
 
-function AlarmCheckModal({ alarmTarget, updateInputValue }: AlarmCheckModalProps) {
+function AlarmCheckModal({
+	alarmTarget,
+	firstHandleToggle,
+	secondHandleToogle,
+	updateInputValue,
+}: AlarmCheckModalProps) {
 	const dispatch = useAppDispatch();
 
+	const isFirstAlarm = alarmTarget === "firstAlertStatus";
+
 	const handleAlarmOff = () => {
-		alarmTarget === "firstAlertStatus"
+		isFirstAlarm
 			? updateInputValue("firstAlertStatus", String(false))
 			: updateInputValue("secondAlertStatus", String(false));
+		dispatch(closeModal());
+	};
+
+	const handleAlarmOn = () => {
+		isFirstAlarm
+			? updateInputValue("firstAlertStatus", String(true))
+			: updateInputValue("secondAlertStatus", String(true));
+
+		isFirstAlarm ? firstHandleToggle(true) : secondHandleToogle(true);
+
 		dispatch(closeModal());
 	};
 
@@ -42,7 +61,7 @@ function AlarmCheckModal({ alarmTarget, updateInputValue }: AlarmCheckModalProps
 					isPositionStatic
 					isTransparent
 					handleLeftBtnClick={handleAlarmOff}
-					handleBtnClick={() => dispatch(closeModal())}
+					handleBtnClick={handleAlarmOn}
 				/>
 			</div>
 		</Modal>

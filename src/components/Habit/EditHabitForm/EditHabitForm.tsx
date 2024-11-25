@@ -72,18 +72,24 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 		},
 	});
 
-	const { isToggle: firstNotiToggle, handleTogglePrev: handleFirstNotiTogglePrev } =
-		useToggleTrigger({
-			toggle: firstAlertStatus,
-			updateInputValue,
-			isFirst: true,
-		});
+	const {
+		isToggle: firstNotiToggle,
+		handleToggle: firstHandleToggle,
+		handleTogglePrev: handleFirstNotiTogglePrev,
+	} = useToggleTrigger({
+		toggle: Boolean(habitRequest.firstAlertStatus),
+		updateInputValue,
+		isFirst: true,
+	});
 
-	const { isToggle: secondNotiToggle, handleTogglePrev: handleSecondNotiTogglePrev } =
-		useToggleTrigger({
-			toggle: secondAlertStatus,
-			updateInputValue,
-		});
+	const {
+		isToggle: secondNotiToggle,
+		handleToggle: secondHandleToggle,
+		handleTogglePrev: handleSecondNotiTogglePrev,
+	} = useToggleTrigger({
+		toggle: secondAlertStatus,
+		updateInputValue,
+	});
 
 	const [alarmTarget, setAlarmTarget] = useState("");
 
@@ -171,7 +177,12 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 				</button>
 
 				{modal === modalType.ALARM_CHECK && (
-					<AlarmCheckModal alarmTarget={alarmTarget} updateInputValue={updateInputValue} />
+					<AlarmCheckModal
+						alarmTarget={alarmTarget}
+						updateInputValue={updateInputValue}
+						firstHandleToggle={firstHandleToggle}
+						secondHandleToogle={secondHandleToggle}
+					/>
 				)}
 
 				{modal === modalType.SELECT_IDENTITY && (

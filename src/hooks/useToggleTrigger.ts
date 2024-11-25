@@ -12,7 +12,7 @@ interface UseToggleTriggerProps {
 }
 
 export const useToggleTrigger = ({ toggle, updateInputValue, isFirst }: UseToggleTriggerProps) => {
-	const [isToggle, setIsToggle] = useState(toggle ?? false);
+	const [isToggle, setIsToggle] = useState(toggle ?? true);
 
 	const handleToggle = (isToggle: boolean) => {
 		setIsToggle(isToggle);
