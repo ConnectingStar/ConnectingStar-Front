@@ -47,7 +47,7 @@ const HabitRecordPage = () => {
 					<p>{habitRecord.review}</p>
 				</div>
 			</main>
-			<FooterBtn text="확인" isTransparent handleBtnClick={() => navigate(PATH.HOME)} />
+			<FooterBtn text="확인" isTransparent handleBtnClick={() => navigate(PATH.MAIN)} />
 		</>
 	);
 };

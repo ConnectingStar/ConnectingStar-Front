@@ -98,7 +98,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 			<Header>
 				<Header.CloseButton
 					onClick={() => {
-						navigate(PATH.HOME);
+						navigate(PATH.MAIN);
 						dispatch(closeModal());
 					}}
 				/>

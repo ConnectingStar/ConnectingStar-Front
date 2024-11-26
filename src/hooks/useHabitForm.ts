@@ -66,7 +66,7 @@ export const useHabitForm = ({ isOnboarding, habitId, initialData }: UseHabitFor
 				dispatch(openModal(modalType.SUCCESS_GUIDE));
 			} else {
 				await dispatch(editHabit({ runHabitId: habitId, habitRequest })).unwrap();
-				navigate(PATH.HOME);
+				navigate(PATH.MAIN);
 				dispatch(closeModal());
 			}
 		} catch (error) {

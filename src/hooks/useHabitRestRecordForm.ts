@@ -39,7 +39,7 @@ export const useHabitRestRecordForm = ({ initialData }: HabitRestRecordDataType)
 	const handleSubmit = async () => {
 		try {
 			await dispatch(createHabitRestRecord(habitRestRecordRequest)).unwrap();
-			navigate(PATH.HOME);
+			navigate(PATH.MAIN);
 		} catch (error) {
 			console.log(error);
 		}

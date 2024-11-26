@@ -83,7 +83,7 @@ const SelectReason = ({
 		try {
 			await dispatch(deleteHabit({ runHabitId: param.habitId, reason })).unwrap();
 			createToast("습관을 삭제했어요. 다음 약속으로 만나요!");
-			navigate(PATH.HOME);
+			navigate(PATH.MAIN);
 		} catch (error) {
 			console.log(error);
 		}

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { logIn } from "@/api/auth/authThunk";
+import { socialLogIn } from "@/api/auth/authThunk";
 import { axiosInstance } from "@/api/axiosInstance";
 import { useAppDispatch } from "@/api/hooks";
 
@@ -19,7 +19,7 @@ function KakaoLoginPage() {
 
 	const handleLogin = async (authCode: string) => {
 		try {
-			const { data } = await dispatch(logIn(authCode)).unwrap();
+			const { data } = await dispatch(socialLogIn(authCode)).unwrap();
 
 			localStorage.setItem(ACCESS_TOKEN_KEY, data.accessToken);
 

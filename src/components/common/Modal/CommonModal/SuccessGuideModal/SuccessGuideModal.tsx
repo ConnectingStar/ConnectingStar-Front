@@ -46,7 +46,7 @@ const SuccessGuideModal = ({ title, content }: SuccessGuideModalProps) => {
 					leftText="홈 탐색하기"
 					text="별자리로 가기"
 					handleLeftBtnClick={() => {
-						navigate(PATH.HOME);
+						navigate(PATH.MAIN);
 						dispatch(closeModal());
 					}}
 					handleBtnClick={() => {

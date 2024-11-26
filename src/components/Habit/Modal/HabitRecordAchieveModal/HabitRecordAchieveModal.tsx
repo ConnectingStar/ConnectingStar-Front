@@ -55,7 +55,7 @@ const HabitRecordAchieveModal = ({ achieveStatus, identity }: HabitRecordAchieve
 								leftText="홈으로"
 								text="별자리 채우기"
 								handleLeftBtnClick={() => {
-									navigate(PATH.HOME);
+									navigate(PATH.MAIN);
 									dispatch(closeModal());
 								}}
 								handleBtnClick={() => {

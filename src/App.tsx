@@ -51,9 +51,8 @@ const App = () => {
 		<>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<HabitPage />} />
+					<Route path={PATH.MAIN} element={<HabitPage />} />
 					<Route path={PATH.HABIT_RECORD(":habitId")} element={<HabitRecordPage />} />
-					<Route path={PATH.HOME} element={<HabitPage />} />
 					<Route path={PATH.SIGN_UP} element={<SignUpPage />} />
 					<Route path={PATH.GUIDE} element={<GuidePage />} />
 					<Route path={PATH.STAR} element={<StarMainPage />} />

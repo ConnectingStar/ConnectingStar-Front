@@ -18,7 +18,7 @@ export default function NotFoundPage() {
 			<img src={NotFoundCharacter} alt="도망가는 타스" />
 			<h1>잘못된 접근입니다.</h1>
 			<p>찾으시는 페이지가 존재하지 않아요😅</p>
-			<FooterBtn text="홈으로" handleBtnClick={() => navigate(PATH.HOME)} />
+			<FooterBtn text="홈으로" handleBtnClick={() => navigate(PATH.MAIN)} />
 		</div>
 	);
 }

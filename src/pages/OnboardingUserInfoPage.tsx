@@ -37,7 +37,7 @@ const OnboardingUserInfoPage = () => {
 	}, []);
 
 	useEffect(() => {
-		isOnboarding && navigate(PATH.HOME);
+		isOnboarding && navigate(PATH.MAIN);
 	}, [isOnboarding]);
 
 	return (

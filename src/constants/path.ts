@@ -1,5 +1,6 @@
 export const PATH = {
-	HOME: "/",
+	GUIDE: "/",
+	MAIN: "/main",
 	CREATE_HABIT: "/habit-new",
 	CHART: "/chart",
 	MY: "/mypage",
@@ -7,7 +8,6 @@ export const PATH = {
 	STAR: "/star",
 	STAR_CARD: "/star-card",
 	SIGN_UP: "/sign-up",
-	GUIDE: "/guide",
 	ONBOARDING_USER_INFO: "/onboarding/user-info",
 	ONBOARDING_HABIT: "/onboarding/habit",
 	LOGIN_KAKAO: "/oauth2/kakao",

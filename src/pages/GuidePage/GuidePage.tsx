@@ -5,6 +5,7 @@ import { css } from "@emotion/react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 
+import { ACCESS_TOKEN_KEY } from "@/constants/api";
 import { GUIDE_DATA } from "@/constants/onboarding";
 import { PATH } from "@/constants/path";
 
@@ -14,6 +15,12 @@ const GuidePage = () => {
 	const [guideStep, setGuideStep] = useState(0);
 
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (localStorage.getItem(ACCESS_TOKEN_KEY)) {
+			navigate(PATH.MAIN);
+		}
+	}, []);
 
 	useEffect(() => {
 		if (guideStep === 3) {

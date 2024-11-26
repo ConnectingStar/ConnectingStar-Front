@@ -55,7 +55,7 @@ const OnboardingHabitPage = () => {
 	}, []);
 
 	useEffect(() => {
-		isOnboarding && navigate(PATH.HOME);
+		isOnboarding && navigate(PATH.MAIN);
 	}, [isOnboarding]);
 
 	return (
