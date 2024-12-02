@@ -20,7 +20,12 @@ import {
 	homeButtonBoxStyle,
 } from "@/components/MyPage/NotificationSetting/NotificationSetting.style";
 
-const NotificationSetting = () => {
+interface NotificationSettingProps {
+	identity: string;
+	nickname: string;
+}
+
+const NotificationSetting = ({ identity, nickname }: NotificationSettingProps) => {
 	const dispatch = useAppDispatch();
 
 	const { modal } = useAppSelector((state) => state.modal);
@@ -61,10 +66,13 @@ const NotificationSetting = () => {
 
 			<div css={notificationBoxStyle}>
 				<h3>1차 알림과 2차 알림</h3>
-				<ToggleButton title="1차 알림" subTitle="곧 약속 시간이에요 :) 성장하는 세림님 화이팅!" />
+				<ToggleButton
+					title="1차 알림"
+					subTitle={`${identity} ${nickname}님, 곧 약속 시간이에요!\n오늘도 꾸준한 습관을 응원합니다😊`}
+				/>
 				<ToggleButton
 					title="2차 알림"
-					subTitle="오늘의 실천 결과는 어땠나요? 기록을 남기고 별 받아 가세요!"
+					subTitle={`${nickname}님, 오늘 약속은 어떠셨나요?\n실천과 휴식을 기록하면 정체성이 강화됩니다💪`}
 				/>
 				<div css={homeButtonBoxStyle}>
 					<h3>습관별로 관리하고 싶나요?</h3>
@@ -77,7 +85,7 @@ const NotificationSetting = () => {
 				<h3>3차 알림</h3>
 				<ToggleButton
 					title="3차 알림"
-					subTitle="곧 기록 시간이 마감돼요. 어제 기록이 입력되지 않았어요. 기록을 남기고 별을 꼭 받아 가세요!"
+					subTitle={`앗.. 어제 습관 기록이 없네요😥\n마감(자정) 전에 남기고 정체성 강화하기!`}
 					hasToggle
 					isToggle={notiToggle}
 					handleTogglePrev={handleNotiTogglePrev}

@@ -14,6 +14,7 @@ export const getLayoutStyle = (isDateText: boolean | undefined, hasToggle?: bool
 		${!isDateText ? theme.font.body_c : theme.font.body_a};
 		margin-top: 0.125rem;
 		max-width: ${hasToggle ? "13.625rem" : ""};
+		white-space: pre-line;
 	}
 
 	& > button {
