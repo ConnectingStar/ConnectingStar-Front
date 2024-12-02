@@ -9,10 +9,16 @@ interface UseToggleTriggerProps {
 		value: HabitRequestV2Type[Key],
 	) => void;
 	isFirst?: boolean;
+	isPause?: boolean;
 }
 
-export const useToggleTrigger = ({ toggle, updateInputValue, isFirst }: UseToggleTriggerProps) => {
-	const [isToggle, setIsToggle] = useState(toggle ?? true);
+export const useToggleTrigger = ({
+	toggle,
+	updateInputValue,
+	isFirst,
+	isPause,
+}: UseToggleTriggerProps) => {
+	const [isToggle, setIsToggle] = useState(toggle ?? isPause ? false : true);
 
 	const handleToggle = (isToggle: boolean) => {
 		setIsToggle(isToggle);

@@ -31,7 +31,7 @@ const NotificationSetting = () => {
 		isToggle: isStopHabitToggle,
 		handleToggle: handleStopHabitToggle,
 		handleTogglePrev: handleStopHabitTogglePrev,
-	} = useToggleTrigger({});
+	} = useToggleTrigger({ isPause: true });
 
 	const { isToggle: notiToggle, handleTogglePrev: handleNotiTogglePrev } = useToggleTrigger({});
 
@@ -55,6 +55,7 @@ const NotificationSetting = () => {
 					isTextVisible
 					onClick={() => dispatch(openModal(modalType.STOP_HABIT))}
 					handleTogglePrev={handleStopHabitTogglePrev}
+					isPause
 				/>
 			</div>
 

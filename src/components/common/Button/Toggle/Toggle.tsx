@@ -4,12 +4,13 @@ interface ToggleProps {
 	isToggle?: boolean;
 	handleTogglePrev?: () => void;
 	onClick?: () => void;
+	isPause?: boolean;
 }
 
-const Toggle = ({ isToggle, handleTogglePrev, onClick }: ToggleProps) => {
+const Toggle = ({ isToggle, handleTogglePrev, onClick, isPause }: ToggleProps) => {
 	const handleToggleClick = () => {
 		handleTogglePrev && handleTogglePrev();
-		onClick && isToggle && onClick();
+		onClick && (isPause ? onClick() : isToggle && onClick());
 	};
 
 	return (

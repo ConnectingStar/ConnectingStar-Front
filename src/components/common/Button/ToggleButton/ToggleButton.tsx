@@ -13,6 +13,7 @@ interface buttonType {
 	isToggle?: boolean;
 	isDateText?: boolean;
 	isTextVisible?: boolean;
+	isPause?: boolean;
 	onClick?: () => void;
 	onTimeClick?: () => void;
 	handleTogglePrev?: () => void;
@@ -26,6 +27,7 @@ const ToggleButton = ({
 	isToggle,
 	isDateText,
 	isTextVisible,
+	isPause,
 	onClick,
 	onTimeClick,
 	handleTogglePrev,
@@ -39,7 +41,12 @@ const ToggleButton = ({
 				</h3>
 
 				{hasToggle && (
-					<Toggle isToggle={isToggle} handleTogglePrev={handleTogglePrev} onClick={onClick} />
+					<Toggle
+						isToggle={isToggle}
+						handleTogglePrev={handleTogglePrev}
+						onClick={onClick}
+						isPause={isPause}
+					/>
 				)}
 			</div>
 			{isTextVisible ? isToggle && <h4>{subTitle}</h4> : <h4>{subTitle}</h4>}
