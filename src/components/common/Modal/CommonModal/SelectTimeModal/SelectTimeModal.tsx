@@ -2,12 +2,13 @@ import { useState } from "react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import TimePicker from "@/components/common/Modal/CommonModal/SelectTimeModal/TimePicker/TimePicker";
+import TimeTextInput from "@/components/common/Modal/CommonModal/SelectTimeModal/TimeTextInput/TimeTextInput";
 import Modal from "@/components/common/Modal/Modal";
 
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/time";
+import { NOON_LIST, MINUTE_LIST } from "@/constants/time";
 
 import { useToast } from "@/hooks/useToast";
 
@@ -143,7 +144,8 @@ function SelectTimeModal({
 					</div>
 
 					<div className="timeBox">
-						<TimePicker valueKey="hour" list={HOUR_LIST} handleChangeTime={handleChangeTime} />
+						<TimeTextInput />
+						{/* <TimePicker valueKey="hour" list={HOUR_LIST} handleChangeTime={handleChangeTime} /> */}
 						<p>:</p>
 						<TimePicker valueKey="minute" list={MINUTE_LIST} handleChangeTime={handleChangeTime} />
 					</div>
