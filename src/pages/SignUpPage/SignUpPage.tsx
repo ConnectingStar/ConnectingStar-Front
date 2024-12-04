@@ -2,7 +2,7 @@ import GoogleIcon from "@/assets/icon/ic-signup.google.svg?react";
 import KakaoIcon from "@/assets/icon/ic-signup.kakao.svg?react";
 import LogoImg from "@/assets/image/img-logo-black.png";
 
-import { OAUTH_KAKAO_URL } from "@/constants/api";
+import { OAUTH_GOOGLE_URL, OAUTH_KAKAO_URL } from "@/constants/api";
 
 import {
 	layoutStyle,
@@ -21,7 +21,7 @@ const SignUpPage = () => {
 						<KakaoIcon />
 						카카오로 계속하기
 					</button>
-					<button type="button">
+					<button type="button" onClick={() => window.location.assign(OAUTH_GOOGLE_URL)}>
 						<GoogleIcon />
 						구글로 계속하기
 					</button>

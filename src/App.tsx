@@ -12,6 +12,7 @@ import { handleAllowNotification } from "@/utils/notification";
 import ChartPage from "@/pages/ChartPage";
 import CreateHabitPage from "@/pages/CreateHabitPage/CreateHabitPage";
 import EditHabitPage from "@/pages/EditHabitPage/EditHabitPage";
+import GoogleLoginPage from "@/pages/GoogleLoginPage";
 import GuidePage from "@/pages/GuidePage/GuidePage";
 import HabitDeletePage from "@/pages/HabitDeletePage";
 import HabitGuidePage from "@/pages/HabitGuidePage/HabitGuidePage";
@@ -72,6 +73,7 @@ const App = () => {
 					<Route path={PATH.ONBOARDING_HABIT} element={<OnboardingHabitPage />} />
 					<Route path={PATH.DELETE_HABIT(":habitId")} element={<HabitDeletePage />} />
 					<Route path={PATH.ONBOARDING_USER_INFO} element={<OnboardingUserInfoPage />} />
+					<Route path={PATH.LOGIN_GOOGLE} element={<GoogleLoginPage />} />
 					<Route path={PATH.LOGIN_KAKAO} element={<KakaoLoginPage />} />
 					<Route
 						path={PATH.PRACTICE_RECORD(":habitId", ":year", ":month", ":date")}

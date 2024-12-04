@@ -10,11 +10,18 @@ interface WithdrawalRequestType {
 	deletedDt: string;
 }
 
+type SocialType = "G" | "K";
+
+interface SocialLoginProps {
+	authCode: string;
+	socialType: SocialType;
+}
+
 export const socialLogIn = createAsyncThunk(
 	"auth/logIn",
-	async (authCode: string, thunkOptions) => {
+	async ({ authCode, socialType }: SocialLoginProps, thunkOptions) => {
 		try {
-			const { data } = await axiosInstance.post(END_POINTS.LOGIN, { socialType: "K", authCode });
+			const { data } = await axiosInstance.post(END_POINTS.LOGIN, { socialType, authCode });
 
 			return data;
 		} catch (error) {

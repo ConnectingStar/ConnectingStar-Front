@@ -11,6 +11,7 @@ export const PATH = {
 	ONBOARDING_USER_INFO: "/onboarding/user-info",
 	ONBOARDING_HABIT: "/onboarding/habit",
 	LOGIN_KAKAO: "/oauth2/kakao",
+	LOGIN_GOOGLE: "/oauth2/google",
 	REST_RECORD: (habitId: string, year: string, month: string, date: string) =>
 		`/rest-record/${habitId}/${year}/${month}/${date}`,
 	PRACTICE_RECORD: (habitId: string, year: string, month: string, date: string) =>

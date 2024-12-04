@@ -63,3 +63,5 @@ export const END_POINTS = {
 };
 
 export const OAUTH_KAKAO_URL = `${BASE_URL}/oauth/code/url?socialType=K`;
+
+export const OAUTH_GOOGLE_URL = `${BASE_URL}/oauth/code/url?socialType=G`;

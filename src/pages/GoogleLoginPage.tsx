@@ -8,7 +8,7 @@ import { useAppDispatch } from "@/api/hooks";
 import { ACCESS_TOKEN_KEY } from "@/constants/api";
 import { PATH } from "@/constants/path";
 
-function KakaoLoginPage() {
+const GoogleLoginPage = () => {
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
@@ -19,7 +19,7 @@ function KakaoLoginPage() {
 
 	const handleLogin = async (authCode: string) => {
 		try {
-			const { data } = await dispatch(socialLogIn({ authCode, socialType: "K" })).unwrap();
+			const { data } = await dispatch(socialLogIn({ authCode, socialType: "G" })).unwrap();
 
 			localStorage.setItem(ACCESS_TOKEN_KEY, data.accessToken);
 
@@ -39,6 +39,6 @@ function KakaoLoginPage() {
 	}, [authCode]);
 
 	return <div />;
-}
+};
 
-export default KakaoLoginPage;
+export default GoogleLoginPage;
