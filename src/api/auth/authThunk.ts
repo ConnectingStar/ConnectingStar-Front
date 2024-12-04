@@ -4,13 +4,13 @@ import { axiosInstance, authorizedAxiosInstance } from "@/api/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
+import type { SocialType } from "@/types/user";
+
 interface WithdrawalRequestType {
 	reason: string;
 	content: string;
 	deletedDt: string;
 }
-
-type SocialType = "G" | "K";
 
 interface SocialLoginProps {
 	authCode: string;

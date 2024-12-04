@@ -16,10 +16,12 @@ interface UserProfileType {
 	defaultCharacterImage: string;
 }
 
+export type SocialType = "G" | "K";
+
 export interface UserInfoType {
 	id: number;
 	email: string;
-	socialType: "KAKAO";
+	socialType: SocialType;
 	nickname: string;
 	ageRange: string;
 	gender: string;
