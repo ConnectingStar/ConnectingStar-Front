@@ -19,6 +19,8 @@ self.addEventListener("push", function (e) {
 
 	const notificationOptions = {
 		body: resultData.body,
+		icon: "/assets/icon-192.png",
+		badge: "/assets/android-notification-icon.png",
 	};
 
 	console.log(resultData.title, {
