@@ -61,7 +61,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 				</ul>
 				<input
 					css={locationInputStyle}
-					type="text"
+					type="search"
 					placeholder="직접입력"
 					maxLength={10}
 					value={place}

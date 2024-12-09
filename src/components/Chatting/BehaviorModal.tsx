@@ -62,14 +62,15 @@ function BehaviorModal({
 						<h3>얼마나</h3>
 						<form>
 							<input
-								type="number"
+								type="search"
+								inputMode="decimal"
 								placeholder="숫자 입력"
 								autoFocus
 								value={value || ""}
 								onChange={(e) => setValue(Number(e.target.value))}
 							/>
 							<input
-								type="text"
+								type="search"
 								placeholder="단위 입력 (예: 페이지)"
 								value={unit}
 								onChange={(e) => setUnit(e.target.value)}
@@ -127,6 +128,13 @@ const wrap = css`
 			padding: 1rem;
 			::placeholder {
 				color: ${theme.color.button_deactivated};
+			}
+
+			::-webkit-search-decoration,
+			::-webkit-search-cancel-button,
+			::-webkit-search-results-button,
+			::-webkit-search-results-decoration {
+				display: none;
 			}
 		}
 

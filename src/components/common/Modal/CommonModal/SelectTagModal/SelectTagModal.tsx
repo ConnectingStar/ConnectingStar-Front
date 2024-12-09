@@ -80,7 +80,7 @@ function SelectTagModal({
 						))}
 					</ul>
 					<input
-						type="text"
+						type="search"
 						placeholder="직접입력"
 						maxLength={10}
 						className={!selectedTag && inputText !== "" ? "selected" : ""}

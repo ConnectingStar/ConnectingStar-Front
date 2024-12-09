@@ -57,6 +57,13 @@ export const tagStyle = (isInputFocus: boolean) => css`
 			background-color: ${theme.color.bg};
 			color: black;
 		}
+
+		::-webkit-search-decoration,
+		::-webkit-search-cancel-button,
+		::-webkit-search-results-button,
+		::-webkit-search-results-decoration {
+			display: none;
+		}
 	}
 
 	.selected {

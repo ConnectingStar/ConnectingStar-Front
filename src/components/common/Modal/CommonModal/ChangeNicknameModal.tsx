@@ -55,6 +55,7 @@ const ChangeNicknameModal = ({ prevNickname, updateInputValue }: ChangeNicknameM
 			<div css={layoutStyle}>
 				<h1>닉네임을 입력해 주세요</h1>
 				<input
+					type="search"
 					placeholder="닉네임을 입력해 주세요"
 					value={nickname}
 					onChange={(e) => handleNicknameChange(e)}
@@ -101,6 +102,13 @@ const layoutStyle = css`
 		margin: 1.6875rem 0 0.5rem;
 		background-color: ${theme.color.bg};
 		color: ${theme.color.font_black};
+
+		::-webkit-search-decoration,
+		::-webkit-search-cancel-button,
+		::-webkit-search-results-button,
+		::-webkit-search-results-decoration {
+			display: none;
+		}
 	}
 
 	& > div {
