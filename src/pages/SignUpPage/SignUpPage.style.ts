@@ -7,8 +7,13 @@ export const layoutStyle = css`
 	justify-content: center;
 	width: 22.5rem;
 	height: 100dvh;
-	padding: 3.438rem 1.5rem 0;
+	padding: env(safe-area-inset-top) 1.5rem 0;
 	margin: 0 auto;
+
+	// NOTE: iOS PWA에서 dvh 단위 적용 시 하단 여백 생겨서 추가
+	@media (display-mode: standalone) {
+		height: 100vh;
+	}
 `;
 
 export const boxStyle = css`
@@ -17,11 +22,11 @@ export const boxStyle = css`
 	align-items: center;
 	justify-content: flex-end;
 	width: 100%;
-	margin-bottom: 6.875rem;
-	gap: 12.5rem;
+	margin-bottom: 10.125rem;
 
 	img[alt="logo"] {
 		width: 18.4375rem;
+		margin: auto 0;
 	}
 `;
 
@@ -52,7 +57,7 @@ export const buttonBoxStyle = css`
 
 export const privacyBoxStyle = css`
 	position: fixed;
-	bottom: 1.25rem;
+	bottom: 3.125rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
