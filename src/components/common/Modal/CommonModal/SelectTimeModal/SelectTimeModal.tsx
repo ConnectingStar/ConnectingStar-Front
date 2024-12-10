@@ -8,8 +8,6 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import { NOON_LIST } from "@/constants/time";
-
 import { useToast } from "@/hooks/useToast";
 
 import {
@@ -27,6 +25,8 @@ import {
 	layoutStyle,
 	timeBoxStyle,
 } from "@/components/common/Modal/CommonModal/SelectTimeModal/SelectTimeModal.style";
+
+const NOON_LIST = ["오전", "오후"];
 
 interface selectTimeModalType {
 	title?: string;
