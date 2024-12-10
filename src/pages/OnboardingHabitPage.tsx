@@ -24,6 +24,8 @@ import { useHabitForm } from "@/hooks/useHabitForm";
 
 import { theme } from "@/styles/theme";
 
+import { convertFromTimeString } from "@/utils/time";
+
 const OnboardingHabitPage = () => {
 	const dispatch = useAppDispatch();
 
@@ -110,6 +112,7 @@ const OnboardingHabitPage = () => {
 					addprogress={() => setProgress((prev) => prev + 1)}
 					updateInputValue={updateInputValue}
 					runTime={habitRequest.runTime}
+					prevTime={convertFromTimeString(habitRequest.runTime)}
 				/>
 			)}
 			{modal === modalType.SELECT_PLACE && (
@@ -134,6 +137,7 @@ const OnboardingHabitPage = () => {
 				<SelectTimeModal
 					title="1차 알림시간을 선택해 주세요"
 					runTime={habitRequest.runTime}
+					prevTime={convertFromTimeString(habitRequest.firstAlert)}
 					updateInputValue={updateInputValue}
 				/>
 			)}
@@ -141,6 +145,7 @@ const OnboardingHabitPage = () => {
 				<SelectTimeModal
 					title="2차 알림시간을 선택해 주세요"
 					runTime={habitRequest.runTime}
+					prevTime={convertFromTimeString(habitRequest.secondAlert)}
 					updateInputValue={updateInputValue}
 				/>
 			)}

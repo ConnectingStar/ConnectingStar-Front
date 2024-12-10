@@ -8,7 +8,7 @@ import Modal from "@/components/common/Modal/Modal";
 import { useAppDispatch } from "@/api/hooks";
 import { closeModal } from "@/api/modal/modalSlice";
 
-import { NOON_LIST, MINUTE_LIST } from "@/constants/time";
+import { NOON_LIST } from "@/constants/time";
 
 import { useToast } from "@/hooks/useToast";
 
@@ -32,6 +32,7 @@ interface selectTimeModalType {
 	title?: string;
 	progress?: number;
 	runTime?: string;
+	prevTime?: string;
 	addprogress?: () => void;
 	updateInputValue?: <Key extends keyof HabitRequestV2Type>(
 		key: Key,
@@ -44,6 +45,7 @@ function SelectTimeModal({
 	title,
 	progress,
 	runTime,
+	prevTime,
 	addprogress,
 	updateInputValue,
 	handleChangeRunTime,
@@ -52,7 +54,15 @@ function SelectTimeModal({
 
 	const { createToast } = useToast();
 
-	const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
+	const prevFormatTime = prevTime
+		? {
+				noon: prevTime.split(" ")[0],
+				hour: prevTime.split(" ")[1].split(":")[0],
+				minute: prevTime.split(" ")[1].split(":")[1],
+			}
+		: { noon: "오전", hour: "00", minute: "00" };
+
+	const [selectTime, setSelectTime] = useState(prevFormatTime);
 
 	const handleChangeTime = (target: string, value: string) => {
 		setSelectTime({ ...selectTime, [target]: value });
@@ -144,10 +154,18 @@ function SelectTimeModal({
 					</div>
 
 					<div className="timeBox">
-						<TimeTextInput />
-						{/* <TimePicker valueKey="hour" list={HOUR_LIST} handleChangeTime={handleChangeTime} /> */}
+						<TimeTextInput
+							valueKey="hour"
+							selectTime={selectTime.hour}
+							handleChangeTime={handleChangeTime}
+						/>
+
 						<p>:</p>
-						<TimePicker valueKey="minute" list={MINUTE_LIST} handleChangeTime={handleChangeTime} />
+						<TimeTextInput
+							valueKey="minute"
+							selectTime={selectTime.minute}
+							handleChangeTime={handleChangeTime}
+						/>
 					</div>
 				</div>
 

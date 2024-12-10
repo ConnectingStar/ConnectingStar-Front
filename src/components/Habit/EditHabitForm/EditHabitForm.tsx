@@ -93,6 +93,8 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 
 	const [alarmTarget, setAlarmTarget] = useState("");
 
+	console.log(habitRequest.firstAlert);
+
 	return (
 		<>
 			<Header>
@@ -199,11 +201,17 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 					/>
 				)}
 				{modal === modalType.SELECT_TIME("RUNTIME") && (
-					<SelectTimeModal title="시간을 선택해 주세요" updateInputValue={updateInputValue} />
+					<SelectTimeModal
+						title="시간을 선택해 주세요"
+						prevTime={convertFromTimeString(habitRequest.runTime)}
+						updateInputValue={updateInputValue}
+						runTime={habitRequest.runTime}
+					/>
 				)}
 				{modal == modalType.SELECT_TIME("FIRSTALERT") && (
 					<SelectTimeModal
 						title="1차 알림시간을 선택해 주세요"
+						prevTime={convertFromTimeString(habitRequest.firstAlert)}
 						updateInputValue={updateInputValue}
 						runTime={habitRequest.runTime}
 					/>
@@ -211,6 +219,7 @@ const EditHabitForm = ({ habitId, habit, nickname }: EditHabitFormProps) => {
 				{modal == modalType.SELECT_TIME("SECONDALERT") && (
 					<SelectTimeModal
 						title="2차 알림시간을 선택해 주세요"
+						prevTime={convertFromTimeString(habitRequest.secondAlert)}
 						updateInputValue={updateInputValue}
 						runTime={habitRequest.runTime}
 					/>

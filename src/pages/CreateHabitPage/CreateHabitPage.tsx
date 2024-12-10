@@ -26,6 +26,8 @@ import { SELECT_TAG_DATA } from "@/constants/modalConstants";
 
 import { useHabitForm } from "@/hooks/useHabitForm";
 
+import { convertFromTimeString } from "@/utils/time";
+
 import {
 	layoutStyle,
 	profileBoxStyle,
@@ -121,19 +123,25 @@ const CreateHabitPage = () => {
 					/>
 				)}
 				{modal === modalType.SELECT_TIME("RUNTIME") && (
-					<SelectTimeModal title="시간을 선택해 주세요" updateInputValue={updateInputValue} />
+					<SelectTimeModal
+						title="시간을 선택해 주세요"
+						updateInputValue={updateInputValue}
+						prevTime={convertFromTimeString(habitRequest.runTime)}
+					/>
 				)}
 				{modal == modalType.SELECT_TIME("FIRSTALERT") && (
 					<SelectTimeModal
 						title="1차 알림시간을 선택해 주세요"
 						updateInputValue={updateInputValue}
 						runTime={habitRequest.runTime}
+						prevTime={convertFromTimeString(habitRequest.firstAlert)}
 					/>
 				)}
 				{modal == modalType.SELECT_TIME("SECONDALERT") && (
 					<SelectTimeModal
 						title="2차 알림시간을 선택해 주세요"
 						updateInputValue={updateInputValue}
+						prevTime={convertFromTimeString(habitRequest.secondAlert)}
 						runTime={habitRequest.runTime}
 					/>
 				)}

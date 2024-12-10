@@ -38,6 +38,8 @@ interface PracticeRecordProps {
 const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 	const dispatch = useAppDispatch();
 
+	console.log(habitData);
+
 	const { userInfo } = useAppSelector((state) => state.user);
 	const { modal } = useAppSelector((state) => state.modal);
 
@@ -193,7 +195,12 @@ const PracticeRecord = ({ habitData }: PracticeRecordProps) => {
 			)}
 
 			{modal === modalType.SELECT_TIME("RUNTIME") && (
-				<SelectTimeModal title="시간을 선택해 주세요" handleChangeRunTime={handleChangeRunTime} />
+				<SelectTimeModal
+					title="시간을 선택해 주세요"
+					handleChangeRunTime={handleChangeRunTime}
+					runTime={habitData.runTime}
+					prevTime={convertFromTimeString(habitData.runTime)}
+				/>
 			)}
 		</main>
 	);

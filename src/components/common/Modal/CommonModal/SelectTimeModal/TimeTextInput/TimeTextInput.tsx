@@ -1,15 +1,17 @@
-import { useState } from "react";
-
 import {
 	listStyle,
 	inputStyle,
 } from "@/components/common/Modal/CommonModal/SelectTimeModal/TimeTextInput/TimeTextInput.style";
 
-const TimeTextInput = () => {
-	const [inputNum, setInputNum] = useState<number>(0);
+interface TimeTextInputProps {
+	valueKey: string;
+	selectTime: string;
+	handleChangeTime: (target: string, value: string) => void;
+}
 
+const TimeTextInput = ({ valueKey, selectTime, handleChangeTime }: TimeTextInputProps) => {
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setInputNum(Number(e.target.value));
+		handleChangeTime(valueKey, e.target.value);
 	};
 
 	const handleInputMaxLength = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +25,7 @@ const TimeTextInput = () => {
 				css={inputStyle}
 				maxLength={2}
 				type="number"
-				value={inputNum}
+				value={selectTime}
 				onChange={handleChangeInput}
 				onInput={handleInputMaxLength}
 			/>
