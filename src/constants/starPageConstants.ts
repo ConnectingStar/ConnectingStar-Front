@@ -14,7 +14,7 @@ export const categoryData = [
 ];
 
 export const STARLIGHT = {
-	ON: "0 0 0 0 0 0 0 0 0 0.4 0 0 0 0 1 0 0 0 0.95 0",
+	ON: "0 0 0 0 1 0 0 0 0 0.8 0 0 0 0 0.2 0 0 0 1 0",
 	OFF: "0",
 };
 

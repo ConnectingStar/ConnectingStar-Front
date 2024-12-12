@@ -6,13 +6,15 @@ import { Svg } from "@/types/star";
 
 import { STARLIGHT } from "@/constants/starPageConstants";
 
+import { theme } from "@/styles/theme";
+
 interface StarCharacterProps {
 	svgData: Svg;
 	image: string;
 }
 
 export default function StarCharacter({ svgData, image }: StarCharacterProps) {
-	const { viewBox, fill, opacity, stroke, strokeWidth, path, circleList: circle } = svgData;
+	const { viewBox, opacity, stroke, strokeWidth, path, circleList: circle } = svgData;
 
 	return (
 		<div css={containerStyle}>
@@ -33,16 +35,16 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 							cy={circle.cy}
 							animate={{
 								r: circle.filled ? circle.r - 1 : circle.r,
-								fill: circle.filled ? "#fff" : fill,
+								fill: circle.filled ? "#fff" : theme.color.main_deep_blue,
 								stroke: circle.filled ? "#ffffff0" : stroke,
-								strokeWidth: circle.filled ? 0 : strokeWidth,
+								strokeWidth: circle.filled ? 0 : 1,
 							}}
 							transition={{ duration: 0.3, ease: "easeIn" }}
 						/>
 						{circle.filled && (
 							<defs>
 								<filter id={`shadow${index}`} filterUnits="userSpaceOnUse">
-									<feFlood floodColor="#00B2FF" />
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
 									<feMorphology radius="3" operator="dilate" in="SourceAlpha" />
 									<feGaussianBlur stdDeviation="5" />
 									<motion.feColorMatrix
