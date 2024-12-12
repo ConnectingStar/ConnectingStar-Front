@@ -15,12 +15,16 @@ self.addEventListener("push", function (e) {
 	if (!e.data.json()) return;
 
 	const resultData = e.data.json().notification;
+	const notificationUrl = e.data.json().data.click_action;
 	const notificationTitle = resultData.title;
 
 	const notificationOptions = {
 		body: resultData.body,
 		icon: "/assets/icon-192.png",
 		badge: "/assets/android-notification-icon.png",
+		data: {
+			notificationUrl,
+		},
 	};
 
 	console.log(resultData.title, {
@@ -28,4 +32,32 @@ self.addEventListener("push", function (e) {
 	});
 
 	e.waitUntil(self.registration.showNotification(notificationTitle, notificationOptions));
+});
+
+self.addEventListener("notificationclick", (e) => {
+	e.notification.close();
+
+	const notificationUrl = new URL(e.notification.data.notificationUrl);
+
+	const focusOrOpenWindow = async () => {
+		const clientList = await clients.matchAll({
+			type: "window",
+			includeUncontrolled: true,
+		});
+
+		const matchingClient = clientList.find((client) => {
+			const clientUrl = new URL(client.url);
+			return clientUrl.origin === notificationUrl.origin;
+		});
+
+		if (!matchingClient) {
+			return clients.openWindow(notificationUrl);
+		}
+
+		if ("focus" in matchingClient) {
+			return matchingClient.focus();
+		}
+	};
+
+	e.waitUntil(focusOrOpenWindow());
 });
