@@ -10,15 +10,7 @@ export const container = css`
 	height: 100vh;
 	background-color: white;
 	z-index: ${theme.zIndex.overlayMiddle};
-`;
-
-export const wrapper = (visualViewportHeight: number) => css`
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: ${visualViewportHeight ? `${visualViewportHeight}px` : "100%"};
-	overscroll-behavior: contain; // 스크롤 체이닝 방지
+	overscroll-behavior: contain;
 	overflow-y: auto;
 `;
 
@@ -69,7 +61,7 @@ export const locationInputStyle = css`
 		outline: none;
 		background-color: ${theme.color.bg};
 		color: black;
-		margin-bottom: 75px;
+		margin-bottom: 4.6875rem;
 	}
 
 	::-webkit-search-decoration,
