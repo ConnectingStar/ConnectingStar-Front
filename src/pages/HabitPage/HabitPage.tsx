@@ -13,6 +13,7 @@ import Profile from "@/components/Habit/Profile/Profile";
 
 import { getHabitRecordOneDay } from "@/api/habit/habitThunk";
 import { useAppDispatch, useAppSelector } from "@/api/hooks";
+import { getIsOnboarding } from "@/api/user/userThunk";
 
 import { WEEK, TODAY } from "@/constants/calendar";
 import { PATH } from "@/constants/path";
@@ -34,6 +35,7 @@ const HabitPage = () => {
 	const dispatch = useAppDispatch();
 
 	const { habitRecordOneDay } = useAppSelector((state) => state.habit);
+	const { isOnboarding } = useAppSelector((state) => state.user);
 
 	const navigate = useNavigate();
 
@@ -57,6 +59,14 @@ const HabitPage = () => {
 	useEffect(() => {
 		dispatch(getHabitRecordOneDay(`${selectedDate.year}-${formatMonth}-${formatDate}`));
 	}, [selectedDate]);
+
+	useEffect(() => {
+		dispatch(getIsOnboarding());
+	}, []);
+
+	useEffect(() => {
+		!isOnboarding && navigate(PATH.ONBOARDING_USER_INFO);
+	}, [isOnboarding]);
 
 	return (
 		<>
