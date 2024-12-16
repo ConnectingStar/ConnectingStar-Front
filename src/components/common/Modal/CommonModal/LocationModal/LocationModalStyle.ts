@@ -11,9 +11,20 @@ export const container = css`
 	background-color: white;
 	z-index: ${theme.zIndex.overlayMiddle};
 `;
-export const wrap = css`
+
+export const wrapper = (visualViewportHeight: number) => css`
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: ${visualViewportHeight ? `${visualViewportHeight}px` : "100%"};
+	overscroll-behavior: contain; // 스크롤 체이닝 방지
+	overflow-y: auto;
+`;
+
+export const contents = css`
 	width: 22.5rem;
-	padding: calc(4.75rem + env(safe-area-inset-top)) 1.5rem;
+	padding: calc(4.75rem + env(safe-area-inset-top)) 1.5rem 0;
 	margin: 0 auto;
 	& > h1 {
 		margin-bottom: 2.5rem;
@@ -55,11 +66,10 @@ export const locationInputStyle = css`
 	}
 
 	&:focus {
-		position: fixed;
-		bottom: 4.688rem;
 		outline: none;
 		background-color: ${theme.color.bg};
 		color: black;
+		margin-bottom: 75px;
 	}
 
 	::-webkit-search-decoration,
