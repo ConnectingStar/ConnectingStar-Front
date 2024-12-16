@@ -60,8 +60,6 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 			const visualViewportHeight = visualViewport.height;
 			const visualViewportOffsetTop = visualViewport.offsetTop;
 
-			modalRef.current?.scrollTo(0, 1500);
-
 			if (window.innerHeight > visualViewportHeight) {
 				setVisualViewportOffsetTop(visualViewportOffsetTop);
 				setVisualViewport(visualViewportHeight);
