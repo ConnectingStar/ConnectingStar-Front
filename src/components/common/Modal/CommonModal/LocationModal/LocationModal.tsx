@@ -35,6 +35,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 	const [isInputFocus, setIsInputFocus] = useState(false);
 
 	const modalRef = useRef<HTMLDivElement | null>(null);
+	const modalContentsRef = useRef<HTMLDivElement | null>(null);
 
 	const confirmSelectedTag = () => {
 		progress === 5 && addprogress && addprogress();
@@ -70,7 +71,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 
 			if (modalRef.current) {
 				modalRef.current.style.height = `${viewportHeight}px`;
-				modalRef.current.scrollTo(0, 1500);
+				modalContentsRef.current?.scrollTo(0, 1500);
 			}
 		};
 
@@ -96,7 +97,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 				<Header.CloseButton onClick={() => dispatch(closeModal())} />
 			</Header>
 
-			<div css={contents}>
+			<div css={contents} ref={modalContentsRef}>
 				<h1>장소를 입력해 주세요</h1>
 				<ul css={locationListStyle}>
 					<p>예시</p>
