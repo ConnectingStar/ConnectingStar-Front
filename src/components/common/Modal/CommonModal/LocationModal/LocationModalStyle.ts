@@ -20,8 +20,8 @@ export const scroll = css`
 	width: 1px;
 	height: calc(100% + 1px);
 	position: absolute;
-	left: 0;
 	top: 0;
+	left: 0;
 `;
 
 export const contents = css`

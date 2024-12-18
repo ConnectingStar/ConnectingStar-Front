@@ -47,6 +47,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 	};
 
 	useEffect(() => {
+		document.documentElement.style.overflow = "hidden"; // NOTE: iOS PWA 환경에서 필요
 		document.body.style.overflow = "hidden";
 
 		const updateBottom = () => {
@@ -83,6 +84,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 		window.visualViewport?.addEventListener("scroll", handleUpdateViewport);
 
 		return () => {
+			document.documentElement.style.overflow = "auto";
 			document.body.style.overflow = "auto";
 			window.visualViewport?.removeEventListener("resize", updateBottom);
 			window.visualViewport?.removeEventListener("scroll", updateBottom);
