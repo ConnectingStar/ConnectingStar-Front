@@ -115,7 +115,13 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 					maxLength={10}
 					value={place}
 					onFocus={() => setIsInputFocus(true)}
-					onBlur={() => setIsInputFocus(false)}
+					onBlur={() => {
+						setIsInputFocus(false);
+						if (modalRef.current) {
+							modalRef.current.style.bottom = `${0}px`;
+							modalRef.current.style.height = "100dvh";
+						}
+					}}
 					onChange={(e) => setPlace(e.target.value)}
 				/>
 			</div>
