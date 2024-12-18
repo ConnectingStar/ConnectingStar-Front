@@ -12,7 +12,6 @@ export const container = css`
 	background-color: white;
 	z-index: ${theme.zIndex.overlayMiddle};
 	transform: translate(0, 0);
-	overscroll-behavior: contain;
 `;
 
 export const contents = css`
