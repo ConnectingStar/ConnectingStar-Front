@@ -35,7 +35,6 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 	const [isInputFocus, setIsInputFocus] = useState(false);
 
 	const modalRef = useRef<HTMLDivElement | null>(null);
-	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	const confirmSelectedTag = () => {
 		progress === 5 && addprogress && addprogress();
@@ -46,17 +45,48 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 	};
 
 	useEffect(() => {
+		document.documentElement.style.overflow = "hidden";
 		document.body.style.overflow = "hidden";
 
-		const scrollModal = () => {
-			modalRef.current?.scrollTo(0, modalRef.current?.scrollHeight);
+		const updateBottom = () => {
+			const viewport = window.visualViewport;
+
+			if (viewport === null) return;
+
+			// bottom 위치 계산 공식
+			const viewportBottom = window.innerHeight - (viewport.offsetTop + viewport.height);
+
+			if (modalRef.current) {
+				modalRef.current.style.bottom = `${viewportBottom}px`;
+			}
 		};
 
-		window.visualViewport?.addEventListener("resize", scrollModal);
+		const updateHeight = () => {
+			const viewport = window.visualViewport;
+
+			if (viewport === null) return;
+
+			const viewportHeight = viewport.height;
+
+			if (modalRef.current) {
+				modalRef.current.style.height = `${viewportHeight}px`;
+				modalRef.current.scrollTo(0, 1500);
+			}
+		};
+
+		const handleUpdateViewport = () => {
+			updateHeight();
+			updateBottom();
+		};
+
+		window.visualViewport?.addEventListener("resize", handleUpdateViewport);
+		window.visualViewport?.addEventListener("scroll", handleUpdateViewport);
 
 		return () => {
 			document.body.style.overflow = "auto";
-			window.visualViewport?.removeEventListener("resize", scrollModal);
+			document.documentElement.style.overflow = "auto";
+			window.visualViewport?.removeEventListener("resize", updateBottom);
+			window.visualViewport?.removeEventListener("scroll", updateBottom);
 		};
 	}, []);
 
@@ -78,7 +108,6 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 					))}
 				</ul>
 				<input
-					ref={inputRef}
 					css={locationInputStyle}
 					type="search"
 					placeholder="직접입력"

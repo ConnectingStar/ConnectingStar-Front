@@ -4,20 +4,24 @@ import { theme } from "@/styles/theme";
 
 export const container = css`
 	position: fixed;
-	top: 0;
+	bottom: 0;
 	left: 0;
+	right: 0;
 	width: 100%;
-	height: 100vh;
+	height: 100dvh;
 	background-color: white;
 	z-index: ${theme.zIndex.overlayMiddle};
+	transform: translate(0, 0);
 	overscroll-behavior: contain;
-	overflow-y: auto;
 `;
 
 export const contents = css`
 	width: 22.5rem;
+	height: 100%;
 	padding: calc(4.75rem + env(safe-area-inset-top)) 1.5rem 0;
 	margin: 0 auto;
+	overflow-y: auto;
+
 	& > h1 {
 		margin-bottom: 2.5rem;
 		${theme.font.head_a}
@@ -58,6 +62,7 @@ export const locationInputStyle = css`
 	}
 
 	&:focus {
+		position: relative;
 		outline: none;
 		background-color: ${theme.color.bg};
 		color: black;
