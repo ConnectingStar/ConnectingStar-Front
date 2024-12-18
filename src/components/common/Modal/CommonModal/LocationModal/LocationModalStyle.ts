@@ -12,6 +12,16 @@ export const container = css`
 	background-color: white;
 	z-index: ${theme.zIndex.overlayMiddle};
 	transform: translate(0, 0);
+	overflow-y: auto;
+	overscroll-behavior-y: none;
+`;
+
+export const scroll = css`
+	width: 1px;
+	height: calc(100% + 1px);
+	position: absolute;
+	left: 0;
+	top: 0;
 `;
 
 export const contents = css`

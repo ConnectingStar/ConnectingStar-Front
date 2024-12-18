@@ -9,6 +9,7 @@ import {
 	contents,
 	locationListStyle,
 	locationInputStyle,
+	scroll,
 } from "@/components/common/Modal/CommonModal/LocationModal/LocationModalStyle";
 
 import { useAppDispatch } from "@/api/hooks";
@@ -46,7 +47,6 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 	};
 
 	useEffect(() => {
-		document.documentElement.style.overflow = "hidden";
 		document.body.style.overflow = "hidden";
 
 		const updateBottom = () => {
@@ -54,8 +54,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 
 			if (viewport === null) return;
 
-			// bottom 위치 계산 공식
-			const viewportBottom = window.innerHeight - (viewport.offsetTop + viewport.height);
+			const viewportBottom = window.innerHeight - viewport.height;
 
 			if (modalRef.current) {
 				modalRef.current.style.bottom = `${viewportBottom}px`;
@@ -71,7 +70,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 
 			if (modalRef.current) {
 				modalRef.current.style.height = `${viewportHeight}px`;
-				modalContentsRef.current?.scrollTo(0, 1500);
+				modalContentsRef.current?.scrollTo(0, viewportHeight);
 			}
 		};
 
@@ -85,7 +84,6 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 
 		return () => {
 			document.body.style.overflow = "auto";
-			document.documentElement.style.overflow = "auto";
 			window.visualViewport?.removeEventListener("resize", updateBottom);
 			window.visualViewport?.removeEventListener("scroll", updateBottom);
 		};
@@ -119,6 +117,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 					onChange={(e) => setPlace(e.target.value)}
 				/>
 			</div>
+			<div css={scroll}></div>
 
 			<FooterBtn
 				text="확인"
