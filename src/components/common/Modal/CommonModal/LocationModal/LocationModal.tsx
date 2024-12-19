@@ -9,7 +9,7 @@ import {
 	contents,
 	locationListStyle,
 	locationInputStyle,
-	scroll,
+	scrollable,
 } from "@/components/common/Modal/CommonModal/LocationModal/LocationModalStyle";
 
 import { useAppDispatch } from "@/api/hooks";
@@ -50,44 +50,34 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 		document.documentElement.style.overflow = "hidden"; // NOTE: iOS PWA 환경에서 필요
 		document.body.style.overflow = "hidden";
 
-		const updateBottom = () => {
-			const viewport = window.visualViewport;
+		const updateModalPosition = () => {
+			const visualViewport = window.visualViewport;
 
-			if (viewport === null) return;
+			if (!visualViewport || !modalRef.current || !modalContentsRef.current) return;
 
-			const viewportBottom = window.innerHeight - viewport.height;
+			const calculatedBottom =
+				window.innerHeight - visualViewport.height - visualViewport.offsetTop;
 
-			if (modalRef.current) {
-				modalRef.current.style.bottom = `${viewportBottom}px`;
-			}
+			// NOTE: iOS 사파리에서 Bottom 값이 음수인 경우 대응
+			const modalBottom =
+				calculatedBottom < 0 ? window.innerHeight - visualViewport.height : calculatedBottom;
+
+			modalRef.current.style.height = `${visualViewport.height}px`;
+			modalRef.current.style.bottom = `${modalBottom}px`;
+
+			const scrollHeight = modalContentsRef.current.scrollHeight;
+			const scrollTop = scrollHeight - visualViewport.height;
+			modalContentsRef.current?.scrollTo(0, scrollTop);
 		};
 
-		const updateHeight = () => {
-			const viewport = window.visualViewport;
-
-			if (viewport === null) return;
-
-			const viewportHeight = viewport.height;
-
-			if (modalRef.current) {
-				modalRef.current.style.height = `${viewportHeight}px`;
-				modalContentsRef.current?.scrollTo(0, viewportHeight);
-			}
-		};
-
-		const handleUpdateViewport = () => {
-			updateHeight();
-			updateBottom();
-		};
-
-		window.visualViewport?.addEventListener("resize", handleUpdateViewport);
-		window.visualViewport?.addEventListener("scroll", handleUpdateViewport);
+		window.visualViewport?.addEventListener("resize", updateModalPosition);
+		window.visualViewport?.addEventListener("scroll", updateModalPosition);
 
 		return () => {
 			document.documentElement.style.overflow = "auto";
 			document.body.style.overflow = "auto";
-			window.visualViewport?.removeEventListener("resize", updateBottom);
-			window.visualViewport?.removeEventListener("scroll", updateBottom);
+			window.visualViewport?.removeEventListener("resize", updateModalPosition);
+			window.visualViewport?.removeEventListener("scroll", updateModalPosition);
 		};
 	}, []);
 
@@ -125,7 +115,7 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 					onChange={(e) => setPlace(e.target.value)}
 				/>
 			</div>
-			<div css={scroll}></div>
+			<div css={scrollable}></div>
 
 			<FooterBtn
 				text="확인"

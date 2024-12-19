@@ -16,14 +16,6 @@ export const container = css`
 	overscroll-behavior-y: none;
 `;
 
-export const scroll = css`
-	width: 1px;
-	height: calc(100% + 1px);
-	position: absolute;
-	top: 0;
-	left: 0;
-`;
-
 export const contents = css`
 	width: 22.5rem;
 	height: 100%;
@@ -83,4 +75,12 @@ export const locationInputStyle = css`
 	::-webkit-search-results-decoration {
 		display: none;
 	}
+`;
+
+export const scrollable = css`
+	width: 1px;
+	height: calc(100% + 1px);
+	position: absolute;
+	top: 0;
+	left: 0;
 `;
