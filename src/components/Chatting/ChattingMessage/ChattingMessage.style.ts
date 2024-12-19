@@ -1,4 +1,4 @@
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 
 import { theme } from "@/styles/theme";
 
@@ -23,6 +23,18 @@ export const container = css`
 	}
 `;
 
+const chatBubbleAnimation = keyframes`
+  0% {
+	opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+	opacity: 1;
+    transform: translateY(0px);
+  }
+`;
+
 export const chatWrap = css`
 	width: 100%;
 	padding-right: 1rem;
@@ -34,6 +46,8 @@ export const chatWrap = css`
 		margin-bottom: 0.375rem;
 		background-color: white;
 		padding: 1rem;
+		animation: 400ms cubic-bezier(0.36, 0, 0, 1) 0s 1 normal backwards running
+			${chatBubbleAnimation};
 	}
 	> button {
 		display: flex;

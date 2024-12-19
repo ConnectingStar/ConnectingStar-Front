@@ -55,7 +55,7 @@ function ChattingMessage({ chatData, progress, addProgress, handleSubmit }: chat
 			if (botMessage.length > botMessageIndex) {
 				setBotMessageIndex((prevIndex) => prevIndex + 1);
 			}
-		}, 600);
+		}, 800);
 
 		return () => clearTimeout(timer);
 	}, [botMessageIndex]);
