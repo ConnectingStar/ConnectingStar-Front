@@ -71,7 +71,6 @@ export const locationInputStyle = css`
 	}
 
 	&:focus {
-		position: relative;
 		outline: none;
 		background-color: ${theme.color.bg};
 		color: black;
