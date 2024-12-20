@@ -29,6 +29,9 @@ interface LocationModalType {
 	) => void;
 }
 
+const INITIAL_MODAL_HEIGHT = "100dvh";
+const INITIAL_MODAL_BOTTOM = "0";
+
 function LocationModal({ progress, addprogress, prevValue, updateInputValue }: LocationModalType) {
 	const dispatch = useAppDispatch();
 
@@ -55,19 +58,25 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 
 			if (!visualViewport || !modalRef.current || !modalContentsRef.current) return;
 
-			const calculatedBottom =
-				window.innerHeight - visualViewport.height - visualViewport.offsetTop;
+			const isKeyboardOpen = visualViewport.height < window.innerHeight;
 
-			// NOTE: iOS 사파리에서 Bottom 값이 음수인 경우 대응
-			const modalBottom =
-				calculatedBottom < 0 ? window.innerHeight - visualViewport.height : calculatedBottom;
+			if (isKeyboardOpen) {
+				// NOTE: iOS 사파리에서 키보드 등장 시 innerHeight 값이 바뀌어서 bottom 위치가 제대로 계산 되지 않는 문제 대응
+				const isInnerHeightDifferent = window.innerHeight !== document.documentElement.clientHeight;
+				const calculatedBottom =
+					window.innerHeight - visualViewport.height - visualViewport.offsetTop;
+				const modalBottom = isInnerHeightDifferent
+					? window.innerHeight - visualViewport.height
+					: calculatedBottom;
 
-			modalRef.current.style.height = `${visualViewport.height}px`;
-			modalRef.current.style.bottom = `${modalBottom}px`;
+				// NOTE: state로 관리 시 안드로이드 크롬에서 가상 키보드 등장할 때 스타일이 즉각 반영되지 않아 버벅대는 문제 대응
+				modalRef.current.style.height = `${visualViewport.height}px`;
+				modalRef.current.style.bottom = `${modalBottom}px`;
 
-			const scrollHeight = modalContentsRef.current.scrollHeight;
-			const scrollTop = scrollHeight - visualViewport.height;
-			modalContentsRef.current?.scrollTo(0, scrollTop);
+				const scrollHeight = modalContentsRef.current.scrollHeight;
+				const scrollTop = scrollHeight - visualViewport.height;
+				modalContentsRef.current?.scrollTo(0, scrollTop);
+			}
 		};
 
 		window.visualViewport?.addEventListener("resize", updateModalPosition);
@@ -107,9 +116,10 @@ function LocationModal({ progress, addprogress, prevValue, updateInputValue }: L
 					onFocus={() => setIsInputFocus(true)}
 					onBlur={() => {
 						setIsInputFocus(false);
+						// NOTE: iOS 사파리에서 주소창이 하단에 위치하는 경우 resize 이벤트가 지연되어 UI 업데이트가 느린 문제 해결을 위해 Ref를 사용하여 스타일 즉각 업데이트
 						if (modalRef.current) {
-							modalRef.current.style.bottom = `${0}px`;
-							modalRef.current.style.height = "100dvh";
+							modalRef.current.style.height = INITIAL_MODAL_HEIGHT;
+							modalRef.current.style.bottom = INITIAL_MODAL_BOTTOM;
 						}
 					}}
 					onChange={(e) => setPlace(e.target.value)}
