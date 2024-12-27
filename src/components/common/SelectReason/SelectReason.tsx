@@ -5,9 +5,9 @@ import DownArrowIcon from "@/assets/icon/ic-down-arrow.svg?react";
 
 import FooterBtn from "@/components/common/FooterBtn/FooterBtn";
 import SelectReasonModal from "@/components/common/SelectReason/SelectReasonModal/SelectReasonModal";
+import HabitDeleteCheckModal from "@/components/Habit/Modal/HabitDeleteCheckModal/HabitDeleteCheckModal";
 
 import { withdrawal } from "@/api/auth/authThunk";
-import { deleteHabit } from "@/api/habit/habitThunk";
 import { useAppSelector, useAppDispatch } from "@/api/hooks";
 import { openModal } from "@/api/modal/modalSlice";
 import { getOnlyUserInfo } from "@/api/user/userThunk";
@@ -79,14 +79,8 @@ const SelectReason = ({
 		}
 	};
 
-	const handleDeleteHabit = async () => {
-		try {
-			await dispatch(deleteHabit({ runHabitId: param.habitId, reason })).unwrap();
-			createToast("습관을 삭제했어요. 다음 약속으로 만나요!");
-			navigate(PATH.MAIN);
-		} catch (error) {
-			console.log(error);
-		}
+	const handleDeleteHabitClick = () => {
+		dispatch(openModal(modalType.HABIT_DELETE_CHECK));
 	};
 
 	useEffect(() => {
@@ -136,7 +130,7 @@ const SelectReason = ({
 				text={footerBtnText}
 				isTransparent
 				disabled={reason === reasonDefaultText}
-				handleBtnClick={param.habitId ? handleDeleteHabit : handleWithDrawal}
+				handleBtnClick={param.habitId ? handleDeleteHabitClick : handleWithDrawal}
 			/>
 
 			{modal === modalType.SELECT_REASON && (
@@ -145,6 +139,10 @@ const SelectReason = ({
 					reasonData={selectData}
 					reasonDefaultText={reasonDefaultText}
 				/>
+			)}
+
+			{modal === modalType.HABIT_DELETE_CHECK && (
+				<HabitDeleteCheckModal runHabitId={param.habitId} reasonOfQuit={reason} />
 			)}
 		</div>
 	);

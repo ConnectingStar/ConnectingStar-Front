@@ -15,6 +15,7 @@ export const modalType = {
 	DELETE_HISTORY: (id: number) => `DELETE_HISTORY_${id}`,
 	HABIT_EDIT: (habidId?: number) => `HABIT_EDIT_${habidId}`,
 	HABIT_RECORD: (habitId?: number) => `HABIT_RECORD_${habitId}`,
+	HABIT_DELETE_CHECK: "HABIT_DELETE_CHECK",
 	STOP_HABIT: "STOP_HABIT",
 	SELECT_REASON: "SELECT_REASON",
 	HABIT_RECORD_ACHIEVE: "HABIT_RECORD_ACHIEVE",

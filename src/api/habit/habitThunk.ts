@@ -184,10 +184,10 @@ export const getHabit = createAsyncThunk(
 
 export const deleteHabit = createAsyncThunk(
 	"habit/deleteHabit",
-	async ({ runHabitId, reason }: HabitDeleteRequestType, thunkOptions) => {
+	async ({ runHabitId, reasonOfQuit, visibility }: HabitDeleteRequestType, thunkOptions) => {
 		try {
 			return await authorizedAxiosInstance.delete(END_POINTS.HABIT_ID(runHabitId), {
-				data: { reasonOfQuit: reason },
+				data: { reasonOfQuit, visibility },
 			});
 		} catch (error) {
 			thunkOptions.rejectWithValue(error);

@@ -2,7 +2,8 @@ export type HabitRecordStatusType = "TO_DO" | "COMPLETED" | "REST" | "EXPIRED";
 
 export interface HabitDeleteRequestType {
 	runHabitId?: string;
-	reason: string;
+	reasonOfQuit: string;
+	visibility: boolean;
 }
 
 export interface HabitRequestV2Type {
