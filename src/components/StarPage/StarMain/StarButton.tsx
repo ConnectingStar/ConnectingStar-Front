@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import starButton from "@/assets/image/img-3d-star-circle-button.png";
+import starButton from "@/assets/image/img-3d-star-circle-button.webp";
 
 import { theme } from "@/styles/theme";
 

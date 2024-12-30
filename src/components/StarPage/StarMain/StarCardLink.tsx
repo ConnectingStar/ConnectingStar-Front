@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { css } from "@emotion/react";
 
-import starCardBook from "@/assets/image/img-3d-star-card-book.png";
+import starCardBook from "@/assets/image/img-3d-star-card-book.webp";
 
 import { PATH } from "@/constants/path";
 
