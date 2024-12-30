@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
 import ArrowRightIcon from "@/assets/icon/ic-right-arrow-with-shadow.svg?react";
-import star from "@/assets/image/img-3d-star.png";
+import star from "@/assets/image/img-3d-star.webp";
 
 import { PATH } from "@/constants/path";
 
