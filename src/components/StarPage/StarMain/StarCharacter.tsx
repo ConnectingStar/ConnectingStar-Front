@@ -44,7 +44,7 @@ export default function StarCharacter({ svgData, image }: StarCharacterProps) {
 						{circle.filled && (
 							<defs>
 								<filter id={`shadow${index}`} filterUnits="userSpaceOnUse">
-									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feFlood floodOpacity="0" result="BackgroundImageFix" />
 									<feMorphology radius="3" operator="dilate" in="SourceAlpha" />
 									<feGaussianBlur stdDeviation="5" />
 									<motion.feColorMatrix
