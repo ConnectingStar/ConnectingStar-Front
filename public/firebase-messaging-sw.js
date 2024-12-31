@@ -22,6 +22,7 @@ self.addEventListener("push", function (e) {
 		body: resultData.body,
 		icon: "/assets/icon-192.png",
 		badge: "/assets/android-notification-icon.png",
+		vibrate: [300, 100, 300],
 		data: {
 			notificationUrl,
 		},
